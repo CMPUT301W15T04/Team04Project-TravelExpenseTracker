@@ -11,4 +11,14 @@ public class Claim {
 		
 	}
 
+	public void addTag(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void findTag(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
