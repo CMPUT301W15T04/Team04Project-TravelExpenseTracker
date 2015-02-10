@@ -8,5 +8,7 @@ public class Claims_Tags extends TestCase {
 		Claim claim = new Claim("Beijing");
 		claim.addTag("good");
 		claim.findTag("good");
+		claim.removeTag("good");
+		claim.findTag("good");
 	}
 }
