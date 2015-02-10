@@ -19,9 +19,9 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		getActionBar().setTitle("Log In");
 		Button buttonSignUp = (Button) findViewById(R.id.buttonSignUp);
-		Button buttonLogin = (Button) findViewById(R.id.buttonSignUp);
+		Button buttonLogIn  = (Button) findViewById(R.id.buttonLogIn);
 		buttonSignUp.setBackgroundColor(Color.WHITE);
-		buttonLogin.setBackgroundColor(Color.WHITE);
+		buttonLogIn.setBackgroundColor(Color.WHITE);
 	}
 
 	

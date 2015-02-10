@@ -21,7 +21,7 @@
         tools:ignore="RtlHardcoded,HardcodedText" />
 
     <EditText
-        android:id="@+id/editTextNewPassword"
+        android:id="@+id/editTextPasswordNew"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_alignLeft="@+id/editTextEmailNew"
@@ -36,30 +36,6 @@
     </EditText>
 
     <EditText
-        android:id="@+id/editTextPasswordCon"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/editTextNewPassword"
-        android:layout_below="@+id/editTextNewPassword"
-        android:ems="10"
-        android:hint="Confirm Your Password"
-        android:inputType="textPersonName"
-        tools:ignore="RtlHardcoded,HardcodedText,TextFields" />
-
-    <EditText
-        android:id="@+id/editTextFirstName"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/editTextPasswordCon"
-        android:ems="10"
-        android:hint="First Name"
-        android:inputType="textPersonName"
-        tools:ignore="HardcodedText,RtlHardcoded" />
-
-    <EditText
         android:id="@+id/editTextLastName"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
@@ -71,13 +47,48 @@
         android:inputType="textPersonName"
         tools:ignore="HardcodedText,RtlHardcoded" />
 
-    <Button
-        android:id="@+id/buttonCreate"
+    <EditText
+        android:id="@+id/editTextPasswordConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/editTextPasswordNew"
+        android:layout_alignRight="@+id/editTextPasswordNew"
+        android:layout_below="@+id/editTextPasswordNew"
+        android:ems="10"
+        android:hint="Confirm Your Password"
+        android:inputType="textPersonName"
+        tools:ignore="RtlHardcoded,HardcodedText,TextFields" />
+
+    <EditText
+        android:id="@+id/editTextFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/editTextPasswordConfirm"
+        android:layout_alignRight="@+id/editTextPasswordConfirm"
+        android:layout_below="@+id/editTextPasswordConfirm"
+        android:ems="10"
+        android:hint="First Name"
+        android:inputType="textPersonName"
+        tools:ignore="HardcodedText,RtlHardcoded" />
+
+    <CheckBox
+        android:id="@+id/checkBoxIsApprovor"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_alignLeft="@+id/editTextLastName"
-        android:layout_alignParentRight="true"
+        android:layout_alignRight="@+id/editTextLastName"
         android:layout_below="@+id/editTextLastName"
+        android:text="Is Approver"
+        tools:ignore="HardcodedText,RtlHardcoded" />
+
+    <Button
+        android:id="@+id/buttonCreateDone"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/checkBoxIsApprovor"
+        android:layout_alignRight="@+id/checkBoxIsApprovor"
+        android:layout_below="@+id/checkBoxIsApprovor"
+        android:onClick="finishCreating"
         android:text="Done"
         tools:ignore="HardcodedText,RtlHardcoded" />
 

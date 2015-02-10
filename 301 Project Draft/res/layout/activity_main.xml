@@ -30,7 +30,7 @@
         tools:ignore="RtlHardcoded,HardcodedText" />
 
     <EditText
-        android:id="@+id/editTextNewPassword"
+        android:id="@+id/editTextNewPasswordLogIn"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_above="@+id/checkBoxRemember"
@@ -42,11 +42,11 @@
         tools:ignore="RtlHardcoded,HardcodedText,TextFields" />
 
     <EditText
-        android:id="@+id/editTextEmailNew"
+        android:id="@+id/editTextEmailLogIn"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_above="@+id/editTextNewPassword"
-        android:layout_alignLeft="@+id/editTextNewPassword"
+        android:layout_above="@+id/editTextNewPasswordLogIn"
+        android:layout_alignLeft="@+id/editTextNewPasswordLogIn"
         android:layout_alignRight="@+id/buttonLogIn"
         android:ems="10"
         android:hint="E-mail"
