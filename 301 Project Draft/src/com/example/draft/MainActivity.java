@@ -20,8 +20,8 @@ public class MainActivity extends Activity {
 		getActionBar().setTitle("Log In");
 		Button buttonSignUp = (Button) findViewById(R.id.buttonSignUp);
 		Button buttonLogIn  = (Button) findViewById(R.id.buttonLogIn);
-		buttonSignUp.setBackgroundColor(Color.WHITE);
-		buttonLogIn.setBackgroundColor(Color.WHITE);
+		buttonSignUp.setBackgroundResource(0);
+		buttonLogIn.setBackgroundResource(0);
 	}
 
 	

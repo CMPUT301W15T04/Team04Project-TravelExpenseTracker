@@ -18,7 +18,7 @@ public class Login extends Activity {
 		getActionBar().setTitle("Create New Account");
 		
 		Button buttonCreateDone = (Button) findViewById(R.id.buttonCreateDone);
-		buttonCreateDone.setBackgroundColor(Color.WHITE);
+		buttonCreateDone.setBackgroundResource(0);
 		
 	}
 
