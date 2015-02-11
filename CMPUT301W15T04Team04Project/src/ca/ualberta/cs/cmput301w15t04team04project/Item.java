@@ -3,7 +3,8 @@ package ca.ualberta.cs.cmput301w15t04team04project;
 import java.util.Date;
 
 import android.graphics.Bitmap;
-import android.graphics.Color;
+//import android.graphics.Color;
+import android.net.Uri;
 
 public class Item {
 	protected String itemName;
@@ -14,11 +15,18 @@ public class Item {
 	protected int amount;
 	protected String unit;
 	protected int flag;
+<<<<<<< HEAD
 
+=======
+	
+	protected Uri imageFileUri;
+	
+>>>>>>> 075cca2e453a861b3f0bc121f726e061fe1b4c23
 	public Item(String itemname) {
 		// TODO Auto-generated constructor stub
 	}
 
+<<<<<<< HEAD
 	/*
 	 * copy from bogopicgen public static Bitmap generateBitmap(int width, int
 	 * height) { // Algorithms based on: //
@@ -75,6 +83,24 @@ public class Item {
 
 	public void setItemname(String itemName) {
 		this.itemName = itemName;
+=======
+
+    public void takeAPhoto() {
+    	takeAPhoto();
+    }
+
+   
+
+	public String getItemname() {
+		return itemname;
+	}
+
+
+
+
+	public void setItemname(String itemname) {
+		this.itemname = itemname;
+>>>>>>> 075cca2e453a861b3f0bc121f726e061fe1b4c23
 	}
 
 	public Date getStartdate() {
@@ -132,4 +158,28 @@ public class Item {
 		return "Item [itemname=" + itemName + "]";
 	}
 
+<<<<<<< HEAD
+=======
+
+	public Uri getPhoto() {
+		// TODO Auto-generated method stub
+		return imageFileUri;
+	}
+
+
+	public void deleteAPhoto() {
+		// TODO Auto-generated method stub
+		imageFileUri = null;
+	}
+
+
+	public int getPhotoSize() {
+		// TODO Auto-generated method stub
+		
+		return 0; // size
+	}
+
+
+
+>>>>>>> 075cca2e453a861b3f0bc121f726e061fe1b4c23
 }
