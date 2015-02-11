@@ -60,4 +60,9 @@ public class ClaimList {
 		return claimList;
 	}
 
+	public ArrayList<Claim> getSubmittedClaimList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
