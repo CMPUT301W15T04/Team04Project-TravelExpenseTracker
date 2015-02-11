@@ -32,8 +32,20 @@ public class Item {
 		// TODO Auto-generated constructor stub
 	}
 
+<<<<<<< HEAD
+
+    public void takeAPhoto() {
+    	//take photo function
+    }
+
+   
+
+	public String getItemname() {
+		return itemname;
+=======
 	public void takeAPhoto() {
 		takeAPhoto();
+>>>>>>> 408a917149270adea514bf1b9adf54db11ac715e
 	}
 
 	public String getItemName() {
@@ -95,11 +107,14 @@ public class Item {
 		// TODO Auto-generated method stub
 		Intent intent = getIntent();
 		File intentPicture = getPicturePath(intent);
+		if (intent == null) {
+			return null;
+		}
 		try {
 			saveBMP(intentPicture, BMP);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		// TODO Auto-generated catch block
+						e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -132,6 +147,7 @@ public class Item {
 		BMP.compress(Bitmap.CompressFormat.PNG, 100, stream);
 		byte[] byteArray = stream.toByteArray();
 		return byteArray.length; // size
+		
 	}
 
 	// get from BogoPicGen
