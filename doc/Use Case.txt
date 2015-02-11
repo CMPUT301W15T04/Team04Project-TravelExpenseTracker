@@ -1,0 +1,26 @@
+Use Case Name: RecoredAndApproveClaims
+Participating Actors :  Claimant(primary), Approver
+Goal: Claimant recoreds his claim(s) and submits to approver to approve.
+Trigger: Claimant adds a new claim
+Precondition: Claimant knews the detail of his claim(name of claim,destination(s),starting date,ending date,items,status,amount spent on this claim etc.)
+Postconditon: On success,claimant recoreds his claim and submits to approver, and the approver sents the feedback to claimant,the information he saves could be viewed.
+Basic Flow:
+
+	1. System prompts claimant to log in his account.
+	2. Claimant submits username and password.
+	3. System lists the claims that claimant has added,and prompts for claimant if he wants to add or view a claim.
+	4. Claimant chooses to add a new claim.
+	5. System displays an interface which ask claimant to put the claim name,destination,tags,starting date,ending date and discriptions on the blank spaces.
+	6. Claimant puts the claim name,starting date,ending date and discriptions on the blank spaces and clicks the add button.
+	7. System jumps to the claimlist interface and prompts claimant to edit(add items) the claim he just saved.
+	8. Claimant clicks the cliam he just saved.
+	9. System jumps to the additem interface which asks claimant to put on item information(name,amount spent,category,receipt,description).
+	10. Claimant adds a new item and clicks the add botton.
+	11. System prompts claimant to add more items or jump to claim view.
+	12. If claimant chooses add more then the system jumps to step 9, if claimant chooses to jump to cliam view the system jumps to claim view interface.
+	13. System prompts claimant to change the status of the cliam.
+	14. Claimant choose to change the status and sumbmits the cliam to the approver.
+	15. System pushes expense information online once claimant gets connectivity to Approver.
+	16. Approver checks the claim submited by claimant and choose to return or approve.(If the claim is returned the claimant will recive the reason provided by approver)
+	17. Approver approve the claim and sent the name and comments to claimant.
+	18. Claimant recived the name and comments made by approver and the cliam is recoreded and approved.
