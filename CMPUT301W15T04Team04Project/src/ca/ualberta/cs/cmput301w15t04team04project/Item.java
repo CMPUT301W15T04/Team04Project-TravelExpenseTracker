@@ -32,7 +32,6 @@ public class Item {
 		// TODO Auto-generated constructor stub
 	}
 
-<<<<<<< HEAD
 
     public void takeAPhoto() {
     	//take photo function
@@ -41,12 +40,10 @@ public class Item {
    
 
 	public String getItemname() {
-		return itemname;
-=======
-	public void takeAPhoto() {
-		takeAPhoto();
->>>>>>> 408a917149270adea514bf1b9adf54db11ac715e
+		return itemName;
+
 	}
+
 
 	public String getItemName() {
 		return itemName;
