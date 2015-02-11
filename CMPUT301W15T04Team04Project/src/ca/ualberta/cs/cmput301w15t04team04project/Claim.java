@@ -9,8 +9,11 @@ public class Claim {
 	protected Date enddate;
 	protected ArrayList<Tag> taglist;
 	protected ArrayList<Destination> destinations;
+	protected ArrayList<Listener> listener;
+	
 	public Claim(String claimname) {
 		// TODO Auto-generated constructor stub
+		
 	}
 
 	public void remove(Item item) {
@@ -28,7 +31,7 @@ public class Claim {
 		
 	}
 
-<<<<<<< HEAD
+	
 	public void removeTag(String string) {
 		// TODO Auto-generated method stub
 		
@@ -58,6 +61,9 @@ public class Claim {
 		this.enddate = enddate;
 	}
 
-=======
->>>>>>> 341cb9b42c53619eb9a8b84a7ab825788bdd8f4d
+	public void setDescription(String claimdescription) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

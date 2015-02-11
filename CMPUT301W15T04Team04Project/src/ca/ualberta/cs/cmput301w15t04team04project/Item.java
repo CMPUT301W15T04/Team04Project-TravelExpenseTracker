@@ -23,7 +23,8 @@ public class Item {
 
 
 
-	//copy from bogopicgen
+
+	/*copy from bogopicgen
 	public static Bitmap generateBitmap(int width, int height) {
 		// Algorithms based on:
 		// 	http://countercomplex.blogspot.com/2011/10/some-deep-analysis-of-one-line-music.html
@@ -90,7 +91,7 @@ public class Item {
 		bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
 		return bitmap;
 	
-	}
+	}*/
 
 
 	public String getItemname() {

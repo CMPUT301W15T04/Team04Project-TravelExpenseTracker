@@ -12,6 +12,9 @@ public class Claims_Overall_Test extends TestCase {
 		Claim claim = new Claim(claimname);
 		claim.setStartdate(new Date());
 		claim.setEnddate(new Date());
+		String claimdescription = "test";
+		claim.setDescription(claimdescription);
+		
 		
 		
 	}
