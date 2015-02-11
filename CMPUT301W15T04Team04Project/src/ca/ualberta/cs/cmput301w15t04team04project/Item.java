@@ -1,10 +1,19 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Date;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
+//import android.graphics.BitmapFactory;
 //import android.graphics.Color;
 import android.net.Uri;
+import android.provider.MediaStore;
 
 public class Item {
 	protected String itemname;
@@ -17,6 +26,7 @@ public class Item {
 	protected int flag;
 	
 	protected Uri imageFileUri;
+	private Bitmap BMP;
 	
 	public Item(String itemname) {
 		// TODO Auto-generated constructor stub
@@ -138,24 +148,56 @@ public class Item {
 	}
 
 
-	public Uri getPhoto() {
+	public Bitmap getPhoto() {
 		// TODO Auto-generated method stub
-		return imageFileUri;
+		Intent intent = getIntent();
+		File intentPicture = getPicturePath(intent);
+		try {
+			saveBMP(intentPicture, BMP);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return BMP;
+	}
+
+
+	private File getPicturePath(Intent intent) {
+		// TODO Auto-generated method stub
+		Uri uri = (Uri) intent.getExtras().get(MediaStore.EXTRA_OUTPUT);
+		return new File(uri.getPath());
+		
+	}
+
+
+	private Intent getIntent() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
 	public void deleteAPhoto() {
 		// TODO Auto-generated method stub
-		imageFileUri = null;
+		BMP = null;
 	}
 
 
 	public int getPhotoSize() {
 		// TODO Auto-generated method stub
-		
-		return 0; // size
+		//Bitmap bmp = BitmapFactory.decodeResource(getPhoto(), R.drawable.ic_launcher);
+		ByteArrayOutputStream stream = new ByteArrayOutputStream();
+		BMP.compress(Bitmap.CompressFormat.PNG, 100, stream);
+		byte[] byteArray = stream.toByteArray();
+		return byteArray.length; // size
 	}
-
-
+//get from BogoPicGen
+	private void saveBMP(File intentPicture, Bitmap BMP) throws IOException,FileNotFoundException {
+		OutputStream out = new FileOutputStream(intentPicture);
+		BMP.compress(Bitmap.CompressFormat.JPEG, 75, out);
+		out.close();
+	}
 
 }
