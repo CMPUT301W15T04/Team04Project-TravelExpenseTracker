@@ -10,5 +10,16 @@ public class Claims_Status_Test extends TestCase{
 		claim.setApprover("Jack");
 		assertTrue("The approver is not matched", claim.getApprover().equals("Jack"));
 	}
-	
+	public void testEditable(){
+		Claim claim = new Claim("Test");
+		if (claim.getStatus().toString().equals("submitted")){
+			assertTrue("A claim with submitted status should not be editable", claim.getEditable() == false);
+		}else if (claim.getStatus().toString().equals("for approval")){
+			assertTrue("A claim with for approval status should be editable", claim.getEditable() == true);
+		}else if (claim.getStatus().toString().equals("returned")){
+			assertTrue("A claim with submitted status should be editable", claim.getEditable() == true);
+		}
+
+	}
+
 }
