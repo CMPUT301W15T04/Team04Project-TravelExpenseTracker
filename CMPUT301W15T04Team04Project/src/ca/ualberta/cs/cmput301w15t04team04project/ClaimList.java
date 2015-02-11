@@ -13,6 +13,10 @@ public class ClaimList {
 		claimList = new ArrayList<Claim>();
 		listeners = new ArrayList<Listener>();
 	}
+	
+	public void sortClaimList(){
+		
+	}
 
 	public Claim getPosition(int position) {
 		return claimList.get(position);

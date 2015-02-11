@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Claim {
-	protected String claimname;
-	protected Date startdate;
-	protected Date enddate;
+	protected String claimName;
+	protected Date startDate;
+	protected Date endDate;
 	protected String status;
 	protected String description;
-	protected ArrayList<Tag> taglist;
+	protected ArrayList<Tag> tagList;
 	protected ArrayList<Destination> destinations;
 	protected ArrayList<Listener> listener;
 	
@@ -39,31 +39,31 @@ public class Claim {
 		
 	}
 
-	public String getClaimname() {
-		return claimname;
+	public String getClaimName() {
+		return claimName;
 	}
 
-	public void setClaimname(String claimname) {
-		this.claimname = claimname;
+	public void setClaimName(String claimName) {
+		this.claimName = claimName;
 	}
 
-	public Date getStartdate() {
-		return startdate;
+	public Date getStartDate() {
+		return startDate;
 	}
 
-	public void setStartdate(Date startdate) {
-		this.startdate = startdate;
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
 
-	public Date getEnddate() {
-		return enddate;
+	public Date getEndDate() {
+		return endDate;
 	}
 
-	public void setEnddate(Date enddate) {
-		this.enddate = enddate;
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
-	public void setDescription(String claimdescription) {
+	public void setDescription(String claimDescription) {
 		// TODO Auto-generated method stub
 		
 	}

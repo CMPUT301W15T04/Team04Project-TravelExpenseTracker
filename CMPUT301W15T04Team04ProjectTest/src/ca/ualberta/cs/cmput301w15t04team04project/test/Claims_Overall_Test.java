@@ -19,9 +19,9 @@ public class Claims_Overall_Test extends TestCase {
 		Claim claim = new Claim(claimname);
 		claim.setStatus(claimname);
 	
-		assertFalse("Problems with getter and setter of status", claimname.equals(claim.getStatus()));
-		claim.setStartdate(new Date());
-		claim.setEnddate(new Date());
+		assertTrue("Problems with getter and setter of status", claimname.equals(claim.getStatus()));
+		claim.setStartDate(new Date());
+		claim.setEndDate(new Date());
 		String claimdescription = "Test";
 		claim.setDescription(claimdescription);
 		assertFalse("Problems with getter and setter of status", claimdescription.equals(claim.getDescription()));

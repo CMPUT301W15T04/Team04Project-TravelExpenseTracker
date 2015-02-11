@@ -1,5 +1,7 @@
 package ca.ualberta.cs.cmput301w15t04team04project.test;
 
+import java.util.Date;
+
 import ca.ualberta.cs.cmput301w15t04team04project.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.ClaimList;
 import junit.framework.TestCase;
@@ -9,14 +11,28 @@ public class Claims_Listing_Test extends TestCase {
 	
 	
 	public void testClaimList(){
-		ClaimList claimlist = new ClaimList();
+		ClaimList claimList = new ClaimList();
+		String claimName = "Test";
+		Claim testClaim = new Claim(claimName);
+		claimList.addClaim(testClaim);
+		assertTrue("Not the same claim", testClaim.equals(claimList.getPosition(0)));
 		
-		String claimname = "Test";
-		Claim testclaim = new Claim(claimname);
-		
-		claimlist.addClaim(testclaim);
-		claimlist.getPosition(0);
-		
+	}
+	public void testSortClaimList(){
+		ClaimList claimList = new ClaimList();
+		Claim testClaim1 = new Claim("test1");
+		Claim testClaim2 = new Claim("test2");
+		testClaim1.setStartDate(new Date());//set a more recent date
+		testClaim2.setStartDate(new Date());//set a older date
+
+		//now the index of testClaim2 is 0, the index of testClaim1 is 1
+		claimList.addClaim(testClaim2);
+		claimList.addClaim(testClaim1);
+		//after the sort function
+		claimList.sortClaimList();
+		int recent = claimList.getClaim().indexOf(testClaim1);
+		int old = claimList.getClaim().indexOf(testClaim2);
+		assertTrue("Not a valid sort", (recent < old));
 	}
 	
 	
