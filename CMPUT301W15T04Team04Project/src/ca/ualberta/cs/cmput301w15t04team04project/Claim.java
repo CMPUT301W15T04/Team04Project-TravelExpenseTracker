@@ -13,6 +13,7 @@ public class Claim {
 	protected ArrayList<Destination> destinations;
 	protected ArrayList<Listener> listener;
 	protected String approver;
+	protected boolean editable = true;
 
 	public Claim(String claimname) {
 		// TODO Auto-generated constructor stub
@@ -90,6 +91,14 @@ public class Claim {
 		return null;
 		// TODO Auto-generated method stub
 
+	}
+
+	public boolean getEditable() {
+
+		return editable;
+	}
+	public void setEditable(){
+		// TODO Auto-generated method stub
 	}
 
 }
