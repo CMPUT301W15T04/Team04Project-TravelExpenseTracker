@@ -12,9 +12,9 @@ public class Items_Receipts_Test extends TestCase {
 	
 
     
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-    }
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//
+//    }
     
     //test delete receipt test
     protected void deleteReceiptTest(){

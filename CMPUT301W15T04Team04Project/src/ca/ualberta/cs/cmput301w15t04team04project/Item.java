@@ -34,7 +34,7 @@ public class Item {
 
 
     public void takeAPhoto() {
-    	takeAPhoto();
+    	//take photo function
     }
 
    
@@ -152,11 +152,14 @@ public class Item {
 		// TODO Auto-generated method stub
 		Intent intent = getIntent();
 		File intentPicture = getPicturePath(intent);
+		if (intent == null) {
+			return null;
+		}
 		try {
 			saveBMP(intentPicture, BMP);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		// TODO Auto-generated catch block
+						e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -192,6 +195,7 @@ public class Item {
 		BMP.compress(Bitmap.CompressFormat.PNG, 100, stream);
 		byte[] byteArray = stream.toByteArray();
 		return byteArray.length; // size
+		
 	}
 //get from BogoPicGen
 	private void saveBMP(File intentPicture, Bitmap BMP) throws IOException,FileNotFoundException {
