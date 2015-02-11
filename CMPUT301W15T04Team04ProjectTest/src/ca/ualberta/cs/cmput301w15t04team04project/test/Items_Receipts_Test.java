@@ -5,7 +5,7 @@ import android.net.Uri;
 import junit.framework.TestCase;
 
 
-public class ItemsReceiptsTest extends TestCase {
+public class Items_Receipts_Test extends TestCase {
 
 	Uri imageFileUri;
 	

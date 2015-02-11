@@ -32,6 +32,6 @@ public class Items_Overall_Test extends TestCase {
 	 
 	 public void testEditDeleteItem(){
 		 Claim claim = new Claim(claimname);
-		 claim.remove(new Item(itemname));
+		 claim.removeItem(new Item(itemname));
 	 }
 }

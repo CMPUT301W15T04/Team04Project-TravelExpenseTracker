@@ -7,6 +7,7 @@ public class Claim {
 	protected String claimname;
 	protected Date startdate;
 	protected Date enddate;
+	protected String status;
 	protected ArrayList<Tag> taglist;
 	protected ArrayList<Destination> destinations;
 	protected ArrayList<Listener> listener;
@@ -16,7 +17,7 @@ public class Claim {
 		
 	}
 
-	public void remove(Item item) {
+	public void removeItem(Item item) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -62,6 +63,16 @@ public class Claim {
 	}
 
 	public void setDescription(String claimdescription) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public String getStatus() {
+		return status;
+	
+	}
+
+	public void setStatus() {
 		// TODO Auto-generated method stub
 		
 	}
