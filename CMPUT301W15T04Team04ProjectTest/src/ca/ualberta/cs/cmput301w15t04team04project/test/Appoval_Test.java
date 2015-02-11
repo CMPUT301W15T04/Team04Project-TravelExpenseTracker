@@ -22,7 +22,7 @@ public class Appoval_Test extends TestCase{
 		testClaimList.addClaim(CClaim);
 		AClaim.setStatus("Submitted");
 		BClaim.setStatus("Submitted");
-		ArrayList<Claim> testClaimListTrue = null;
+		ArrayList<Claim> testClaimListTrue = new ArrayList<Claim>();
 		testClaimListTrue.add(AClaim);
 		testClaimListTrue.add(BClaim);
 
@@ -75,6 +75,8 @@ public class Appoval_Test extends TestCase{
 	}
 	
 	protected void addACommentOfSubmittedClaimTest(){
+		
+		
 		ClaimList testClaimList = new ClaimList();
 		Claim AClaim = new Claim("A");
 		Claim BClaim = new Claim("B");
@@ -85,8 +87,67 @@ public class Appoval_Test extends TestCase{
 		AClaim.setStatus("Submitted");
 		BClaim.setStatus("Submitted");
 		
+
+		
+		
+	}
+	
+	protected void returnClaimNotApproveTest(){
+		
+		Approval AApproval = new Approval("tester");
+		ClaimList testClaimList = new ClaimList();
+		Claim AClaim = new Claim("A");
+		Claim BClaim = new Claim("B");
+		Claim CClaim = new Claim("C");
+		testClaimList.addClaim(AClaim);
+		testClaimList.addClaim(BClaim);
+		testClaimList.addClaim(CClaim);
+		AClaim.setStatus("Submitted");
+		BClaim.setStatus("Submitted");
+		BClaim.setStatus("Returned");
+		BClaim.setApproval(AApproval);
+		BClaim.getApprover().setComment("reason");
+		assertTrue("comment is added", BClaim.getApprover().getComment().equals("reason"));
+	}
+	
+	protected void returnClaimSetApproverNameTest(){
+		Approval AApproval = new Approval("tester");
+		ClaimList testClaimList = new ClaimList();
+		Claim AClaim = new Claim("A");
+		Claim BClaim = new Claim("B");
+		Claim CClaim = new Claim("C");
+		testClaimList.addClaim(AClaim);
+		testClaimList.addClaim(BClaim);
+		testClaimList.addClaim(CClaim);
+		AClaim.setStatus("Submitted");
+		BClaim.setStatus("Submitted");
+		BClaim.setStatus("Returned");
+		BClaim.setApproval(AApproval);
+		BClaim.getApprover().setComment("reason");
+		assertTrue("comment is added", BClaim.getApprover().getName().equals("tester"));
+		
+		
+	}
+
+	protected void approveClaimSetApproverNameTest(){
+		Approval AApproval = new Approval("tester");
+		ClaimList testClaimList = new ClaimList();
+		Claim AClaim = new Claim("A");
+		Claim BClaim = new Claim("B");
+		Claim CClaim = new Claim("C");
+		testClaimList.addClaim(AClaim);
+		testClaimList.addClaim(BClaim);
+		testClaimList.addClaim(CClaim);
+		AClaim.setStatus("Submitted");
+		BClaim.setStatus("Submitted");
+		BClaim.setStatus("Approved");
+		BClaim.setApproval(AApproval);
+		BClaim.getApprover().setComment("reason");
+		assertTrue("comment is added", BClaim.getApprover().getName().equals("tester"));
 		
 		
 	}
 	
 }
+
+

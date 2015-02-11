@@ -12,19 +12,19 @@ public class Claim {
 	protected ArrayList<Tag> tagList;
 	protected ArrayList<Destination> destinations;
 	protected ArrayList<Listener> listener;
-	protected String approver;
-
+	protected Approval approver;
+	
 	public Claim(String claimname) {
 		// TODO Auto-generated constructor stub
 
 	}
 
-	public String getApprover() {
+	public Approval getApprover() {
 		return approver;
 	}
 
-	public void setApprover(String approver) {
-		this.approver = approver;
+	public void setApproval(Approval approver) {
+		
 	}
 
 	public void removeItem(Item item) {
