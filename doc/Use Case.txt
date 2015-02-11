@@ -1,9 +1,9 @@
 Use Case Name: RecoredAndApproveClaims
 Participating Actors :  Claimant(primary), Approver
-Goal: Claimant recoreds his claim(s) and submit to approver to approve
+Goal: Claimant recoreds his claim(s) and submits to approver to approve.
 Trigger: Claimant adds a new claim
-Precondition: Claimant knew the detail of his claim(name of claim,destination(s),starting date,ending date,items,status,amount spent on this claim etc.)
-Postconditon: On success,claimant recoreds his claim and submits to approver, the information he saves could be viewed.
+Precondition: Claimant knews the detail of his claim(name of claim,destination(s),starting date,ending date,items,status,amount spent on this claim etc.)
+Postconditon: On success,claimant recoreds his claim and submits to approver, and the approver sents the feedback to claimant,the information he saves could be viewed.
 Basic Flow:
 
 	1.System prompts claimant to log in his account.
