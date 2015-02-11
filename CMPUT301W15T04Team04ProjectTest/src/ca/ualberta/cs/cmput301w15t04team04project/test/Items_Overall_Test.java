@@ -11,7 +11,7 @@ public class Items_Overall_Test extends TestCase {
 	 final String claimname = "Beijing";
 	 public void testItem(){
 		 Item item = new Item(itemname);
-		 item.setStartdate(new Date());
+		 item.setStartDate(new Date());
 		 item.setCategary(new String());
 		 item.setDes(new String());
 		 int a = 100;

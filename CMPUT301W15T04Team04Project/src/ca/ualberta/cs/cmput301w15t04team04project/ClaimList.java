@@ -3,9 +3,8 @@ package ca.ualberta.cs.cmput301w15t04team04project;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class ClaimList {
-	
+
 	protected ArrayList<Claim> claimList = null;
 	protected transient ArrayList<Listener> listeners = null;
 
@@ -13,9 +12,9 @@ public class ClaimList {
 		claimList = new ArrayList<Claim>();
 		listeners = new ArrayList<Listener>();
 	}
-	
-	public void sortClaimList(){
-		
+
+	public void sortClaimList() {
+
 	}
 
 	public Claim getPosition(int position) {
@@ -60,7 +59,5 @@ public class ClaimList {
 	public ArrayList<Claim> getClaimList() {
 		return claimList;
 	}
-
-
 
 }
