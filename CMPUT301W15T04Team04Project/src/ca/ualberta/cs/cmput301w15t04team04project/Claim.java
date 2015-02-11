@@ -47,19 +47,19 @@ public class Claim {
 		this.claimname = claimname;
 	}
 
-	public Date getStartdate() {
+	public Date getStartDate() {
 		return startdate;
 	}
 
-	public void setStartdate(Date startdate) {
+	public void setStartDate(Date startdate) {
 		this.startdate = startdate;
 	}
 
-	public Date getEnddate() {
+	public Date getEndDate() {
 		return enddate;
 	}
 
-	public void setEnddate(Date enddate) {
+	public void setEndDate(Date enddate) {
 		this.enddate = enddate;
 	}
 
