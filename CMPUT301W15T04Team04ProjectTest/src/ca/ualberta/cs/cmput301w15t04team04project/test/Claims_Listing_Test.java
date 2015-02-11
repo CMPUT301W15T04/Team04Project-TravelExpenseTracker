@@ -34,5 +34,18 @@ public class Claims_Listing_Test extends TestCase {
 		int old = claimList.getClaim().indexOf(testClaim2);
 		assertTrue("Not a valid sort", (recent < old));
 	}
-
+	public void testGetPosition(){
+		ClaimList claimList = new ClaimList();
+		Claim testClaim = new Claim("test");
+		claimList.addClaim(testClaim);
+		assertTrue("Not match the index", claimList.getPosition(0).equals(testClaim));
+	}
+	
+	public void testGetClaimList(){
+		ClaimList claimList = new ClaimList();
+		
+		
+		
+		
+	}
 }
