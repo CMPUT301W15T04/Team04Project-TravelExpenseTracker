@@ -12,31 +12,30 @@ public class Claim {
 	protected ArrayList<Tag> tagList;
 	protected ArrayList<Destination> destinations;
 	protected ArrayList<Listener> listener;
-	
+
 	public Claim(String claimname) {
 		// TODO Auto-generated constructor stub
-		
+
 	}
 
 	public void removeItem(Item item) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void addTag(String string) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void findTag(String string) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	
 	public void removeTag(String string) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public String getClaimName() {
@@ -65,24 +64,23 @@ public class Claim {
 
 	public void setDescription(String claimDescription) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public String getStatus() {
-		return status;
-	
+		return null;
+		// TODO Auto-generated method stub
 	}
-
 
 	public void setStatus(String status) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public String getDescription() {
+		return null;
 		// TODO Auto-generated method stub
-		return description;
-	}
 
+	}
 
 }
