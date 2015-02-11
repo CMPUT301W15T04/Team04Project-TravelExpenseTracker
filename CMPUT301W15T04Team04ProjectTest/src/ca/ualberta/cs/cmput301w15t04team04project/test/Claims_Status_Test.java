@@ -19,7 +19,7 @@ public class Claims_Status_Test extends TestCase{
 		}else if (claim.getStatus().toString().equals("returned")){
 			assertTrue("A claim with submitted status should be editable", claim.getEditable() == true);
 		}
-		
+
 	}
 
 }
