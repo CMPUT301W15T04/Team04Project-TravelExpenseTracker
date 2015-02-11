@@ -16,22 +16,23 @@ import android.net.Uri;
 import android.provider.MediaStore;
 
 public class Item {
-	protected String itemname;
+	protected String itemName;
 	protected static Bitmap bitmap;
-	protected Date startdate;
+	protected Date date;
 	protected String categary;
 	protected String des;
 	protected int amount;
 	protected String unit;
 	protected int flag;
-	
+
 	protected Uri imageFileUri;
 	private Bitmap BMP;
-	
+
 	public Item(String itemname) {
 		// TODO Auto-generated constructor stub
 	}
 
+<<<<<<< HEAD
 
     public void takeAPhoto() {
     	//take photo function
@@ -41,112 +42,66 @@ public class Item {
 
 	public String getItemname() {
 		return itemname;
+=======
+	public void takeAPhoto() {
+		takeAPhoto();
+>>>>>>> 408a917149270adea514bf1b9adf54db11ac715e
 	}
 
-
-
-
-	public void setItemname(String itemname) {
-		this.itemname = itemname;
+	public String getItemName() {
+		return itemName;
 	}
 
-
-
-
-	public Date getStartdate() {
-		return startdate;
+	public void setItemname(String itemName) {
+		this.itemName = itemName;
 	}
-
-
-
-
-	public void setStartdate(Date startdate) {
-		this.startdate = startdate;
-	}
-
-
-
 
 	public String getCategary() {
 		return categary;
 	}
 
-
-
-
 	public void setCategary(String categary) {
 		this.categary = categary;
 	}
-
-
-
 
 	public String getDes() {
 		return des;
 	}
 
-
-
-
 	public void setDes(String des) {
 		this.des = des;
 	}
-
-
-
 
 	public int getAmount() {
 		return amount;
 	}
 
-
-
-
-
-
-
 	public String getUnit() {
 		return unit;
 	}
-
-
-
 
 	public void setUnit(String unit) {
 		this.unit = unit;
 	}
 
-
-
-
 	public void addFlag() {
 		this.flag = 1;
-		
+
 	}
-
-
-
 
 	public void removeFlag() {
 		// TODO Auto-generated method stub
 		this.flag = 0;
 	}
 
-
-
-
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
 
-
-
-
 	@Override
 	public String toString() {
-		return "Item [itemname=" + itemname + "]";
+		return "Item [itemname=" + itemName + "]";
 	}
-
 
 	public Bitmap getPhoto() {
 		// TODO Auto-generated method stub
@@ -167,41 +122,50 @@ public class Item {
 		return BMP;
 	}
 
-
 	private File getPicturePath(Intent intent) {
 		// TODO Auto-generated method stub
 		Uri uri = (Uri) intent.getExtras().get(MediaStore.EXTRA_OUTPUT);
 		return new File(uri.getPath());
-		
-	}
 
+	}
 
 	private Intent getIntent() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
 	public void deleteAPhoto() {
 		// TODO Auto-generated method stub
 		BMP = null;
 	}
 
-
 	public int getPhotoSize() {
 		// TODO Auto-generated method stub
-		//Bitmap bmp = BitmapFactory.decodeResource(getPhoto(), R.drawable.ic_launcher);
+		// Bitmap bmp = BitmapFactory.decodeResource(getPhoto(),
+		// R.drawable.ic_launcher);
 		ByteArrayOutputStream stream = new ByteArrayOutputStream();
 		BMP.compress(Bitmap.CompressFormat.PNG, 100, stream);
 		byte[] byteArray = stream.toByteArray();
 		return byteArray.length; // size
 		
 	}
-//get from BogoPicGen
-	private void saveBMP(File intentPicture, Bitmap BMP) throws IOException,FileNotFoundException {
+
+	// get from BogoPicGen
+	private void saveBMP(File intentPicture, Bitmap BMP) throws IOException,
+			FileNotFoundException {
 		OutputStream out = new FileOutputStream(intentPicture);
 		BMP.compress(Bitmap.CompressFormat.JPEG, 75, out);
 		out.close();
+	}
+
+	public void setDate(Date date) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public Date getDate() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
