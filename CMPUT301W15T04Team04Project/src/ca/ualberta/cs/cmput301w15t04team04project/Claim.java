@@ -8,6 +8,7 @@ public class Claim {
 	protected Date startdate;
 	protected Date enddate;
 	protected String status;
+	protected String description;
 	protected ArrayList<Tag> taglist;
 	protected ArrayList<Destination> destinations;
 	protected ArrayList<Listener> listener;
@@ -72,9 +73,16 @@ public class Claim {
 	
 	}
 
-	public void setStatus() {
+
+	public void setStatus(String status) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public String getDescription() {
+		// TODO Auto-generated method stub
+		return description;
+	}
+
 
 }
