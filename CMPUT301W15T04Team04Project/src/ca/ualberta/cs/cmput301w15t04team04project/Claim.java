@@ -9,17 +9,13 @@ public class Claim {
 	protected Date endDate;
 	protected String status;
 	protected String description;
+	protected ArrayList<Item> itemList;
 	protected ArrayList<Tag> tagList;
 	protected ArrayList<Destination> destinations;
 	protected ArrayList<Listener> listener;
-<<<<<<< HEAD
 	protected Approval approver;
-	
-=======
-	protected String approver;
 	protected boolean editable = true;
 
->>>>>>> 3c5f6d86e07309eb928a8b859c32a148195f5f96
 	public Claim(String claimname) {
 		// TODO Auto-generated constructor stub
 
@@ -43,9 +39,9 @@ public class Claim {
 
 	}
 
-	public void findTag(String string) {
+	public int findTag(String string) {
 		// TODO Auto-generated method stub
-
+		return 1;
 	}
 
 	public void removeTag(String string) {
@@ -106,4 +102,13 @@ public class Claim {
 		// TODO Auto-generated method stub
 	}
 
+	public void addItem(Item item) {
+		itemList.add(item);
+		
+	}
+	
+	public Item getItem(int i) {
+		return itemList.get(i);
+		
+	}
 }

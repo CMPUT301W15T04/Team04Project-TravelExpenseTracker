@@ -8,7 +8,10 @@ public class Claims_Tags extends TestCase {
 		Claim claim = new Claim("Beijing");
 		claim.addTag("good");
 		claim.findTag("good");
+		assertTrue("Not the same claim",
+				claim.findTag("good") == 1);
 		claim.removeTag("good");
-		claim.findTag("good");
+		assertTrue("Not the same claim",
+				claim.findTag("good") == 0);
 	}
 }

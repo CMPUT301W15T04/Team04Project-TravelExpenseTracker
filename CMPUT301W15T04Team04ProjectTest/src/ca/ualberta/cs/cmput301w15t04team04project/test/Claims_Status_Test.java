@@ -7,7 +7,7 @@ public class Claims_Status_Test extends TestCase{
 
 	public void testGetApprover(){
 		Claim claim = new Claim("Test");
-		claim.setApprover("Jack");
+		claim.setApproval("Jack");
 		assertTrue("The approver is not matched", claim.getApprover().equals("Jack"));
 	}
 	public void testEditable(){

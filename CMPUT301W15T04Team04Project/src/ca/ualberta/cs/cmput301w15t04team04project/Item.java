@@ -37,13 +37,6 @@ public class Item {
     	//take photo function
     }
 
-   
-
-	public String getItemname() {
-		return itemName;
-
-	}
-
 
 	public String getItemName() {
 		return itemName;
@@ -164,5 +157,11 @@ public class Item {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	public int getFlag() {
+		return flag;
+	}
+
 
 }
