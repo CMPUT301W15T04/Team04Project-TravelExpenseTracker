@@ -6,8 +6,5 @@ import junit.framework.TestCase;
 public class Items_Listing_Test extends TestCase {
 	Item item = new Item("car");
 	String i = item.toString();
-	
-	
-	
-	
+
 }

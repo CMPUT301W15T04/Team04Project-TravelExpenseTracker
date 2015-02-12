@@ -13,7 +13,12 @@ public class Claim {
 	protected ArrayList<Tag> tagList;
 	protected ArrayList<Destination> destinations;
 	protected ArrayList<Listener> listener;
+<<<<<<< HEAD
 	protected Approval approver;
+=======
+
+	protected String approver;
+>>>>>>> 9308e71a7581672875e86432481aecd0421c80fe
 	protected boolean editable = true;
 
 	public Claim(String claimname) {
@@ -21,7 +26,7 @@ public class Claim {
 
 	}
 
-	public Approval getApprover() {
+	public String getApprover() {
 		return approver;
 	}
 
@@ -29,7 +34,7 @@ public class Claim {
 		
 	}
 
-	public void removeItem(Item item) {
+	public void removeItem(Expense item) {
 		// TODO Auto-generated method stub
 
 	}

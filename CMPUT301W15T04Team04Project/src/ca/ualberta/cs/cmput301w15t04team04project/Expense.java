@@ -15,7 +15,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
 
-public class Item {
+public class Expense {
 	protected String itemName;
 	protected static Bitmap bitmap;
 	protected Date date;
@@ -28,26 +28,22 @@ public class Item {
 	protected Uri imageFileUri;
 	private Bitmap BMP;
 
-	public Item(String itemname) {
+	public Expense(String itemname) {
 		// TODO Auto-generated constructor stub
 	}
 
-<<<<<<< HEAD
 
     public void takeAPhoto() {
     	//take photo function
     }
 
-=======
-	public void takeAPhoto() {
-		// take photo function
-	}
+   
 
 	public String getItemname() {
 		return itemName;
 
 	}
->>>>>>> 9308e71a7581672875e86432481aecd0421c80fe
+
 
 	public String getItemName() {
 		return itemName;
@@ -114,8 +110,8 @@ public class Item {
 		try {
 			saveBMP(intentPicture, BMP);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		// TODO Auto-generated catch block
+						e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -148,7 +144,7 @@ public class Item {
 		BMP.compress(Bitmap.CompressFormat.PNG, 100, stream);
 		byte[] byteArray = stream.toByteArray();
 		return byteArray.length; // size
-
+		
 	}
 
 	// get from BogoPicGen
@@ -168,11 +164,5 @@ public class Item {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
-	public int getFlag() {
-		return flag;
-	}
-
 
 }
