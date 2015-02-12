@@ -7,6 +7,8 @@ import junit.framework.TestCase;
 import ca.ualberta.cs.cmput301w15t04team04project.Approval;
 import ca.ualberta.cs.cmput301w15t04team04project.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.ClaimList;
+import ca.ualberta.cs.cmput301w15t04team04project.Destination;
+import ca.ualberta.cs.cmput301w15t04team04project.Item;
 
 
 public class Appoval_Test extends TestCase{
@@ -53,7 +55,9 @@ public class Appoval_Test extends TestCase{
 		assertTrue("description is equal", testClaimList.getSubmittedClaimList().get(1).getDescription().equals("tests"));
 		BClaim.setStatus("Submitted");
 		assertTrue("status is equal", testClaimList.getSubmittedClaimList().get(1).getStatus().equals("Submitted"));
-
+		Destination testDestionation = new Destination();
+		BClaim.addDestination(testDestionation);
+		assertTrue("destionation is true",testClaimList.getSubmittedClaimList().get(1).getDestionation().equals(testDestionation));
 		//destinations have not been done
 		//total currency amount has not been done
 	}
@@ -70,7 +74,13 @@ public class Appoval_Test extends TestCase{
 		AClaim.setStatus("Submitted");
 		BClaim.setStatus("Submitted");
 		AClaim.setClaimName("1");
-		
+		Item itemA = new Item("food");
+		Item itemB = new Item("texi");
+		AClaim.addItem(itemA);
+		BClaim.addItem(itemB);
+		assertTrue("first item is true",testClaimList.getSubmittedClaimList().get(1).getItemList().get(0).equals(itemB));
+		assertTrue("first item is true",testClaimList.getSubmittedClaimList().get(0).getItemList().get(0).equals(itemA));
+
 		//itemlist not done
 	}
 	

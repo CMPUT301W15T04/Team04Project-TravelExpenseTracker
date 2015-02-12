@@ -106,4 +106,24 @@ public class Claim {
 		// TODO Auto-generated method stub
 	}
 
+	public void addDestination(Destination testDestionation) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Destination getDestionation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void addItem(Item itemA) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public ArrayList<Item> getItemList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
