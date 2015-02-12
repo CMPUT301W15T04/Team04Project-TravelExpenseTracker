@@ -102,10 +102,32 @@ public class Claim {
 		// TODO Auto-generated method stub
 	}
 
+<<<<<<< HEAD
 
 	public void setApprover(Approval approval) {
+=======
+	public void addDestination(Destination testDestionation) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	public Destination getDestionation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void addItem(Item itemA) {
+>>>>>>> c8797b1b6af44068c321fe70f89de6f916464271
+		// TODO Auto-generated method stub
+		
+	}
+
+<<<<<<< HEAD
+=======
+	public ArrayList<Item> getItemList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+>>>>>>> c8797b1b6af44068c321fe70f89de6f916464271
 }
