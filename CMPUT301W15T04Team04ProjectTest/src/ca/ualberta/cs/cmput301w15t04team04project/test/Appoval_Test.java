@@ -70,8 +70,21 @@ public class Appoval_Test extends TestCase{
 		AClaim.setStatus("Submitted");
 		BClaim.setStatus("Submitted");
 		AClaim.setClaimName("1");
-		
-		//itemlist not done
+		/*ClaimList claimList = new ClaimList();
+		Claim testClaim1 = new Claim("test1");
+		Claim testClaim2 = new Claim("test2");
+		testClaim1.setStartDate(new Date());// set a more recent date
+		testClaim2.setStartDate(new Date());// set a older date
+
+		// now the index of testClaim2 is 0, the index of testClaim1 is 1
+		claimList.addClaim(testClaim2);
+		claimList.addClaim(testClaim1);
+		// after the sort function
+		claimList.sortClaimList();
+		int recent = claimList.getClaim().indexOf(testClaim1);
+		int old = claimList.getClaim().indexOf(testClaim2);
+		assertTrue("Not a valid sort", (recent < old));
+		//itemlist not done*/
 	}
 	
 	protected void addACommentOfSubmittedClaimTest(){
