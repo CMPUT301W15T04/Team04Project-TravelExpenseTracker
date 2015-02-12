@@ -12,7 +12,8 @@ public class Claim {
 	protected ArrayList<Tag> tagList;
 	protected ArrayList<Destination> destinations;
 	protected ArrayList<Listener> listener;
-	protected Approval approver;
+
+	protected String approver;
 	protected boolean editable = true;
 
 	public Claim(String claimname) {
@@ -20,15 +21,15 @@ public class Claim {
 
 	}
 
-	public Approval getApprover() {
+	public String getApprover() {
 		return approver;
 	}
 
 	public void setApproval(Approval approver) {
-
+		
 	}
 
-	public void removeItem(Item item) {
+	public void removeItem(Expense item) {
 		// TODO Auto-generated method stub
 
 	}
@@ -97,34 +98,8 @@ public class Claim {
 
 		return editable;
 	}
-
-	public void setEditable() {
+	public void setEditable(){
 		// TODO Auto-generated method stub
-	}
-
-	public void setApprover(Approval approval) {
-
-	}
-
-	public void addDestination(Destination testDestionation) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public Destination getDestionation() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void addItem(Item itemA) {
-
-		// TODO Auto-generated method stub
-
-	}
-
-	public ArrayList<Item> getItemList() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
