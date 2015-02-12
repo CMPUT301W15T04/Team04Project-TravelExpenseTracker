@@ -32,18 +32,14 @@ public class Item {
 		// TODO Auto-generated constructor stub
 	}
 
-
-    public void takeAPhoto() {
-    	//take photo function
-    }
-
-   
+	public void takeAPhoto() {
+		// take photo function
+	}
 
 	public String getItemname() {
 		return itemName;
 
 	}
-
 
 	public String getItemName() {
 		return itemName;
@@ -110,8 +106,8 @@ public class Item {
 		try {
 			saveBMP(intentPicture, BMP);
 		} catch (FileNotFoundException e) {
-		// TODO Auto-generated catch block
-						e.printStackTrace();
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -144,7 +140,7 @@ public class Item {
 		BMP.compress(Bitmap.CompressFormat.PNG, 100, stream);
 		byte[] byteArray = stream.toByteArray();
 		return byteArray.length; // size
-		
+
 	}
 
 	// get from BogoPicGen

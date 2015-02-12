@@ -15,7 +15,6 @@ public class Claim {
 	protected Approval approver;
 	protected boolean editable = true;
 
-
 	public Claim(String claimname) {
 		// TODO Auto-generated constructor stub
 
@@ -26,7 +25,7 @@ public class Claim {
 	}
 
 	public void setApproval(Approval approver) {
-		
+
 	}
 
 	public void removeItem(Item item) {
@@ -98,17 +97,18 @@ public class Claim {
 
 		return editable;
 	}
-	public void setEditable(){
+
+	public void setEditable() {
 		// TODO Auto-generated method stub
 	}
 
-<<<<<<< HEAD
-
 	public void setApprover(Approval approval) {
-=======
+
+	}
+
 	public void addDestination(Destination testDestionation) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public Destination getDestionation() {
@@ -117,17 +117,14 @@ public class Claim {
 	}
 
 	public void addItem(Item itemA) {
->>>>>>> c8797b1b6af44068c321fe70f89de6f916464271
+
 		// TODO Auto-generated method stub
-		
+
 	}
 
-<<<<<<< HEAD
-=======
 	public ArrayList<Item> getItemList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
->>>>>>> c8797b1b6af44068c321fe70f89de6f916464271
 }
