@@ -24,18 +24,11 @@ public class Items_Receipts_Test extends TestCase {
 		item.takeAPhoto();
 		assertTrue("exist photo", item.getPhoto() != null);
 	}
-<<<<<<< HEAD
+
    
     
-    //test delete receipt test
-    protected void deleteReceiptTest(){
-    	Item item = new Item("test");
-    	item.takeAPhoto();
-    	assertTrue("exist photo", item.getPhoto()!=null);
-    	item.deleteAPhoto();
-    	assertTrue("delete a photo", item.getPhoto()==null);
-    }
-    
+
+
     protected void viewReceiptTest(){
     	Item item = new Item("test");
     	item.takeAPhoto();
@@ -43,12 +36,7 @@ public class Items_Receipts_Test extends TestCase {
     	
     }
     
-    protected void underSizeReceiptTest(){
-     	Item item = new Item("test");
-    	item.takeAPhoto();
-    	
-    	assertTrue("undersize", item.getPhotoSize()<=65536);
-    }
+
     
     protected void retakenReceiptTest(){
     	Item item = new Item("test");
@@ -60,21 +48,8 @@ public class Items_Receipts_Test extends TestCase {
     	assertTrue("exist photo", item.getPhoto()!=null);
     }
     
-    protected void saveReceiptTest(){
-    	Item item = new Item("test");
-    	item.takeAPhoto();
-    	assertTrue("exist photo", item.getPhoto()!=null);
-    	
-    	//question 
-    }
-=======
-	protected void viewReceiptTest() {
-		Item item = new Item("test");
-		item.takeAPhoto();
-		assertTrue("view Receipt", item.getPhoto().equals(imageFileUri));
->>>>>>> a490606a6e3ad0d3248ac97b210629c0944b9dad
 
-	}
+
 
 	protected void underSizeReceiptTest() {
 		Item item = new Item("test");
@@ -83,26 +58,16 @@ public class Items_Receipts_Test extends TestCase {
 		assertTrue("undersize", item.getPhotoSize() <= 65536);
 	}
 
-	protected void retakenReceiptTest() {
-		Item item = new Item("test");
-		item.takeAPhoto();
-		assertTrue("exist photo", item.getPhoto() != null);
-		item.deleteAPhoto();
-		assertTrue("delete a photo", item.getPhoto() == null);
-		item.takeAPhoto();
-		assertTrue("exist photo", item.getPhoto() != null);
-	}
+
 
 	protected void saveReceiptTest() {
 		Item item = new Item("test");
 		item.takeAPhoto();
 		assertTrue("exist photo", item.getPhoto() != null);
-
+		
 		// question
 	}
 
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-	}
 
 }

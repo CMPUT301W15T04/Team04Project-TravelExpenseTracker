@@ -15,8 +15,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.Destination;
 import ca.ualberta.cs.cmput301w15t04team04project.Item;
 import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
-import ca.ualberta.cs.lonelytwitter.IntentReaderActivity;
-import ca.ualberta.cs.travel.R;
+
 
 public class Appoval_Test extends TestCase {
 
@@ -107,20 +106,6 @@ public class Appoval_Test extends TestCase {
 		BClaim.setStatus("Submitted");
 		AClaim.setClaimName("1");
 
-		/*
-		 * ClaimList claimList = new ClaimList(); Claim testClaim1 = new
-		 * Claim("test1"); Claim testClaim2 = new Claim("test2");
-		 * testClaim1.setStartDate(new Date());// set a more recent date
-		 * testClaim2.setStartDate(new Date());// set a older date
-		 * 
-		 * // now the index of testClaim2 is 0, the index of testClaim1 is 1
-		 * claimList.addClaim(testClaim2); claimList.addClaim(testClaim1); //
-		 * after the sort function claimList.sortClaimList(); int recent =
-		 * claimList.getClaim().indexOf(testClaim1); int old =
-		 * claimList.getClaim().indexOf(testClaim2);
-		 * assertTrue("Not a valid sort", (recent < old)); //itemlist not done
-		 */
-
 		Item itemA = new Item("food");
 		Item itemB = new Item("texi");
 		AClaim.addItem(itemA);
@@ -165,7 +150,7 @@ public class Appoval_Test extends TestCase {
 		AClaim.setStatus("Submitted");
 		BClaim.setStatus("Submitted");
 		BClaim.setStatus("Returned");
-		BClaim.setApproval(AApproval);
+		BClaim.setApprover(AApproval);
 		BClaim.getApprover().setComment("reason");
 		assertTrue("comment is added", BClaim.getApprover().getComment()
 				.equals("reason"));
@@ -183,7 +168,7 @@ public class Appoval_Test extends TestCase {
 		AClaim.setStatus("Submitted");
 		BClaim.setStatus("Submitted");
 		BClaim.setStatus("Returned");
-		BClaim.setApproval(AApproval);
+		BClaim.setApprover(AApproval);
 		BClaim.getApprover().setComment("reason");
 		assertTrue("comment is added",
 				BClaim.getApprover().getName().equals("tester"));
@@ -199,7 +184,7 @@ public class Appoval_Test extends TestCase {
 		testClaimList.addClaim(AClaim);
 		testClaimList.addClaim(BClaim);
 		testClaimList.addClaim(CClaim);
-		BClaim.setApproval(AApproval);
+		BClaim.setApprover(AApproval);
 
 		AClaim.setStatus("Submitted");
 		BClaim.setStatus("Submitted");
@@ -239,22 +224,33 @@ public class Appoval_Test extends TestCase {
 		testClaimList.addClaim(AClaim);
 		testClaimList.addClaim(BClaim);
 		testClaimList.addClaim(CClaim);
-		BClaim.setApproval(approve);
+		BClaim.setApprover(approve);
 
 		AClaim.setStatus("Submitted");
 		BClaim.setStatus("Submitted");
 		BClaim.setStatus("Approved");
-		assertEquals("should change", claimA.getStatus(), "Submitted");
+		assertEquals("should change", AClaim.getStatus(), "Submitted");
 		
 		ListView listView = (ListView) findViewById(R.id.claimListView);
 
-		MainActivity activity = startWithText(text, 
-				IntentReaderActivity.REVERSE);
-		final ArrayList<Claim> list = new ArrayList<Claim>(claims);
-		final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, list);
+		MainActivity activity ; // should add something
+		final ArrayList<Claim> list = new ArrayList<Claim>();
+		
+		
+		final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(activity, android.R.layout.simple_list_item_1, list);
 		listView.setAdapter(claimAdapter);
 		ViewAsserts.assertOnScreen(activity.getWindow().getDecorView(), view);
+		
+		ListView ItemlistView = (ListView) findViewById(R.id.claimListView);
 
+		MainActivity itemactivity ; // should add something
+		final ArrayList<Item> itemlist = new ArrayList<Item>();
+		
+		
+		final ArrayAdapter<Item> itemAdapter = new ArrayAdapter<Item>(itemactivity, android.R.layout.simple_list_item_1, itemlist);
+		ItemlistView.setAdapter(claimAdapter);
+		ViewAsserts.assertOnScreen(itemactivity.getWindow().getDecorView(), ItemlistView);
+		// not sure is it right
 		
 	}
 }
