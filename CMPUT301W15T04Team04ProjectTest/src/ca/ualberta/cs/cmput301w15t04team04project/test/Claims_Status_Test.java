@@ -10,6 +10,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.ClaimList;
 import junit.framework.TestCase;
 import ca.ualberta.cs.cmput301w15t04team04project.ShowClaimDetailActivity;
 
+<<<<<<< HEAD
 public class Claims_Status_Test extends
 		ActivityInstrumentationTestCase2<ShowClaimDetailActivity> {
 	
@@ -21,6 +22,7 @@ public class Claims_Status_Test extends
 		((Button) activity.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.submitClaim)).performClick();
 		assertTrue("A claim with submitted status?",claim.getStatus().equals("submitted"));
      	assertTrue("A claim with submitted status should not be editable",claim.getEditable() == false);
+
 	}
 
 	public void ClaimStatusChanged() {

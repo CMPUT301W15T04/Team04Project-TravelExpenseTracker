@@ -13,10 +13,13 @@ public class Claim {
 	protected ArrayList<Tag> tagList;
 	protected ArrayList<Destination> destinations;
 	protected ArrayList<Listener> listener;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5a4c32b784566562b0ffa4a7cac617dc6e8718b8
 	protected Approval approver;
 
-	protected String approver;
->>>>>>> 9308e71a7581672875e86432481aecd0421c80fe
+
 	protected boolean editable = true;
 
 	public Claim(String claimname) {
@@ -24,15 +27,10 @@ public class Claim {
 
 	}
 
-	public String getApprover() {
-		return approver;
-	}
 
-	public void setApproval(Approval approver) {
-		
-	}
 
-	public void removeItem(Expense item) {
+
+	public void removeItem(Item item) {
 		// TODO Auto-generated method stub
 
 	}
@@ -113,5 +111,43 @@ public class Claim {
 	public Item getItem(int i) {
 		return itemList.get(i);
 		
+	}
+
+
+	public void setApprover(Approval approval) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+	public Approval getApprover() {
+		// TODO Auto-generated method stub
+		return approver;
+	}
+
+
+
+
+	public ArrayList<Claim> getItemList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+	public void addDestination(Destination testDestionation) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+	public Object getDestionation() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
