@@ -68,6 +68,25 @@ public class Appoval_Test extends TestCase {
 		// total currency amount has not been done
 	}
 
+	protected void viewClaimItemReceiptPhoto(){
+		ClaimList testClaimList = new ClaimList();
+		Claim AClaim = new Claim("A");
+		Claim BClaim = new Claim("B");
+		Claim CClaim = new Claim("C");
+		testClaimList.addClaim(AClaim);
+		testClaimList.addClaim(BClaim);
+		Item itemA = new Item("food");
+		Item itemB = new Item("texi");
+		AClaim.addItem(itemA);
+		BClaim.addItem(itemB);
+		itemA.takeAPhoto();
+		itemB.takeAPhoto();
+		
+		assertFalse("is photo", itemA.getPhoto().equals(null));
+		assertFalse("is photo", itemB.getPhoto().equals(null));
+
+	}
+	
 	protected void sortedClaimListTest() {
 		ClaimList testClaimList = new ClaimList();
 		Claim AClaim = new Claim("A");
@@ -103,7 +122,7 @@ public class Appoval_Test extends TestCase {
 		assertTrue("first item is true", testClaimList.getSubmittedClaimList()
 				.get(0).getItemList().get(0).equals(itemA));
 
-		// itemlist not done
+
 
 	}
 
@@ -118,7 +137,11 @@ public class Appoval_Test extends TestCase {
 		testClaimList.addClaim(CClaim);
 		AClaim.setStatus("Submitted");
 		BClaim.setStatus("Submitted");
-
+		Approval approval = new Approval("test");
+		AClaim.setApprover(approval);
+		approval.setComment("comment test");
+		assertEquals("comment added ", AClaim.getApprover().getComment().toString(), "comment test");
+		
 	}
 
 	protected void returnClaimNotApproveTest() {
@@ -176,6 +199,26 @@ public class Appoval_Test extends TestCase {
 		assertTrue("comment is added",
 				BClaim.getApprover().getName().equals("tester"));
 
+	}
+	
+	public void claimantCanNotChangeClaimStatusTest(){
+		String name = "J";
+		
+		Claimant testClaimant = new Claimant(name);
+		Approval testApproval = new Approval(name); 
+		
+		Claim claimA = new Claim("A");
+		claimA.setClaimant(testClaimant);
+		claimA.setApprover(testApproval);
+		claimA.setStatus("Submitted");
+		assertEquals("should change", claimA.getStatus(), "Submitted");
+		claimA.setStatus("Returned");
+		assertEquals("should not changed", claimA.getStatus(), "Submitted");
+		claimA.setStatus("Approved");
+		assertEquals("should not changed", claimA.getStatus(), "Submitted");
+
+		
+		
 	}
 
 }
