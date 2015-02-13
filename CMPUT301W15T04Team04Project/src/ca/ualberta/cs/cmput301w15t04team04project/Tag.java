@@ -1,18 +1,18 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
 public class Tag {
-	String name;
+	String tagName;
 
 	public Tag(String name) {
-		this.name = name;
+		this.tagName = name;
 	}
 
-	public String getName() {
-		return name;
+	public String getTagName() {
+		return tagName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTagName(String name) {
+		this.tagName = name;
 	}
 	
 }
