@@ -71,8 +71,14 @@ public class Appoval_Test extends TestCase {
 		assertTrue("destionation is true",
 				testClaimList.getSubmittedClaimList().get(1).getDestionation()
 						.equals(testDestionation));
-		// destinations have not been done
-		// total currency amount has not been done
+		Item itemA = new Item("food");
+		Item itemB = new Item("texi");
+		itemA.setAmount(12);
+		itemB.setAmount(15);
+		AClaim.addItem(itemA);
+		AClaim.addItem(itemB);
+		int amount = AClaim.getTotalCurrency();
+		assertEquals("total currency is right",amount, 27);
 	}
 
 	protected void viewClaimItemReceiptPhoto(){
