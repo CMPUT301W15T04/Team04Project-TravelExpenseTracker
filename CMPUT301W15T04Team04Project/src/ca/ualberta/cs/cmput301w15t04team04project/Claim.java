@@ -131,4 +131,20 @@ public class Claim {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
+
+	public void addDestination(Destination testDestionation) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+	public Object getDestionation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
