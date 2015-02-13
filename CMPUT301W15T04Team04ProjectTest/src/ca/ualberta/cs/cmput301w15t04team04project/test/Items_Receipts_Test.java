@@ -10,7 +10,7 @@ public class Items_Receipts_Test extends TestCase {
 	Uri imageFileUri;
 
 
-    
+   
     
     //test delete receipt test
     protected void deleteReceiptTest(){
