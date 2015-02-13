@@ -18,6 +18,12 @@ public class Items_Receipts_Test extends TestCase {
 		assertTrue("delete a photo", item.getPhoto() == null);
 	}
 
+	protected void addReceiptTest(){
+		
+		Item item = new Item("test");
+		item.takeAPhoto();
+		assertTrue("exist photo", item.getPhoto() != null);
+	}
 <<<<<<< HEAD
    
     

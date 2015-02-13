@@ -3,12 +3,20 @@ package ca.ualberta.cs.cmput301w15t04team04project.test;
 import java.util.ArrayList;
 import java.util.Date;
 
+import android.test.ViewAsserts;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+
 import junit.framework.TestCase;
 import ca.ualberta.cs.cmput301w15t04team04project.Approval;
 import ca.ualberta.cs.cmput301w15t04team04project.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.Destination;
 import ca.ualberta.cs.cmput301w15t04team04project.Item;
+import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
+import ca.ualberta.cs.lonelytwitter.IntentReaderActivity;
+import ca.ualberta.cs.travel.R;
 
 public class Appoval_Test extends TestCase {
 
@@ -191,10 +199,11 @@ public class Appoval_Test extends TestCase {
 		testClaimList.addClaim(AClaim);
 		testClaimList.addClaim(BClaim);
 		testClaimList.addClaim(CClaim);
+		BClaim.setApproval(AApproval);
+
 		AClaim.setStatus("Submitted");
 		BClaim.setStatus("Submitted");
 		BClaim.setStatus("Approved");
-		BClaim.setApproval(AApproval);
 		BClaim.getApprover().setComment("reason");
 		assertTrue("comment is added",
 				BClaim.getApprover().getName().equals("tester"));
@@ -221,4 +230,31 @@ public class Appoval_Test extends TestCase {
 		
 	}
 
+	protected void viewSClaimsDetailsTest() {
+		Approval approve = new Approval("test");
+		ClaimList testClaimList = new ClaimList();
+		Claim AClaim = new Claim("A");
+		Claim BClaim = new Claim("B");
+		Claim CClaim = new Claim("C");
+		testClaimList.addClaim(AClaim);
+		testClaimList.addClaim(BClaim);
+		testClaimList.addClaim(CClaim);
+		BClaim.setApproval(approve);
+
+		AClaim.setStatus("Submitted");
+		BClaim.setStatus("Submitted");
+		BClaim.setStatus("Approved");
+		assertEquals("should change", claimA.getStatus(), "Submitted");
+		
+		ListView listView = (ListView) findViewById(R.id.claimListView);
+
+		MainActivity activity = startWithText(text, 
+				IntentReaderActivity.REVERSE);
+		final ArrayList<Claim> list = new ArrayList<Claim>(claims);
+		final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, list);
+		listView.setAdapter(claimAdapter);
+		ViewAsserts.assertOnScreen(activity.getWindow().getDecorView(), view);
+
+		
+	}
 }
