@@ -32,22 +32,14 @@ public class Item {
 		// TODO Auto-generated constructor stub
 	}
 
-<<<<<<< HEAD
-
     public void takeAPhoto() {
     	//take photo function
     }
-
-=======
-	public void takeAPhoto() {
-		// take photo function
-	}
 
 	public String getItemname() {
 		return itemName;
 
 	}
->>>>>>> 9308e71a7581672875e86432481aecd0421c80fe
 
 	public String getItemName() {
 		return itemName;

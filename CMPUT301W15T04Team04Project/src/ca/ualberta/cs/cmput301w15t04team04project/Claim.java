@@ -13,9 +13,7 @@ public class Claim {
 	protected ArrayList<Tag> tagList;
 	protected ArrayList<Destination> destinations;
 	protected ArrayList<Listener> listener;
-<<<<<<< HEAD
 	protected Approval approver;
-=======
 
 	protected String approver;
 >>>>>>> 9308e71a7581672875e86432481aecd0421c80fe
