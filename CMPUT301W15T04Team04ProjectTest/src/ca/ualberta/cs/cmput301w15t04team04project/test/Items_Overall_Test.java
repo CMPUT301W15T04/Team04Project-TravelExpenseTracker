@@ -18,12 +18,23 @@ public class Items_Overall_Test extends TestCase {
 		int a = 100;
 		item.setAmount(a);
 		item.setUnit(new String());
+		
+		assertFalse("Problems with getter and setter of status",
+				itemname.equals(item.getItemName()));
+		assertFalse("Problems with getter and setter of status",
+				a == item.getAmount());
+		assertFalse("Problems with getter and setter of status",
+				itemname.equals(item.getItemName()));
 	}
 
 	public void testFlag() {
 		Item item = new Item(itemname);
 		item.addFlag();
+		assertFalse("Problems with getter and setter of status",
+				item.getFlag() == 1);
 		item.removeFlag();
+		assertFalse("Problems with getter and setter of status",
+				item.getFlag() == 0);
 	}
 
 	public void testItemView() {
@@ -34,6 +45,10 @@ public class Items_Overall_Test extends TestCase {
 
 	public void testEditDeleteItem() {
 		Claim claim = new Claim(claimname);
-		claim.removeItem(new Item(itemname));
+		Item item = new Item(itemname);
+		claim.addItem(item);
+		assertFalse("Problems with getter and setter of status",
+				item.getItemName().equals(claim.getItem(0)));
+		claim.removeItem(item);
 	}
 }

@@ -4,5 +4,8 @@
     <string name="app_name">CMPUT301W15T04Team04Project</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_add_edit_claim">Add / Edita Claim</string>
+    <string name="title_activity_one_claim">Detail of One Claim</string>
+    <string name="title_activity_add_edit_expense">Add / Edit an Expense</string>
 
 </resources>
