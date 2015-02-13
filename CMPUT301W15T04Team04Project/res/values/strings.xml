@@ -7,5 +7,6 @@
     <string name="title_activity_add_edit_claim">Add / Edita Claim</string>
     <string name="title_activity_one_claim">Detail of One Claim</string>
     <string name="title_activity_add_edit_expense">Add / Edit an Expense</string>
+    <string name="title_activity_sign_in">Sign In</string>
 
 </resources>
