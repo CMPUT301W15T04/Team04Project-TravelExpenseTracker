@@ -6,6 +6,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import ca.ualberta.cs.cmput301w15t04team04project.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.ClaimList;
+import ca.ualberta.cs.cmput301w15t04team04project.Destination;
 import junit.framework.TestCase;
 import ca.ualberta.cs.cmput301w15t04team04project.R;
 import ca.ualberta.cs.lonelytwitter.IntentReaderActivity;

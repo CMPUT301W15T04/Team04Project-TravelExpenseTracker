@@ -13,12 +13,9 @@ public class Claim {
 	protected ArrayList<Tag> tagList;
 	protected ArrayList<Destination> destinations;
 	protected ArrayList<Listener> listener;
-<<<<<<< HEAD
-=======
 
->>>>>>> 5a4c32b784566562b0ffa4a7cac617dc6e8718b8
 	protected Approval approver;
-
+	protected Claimant claimant;
 
 	protected boolean editable = true;
 
@@ -149,5 +146,21 @@ public class Claim {
 	public Object getDestionation() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+
+
+	public int getTotalCurrency() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+
+
+	public void setClaimant(Claimant testClaimant) {
+		// TODO Auto-generated method stub
+		this.claimant = testClaimant;
 	}
 }

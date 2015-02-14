@@ -46,6 +46,27 @@ public class Items_Receipts_Test extends TestCase {
     	assertTrue("delete a photo", item.getPhoto()==null);
     	item.takeAPhoto();
     	assertTrue("exist photo", item.getPhoto()!=null);
+    	public void testOpenNextActivity() {
+    		  // register next activity that need to be monitored.
+    		  ActivityMonitor activityMonitor = getInstrumentation().addMonitor(NextActivity.class.getName(), null, false);
+
+    		  // open current activity.
+    		  MyActivity myActivity = getActivity();
+    		  final Button button = (Button) myActivity.findViewById(R.id.take_a_photo);
+    		  myActivity.runOnUiThread(new Runnable() {
+    		    @Override
+    		    public void run() {
+    		      // click button and open next activity.
+    		      button.performClick();
+    		    }
+    		  });
+
+    		  NextActivity nextActivity = getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5);
+    		  // next activity is opened and captured.
+    		  assertNotNull(nextActivity);
+    		  nextActivity .finish();
+    		}
+    	
     }
     
 
