@@ -2,8 +2,10 @@ package ca.ualberta.cs.cmput301w15t04team04project.test;
 
 import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import ca.ualberta.cs.cmput301w15t04team04project.Approval;
 import ca.ualberta.cs.cmput301w15t04team04project.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.ClaimList;
@@ -41,4 +43,13 @@ public class Claims_Status_Test extends
 		assertTrue("recieve feedback?",claim.getApprover() == "jack");
 		assertTrue("recieve feedback?",claim.getComment() == "This a good claim");
 	}
+
+	public void chechEmptyElement(){
+		((Button) activity.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.submitClaim)).performClick();
+		assertTrue("Claim has empty elements.", claim.checkEmpty() == True);
+		TextView view = (TextView) activity.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.toast);
+		assertTrue("visual warning?", view¡£getText().toString() == "Can't submit");
+		
+	}
+	
 }
