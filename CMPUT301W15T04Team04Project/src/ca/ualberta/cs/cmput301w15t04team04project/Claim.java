@@ -163,4 +163,12 @@ public class Claim {
 		// TODO Auto-generated method stub
 		this.claimant = testClaimant;
 	}
+
+
+
+
+	public Tag getTagList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
