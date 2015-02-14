@@ -3,6 +3,8 @@ package ca.ualberta.cs.cmput301w15t04team04project.test;
 import ca.ualberta.cs.cmput301w15t04team04project.Item;
 import android.content.Intent;
 import android.net.Uri;
+import android.test.ActivityInstrumentationTestCase2;
+import android.widget.TextView;
 import junit.framework.TestCase;
 
 public class Items_Receipts_Test extends TestCase {
@@ -28,12 +30,31 @@ public class Items_Receipts_Test extends TestCase {
    
     
 
-
+//US06.02.01
     protected void viewReceiptTest(){
     	Item item = new Item("test");
     	item.takeAPhoto();
     	assertTrue("view Receipt",item.getPhoto().equals(imageFileUri));
-    	
+    	public class ClickFunActivityTest
+        extends ActivityInstrumentationTestCase2 {
+    
+    	Button mClickMeButton = new Button();	
+    		
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp();
+
+        setActivityInitialTouchMode(true);
+
+        mClickFunActivity = getActivity();
+        mClickMeButton = (Button) 
+                mClickFunActivity
+                .findViewById(R.id.photo);
+        mInfoTextView = (TextView) 
+                mClickFunActivity.findViewById(R.id.info_text_view);
+    }
+}
+
     }
     
 

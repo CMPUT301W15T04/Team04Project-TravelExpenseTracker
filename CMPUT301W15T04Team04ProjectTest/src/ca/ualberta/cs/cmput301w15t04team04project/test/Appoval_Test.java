@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import android.app.Instrumentation.ActivityMonitor;
+import android.test.ActivityInstrumentationTestCase2;
 import android.test.ViewAsserts;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import junit.framework.TestCase;
 import ca.ualberta.cs.cmput301w15t04team04project.AddEditClaimActivity;
@@ -316,4 +318,33 @@ public class Appoval_Test extends TestCase {
 		testOpenNextActivity(MainActivity, OneClaimActivity);
 
 	}
+	
+	//08.05.01
+    protected void viewReceiptTest(){
+    	Approval approver = new Approver("test");
+    	
+    	Item item = new Item("test");
+    	item.takeAPhoto();
+    	assertTrue("view Receipt",item.getPhoto().equals(imageFileUri));
+    	public class ClickFunActivityTest
+        extends ActivityInstrumentationTestCase2 {
+    
+    	Button mClickMeButton = new Button();	
+    		
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp();
+
+        setActivityInitialTouchMode(true);
+
+        mClickFunActivity = getActivity();
+        mClickMeButton = (Button) 
+                mClickFunActivity
+                .findViewById(R.id.photo);
+        mInfoTextView = (TextView) 
+                mClickFunActivity.findViewById(R.id.info_text_view);
+    }
+}
+
+    }
 }
