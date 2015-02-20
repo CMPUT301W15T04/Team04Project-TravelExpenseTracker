@@ -57,7 +57,7 @@ public class Items_Receipts_Test extends TestCase {
 
     }
     
-
+    
     
     protected void retakenReceiptTest(){
     	Item item = new Item("test");

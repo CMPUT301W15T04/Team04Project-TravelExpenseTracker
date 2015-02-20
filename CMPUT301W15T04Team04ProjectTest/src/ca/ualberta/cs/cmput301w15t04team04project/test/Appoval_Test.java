@@ -321,9 +321,10 @@ public class Appoval_Test extends TestCase {
 	
 	//08.05.01
     protected void viewReceiptTest(){
-    	Approval approver = new Approver("test");
-    	
+    	Approval approver = new Approval("test");
+    	Claim Aclaim = new Claim("test");
     	Item item = new Item("test");
+    	Aclaim.addItem(item);
     	item.takeAPhoto();
     	assertTrue("view Receipt",item.getPhoto().equals(imageFileUri));
     	public class ClickFunActivityTest
