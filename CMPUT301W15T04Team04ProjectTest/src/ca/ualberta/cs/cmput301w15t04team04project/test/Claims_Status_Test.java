@@ -40,5 +40,7 @@ public class Claims_Status_Test extends
 		approver.approve(claim, "This a good claim");
 		assertTrue("recieve feedback?",claim.getApprover() == "jack");
 		assertTrue("recieve feedback?",claim.getComment() == "This a good claim");
+		TextView view = (TextView) activity.findViewById(R.id.commentsForClaim);
+		ViewAsserts.assertOnScreen(activity.getWindow().getDecorView(), view);
 	}
 }
