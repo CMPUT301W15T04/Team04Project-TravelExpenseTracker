@@ -47,4 +47,13 @@ public class Claims_Listing_Test extends TestCase {
 		ClaimList claimList = new ClaimList();
 
 	}
+public void testListClaims() {
+		claimListView = (ListView) (activity.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.claimList));
+		Claim claimview = new Claim("Cview",new Date(2013,1,1), new Date(2014,1,1));
+		Controller.addClaim(claimview);
+		TextView textview = (TextView) claimListView.GetPosition(0);
+		Claim claim = Controller.getClaim(0);
+		String stringview = claim.toString();
+		assertEquals("TEXT Displayed?",stringview, viewtext);
+	}
 }
