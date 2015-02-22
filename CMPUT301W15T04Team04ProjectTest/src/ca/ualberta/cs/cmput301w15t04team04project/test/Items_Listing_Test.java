@@ -2,63 +2,72 @@ package ca.ualberta.cs.cmput301w15t04team04project.test;
 
 import java.util.Date;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.test.ActivityInstrumentationTestCase2;
+import android.test.ViewAsserts;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import ca.ualberta.cs.cmput301w15t04team04project.AddEditExpenseActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.Destination;
 import ca.ualberta.cs.cmput301w15t04team04project.Item;
+import ca.ualberta.cs.cmput301w15t04team04project.Manager;
+import ca.ualberta.cs.cmput301w15t04team04project.OneClaimActivity;
 import junit.framework.TestCase;
 
-public class Items_Listing_Test extends TestCase {
-	Item item = new Item("car");
-	String i = item.toString();
-<<<<<<< HEAD
-	
-=======
+public class Items_Listing_Test extends
+		ActivityInstrumentationTestCase2<OneClaimActivity> {
+	final ClaimList claimList = Manager.getClaimList();
+	Activity activity;
+	ListView itemList;
 
-	public void listItemInOneClaimDetailtest(){
-		ClaimList testClaimList = new ClaimList();
-		Claim AClaim = new Claim("A");
-		Claim BClaim = new Claim("B");
-		Claim CClaim = new Claim("C");
-		testClaimList.addClaim(AClaim);
-		testClaimList.addClaim(BClaim);
-		testClaimList.addClaim(CClaim);
-		AClaim.setStatus("Submitted");
-		BClaim.setStatus("Submitted");
-		AClaim.setClaimName("1");
-		assertTrue("name is equal", testClaimList.getSubmittedClaimList()
-				.get(0).getClaimName().toString().equals("1"));
-		Date date = new Date();
-		AClaim.setStartDate(date);
-		assertTrue("starting date is equal", testClaimList
-				.getSubmittedClaimList().get(0).getStartDate().equals(date));
-		Date endDate = new Date();
-		AClaim.setEndDate(endDate);
-		assertTrue("ending date is equal", testClaimList
-				.getSubmittedClaimList().get(0).getEndDate().equals(endDate));
-		BClaim.setDescription("tests");
-		assertTrue("description is equal", testClaimList
-				.getSubmittedClaimList().get(1).getDescription()
-				.equals("tests"));
-		BClaim.setStatus("Submitted");
-		assertTrue("status is equal", testClaimList.getSubmittedClaimList()
-				.get(1).getStatus().equals("Submitted"));
-		Destination testDestionation = new Destination();
-		BClaim.addDestination(testDestionation);
-		assertTrue("destionation is true",
-				testClaimList.getSubmittedClaimList().get(1).getDestionation()
-						.equals(testDestionation));
+	public Items_Listing_Test() {
+		super(OneClaimActivity.class);
+		// TODO Auto-generated constructor stub
+	}
+
+	protected void setUp() throws Exception {
+		super.setUp();
+		// add a claim to test on
+		Claim claim = new Claim("Test");
 		Item itemA = new Item("food");
 		Item itemB = new Item("texi");
+		Item itemC = new Item("hotel");
 		itemA.setAmount(12);
 		itemB.setAmount(15);
-		AClaim.addItem(itemA);
-		AClaim.addItem(itemB);
-		int amount = AClaim.getTotalCurrency();
-		assertEquals("total currency is right",amount, 27);
-
-		
-		
+		itemB.setAmount(38);
+		claim.addItem(itemA);
+		claim.addItem(itemB);
+		claim.addItem(itemC);
+		Intent intent = new Intent();
+		intent.putExtra("Index", 0);
+		setActivityIntent(intent);
+		activity = getActivity();
 	}
->>>>>>> 6c704a1b85bcaa7216c6bc60cb94c8b7ffad12df
+
+	public void listItemInOneClaimDetailtest() {
+		Claim claim = claimList.getPosition(0);
+		int amount = claim.getTotalCurrency();
+		assertEquals("total currency is right", amount, 65);
+		int claimCount = itemList.getCount();
+		for (int i = 0; i < claimCount; i++) {
+
+			TextView itemOverAlldes = (TextView) itemList
+					.getItemAtPosition(i);
+
+			String viewText = itemOverAlldes.getText().toString();
+
+			Item item = claim.getExpense(i);
+			String itemInfo = item.toString();
+			String itemText = ((OneClaimActivity) activity).claim
+					.toString();
+			assertEquals("DisplayError", itemInfo, itemText);
+		}
+		ViewAsserts.assertOnScreen(activity.getWindow().getDecorView(),
+				itemList);
+
+	}
 }
