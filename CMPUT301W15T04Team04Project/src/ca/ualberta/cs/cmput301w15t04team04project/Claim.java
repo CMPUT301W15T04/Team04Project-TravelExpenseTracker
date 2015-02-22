@@ -14,7 +14,7 @@ public class Claim {
 	protected ArrayList<Destination> destinations;
 	protected ArrayList<Listener> listener;
 	protected Approval approver;
-
+	protected Claimant claimant;
 
 	protected boolean editable = true;
 
@@ -143,6 +143,30 @@ public class Claim {
 
 
 	public Object getDestionation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+	public int getTotalCurrency() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+
+
+	public void setClaimant(Claimant testClaimant) {
+		// TODO Auto-generated method stub
+		this.claimant = testClaimant;
+	}
+
+
+
+
+	public Tag getTagList() {
 		// TODO Auto-generated method stub
 		return null;
 	}

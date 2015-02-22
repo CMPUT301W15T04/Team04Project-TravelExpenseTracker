@@ -3,13 +3,19 @@ package ca.ualberta.cs.cmput301w15t04team04project.test;
 import android.app.Activity;
 import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
+<<<<<<< HEAD
 import android.test.ViewAsserts;
+=======
+>>>>>>> 6c704a1b85bcaa7216c6bc60cb94c8b7ffad12df
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+<<<<<<< HEAD
 import ca.ualberta.cs.cmput301w15t04team04project.AddEditClaimActivity;
+=======
+>>>>>>> 6c704a1b85bcaa7216c6bc60cb94c8b7ffad12df
 import ca.ualberta.cs.cmput301w15t04team04project.Approval;
 import ca.ualberta.cs.cmput301w15t04team04project.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.ClaimList;
@@ -147,4 +153,13 @@ public class Claims_Status_Test extends
 		TextView view = (TextView) activity.findViewById(R.id.commentsForClaim);
 		ViewAsserts.assertOnScreen(activity.getWindow().getDecorView(), view);
 	}
+
+	public void chechEmptyElement(){
+		((Button) activity.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.submitClaim)).performClick();
+		assertTrue("Claim has empty elements.", claim.checkEmpty() == True);
+		TextView view = (TextView) activity.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.toast);
+		assertTrue("visual warning?", view¡£getText().toString() == "Can't submit");
+		
+	}
+	
 }

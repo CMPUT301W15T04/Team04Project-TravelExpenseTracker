@@ -3,16 +3,35 @@ package ca.ualberta.cs.cmput301w15t04team04project.test;
 import java.util.ArrayList;
 import java.util.Date;
 
+import android.app.Instrumentation.ActivityMonitor;
+import android.test.ActivityInstrumentationTestCase2;
+import android.test.ViewAsserts;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
 import junit.framework.TestCase;
+import ca.ualberta.cs.cmput301w15t04team04project.AddEditClaimActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.AddEditExpenseActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.Approval;
 import ca.ualberta.cs.cmput301w15t04team04project.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.ClaimList;
+import ca.ualberta.cs.cmput301w15t04team04project.Claimant;
 import ca.ualberta.cs.cmput301w15t04team04project.Destination;
 import ca.ualberta.cs.cmput301w15t04team04project.Item;
+import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.OneClaimActivity;
+//import ca.ualberta.cs.lonelytwitter.IntentReaderActivity;
 
-public class Appoval_Test extends TestCase {
 
+public class Appoval_Test extends ActivityInstrumentationTestCase2<AddEditClaimActivity>   {
+
+	//US08.01.01
 	protected void viewSubmittedClaimsTest() {
+		
+		
 		ClaimList testClaimList = new ClaimList();
 		Claim AClaim = new Claim("A");
 		Claim BClaim = new Claim("B");
@@ -28,9 +47,14 @@ public class Appoval_Test extends TestCase {
 
 		assertTrue("Submittedlist", testClaimList.getSubmittedClaimList()
 				.equals(testClaimListTrue));
-
+		
+		testOpenNextActivity(MainActivity, AddEditClaimActivity);
+		
+		
 	}
-
+	
+	
+	//US08.01.01 and US08.04.01
 	protected void viewSubmittedClaimsDetailsTest() {
 		ClaimList testClaimList = new ClaimList();
 		Claim AClaim = new Claim("A");
@@ -59,15 +83,24 @@ public class Appoval_Test extends TestCase {
 		BClaim.setStatus("Submitted");
 		assertTrue("status is equal", testClaimList.getSubmittedClaimList()
 				.get(1).getStatus().equals("Submitted"));
-		Destination testDestionation = new Destination();
+		Destination testDestionation = new Destination("Paris","test");
 		BClaim.addDestination(testDestionation);
 		assertTrue("destionation is true",
 				testClaimList.getSubmittedClaimList().get(1).getDestionation()
 						.equals(testDestionation));
-		// destinations have not been done
-		// total currency amount has not been done
+		Item itemA = new Item("food");
+		Item itemB = new Item("texi");
+		itemA.setAmount(12);
+		itemB.setAmount(15);
+		AClaim.addItem(itemA);
+		AClaim.addItem(itemB);
+		int amount = AClaim.getTotalCurrency();
+		assertEquals("total currency is right",amount, 27);
+		testOpenNextActivity(MainActivity, AddEditClaimActivity);
+		testOpenNextActivity(OneClaimActivity, AddEditExpenseActivity);
 	}
 
+	// US08.04.01 and US08.05.01
 	protected void viewClaimItemReceiptPhoto(){
 		ClaimList testClaimList = new ClaimList();
 		Claim AClaim = new Claim("A");
@@ -84,9 +117,12 @@ public class Appoval_Test extends TestCase {
 		
 		assertFalse("is photo", itemA.getPhoto().equals(null));
 		assertFalse("is photo", itemB.getPhoto().equals(null));
+		
+		testOpenNextActivity(OneClaimActivity, AddEditExpenseActivity);
 
 	}
 	
+	//US08.02.01
 	protected void sortedClaimListTest() {
 		ClaimList testClaimList = new ClaimList();
 		Claim AClaim = new Claim("A");
@@ -99,20 +135,6 @@ public class Appoval_Test extends TestCase {
 		BClaim.setStatus("Submitted");
 		AClaim.setClaimName("1");
 
-		/*
-		 * ClaimList claimList = new ClaimList(); Claim testClaim1 = new
-		 * Claim("test1"); Claim testClaim2 = new Claim("test2");
-		 * testClaim1.setStartDate(new Date());// set a more recent date
-		 * testClaim2.setStartDate(new Date());// set a older date
-		 * 
-		 * // now the index of testClaim2 is 0, the index of testClaim1 is 1
-		 * claimList.addClaim(testClaim2); claimList.addClaim(testClaim1); //
-		 * after the sort function claimList.sortClaimList(); int recent =
-		 * claimList.getClaim().indexOf(testClaim1); int old =
-		 * claimList.getClaim().indexOf(testClaim2);
-		 * assertTrue("Not a valid sort", (recent < old)); //itemlist not done
-		 */
-
 		Item itemA = new Item("food");
 		Item itemB = new Item("texi");
 		AClaim.addItem(itemA);
@@ -122,10 +144,12 @@ public class Appoval_Test extends TestCase {
 		assertTrue("first item is true", testClaimList.getSubmittedClaimList()
 				.get(0).getItemList().get(0).equals(itemA));
 
+		testOpenNextActivity(MainActivity, AddEditClaimActivity);
 
 
 	}
 
+	// US08.06.01
 	protected void addACommentOfSubmittedClaimTest() {
 
 		ClaimList testClaimList = new ClaimList();
@@ -142,8 +166,11 @@ public class Appoval_Test extends TestCase {
 		approval.setComment("comment test");
 		assertEquals("comment added ", AClaim.getApprover().getComment().toString(), "comment test");
 		
+		testOpenNextActivity(MainActivity, AddEditClaimActivity);
+
 	}
 
+	//US08.07.01
 	protected void returnClaimNotApproveTest() {
 
 		Approval AApproval = new Approval("tester");
@@ -157,12 +184,17 @@ public class Appoval_Test extends TestCase {
 		AClaim.setStatus("Submitted");
 		BClaim.setStatus("Submitted");
 		BClaim.setStatus("Returned");
-		BClaim.setApproval(AApproval);
+		BClaim.setApprover(AApproval);
 		BClaim.getApprover().setComment("reason");
 		assertTrue("comment is added", BClaim.getApprover().getComment()
 				.equals("reason"));
+		assertEquals("status is return? ", BClaim.getStatus(), "Returned");
+		
+		testOpenNextActivity(MainActivity, AddEditClaimActivity);
+
 	}
 
+	//US08.08.01
 	protected void returnClaimSetApproverNameTest() {
 		Approval AApproval = new Approval("tester");
 		ClaimList testClaimList = new ClaimList();
@@ -175,10 +207,12 @@ public class Appoval_Test extends TestCase {
 		AClaim.setStatus("Submitted");
 		BClaim.setStatus("Submitted");
 		BClaim.setStatus("Returned");
-		BClaim.setApproval(AApproval);
+		BClaim.setApprover(AApproval);
 		BClaim.getApprover().setComment("reason");
 		assertTrue("comment is added",
 				BClaim.getApprover().getName().equals("tester"));
+		testOpenNextActivity(MainActivity, AddEditClaimActivity);
+
 
 	}
 
@@ -191,15 +225,20 @@ public class Appoval_Test extends TestCase {
 		testClaimList.addClaim(AClaim);
 		testClaimList.addClaim(BClaim);
 		testClaimList.addClaim(CClaim);
+		BClaim.setApprover(AApproval);
+
 		AClaim.setStatus("Submitted");
 		BClaim.setStatus("Submitted");
 		BClaim.setStatus("Approved");
-		BClaim.setApproval(AApproval);
 		BClaim.getApprover().setComment("reason");
 		assertTrue("comment is added",
 				BClaim.getApprover().getName().equals("tester"));
+		testOpenNextActivity(MainActivity, AddEditClaimActivity);
+
 
 	}
+	
+	//US08.09.01 added 2015-02-12
 	
 	public void claimantCanNotChangeClaimStatusTest(){
 		String name = "J";
@@ -216,9 +255,102 @@ public class Appoval_Test extends TestCase {
 		assertEquals("should not changed", claimA.getStatus(), "Submitted");
 		claimA.setStatus("Approved");
 		assertEquals("should not changed", claimA.getStatus(), "Submitted");
+		testOpenNextActivity(MainActivity, AddEditClaimActivity);
+
 
 		
 		
 	}
+	
+	//taken from http://stackoverflow.com/questions/9405561/test-if-a-button-starts-a-new-activity-in-android-junit-pref-without-robotium
+	public void testOpenNextActivity(Activity myAcitivity, Activity nextActivity) {
+		  // register next activity that need to be monitored.
+		  ActivityMonitor activityMonitor = getInstrumentation().addMonitor(nextActivity.class.getName(), null, false);
 
+		  // open current activity.
+		  //MyActivity myActivity = getActivity();
+		  final Button button = (Button) myActivity.findViewById(R.id.open_next_activity);
+		  myActivity.runOnUiThread(new Runnable() {
+		    @Override
+		    public void run() {
+		      // click button and open next activity.
+		      button.performClick();
+		    }
+		  });
+
+		  //NextActivity nextActivity = getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5);
+		  // next activity is opened and captured.
+		  assertNotNull(nextActivity);
+		  nextActivity .finish();
+		}
+
+	protected void viewSClaimsDetailsTest() {
+		Approval approve = new Approval("test");
+		ClaimList testClaimList = new ClaimList();
+		Claim AClaim = new Claim("A");
+		Claim BClaim = new Claim("B");
+		Claim CClaim = new Claim("C");
+		testClaimList.addClaim(AClaim);
+		testClaimList.addClaim(BClaim);
+		testClaimList.addClaim(CClaim);
+		BClaim.setApprover(approve);
+
+		AClaim.setStatus("Submitted");
+		BClaim.setStatus("Submitted");
+		BClaim.setStatus("Approved");
+		assertEquals("should change", AClaim.getStatus(), "Submitted");
+		
+		ListView listView = (ListView) findViewById(R.id.claimListView);
+
+		MainActivity activity ; // should add something
+		final ArrayList<Claim> list = new ArrayList<Claim>();
+		
+		
+		final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(activity, android.R.layout.simple_list_item_1, list);
+		listView.setAdapter(claimAdapter);
+		ViewAsserts.assertOnScreen(activity.getWindow().getDecorView(), view);
+		
+		ListView ItemlistView = (ListView) findViewById(R.id.claimListView);
+
+		MainActivity itemactivity ; // should add something
+		final ArrayList<Item> itemlist = new ArrayList<Item>();
+		
+		
+		final ArrayAdapter<Item> itemAdapter = new ArrayAdapter<Item>(itemactivity, android.R.layout.simple_list_item_1, itemlist);
+		ItemlistView.setAdapter(claimAdapter);
+		ViewAsserts.assertOnScreen(itemactivity.getWindow().getDecorView(), ItemlistView);
+		// not sure is it right
+		testOpenNextActivity(MainActivity, OneClaimActivity);
+
+	}
+	
+	//08.05.01
+    protected void viewReceiptTest(){
+    	Approval approver = new Approval("test");
+    	Claim Aclaim = new Claim("test");
+    	Item item = new Item("test");
+    	Aclaim.addItem(item);
+    	item.takeAPhoto();
+    	assertTrue("view Receipt",item.getPhoto().equals(imageFileUri));
+    	public class ClickFunActivityTest
+        extends ActivityInstrumentationTestCase2 {
+    
+    	Button mClickMeButton = new Button();	
+    		
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp();
+
+        setActivityInitialTouchMode(true);
+
+        mClickFunActivity = getActivity();
+        mClickMeButton = (Button) 
+                mClickFunActivity
+                .findViewById(R.id.photo);
+        mInfoTextView = (TextView) 
+                mClickFunActivity.findViewById(R.id.info_text_view);
+    }
+}
+
+    }
 }
