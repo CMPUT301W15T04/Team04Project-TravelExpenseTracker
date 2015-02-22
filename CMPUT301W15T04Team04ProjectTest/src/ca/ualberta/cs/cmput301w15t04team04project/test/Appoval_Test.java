@@ -23,12 +23,15 @@ import ca.ualberta.cs.cmput301w15t04team04project.Destination;
 import ca.ualberta.cs.cmput301w15t04team04project.Item;
 import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.OneClaimActivity;
+//import ca.ualberta.cs.lonelytwitter.IntentReaderActivity;
 
 
-public class Appoval_Test extends TestCase {
+public class Appoval_Test extends ActivityInstrumentationTestCase2<AddEditClaimActivity>   {
 
 	//US08.01.01
 	protected void viewSubmittedClaimsTest() {
+		
+		
 		ClaimList testClaimList = new ClaimList();
 		Claim AClaim = new Claim("A");
 		Claim BClaim = new Claim("B");
@@ -49,6 +52,8 @@ public class Appoval_Test extends TestCase {
 		
 		
 	}
+	
+	
 	//US08.01.01 and US08.04.01
 	protected void viewSubmittedClaimsDetailsTest() {
 		ClaimList testClaimList = new ClaimList();
