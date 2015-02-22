@@ -13,10 +13,6 @@ public class Claim {
 	protected ArrayList<Tag> tagList;
 	protected ArrayList<Destination> destinations;
 	protected ArrayList<Listener> listener;
-<<<<<<< HEAD
-=======
-
->>>>>>> 5a4c32b784566562b0ffa4a7cac617dc6e8718b8
 	protected Approval approver;
 
 
