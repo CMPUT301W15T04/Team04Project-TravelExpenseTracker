@@ -127,7 +127,7 @@ public class Claims_Overall_Test extends
 				button.performClick();
 			}
 		});
-		assertNotNull("No claim is gotten!", claimList.getPostion(position));
+		assertNotNull("No claim is gotten!", claimList.getPosition(position));
 	}
 
 	// use case 5
@@ -145,8 +145,17 @@ public class Claims_Overall_Test extends
 				button.performClick();
 			}
 		});
-		assertTrue("The claim isn't deleted!", claimList.getPostion(position)
+		assertTrue("The claim isn't deleted!", claimList.getPosition(position)
 				.equals(null));
 	}
-
+	//US01.06.01
+	public void testStorage(){
+		System.exit(0);
+		Intent intent = new Intent();
+		intent.putExtra("Index", 0);
+		setActivityIntent(intent);
+		activity = getActivity();
+		assertNotNull("No claim is gotten!", claimList.getPosition(0));
+		
+	}
 }
