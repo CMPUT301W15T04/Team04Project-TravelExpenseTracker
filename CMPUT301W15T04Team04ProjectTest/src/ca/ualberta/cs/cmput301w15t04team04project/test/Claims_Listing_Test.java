@@ -22,7 +22,7 @@ public class Claims_Listing_Test extends TestCase {
 				testClaim.equals(claimList.getPosition(0)));
 
 	}
-
+  //US02.02.01
 	public void testSortClaimList() {
 		ClaimList claimList = new ClaimList();
 		Claim testClaim1 = new Claim("test1");
@@ -52,6 +52,7 @@ public class Claims_Listing_Test extends TestCase {
 		ClaimList claimList = new ClaimList();
 
 	}
+	//US02.01.01
 public void testListClaims() {
 		claimListView = (ListView) (activity.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.claimList));
 		Claim claimview = new Claim("Cview");
