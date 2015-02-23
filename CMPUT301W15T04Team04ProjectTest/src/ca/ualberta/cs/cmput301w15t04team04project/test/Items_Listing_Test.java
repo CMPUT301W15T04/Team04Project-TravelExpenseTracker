@@ -48,6 +48,10 @@ public class Items_Listing_Test extends
 		activity = getActivity();
 	}
 
+	/*
+	 * US05.01.01
+	 */
+	
 	public void listItemInOneClaimDetailtest() {
 		Claim claim = claimList.getPosition(0);
 		int amount = claim.getTotalCurrency();
