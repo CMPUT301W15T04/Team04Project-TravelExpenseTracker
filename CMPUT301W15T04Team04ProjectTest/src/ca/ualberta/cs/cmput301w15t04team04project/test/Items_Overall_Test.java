@@ -2,6 +2,7 @@ package ca.ualberta.cs.cmput301w15t04team04project.test;
 
 import java.util.Date;
 
+import ca.ualberta.cs.cmput301w15t04team04project.AddEditExpenseActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.Item;
 import junit.framework.TestCase;
@@ -35,6 +36,11 @@ public class Items_Overall_Test extends TestCase {
 		item.removeFlag();
 		assertFalse("Problems with getter and setter of status",
 				item.getFlag() == 0);
+	}
+	
+	private void makeTweet(String text) {
+		assertNotNull(AddEditExpenseActivity
+				.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.AddEditExpenseFlag));
 	}
 
 	public void testItemView() {
