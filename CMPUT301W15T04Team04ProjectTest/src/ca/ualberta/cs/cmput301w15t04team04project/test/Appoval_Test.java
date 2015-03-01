@@ -1,19 +1,28 @@
 package ca.ualberta.cs.cmput301w15t04team04project.test;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Instrumentation.ActivityMonitor;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.ViewAsserts;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemLongClickListener;
 
 import junit.framework.TestCase;
 import ca.ualberta.cs.cmput301w15t04team04project.AddEditClaimActivity;
@@ -27,15 +36,23 @@ import ca.ualberta.cs.cmput301w15t04team04project.Item;
 import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.Manager;
 import ca.ualberta.cs.cmput301w15t04team04project.OneClaimActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.SignInActivity;
 //import ca.ualberta.cs.lonelytwitter.IntentReaderActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.User;
+import ca.ualberta.cs.travel.AddTravelClaim;
+import ca.ualberta.cs.travel.ClaimListController;
+import ca.ualberta.cs.travel.ClaimListManager;
+import ca.ualberta.cs.travel.Listener;
+import ca.ualberta.cs.travel.R;
 
 
-public class Appoval_Test extends ActivityInstrumentationTestCase2<AddEditClaimActivity>   {
-	public Appoval_Test(Class<AddEditClaimActivity> activityClass) {
+public class Appoval_Test extends ActivityInstrumentationTestCase2<SignInActivity>   {
+	public Appoval_Test(Class<SignInActivity> activityClass) {
 		super(activityClass);
 		// TODO Auto-generated constructor stub
 	}
 
+	
 	Activity activity;
 	ClaimList claimList = Manager.getClaimList();
 	
@@ -55,6 +72,10 @@ public class Appoval_Test extends ActivityInstrumentationTestCase2<AddEditClaimA
 	
 	//US08.01.01
 	protected void viewSubmittedClaimsTest() {
+
+	//before the basic flow , we should confirm some claim already created	
+		String tname = "claimant_test";
+		User claimiant = new User(tname);
 		
 		
 		ClaimList testClaimList = new ClaimList();
@@ -66,14 +87,136 @@ public class Appoval_Test extends ActivityInstrumentationTestCase2<AddEditClaimA
 		testClaimList.addClaim(CClaim);
 		AClaim.setStatus("Submitted");
 		BClaim.setStatus("Submitted");
-		ArrayList<Claim> testClaimListTrue = new ArrayList<Claim>();
-		testClaimListTrue.add(AClaim);
-		testClaimListTrue.add(BClaim);
-
-		assertTrue("Submittedlist", testClaimList.getSubmittedClaimList()
-				.equals(testClaimListTrue));
 		
-		testOpenNextActivity(MainActivity, AddEditClaimActivity);
+		String aname = "approver_test";
+		User approver = new User(aname);
+		
+		TextView v = (TextView) activity.getWindow().getDecorView()
+				.findViewById(android.R.id.SignInNameTextView);
+		assertTrue("Toast is shown", v.isShown());
+		
+		//waiting for the joshua's answer 
+		public void testOpenMainActivity(){
+			  // register next activity that need to be monitored.
+			  ActivityMonitor activityMonitor = getInstrumentation().addMonitor(MainActivity.class.getName(), null, false);
+
+			  // open current activity.
+			  SignInActivity myActivity = getActivity();
+			  final Button button = (Button) myActivity.findViewById(android.R.id.SignInLoginButton);
+			  myActivity.runOnUiThread(new Runnable() {
+			    @Override
+			    public void run() {
+			      // click button and open next activity.
+			      button.performClick();
+			    }
+			  });
+
+			  MainActivity nextActivity = (MainActivity) getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 1000);
+
+			  ArrayList<Claim> testClaimListTrue = new ArrayList<Claim>();
+			  testClaimListTrue.add(AClaim);
+			  testClaimListTrue.add(BClaim);
+
+			  assertTrue("Submittedlist", testClaimList.getSubmittedClaimList()
+						.equals(testClaimListTrue));
+			  
+			  View claimListView = activity.getWindow().getDecorView()
+						.findViewById(android.R.id.MainClaimListView);
+			  assertTrue("Toast is shown", v.isShown());
+			  
+			  public void testOpenAddEditClaimActivity{
+				  
+				  // register next activity that need to be monitored.
+				  ActivityMonitor activityMonitor = getInstrumentation().addMonitor(AddEditClaimActivity.class.getName(), null, false);
+
+				  // open current activity.
+				  AddEditClaimActivity myActivity = getActivity();
+				  //listview adapter
+				  
+				  ClaimListManager.initManager(this.getApplicationContext());
+			    	
+
+				  ListView listView = (ListView) findViewById(R.id.claimListView);
+/*				  List<Claim> claims = ClaimListController.getClaimList().getClaims();//change the collection into list
+					
+					Collections.sort(claims,new Comparator<Claim>() {
+				        @Override  
+			            public int compare(Claim b1, Claim b2) {  
+			                return b1.getStartDate().compareTo(b2.getStartDate());  
+			            }  
+					});
+					
+					
+					final ArrayList<Claim> list = new ArrayList<Claim>(claims);
+					final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, list);
+					listView.setAdapter(claimAdapter);
+			    	//add
+					allclaim = claims;
+					
+			    	ClaimListController.getClaimList().addListener(new Listener(){
+			    		@Override
+			    		public void update() {
+			    			list.clear();
+			    			Collection<Claim> claims = ClaimListController.getClaimList().getClaims();
+			    			list.addAll(claims);
+			    			claimAdapter.notifyDataSetChanged();
+			    		}
+			    		
+			    		
+			    	});
+			    	
+			    	//this is the list view to edit and delete the Claim
+*/			    	
+			    	
+			    	listView.setOnItemLongClickListener(new OnItemLongClickListener(){
+
+						@Override
+						public boolean onItemLongClick(AdapterView<?> adapterView, View view,
+								int position, long id) {
+							final int finalPosition = position;
+							Claim claim = list.get(finalPosition);
+							AlertDialog.Builder adb = new AlertDialog.Builder(MainActivity.this);
+							adb.setMessage(claim.getName()+" total cost \n"+claim.totalcurrency()+"\n From "+claim.getFromDate()+" to "+claim.getToDate());
+							adb.setCancelable(true);
+							
+							
+							
+							//
+							adb.setNeutralButton("Edit", new OnClickListener(){
+								public void onClick(DialogInterface dialog, int which){
+									TextView approvernameview = (TextView) activity.findViewById(R.id.AddEditClaimApproverNameTextView);
+									ViewAsserts.assertOnScreen(activity.getWindow().getDecorView(), view);
+									TextView claimNameView = (TextView) activity.findViewById(R.id.AddEditClaimClaimNameTextView);
+									ViewAsserts.assertOnScreen(activity.getWindow().getDecorView(), view);
+									TextView view = (TextView) activity.findViewById(R.id.AddEditClaimTextView);
+									ViewAsserts.assertOnScreen(activity.getWindow().getDecorView(), view);
+							}
+
+						
+							});
+						};
+				  
+				  myActivity.runOnUiThread(new Runnable() {
+				    @Override
+				    public void run() {
+				      // click button and open next activity.
+				      button.performClick();
+				    }
+				  });
+
+				  AddEditClaimActivity nextActivity = getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 100);
+				  // next activity is opened and captured.
+				  assertNotNull(nextActivity);
+				  nextActivity .finish();
+			  }
+			  
+			  assertNotNull(nextActivity);
+			  nextActivity .finish();
+			}
+			  
+		
+
+		
 		
 		final Button button = (Button) activity
 				.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.AddEditClaimViewSubmittedListButton);
@@ -84,6 +227,7 @@ public class Appoval_Test extends ActivityInstrumentationTestCase2<AddEditClaimA
 				button.performClick();
 			}
 		});
+		
 		View v = activity.getWindow().getDecorView()
 				.findViewById(android.R.id.MainShowSubmittedListView);
 		assertTrue("Toast is shown", v.isShown());
@@ -135,6 +279,27 @@ public class Appoval_Test extends ActivityInstrumentationTestCase2<AddEditClaimA
 		assertEquals("total currency is right",amount, 27);
 		testOpenNextActivity(MainActivity, AddEditClaimActivity);
 		testOpenNextActivity(OneClaimActivity, AddEditExpenseActivity);
+		
+		final Button button = (Button) activity
+				.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.AddEditClaimViewSubmittedListButton);
+		activity.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				// click button and open next activity.
+				button.performClick();
+			}
+		});
+
+		TextView nameview = (TextView) activity.findViewById(R.id.ViewClaimApproverNameTextView);
+		assertTrue("Toast is shown", nameview.isShown());
+		TextView Dateview = (TextView) activity.findViewById(R.id.ViewDateTextView);
+		assertTrue("Toast is shown", Dateview.isShown());
+		TextView Dateview = (TextView) activity.findViewById(R.id.ViewDateTextView);
+		assertTrue("Toast is shown", Dateview.isShown());
+		ViewAsserts.assertOnScreen(activity.getWindow().getDecorView(), view);
+		View v = activity.getWindow().getDecorView()
+				.findViewById(android.R.id.MainShowSubmittedListView);
+		assertTrue("Toast is shown", v.isShown());
 	}
 
 	// US08.04.01 and US08.05.01
@@ -353,27 +518,7 @@ public class Appoval_Test extends ActivityInstrumentationTestCase2<AddEditClaimA
 
 
 	
-	//taken from http://stackoverflow.com/questions/9405561/test-if-a-button-starts-a-new-activity-in-android-junit-pref-without-robotium
-	public void testOpenNextActivity(Activity myAcitivity, Activity nextActivity) {
-		  // register next activity that need to be monitored.
-		  ActivityMonitor activityMonitor = getInstrumentation().addMonitor(nextActivity.class.getName(), null, false);
 
-		  // open current activity.
-		  //MyActivity myActivity = getActivity();
-		  final Button button = (Button) myActivity.findViewById(R.id.open_next_activity);
-		  myActivity.runOnUiThread(new Runnable() {
-		    @Override
-		    public void run() {
-		      // click button and open next activity.
-		      button.performClick();
-		    }
-		  });
-
-		  //NextActivity nextActivity = getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5);
-		  // next activity is opened and captured.
-		  assertNotNull(nextActivity);
-		  nextActivity .finish();
-		}
 
 	protected void viewSClaimsDetailsTest() {
 		Approval approve = new Approval("test");

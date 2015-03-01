@@ -1,11 +1,15 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
-import android.support.v7.app.ActionBarActivity;
+//import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class SignInActivity extends ActionBarActivity {
+public class SignInActivity extends Activity
+	//extends ActionBarActivity 
+	{
+		
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
