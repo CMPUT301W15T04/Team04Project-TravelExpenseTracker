@@ -137,48 +137,13 @@ public class Appoval_Test extends ActivityInstrumentationTestCase2<SignInActivit
 			    	
 
 				  ListView listView = (ListView) findViewById(R.id.claimListView);
-/*				  List<Claim> claims = ClaimListController.getClaimList().getClaims();//change the collection into list
-					
-					Collections.sort(claims,new Comparator<Claim>() {
-				        @Override  
-			            public int compare(Claim b1, Claim b2) {  
-			                return b1.getStartDate().compareTo(b2.getStartDate());  
-			            }  
-					});
-					
-					
-					final ArrayList<Claim> list = new ArrayList<Claim>(claims);
-					final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, list);
-					listView.setAdapter(claimAdapter);
-			    	//add
-					allclaim = claims;
-					
-			    	ClaimListController.getClaimList().addListener(new Listener(){
-			    		@Override
-			    		public void update() {
-			    			list.clear();
-			    			Collection<Claim> claims = ClaimListController.getClaimList().getClaims();
-			    			list.addAll(claims);
-			    			claimAdapter.notifyDataSetChanged();
-			    		}
-			    		
-			    		
-			    	});
-			    	
-			    	//this is the list view to edit and delete the Claim
-*/			    	
+
 			    	
 			    	listView.setOnItemLongClickListener(new OnItemLongClickListener(){
 
 						@Override
 						public boolean onItemLongClick(AdapterView<?> adapterView, View view,
 								int position, long id) {
-							final int finalPosition = position;
-							Claim claim = list.get(finalPosition);
-							AlertDialog.Builder adb = new AlertDialog.Builder(MainActivity.this);
-							adb.setMessage(claim.getName()+" total cost \n"+claim.totalcurrency()+"\n From "+claim.getFromDate()+" to "+claim.getToDate());
-							adb.setCancelable(true);
-							
 							
 							
 							//
@@ -195,7 +160,8 @@ public class Appoval_Test extends ActivityInstrumentationTestCase2<SignInActivit
 						
 							});
 						};
-				  
+
+						
 				  myActivity.runOnUiThread(new Runnable() {
 				    @Override
 				    public void run() {
@@ -203,16 +169,17 @@ public class Appoval_Test extends ActivityInstrumentationTestCase2<SignInActivit
 				      button.performClick();
 				    }
 				  });
+			    };
 
-				  AddEditClaimActivity nextActivity = getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 100);
-				  // next activity is opened and captured.
-				  assertNotNull(nextActivity);
-				  nextActivity .finish();
+				AddEditClaimActivity nextActivity = getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 100);
+				// next activity is opened and captured.
+				assertNotNull(nextActivity);
+				nextActivity .finish();
 			  }
 			  
 			  assertNotNull(nextActivity);
 			  nextActivity .finish();
-			}
+			};
 			  
 		
 
@@ -237,6 +204,10 @@ public class Appoval_Test extends ActivityInstrumentationTestCase2<SignInActivit
 	
 	//US08.01.01 and US08.04.01
 	protected void viewSubmittedClaimsDetailsTest() {
+		
+		String tname = "claimant_test";
+		User claimiant = new User(tname);
+		
 		ClaimList testClaimList = new ClaimList();
 		Claim AClaim = new Claim("A");
 		Claim BClaim = new Claim("B");
@@ -277,8 +248,6 @@ public class Appoval_Test extends ActivityInstrumentationTestCase2<SignInActivit
 		AClaim.addItem(itemB);
 		int amount = AClaim.getTotalCurrency();
 		assertEquals("total currency is right",amount, 27);
-		testOpenNextActivity(MainActivity, AddEditClaimActivity);
-		testOpenNextActivity(OneClaimActivity, AddEditExpenseActivity);
 		
 		final Button button = (Button) activity
 				.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.AddEditClaimViewSubmittedListButton);
@@ -373,7 +342,9 @@ public class Appoval_Test extends ActivityInstrumentationTestCase2<SignInActivit
 	
 	
 	protected void addACommentOfSubmittedClaimTest() {
-
+		String tname = "claimant_test";
+		User claimiant = new User(tname);
+		
 		ClaimList testClaimList = new ClaimList();
 		Claim AClaim = new Claim("A");
 		Claim BClaim = new Claim("B");
@@ -397,6 +368,10 @@ public class Appoval_Test extends ActivityInstrumentationTestCase2<SignInActivit
 
 	//from us07.05.01
 	public void showFeedback() {
+		String tname = "claimant_test";
+		User claimiant = new User(tname);
+		
+	
 		Approval approver = new Approval("jack");
 		Claim claim = claimList.getPosition(0);
 		approver.approve(claim, "This a good claim");
@@ -446,6 +421,9 @@ public class Appoval_Test extends ActivityInstrumentationTestCase2<SignInActivit
 
 	//US08.08.01
 	protected void returnClaimSetApproverNameTest() {
+		String tname = "claimant_test";
+		User claimiant = new User(tname);
+	
 		Approval AApproval = new Approval("tester");
 		ClaimList testClaimList = new ClaimList();
 		Claim AClaim = new Claim("A");
@@ -495,23 +473,109 @@ public class Appoval_Test extends ActivityInstrumentationTestCase2<SignInActivit
 	public void claimantCanNotChangeClaimStatusTest(){
 		String name = "J";
 		
-		Claimant testClaimant = new Claimant(name);
-		Approval testApproval = new Approval(name); 
+		
+		User testApproval = new User(name); 
 		
 		Claim claimA = new Claim("A");
-		claimA.setClaimant(testClaimant);
+		
 		claimA.setApprover(testApproval);
 		claimA.setStatus("Submitted");
 		assertEquals("should change", claimA.getStatus(), "Submitted");
-		claimA.setStatus("Returned");
-		assertEquals("should not changed", claimA.getStatus(), "Submitted");
-		claimA.setStatus("Approved");
-		assertEquals("should not changed", claimA.getStatus(), "Submitted");
-		testOpenNextActivity(MainActivity, AddEditClaimActivity);
-
-		assertTrue("Claimant cannot edit the claim write by himself",
-				claimA.getEditable() == false);
 		
+		
+		User testClaimant = new User(name);
+		claimA.setClaimant(testClaimant);
+		
+		public void testOpenMainActivity1(){
+			  // register next activity that need to be monitored.
+			  ActivityMonitor activityMonitor = getInstrumentation().addMonitor(MainActivity.class.getName(), null, false);
+
+			  // open current activity.
+			  SignInActivity myActivity = getActivity();
+			  final Button button = (Button) myActivity.findViewById(android.R.id.SignInLoginButton);
+			  myActivity.runOnUiThread(new Runnable() {
+			    @Override
+			    public void run() {
+			      // click button and open next activity.
+			      button.performClick();
+			    }
+			  });
+
+			  MainActivity nextActivity = (MainActivity) getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 1000);
+
+			  ArrayList<Claim> testClaimListTrue = new ArrayList<Claim>();
+			  testClaimListTrue.add(AClaim);
+			  testClaimListTrue.add(BClaim);
+
+			  assertTrue("Submittedlist", testClaimList.getSubmittedClaimList()
+						.equals(testClaimListTrue));
+			  
+			  View claimListView = activity.getWindow().getDecorView()
+						.findViewById(android.R.id.MainClaimListView);
+			  assertTrue("Toast is shown", v.isShown());
+			  
+			  public void testOpenAddEditClaimActivity1{
+				  
+				  // register next activity that need to be monitored.
+				  ActivityMonitor activityMonitor = getInstrumentation().addMonitor(AddEditClaimActivity.class.getName(), null, false);
+
+				  // open current activity.
+				  AddEditClaimActivity myActivity = getActivity();
+				  //listview adapter
+				  
+				  ClaimListManager.initManager(this.getApplicationContext());
+			    	
+
+				  ListView listView = (ListView) findViewById(R.id.claimListView);
+
+		    	
+			    	
+			    	listView.setOnItemLongClickListener(new OnItemLongClickListener(){
+
+						@Override
+						public boolean onItemLongClick(AdapterView<?> adapterView, View view,
+								int position, long id) {
+							final int finalPosition = position;
+							Claim claim = list.get(finalPosition);
+							AlertDialog.Builder adb = new AlertDialog.Builder(MainActivity.this);
+							adb.setMessage(claim.getName()+" total cost \n"+claim.totalcurrency()+"\n From "+claim.getFromDate()+" to "+claim.getToDate());
+							adb.setCancelable(true);
+							
+							
+							
+							//
+							adb.setNeutralButton("Edit", new OnClickListener(){
+								public void onClick(DialogInterface dialog, int which){
+									  MainActivity nextActivity = (MainActivity) getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 1000);
+									  claimA.setStatus("Returned");
+									  assertEquals("should not changed", claimA.getStatus(), "Submitted");
+									  claimA.setStatus("Approved");
+									  assertEquals("should not changed", claimA.getStatus(), "Submitted");
+									  assertTrue("Claimant cannot edit the claim write by himself",
+									  claimA.getEditable() == false);
+							}
+
+						
+							});
+						};
+				  
+				  myActivity.runOnUiThread(new Runnable() {
+				    @Override
+				    public void run() {
+				      // click button and open next activity.
+				      button.performClick();
+				    }
+				  });
+
+				  AddEditClaimActivity nextActivity = getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 100);
+				  // next activity is opened and captured.
+				  assertNotNull(nextActivity);
+				  nextActivity .finish();
+			  }
+			  
+			  assertNotNull(nextActivity);
+			  nextActivity .finish();
+			};
 		
 	}
 	

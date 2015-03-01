@@ -13,8 +13,8 @@ public class Claim {
 	protected ArrayList<Tag> tagList;
 	protected ArrayList<Destination> destinations;
 	protected ArrayList<Listener> listener;
-	protected Approval approver;
-	protected Claimant claimant;
+	protected User approver;
+	protected User claimant;
 
 	protected boolean editable = true;
 
@@ -110,7 +110,7 @@ public class Claim {
 	}
 
 
-	public void setApprover(Approval approval) {
+	public void setApprover(User approval) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -158,7 +158,7 @@ public class Claim {
 
 
 
-	public void setClaimant(Claimant testClaimant) {
+	public void setClaimant(User testClaimant) {
 		// TODO Auto-generated method stub
 		this.claimant = testClaimant;
 	}
