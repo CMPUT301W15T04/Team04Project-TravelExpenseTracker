@@ -4,7 +4,7 @@ public class Controller {
 
 	public static void addClaim(Claim claimview) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public static Claim getClaim(int i) {

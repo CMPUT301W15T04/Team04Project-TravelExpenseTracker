@@ -5,8 +5,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="17" />
+        android:minSdkVersion="14"
+        android:targetSdkVersion="18" />
 
     <application
         android:allowBackup="true"
@@ -27,12 +27,12 @@
             android:label="@string/title_activity_add_edit_claim" >
         </activity>
         <activity
-            android:name=".OneClaimActivity"
-            android:label="@string/title_activity_one_claim" >
-        </activity>
-        <activity
             android:name=".AddEditExpenseActivity"
             android:label="@string/title_activity_add_edit_expense" >
+        </activity>
+        <activity
+            android:name=".OneClaimActivity"
+            android:label="@string/title_activity_one_claim" >
         </activity>
         <activity
             android:name=".SignInActivity"

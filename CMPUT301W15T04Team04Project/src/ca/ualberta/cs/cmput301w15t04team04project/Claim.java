@@ -23,9 +23,6 @@ public class Claim {
 
 	}
 
-
-
-
 	public void removeItem(Item item) {
 		// TODO Auto-generated method stub
 
@@ -95,76 +92,55 @@ public class Claim {
 
 		return editable;
 	}
-	public void setEditable(){
+
+	public void setEditable() {
 		// TODO Auto-generated method stub
 	}
 
 	public void addItem(Item item) {
 		itemList.add(item);
-		
-	}
-	
-	public Item getItem(int i) {
-		return itemList.get(i);
-		
+
 	}
 
+	public Item getItem(int i) {
+		return itemList.get(i);
+
+	}
 
 	public void setApprover(User approval) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-
-
-
-	public Approval getApprover() {
+	public User getApprover() {
 		// TODO Auto-generated method stub
 		return approver;
 	}
-
-
-
 
 	public ArrayList<Claim> getItemList() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-
-
 	public void addDestination(Destination testDestionation) {
 		// TODO Auto-generated method stub
-		
+
 	}
-
-
-
 
 	public Object getDestionation() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-
-
 	public int getTotalCurrency() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-
-
-
 	public void setClaimant(User testClaimant) {
 		// TODO Auto-generated method stub
 		this.claimant = testClaimant;
 	}
-
-
-
 
 	public Tag getTagList() {
 		// TODO Auto-generated method stub
