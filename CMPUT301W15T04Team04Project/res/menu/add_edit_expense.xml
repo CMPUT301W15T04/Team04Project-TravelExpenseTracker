@@ -1,4 +1,6 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="ca.ualberta.cs.cmput301w15t04team04project.AddEditExpenseActivity" >
 
     <item
         android:id="@+id/action_settings"
