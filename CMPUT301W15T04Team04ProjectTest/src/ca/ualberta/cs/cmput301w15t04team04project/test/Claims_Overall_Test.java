@@ -25,7 +25,7 @@ public class Claims_Overall_Test extends
 	ClaimList claimList = Manager.getClaimList();
 
 	public Claims_Overall_Test() {
-		super(MainActivity.class);
+		super(addCliamAc.class);
 	}
 
 	protected void setUp() throws Exception {
@@ -44,8 +44,9 @@ public class Claims_Overall_Test extends
 
 	// use case 1
 	public void testRecordNameAndDateInClaim() {
+		
+		
 
-		Claim claim = new Claim();
 		EditText claimantName = (EditText) findViewById(R.id.claimantName);
 		claim.setClaimantName(claimantName.getText().toString());
 
