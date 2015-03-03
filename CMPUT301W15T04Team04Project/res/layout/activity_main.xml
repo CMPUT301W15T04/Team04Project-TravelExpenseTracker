@@ -11,6 +11,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:clickable="true"
+        android:onClick="goToOneClaim"
+        android:text="Go to One Claim"
+        tools:ignore="HardcodedText" />
 
 </RelativeLayout>

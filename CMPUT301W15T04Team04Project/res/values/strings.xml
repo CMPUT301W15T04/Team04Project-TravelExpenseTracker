@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Cmput301w15t04team04project</string>
+    <string name="app_name">CMPUT301W15T04Team04Project</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_add_edit_claim">AddEditClaimActivity</string>
-    <string name="title_activity_add_edit_expense">AddEditExpenseActivity</string>
-    <string name="title_activity_one_claim">OneClaimActivity</string>
-    <string name="title_activity_sign_in">SignInActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_search">Search</string>
+    <string name="title_activity_edit_claim">Add or Edit Claim</string>
+    <string name="title_activity_one_claim">Items in One Claim</string>
+    <string name="title_activity_edit_item">Edit One Item</string>
 
 </resources>
