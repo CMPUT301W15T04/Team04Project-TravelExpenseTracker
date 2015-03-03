@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="ca.ualberta.cs.cmput301w15t04team04project.MainActivity" >
+    
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_action_search"
+        android:title="@string/title_activity_search"
+        android:showAsAction="ifRoom" android:onClick="goToSearch"/>
+        
+    <item
+        android:id="@+id/action_new"
+        android:icon="@drawable/ic_action_new"
+        android:title="add"
+        android:showAsAction="ifRoom" android:onClick="goToEditClaim"/>
+
+</menu>

@@ -4,9 +4,11 @@ import android.app.ActionBar;
 import android.app.ActionBar.OnNavigationListener;
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 public class SearchActivity extends Activity {
@@ -46,12 +48,22 @@ public class SearchActivity extends Activity {
 		// Setting drop down items and item navigation listener for the action bar
 		getActionBar().setListNavigationCallbacks(adapter, navigationListener);  
 	}
-
+/*
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.search, menu);
 		return true;
+	}
+	*/
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    getMenuInflater().inflate(R.menu.search, menu);
+	    MenuItem searchItem = menu.findItem(R.id.action_search);
+	    SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+	    // Configure the search info and add any event listeners
+	    return super.onCreateOptionsMenu(menu);
 	}
 
 	@Override
