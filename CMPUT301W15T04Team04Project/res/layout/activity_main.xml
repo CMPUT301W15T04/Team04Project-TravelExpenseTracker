@@ -9,11 +9,23 @@
     tools:context="ca.ualberta.cs.cmput301w15t04team04project.MainActivity" >
 
     <TextView
+        android:id="@+id/UserState"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:onClick="goToOneClaim"
-        android:text="Go to One Claim"
-        tools:ignore="HardcodedText" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="TextView" />
+
+    <ListView
+        android:id="@+id/ViewOfClaimList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/UserState"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/UserState" >
+
+    </ListView>
 
 </RelativeLayout>

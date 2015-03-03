@@ -9,47 +9,32 @@
     tools:context="ca.ualberta.cs.cmput301w15t04team04project.OneClaimActivity" >
 
     <TextView
-        android:id="@+id/testClaimantTextView"
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="17dp"
-        android:text="Claimant Show Claim Detail"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        tools:ignore="HardcodedText,RtlHardcoded" />
+        android:text="TextView" />
 
     <TextView
-        android:id="@+id/testApproverTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/testClaimantTextView"
-        android:layout_below="@+id/testClaimantTextView"
-        android:layout_marginTop="58dp"
-        android:text="Approver Show Claim Detail"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        tools:ignore="HardcodedText,RtlHardcoded" />
-
-    <TextView
-        android:id="@+id/textViewItemDC"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/testApproverTextView"
-        android:layout_marginTop="63dp"
-        android:text="Show Item Detail Claimant"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        tools:ignore="HardcodedText,RtlHardcoded" />
+        android:layout_alignRight="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <TextView
-        android:id="@+id/textViewItemDA"
-        android:layout_width="wrap_content"
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textViewItemDC"
-        android:layout_below="@+id/textViewItemDC"
-        android:layout_marginTop="56dp"
-        android:text="Show Item Detail Approver"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        tools:ignore="HardcodedText,RtlHardcoded" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView2" >
+
+    </ListView>
 
 </RelativeLayout>
