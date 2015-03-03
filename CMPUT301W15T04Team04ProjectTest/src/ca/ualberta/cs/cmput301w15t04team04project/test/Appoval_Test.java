@@ -70,35 +70,44 @@ public class Appoval_Test extends ActivityInstrumentationTestCase2<SignInActivit
 		activity = getActivity();
 	}
 	
+	public void testOpenNextActivity() {
+		  // register next activity that need to be monitored.
+		  ActivityMonitor activityMonitor = getInstrumentation().addMonitor(MainActivity.class.getName(), null, false);
+
+		  // open current activity.
+		  SignInActivity myActivity = getActivity();
+		  final Button button = (Button) myActivity.findViewById(android.R.id.SignInLoginButton);
+		  myActivity.runOnUiThread(new Runnable() {
+		    @Override
+		    public void run() {
+		      // click button and open next activity.
+		      button.performClick();
+		    }
+		  });
+
+		 //if it is not runnable? how do we know? because it is no assert there
+		 
+		  MainActivity nextActivity = (MainActivity) getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 1000);
+		 
+		  // do we need do add the test code here?
+		 
+		  assertNotNull(nextActivity);
+		  nextActivity .finish();
+		}
+	
 	//US08.01.01
 	protected void viewSubmittedClaimsTest() {
 
 	//before the basic flow , we should confirm some claim already created	
-		String tname = "claimant_test";
-		User claimiant = new User(tname);
 		
 		
-		ClaimList testClaimList = new ClaimList();
-		Claim AClaim = new Claim("A");
-		Claim BClaim = new Claim("B");
-		Claim CClaim = new Claim("C");
-		testClaimList.addClaim(AClaim);
-		testClaimList.addClaim(BClaim);
-		testClaimList.addClaim(CClaim);
-		AClaim.setStatus("Submitted");
-		BClaim.setStatus("Submitted");
 		
-		String aname = "approver_test";
-		User approver = new User(aname);
 		
-		TextView v = (TextView) activity.getWindow().getDecorView()
-				.findViewById(android.R.id.SignInNameTextView);
-		assertTrue("Toast is shown", v.isShown());
 		
 		//waiting for the joshua's answer 
 		public void testOpenMainActivity(){
 			  // register next activity that need to be monitored.
-			  ActivityMonitor activityMonitor = getInstrumentation().addMonitor(MainActivity.class.getName(), null, false);
+			  ActivityMonitor MainactivityMonitor = getInstrumentation().addMonitor(MainActivity.class.getName(), null, false);
 
 			  // open current activity.
 			  SignInActivity myActivity = getActivity();
@@ -111,7 +120,7 @@ public class Appoval_Test extends ActivityInstrumentationTestCase2<SignInActivit
 			    }
 			  });
 
-			  MainActivity nextActivity = (MainActivity) getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 1000);
+			  MainActivity nextActivity = (MainActivity) getInstrumentation().waitForMonitorWithTimeout(MainactivityMonitor, 1000);
 
 			  ArrayList<Claim> testClaimListTrue = new ArrayList<Claim>();
 			  testClaimListTrue.add(AClaim);
@@ -199,7 +208,7 @@ public class Appoval_Test extends ActivityInstrumentationTestCase2<SignInActivit
 				.findViewById(android.R.id.MainShowSubmittedListView);
 		assertTrue("Toast is shown", v.isShown());
 		
-	}
+}
 	
 	
 	//US08.01.01 and US08.04.01
@@ -653,4 +662,4 @@ public class Appoval_Test extends ActivityInstrumentationTestCase2<SignInActivit
 }
 
     }
-}
+	}}
