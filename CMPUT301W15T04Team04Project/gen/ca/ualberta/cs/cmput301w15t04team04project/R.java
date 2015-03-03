@@ -31,58 +31,54 @@ public final class R {
         public static final int ic_launcher=0x7f020006;
     }
     public static final class id {
-        public static final int UserState=0x7f080011;
-        public static final int ViewOfClaimList=0x7f080012;
-        public static final int action_accept=0x7f080019;
-        public static final int action_new=0x7f08001c;
-        public static final int action_search=0x7f08001b;
-        public static final int action_settings=0x7f08001a;
-        public static final int claimDes=0x7f080005;
-        public static final int claimName=0x7f080004;
-        public static final int consSpinner=0x7f080015;
-        public static final int contectTagsTextView=0x7f080014;
-        public static final int editDate=0x7f08000c;
-        public static final int editDestination=0x7f080009;
-        public static final int editTags=0x7f080007;
-        public static final int editText1=0x7f08000a;
-        public static final int editText2=0x7f08000e;
-        public static final int editText3=0x7f080010;
-        public static final int isApproverCheckBox=0x7f080018;
-        public static final int listView1=0x7f080013;
-        public static final int setEndDate=0x7f080000;
-        public static final int setStartDate=0x7f080001;
-        public static final int setTheDate=0x7f08000d;
-        public static final int showEnd=0x7f080002;
-        public static final int showStart=0x7f080003;
-        public static final int signInButton=0x7f080017;
-        public static final int spinner1=0x7f08000b;
-        public static final int spinner2=0x7f08000f;
-        public static final int textView1=0x7f080006;
-        public static final int textView2=0x7f080008;
-        public static final int userNameEditText=0x7f080016;
+        public static final int action_accept=0x7f08000c;
+        public static final int action_new=0x7f08000e;
+        public static final int action_newItme=0x7f080010;
+        public static final int action_search=0x7f08000d;
+        public static final int action_searchOC=0x7f08000f;
+        public static final int action_settings=0x7f08000b;
+        public static final int button1=0x7f080001;
+        public static final int consSpinner=0x7f080007;
+        public static final int contectTagsTextView=0x7f080006;
+        public static final int isApproverCheckBox=0x7f08000a;
+        public static final int signInButton=0x7f080009;
+        public static final int testApproverTextView=0x7f080003;
+        public static final int testClaimantTextView=0x7f080002;
+        public static final int textView1=0x7f080000;
+        public static final int textViewItemDA=0x7f080005;
+        public static final int textViewItemDC=0x7f080004;
+        public static final int userNameEditText=0x7f080008;
     }
     public static final class layout {
-        public static final int activity_edit_claim=0x7f030000;
-        public static final int activity_edit_item=0x7f030001;
-        public static final int activity_main=0x7f030002;
-        public static final int activity_one_claim=0x7f030003;
-        public static final int activity_search=0x7f030004;
-        public static final int activity_signin=0x7f030005;
+        public static final int activity_claim_detail=0x7f030000;
+        public static final int activity_claim_detail_a=0x7f030001;
+        public static final int activity_edit_claim=0x7f030002;
+        public static final int activity_edit_item=0x7f030003;
+        public static final int activity_item_detail=0x7f030004;
+        public static final int activity_item_detail_a=0x7f030005;
+        public static final int activity_main=0x7f030006;
+        public static final int activity_one_claim=0x7f030007;
+        public static final int activity_search=0x7f030008;
+        public static final int activity_signin=0x7f030009;
     }
     public static final class menu {
-        public static final int edit_claim=0x7f070000;
-        public static final int edit_item=0x7f070001;
-        public static final int main=0x7f070002;
-        public static final int one_claim=0x7f070003;
-        public static final int search=0x7f070004;
-        public static final int signin=0x7f070005;
+        public static final int claim_detail=0x7f070000;
+        public static final int edit_claim=0x7f070001;
+        public static final int edit_item=0x7f070002;
+        public static final int item_detail=0x7f070003;
+        public static final int main=0x7f070004;
+        public static final int one_claim=0x7f070005;
+        public static final int search=0x7f070006;
+        public static final int signin=0x7f070007;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;
         public static final int app_name=0x7f050000;
         public static final int hello_world=0x7f050001;
+        public static final int title_activity_claim_detail=0x7f050008;
         public static final int title_activity_edit_claim=0x7f050005;
         public static final int title_activity_edit_item=0x7f050007;
+        public static final int title_activity_item_detail=0x7f050009;
         public static final int title_activity_main=0x7f050003;
         public static final int title_activity_one_claim=0x7f050006;
         public static final int title_activity_search=0x7f050004;

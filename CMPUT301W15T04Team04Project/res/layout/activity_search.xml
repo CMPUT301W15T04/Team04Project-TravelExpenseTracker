@@ -27,12 +27,4 @@
         android:layout_below="@+id/contectTagsTextView"
         tools:ignore="RtlHardcoded" />
 
-    <ListView
-        android:id="@+id/listView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/consSpinner"
-        android:layout_below="@+id/consSpinner" >
-    </ListView>
-
 </RelativeLayout>

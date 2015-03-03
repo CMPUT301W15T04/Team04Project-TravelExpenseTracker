@@ -9,5 +9,7 @@
     <string name="title_activity_edit_claim">Add or Edit Claim</string>
     <string name="title_activity_one_claim">Items in One Claim</string>
     <string name="title_activity_edit_item">Edit One Item</string>
+    <string name="title_activity_claim_detail">Detail of a Claim</string>
+    <string name="title_activity_item_detail">Detail of an Item</string>
 
 </resources>

@@ -48,15 +48,15 @@ public class SearchActivity extends Activity {
 		// Setting drop down items and item navigation listener for the action bar
 		getActionBar().setListNavigationCallbacks(adapter, navigationListener);  
 	}
-/*
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.search, menu);
 		return true;
 	}
-	*/
-	
+
+	/*
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 	    getMenuInflater().inflate(R.menu.search, menu);
@@ -65,7 +65,8 @@ public class SearchActivity extends Activity {
 	    // Configure the search info and add any event listeners
 	    return super.onCreateOptionsMenu(menu);
 	}
-
+	*/
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will
