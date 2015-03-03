@@ -7,8 +7,6 @@
 
 package ca.ualberta.cs.cmput301w15t04team04project;
 
-import android.view.View;
-
 public final class R {
     public static final class attr {
     }
@@ -54,7 +52,6 @@ public final class R {
         public static final int activity_one_claim=0x7f030003;
         public static final int activity_search=0x7f030004;
         public static final int activity_signin=0x7f030005;
-		public static final View activity_edit_item = null;
     }
     public static final class menu {
         public static final int edit_claim=0x7f070000;
