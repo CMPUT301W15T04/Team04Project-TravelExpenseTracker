@@ -1,32 +1,25 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
-import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
-import ca.ualberta.cs.cmput301w15t04team04project.R;
-import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.app.DatePickerDialog.OnDateSetListener;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.Toast;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-public class EditClaimActivity extends Activity {
-	
+public class EditClaimActivity extends Fragment {
+	private TextView tv;
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_edit_claim);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		return inflater.inflate(R.layout.activity_edit_claim, container, false);
 	}
-	
-	public void jump(View v) {
-		Toast.makeText(this, "ass", Toast.LENGTH_SHORT).show();
-		Intent intent = new Intent(EditClaimActivity.this, MainActivity.class);
-		startActivity(intent);
+
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		tv = (TextView) getView().findViewById(R.id.titleTv);
+		tv.setText("Add Claim");
 	}
 	
 	/*

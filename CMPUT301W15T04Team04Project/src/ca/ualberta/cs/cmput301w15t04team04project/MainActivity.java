@@ -35,12 +35,13 @@ public class MainActivity extends FragmentActivity {
 		bottom_Rg = (RadioGroup) findViewById(R.id.bottomManu);
 		main_Rb = (RadioButton) findViewById(R.id.main_menu_button);
 		add_Rb = (RadioButton) findViewById(R.id.add_menu_button);
-		fragments = new Fragment[2];
+		fragments = new Fragment[3];
 		fragmentManager = getSupportFragmentManager();
 		fragments[0] = fragmentManager.findFragmentById(R.id.fragmentMain);
-		fragments[1] = fragmentManager.findFragmentById(R.id.fragmentProfile);
+		fragments[1] = fragmentManager.findFragmentById(R.id.FragmentAdd);
+		fragments[2] = fragmentManager.findFragmentById(R.id.fragmentProfile);
 		fragmentTransaction = fragmentManager.beginTransaction().hide(
-				fragments[0]).hide(fragments[1]);
+				fragments[0]).hide(fragments[1]).hide(fragments[2]);
 		fragmentTransaction.show(fragments[0]).commit();
 		setFragmentIndicator();
 
@@ -54,25 +55,18 @@ public class MainActivity extends FragmentActivity {
 			@Override
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
 				fragmentTransaction = fragmentManager.beginTransaction()
-						.hide(fragments[0]).hide(fragments[1]);
+						.hide(fragments[0]).hide(fragments[1]).hide(fragments[2]);
 				switch (checkedId) {
 				case R.id.main_menu_button:
 					fragmentTransaction.show(fragments[0]).commit();
 					break;
 
 				case R.id.add_menu_button:
-					main_Rb.performClick();
-					add_Rb.setOnClickListener(new OnClickListener() {
-						public void onClick(View v) {
-							Intent intent = new Intent(MainActivity.this,
-									EditClaimActivity.class);
-							startActivity(intent);
-						}
-					});
+					fragmentTransaction.show(fragments[1]).commit();
 					break;
 
 				case R.id.profile_menu_button:
-					fragmentTransaction.show(fragments[1]).commit();
+					fragmentTransaction.show(fragments[2]).commit();
 					break;
 
 				default:

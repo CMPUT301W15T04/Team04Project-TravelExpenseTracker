@@ -1,35 +1,41 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
 import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class SignInActivity extends Activity {
-
+	private EditText userName;
+	private Button signInButton;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_signin);
 		getActionBar().setTitle("Sign In");
-		
-		Button signInButton  = (Button) findViewById(R.id.signInButton);
-		signInButton.setBackgroundResource(0);
+		userName = (EditText) findViewById(R.id.userNameEditText);
+		signInButton  = (Button) findViewById(R.id.signInButton);
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.signin, menu);
-		return true;
-	}
-
 	
-	public void signIn(View view) {
-		Intent intent = new Intent(SignInActivity.this, MainActivity.class);
-		startActivity(intent);
+	public void signIn(View v){
+		String user = userName.getText().toString();
+		if(user.length() == 0){
+			Toast.makeText(this, "You must enter something" ,Toast.LENGTH_SHORT).show();
+		}else{
+			User.name = user;
+			User.loginStatus = true;
+		}
+		if (User.loginStatus == true){
+			Intent intent = new Intent(SignInActivity.this,
+					MainActivity.class);
+			startActivity(intent);
+		}
 	}
+	
 }

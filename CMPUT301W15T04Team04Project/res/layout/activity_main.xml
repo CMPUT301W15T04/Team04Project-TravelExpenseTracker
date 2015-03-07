@@ -10,25 +10,34 @@
         android:id="@+id/fragmentMain"
         android:name="ca.ualberta.cs.cmput301w15t04team04project.FragmentMain"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="10"/>
+        android:layout_height="107dp"
+        android:layout_weight="1.94" />
+
+    <fragment
+        android:id="@+id/FragmentAdd"
+        android:name="ca.ualberta.cs.cmput301w15t04team04project.EditClaimActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="10" />
 
     <fragment
         android:id="@+id/fragmentProfile"
         android:name="ca.ualberta.cs.cmput301w15t04team04project.FragmentProfile"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="10"/>
+        android:layout_height="69dp"
+        android:layout_weight="6.57" />
 
     <RadioGroup
         android:id="@+id/bottomManu"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="0px"
         android:background="@drawable/toolbar_bg"
         android:orientation="horizontal" >
 
         <RadioButton
             android:id="@+id/main_menu_button"
+            style="@style/main_menu_bottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
@@ -37,6 +46,7 @@
 
         <RadioButton
             android:id="@+id/add_menu_button"
+            style="@style/main_menu_bottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/add_icon"
@@ -44,6 +54,7 @@
 
         <RadioButton
             android:id="@+id/profile_menu_button"
+            style="@style/main_menu_bottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableTop="@drawable/user_icon"

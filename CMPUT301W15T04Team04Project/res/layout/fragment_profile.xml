@@ -8,6 +8,61 @@
     android:orientation="vertical" >
 
     <include
+        android:id="@+id/include1"
         layout="@layout/title_bar" />
+
+    <TextView
+        android:id="@+id/userNameDisplay"
+        style="@style/charactor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/include1"
+        android:layout_marginLeft="117dp"
+        android:layout_toRightOf="@+id/photoButton"
+        android:textSize="30sp" />
+
+    <ImageView
+        android:id="@+id/photoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/userNameDisplay"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="23dp"
+        android:background="@drawable/user2_icon" />
+
+    <RadioGroup
+        android:id="@+id/settingGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/userNameDisplay"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" >
+
+        <RadioButton
+            android:id="@+id/MyClaims"
+            style="@style/setting_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/list_icon"
+            android:text="My Claims" />
+
+        <RadioButton
+            android:id="@+id/waitingList"
+            style="@style/setting_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@drawable/list2_icon"
+            android:text="WaitingList" />
+
+        <RadioButton
+            android:id="@+id/logOut"
+            style="@style/setting_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3.32"
+            android:drawableLeft="@drawable/log_out"
+            android:text="Log out" />
+    </RadioGroup>
 
 </RelativeLayout>
