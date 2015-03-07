@@ -1,5 +1,6 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

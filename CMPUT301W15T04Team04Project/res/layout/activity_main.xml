@@ -1,19 +1,53 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- The fragment part is from this website: http://www.programering.com/a/MjNzIDMwATI.html 2014-Oct-20 -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ca.ualberta.cs.cmput301w15t04team04project.MainActivity" >
+    android:orientation="vertical" >
 
-    <TextView
-        android:layout_width="wrap_content"
+    <fragment
+        android:id="@+id/fragmentMain"
+        android:name="ca.ualberta.cs.cmput301w15t04team04project.FragmentMain"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="10"/>
+
+    <fragment
+        android:id="@+id/fragmentProfile"
+        android:name="ca.ualberta.cs.cmput301w15t04team04project.FragmentProfile"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="10"/>
+
+    <RadioGroup
+        android:id="@+id/bottomManu"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:onClick="goToOneClaim"
-        android:text="Go to One Claim"
-        tools:ignore="HardcodedText" />
+        android:background="@drawable/toolbar_bg"
+        android:orientation="horizontal" >
 
-</RelativeLayout>
+        <RadioButton
+            android:id="@+id/main_menu_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:drawableTop="@drawable/home_icon"
+            android:text="@string/menu_home" />
+
+        <RadioButton
+            android:id="@+id/add_menu_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/add_icon"
+            android:text="@string/menu_add" />
+
+        <RadioButton
+            android:id="@+id/profile_menu_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/user_icon"
+            android:text="@string/menu_profile" />
+    </RadioGroup>
+
+</LinearLayout>

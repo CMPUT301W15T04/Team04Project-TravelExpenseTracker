@@ -10,7 +10,7 @@
         android:onClick="goToSearch"/>
         
     <item
-        android:id="@+id/action_new"
+        android:id="@+id/Example"
         android:icon="@drawable/ic_action_new"
         android:title="Add"
         android:showAsAction="ifRoom" 

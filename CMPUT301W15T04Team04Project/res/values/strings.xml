@@ -11,5 +11,11 @@
     <string name="title_activity_edit_item">Edit One Item</string>
     <string name="title_activity_claim_detail">Detail of a Claim</string>
     <string name="title_activity_item_detail">Detail of an Item</string>
+    <string name="menu_home">Main</string>
+    <string name="menu_fav">My Favorite</string>
+    <string name="menu_add">Add Claim</string>
+    <string name="menu_profile">My profile</string>
+    <string name="title_activity_fragment_main">FragmentMain</string>
+    <string name="title_activity_fragment_profile">FragmentProfile</string>
 
 </resources>
