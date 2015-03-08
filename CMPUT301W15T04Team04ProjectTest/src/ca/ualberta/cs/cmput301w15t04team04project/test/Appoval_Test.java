@@ -44,7 +44,15 @@ import ca.ualberta.cs.travel.ClaimListController;
 import ca.ualberta.cs.travel.ClaimListManager;
 import ca.ualberta.cs.travel.Listener;
 import ca.ualberta.cs.travel.R;
-
+/**
+* The Approver_test Mainly test the US08
+*
+* @param Activity is SignInActivity based on the use case precondition
+* @param claimList is the data base that used to test.
+* @author  Weijie Sun
+* @version 1.0
+* @since   2015-03-08
+*/
 
 public class Appoval_Test extends ActivityInstrumentationTestCase2<SignInActivity>   {
 	public Appoval_Test(Class<SignInActivity> activityClass) {
@@ -55,7 +63,13 @@ public class Appoval_Test extends ActivityInstrumentationTestCase2<SignInActivit
 	
 	Activity activity;
 	ClaimList claimList = Manager.getClaimList();
-	
+	/**
+	* this method mainly to get the signInActivity
+	*
+	* @author  Weijie Sun
+	* @version 1.0
+	* @since   2014-03-31
+	*/
 	protected void setUp() throws Exception {
 		super.setUp();
 		// add a claim to test on
@@ -70,6 +84,13 @@ public class Appoval_Test extends ActivityInstrumentationTestCase2<SignInActivit
 		activity = getActivity();
 	}
 	
+	/**
+	* this method mainly to get the signInActivity
+	*
+	* @author  Weijie Sun
+	* @version 1.0
+	* @since   2014-03-31
+	*/
 	public void testOpenNextActivity() {
 		  // register next activity that need to be monitored.
 		  ActivityMonitor activityMonitor = getInstrumentation().addMonitor(MainActivity.class.getName(), null, false);

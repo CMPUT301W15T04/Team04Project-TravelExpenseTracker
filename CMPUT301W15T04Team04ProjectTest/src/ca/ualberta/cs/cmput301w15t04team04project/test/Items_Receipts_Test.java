@@ -2,12 +2,10 @@ package ca.ualberta.cs.cmput301w15t04team04project.test;
 
 import java.io.File;
 
-import com.example.cameratest.R;
 
-import ca.ualberta.cs.cmput301w15t04team04project.AddEditClaimActivity;
-import ca.ualberta.cs.cmput301w15t04team04project.AddEditExpenseActivity;
-import ca.ualberta.cs.cmput301w15t04team04project.Claim;
-import ca.ualberta.cs.cmput301w15t04team04project.ClaimList;
+import ca.ualberta.cs.cmput301w15t04team04project.EditItemActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
+import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import android.app.Activity;
 import android.content.Intent;
@@ -20,11 +18,21 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import junit.framework.TestCase;
-
-public class Items_Receipts_Test extends ActivityInstrumentationTestCase2<AddEditExpenseActivity> {
+/**
+* The Items_Receipts_Test is a test Mainly test the US06
+*
+* @param activity is the current Activity
+* @param ClaimList is the data of Claimlist get from the ClaimListManager
+* @param imageFileUri is the file to store the picture
+* @author  Weijie Sun
+* @version 1.0
+* @since   2015-03-08
+*/
+public class Items_Receipts_Test extends ActivityInstrumentationTestCase2<EditItemActivity> {
 
 	
 	Activity activity;
@@ -32,18 +40,25 @@ public class Items_Receipts_Test extends ActivityInstrumentationTestCase2<AddEdi
 	Claim claim = new Claim("TestClaim");
 	claimList.addClaim(claim);
 	Item item = new Item("item");
-	claim.addItem(item)
-	
-	public Items_Receipts_Test(Class<AddEditExpenseActivity> activityClass) {
+	claim.addItem(item);
+	Uri imageFileUri;
+    //String test;
+/**
+* The Items_Receipts_Test method is extend the super class EditItemAcitivty
+*
+* @author  Weijie Sun
+* @version 1.0
+* @since   2015-03-08
+*/
+	public Items_Receipts_Test(Class<EditItemActivity> activityClass) {
 		super(activityClass);
 		// TODO Auto-generated constructor stub
 	}
 	
 	//get from camera test
 	
-    Uri imageFileUri;
-    String test;
-    @Override
+
+/*    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -100,10 +115,17 @@ public class Items_Receipts_Test extends ActivityInstrumentationTestCase2<AddEdi
             }
         }
     }
-    
+    */
     //
     //US06.03.01
 	// test delete receipt test
+	/**
+	* The deleteReceiptTest method is to test US06.03.01 see if it can delete a photo 
+	*
+	* @author  Weijie Sun
+	* @version 1.0
+	* @since   2015-03-08
+	*/
 	protected void deleteReceiptTest() {
 		((Button) activity.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.AddEditExpenseTakeReceiptButton)).performClick();
 		assertTrue("deleted?",test.equals("Photo canceled"));
@@ -113,7 +135,13 @@ public class Items_Receipts_Test extends ActivityInstrumentationTestCase2<AddEdi
 		item.deleteAPhoto();
 		assertTrue("delete a photo", item.getPhoto() == null);
 	}
-
+	/**
+	* The addReceiptTest method is to test US06.03.01 see if it can add a photo 
+	*
+	* @author  Weijie Sun
+	* @version 1.0
+	* @since   2015-03-08
+	*/
 	protected void addReceiptTest(){
 		((Button) activity.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.AddEditExpenseTakeReceiptButton)).performClick();
 		assertTrue("add/",test.equals("Photo OK!"));
@@ -126,6 +154,13 @@ public class Items_Receipts_Test extends ActivityInstrumentationTestCase2<AddEdi
     
 
 //US06.02.01
+	/**
+	* The viewReceiptTest method is to test US06.03.01 see if it can make photo show
+	*
+	* @author  Weijie Sun
+	* @version 1.0
+	* @since   2015-03-08
+	*/
     protected void viewReceiptTest(){
     	Item item = new Item("test");
     	item.takeAPhoto();
@@ -133,25 +168,32 @@ public class Items_Receipts_Test extends ActivityInstrumentationTestCase2<AddEdi
     	public class ClickFunActivityTest
         extends ActivityInstrumentationTestCase2 {
     
-    	Button mClickMeButton = new Button();	
+    	Button mClickMeButton;
     		
     @Override
-    protected void setUp() throws Exception {
-        super.setUp();
+	    protected void setUp() throws Exception {
+	        super.setUp();
+	
+	        setActivityInitialTouchMode(true);
+	
+	        mClickFunActivity = getActivity();
+	        mClickMeButton = (Button) 
+	                mClickFunActivity
+	                .findViewById(R.id.photo);
+	        mInfoTextView = (TextView) 
+	                mClickFunActivity.findViewById(R.id.info_text_view);
+	    }
+    	}
 
-        setActivityInitialTouchMode(true);
-
-        mClickFunActivity = getActivity();
-        mClickMeButton = (Button) 
-                mClickFunActivity
-                .findViewById(R.id.photo);
-        mInfoTextView = (TextView) 
-                mClickFunActivity.findViewById(R.id.info_text_view);
     }
-}
-
-    }
-    
+	/**
+	* The retakenReceiptTest method is to test US06.01.01 see if it can retaken receipt
+	*
+	* @param item is the test item and we take photo, get photo, and delete photo inside
+	* @author  Weijie Sun
+	* @version 1.0
+	* @since   2015-03-08 
+	*/
     
     //US06.01.01
     protected void retakenReceiptTest(){
@@ -164,30 +206,18 @@ public class Items_Receipts_Test extends ActivityInstrumentationTestCase2<AddEdi
     	assertTrue("delete a photo", item.getPhoto()==null);
     	item.takeAPhoto();
     	assertTrue("exist photo", item.getPhoto()!=null);
-    	public void testOpenNextActivity() {
-    		  // register next activity that need to be monitored.
-    		  ActivityMonitor activityMonitor = getInstrumentation().addMonitor(NextActivity.class.getName(), null, false);
 
-    		  // open current activity.
-    		  MyActivity myActivity = getActivity();
-    		  final Button button = (Button) myActivity.findViewById(R.id.take_a_photo);
-    		  myActivity.runOnUiThread(new Runnable() {
-    		    @Override
-    		    public void run() {
-    		      // click button and open next activity.
-    		      button.performClick();
-    		    }
-    		  });
-
-    		  NextActivity nextActivity = getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 5);
-    		  // next activity is opened and captured.
-    		  assertNotNull(nextActivity);
-    		  nextActivity .finish();
-    		}
     	
     }
     
-    
+	/**
+	* The underSizeReceiptTest method is to test US06.04.01 see if it can retaken receipt
+	*
+	* @param item is the test item and we take photo, see if the photo meet the requirement.
+	* @author  Weijie Sun
+	* @version 1.0
+	* @since   2015-03-08 
+	*/
 
 
     //US06.04.01
@@ -198,6 +228,14 @@ public class Items_Receipts_Test extends ActivityInstrumentationTestCase2<AddEdi
 		assertTrue("undersize", item.getPhotoSize() <= 65536);
 	}
 
+	/**
+	* The saveReceiptTest method is to test US06.04.01 see if it can save the receipt
+	*
+	* @param item is the test item and we take photo, see if the photo meet the requirement.
+	* @author  Weijie Sun
+	* @version 1.0
+	* @since   2015-03-08 
+	*/
 
 
 	protected void saveReceiptTest() {
