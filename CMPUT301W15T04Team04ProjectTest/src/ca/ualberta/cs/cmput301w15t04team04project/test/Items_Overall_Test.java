@@ -4,7 +4,7 @@ import java.util.Date;
 
 import ca.ualberta.cs.cmput301w15t04team04project.AddEditExpenseActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.Claim;
-import ca.ualberta.cs.cmput301w15t04team04project.Item;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import junit.framework.TestCase;
 
 public class Items_Overall_Test extends TestCase {

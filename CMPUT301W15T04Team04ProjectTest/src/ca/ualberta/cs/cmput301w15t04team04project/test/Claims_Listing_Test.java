@@ -11,8 +11,8 @@ import ca.ualberta.cs.cmput301w15t04team04project.AddEditClaimActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.Controller;
-import ca.ualberta.cs.cmput301w15t04team04project.Item;
 import ca.ualberta.cs.cmput301w15t04team04project.Manager;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import junit.framework.TestCase;
 
 public class Claims_Listing_Test extends TestCase {

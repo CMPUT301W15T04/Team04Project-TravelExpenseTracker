@@ -13,10 +13,10 @@ import ca.ualberta.cs.cmput301w15t04team04project.AddEditClaimActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.Destination;
-import ca.ualberta.cs.cmput301w15t04team04project.Item;
 import ca.ualberta.cs.cmput301w15t04team04project.Manager;
 import junit.framework.TestCase;
 import ca.ualberta.cs.cmput301w15t04team04project.R;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import ca.ualberta.cs.lonelytwitter.IntentReaderActivity;
 
 public class Claims_Overall_Test extends

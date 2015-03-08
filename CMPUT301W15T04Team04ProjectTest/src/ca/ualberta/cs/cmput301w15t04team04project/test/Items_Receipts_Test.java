@@ -8,7 +8,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.AddEditClaimActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.AddEditExpenseActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.ClaimList;
-import ca.ualberta.cs.cmput301w15t04team04project.Item;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;

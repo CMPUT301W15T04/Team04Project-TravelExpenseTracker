@@ -13,10 +13,10 @@ import ca.ualberta.cs.cmput301w15t04team04project.AddEditClaimActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.Approval;
 import ca.ualberta.cs.cmput301w15t04team04project.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.ClaimList;
-import ca.ualberta.cs.cmput301w15t04team04project.Item;
 import ca.ualberta.cs.cmput301w15t04team04project.Manager;
 import junit.framework.TestCase;
 import ca.ualberta.cs.cmput301w15t04team04project.ShowClaimDetailActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 
 public class Claims_Status_Test extends
 		ActivityInstrumentationTestCase2<AddEditClaimActivity> {

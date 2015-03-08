@@ -13,9 +13,9 @@ import ca.ualberta.cs.cmput301w15t04team04project.AddEditExpenseActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.Destination;
-import ca.ualberta.cs.cmput301w15t04team04project.Item;
 import ca.ualberta.cs.cmput301w15t04team04project.Manager;
 import ca.ualberta.cs.cmput301w15t04team04project.OneClaimActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import junit.framework.TestCase;
 
 public class Items_Listing_Test extends
