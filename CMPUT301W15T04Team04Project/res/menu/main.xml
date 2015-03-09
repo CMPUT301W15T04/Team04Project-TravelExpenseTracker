@@ -1,19 +1,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="ca.ualberta.cs.cmput301w15t04team04project.MainActivity" >
-    
+
     <item
         android:id="@+id/action_search"
         android:icon="@drawable/ic_action_search"
-        android:title="@string/title_activity_search"
-        android:showAsAction="ifRoom" 
-        android:onClick="goToSearch"/>
-        
+        android:onClick="goToSearch"
+        android:showAsAction="ifRoom"
+        android:title="@string/title_activity_search"/>
     <item
         android:id="@+id/Example"
         android:icon="@drawable/ic_action_new"
-        android:title="Add"
-        android:showAsAction="ifRoom" 
-        android:onClick="goToEditClaim"/>
+        android:onClick="goToEditClaim"
+        android:showAsAction="ifRoom"
+        android:title="Add"/>
 
 </menu>

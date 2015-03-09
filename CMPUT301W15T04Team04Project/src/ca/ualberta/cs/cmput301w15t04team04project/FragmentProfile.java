@@ -25,8 +25,6 @@ public class FragmentProfile extends Fragment {
     @Override  
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		tv = (TextView) getView().findViewById(R.id.titleTv); 
-        tv.setText("Profile"); 
         userName = (TextView) getView().findViewById(R.id.userNameDisplay);
         userName.setText(User.name);
         settingOption = (RadioGroup)getView().findViewById(R.id.settingGroup);

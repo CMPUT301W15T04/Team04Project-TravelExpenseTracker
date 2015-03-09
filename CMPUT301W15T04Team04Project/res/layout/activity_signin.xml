@@ -29,6 +29,7 @@
         android:text="Is Approver"
         tools:ignore="HardcodedText,RtlHardcoded" />
 
+
     <Button
         android:id="@+id/signInButton"
         android:layout_width="wrap_content"
@@ -38,5 +39,4 @@
         android:onClick="signIn"
         android:text="Sign In"
         tools:ignore="HardcodedText,RtlHardcoded" />
-
 </RelativeLayout>

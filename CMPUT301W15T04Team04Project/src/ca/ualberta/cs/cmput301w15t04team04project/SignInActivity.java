@@ -13,14 +13,12 @@ import android.widget.Toast;
 
 public class SignInActivity extends Activity {
 	private EditText userName;
-	private Button signInButton;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_signin);
 		getActionBar().setTitle("Sign In");
 		userName = (EditText) findViewById(R.id.userNameEditText);
-		signInButton  = (Button) findViewById(R.id.signInButton);
 	}
 	
 	public void signIn(View v){
@@ -30,8 +28,6 @@ public class SignInActivity extends Activity {
 		}else{
 			User.name = user;
 			User.loginStatus = true;
-		}
-		if (User.loginStatus == true){
 			Intent intent = new Intent(SignInActivity.this,
 					MainActivity.class);
 			startActivity(intent);

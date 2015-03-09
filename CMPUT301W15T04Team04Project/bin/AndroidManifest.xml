@@ -29,6 +29,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="ca.ualberta.cs.cmput301w15t04team04project.XListViewActivity"
+            android:label="@string/action_settings" >
+        </activity>
+        <activity
             android:name="ca.ualberta.cs.cmput301w15t04team04project.MainActivity"
             android:label="@string/title_activity_main" >
         </activity>

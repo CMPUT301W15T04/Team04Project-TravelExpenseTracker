@@ -6,30 +6,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <fragment
-        android:id="@+id/fragmentMain"
-        android:name="ca.ualberta.cs.cmput301w15t04team04project.FragmentMain"
+    <android.support.v4.view.ViewPager
+        android:id="@+android:id/viewpager"
         android:layout_width="fill_parent"
-        android:layout_height="107dp"
-        android:layout_weight="1.94" />
-
-    <fragment
-        android:id="@+id/FragmentAdd"
-        android:name="ca.ualberta.cs.cmput301w15t04team04project.EditClaimActivity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="10" />
-
-    <fragment
-        android:id="@+id/fragmentProfile"
-        android:name="ca.ualberta.cs.cmput301w15t04team04project.FragmentProfile"
-        android:layout_width="fill_parent"
-        android:layout_height="69dp"
-        android:layout_weight="6.57" />
+        android:layout_height="348dp"
+        android:layout_weight="1.21" >
+    </android.support.v4.view.ViewPager>
 
     <RadioGroup
         android:id="@+id/bottomManu"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0px"
         android:background="@drawable/toolbar_bg"
