@@ -4,15 +4,19 @@ import java.util.Date;
 /**
 * The Claim model is just a rough Claim's information
 * simply store set and get all of the Claim
-*
+* 
+* @param String claimName is to store the name of the claim
 * @author  Weijie Sun
 * @version 1.0
 * @since   2015-03-08 
 */
 public class Claim {
 
+	private String claimName;
+	
 	public Claim(String claimName) {
 		// TODO Auto-generated constructor stub
+		this.claimName = claimName;
 	}
 
 	public void setStatus(String string) {
