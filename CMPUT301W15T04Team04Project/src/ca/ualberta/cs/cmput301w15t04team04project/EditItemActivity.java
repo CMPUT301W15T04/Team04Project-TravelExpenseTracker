@@ -1,12 +1,14 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import ca.ualberta.cs.cmput301w15t04team04project.adapter.ClaimListAdapter;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 
 public class EditItemActivity extends Activity {
-
+	private ClaimListAdapter Adapter;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

@@ -32,17 +32,23 @@ public class FragmentProfile extends Fragment {
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
 				switch (checkedId) {
 				case R.id.MyClaims:
+					Intent intent1 = new Intent(getActivity(),
+							MyClaimActivity.class);
+					startActivity(intent1);
 					break;
 
 				case R.id.waitingList:
+					Intent intent2 = new Intent(getActivity(),
+							MyClaimActivity.class);
+					startActivity(intent2);
 					break;
 
 				case R.id.logOut:
 					User.loginStatus = false;
 					User.name = null;
-					Intent intent = new Intent(getActivity(),
+					Intent intent3 = new Intent(getActivity(),
 							SignInActivity.class);
-					startActivity(intent);
+					startActivity(intent3);
 					break;
 
 				default:
