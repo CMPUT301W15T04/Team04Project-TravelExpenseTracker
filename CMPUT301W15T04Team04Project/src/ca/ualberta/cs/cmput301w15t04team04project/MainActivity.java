@@ -43,8 +43,6 @@ public class MainActivity extends FragmentActivity {
 		List<Fragment> fragments = new Vector<Fragment>();
 		fragments.add(Fragment.instantiate(this, FragmentMain.class.getName()));
 		fragments.add(Fragment.instantiate(this,
-				EditClaimActivity.class.getName()));
-		fragments.add(Fragment.instantiate(this,
 				FragmentProfile.class.getName()));
 		mpageAdapter = new PagerAdapter(this.getSupportFragmentManager(),
 				fragments);
@@ -69,12 +67,12 @@ public class MainActivity extends FragmentActivity {
 					break;
 
 				case R.id.add_menu_button:
-					pager.setCurrentItem(1);
-					num = pager.getCurrentItem();
+					Intent intent = new Intent(MainActivity.this, EditClaimActivity.class);
+					startActivity(intent);
 					break;
 
 				case R.id.profile_menu_button:
-					pager.setCurrentItem(2);
+					pager.setCurrentItem(1);
 					num = pager.getCurrentItem();
 					break;
 
