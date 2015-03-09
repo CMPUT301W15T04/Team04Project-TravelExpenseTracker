@@ -31,6 +31,7 @@ public class SignInActivity extends Activity {
 			Intent intent = new Intent(SignInActivity.this,
 					MainActivity.class);
 			startActivity(intent);
+			finish();
 		}
 	}
 	
