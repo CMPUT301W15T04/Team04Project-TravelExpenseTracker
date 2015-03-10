@@ -73,7 +73,10 @@ public class Claim {
 		items.add(aItem);
 		notifyListener();
 	}
-
+	//http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fswt%2Fwidgets%2FWidget.html
+	/**
+	 * Notifies all of the receiver's listeners for events. 
+	 */
 	private void notifyListener() {
 		for (Listener listener : itemListener) {
 			listener.update();
@@ -91,7 +94,14 @@ public class Claim {
 		items.remove(oldItem);
 		notifyListener();
 	}
-
+	//http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fswt%2Fwidgets%2FWidget.html
+	/**
+	 * 
+	 *Adds the listener to the collection of listeners who will be notified when an event of the given type occurs.
+	 *@param l
+	 *       the new listener
+	  */
+	
 	public void addListener(Listener l) {
 		getListeners().add(l);
 	}
@@ -105,7 +115,12 @@ public class Claim {
 	public Item getPosition(int position) {
 		return items.get(position);
 	}
-
+	//http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fswt%2Fwidgets%2FWidget.html
+	/**
+	 * Removes the listener from the collection of listeners who will be notified when an event of the given type occurs.
+	 * 
+	 * @param l the removed listener .
+	 */
 	public void removeListener(Listener l) {
 		getListeners().remove(l);
 	}
