@@ -7,9 +7,10 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 /**
 * The ClaimList model is design for store Claim objects in order to be used by the view and modified by the controller. 
 *
-* @author  Ji Yang
-* @version 1.0
-* @since   2015-03-09
+ * @author Ji Yang
+ * @author Yang Zhang
+ * @version 1.1
+ * @since 2015-03-09
 */
 
 public class ClaimList {
