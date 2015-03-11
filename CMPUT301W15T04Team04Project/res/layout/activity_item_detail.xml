@@ -9,8 +9,63 @@
     tools:context="ca.ualberta.cs.cmput301w15t04team04project.ItemDetailActivity" >
 
     <TextView
+        android:id="@+id/showItemAmountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignLeft="@+id/showItemNameCTextView"
+        android:layout_alignRight="@+id/showItemNameCTextView"
+        android:layout_below="@+id/showItemNameCTextView"
+        android:layout_marginTop="16dp"
+        android:text="Amount:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/showItemNameCTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Item Name:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/currentItemNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/showItemAmountTextView"
+        android:layout_centerHorizontal="true"
+        android:text="Item Name"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/showItemDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/showItemAmountTextView"
+        android:layout_alignRight="@+id/showItemNameCTextView"
+        android:layout_below="@+id/showItemAmountTextView"
+        android:layout_marginTop="22dp"
+        android:text="Date:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/currentItemAmountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/showItemAmountTextView"
+        android:layout_alignBottom="@+id/showItemAmountTextView"
+        android:layout_alignLeft="@+id/currentItemNameTextView"
+        android:text="$ 998.00"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/currentItemDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/showItemDateTextView"
+        android:layout_alignBottom="@+id/showItemDateTextView"
+        android:layout_alignLeft="@+id/currentItemAmountTextView"
+        android:text="MMM-DD-YYYY"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>
