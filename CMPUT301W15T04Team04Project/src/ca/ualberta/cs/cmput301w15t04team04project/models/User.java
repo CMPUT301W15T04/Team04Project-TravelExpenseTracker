@@ -32,18 +32,57 @@ package ca.ualberta.cs.cmput301w15t04team04project.models;
 */
 
 public class User {
-	public static boolean loginStatus = false;
-	public static String name = null;
+	private boolean loginStatus = false;
+	private String name = null;
 	
 	
 	public User(String userName) {
-		// TODO Auto-generated constructor stub
+		name = userName;
 	}
 	
 	/*public User(){
 	}*/
+	
+	
+	/**
+	* The following two method is the getter and setter for loginStatus attribute
+	* The getter simply get the context in loginStatus
+	* The setter simply change the boolean loginStatus context
+	*
+	* @author  Chenrui Lei
+	* @version 1.0
+	* @since   2015-03-11
+	*/
+	public boolean getLoginStatus(){
+		return loginStatus;
+	}
+	
+	public void changeLoginStatus(){
+		if (loginStatus){
+			loginStatus = false;
+		} else {
+			loginStatus = true;
+		}
+	}
+	
+	/**
+	* The following two method is the getter and setter for name attribute
+	* The getter simply get the context of name
+	* The setter simply change the context of name
+	*
+	* @author  Chenrui Lei
+	* @version 1.0
+	* @since   2015-03-11
+	*/
+	public String getName(){
+		return name;
+	}
+	
+	public void setName(String nameInput){
+		name = nameInput;
+	}
 
-
+	
 	
 	
 }

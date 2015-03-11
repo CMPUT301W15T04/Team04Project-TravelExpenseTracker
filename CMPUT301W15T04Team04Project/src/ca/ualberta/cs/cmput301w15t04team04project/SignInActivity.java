@@ -23,6 +23,7 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
 import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.app.Activity;
 import android.content.Intent;
@@ -35,25 +36,51 @@ import android.widget.Toast;
 
 public class SignInActivity extends Activity {
 	private EditText userName;
+	public static User user;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_signin);
-		getActionBar().setTitle("Sign In");
-		userName = (EditText) findViewById(R.id.userNameEditText);
-	}
-	
-	public void signIn(View v){
-		String user = userName.getText().toString();
-		if(user.length() == 0){
-			Toast.makeText(this, "You must enter your name!" ,Toast.LENGTH_SHORT).show();
-		}else{
-			User.name = user;
-			User.loginStatus = true;
+		// load the old user
+		user = SignInManager.loadFromFile(this,"UserStatus");
+		
+		if (user.getLoginStatus()==true){
+			// skip login page if already loged in
 			Intent intent = new Intent(SignInActivity.this,
 					MainActivity.class);
 			startActivity(intent);
 			finish();
+		} else {
+			setContentView(R.layout.activity_signin);
+			getActionBar().setTitle("Sign In");
+			userName = (EditText) findViewById(R.id.userNameEditText);
+		}
+	}
+	
+	/**
+	 * 
+	 * @author Chenrui Lei, Yufei Zhang 
+	 * @version 1.0
+	 * @since 2015-03-11
+	 */
+	
+	public void signIn(View v){
+		String userNameInput = userName.getText().toString();
+		if(userNameInput.length() == 0){
+			Toast.makeText(this, "You must enter your name!" ,Toast.LENGTH_SHORT).show();
+		}else{
+			// create a new user and change it's longinStatus to true
+			user = new User(userNameInput);
+			user.changeLoginStatus();
+			
+			// goto the main page
+			Intent intent = new Intent(SignInActivity.this,
+					MainActivity.class);
+			startActivity(intent);
+			finish();
+			
+			// store the user info
+			SignInManager.saveInFile(user,this,"UserStatus");
 		}
 	}
 	

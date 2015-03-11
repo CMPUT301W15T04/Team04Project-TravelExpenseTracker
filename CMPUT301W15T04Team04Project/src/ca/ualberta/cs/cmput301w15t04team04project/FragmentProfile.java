@@ -20,6 +20,7 @@
 */
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.os.Bundle;
 import android.app.Activity;
@@ -37,6 +38,8 @@ public class FragmentProfile extends Fragment {
 	private TextView tv;
 	private TextView userName;
 	private RadioGroup settingOption;
+	private User user = SignInActivity.user;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -46,7 +49,7 @@ public class FragmentProfile extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
         userName = (TextView) getView().findViewById(R.id.userNameDisplay);
-        userName.setText(User.name);
+        userName.setText(user.getName());
         settingOption = (RadioGroup)getView().findViewById(R.id.settingGroup);
         settingOption.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -64,11 +67,27 @@ public class FragmentProfile extends Fragment {
 					break;
 
 				case R.id.logOut:
-					User.loginStatus = false;
-					User.name = null;
+					/**
+					* Modify the following code
+					*
+					* @author  Chenrui Lei
+					* @version 1.0
+					* @since   2015-03-11
+					*/
+					// change the user info as not logged in
+					user.changeLoginStatus();
+					user.setName(null);
+					
+					// store the user info
+					SignInManager.saveInFile(user,getActivity(),"UserStatus");
+					
+					// go back to signIn page
 					Intent intent3 = new Intent(getActivity(),
 							SignInActivity.class);
 					startActivity(intent3);
+					
+					// stop current view
+					getActivity().finish();
 					break;
 
 				default:

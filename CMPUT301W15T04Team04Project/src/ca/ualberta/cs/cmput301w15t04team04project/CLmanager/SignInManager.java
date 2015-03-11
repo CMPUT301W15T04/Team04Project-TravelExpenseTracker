@@ -21,15 +21,17 @@ import android.app.Activity;
 import android.content.Context;
 
 public class SignInManager{
-	private static String FILENAME = "UserStatus";
-	private User user = new User(null);
+	//private static String FILENAME = "UserStatus";
+	public static User user = new User(null);
 
 	public SignInManager()	{
 	}
 	
 	
-	public User loadFromFile(Context context)
+	public static User loadFromFile(Context context, String FILENAME)
 	{
+		User user = new User(null);
+		
 		Gson gson = new Gson();
 		try{
 			FileInputStream fis = context.openFileInput(FILENAME);
@@ -53,7 +55,7 @@ public class SignInManager{
 
 	
 	
-	public void saveInFile(Context context)
+	public static void saveInFile(User user, Context context, String FILENAME)
 	{
 
 		Gson gson = new Gson();
