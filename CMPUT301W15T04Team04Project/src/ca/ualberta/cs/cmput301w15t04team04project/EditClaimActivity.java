@@ -22,6 +22,8 @@ package ca.ualberta.cs.cmput301w15t04team04project;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 public class EditClaimActivity extends Activity {
 
@@ -31,7 +33,7 @@ public class EditClaimActivity extends Activity {
 		super.onCreate(savedInstanceState);
 	}
 	
-	/*
+	
 	@Override
 	
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -41,6 +43,11 @@ public class EditClaimActivity extends Activity {
 	}
 
 	public void confirm(MenuItem item) {
+		/**
+		 * before the finish, we need to add functions for 
+		 * 1. save the changes of a new claim
+		 * 2. edit an existed claim
+		 **/
 		finish();
-	}*/
+	}
 }

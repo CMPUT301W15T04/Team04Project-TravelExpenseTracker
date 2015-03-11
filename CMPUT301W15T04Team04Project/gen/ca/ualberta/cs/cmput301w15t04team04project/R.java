@@ -68,11 +68,11 @@ public final class R {
     public static final class id {
         public static final int Destination=0x7f0a0024;
         public static final int EndTime=0x7f0a0000;
-        public static final int Example=0x7f0a0038;
         public static final int MyClaims=0x7f0a001c;
         public static final int StartTime=0x7f0a0023;
         public static final int TotalAmount=0x7f0a0025;
         public static final int action_accept=0x7f0a0036;
+        public static final int action_new=0x7f0a0038;
         public static final int action_newItme=0x7f0a003a;
         public static final int action_search=0x7f0a0037;
         public static final int action_searchOC=0x7f0a0039;
