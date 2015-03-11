@@ -21,7 +21,9 @@
 
 package ca.ualberta.cs.cmput301w15t04team04project.CLmanager;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import org.apache.http.HttpResponse;
@@ -34,12 +36,15 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.entity.StringEntity;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
+import ca.ualberta.cs.cmput301w15t04team04project.network.data.SearchResponse;
 
+import java.lang.reflect.Type;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 public class CLmanager {
 	private static final String RESOURCE_URL = "http://cmput301.softwareprocess.es:8080/cmput301w15t04/";
-	private Gson gson = new Gson();
+	private static Gson gson;
 	private static HttpClient httpClient = new DefaultHttpClient();
 
 	public CLmanager() {
@@ -113,14 +118,15 @@ public class CLmanager {
 		Claim claim = null;
 		try {
 			getResponse = httpClient.execute(getRequest);
+			String json = getEntityContent(getResponse);
 			// We have to tell GSON what type we expect
-			/*
-			 * Type elasticSearchResponseType = new
-			 * TypeToken<ElasticSearchResponse<Recipe>>() { }.getType(); // Now
-			 * we expect to get a Recipe response ElasticSearchResponse<Recipe>
-			 * esResponse = gson.fromJson(json, elasticSearchResponseType); //
-			 * We get the recipe from it! claim = esResponse.getSource();
-			 */
+			Type responseType = new TypeToken<SearchResponse<Claim>>() {
+			}.getType();
+			// Now we expect to get a Recipe response
+			SearchResponse<Claim> esResponse = gson
+					.fromJson(json, responseType);
+			// We get the recipe from it!
+			claim = esResponse.getSource();
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -135,6 +141,17 @@ public class CLmanager {
 			claimList.addClaim(getClaim(Id, string));
 		}
 		return claimList;
+	}
+
+	public static String getEntityContent(HttpResponse response) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(
+				(response.getEntity().getContent())));
+		String output = "";
+		String json = "";
+		while ((output = br.readLine()) != null) {
+			json += output;
+		}
+		return json;
 	}
 	// private SearchHit<Claim> parseClaimHit(HttpResponse response) {
 	// TODO Auto-generated method stub
