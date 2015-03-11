@@ -85,7 +85,7 @@ public final class R {
         public static final int claimState=0x7f0a0031;
         public static final int consSpinner=0x7f0a001e;
         public static final int contectTagsTextView=0x7f0a001d;
-        public static final int currentClaimNameCTextView1=0x7f0a0002;
+        public static final int currentClaimNameCTextView=0x7f0a0002;
         public static final int desplayTags=0x7f0a0030;
         public static final int editClaimName=0x7f0a0008;
         public static final int fromdatePicker=0x7f0a000a;
