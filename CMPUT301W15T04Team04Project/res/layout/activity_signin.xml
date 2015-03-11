@@ -8,35 +8,33 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ca.ualberta.cs.cmput301w15t04team04project.SignInActivity" >
 
-    <EditText
-        android:id="@+id/userNameEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="71dp"
-        android:ems="10"
-        android:hint="User Name"
-        android:inputType="textPersonName"
-        tools:ignore="HardcodedText" />
-
-    <CheckBox
-        android:id="@+id/isApproverCheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/userNameEditText"
-        android:layout_below="@+id/userNameEditText"
-        android:text="Is Approver"
-        tools:ignore="HardcodedText,RtlHardcoded" />
-
-
-    <Button
-        android:id="@+id/signInButton"
+    <TextView
+        android:id="@+id/signInTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="48dp"
+        android:clickable="true"
         android:onClick="signIn"
         android:text="Sign In"
-        tools:ignore="HardcodedText,RtlHardcoded" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/userNameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/signInTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="60dp"
+        android:ems="10"
+        android:hint="User Name"
+        android:inputType="textPersonName"
+        tools:ignore="HardcodedText,RtlHardcoded" >
+
+        <requestFocus />
+    </EditText>
+
 </RelativeLayout>
