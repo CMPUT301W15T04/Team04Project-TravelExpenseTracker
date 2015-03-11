@@ -20,21 +20,77 @@
 */
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import java.util.Date;
+
+import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class EditClaimActivity extends Activity {
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.Toast;
 
-	
+
+public class EditClaimActivity extends Activity {
+	EditText claimName;
+	EditText description;
+	EditText tag;
+	EditText destinationandReason;
+	DatePicker fromDatePicker;
+	DatePicker toDatePicker;
+	Button confirm;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_claim);
+
+		claimName =(EditText) findViewById(R.id.editClaimName);
+		description=(EditText) findViewById(R.id.addDescription);
+		tag=(EditText) findViewById(R.id.addTag);
+		destinationandReason=(EditText) findViewById(R.id.addDestinationandReason);
+		fromDatePicker= (DatePicker) findViewById(R.id.fromdatePicker);
+		toDatePicker= (DatePicker) findViewById(R.id.todatePicker);
+		confirm = (Button) findViewById(R.id.action_accept);
+		confirm.setOnClickListener(new AddClaim());
+		
+	}
+	public class AddClaim implements OnClickListener {
+
+		@SuppressWarnings("deprecation")
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			Date sDate = new Date();
+			Date eDate = new Date();
+			sDate.setYear(fromDatePicker.getYear() - 1900);
+			sDate.setMonth(fromDatePicker.getMonth());
+			sDate.setDate(fromDatePicker.getDayOfMonth());
+			eDate.setYear(toDatePicker.getYear() - 1900);
+			eDate.setMonth(toDatePicker.getMonth());
+			eDate.setDate(toDatePicker.getDayOfMonth());
+			Claim claim = new Claim(claimName.getText().toString());
+			claim.setDescription(description.getText().toString());
+			claim.setStartDate(sDate);
+			claim.setEndDate(eDate);
+			Toast.makeText(EditClaimActivity.this, "Added", Toast.LENGTH_LONG)
+			.show();
+
+	Intent intent = new Intent(EditClaimActivity.this,
+			MainActivity.class);
+	
+	startActivity(intent);
+			
+		}
+
 	}
 	
-	
+
 	@Override
 	
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -43,12 +99,6 @@ public class EditClaimActivity extends Activity {
 		return true;
 	}
 
-	public void confirm(MenuItem item) {
-		/**
-		 * before the finish, we need to add functions for 
-		 * 1. add a new claim
-		 * 2. save the changes of an existed claim
-		 **/
-		finish();
-	}
+
+
 }

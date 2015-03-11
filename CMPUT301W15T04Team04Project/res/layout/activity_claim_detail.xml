@@ -24,10 +24,10 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/showClaimNameCTextView"
         android:layout_below="@+id/showClaimNameCTextView"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_toLeftOf="@+id/currentClaimNameCTextView"
         android:text="Start Date:"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText,RtlHardcoded" />
 
     <TextView
         android:id="@+id/textView"
@@ -39,7 +39,7 @@
         android:layout_toLeftOf="@+id/currentClaimNameCTextView"
         android:text="End Date:"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText,RtlHardcoded" />
 
     <TextView
         android:id="@+id/currentClaimNameCTextView"
@@ -50,7 +50,7 @@
         android:layout_toRightOf="@+id/showClaimNameCTextView"
         android:text="The Name of the Claim"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText,RtlHardcoded" />
 
     <TextView
         android:id="@+id/showClaimStatusCTextView"
@@ -61,7 +61,8 @@
         android:layout_marginTop="10dp"
         android:layout_toLeftOf="@+id/currentClaimNameCTextView"
         android:text="Status:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText,RtlHardcoded" />
 
     <TextView
         android:id="@+id/showClaimTagsCTextView"
@@ -72,14 +73,94 @@
         android:layout_marginTop="10dp"
         android:layout_toLeftOf="@+id/currentClaimNameCTextView"
         android:text="Tags:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText,RtlHardcoded" />
 
     <ListView
-        android:id="@+id/listView1"
+        android:id="@+id/showClaimTagsCListView"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_alignLeft="@+id/showClaimTagsCTextView"
-        android:layout_below="@+id/showClaimTagsCTextView" >
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/showClaimTagsCTextView"
+        tools:ignore="RtlHardcoded" >
+
     </ListView>
+
+    <EditText
+        android:id="@+id/showClaimTagsCEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/showClaimTagsCListView"
+        android:layout_alignRight="@+id/showClaimTagsCListView"
+        android:layout_below="@+id/showClaimTagsCListView"
+        android:ems="10"
+        android:hint="Add Tags (Split by comma)"
+        tools:ignore="HardcodedText,RtlHardcoded" />
+
+    <TextView
+        android:id="@+id/showDestinamtionsCTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/showClaimTagsCEditText"
+        android:layout_below="@+id/showClaimTagsCEditText"
+        android:layout_marginTop="10dp"
+        android:text="Destinations:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
+
+    <ListView
+        android:id="@+id/showDestinationCListView"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/showDestinamtionsCTextView" >
+
+    </ListView>
+
+    <EditText
+        android:id="@+id/showDestinationsCEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/showDestinationCListView"
+        android:ems="10"
+        android:hint="Add Destn (Destn (reason)\nSplit by Enter)"
+        android:inputType="textMultiLine"
+        tools:ignore="HardcodedText" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/currentClaimSDCTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/showStartDateCTextView"
+        android:layout_alignBottom="@+id/showStartDateCTextView"
+        android:layout_alignLeft="@+id/currentClaimNameCTextView"
+        android:text="MMM-DD-YYYY"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/currentClaimEDCTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_alignLeft="@+id/currentClaimSDCTextView"
+        android:text="MMM-DD-YYYY"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/currentClaimStatusCTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/showClaimStatusCTextView"
+        android:layout_alignLeft="@+id/currentClaimEDCTextView"
+        android:text="Processing"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>
