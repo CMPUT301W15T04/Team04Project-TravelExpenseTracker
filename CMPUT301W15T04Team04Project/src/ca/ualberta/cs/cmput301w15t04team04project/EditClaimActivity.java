@@ -45,6 +45,7 @@ public class EditClaimActivity extends Activity {
 	DatePicker fromDatePicker;
 	DatePicker toDatePicker;
 	Button confirm;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -57,9 +58,15 @@ public class EditClaimActivity extends Activity {
 		fromDatePicker= (DatePicker) findViewById(R.id.fromdatePicker);
 		toDatePicker= (DatePicker) findViewById(R.id.todatePicker);
 		confirm = (Button) findViewById(R.id.action_accept);
-		confirm.setOnClickListener(new AddClaim());
+		//confirm.setOnClickListener(new AddClaim());
+		/**
+		 * you don't need this line confirm.setOnClickListener(new AddClaim());
+		 * because what we use is the function called confirm
+		 * confirm(MenuItem item) is what you need to add code on
+		**/
 		
 	}
+/*	
 	public class AddClaim implements OnClickListener {
 
 		@SuppressWarnings("deprecation")
@@ -81,24 +88,32 @@ public class EditClaimActivity extends Activity {
 			Toast.makeText(EditClaimActivity.this, "Added", Toast.LENGTH_LONG)
 			.show();
 
-	Intent intent = new Intent(EditClaimActivity.this,
-			MainActivity.class);
-	
+	Intent intent = new Intent(EditClaimActivity.this,MainActivity.class);
 	startActivity(intent);
 			
 		}
 
 	}
-	
+	*/
 
 	@Override
-	
+	/**
+	 * Do not delete this because the MenuItem need this
+	**/
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.edit_claim, menu);
 		return true;
 	}
 
-
+	public void confirm(MenuItem item) {
+		/**
+		 * Do not DELETE this function !!!!!!!!!
+		 * you need to add code here to save the changes of a claim
+		 * it is used for adding a new claim 
+		 * also, it is used for editing a claim
+		 **/
+		finish();
+	}
 
 }
