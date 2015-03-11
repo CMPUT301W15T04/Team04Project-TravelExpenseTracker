@@ -15,7 +15,7 @@
         android:layout_alignLeft="@+id/showItemNameCTextView"
         android:layout_alignRight="@+id/showItemNameCTextView"
         android:layout_below="@+id/showItemNameCTextView"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="15dp"
         android:text="Amount:"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -44,7 +44,7 @@
         android:layout_alignLeft="@+id/showItemAmountTextView"
         android:layout_alignRight="@+id/showItemNameCTextView"
         android:layout_below="@+id/showItemAmountTextView"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="15dp"
         android:text="Date:"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
@@ -67,5 +67,73 @@
         android:layout_alignLeft="@+id/currentItemAmountTextView"
         android:text="MMM-DD-YYYY"
         android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/showItemCateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/showItemDateTextView"
+        android:layout_below="@+id/showItemDateTextView"
+        android:layout_marginTop="15dp"
+        android:text="Category:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/currentItemCateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/showItemCateTextView"
+        android:layout_alignLeft="@+id/currentItemDateTextView"
+        android:text="Tranpotation"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/showDescripTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/showItemCateTextView"
+        android:layout_below="@+id/showItemCateTextView"
+        android:layout_marginTop="15dp"
+        android:text="Description:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/currentDescripTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/showDescripTextView"
+        android:layout_below="@+id/showDescripTextView"
+        android:layout_marginTop="5dp"
+        android:text="I have a lot of things to say: hahahahahahahahahahahahaha"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <ImageView
+        android:id="@+id/currentRecieptImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/showReTextView"
+        android:layout_alignRight="@+id/currentDescripTextView"
+        android:layout_below="@+id/showReTextView"
+        android:src="@drawable/ic_reciept" />
+
+    <TextView
+        android:id="@+id/showReTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/currentDescripTextView"
+        android:layout_below="@+id/currentDescripTextView"
+        android:layout_marginTop="60dp"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <RadioButton
+        android:id="@+id/showFlagRadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/currentRecieptImageView"
+        android:layout_alignRight="@+id/currentRecieptImageView"
+        android:layout_below="@+id/currentRecieptImageView"
+        android:text="Incomplete" />
 
 </RelativeLayout>
