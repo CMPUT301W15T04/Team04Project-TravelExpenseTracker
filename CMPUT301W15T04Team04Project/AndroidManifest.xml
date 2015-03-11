@@ -69,6 +69,18 @@
             android:name="ca.ualberta.cs.cmput301w15t04team04project.FragmentProfile"
             android:label="@string/title_activity_fragment_profile" >
         </activity>
+        <activity
+            android:name="ca.ualberta.cs.cmput301w15t04team04project.FragementEditClaim2"
+            android:label="@string/title_activity_edit_claim_activity2" >
+        </activity>
+        <activity
+            android:name="ca.ualberta.cs.cmput301w15t04team04project.FragementEditClaimActivity1"
+            android:label="@string/title_activity_fragement_edit_claim_activity1" >
+        </activity>
+        <activity
+            android:name="ca.ualberta.cs.cmput301w15t04team04project.FragmentEditItem1"
+            android:label="@string/title_activity_fragment_edit_item1" >
+        </activity>
     </application>
 
 </manifest>

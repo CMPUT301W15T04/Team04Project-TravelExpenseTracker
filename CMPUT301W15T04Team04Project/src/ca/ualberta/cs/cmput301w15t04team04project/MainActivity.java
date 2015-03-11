@@ -60,7 +60,7 @@ public class MainActivity extends FragmentActivity {
 		
 		// TODO click on a claim and show what is inside this claim
 		/**
-		 * mainly we have two missions
+		 * we have two missions
 		 * 1. click on a claim and go to the OneClaimActivity to show what is inside this claim
 		 * 2. long click on a claim and we can choose whether to delete it or not
 		 **/

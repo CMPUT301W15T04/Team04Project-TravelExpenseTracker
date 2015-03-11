@@ -7,12 +7,12 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical" >
 
-    <android.support.v4.view.ViewPager
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <ca.ualberta.cs.cmput301w15t04team04project.View.NoSwipeViewPager
         android:id="@+id/editClaimActivityPager"
-        android:layout_width="match_parent"
-        android:layout_height="264dp"
-        android:layout_weight="0.62" />
+        android:layout_width="fill_parent"
+        android:layout_height="348dp"
+        android:layout_weight="1.21" >
+    </ca.ualberta.cs.cmput301w15t04team04project.View.NoSwipeViewPager>
 
     <RadioGroup
         android:id="@+id/editClaimBottomMenu"
@@ -28,16 +28,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:drawableTop="@drawable/home_icon"
-            android:text="@string/menu_home" />
+            android:text="Basic Info" />
 
         <RadioButton
             android:id="@+id/editClaimNext"
             style="@style/main_menu_bottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableTop="@drawable/user_icon"
-            android:text="@string/menu_profile" />
+            android:text="Advanced Info" />
     </RadioGroup>
 
 </LinearLayout>

@@ -78,7 +78,7 @@ public class FragmentMain extends Fragment implements IXListViewListener{
 	private void onLoad() {
 		mListView.stopRefresh();
 		mListView.stopLoadMore();
-		mListView.setRefreshTime("刚刚");
+		mListView.setRefreshTime("Just now");
 	}
 
 	@Override

@@ -19,10 +19,14 @@
     <string name="title_activity_fragment_main">FragmentMain</string>
     <string name="title_activity_fragment_profile">FragmentProfile</string>
     <string name="action_search">search</string>
-    <string name="listview_header_hint_normal">PulltoRefresh</string>  
-    <string name="listview_header_hint_ready">Releasetoloadmore</string>  
-    <string name="listview_header_hint_loading">loading</string>  
-    <string name="listview_header_last_time">last update：</string>  
-    <string name="listview_footer_hint_normal">See more</string>  
-    <string name="listview_footer_hint_ready">Releasetoloadmore</string>  
+    <string name="listview_header_hint_normal">PulltoRefresh</string>
+    <string name="listview_header_hint_ready">Releasetoloadmore</string>
+    <string name="listview_header_hint_loading">loading</string>
+    <string name="listview_header_last_time">last update：</string>
+    <string name="listview_footer_hint_normal">See more</string>
+    <string name="listview_footer_hint_ready">Releasetoloadmore</string>
+    <string name="title_activity_edit_claim_activity2">EditClaimActivity</string>
+    <string name="title_activity_fragement_edit_claim_activity1">EditClaimActivity</string>
+    <string name="title_activity_fragment_edit_item1">FragmentEditItem1</string>
+
 </resources>
