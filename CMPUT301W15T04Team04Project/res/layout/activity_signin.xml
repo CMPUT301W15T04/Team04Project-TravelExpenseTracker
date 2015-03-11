@@ -13,8 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="48dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="110dp"
         android:clickable="true"
         android:onClick="signIn"
         android:text="Sign In"
@@ -25,16 +25,12 @@
         android:id="@+id/userNameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/signInTextView"
+        android:layout_alignBaseline="@+id/signInTextView"
+        android:layout_alignBottom="@+id/signInTextView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="60dp"
         android:ems="10"
         android:hint="User Name"
         android:inputType="textPersonName"
-        tools:ignore="HardcodedText,RtlHardcoded" >
-
-        <requestFocus />
-    </EditText>
+        tools:ignore="HardcodedText,RtlHardcoded" />
 
 </RelativeLayout>
