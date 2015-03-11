@@ -7,14 +7,14 @@
     android:orientation="vertical" >
 
     <ca.ualberta.cs.cmput301w15t04team04project.View.NoSwipeViewPager
-        android:id="@+id/viewpager"
+        android:id="@+id/mainActivityPager"
         android:layout_width="fill_parent"
         android:layout_height="348dp"
         android:layout_weight="1.21" >
     </ca.ualberta.cs.cmput301w15t04team04project.View.NoSwipeViewPager>
 
     <RadioGroup
-        android:id="@+id/bottomManu"
+        android:id="@+id/mainActivityBottomMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0px"

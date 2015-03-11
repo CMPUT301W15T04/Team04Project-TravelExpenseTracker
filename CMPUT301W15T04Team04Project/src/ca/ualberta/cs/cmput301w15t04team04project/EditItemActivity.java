@@ -32,7 +32,7 @@ public class EditItemActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_edit_item);
+		setContentView(R.layout.fragment_edit_item_1);
 	}
 
 	@Override

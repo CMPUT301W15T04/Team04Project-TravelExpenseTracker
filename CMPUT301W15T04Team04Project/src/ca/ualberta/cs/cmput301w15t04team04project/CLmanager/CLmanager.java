@@ -18,12 +18,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package ca.ualberta.cs.cmput301w15t04team04project.CLmanager;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
@@ -31,7 +31,6 @@ import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.DefaultClientConnection;
 import org.apache.http.entity.StringEntity;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
@@ -115,13 +114,13 @@ public class CLmanager {
 		try {
 			getResponse = httpClient.execute(getRequest);
 			// We have to tell GSON what type we expect
-			/*Type elasticSearchResponseType = new TypeToken<ElasticSearchResponse<Recipe>>() {
-			}.getType();
-			// Now we expect to get a Recipe response
-			ElasticSearchResponse<Recipe> esResponse = gson.fromJson(json,
-					elasticSearchResponseType);
-			// We get the recipe from it!
-			claim = esResponse.getSource();*/
+			/*
+			 * Type elasticSearchResponseType = new
+			 * TypeToken<ElasticSearchResponse<Recipe>>() { }.getType(); // Now
+			 * we expect to get a Recipe response ElasticSearchResponse<Recipe>
+			 * esResponse = gson.fromJson(json, elasticSearchResponseType); //
+			 * We get the recipe from it! claim = esResponse.getSource();
+			 */
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
