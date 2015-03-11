@@ -70,8 +70,8 @@ public class ClaimListAdapter extends ArrayAdapter<Claim> {
 			
 		}
 		return convertView;
-		holder.startDate.setText(claim.getStartDate().getDate());
-		holder.endDate.setText(claim.getEndDate().getDate());
+		//holder.startDate.setText(claim.getStartDate().getDate());
+		//holder.endDate.setText(claim.getEndDate().getDate());
 		//holder.tags
 		//holder.destination = claim.getDestination()
 		//holder.claimState = claim.getStatus();
