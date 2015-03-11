@@ -8,29 +8,32 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ca.ualberta.cs.cmput301w15t04team04project.SignInActivity" >
 
+    <EditText
+        android:id="@+id/userNameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="114dp"
+        android:ems="10"
+        android:hint="User Name"
+        android:inputType="textPersonName"
+        tools:ignore="HardcodedText,RtlHardcoded" >
+
+        <requestFocus />
+    </EditText>
+
     <TextView
         android:id="@+id/signInTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="110dp"
+        android:layout_below="@+id/userNameEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
         android:clickable="true"
         android:onClick="signIn"
         android:text="Sign In"
         android:textAppearance="?android:attr/textAppearanceMedium"
         tools:ignore="HardcodedText" />
-
-    <EditText
-        android:id="@+id/userNameEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/signInTextView"
-        android:layout_alignBottom="@+id/signInTextView"
-        android:layout_alignParentLeft="true"
-        android:ems="10"
-        android:hint="User Name"
-        android:inputType="textPersonName"
-        tools:ignore="HardcodedText,RtlHardcoded" />
 
 </RelativeLayout>

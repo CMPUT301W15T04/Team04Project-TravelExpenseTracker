@@ -8,12 +8,20 @@ package ca.ualberta.cs.cmput301w15t04team04project.models;
 * @version 1.0
 * @since   2015-03-08 
 */
+
 public class User {
+	public static boolean loginStatus = false;
+	public static String name = null;
+	
+	
 	public User(String userName) {
 		// TODO Auto-generated constructor stub
 	}
+	
+	/*public User(){
+	}*/
 
-	public static boolean loginStatus = false;
 
-	public static String name = null;
+	
+	
 }
