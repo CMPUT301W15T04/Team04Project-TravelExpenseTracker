@@ -31,6 +31,7 @@ public class EditClaimActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_edit_claim);
 	}
 	
 	
@@ -45,8 +46,8 @@ public class EditClaimActivity extends Activity {
 	public void confirm(MenuItem item) {
 		/**
 		 * before the finish, we need to add functions for 
-		 * 1. save the changes of a new claim
-		 * 2. edit an existed claim
+		 * 1. add a new claim
+		 * 2. save the changes of an existed claim
 		 **/
 		finish();
 	}
