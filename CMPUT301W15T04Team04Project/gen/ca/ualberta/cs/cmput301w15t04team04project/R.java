@@ -137,7 +137,7 @@ public final class R {
         public static final int showDestinationsCEditText=0x7f0a000a;
         public static final int showStartDateCTextView=0x7f0a0001;
         public static final int showTags=0x7f0a0051;
-        public static final int signInTextView=0x7f0a002f;
+        public static final int signInTextView=0x7f0a0030;
         public static final int startDateTextView=0x7f0a0035;
         public static final int tagEditText=0x7f0a003d;
         public static final int testApproverTextView=0x7f0a002a;
@@ -153,7 +153,7 @@ public final class R {
         public static final int toDatePicker=0x7f0a0037;
         public static final int toDateTextView=0x7f0a0036;
         public static final int userNameDisplay=0x7f0a0044;
-        public static final int userNameEditText=0x7f0a0030;
+        public static final int userNameEditText=0x7f0a002f;
         public static final int waitingList=0x7f0a0042;
         public static final int xListView=0x7f0a003e;
         public static final int xListView2=0x7f0a0046;

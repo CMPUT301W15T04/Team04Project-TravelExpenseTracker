@@ -107,8 +107,8 @@ public class EditClaimActivity extends FragmentActivity {
 		Button confirm = (Button) findViewById(R.id.action_accept);
 		// Controller clc = new Controller();
 		claim.setClaim(claimName.getText().toString());
-		claim.setDescription(description);
-		claim.setTag(tag);
+		//claim.setDescription(description);
+		//claim.setTag(tag);
 		// clc.addClaim(claim);
 		Toast.makeText(EditClaimActivity.this, "Added", Toast.LENGTH_LONG)
 				.show();
