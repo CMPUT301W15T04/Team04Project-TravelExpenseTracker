@@ -77,6 +77,7 @@ public final class R {
         public static final int action_search=0x7f0a0052;
         public static final int action_searchOC=0x7f0a0054;
         public static final int action_settings=0x7f0a0050;
+        public static final int addCommentsEditText=0x7f0a0013;
         public static final int addDescription=0x7f0a0021;
         public static final int addDestinationandReason=0x7f0a0025;
         public static final int addTag=0x7f0a0023;
@@ -95,7 +96,6 @@ public final class R {
         public static final int currentClaimStatusCTextView=0x7f0a000d;
         public static final int desplayTags=0x7f0a0044;
         public static final int editClaimName=0x7f0a001b;
-        public static final int editText1=0x7f0a0013;
         public static final int fromdatePicker=0x7f0a001d;
         public static final int gridLayout1=0x7f0a003c;
         public static final int jamptomain=0x7f0a0026;
