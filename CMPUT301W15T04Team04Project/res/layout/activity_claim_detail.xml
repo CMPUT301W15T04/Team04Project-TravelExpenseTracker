@@ -9,9 +9,77 @@
     tools:context="ca.ualberta.cs.cmput301w15t04team04project.ClaimDetailActivity" >
 
     <TextView
+        android:id="@+id/showClaimNameCTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Detail of a Claim\nClaimant"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Claim Name:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText,RtlHardcoded" />
+
+    <TextView
+        android:id="@+id/showStartDateCTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/showClaimNameCTextView"
+        android:layout_below="@+id/showClaimNameCTextView"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@+id/currentClaimNameCTextView"
+        android:text="Start Date:"
         tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/showStartDateCTextView"
+        android:layout_below="@+id/showStartDateCTextView"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@+id/currentClaimNameCTextView"
+        android:text="End Date:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/currentClaimNameCTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/showStartDateCTextView"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/showClaimNameCTextView"
+        android:text="The Name of the Claim"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/showClaimStatusCTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@+id/currentClaimNameCTextView"
+        android:text="Status:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/showClaimTagsCTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/showClaimStatusCTextView"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@+id/currentClaimNameCTextView"
+        android:text="Tags:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignLeft="@+id/showClaimTagsCTextView"
+        android:layout_below="@+id/showClaimTagsCTextView" >
+    </ListView>
 
 </RelativeLayout>
