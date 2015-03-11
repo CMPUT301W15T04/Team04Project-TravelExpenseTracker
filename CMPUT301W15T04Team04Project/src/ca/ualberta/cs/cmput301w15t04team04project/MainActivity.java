@@ -105,20 +105,9 @@ public class MainActivity extends FragmentActivity {
 		});
 	}
 
-	/*
-	 * @Override public boolean onPrepareOptionsMenu(Menu menu) {
-	 * 
-	 * if (pager.getCurrentItem() == 0) {
-	 * menu.findItem(R.id.action_search).setVisible(false); } return
-	 * super.onPrepareOptionsMenu(menu); }
-	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		if (num == 0){
-			getMenuInflater().inflate(R.menu.main, menu);
-			MenuInflater inflater = getMenuInflater();
-			inflater.inflate(R.menu.main, menu);
-		}
+		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 

@@ -6,13 +6,13 @@
         android:id="@+id/action_search"
         android:icon="@drawable/ic_action_search"
         android:onClick="goToSearch"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         android:title="@string/title_activity_search"/>
     <item
-        android:id="@+id/Example"
+        android:id="@+id/action_new"
         android:icon="@drawable/ic_action_new"
         android:onClick="goToEditClaim"
-        android:showAsAction="ifRoom"
-        android:title="Add"/>
+        android:showAsAction="always"
+        android:title="Add New Claim"/>
 
 </menu>
