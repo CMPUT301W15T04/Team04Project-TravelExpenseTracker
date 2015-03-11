@@ -170,14 +170,17 @@ public final class R {
         public static final int activity_search=0x7f030009;
         public static final int activity_signin=0x7f03000a;
         public static final int fragment_edit_claim_1=0x7f03000b;
-        public static final int fragment_main=0x7f03000c;
-        public static final int fragment_profile=0x7f03000d;
-        public static final int list_item=0x7f03000e;
-        public static final int main=0x7f03000f;
-        public static final int single_claim=0x7f030010;
-        public static final int title_bar=0x7f030011;
-        public static final int xlistview_footer=0x7f030012;
-        public static final int xlistview_header=0x7f030013;
+        public static final int fragment_edit_claim_2=0x7f03000c;
+        public static final int fragment_edit_item_1=0x7f03000d;
+        public static final int fragment_edit_item_2=0x7f03000e;
+        public static final int fragment_main=0x7f03000f;
+        public static final int fragment_profile=0x7f030010;
+        public static final int list_item=0x7f030011;
+        public static final int main=0x7f030012;
+        public static final int single_claim=0x7f030013;
+        public static final int title_bar=0x7f030014;
+        public static final int xlistview_footer=0x7f030015;
+        public static final int xlistview_header=0x7f030016;
     }
     public static final class menu {
         public static final int claim_detail=0x7f090000;
