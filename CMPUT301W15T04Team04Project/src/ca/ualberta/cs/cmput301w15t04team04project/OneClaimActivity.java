@@ -38,7 +38,7 @@ public class OneClaimActivity extends Activity {
 		Intent intent = new Intent(OneClaimActivity.this, EditItemActivity.class);
 		startActivity(intent);
 	}
-	
+
 	public void showClaimDetailC(View view) {
 		isClaimant = true;
 		
@@ -59,7 +59,7 @@ public class OneClaimActivity extends Activity {
 			}
 		});
 		
-		adb.setPositiveButton("Confirm", new OnClickListener() {
+		adb.setNegativeButton("Confirm", new OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				Toast.makeText(OneClaimActivity.this, "Clicked On Confirm" ,Toast.LENGTH_SHORT).show();
 				/**

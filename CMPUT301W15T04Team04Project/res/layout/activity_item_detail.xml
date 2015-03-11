@@ -29,15 +29,6 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/currentItemNameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/showItemAmountTextView"
-        android:layout_centerHorizontal="true"
-        android:text="Item Name"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
         android:id="@+id/showItemDateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -135,5 +126,15 @@
         android:layout_alignRight="@+id/currentRecieptImageView"
         android:layout_below="@+id/currentRecieptImageView"
         android:text="Incomplete" />
+
+    <TextView
+        android:id="@+id/currentItemNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/showItemAmountTextView"
+        android:layout_alignRight="@+id/currentDescripTextView"
+        android:layout_marginRight="70dp"
+        android:text="Item Name"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>

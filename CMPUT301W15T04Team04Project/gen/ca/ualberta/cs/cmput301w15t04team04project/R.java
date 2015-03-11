@@ -78,6 +78,7 @@ public final class R {
         public static final int action_search=0x7f0a006a;
         public static final int action_searchOC=0x7f0a006c;
         public static final int action_settings=0x7f0a0068;
+        public static final int addCommentItemEditText=0x7f0a002d;
         public static final int addCommentsEditText=0x7f0a0011;
         public static final int add_menu_button=0x7f0a0031;
         public static final int claimDescriptionTextView=0x7f0a0042;
@@ -97,10 +98,10 @@ public final class R {
         public static final int currentClaimStatusATextView=0x7f0a0013;
         public static final int currentClaimStatusCTextView=0x7f0a000b;
         public static final int currentDescripTextView=0x7f0a0029;
-        public static final int currentItemAmountTextView=0x7f0a0024;
+        public static final int currentItemAmountTextView=0x7f0a0023;
         public static final int currentItemCateTextView=0x7f0a0027;
         public static final int currentItemDateTextView=0x7f0a0025;
-        public static final int currentItemNameTextView=0x7f0a0022;
+        public static final int currentItemNameTextView=0x7f0a0024;
         public static final int currentRecieptImageView=0x7f0a002a;
         public static final int dateEndDisplay=0x7f0a0055;
         public static final int dateStartDisplay=0x7f0a0053;
@@ -119,7 +120,6 @@ public final class R {
         public static final int fromDatePicker=0x7f0a003e;
         public static final int fromDateTextView=0x7f0a003d;
         public static final int gridLayout1=0x7f0a0051;
-        public static final int jamptomain=0x7f0a002d;
         public static final int linearLayout1=0x7f0a005a;
         public static final int list_item_textview=0x7f0a004f;
         public static final int logOut=0x7f0a004d;
@@ -147,7 +147,7 @@ public final class R {
         public static final int showFlagRadioButton=0x7f0a002c;
         public static final int showItemAmountTextView=0x7f0a0003;
         public static final int showItemCateTextView=0x7f0a0026;
-        public static final int showItemDateTextView=0x7f0a0023;
+        public static final int showItemDateTextView=0x7f0a0022;
         public static final int showItemNameCTextView=0x7f0a0021;
         public static final int showReTextView=0x7f0a002b;
         public static final int showStartDateCTextView=0x7f0a0001;

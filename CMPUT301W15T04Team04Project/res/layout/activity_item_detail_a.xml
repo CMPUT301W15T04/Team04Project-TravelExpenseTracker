@@ -8,14 +8,138 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <Button
-        android:id="@+id/jamptomain"
+    <TextView
+        android:id="@+id/showItemAmountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/showItemNameCTextView"
+        android:layout_alignRight="@+id/showItemNameCTextView"
+        android:layout_below="@+id/showItemNameCTextView"
+        android:layout_marginTop="15dp"
+        android:text="Amount:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/showItemNameCTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="56dp"
-        android:text="Button"
-        tools:ignore="HardcodedText,RtlHardcoded" />
+        android:text="Item Name:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/showItemDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/showItemAmountTextView"
+        android:layout_alignRight="@+id/showItemNameCTextView"
+        android:layout_below="@+id/showItemAmountTextView"
+        android:layout_marginTop="15dp"
+        android:text="Date:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/currentItemAmountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/showItemAmountTextView"
+        android:layout_alignBottom="@+id/showItemAmountTextView"
+        android:layout_alignLeft="@+id/currentItemNameTextView"
+        android:text="$ 998.00"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/currentItemDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/showItemDateTextView"
+        android:layout_alignBottom="@+id/showItemDateTextView"
+        android:layout_alignLeft="@+id/currentItemAmountTextView"
+        android:text="MMM-DD-YYYY"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/showItemCateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/showItemDateTextView"
+        android:layout_below="@+id/showItemDateTextView"
+        android:layout_marginTop="15dp"
+        android:text="Category:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/currentItemCateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/showItemCateTextView"
+        android:layout_alignLeft="@+id/currentItemDateTextView"
+        android:text="Tranpotation"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/showDescripTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/showItemCateTextView"
+        android:layout_below="@+id/showItemCateTextView"
+        android:layout_marginTop="15dp"
+        android:text="Description:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/currentDescripTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/showDescripTextView"
+        android:layout_below="@+id/showDescripTextView"
+        android:layout_marginTop="5dp"
+        android:text="I have a lot of things to say: hahahahahahahahahahahahaha"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <ImageView
+        android:id="@+id/currentRecieptImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/showReTextView"
+        android:layout_alignRight="@+id/currentDescripTextView"
+        android:layout_below="@+id/showReTextView"
+        android:src="@drawable/ic_reciept" />
+
+    <TextView
+        android:id="@+id/showReTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/currentDescripTextView"
+        android:layout_below="@+id/currentDescripTextView"
+        android:layout_marginTop="60dp"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/currentItemNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/showItemAmountTextView"
+        android:layout_alignRight="@+id/currentDescripTextView"
+        android:layout_marginRight="70dp"
+        android:text="Item Name"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <EditText
+        android:id="@+id/addCommentItemEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/currentRecieptImageView"
+        android:ems="10"
+        android:hint="You can add some comments"
+        android:inputType="textMultiLine" >
+
+        <requestFocus />
+    </EditText>
 
 </RelativeLayout>
