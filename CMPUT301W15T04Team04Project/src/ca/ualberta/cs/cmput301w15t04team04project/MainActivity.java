@@ -75,7 +75,7 @@ public class MainActivity extends FragmentActivity {
 		mpageAdapter = new PagerAdapter(this.getSupportFragmentManager(),
 				fragments);
 
-		pager = (ViewPager) findViewById(R.id.viewpager);
+		pager = (ViewPager) findViewById(R.id.mainActivityPager);
 		pager.setAdapter(mpageAdapter);
 		setFragmentIndicator();
 		num = pager.getCurrentItem();
@@ -83,7 +83,7 @@ public class MainActivity extends FragmentActivity {
 
 	private void setFragmentIndicator() {
 
-		bottom_Rg = (RadioGroup) findViewById(R.id.bottomManu);
+		bottom_Rg = (RadioGroup) findViewById(R.id.mainActivityBottomMenu);
 		bottom_Rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 			@Override

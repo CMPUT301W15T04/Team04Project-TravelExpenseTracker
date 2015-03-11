@@ -7,81 +7,37 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/editClaimName"
+    <android.support.v4.view.ViewPager
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/editClaimActivityPager"
+        android:layout_width="match_parent"
+        android:layout_height="264dp"
+        android:layout_weight="0.62" />
+
+    <RadioGroup
+        android:id="@+id/editClaimBottomMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="New Claim Name" >
+        android:layout_marginBottom="0px"
+        android:background="@drawable/toolbar_bg"
+        android:orientation="horizontal" >
 
-        <requestFocus />
-    </EditText>
+        <RadioButton
+            android:id="@+id/editClaimPrevious"
+            style="@style/main_menu_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:drawableTop="@drawable/home_icon"
+            android:text="@string/menu_home" />
 
-    <TextView
-        android:id="@+id/signInTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="From:"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <DatePicker
-        android:id="@+id/fromdatePicker"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/startDateTextView"
-        android:calendarViewShown="false" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="To:"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <DatePicker
-        android:id="@+id/todatePicker"
-        android:layout_width="match_parent"
-        android:layout_height="88dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/startDateTextView"
-        android:calendarViewShown="false" />
-
-    <EditText
-        android:id="@+id/addDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Description for this claim" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tag:"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <EditText
-        android:id="@+id/addTag"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Enter tags (seperate by comma)" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Destination &amp; Reason:"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <EditText
-        android:id="@+id/addDestinationandReason"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:ems="10"
-        android:hint="Enter in format:Destination(Reason)" />
+        <RadioButton
+            android:id="@+id/editClaimNext"
+            style="@style/main_menu_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/user_icon"
+            android:text="@string/menu_profile" />
+    </RadioGroup>
 
 </LinearLayout>
