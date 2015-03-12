@@ -29,13 +29,14 @@ import android.widget.AdapterView.OnItemLongClickListener;
 
 public class MyClaimActivity extends Activity {
 
+	private ArrayList<String> claims = new ArrayList<String>();
+
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_my_claim);
-		
 
-    	
 /*    	CLmanager.initManager(this.getApplicationContext());
  
 		ListView listView = (ListView) findViewById(R.id.claimListView);
@@ -50,21 +51,28 @@ public class MyClaimActivity extends Activity {
 		*/
     	// should be changed
 		//List<Claim> claims = CLmanager.getClaimList().getClaimList();
-	
+/*	
 		List<Claim> claims = null;
-
+		
 		Claim AClaim = new Claim("AClaim");
 		Claim BClaim = new Claim("BClaim");	
 		claims.add(AClaim);
-		claims.add(BClaim);
+		claims.add(BClaim);*/
+		
+		for (int i=0;i<10;i++){
+			
+			claims.add("claims" + i);
+		}
 		
     	ListView listView = (ListView) findViewById(R.id.MyClaimslistView);
-		
-		final ArrayList<Claim> list = new ArrayList<Claim>(claims);
-		final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, list);
+
+		//final ArrayList<Claim> list = new ArrayList<Claim>(claims);
+		final ArrayList<String> list = new ArrayList<String>(claims);
+		//final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, list);
+		final ArrayAdapter<String> claimAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
+
 		listView.setAdapter(claimAdapter);
 		claimAdapter.notifyDataSetChanged();
-		
 		
 /*    	CLmanager.getClaimList().addListener(new Listener(){
     		@Override
@@ -85,14 +93,11 @@ public class MyClaimActivity extends Activity {
 			public boolean onItemLongClick(AdapterView<?> adapterView, View view,
 					int position, long id) {
 				final int finalPosition = position;
-				Claim claim = list.get(finalPosition);
+				//Claim claim = list.get(finalPosition);
 				AlertDialog.Builder adb = new AlertDialog.Builder(MyClaimActivity.this);
 				//adb.setMessage(claim.getClaim()+" total cost \n"+claim.getAmount()+"\n From "+claim.getStartDate()+" to "+claim.getEndDate());
 				adb.setCancelable(true);
-				
-				
-				
-				//
+
 				adb.setNeutralButton("Edit", new OnClickListener(){
 					public void onClick(DialogInterface dialog, int which){
 						
@@ -100,13 +105,10 @@ public class MyClaimActivity extends Activity {
 						Intent myintent = new Intent(MyClaimActivity.this, OneClaimActivity.class);
 						myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						myintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-						myintent.putExtra("id", finalPosition);
-		
-
+						//myintent.putExtra("id", finalPosition);
 				    	startActivity(myintent);
 				}
 
-			
 				});
 				
 		          

@@ -14,13 +14,11 @@ public class FragmentEditItem2 extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-<<<<<<< Updated upstream
+
 		return inflater
 				.inflate(R.layout.fragment_edit_item_2, container, false);
 
-=======
-		return inflater.inflate(R.layout.fragment_edit_item_2, container, false);
->>>>>>> Stashed changes
+
 	}
 
 	@Override
