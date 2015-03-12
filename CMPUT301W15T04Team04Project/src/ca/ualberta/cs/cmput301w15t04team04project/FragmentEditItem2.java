@@ -9,6 +9,14 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * This is the fragment part 2 for adding/editing an item.
+ * 
+ * @author Ji Yang
+ * @author Yang Zhang
+ * @version 1.0
+ * @since 2015-03-10
+ */
 public class FragmentEditItem2 extends Fragment {
 
 	@Override

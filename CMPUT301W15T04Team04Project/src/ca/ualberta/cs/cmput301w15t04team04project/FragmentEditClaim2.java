@@ -9,6 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+/**
+ * This is the fragment part 2 for adding/editing a claim.
+ * 
+ * @author Ji Yang
+ * @author Yang Zhang
+ * @version 1.0
+ * @since 2015-03-10
+ */
 public class FragmentEditClaim2 extends Fragment {
 
 	@Override

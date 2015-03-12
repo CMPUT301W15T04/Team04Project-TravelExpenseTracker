@@ -36,11 +36,28 @@ import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
+/**
+ * This is the activity for adding/editing an item.
+ * 
+ * @author Ji Yang
+ * @author Yang Zhang
+ * @version 1.0
+ * @since 2015-03-10
+ */
 public class EditItemActivity extends FragmentActivity {
 	private RadioGroup bottom_Rg;
 	private PagerAdapter mpageAdapter;
 	private ViewPager pager;
 
+	/**
+	 * Initializing the activity. Call the initialisePaging() function to allow
+	 * the pager
+	 * 
+	 * 
+	 * @author Ji Yang
+	 * @version 1.0
+	 * @since 2015-03-10
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -52,8 +69,12 @@ public class EditItemActivity extends FragmentActivity {
 	}
 
 	/**
-	 * initialisePaging is using for create a tab when we edit an item
-	 **/
+	 * Initializing the pager for loading Fragments
+	 * 
+	 * @author Ji Yang
+	 * @version 1.0
+	 * @since 2015-03-10
+	 */
 	private void initialisePaging() {
 		// TODO Auto-generated method stub
 		List<Fragment> fragments = new Vector<Fragment>();
@@ -68,6 +89,13 @@ public class EditItemActivity extends FragmentActivity {
 		setFragmentIndicator();
 	}
 
+	/**
+	 * setFragmentIndicator
+	 * 
+	 * @author Ji Yang
+	 * @version 1.0
+	 * @since 2015-03-10
+	 */
 	private void setFragmentIndicator() {
 
 		bottom_Rg = (RadioGroup) findViewById(R.id.editItemBottomMenu);
