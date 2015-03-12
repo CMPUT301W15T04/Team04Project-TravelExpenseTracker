@@ -51,6 +51,16 @@ public class Claim {
 	protected User ApproverName;
 	protected User ClaimiantName;
 	protected String Comment;
+	protected String totalCurrency;
+	
+	public int getTotalCurrency() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	public void setTotalCurrency(String totalCurrency) {
+		this.totalCurrency = totalCurrency;
+	}
 
 	/**
 	 * add new destination of this claim
@@ -368,9 +378,8 @@ public class Claim {
 	 * @param tag
 	 *            a new tag of this claim
 	 */
-	public void setTag(String[] taglist) {
-		for (int i = 0; i < taglist.length; i++)
-			this.tag.add(taglist[i]);
+	public void setTag(String tag) {
+		this.tag.add(tag);
 	}
 
 	/**
@@ -381,6 +390,9 @@ public class Claim {
 	public ArrayList<Destination> getDestination() {
 		return destination;
 	}
+
+	
+
 
 
 
