@@ -21,6 +21,7 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.SignInController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.os.Bundle;
 import android.app.Activity;
@@ -39,6 +40,8 @@ public class FragmentProfile extends Fragment {
 	private TextView userName;
 	private RadioGroup settingOption;
 	private User user = SignInActivity.user;
+	
+	private SignInController signInController = new SignInController();
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -74,12 +77,7 @@ public class FragmentProfile extends Fragment {
 					* @version 1.0
 					* @since   2015-03-11
 					*/
-					// change the user info as not logged in
-					user.changeLoginStatus();
-					user.setName(null);
-					
-					// store the user info
-					SignInManager.saveInFile(user,getActivity(),"UserStatus");
+					signInController.logOut(getActivity());
 					
 					// go back to signIn page
 					Intent intent3 = new Intent(getActivity(),
