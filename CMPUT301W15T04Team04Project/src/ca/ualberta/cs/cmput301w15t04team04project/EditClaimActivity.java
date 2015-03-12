@@ -42,22 +42,39 @@ public class EditClaimActivity extends FragmentActivity {
 	private RadioGroup bottom_Rg;
 	private PagerAdapter mpageAdapter;
 	private ViewPager pager;
-	
 
+	/**
+	 * Initializing the activity. Call the initialisePaging() function to allow
+	 * the pager
+	 * 
+	 * 
+	 * @author Ji Yang
+	 * @version 1.0
+	 * @since 2015-03-10
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_claim);
 		initialisePaging();
 
-
 	}
+
+	/**
+	 * Initializing the pager load Fragmen
+	 * 
+	 * @author Ji Yang
+	 * @version 1.0
+	 * @since 2015-03-10
+	 */
 	private void initialisePaging() {
+
 		// TODO Auto-generated method stub
 		List<Fragment> fragments = new Vector<Fragment>();
-		fragments.add(Fragment.instantiate(this, FragementEditClaim1.class.getName()));
 		fragments.add(Fragment.instantiate(this,
-				FragementEditClaim2.class.getName()));
+				FragmentEditClaim1.class.getName()));
+		fragments.add(Fragment.instantiate(this,
+				FragmentEditClaim2.class.getName()));
 		mpageAdapter = new PagerAdapter(this.getSupportFragmentManager(),
 				fragments);
 		pager = (ViewPager) findViewById(R.id.editClaimActivityPager);
@@ -66,6 +83,14 @@ public class EditClaimActivity extends FragmentActivity {
 
 	}
 
+	/**
+	 * This intent can finish since no necessary to keep it running the
+	 * following code has been modified
+	 * 
+	 * @author Ji Yang
+	 * @version 1.0
+	 * @since 2015-03-10
+	 */
 	private void setFragmentIndicator() {
 
 		bottom_Rg = (RadioGroup) findViewById(R.id.editClaimBottomMenu);
@@ -89,6 +114,7 @@ public class EditClaimActivity extends FragmentActivity {
 			}
 		});
 	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -96,6 +122,15 @@ public class EditClaimActivity extends FragmentActivity {
 		return true;
 	}
 
+	/**
+	 * This intent can finish since no necessary to keep it running the
+	 * following code has been modified
+	 * 
+	 * @author Chenrui Lei
+	 * @author Ji Yang
+	 * @version 1.1
+	 * @since 2015-03-12
+	 */
 	public void confirm(MenuItem item) {
 		Claim claim = new Claim(null);
 		EditText claimName = (EditText) findViewById(R.id.claimNameEditText);
@@ -104,27 +139,21 @@ public class EditClaimActivity extends FragmentActivity {
 		EditText destinationandReason = (EditText) findViewById(R.id.destinationandReasonEditText);
 		DatePicker fromDatePicker = (DatePicker) findViewById(R.id.fromDatePicker);
 		DatePicker toDatePicker = (DatePicker) findViewById(R.id.toDatePicker);
-		//Button confirm = (Button) findViewById(R.id.action_accept); // Bug cause by this 2015-3-12
+		// Button confirm = (Button) findViewById(R.id.action_accept); // Bug
+		// cause by this 2015-3-12
 		// Controller clc = new Controller();
 		claim.setClaim(claimName.getText().toString());
-		//claim.setDescription(description);
-		//claim.setTag(tag);
+		// claim.setDescription(description);
+		// claim.setTag(tag);
 		// clc.addClaim(claim);
-		
-		/**
-		 * This intent can finish since no necessary to keep it running
-		 * the following code has been modified
-		 * 
-		 * @author Chenrui Lei
-		 * @version 1.0
-		 * @since 2015-03-12
-		 */
+
 		Toast.makeText(EditClaimActivity.this, "Added", Toast.LENGTH_LONG)
 				.show();
 		/*
-		Intent intent = new Intent(EditClaimActivity.this, MainActivity.class);
-		// Controller.saveClaimList();
-		startActivity(intent);*/
+		 * Intent intent = new Intent(EditClaimActivity.this,
+		 * MainActivity.class); // Controller.saveClaimList();
+		 * startActivity(intent);
+		 */
 		finish();
 	}
 

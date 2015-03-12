@@ -70,7 +70,7 @@
             android:label="@string/title_activity_fragment_profile" >
         </activity>
         <activity
-            android:name=".FragementEditClaim2"
+            android:name=".FragmentEditClaim2"
             android:label="@string/title_activity_edit_claim_activity2" >
         </activity>
         <activity
