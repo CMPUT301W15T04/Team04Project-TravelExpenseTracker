@@ -28,5 +28,6 @@
     <string name="title_activity_edit_claim_activity2">EditClaimActivity</string>
     <string name="title_activity_fragement_edit_claim_activity1">EditClaimActivity</string>
     <string name="title_activity_fragment_edit_item1">FragmentEditItem1</string>
+    <string name="title_activity_my_claim">MyClaimActivity</string>
 
 </resources>

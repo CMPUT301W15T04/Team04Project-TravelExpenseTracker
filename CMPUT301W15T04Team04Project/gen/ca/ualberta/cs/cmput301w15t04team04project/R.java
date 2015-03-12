@@ -186,7 +186,7 @@ public final class R {
         public static final int activity_item_detail=0x7f030004;
         public static final int activity_item_detail_a=0x7f030005;
         public static final int activity_main=0x7f030006;
-        public static final int activity_my_claims=0x7f030007;
+        public static final int activity_my_claim=0x7f030007;
         public static final int activity_one_claim=0x7f030008;
         public static final int activity_search=0x7f030009;
         public static final int activity_signin=0x7f03000a;
@@ -214,9 +214,10 @@ public final class R {
         public static final int fragment_profile=0x7f090007;
         public static final int item_detail=0x7f090008;
         public static final int main=0x7f090009;
-        public static final int one_claim=0x7f09000a;
-        public static final int search=0x7f09000b;
-        public static final int signin=0x7f09000c;
+        public static final int my_claim=0x7f09000a;
+        public static final int one_claim=0x7f09000b;
+        public static final int search=0x7f09000c;
+        public static final int signin=0x7f09000d;
     }
     public static final class string {
         public static final int action_search=0x7f070011;
@@ -244,6 +245,7 @@ public final class R {
         public static final int title_activity_fragment_profile=0x7f070010;
         public static final int title_activity_item_detail=0x7f07000a;
         public static final int title_activity_main=0x7f070004;
+        public static final int title_activity_my_claim=0x7f07001b;
         public static final int title_activity_one_claim=0x7f070007;
         public static final int title_activity_search=0x7f070005;
     }
