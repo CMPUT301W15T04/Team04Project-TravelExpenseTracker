@@ -44,29 +44,31 @@ public class EditItemActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//setContentView(R.layout.activity_edit_item);
-		setContentView(R.layout.fragment_edit_item_1);
-		//setContentView(R.layout.activity_edit_item);
-		//initialisePaging();
+		setContentView(R.layout.activity_edit_item);
+		//setContentView(R.layout.fragment_edit_item_1);
+		//setContentView(R.layout.fragment_edit_item_2);
+		initialisePaging();
 
 		
 	}
+	
+	/**
+	 * initialisePaging is using for create a tab when we edit an item
+	 **/
 	private void initialisePaging() {
 		// TODO Auto-generated method stub
 		List<Fragment> fragments = new Vector<Fragment>();
 		fragments.add(Fragment.instantiate(this, FragmentEditItem1.class.getName()));
-		fragments.add(Fragment.instantiate(this,
-				FragmentEditItem2.class.getName()));
-		mpageAdapter = new PagerAdapter(this.getSupportFragmentManager(),
-				fragments);
+		fragments.add(Fragment.instantiate(this,FragmentEditItem2.class.getName()));
+		mpageAdapter = new PagerAdapter(this.getSupportFragmentManager(),fragments);
 		pager = (ViewPager) findViewById(R.id.editItemActivityPager);
 		pager.setAdapter(mpageAdapter);
-		setFragmentIndicator();
+		//setFragmentIndicator();
 	}
 	
 	private void setFragmentIndicator() {
 
-		bottom_Rg = (RadioGroup) findViewById(R.id.editClaimBottomMenu);
+		bottom_Rg = (RadioGroup) findViewById(R.id.editItemBottomMenu);
 		bottom_Rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 			@Override
@@ -87,6 +89,7 @@ public class EditItemActivity extends FragmentActivity {
 			}
 		});
 	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -95,6 +98,11 @@ public class EditItemActivity extends FragmentActivity {
 	}
 
 	public void confirm(MenuItem item) {
+		/**
+		 * we need to add code here doing the following things
+		 * 1. Add a new item to the current claim
+		 * 2. Update the changes of the chosen item
+		 **/
 		finish();
 	}
 }

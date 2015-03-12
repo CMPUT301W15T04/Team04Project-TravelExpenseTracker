@@ -70,11 +70,8 @@ public class MainActivity extends FragmentActivity {
 		// TODO Auto-generated method stub
 		List<Fragment> fragments = new Vector<Fragment>();
 		fragments.add(Fragment.instantiate(this, FragmentMain.class.getName()));
-		fragments.add(Fragment.instantiate(this,
-				FragmentProfile.class.getName()));
-		mpageAdapter = new PagerAdapter(this.getSupportFragmentManager(),
-				fragments);
-
+		fragments.add(Fragment.instantiate(this,FragmentProfile.class.getName()));
+		mpageAdapter = new PagerAdapter(this.getSupportFragmentManager(),fragments);
 		pager = (ViewPager) findViewById(R.id.mainActivityPager);
 		pager.setAdapter(mpageAdapter);
 		setFragmentIndicator();
