@@ -7,13 +7,6 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical" >
 
-   <TextView
-       android:id="@+id/claimNameTextView"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="Name"
-       android:textAppearance="?android:attr/textAppearanceLarge" />
-
     <EditText
         android:id="@+id/claimNameEditText"
         android:layout_width="match_parent"
@@ -55,13 +48,14 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/startDateTextView"
         android:calendarViewShown="false" />
-   <TextView
-       android:id="@+id/claimDescriptionTextView"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="Description"
-       android:textAppearance="?android:attr/textAppearanceLarge" />
-    
+
+    <TextView
+        android:id="@+id/claimDescriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
     <EditText
         android:id="@+id/descriptionEditText"
         android:layout_width="match_parent"

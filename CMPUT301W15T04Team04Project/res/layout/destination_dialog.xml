@@ -4,37 +4,12 @@
     android:layout_height="match_parent" >
 
     <TextView
-        android:id="@+id/claimTagTextView"
+        android:id="@+id/destinationDialogTextView"
+        style="android:LargeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="Tag"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <EditText
-        android:id="@+id/tagEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/claimTagTextView"
-        android:ems="10"
-        android:hint="Enter tags (seperate by comma)" />
-
-    <Button
-        android:id="@+id/addDestinationButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tagEditText"
-        android:text="Add a new destination" />
-
-    <TextView
-        android:id="@+id/claimDestinationTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/addDestinationButton"
         android:text="Destination"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -43,7 +18,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/claimDestinationTextView"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/destinationDialogTextView"
         android:ems="10" />
 
     <TextView
@@ -58,21 +34,14 @@
     <EditText
         android:id="@+id/destinationDialogReasonEditTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/destinationDialogReasonTextView"
         android:ems="10"
         android:inputType="textMultiLine" >
 
         <requestFocus />
     </EditText>
-
-    <ListView
-        android:id="@+id/destinationListView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/destinationDialogReasonEditTextView" >
-    </ListView>
 
 </RelativeLayout>
