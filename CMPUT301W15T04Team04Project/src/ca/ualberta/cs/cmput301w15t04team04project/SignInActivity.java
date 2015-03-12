@@ -37,8 +37,9 @@ import android.widget.Toast;
 
 public class SignInActivity extends Activity {
 	private EditText userName;
+	private SignInController controller = new SignInController();
+	
 	public static User user;
-	private SignInController signInConroller;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -60,31 +61,15 @@ public class SignInActivity extends Activity {
 	}
 	
 	/**
+	 * signIn function is use to react when check_action in action bar been click
 	 * 
 	 * @author Chenrui Lei
 	 * @author Yufei Zhang 
 	 * @version 1.0
 	 * @since 2015-03-11
 	 */
-	
 	public void signIn(View v){
-		String userNameInput = userName.getText().toString();
-		if(userNameInput.length() == 0){
-			Toast.makeText(this, "You must enter your name!" ,Toast.LENGTH_SHORT).show();
-		}else{
-			// create a new user and change it's longinStatus to true
-			user = new User(userNameInput);
-			user.changeLoginStatus();
-			
-			// goto the main page
-			Intent intent = new Intent(SignInActivity.this,
-					MainActivity.class);
-			startActivity(intent);
-			finish();
-			
-			// store the user info
-			SignInManager.saveInFile(user,this,"UserStatus");
-		}
+		controller.signIn(this,userName);
 	}
 	
 }
