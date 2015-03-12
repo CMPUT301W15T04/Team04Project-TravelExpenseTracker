@@ -1,17 +1,111 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ca.ualberta.cs.cmput301w15t04team04project.EditItemActivity" >
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Show and edit the detail of an itme"
-        tools:ignore="HardcodedText" />
-
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:paddingBottom="@dimen/activity_vertical_margin"
+  android:paddingLeft="@dimen/activity_horizontal_margin"
+  android:paddingRight="@dimen/activity_horizontal_margin"
+  android:paddingTop="@dimen/activity_vertical_margin"
+  tools:context="ca.ualberta.cs.cmput301w15t04team04project.EditItemActivity" >
+  
+  <EditText
+    android:id="@+id/itemNameEditText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentTop="true"
+    android:ems="10"
+    android:hint="Item Name" >
+    
+    <requestFocus />
+  </EditText>
+  
+  <EditText
+  android:id="@+id/itemCurrencyEeditText"
+  android:layout_width="200dp"
+  android:layout_height="wrap_content"
+  android:layout_alignParentRight="true"
+  android:layout_below="@+id/itemAmountTextView"
+  android:layout_toRightOf="@+id/currencyUnitsSpinner"
+  android:ems="10"
+  android:hint="998.0"
+  android:inputType="numberDecimal" />
+  
+  <DatePicker
+  android:id="@+id/itemDateDatePicker"
+  android:layout_width="match_parent"
+  android:layout_height="86dp"
+  android:layout_alignLeft="@+id/tiemDateTextView"
+  android:layout_below="@+id/tiemDateTextView"
+  android:calendarViewShown="false" />
+  
+  <Spinner
+  android:id="@+id/itemCategorySpinner"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:layout_alignLeft="@+id/itemTypeTextView"
+  android:layout_alignParentRight="true"
+  android:layout_below="@+id/itemTypeTextView"
+  android:entries="@array/categories" />
+  
+  <TextView
+  android:id="@+id/itemTypeTextView"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:layout_alignLeft="@+id/itemDateDatePicker"
+  android:layout_below="@+id/itemDateDatePicker"
+  android:layout_marginTop="15dp"
+  android:text="Category:"
+  android:textAppearance="?android:attr/textAppearanceSmall" />
+  
+  <TextView
+  android:id="@+id/tiemDateTextView"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:layout_alignLeft="@+id/itemNameEditText"
+  android:layout_below="@+id/itemNameEditText"
+  android:layout_marginTop="15dp"
+  android:text="Date:"
+  android:textAppearance="?android:attr/textAppearanceSmall" />
+  
+  <Spinner
+  android:id="@+id/currencyUnitsSpinner"
+  android:layout_width="90dp"
+  android:layout_height="35dp"
+  android:layout_alignLeft="@+id/itemAmountTextView"
+  android:layout_below="@+id/itemAmountTextView"
+  android:entries="@array/currencyUnits" />
+  
+  <TextView
+  android:id="@+id/itemAmountTextView"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:layout_alignLeft="@+id/itemCategorySpinner"
+  android:layout_below="@+id/itemCategorySpinner"
+  android:layout_marginTop="15dp"
+  android:text="Amount:" />
+  
+  <EditText
+  android:id="@+id/editText"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:layout_alignLeft="@+id/itemDtextView"
+  android:layout_alignParentBottom="true"
+  android:layout_alignRight="@+id/itemCurrencyEeditText"
+  android:layout_below="@+id/itemDtextView"
+  android:ems="10"
+  android:hint="Enter the Description of this Item"
+  android:inputType="textMultiLine" />
+  
+  <TextView
+  android:id="@+id/itemDtextView"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:layout_alignLeft="@+id/currencyUnitsSpinner"
+  android:layout_below="@+id/itemCurrencyEeditText"
+  android:layout_marginTop="18dp"
+  android:text="Description:"
+  android:textAppearance="?android:attr/textAppearanceSmall" />
+  
 </RelativeLayout>

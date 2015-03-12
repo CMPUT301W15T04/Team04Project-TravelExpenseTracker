@@ -44,8 +44,10 @@ public class EditItemActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_edit_item);
-		initialisePaging();
+		//setContentView(R.layout.activity_edit_item);
+		setContentView(R.layout.fragment_edit_item_1);
+		//setContentView(R.layout.activity_edit_item);
+		//initialisePaging();
 
 		
 	}
