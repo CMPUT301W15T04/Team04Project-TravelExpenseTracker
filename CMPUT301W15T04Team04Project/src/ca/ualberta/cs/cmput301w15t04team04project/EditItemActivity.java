@@ -32,8 +32,10 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 /**
@@ -120,6 +122,14 @@ public class EditItemActivity extends FragmentActivity {
 		});
 	}
 
+	
+	/**
+	 * active the Menu
+	 * 
+	 * @author Yufei Zhang
+	 * @version 1.0
+	 * @since 2015-03-03
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -127,11 +137,34 @@ public class EditItemActivity extends FragmentActivity {
 		return true;
 	}
 
+	/**
+	 * active the cofirm button
+	 * 
+	 * @author Yufei Zhang
+	 * @version 1.0
+	 * @since 2015-03-02
+	 */
 	public void confirm(MenuItem item) {
 		/**
-		 * we need to add code here doing the following things 1. Add a new item
-		 * to the current claim 2. Update the changes of the chosen item
+		 * we need to add code here doing the following things:
+		 * 1. Add a new item to the current claim
+		 * 2. Update the changes of the chosen item
 		 **/
 		finish();
+	}
+	
+	/**
+	 * active the camera button
+	 * 
+	 * @author Yufei Zhang
+	 * @version 1.0
+	 * @since 2015-03-02
+	 */
+	public void addReciept(View view) {
+		/**
+		 * we need to add code here doing the following things 
+		 * 1. Add a new reciept and show it on this imageView
+		 **/
+		Toast.makeText(EditItemActivity.this, "Add a Reciept" ,Toast.LENGTH_SHORT).show();
 	}
 }
