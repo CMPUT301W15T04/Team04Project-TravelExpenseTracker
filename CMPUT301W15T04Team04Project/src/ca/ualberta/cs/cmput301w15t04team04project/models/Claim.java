@@ -43,9 +43,9 @@ public class Claim {
 	protected Date endDate;
 	protected String status;
 	protected String description;
-	protected Destination destination;
+	protected ArrayList<Destination> destination;
 	protected ArrayList<Item> items;
-	protected ArrayList<String> amount;
+	protected ArrayList<String> tag;
 	protected transient ArrayList<Listener> itemListener;
 
 	/**
@@ -271,30 +271,30 @@ public class Claim {
 	}
 
 	/**
-	 * get the amount of this claim
-	 * 
-	 * @return amount
+	 * get the tag of this claim
+	 * s
+	 * @return tag
 	 */
-	public ArrayList<String> getAmount() {
-		return amount;
+	public ArrayList<String> getTag() {
+		return tag;
 	}
 
 	/**
-	 * set the amount of this claim
+	 * set the tag of this claim
 	 * 
-	 * @param amount
-	 *            the amount of this claim
+	 * @param tag
+	 *            a new tag of this claim
 	 */
-	public void setAmount(ArrayList<String> amount) {
-		this.amount = amount;
+	public void setTag(String tag) {
+		this.tag.add(tag);
 	}
 
 	/**
-	 * get the destination of this claim
+	 * get the destinations of this claim
 	 * 
 	 * @return destination
 	 */
-	public Destination getDestination() {
+	public ArrayList<Destination> getDestination() {
 		return destination;
 	}
 
@@ -304,7 +304,7 @@ public class Claim {
 	 * @param destination
 	 *            the destination of this claim
 	 */
-	public void setDestination(Destination destination) {
-		this.destination = destination;
+	public void setDestination(Destination dest) {
+		this.destination.add(dest);
 	}
 }
