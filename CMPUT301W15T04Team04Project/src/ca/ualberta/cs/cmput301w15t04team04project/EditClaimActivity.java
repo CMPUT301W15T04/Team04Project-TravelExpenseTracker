@@ -104,17 +104,28 @@ public class EditClaimActivity extends FragmentActivity {
 		EditText destinationandReason = (EditText) findViewById(R.id.destinationandReasonEditText);
 		DatePicker fromDatePicker = (DatePicker) findViewById(R.id.fromDatePicker);
 		DatePicker toDatePicker = (DatePicker) findViewById(R.id.toDatePicker);
-		Button confirm = (Button) findViewById(R.id.action_accept);
+		//Button confirm = (Button) findViewById(R.id.action_accept); // Bug cause by this 2015-3-12
 		// Controller clc = new Controller();
 		claim.setClaim(claimName.getText().toString());
 		//claim.setDescription(description);
 		//claim.setTag(tag);
 		// clc.addClaim(claim);
+		
+		/**
+		 * This intent can finish since no necessary to keep it running
+		 * the following code has been modified
+		 * 
+		 * @author Chenrui Lei
+		 * @version 1.0
+		 * @since 2015-03-12
+		 */
 		Toast.makeText(EditClaimActivity.this, "Added", Toast.LENGTH_LONG)
 				.show();
+		/*
 		Intent intent = new Intent(EditClaimActivity.this, MainActivity.class);
 		// Controller.saveClaimList();
-		startActivity(intent);
+		startActivity(intent);*/
+		finish();
 	}
 
 }

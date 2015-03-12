@@ -6,7 +6,7 @@
         android:id="@+id/action_accept"
         android:icon="@drawable/ic_action_accept"
         android:title="Confirm"
-        android:showAsAction="ifRoom" 
+        android:showAsAction="always" 
         android:onClick="confirm"/>
 
 </menu>
