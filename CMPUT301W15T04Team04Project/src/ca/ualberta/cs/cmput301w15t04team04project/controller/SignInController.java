@@ -1,5 +1,14 @@
 package ca.ualberta.cs.cmput301w15t04team04project.controller;
 
+import android.content.Context;
+import android.content.Intent;
+import android.widget.EditText;
+import android.widget.Toast;
+import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.SignInActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
+import ca.ualberta.cs.cmput301w15t04team04project.models.User;
+
 /**
  * The sign in controller is a controller for sign in view
  * 
@@ -8,20 +17,20 @@ package ca.ualberta.cs.cmput301w15t04team04project.controller;
  * @since 2015-03-12
  */
 public class SignInController {
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> 37c9cf273baf70346bf2f27e30490ece09c71261
 	public SignInController() {
 
 		// TODO Auto-generated constructor stub
 	}
 
+
 	/**
-	 * @param args
+	 * storeUserProfile is use to store the user profile
+	 * 
+	 * @author Chenrui Lei
+	 * @version 1.0
+	 * @since 2015-03-11
 	 */
-<<<<<<< HEAD
 	public void storeUserProfile(User user, Context context){
 		SignInManager.saveInFile(user,context,"UserStatus");
 	}
@@ -55,10 +64,8 @@ public class SignInController {
 		user.setName(null);
 		
 		// store the user info
-		SignInManager.saveInFile(user,context,"UserStatus");
+		storeUserProfile(user, context);
 	}
-=======
->>>>>>> 37c9cf273baf70346bf2f27e30490ece09c71261
 
 
 }
