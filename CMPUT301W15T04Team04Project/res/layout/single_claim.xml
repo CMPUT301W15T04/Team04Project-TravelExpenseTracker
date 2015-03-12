@@ -37,7 +37,7 @@
                     android:layout_marginLeft="0dp"
                     android:paddingLeft="15dp"
                     android:text="JAN"
-                    android:textSize="12sp" />
+                    android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/EndTime"
@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:text="Edmonton\nBanff"
                 android:textColorHighlight="@color/red"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -128,15 +128,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="sample tag1\nsample tag2\nsample tag3"
-            android:textSize="12sp" />
+            android:textSize="10sp" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/claimState"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/linearLayout1"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/linearLayout1"
         android:text="In Progress"
         android:textColor="@color/grey" />
 
