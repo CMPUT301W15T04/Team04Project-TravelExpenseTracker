@@ -80,7 +80,8 @@
         <activity
             android:name="ca.ualberta.cs.cmput301w15t04team04project.FragmentEditItem1"
             android:label="@string/title_activity_fragment_edit_item1" >
-        </activity>
+        </activity>        
+      
     </application>
 
 </manifest>

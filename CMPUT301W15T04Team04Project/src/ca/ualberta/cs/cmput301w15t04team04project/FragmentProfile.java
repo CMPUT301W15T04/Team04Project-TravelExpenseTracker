@@ -56,13 +56,13 @@ public class FragmentProfile extends Fragment {
 				switch (checkedId) {
 				case R.id.MyClaims:
 					Intent intent1 = new Intent(getActivity(),
-							MyClaimActivity.class);
+							MyClaimsActivity.class);
 					startActivity(intent1);
 					break;
 
 				case R.id.waitingList:
 					Intent intent2 = new Intent(getActivity(),
-							MyClaimActivity.class);
+							MyClaimsActivity.class);
 					startActivity(intent2);
 					break;
 
