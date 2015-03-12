@@ -24,8 +24,15 @@ public class FragmentEditItem2 extends Fragment {
 			Bundle savedInstanceState) {
 
 
+<<<<<<< HEAD
 		return inflater
 				.inflate(R.layout.fragment_edit_item_2, container, false);
+=======
+		return inflater.inflate(R.layout.fragment_edit_item_2, container, false);
+
+		//return inflater.inflate(R.layout.fragment_edit_item_2, container, false);
+
+>>>>>>> bdd8c8507ba4a021d8d28ecafd6267110bb94923
 	}
 
 	@Override

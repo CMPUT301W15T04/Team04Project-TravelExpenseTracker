@@ -13,6 +13,18 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
+        android:id="@+id/destinationandReasonEditText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/claimDestinationTextView"
+        android:ems="10"
+        android:hint="Enter in format:Destination(Reason)" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
         android:id="@+id/tagEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,58 +33,13 @@
         android:ems="10"
         android:hint="Enter tags (seperate by comma)" />
 
-    <Button
-        android:id="@+id/addDestinationButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tagEditText"
-        android:text="Add a new destination" />
-
     <TextView
         android:id="@+id/claimDestinationTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/addDestinationButton"
-        android:text="Destination"
+        android:layout_below="@+id/tagEditText"
+        android:text="Destination &amp; Reason"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <EditText
-        android:id="@+id/destinationDialogEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/claimDestinationTextView"
-        android:ems="10" />
-
-    <TextView
-        android:id="@+id/destinationDialogReasonTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/destinationDialogEditText"
-        android:text="Reason"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <EditText
-        android:id="@+id/destinationDialogReasonEditTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/destinationDialogReasonTextView"
-        android:ems="10"
-        android:inputType="textMultiLine" >
-
-        <requestFocus />
-    </EditText>
-
-    <ListView
-        android:id="@+id/destinationListView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/destinationDialogReasonEditTextView" >
-    </ListView>
 
 </RelativeLayout>
