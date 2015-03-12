@@ -20,6 +20,13 @@ import com.google.gson.reflect.TypeToken;
 import android.app.Activity;
 import android.content.Context;
 
+/**
+* The SignInManager is use to store the local user profile
+*
+* @author  Chenrui Lei
+* @version 1.0
+* @since   2015-03-11
+*/
 public class SignInManager{
 	//private static String FILENAME = "UserStatus";
 	public static User user = new User(null);

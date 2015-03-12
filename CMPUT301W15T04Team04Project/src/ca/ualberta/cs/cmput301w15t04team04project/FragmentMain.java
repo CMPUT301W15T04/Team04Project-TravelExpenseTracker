@@ -34,7 +34,9 @@ import android.widget.LinearLayout;
 
 public class FragmentMain extends Fragment implements IXListViewListener{
 	private XListView mListView;
+	//private ClaimListAdapter mAdapter;
 	private ArrayAdapter<String> mAdapter;
+	//private ArrayList<Claim> items = new ArrayList<Claim>();
 	private ArrayList<String> items = new ArrayList<String>();
 	private Handler mHandler;
 	private int start = 0;
