@@ -11,21 +11,11 @@
     <DatePicker
         android:id="@+id/itemDateDatePicker"
         android:layout_width="match_parent"
-        android:layout_height="86dp"
+        android:layout_height="84dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/tiemDateTextView"
         android:calendarViewShown="false" />
-
-    <TextView
-        android:id="@+id/tiemDateTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/itemNameEditText"
-        android:layout_below="@+id/itemNameEditText"
-        android:text="Date:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/itemNameTextView"
@@ -34,7 +24,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:text="Item Name" />
+        android:text="Item Name:"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/itemNameEditText"
@@ -44,7 +35,8 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/itemNameTextView"
         android:ems="10"
-        android:hint="Item Name" >
+        android:hint="Item Name"
+        tools:ignore="HardcodedText" >
 
         <requestFocus />
     </EditText>
@@ -57,7 +49,8 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/itemDateDatePicker"
         android:text="Category:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
 
     <Spinner
         android:id="@+id/itemCategorySpinner"
@@ -67,5 +60,47 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/itemTypeTextView"
         android:entries="@array/categories" />
+
+    <Spinner
+        android:id="@+id/currencyUnitsSpinner"
+        android:layout_width="90dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/itemAmountTextView"
+        android:layout_toLeftOf="@+id/itemCurrencyEeditText"
+        android:entries="@array/currencyUnits" />
+
+    <EditText
+        android:id="@+id/itemCurrencyEeditText"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/itemAmountTextView"
+        android:ems="10"
+        android:hint="998.0"
+        android:inputType="numberDecimal"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/itemAmountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/itemCategorySpinner"
+        android:layout_below="@+id/itemCategorySpinner"
+        android:layout_marginTop="15dp"
+        android:text="Amount:"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tiemDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/itemNameEditText"
+        android:layout_alignRight="@+id/itemDateDatePicker"
+        android:layout_below="@+id/itemNameEditText"
+        android:layout_marginTop="15dp"
+        android:text="Date:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
 
 </RelativeLayout>

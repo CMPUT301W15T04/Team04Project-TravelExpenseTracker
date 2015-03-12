@@ -24,6 +24,7 @@ package ca.ualberta.cs.cmput301w15t04team04project;
 
 import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.SignInController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.app.Activity;
 import android.content.Intent;
@@ -37,6 +38,7 @@ import android.widget.Toast;
 public class SignInActivity extends Activity {
 	private EditText userName;
 	public static User user;
+	private SignInController signInConroller;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +61,8 @@ public class SignInActivity extends Activity {
 	
 	/**
 	 * 
-	 * @author Chenrui Lei, Yufei Zhang 
+	 * @author Chenrui Lei
+	 * @author Yufei Zhang 
 	 * @version 1.0
 	 * @since 2015-03-11
 	 */

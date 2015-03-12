@@ -1,60 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-    <TextView
-        android:id="@+id/itemAmountTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:text="Amount:" />
-
-    <Spinner
-        android:id="@+id/currencyUnitsSpinner"
-        android:layout_width="90dp"
-        android:layout_height="35dp"
-        android:layout_above="@+id/itemDtextView"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/itemAmountTextView"
-        android:layout_toLeftOf="@+id/itemCurrencyEeditText"
-        android:entries="@array/currencyUnits" />
-
-    <EditText
-        android:id="@+id/itemCurrencyEeditText"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/itemAmountTextView"
-        android:ems="10"
-        android:hint="998.0"
-        android:inputType="numberDecimal" />
-
-    <EditText
-        android:id="@+id/destinationDialogEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/itemDtextView"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:hint="Enter the Description of this Item"
-        android:inputType="textMultiLine" >
-
-        <requestFocus />
-    </EditText>
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin" >
 
     <TextView
         android:id="@+id/itemDtextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/itemCurrencyEeditText"
+        android:layout_alignParentTop="true"
         android:text="Description:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/destinationDialogEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/itemDtextView"
+        android:ems="10"
+        android:hint="Enter the Description of this Item"
+        android:inputType="textMultiLine"
+        tools:ignore="HardcodedText" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/itemReciptTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText"
+        android:layout_marginTop="15dp"
+        android:text="Reciept:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
+
+    <ImageView
+        android:id="@+id/addRecieptImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/itemReciptTextView"
+        android:clickable="true"
+        android:onClick="addReciept"
+        android:src="@drawable/ic_action_camera"
+        tools:ignore="ContentDescription" />
 
 </RelativeLayout>

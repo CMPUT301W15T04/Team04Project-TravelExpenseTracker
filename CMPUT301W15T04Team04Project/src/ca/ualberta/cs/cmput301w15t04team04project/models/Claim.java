@@ -33,8 +33,9 @@ import java.util.Date;
  *            claimName is to store the name of the claim
  * @author Ji Yang
  * @author Yang Zhang
- * @version 1.1
- * @since 2015-03-09
+ * @author Weijie Sun
+ * @version 1.2
+ * @since 2015-03-12
  */
 public class Claim {
 
@@ -47,6 +48,88 @@ public class Claim {
 	protected ArrayList<Item> items;
 	protected ArrayList<String> tag;
 	protected transient ArrayList<Listener> itemListener;
+	protected User ApproverName;
+	protected User ClaimiantName;
+	protected String Comment;
+
+	/**
+	 * add new destination of this claim
+	 * 
+	 * @param newdestination
+	 *            the newdestination of this claim
+	 */
+	public void addDestionation(Destination newdestination){
+		destination.add(newdestination);
+		
+	}
+	
+	/**
+	 * removeDestination of this claim
+	 * 
+	 * @param olddestination
+	 *            the old destination need to be removed of this claim
+	 */
+	public void removeDestination(Destination olddestination){
+		destination.remove(olddestination);
+		
+	}
+	/**
+	 * get the Comment of this claim
+	 * 
+	 * @param Comment
+	 *            the Comment of this claim
+	 */
+	public String getComment() {
+		return Comment;
+	}
+	/**
+	 * get the Comment of this claim
+	 * 
+	 * @param Comment
+	 *            the Comment of this claim
+	 */
+	public void setComment(String comment) {
+		Comment = comment;
+	}
+
+	/**
+	 * get the ClaimiantName of this claim
+	 * 
+	 * @param ClaimiantName
+	 *            the ClaimiantName of this claim
+	 */
+	public User getClaimiantName() {
+		return ClaimiantName;
+	}
+
+	/**
+	 * set the ClaimiantName of this claim
+	 * 
+	 * @param ClaimiantName
+	 *            the ClaimiantName of this claim
+	 */
+	public void setClaimiantName(User claimiantName) {
+		ClaimiantName = claimiantName;
+	}
+
+	/**
+	 * get the ApproverName of this claim
+	 * 
+	 * @param ApproverName
+	 *            the ApproverName of this claim
+	 */
+	public User getApproverName() {
+		return ApproverName;
+	}
+	/**
+	 * set the ApproverName of this claim
+	 * 
+	 * @param ApproverName
+	 *            the ApproverName of this claim
+	 */
+	public void setApproverName(User approverName) {
+		ApproverName = approverName;
+	}
 
 	/**
 	 * The constructor of the class
@@ -299,13 +382,6 @@ public class Claim {
 		return destination;
 	}
 
-	/**
-	 * set the destination of this claim
-	 * 
-	 * @param destination
-	 *            the destination of this claim
-	 */
-	public void setDestination(Destination dest) {
-		this.destination.add(dest);
-	}
+
+
 }
