@@ -68,7 +68,7 @@ public class Approver_02_Test extends ActivityInstrumentationTestCase2<MainActiv
 		testClaimList.addClaim(CClaim);
 		AClaim.setStatus("Submitted");
 		BClaim.setStatus("Submitted");
-		AClaim.setClaimName("1");
+		AClaim.setClaim("1");
 
 		Date Adate = new Date();
 		Adate.setYear(2013);
