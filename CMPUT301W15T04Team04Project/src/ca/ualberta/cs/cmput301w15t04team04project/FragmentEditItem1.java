@@ -8,12 +8,21 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * This is the fragment part 1 for adding/editing an item.
+ * 
+ * @author Ji Yang
+ * @author Yang Zhang
+ * @version 1.0
+ * @since 2015-03-10
+ */
 public class FragmentEditItem1 extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.fragment_edit_item_1, container, false);
+		return inflater
+				.inflate(R.layout.fragment_edit_item_1, container, false);
 	}
 
 	@Override

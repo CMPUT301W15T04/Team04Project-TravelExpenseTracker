@@ -92,8 +92,7 @@ public class EditClaimActivity extends FragmentActivity {
 	}
 
 	/**
-	 * This intent can finish since no necessary to keep it running the
-	 * following code has been modified
+	 * setFragmentIndicator
 	 * 
 	 * @author Ji Yang
 	 * @version 1.0
