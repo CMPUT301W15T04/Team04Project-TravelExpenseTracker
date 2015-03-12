@@ -3,6 +3,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
+
+    <TextView
+        android:id="@+id/itemAmountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="Amount:" />
+
+    <Spinner
+        android:id="@+id/currencyUnitsSpinner"
+        android:layout_width="90dp"
+        android:layout_height="35dp"
+        android:layout_above="@+id/itemDtextView"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/itemAmountTextView"
+        android:layout_toLeftOf="@+id/itemCurrencyEeditText"
+        android:entries="@array/currencyUnits" />
+
+    <EditText
+        android:id="@+id/itemCurrencyEeditText"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/itemAmountTextView"
+        android:ems="10"
+        android:hint="998.0"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/itemDtextView"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="Enter the Description of this Item"
+        android:inputType="textMultiLine" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/itemDtextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/itemCurrencyEeditText"
+        android:text="Description:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>

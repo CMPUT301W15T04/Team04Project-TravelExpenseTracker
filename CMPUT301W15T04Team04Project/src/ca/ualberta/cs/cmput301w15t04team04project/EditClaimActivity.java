@@ -38,6 +38,14 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
+/**
+ * This is the activity for adding/editing a claim.
+ * 
+ * @author Ji Yang
+ * @author Yang Zhang
+ * @version 1.0
+ * @since 2015-03-10
+ */
 public class EditClaimActivity extends FragmentActivity {
 	private RadioGroup bottom_Rg;
 	private PagerAdapter mpageAdapter;
@@ -61,7 +69,7 @@ public class EditClaimActivity extends FragmentActivity {
 	}
 
 	/**
-	 * Initializing the pager load Fragmen
+	 * Initializing the pager for loading Fragments
 	 * 
 	 * @author Ji Yang
 	 * @version 1.0
