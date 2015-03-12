@@ -86,7 +86,7 @@ public class FragmentMain extends Fragment implements IXListViewListener{
 		mHandler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				start = ++refreshCnt;
+				start = refreshCnt;
 				items.clear();
 				geneItems();
 				//mAdapter.notifyDataSetChanged();
@@ -94,7 +94,7 @@ public class FragmentMain extends Fragment implements IXListViewListener{
 				mListView.setAdapter(mAdapter);
 				onLoad();
 			}
-		}, 2000);
+		}, 500);
 	}
 
 	@Override
@@ -106,7 +106,7 @@ public class FragmentMain extends Fragment implements IXListViewListener{
 				mAdapter.notifyDataSetChanged();
 				onLoad();
 			}
-		}, 2000);
+		}, 500);
 	}
 
 }
