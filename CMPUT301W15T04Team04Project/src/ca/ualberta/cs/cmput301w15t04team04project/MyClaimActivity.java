@@ -31,7 +31,8 @@ import android.widget.AdapterView.OnItemLongClickListener;
 public class MyClaimActivity extends Activity {
 
 	private ArrayList<String> claims = new ArrayList<String>();
-	
+	private MyLocalClaimListController controller = new MyLocalClaimListController();
+	private MyClaimActivity thisActivity = this;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -100,12 +101,7 @@ public class MyClaimActivity extends Activity {
 				adb.setNeutralButton("Edit", new OnClickListener(){
 					public void onClick(DialogInterface dialog, int which){
 						
-						//taken from http://handsomeliuyang.iteye.com/blog/1315283
-						Intent myintent = new Intent(MyClaimActivity.this, OneClaimActivity.class);
-						myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-						myintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-						myintent.putExtra("MyClaimid", finalPosition);
-				    	startActivity(myintent);
+						controller.GoToEditClaim(thisActivity, finalPosition);
 				}
 					
 				});
@@ -136,15 +132,6 @@ public class MyClaimActivity extends Activity {
 				int itemPosition = position;
 				
 				
-				Toast.makeText(MyClaimActivity.this,
-						"open a Claim" + itemPosition, Toast.LENGTH_SHORT)
-						.show();
-				Intent myintent = new Intent(MyClaimActivity.this,
-						OneClaimActivity.class);
-				myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				myintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				myintent.putExtra("MyClaimid", itemPosition);
-				startActivity(myintent);
 			}
 		});
 	

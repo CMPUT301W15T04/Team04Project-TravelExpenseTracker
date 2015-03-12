@@ -41,44 +41,43 @@ public class ClaimListAdapter extends ArrayAdapter<Claim> {
 		super(context, resource, objects);
 		this.claimList = objects;
 	}
-	
+
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		if (convertView == null) {
 			LayoutInflater inflater = LayoutInflater.from(this.getContext());
 			holder = new ViewHolder();
 			convertView = inflater.inflate(R.layout.single_claim, null);
-		}else {
+		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		
+
 		claimList.get(position);
-		
+
 		holder.startDate = (TextView) convertView
 				.findViewById(R.id.dateStartDisplay);
 		holder.endDate = (TextView) convertView
 				.findViewById(R.id.dateEndDisplay);
-		holder.tags = (TextView) convertView
-				.findViewById(R.id.desplayTags);
+		holder.tags = (TextView) convertView.findViewById(R.id.desplayTags);
 		holder.destination = (TextView) convertView
 				.findViewById(R.id.destinationDisplay);
 		holder.claimState = (TextView) convertView
 				.findViewById(R.id.claimState);
 		holder.totalAmount = (TextView) convertView
 				.findViewById(R.id.totalAmountDisplay);
-		
+
 		convertView.setTag(holder);
 		Claim claim = claimList.get(position);
-		if (claim!=null){
-			
+		if (claim != null) {
+
 		}
 		return convertView;
-		//holder.startDate.setText(claim.getStartDate().getDate());
-		//holder.endDate.setText(claim.getEndDate().getDate());
-		//holder.tags
-		//holder.destination = claim.getDestination()
-		//holder.claimState = claim.getStatus();
-		//holder.totalAmount = claim.getAmount()
+		// holder.startDate.setText(claim.getStartDate().getDate());
+		// holder.endDate.setText(claim.getEndDate().getDate());
+		// holder.tags
+		// holder.destination = claim.getDestination()
+		// holder.claimState = claim.getStatus();
+		// holder.totalAmount = claim.getAmount()
 	}
 
 	class ViewHolder {

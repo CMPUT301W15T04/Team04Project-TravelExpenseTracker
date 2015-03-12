@@ -378,8 +378,9 @@ public class Claim {
 	 * @param tag
 	 *            a new tag of this claim
 	 */
-	public void setTag(String tag) {
-		this.tag.add(tag);
+	public void setTag(String[] taglist) {
+		for (int i = 0; i < taglist.length; i++)
+			this.tag.add(taglist[i]);
 	}
 
 	/**

@@ -20,6 +20,7 @@
  */
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 import android.support.v4.app.Fragment;
@@ -138,29 +139,33 @@ public class EditClaimActivity extends FragmentActivity {
 	 * @version 1.1
 	 * @since 2015-03-12
 	 */
+	@SuppressWarnings("deprecation")
 	public void confirm(MenuItem item) {
 		Claim claim = new Claim(null);
 		EditText claimName = (EditText) findViewById(R.id.claimNameEditText);
 		EditText description = (EditText) findViewById(R.id.descriptionEditText);
 		EditText tag = (EditText) findViewById(R.id.tagEditText);
-		EditText destinationandReason = (EditText) findViewById(R.id.destinationandReasonEditText);
+		EditText destination = (EditText) findViewById(R.id.destinationDialogEditText);
 		DatePicker fromDatePicker = (DatePicker) findViewById(R.id.fromDatePicker);
 		DatePicker toDatePicker = (DatePicker) findViewById(R.id.toDatePicker);
-		// Button confirm = (Button) findViewById(R.id.action_accept); // Bug
-		// cause by this 2015-3-12
-		// Controller clc = new Controller();
+		Date sDate = new Date();
+		Date eDate = new Date();
+		sDate.setYear(fromDatePicker.getYear() - 1900);
+		sDate.setMonth(fromDatePicker.getMonth());
+		sDate.setDate(fromDatePicker.getDayOfMonth());
+		eDate.setYear(toDatePicker.getYear() - 1900);
+		eDate.setMonth(toDatePicker.getMonth());
+		eDate.setDate(toDatePicker.getDayOfMonth());
 		claim.setClaim(claimName.getText().toString());
-		// claim.setDescription(description);
-		// claim.setTag(tag);
-		// clc.addClaim(claim);
+		claim.setDescription(description.getText().toString());
+		claim.setEndDate(eDate);
+		claim.setStartDate(sDate);
+		String[] tagList = tag.getText().toString().split(",");
+		claim.setTag(tagList);
 
 		Toast.makeText(EditClaimActivity.this, "Added", Toast.LENGTH_LONG)
 				.show();
-		/*
-		 * Intent intent = new Intent(EditClaimActivity.this,
-		 * MainActivity.class); // Controller.saveClaimList();
-		 * startActivity(intent);
-		 */
+
 		finish();
 	}
 
