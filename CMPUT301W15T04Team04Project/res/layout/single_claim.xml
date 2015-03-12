@@ -4,106 +4,115 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <GridLayout
-        android:id="@+id/gridLayout1"
+    <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:columnCount="6" 
-        android:rowCount="3">
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" >
 
-        <TextView
-            android:id="@+id/StartTime"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginLeft="0dp"
-            android:layout_row="0"
-            android:text="From:"
-            android:textColor="@color/grey"
-            android:textSize="16sp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/dateStartDisplay"
+            <TextView
+                android:id="@+id/StartTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:text="From:"
+                android:textColor="@color/grey"
+                android:textSize="8sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/dateStartDisplay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
+                    android:paddingLeft="15dp"
+                    android:text="JAN"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/EndTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="10dp"
+                    android:text=" 07,"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/dateEndDisplay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="2015"
+                android:textSize="12sp" 
+                android:gravity="right" />"
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:paddingLeft="15dp"
-            android:text="TextView"
-            android:textSize="16sp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="5dp"
+            android:paddingLeft="0dp" >
 
-        <TextView
-            android:id="@+id/EndTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginLeft="20dp"
-            android:layout_row="0"
-            android:text="To:"
-            android:textColor="@color/grey"
-            android:textSize="16sp" />
+            <TextView
+                android:id="@+id/Destination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Destination:"
+                android:textColor="@color/grey"
+                android:textSize="8sp" />
 
-        <TextView
-            android:id="@+id/dateEndDisplay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginLeft="30dp"
-            android:layout_row="0"
-            android:text="TextView"
-            android:textSize="16sp" />
+            <TextView
+                android:id="@+id/destinationDisplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edmonton\nBanff"
+                android:textColorHighlight="@color/red"
+                android:textSize="16sp" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/Destination"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_gravity="left|top"
-            android:layout_row="1"
-            android:text="Destination:"
-            android:textColor="@color/grey"
-            android:textSize="16sp" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" 
+            android:gravity="right">
 
-        <TextView
-            android:id="@+id/destinationDisplay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="1"
-            android:layout_gravity="center_horizontal|top"
-            android:layout_row="1"
-            android:text="TextView"
-            android:textColorHighlight="@color/red"
-            android:textSize="30sp" />
+            <TextView
+                android:id="@+id/TotalAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Amount:"
+                android:textColor="@color/grey"
+                android:textSize="8sp" />
 
-        <TextView
-            android:id="@+id/TotalAmount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_gravity="left|top"
-            android:layout_row="2"
-            android:text="Total Amount:"
-            android:textColor="@color/grey"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/totalAmountDisplay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="1"
-            android:layout_gravity="left|top"
-            android:layout_row="2"
-            android:text="TextView" />
-
-    </GridLayout>
+            <TextView
+                android:id="@+id/totalAmountDisplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$ CAD 80.0" />
+        </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/gridLayout1"
+        android:layout_below="@+id/linearLayout3"
         android:orientation="horizontal" >
 
         <TextView
@@ -111,13 +120,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tags:"
-            android:textColor="@color/grey" />
+            android:textColor="@color/grey"
+            android:textSize="8sp" />
 
         <TextView
             android:id="@+id/desplayTags"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="sample tag1\nsample tag2\nsample tag3"
+            android:textSize="12sp" />
     </LinearLayout>
 
     <TextView
@@ -126,7 +137,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/linearLayout1"
-        android:text="TextView"
+        android:text="In Progress"
         android:textColor="@color/grey" />
 
 </RelativeLayout>

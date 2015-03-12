@@ -51,7 +51,9 @@ public class ClaimListAdapter extends ArrayAdapter<Claim> {
 		}else {
 			holder = (ViewHolder) convertView.getTag();
 		}
+		
 		claimList.get(position);
+		
 		holder.startDate = (TextView) convertView
 				.findViewById(R.id.dateStartDisplay);
 		holder.endDate = (TextView) convertView
@@ -64,6 +66,7 @@ public class ClaimListAdapter extends ArrayAdapter<Claim> {
 				.findViewById(R.id.claimState);
 		holder.totalAmount = (TextView) convertView
 				.findViewById(R.id.totalAmountDisplay);
+		
 		convertView.setTag(holder);
 		Claim claim = claimList.get(position);
 		if (claim!=null){

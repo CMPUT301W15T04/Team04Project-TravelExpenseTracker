@@ -67,11 +67,11 @@ public final class R {
         public static final int xlistview_arrow=0x7f020015;
     }
     public static final class id {
-        public static final int Destination=0x7f0a0056;
-        public static final int EndTime=0x7f0a0054;
+        public static final int Destination=0x7f0a005a;
+        public static final int EndTime=0x7f0a0058;
         public static final int MyClaims=0x7f0a004b;
-        public static final int StartTime=0x7f0a0052;
-        public static final int TotalAmount=0x7f0a0058;
+        public static final int StartTime=0x7f0a0056;
+        public static final int TotalAmount=0x7f0a005c;
         public static final int action_accept=0x7f0a0069;
         public static final int action_new=0x7f0a006b;
         public static final int action_newItme=0x7f0a006d;
@@ -85,7 +85,7 @@ public final class R {
         public static final int claimDestinationTextView=0x7f0a0046;
         public static final int claimNameEditText=0x7f0a003c;
         public static final int claimNameTextView=0x7f0a003b;
-        public static final int claimState=0x7f0a005d;
+        public static final int claimState=0x7f0a0051;
         public static final int claimTagTextView=0x7f0a0044;
         public static final int consSpinner=0x7f0a0038;
         public static final int contectTagsTextView=0x7f0a0037;
@@ -103,11 +103,11 @@ public final class R {
         public static final int currentItemDateTextView=0x7f0a0025;
         public static final int currentItemNameTextView=0x7f0a0024;
         public static final int currentRecieptImageView=0x7f0a002a;
-        public static final int dateEndDisplay=0x7f0a0055;
-        public static final int dateStartDisplay=0x7f0a0053;
+        public static final int dateEndDisplay=0x7f0a0059;
+        public static final int dateStartDisplay=0x7f0a0057;
         public static final int descriptionEditText=0x7f0a0043;
-        public static final int desplayTags=0x7f0a005c;
-        public static final int destinationDisplay=0x7f0a0057;
+        public static final int desplayTags=0x7f0a0054;
+        public static final int destinationDisplay=0x7f0a005b;
         public static final int destinationandReasonEditText=0x7f0a0045;
         public static final int editClaimActivityPager=0x7f0a0019;
         public static final int editClaimBottomMenu=0x7f0a001a;
@@ -119,8 +119,8 @@ public final class R {
         public static final int editItemPrevious=0x7f0a001f;
         public static final int fromDatePicker=0x7f0a003e;
         public static final int fromDateTextView=0x7f0a003d;
-        public static final int gridLayout1=0x7f0a0051;
-        public static final int linearLayout1=0x7f0a005a;
+        public static final int linearLayout1=0x7f0a0052;
+        public static final int linearLayout3=0x7f0a0055;
         public static final int list_item_textview=0x7f0a004f;
         public static final int logOut=0x7f0a004d;
         public static final int mainActivityBottomMenu=0x7f0a002f;
@@ -151,7 +151,7 @@ public final class R {
         public static final int showItemNameCTextView=0x7f0a0021;
         public static final int showReTextView=0x7f0a002b;
         public static final int showStartDateCTextView=0x7f0a0001;
-        public static final int showTags=0x7f0a005b;
+        public static final int showTags=0x7f0a0053;
         public static final int signInTextView=0x7f0a003a;
         public static final int startDateTextView=0x7f0a003f;
         public static final int tagEditText=0x7f0a0047;
@@ -162,7 +162,7 @@ public final class R {
         public static final int titleTv=0x7f0a005e;
         public static final int toDatePicker=0x7f0a0041;
         public static final int toDateTextView=0x7f0a0040;
-        public static final int totalAmountDisplay=0x7f0a0059;
+        public static final int totalAmountDisplay=0x7f0a005d;
         public static final int userNameDisplay=0x7f0a004e;
         public static final int userNameEditText=0x7f0a0039;
         public static final int waitingList=0x7f0a004c;
