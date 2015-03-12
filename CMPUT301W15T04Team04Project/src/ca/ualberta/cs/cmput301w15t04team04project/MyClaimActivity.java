@@ -3,6 +3,7 @@ package ca.ualberta.cs.cmput301w15t04team04project;
 import java.util.ArrayList;
 import java.util.List;
 
+import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -30,7 +31,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 public class MyClaimActivity extends Activity {
 
 	private ArrayList<String> claims = new ArrayList<String>();
-
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -84,9 +85,7 @@ public class MyClaimActivity extends Activity {
     		}
  
     	});*/
-    	
-    	//this is the list view to edit and delete the Claim
-
+   
     	listView.setOnItemLongClickListener(new OnItemLongClickListener(){
 
 			@Override
@@ -110,15 +109,11 @@ public class MyClaimActivity extends Activity {
 				}
 					
 				});
-				
-		          
-    	
+
 				adb.setPositiveButton("Delete", new OnClickListener(){
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						/*Claim claim = list.get(finalPosition);
-						ClaimListController.getClaimList().removeClaim(claim);
-						ClaimListController.saveClaimList();*/
+						//MyLocalClaimListController.deleteClaim(which);
 				}
 				});
 				adb.setNegativeButton("Cancel", new OnClickListener(){
@@ -139,6 +134,8 @@ public class MyClaimActivity extends Activity {
 			public void onItemClick(AdapterView<?> adapterView, View view,
 					int position, long id) {
 				int itemPosition = position;
+				
+				
 				Toast.makeText(MyClaimActivity.this,
 						"open a Claim" + itemPosition, Toast.LENGTH_SHORT)
 						.show();
@@ -152,8 +149,6 @@ public class MyClaimActivity extends Activity {
 		});
 	
 	}
-		
-	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

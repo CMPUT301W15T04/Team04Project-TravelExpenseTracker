@@ -94,7 +94,7 @@ public class Appoval_Test extends ActivityInstrumentationTestCase2<SignInActivit
 		BClaim.setStatus("Submitted");
 		AClaim.setClaim("1");
 		assertTrue("name is equal", testClaimList.getSubmittedClaimList()
-				.get(0).getClaimName().toString().equals("1"));
+				.get(0).getClaim().toString().equals("1"));
 		Date date = new Date();
 		AClaim.setStartDate(date);
 		assertTrue("starting date is equal", testClaimList
@@ -110,10 +110,10 @@ public class Appoval_Test extends ActivityInstrumentationTestCase2<SignInActivit
 		BClaim.setStatus("Submitted");
 		assertTrue("status is equal", testClaimList.getSubmittedClaimList()
 				.get(1).getStatus().equals("Submitted"));
-		Destination testDestionation = new Destination("Paris","test");
-		BClaim.addDestination(testDestionation);
+		Destination testDestionation = new Destination("Paris");
+		BClaim.addDestionation(testDestionation);
 		assertTrue("destionation is true",
-				testClaimList.getSubmittedClaimList().get(1).getDestionation()
+				testClaimList.getSubmittedClaimList().get(1).getDestination()
 						.equals(testDestionation));
 		Item itemA = new Item("food");
 		Item itemB = new Item("texi");
@@ -199,7 +199,7 @@ public class Appoval_Test extends ActivityInstrumentationTestCase2<SignInActivit
 		User approver = new User("jack");
 		Claim claim = claimList.getPosition(0);
 		//User.approve(claim, "This a good claim");
-		assertTrue("recieve feedback?", claim.getApproverName().getName().equals("jack");
+		assertTrue("recieve feedback?", claim.getApproverName().getName().equals("jack"));
 		assertTrue("recieve feedback?",
 				claim.getComment() == "This a good claim");
 	}

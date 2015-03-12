@@ -51,6 +51,16 @@ public class Claim {
 	protected User ApproverName;
 	protected User ClaimiantName;
 	protected String Comment;
+	protected String totalCurrency;
+	
+	public int getTotalCurrency() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	public void setTotalCurrency(String totalCurrency) {
+		this.totalCurrency = totalCurrency;
+	}
 
 	/**
 	 * add new destination of this claim
@@ -380,6 +390,9 @@ public class Claim {
 	public ArrayList<Destination> getDestination() {
 		return destination;
 	}
+
+	
+
 
 
 

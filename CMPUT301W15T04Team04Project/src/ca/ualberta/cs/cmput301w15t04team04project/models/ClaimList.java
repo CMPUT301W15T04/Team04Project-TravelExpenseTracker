@@ -32,6 +32,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
  *
  * @author Ji Yang
  * @author Yang Zhang
+ * @author Weijie Sun
  * @version 1.1
  * @since 2015-03-09
  */
@@ -40,7 +41,7 @@ public class ClaimList {
 
 	protected ArrayList<Claim> claimList = null;
 	protected transient ArrayList<Listener> listeners = null;
-
+	protected ArrayList<Claim> SubmittedClaimList = null;
 	/**
 	 * The constructor of the class
 	 * 
@@ -49,6 +50,22 @@ public class ClaimList {
 	public ClaimList() {
 		claimList = new ArrayList<Claim>();
 		listeners = new ArrayList<Listener>();
+	}
+	/**
+	 * get a getSubmittedClaimList in List date type
+	 * 
+	 * @return getSubmittedClaimList the getSubmittedClaimList in the List type .
+	 */
+	public ArrayList<Claim> getSubmittedClaimList() {
+		return SubmittedClaimList;
+	}
+	/**
+	 * set a getSubmittedClaimList in List date type
+	 * 
+	 * @return getSubmittedClaimList the getSubmittedClaimList in the List type .
+	 */
+	public void setSubmittedClaimList(ArrayList<Claim> submittedClaimList) {
+		SubmittedClaimList = submittedClaimList;
 	}
 
 	/**
@@ -137,5 +154,9 @@ public class ClaimList {
 	public ArrayList<Claim> getClaimArrayList() {
 		return claimList;
 	}
+
+	
+	
+
 
 }
