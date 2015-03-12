@@ -23,7 +23,12 @@ public class FragmentEditItem2 extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
+<<<<<<< HEAD
 		return inflater.inflate(R.layout.fragment_edit_item_2, container, false);
+=======
+		return inflater
+				.inflate(R.layout.fragment_edit_item_2, container, false);
+>>>>>>> f3beb3192d918986d8f1fd175e35ba6f37c5873b
 	}
 
 	@Override
