@@ -20,15 +20,11 @@
 */
 
 package ca.ualberta.cs.cmput301w15t04team04project.models;
-/**
-* The Item model is just a rough Item's information
-* simply store set and get all of the Item
-*
-* @param	itemName is the name of the item
-* @author  Weijie Sun
-* @version 1.0
-* @since   2015-03-08 
-*/
+
+import java.util.Date;
+
+import android.widget.ImageView;
+
 /*
 * Copyright 2015 Weijie Sun
 * Copyright 2015 Youdong Ma
@@ -50,8 +46,28 @@ package ca.ualberta.cs.cmput301w15t04team04project.models;
 * limitations under the License.
 */
 
+/**
+* The Item model is just a rough Item's information
+* simply store set and get all of the Item
+*
+* @param	itemName is the name of the item
+* @author  Weijie Sun
+* @version 1.0
+* @since   2015-03-08 
+* 
+* @author  Chenrui Lei
+* @version 1.0
+* @since   2015-03-12
+*/
 public class Item {
 	private String itemName;
+	private Date date;
+	private String category;
+	private String description;
+	private double amount;
+	private String currency;
+	private ImageView receipt;
+	private boolean isComplete = false;
 	
 	/**
 	* The Item model is just a rough Item's information
@@ -64,7 +80,7 @@ public class Item {
 	*/
 	public Item(String itemName) {
 		// TODO Auto-generated constructor stub
-		this.itemName = itemName;
+		this.setItemName(itemName);
 	}
 
 	public void takeAPhoto() {
@@ -80,6 +96,105 @@ public class Item {
 	public Object getPhoto() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public String getItemName()
+	{
+
+		return itemName;
+	}
+
+	public void setItemName(String itemName)
+	{
+
+		this.itemName = itemName;
+	}
+
+	public Date getDate()
+	{
+
+		return date;
+	}
+
+	public void setDate(Date date)
+	{
+
+		this.date = date;
+	}
+
+	public String getCategory()
+	{
+
+		return category;
+	}
+
+	public void setCategory(String category)
+	{
+
+		this.category = category;
+	}
+
+	public String getDescription()
+	{
+
+		return description;
+	}
+
+	public void setDescription(String description)
+	{
+
+		this.description = description;
+	}
+
+	public double getAmount()
+	{
+
+		return amount;
+	}
+
+	public void setAmount(double amount)
+	{
+
+		this.amount = amount;
+	}
+
+	public String getCurrency()
+	{
+
+		return currency;
+	}
+
+	public void setCurrency(String currency)
+	{
+
+		this.currency = currency;
+	}
+
+	public ImageView getReceipt()
+	{
+
+		return receipt;
+	}
+
+	public void setReceipt(ImageView receipt)
+	{
+
+		this.receipt = receipt;
+	}
+
+	public boolean isComplete()
+	{
+
+		return isComplete;
+	}
+
+	public void changeIsComplete(boolean isComplete)
+	{
+		if (this.isComplete==false){
+			this.isComplete = true;
+		} else {
+			this.isComplete = false;
+		}
 	}
 
 }

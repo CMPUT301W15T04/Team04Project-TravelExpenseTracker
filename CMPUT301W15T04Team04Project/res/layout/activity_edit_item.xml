@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-         <ca.ualberta.cs.cmput301w15t04team04project.View.NoSwipeViewPager
-             android:id="@+id/editItemActivityPager"
-             android:layout_width="fill_parent"
-             android:layout_height="348dp"
-             android:layout_above="@+id/editItemBottomMenu"
-             android:layout_alignParentTop="true"
-             android:layout_weight="1.21" >
-
+    <ca.ualberta.cs.cmput301w15t04team04project.View.NoSwipeViewPager
+        android:id="@+id/editItemActivityPager"
+        android:layout_width="fill_parent"
+        android:layout_height="348dp"
+        android:layout_above="@+id/editItemBottomMenu"
+        android:layout_alignParentTop="true"
+        android:layout_weight="1.21"
+        tools:ignore="ObsoleteLayoutParam" >
     </ca.ualberta.cs.cmput301w15t04team04project.View.NoSwipeViewPager>
 
     <RadioGroup
@@ -25,17 +26,21 @@
         <RadioButton
             android:id="@+id/editItemPrevious"
             style="@style/main_menu_bottom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_weight="0.35"
             android:checked="true"
-            android:text="Basic Info" />
+            android:text="Basic Info"
+            tools:ignore="HardcodedText" />
 
         <RadioButton
             android:id="@+id/editItemNext"
             style="@style/main_menu_bottom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Advanced Info" />
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_weight="0.34"
+            android:text="Advanced Info"
+            tools:ignore="HardcodedText" />
     </RadioGroup>
 
 </RelativeLayout>
