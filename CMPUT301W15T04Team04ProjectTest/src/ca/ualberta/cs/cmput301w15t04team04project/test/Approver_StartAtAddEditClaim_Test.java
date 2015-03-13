@@ -118,7 +118,7 @@ public class Approver_StartAtAddEditClaim_Test extends ActivityInstrumentationTe
 		testClaimList.addClaim(CClaim);
 		AClaim.setStatus("Submitted");
 		BClaim.setStatus("Submitted");
-		AClaim.setClaimName("1");
+		AClaim.setClaimiantName("1");
 		
 		Date date = new Date();
 		AClaim.setStartDate(date);
@@ -126,16 +126,16 @@ public class Approver_StartAtAddEditClaim_Test extends ActivityInstrumentationTe
 		Date endDate = new Date();
 		AClaim.setEndDate(endDate);
 		
-		Destination testDestionation = new Destination("Paris","test");
-		AClaim.addDestination(testDestionation);
+		Destination testDestionation = new Destination("Paris");
+		AClaim.removeDestination(testDestionation);
 
-		AClaim.setApproverName("previous_approver");
 		
 		//basic flow
 		
 		String aname = "approver_test";
 		User approver = new User(aname);
-		
+		AClaim.setApproverName(approver);
+
 		Activity activity = getActivity();
 		
 		ListView listView = (ListView) activity.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.MainClaimListView); //listView

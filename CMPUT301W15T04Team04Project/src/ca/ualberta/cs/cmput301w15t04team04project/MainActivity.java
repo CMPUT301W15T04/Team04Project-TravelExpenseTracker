@@ -26,6 +26,7 @@ import java.util.Vector;
 
 import ca.ualberta.cs.cmput301w15t04team04project.R;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.PagerAdapter;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.MainController;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
@@ -51,6 +52,9 @@ public class MainActivity extends FragmentActivity {
 	private PagerAdapter mpageAdapter;
 	private ViewPager pager;
 	private int num;
+	private MainController controller = new MainController();
+	private MainActivity thisActivity = this;
+
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -118,13 +122,13 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	public void goToSearch(MenuItem item) {
-		Intent intent = new Intent(MainActivity.this, SearchActivity.class);
-		startActivity(intent);
+		controller.goToSearch(thisActivity);
+
 	}
 
 	public void goToEditClaim(MenuItem item) {
-		Intent intent = new Intent(MainActivity.this, EditClaimActivity.class);
-		startActivity(intent);
+		controller.goToEditClaim(thisActivity);
+
 	}
 
 }
