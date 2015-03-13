@@ -118,7 +118,7 @@ public class Approver_StartAtAddEditClaim_Test extends ActivityInstrumentationTe
 		testClaimList.addClaim(CClaim);
 		AClaim.setStatus("Submitted");
 		BClaim.setStatus("Submitted");
-		AClaim.setClaimiantName("1");
+		AClaim.setClaimiantName(claimiant);
 		
 		Date date = new Date();
 		AClaim.setStartDate(date);

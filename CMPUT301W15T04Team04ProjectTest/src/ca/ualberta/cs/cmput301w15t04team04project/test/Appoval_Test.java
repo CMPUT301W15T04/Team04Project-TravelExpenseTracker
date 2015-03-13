@@ -74,9 +74,6 @@ public class Appoval_Test extends ActivityInstrumentationTestCase2<SignInActivit
 	}
 
 	
-
-	
-	
 	//US08.01.01 and US08.04.01
 	protected void viewSubmittedClaimsDetailsTest() {
 		
