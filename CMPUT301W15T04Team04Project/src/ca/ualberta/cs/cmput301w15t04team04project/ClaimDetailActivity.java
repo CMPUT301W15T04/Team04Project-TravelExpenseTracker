@@ -25,6 +25,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+/**
+ * This is the activity for showing the detail of a claim.
+ * This activity is the version for claimant
+ * @author Yufei Zhang
+ * @version 1.0
+ * @since 2015-03-12
+ */
+
 public class ClaimDetailActivity extends Activity {
 	private boolean isClaimant = OneClaimActivity.isClaimant;
 	
@@ -38,7 +46,14 @@ public class ClaimDetailActivity extends Activity {
 			setContentView(R.layout.activity_claim_detail_a);
 		}
 	}
-
+	
+	
+	/**
+	 * This boolean function is to activate the option menu.
+	 * @author Yufei Zhang
+	 * @version 1.0
+	 * @since 2015-03-12
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

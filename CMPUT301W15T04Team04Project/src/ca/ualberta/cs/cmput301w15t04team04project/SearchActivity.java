@@ -9,12 +9,26 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.SearchView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+/**
+ * The mission of SearchActivity are:
+ * 1. The users can be both claimants and approvers.
+ * 2. Users can search a claim by tag.
+ * 3. Users can search a claim by some keywords.
+ * @author Yufei Zhang
+ * @version 1.0
+ * @since 2015-03-12
+ */
 public class SearchActivity extends Activity {
 	
 	// An array of strings to populate drop down list */
-	String[] contextTags = new String[] {
+	
+	/**
+	 * The following String[] is using for store the contact Tags.
+	 * **/
+	String[] contectTags = new String[] {
 		"Tag",
 		"Friend",
 		"Classmate"
@@ -27,28 +41,20 @@ public class SearchActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
-		
-        // Create an array adapter to populate drop down list
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_dropdown_item, contextTags);
-        
-        
-        // Enabling drop down list navigation for the action bar
-        getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-        
-        // Defining Navigation listener
-        ActionBar.OnNavigationListener navigationListener = new OnNavigationListener() {
-			
-			@Override
-			public boolean onNavigationItemSelected(int itemPosition, long itemId) {
-				Toast.makeText(getBaseContext(), "You selected : " + contextTags[itemPosition]  , Toast.LENGTH_SHORT).show();
-				return false;
-			}
-		};
-	
-		// Setting drop down items and item navigation listener for the action bar
-		getActionBar().setListNavigationCallbacks(adapter, navigationListener);  
+
+		Spinner spinner = (Spinner) findViewById(R.id.constactTagsSpinner);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(), 
+				android.R.layout.simple_spinner_dropdown_item, contectTags);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinner.setAdapter(adapter);
 	}
 
+	/**
+	 * This boolean function is to activate the option menu.
+	 * @author Yufei Zhang
+	 * @version 1.0
+	 * @since 2015-03-12
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -56,17 +62,6 @@ public class SearchActivity extends Activity {
 		return true;
 	}
 
-	/*
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-	    getMenuInflater().inflate(R.menu.search, menu);
-	    MenuItem searchItem = menu.findItem(R.id.action_search);
-	    SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-	    // Configure the search info and add any event listeners
-	    return super.onCreateOptionsMenu(menu);
-	}
-	*/
-	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will

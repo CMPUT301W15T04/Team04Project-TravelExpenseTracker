@@ -19,9 +19,9 @@
         tools:ignore="HardcodedText,RtlHardcoded" />
 
     <Spinner
-        android:id="@+id/consSpinner"
+        android:id="@+id/constactTagsSpinner"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_height="60dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/contectTagsTextView"

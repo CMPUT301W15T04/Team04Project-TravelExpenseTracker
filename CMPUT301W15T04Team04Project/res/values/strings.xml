@@ -49,5 +49,8 @@
     <item >Meal</item>
     <item >Supplies</item>
   </string-array>
+  <string-array name="contact_tags">
+      <item />
+  </string-array>
   
 </resources>

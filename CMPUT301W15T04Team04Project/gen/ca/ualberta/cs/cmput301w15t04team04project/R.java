@@ -11,6 +11,7 @@ public final class R {
     public static final class array {
         public static final int androidcolors=0x7f050000;
         public static final int categories=0x7f050002;
+        public static final int contact_tags=0x7f050003;
         public static final int currencyUnits=0x7f050001;
     }
     public static final class attr {
@@ -96,7 +97,7 @@ public final class R {
         public static final int claimState=0x7f0a0071;
         public static final int claimTagTextView=0x7f0a004b;
         public static final int completeCheckBox=0x7f0a002e;
-        public static final int consSpinner=0x7f0a003b;
+        public static final int constactTagsSpinner=0x7f0a003b;
         public static final int contectTagsTextView=0x7f0a003a;
         public static final int currencyUnitsSpinner=0x7f0a0055;
         public static final int currentClaimEDATextView8=0x7f0a0015;
