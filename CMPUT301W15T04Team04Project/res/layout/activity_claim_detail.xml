@@ -9,16 +9,6 @@
     tools:context="ca.ualberta.cs.cmput301w15t04team04project.ClaimDetailActivity" >
 
     <TextView
-        android:id="@+id/showClaimNameCTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="Claim Name:"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        tools:ignore="HardcodedText,RtlHardcoded" />
-
-    <TextView
         android:id="@+id/showStartDateCTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -115,7 +105,8 @@
         android:layout_alignBottom="@+id/showItemAmountTextView"
         android:layout_alignLeft="@+id/currentClaimSDCTextView"
         android:text="MMM-DD-YYYY"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/currentClaimStatusCTextView"
@@ -124,7 +115,8 @@
         android:layout_alignBottom="@+id/showClaimStatusCTextView"
         android:layout_alignLeft="@+id/currentClaimEDCTextView"
         android:text="Processing"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/currentClaimNameCTextView"
@@ -134,6 +126,27 @@
         android:layout_marginLeft="26dp"
         android:layout_toRightOf="@+id/showDestinamtionsCTextView"
         android:text="The Name of the Claim"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText,RtlHardcoded" />
+
+    <TextView
+        android:id="@+id/showClaimDetailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Claim Detail"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/showClaimNameCTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/showClaimStatusCTextView"
+        android:layout_below="@+id/showClaimDetailTextView"
+        android:layout_marginTop="15dp"
+        android:text="Claim Name:"
         android:textAppearance="?android:attr/textAppearanceSmall"
         tools:ignore="HardcodedText,RtlHardcoded" />
 

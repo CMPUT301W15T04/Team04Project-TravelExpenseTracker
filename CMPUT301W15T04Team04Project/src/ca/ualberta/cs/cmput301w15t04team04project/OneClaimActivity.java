@@ -47,7 +47,6 @@ public class OneClaimActivity extends Activity {
 		LayoutInflater factory = LayoutInflater.from(OneClaimActivity.this);
 		View claimInfoCDialogView = factory.inflate(R.layout.activity_claim_detail, null);
 		adb.setView(claimInfoCDialogView);
-		adb.setMessage("          Claim Details");  // set title
 		
 		adb.setNeutralButton("Submit", new OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
@@ -80,8 +79,6 @@ public class OneClaimActivity extends Activity {
 		LayoutInflater factory = LayoutInflater.from(OneClaimActivity.this);
 		View claimInfoCDialogView = factory.inflate(R.layout.activity_claim_detail_a, null);
 		adb.setView(claimInfoCDialogView);
-		
-		adb.setMessage("          Claim Details");  // set title
 		
 		adb.setNegativeButton("Return", new OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
@@ -127,15 +124,12 @@ public class OneClaimActivity extends Activity {
 		View claimInfoCDialogView = factory.inflate(R.layout.activity_item_detail, null);
 		adb.setView(claimInfoCDialogView);
 		
-		adb.setMessage("          Item Details");  // set title
 		// set the Edit Button on the Dialog
 		adb.setNeutralButton("Edit", new OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				Toast.makeText(OneClaimActivity.this, "Clicked On Edit" ,Toast.LENGTH_SHORT).show();
-				/**
-				 * You need to add code here to do the edit stuff
-				 * Once the claimant click this, he or she can go to the EditItemActivity to edit the current item
-				**/
+				Intent intent = new Intent(OneClaimActivity.this, EditItemActivity.class);
+				startActivity(intent);
 			}
 		});
 		
@@ -150,8 +144,6 @@ public class OneClaimActivity extends Activity {
 		LayoutInflater factory = LayoutInflater.from(OneClaimActivity.this);
 		View claimInfoCDialogView = factory.inflate(R.layout.activity_item_detail_a, null);
 		adb.setView(claimInfoCDialogView);
-		
-		adb.setMessage("          Item Details");  // set title
 		
 		adb.setNeutralButton("Add Comment", new OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {

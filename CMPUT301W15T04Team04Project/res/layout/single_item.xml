@@ -10,7 +10,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        tools:ignore="UseCompoundDrawables,UselessParent" >
+        tools:ignore="UseCompoundDrawables,UselessParent,RtlHardcoded" >
 
         <ImageView
             android:id="@+id/incomleteFlagImageView"

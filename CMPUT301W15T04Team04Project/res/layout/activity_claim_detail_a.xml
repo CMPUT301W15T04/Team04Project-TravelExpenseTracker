@@ -9,23 +9,15 @@
     android:paddingTop="@dimen/activity_vertical_margin" >
 
     <TextView
-        android:id="@+id/showClaimNameATextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="Claim Name:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
         android:id="@+id/showClaimEDATextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/showClaimSDATextView"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:text="End Date:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/currentClaimSDATextView"
@@ -34,9 +26,9 @@
         android:layout_alignBaseline="@+id/showClaimSDATextView"
         android:layout_alignBottom="@+id/showClaimSDATextView"
         android:layout_alignLeft="@+id/currentClaimNameATextView"
-        
         android:text="MMM-DD-YYYY"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
 
     <EditText
         android:id="@+id/addCommentsEditText"
@@ -47,7 +39,8 @@
         android:layout_below="@+id/showDestinationsAListView"
         android:ems="10"
         android:hint="Add Some Comments"
-        android:inputType="textMultiLine" />
+        android:inputType="textMultiLine"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/currentClaimStatusATextView"
@@ -57,7 +50,8 @@
         android:layout_alignBottom="@+id/showClaimStatusTextView"
         android:layout_alignLeft="@+id/currentClaimEDATextView8"
         android:text="Submited"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/showClaimStatusTextView"
@@ -67,7 +61,8 @@
         android:layout_below="@+id/showClaimEDATextView"
         android:layout_marginTop="10dp"
         android:text="Status:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/showClaimTagsATextView"
@@ -77,7 +72,8 @@
         android:layout_below="@+id/showClaimStatusTextView"
         android:layout_marginTop="10dp"
         android:text="Tags:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
 
     <ListView
         android:id="@+id/showClaimTagsAListView"
@@ -95,7 +91,8 @@
         android:layout_below="@+id/showClaimTagsAListView"
         android:layout_marginTop="10dp"
         android:text="Destinations:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
 
     <ListView
         android:id="@+id/showDestinationsAListView"
@@ -114,18 +111,8 @@
         android:layout_below="@+id/showClaimNameATextView"
         android:layout_marginTop="10dp"
         android:text="Start Date:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/currentClaimNameATextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/showClaimNameATextView"
-        android:layout_alignBottom="@+id/showClaimNameATextView"
-        android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@+id/showDestinationsATextView"
-        android:text="The Name of the Claim"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/currentClaimEDATextView8"
@@ -134,6 +121,38 @@
         android:layout_above="@+id/showClaimStatusTextView"
         android:layout_alignLeft="@+id/currentClaimSDATextView"
         android:text="MMM-DD-YYYY"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/showClaimDetailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Claim Detail"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/showClaimNameATextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/showClaimSDATextView"
+        android:layout_below="@+id/showClaimDetailTextView"
+        android:layout_marginTop="10dp"
+        android:text="Claim Name:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/currentClaimNameATextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/showClaimSDATextView"
+        android:layout_alignLeft="@+id/showClaimDetailTextView"
+        android:text="The Name of the Claim"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
 
 </RelativeLayout>

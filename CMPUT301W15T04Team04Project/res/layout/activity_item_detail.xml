@@ -17,16 +17,8 @@
         android:layout_below="@+id/showItemNameCTextView"
         android:layout_marginTop="15dp"
         android:text="Amount:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/showItemNameCTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="Item Name:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/showItemDateTextView"
@@ -37,7 +29,8 @@
         android:layout_below="@+id/showItemAmountTextView"
         android:layout_marginTop="15dp"
         android:text="Date:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/currentItemAmountTextView"
@@ -47,7 +40,8 @@
         android:layout_alignBottom="@+id/showItemAmountTextView"
         android:layout_alignLeft="@+id/currentItemNameTextView"
         android:text="$ 998.00"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/currentItemDateTextView"
@@ -57,7 +51,8 @@
         android:layout_alignBottom="@+id/showItemDateTextView"
         android:layout_alignLeft="@+id/currentItemAmountTextView"
         android:text="MMM-DD-YYYY"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/showItemCateTextView"
@@ -68,7 +63,8 @@
         android:layout_below="@+id/showItemDateTextView"
         android:layout_marginTop="15dp"
         android:text="Category:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/currentItemCateTextView"
@@ -77,7 +73,8 @@
         android:layout_alignBottom="@+id/showItemCateTextView"
         android:layout_alignLeft="@+id/currentItemDateTextView"
         android:text="Tranpotation"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/showDescripTextView"
@@ -87,7 +84,8 @@
         android:layout_below="@+id/showItemCateTextView"
         android:layout_marginTop="15dp"
         android:text="Description:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/currentDescripTextView"
@@ -97,7 +95,8 @@
         android:layout_below="@+id/showDescripTextView"
         android:layout_marginTop="5dp"
         android:text="I have a lot of things to say: hahahahahahahahahahahahaha"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
 
     <ImageView
         android:id="@+id/currentRecieptImageView"
@@ -106,7 +105,8 @@
         android:layout_alignLeft="@+id/showReTextView"
         android:layout_alignRight="@+id/currentDescripTextView"
         android:layout_below="@+id/showReTextView"
-        android:src="@drawable/ic_reciept" />
+        android:src="@drawable/images"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/showReTextView"
@@ -115,17 +115,9 @@
         android:layout_alignLeft="@+id/currentDescripTextView"
         android:layout_below="@+id/currentDescripTextView"
         android:layout_marginTop="60dp"
-        android:text="Small Text"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <RadioButton
-        android:id="@+id/showFlagRadioButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/currentRecieptImageView"
-        android:layout_alignRight="@+id/currentRecieptImageView"
-        android:layout_below="@+id/currentRecieptImageView"
-        android:text="Incomplete" />
+        android:text="Reciept:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/currentItemNameTextView"
@@ -135,6 +127,36 @@
         android:layout_alignRight="@+id/currentDescripTextView"
         android:layout_marginRight="70dp"
         android:text="Item Name"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/showItemDetailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Item Detail"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/showItemNameCTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/showItemDetailTextView"
+        android:text="Item Name:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
+
+    <CheckBox
+        android:id="@+id/completeCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/currentRecieptImageView"
+        android:layout_centerHorizontal="true"
+        android:text="Completed"
+        tools:ignore="HardcodedText" />
 
 </RelativeLayout>
