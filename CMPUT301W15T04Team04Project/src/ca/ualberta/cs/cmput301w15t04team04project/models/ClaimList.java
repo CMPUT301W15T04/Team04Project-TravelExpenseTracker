@@ -132,8 +132,8 @@ public class ClaimList {
 	 * @param claim
 	 *            the removed claim .
 	 */
-	public void deleteClaim(Claim claim) {
-		claimList.remove(claim);
+	public void deleteClaim(int i) {
+		claimList.remove(i);
 		notifyListeners();
 	}
 
