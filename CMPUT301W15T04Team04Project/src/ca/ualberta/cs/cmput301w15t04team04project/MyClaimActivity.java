@@ -9,6 +9,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListCon
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Listener;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -88,8 +89,7 @@ public class MyClaimActivity extends Activity {
     	listView.setOnItemLongClickListener(new OnItemLongClickListener(){
 
 			@Override
-			public boolean onItemLongClick(AdapterView<?> adapterView, View view,
-					int position, long id) {
+			public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
 				final int finalPosition = position;
 				//Claim claim = list.get(finalPosition);
 				AlertDialog.Builder adb = new AlertDialog.Builder(MyClaimActivity.this);

@@ -48,6 +48,8 @@ import android.support.v4.view.ViewPager;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 public class MainActivity extends FragmentActivity {
+	private ActionBar actionBar;
+	
 	private RadioGroup bottom_Rg;
 	private PagerAdapter mpageAdapter;
 	private ViewPager pager;
@@ -60,8 +62,12 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		//searchClaim.setVisible(true);
 		setContentView(R.layout.activity_main);
+		
+		actionBar = getActionBar();
+		actionBar.setTitle("My Local Claims");
+
 		initialisePaging();
 	}
 
@@ -107,19 +113,20 @@ public class MainActivity extends FragmentActivity {
 				switch (checkedId) {
 				case R.id.myClaimMenuButton:
 					pager.setCurrentItem(0);
-					//num = pager.getCurrentItem();
+					actionBar.setTitle("My Local Claims");
+					actionBar.setIcon(R.drawable.ic_launcher);
 					break;
 
 				case R.id.momentsMenuButton:
 					pager.setCurrentItem(1);
-					// I change this to OneClaimActivity just for testing the rest of the layouts
-					//Intent intent = new Intent(MainActivity.this, OneClaimActivity.class);
-					//startActivity(intent);
+					actionBar.setTitle("Sumbitted Claims");
+					actionBar.setIcon(R.drawable.ic_launcher);
 					break;
 
 				case R.id.myProfileMenuButton:
 					pager.setCurrentItem(2);
-					//num = pager.getCurrentItem();
+					actionBar.setTitle("Me");
+					actionBar.setIcon(R.drawable.user2_icon);
 					break;
 
 				default:
@@ -138,12 +145,10 @@ public class MainActivity extends FragmentActivity {
 
 	public void goToSearch(MenuItem item) {
 		controller.goToSearch(thisActivity);
-
 	}
 
 	public void goToEditClaim(MenuItem item) {
 		controller.goToEditClaim(thisActivity);
-
 	}
 
 }

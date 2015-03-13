@@ -53,6 +53,8 @@ public class FragmentProfile extends Fragment {
 		user  = SignInManager.loadFromFile(getActivity(),"UserStatus");
 		return inflater.inflate(R.layout.fragment_profile, container, false);
 	}
+	
+	
     @Override  
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
@@ -86,8 +88,7 @@ public class FragmentProfile extends Fragment {
 					signInController.logOut(getActivity());
 					
 					// go back to signIn page
-					Intent intent3 = new Intent(getActivity(),
-							SignInActivity.class);
+					Intent intent3 = new Intent(getActivity(), SignInActivity.class);
 					startActivity(intent3);
 					
 					// stop current view

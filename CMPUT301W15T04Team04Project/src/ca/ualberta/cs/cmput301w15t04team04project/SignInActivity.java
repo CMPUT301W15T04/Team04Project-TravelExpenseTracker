@@ -40,9 +40,19 @@ public class SignInActivity extends Activity {
 	private User user;
 	private SignInController signInConroller = new SignInController();
 	
+	
+	/**
+	 * We update the sign in page. Hiding the title Bar and prepare for adding a picture
+	 * @author Chenrui Lei
+	 * @author Yufei Zhang 
+	 * @version 2.0
+	 * @since 2015-03-13
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		getActionBar().hide();
 		// load the old user
 		user = SignInManager.loadFromFile(this,"UserStatus");
 		
