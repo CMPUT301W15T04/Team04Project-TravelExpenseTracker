@@ -221,6 +221,7 @@ public final class R {
         public static final int xlistview_header_progressbar=0x7f0a0088;
         public static final int xlistview_header_text=0x7f0a0084;
         public static final int xlistview_header_time=0x7f0a0086;
+		protected static final int myClaimMenuButton = 0;
     }
     public static final class layout {
         public static final int activity_claim_detail=0x7f030000;
