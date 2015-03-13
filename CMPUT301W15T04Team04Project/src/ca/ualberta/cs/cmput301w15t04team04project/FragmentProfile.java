@@ -21,10 +21,12 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.FragmentProfileController;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.SignInController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -40,6 +42,8 @@ public class FragmentProfile extends Fragment {
 	private TextView userName;
 	private RadioGroup settingOption;
 	private User user;
+	private FragmentProfileController controller = new FragmentProfileController();
+	private Context FragmentProfile = getActivity();
 	
 	private SignInController signInController = new SignInController();
 	
@@ -59,6 +63,7 @@ public class FragmentProfile extends Fragment {
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
 				switch (checkedId) {
 				case R.id.MyClaims:
+					//controller.GoToMyClaim(FragmentProfile);
 					Intent intent1 = new Intent(getActivity(),
 							MyClaimActivity.class);
 					startActivity(intent1);

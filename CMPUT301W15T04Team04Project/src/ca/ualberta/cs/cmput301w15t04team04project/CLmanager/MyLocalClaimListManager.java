@@ -18,7 +18,7 @@ public class MyLocalClaimListManager {
 	private static Gson gson = new Gson();
 	final private String FILENAME = "localclaimlist";
 	private Context context;
-	static private MyLocalClaimListManager myLocalClaimListManager = null;
+	static private MyLocalClaimListManager myLocalClaimListManager;
 	
 	public static MyLocalClaimListManager getMyLocalClaimListManager(){
 		

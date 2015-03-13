@@ -49,6 +49,7 @@ public class MyLocalClaimListController {
 	 * @since 2015-03-12
 	 */
 	public MyLocalClaimListController(){
+		//claimlist = MyLocalClaimListManager.getMyLocalClaimListManager().loadClaimList();
 	}
 	/**
 	 * GoToEditClaim is go to EditClaimActivity
@@ -88,7 +89,7 @@ public class MyLocalClaimListController {
 	 * @since 2015-03-12
 	 */	
 	public ClaimList getClaimList(){
-		
+
 		return claimlist;
 	}
 }
