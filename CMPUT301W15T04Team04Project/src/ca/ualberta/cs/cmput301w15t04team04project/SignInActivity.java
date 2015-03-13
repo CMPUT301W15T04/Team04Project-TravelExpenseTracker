@@ -69,6 +69,7 @@ public class SignInActivity extends Activity {
 	
 	public void signIn(View v){
 		signInConroller.signIn(this,userName);
+		finish();
 	}
 	
 }

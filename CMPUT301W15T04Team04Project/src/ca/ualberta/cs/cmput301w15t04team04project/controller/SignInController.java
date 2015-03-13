@@ -52,9 +52,6 @@ public class SignInController {
 			Intent intent = new Intent(context,
 					MainActivity.class);
 			context.startActivity(intent);
-			//context.finish();
-			
-			
 		}
 	}
 	
