@@ -105,7 +105,7 @@
         android:layout_alignLeft="@+id/showReTextView"
         android:layout_alignRight="@+id/currentDescripTextView"
         android:layout_below="@+id/showReTextView"
-        android:src="@drawable/images"
+        android:src="@drawable/ic_action_new_picture"
         tools:ignore="ContentDescription" />
 
     <TextView
