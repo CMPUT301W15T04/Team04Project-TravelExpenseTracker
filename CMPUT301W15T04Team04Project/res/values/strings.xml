@@ -52,5 +52,6 @@
   <string-array name="contact_tags">
       <item />
   </string-array>
+      <string name="menu_moments">Moments</string>
   
 </resources>
