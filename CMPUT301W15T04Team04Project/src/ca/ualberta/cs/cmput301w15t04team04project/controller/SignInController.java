@@ -19,7 +19,6 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 public class SignInController {
 
 	public SignInController() {
-
 		// TODO Auto-generated constructor stub
 	}
 
@@ -29,7 +28,7 @@ public class SignInController {
 	 * 
 	 * @author Chenrui Lei
 	 * @version 1.0
-	 * @since 2015-03-11
+	 * @since 2015-03-12
 	 */
 	public void storeUserProfile(User user, Context context){
 		SignInManager.saveInFile(user,context,"UserStatus");
@@ -44,7 +43,10 @@ public class SignInController {
 			// create a new user and change it's longinStatus to true
 			User user = new User(userNameInput);
 			user.changeLoginStatus();
-			SignInActivity.user = user;
+			//SignInActivity.user = user;
+			
+			// store the user info
+			storeUserProfile(user, context);
 			
 			// goto the main page
 			Intent intent = new Intent(context,
@@ -52,15 +54,13 @@ public class SignInController {
 			context.startActivity(intent);
 			//context.finish();
 			
-			// store the user info
-			storeUserProfile(user, context);
+			
 		}
 	}
 	
 	public void logOut(Context context){
 		// change the user info as not logged in
 		User user = new User(null);
-		user.changeLoginStatus();
 		user.setName(null);
 		
 		// store the user info

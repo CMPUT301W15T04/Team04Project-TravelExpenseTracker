@@ -51,6 +51,7 @@ public class MainActivity extends FragmentActivity {
 	private PagerAdapter mpageAdapter;
 	private ViewPager pager;
 	private int num;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
