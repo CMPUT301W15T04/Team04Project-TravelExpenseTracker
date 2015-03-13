@@ -10,7 +10,9 @@
         android:id="@+id/mainActivityPager"
         android:layout_width="fill_parent"
         android:layout_height="348dp"
-        android:layout_weight="1.21" >
+        android:layout_weight="1.21"
+        tools:ignore="InefficientWeight" >
+
     </ca.ualberta.cs.cmput301w15t04team04project.View.NoSwipeViewPager>
 
     <RadioGroup
@@ -28,7 +30,8 @@
             android:layout_height="50dp"
             android:checked="true"
             android:drawableTop="@drawable/ic_action_view_as_list"
-            android:text="My Claims" />
+            android:text="My Claims"
+            tools:ignore="HardcodedText" />
 
         <RadioButton
             android:id="@+id/momentsMenuButton"
@@ -36,7 +39,8 @@
             android:layout_width="107dp"
             android:layout_height="match_parent"
             android:drawableTop="@drawable/momoents"
-            android:text="Monents" />
+            android:text="Monents"
+            tools:ignore="HardcodedText" />
 
         <RadioButton
             android:id="@+id/myProfileMenuButton"

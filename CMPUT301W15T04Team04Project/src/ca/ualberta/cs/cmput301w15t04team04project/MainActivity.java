@@ -51,7 +51,8 @@ public class MainActivity extends FragmentActivity {
 	private RadioGroup bottom_Rg;
 	private PagerAdapter mpageAdapter;
 	private ViewPager pager;
-	private int num;
+	
+	//private int num = -1;
 	private MainController controller = new MainController();
 	private MainActivity thisActivity = this;
 
@@ -62,27 +63,40 @@ public class MainActivity extends FragmentActivity {
 
 		setContentView(R.layout.activity_main);
 		initialisePaging();
-		
-		// TODO click on a claim and show what is inside this claim
-		/**
-		 * we have two missions
-		 * 1. click on a claim and go to the OneClaimActivity to show what is inside this claim
-		 * 2. long click on a claim and we can choose whether to delete it or not
-		 **/
 	}
 
+	
+	/**
+	 * set initialisePaging
+	 * 
+	 * @author Youdon Ma
+	 * @author Yufei Zhang
+	 * @version 2.0
+	 * @since 2015-03-13
+	 */
 	private void initialisePaging() {
 		// TODO Auto-generated method stub
 		List<Fragment> fragments = new Vector<Fragment>();
 		fragments.add(Fragment.instantiate(this, FragmentMain.class.getName()));
+		fragments.add(Fragment.instantiate(this, FragmentMoments.class.getName()));
 		fragments.add(Fragment.instantiate(this,FragmentProfile.class.getName()));
+		
 		mpageAdapter = new PagerAdapter(this.getSupportFragmentManager(),fragments);
 		pager = (ViewPager) findViewById(R.id.mainActivityPager);
 		pager.setAdapter(mpageAdapter);
 		setFragmentIndicator();
-		num = pager.getCurrentItem();
+		//num = pager.getCurrentItem();
 	}
 
+	
+	/**
+	 * setFragmentIndicator
+	 * 
+	 * @author Youdon Ma
+	 * @author Yufei Zhang
+	 * @version 2.0
+	 * @since 2015-03-13
+	 */
 	private void setFragmentIndicator() {
 
 		bottom_Rg = (RadioGroup) findViewById(R.id.mainActivityBottomMenu);
@@ -93,18 +107,19 @@ public class MainActivity extends FragmentActivity {
 				switch (checkedId) {
 				case R.id.myClaimMenuButton:
 					pager.setCurrentItem(0);
-					num = pager.getCurrentItem();
+					//num = pager.getCurrentItem();
 					break;
 
 				case R.id.momentsMenuButton:
+					pager.setCurrentItem(1);
 					// I change this to OneClaimActivity just for testing the rest of the layouts
-					Intent intent = new Intent(MainActivity.this, OneClaimActivity.class);
-					startActivity(intent);
+					//Intent intent = new Intent(MainActivity.this, OneClaimActivity.class);
+					//startActivity(intent);
 					break;
 
 				case R.id.myProfileMenuButton:
-					pager.setCurrentItem(1);
-					num = pager.getCurrentItem();
+					pager.setCurrentItem(2);
+					//num = pager.getCurrentItem();
 					break;
 
 				default:

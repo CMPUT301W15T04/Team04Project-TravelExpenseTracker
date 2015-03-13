@@ -85,6 +85,10 @@
             android:name=".MyClaimActivity"
             android:label="@string/title_activity_my_claim" >
         </activity>
+        <activity
+            android:name=".FragmentMoments"
+            android:label="@string/title_activity_fragment_moments" >
+        </activity>
     </application>
 
 </manifest>
