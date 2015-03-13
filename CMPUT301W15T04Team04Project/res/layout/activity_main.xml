@@ -22,24 +22,24 @@
         android:orientation="horizontal" >
 
         <RadioButton
-            android:id="@+id/main_menu_button"
+            android:id="@+id/myClaimMenuButton"
             style="@style/main_menu_bottom"
             android:layout_width="107dp"
             android:layout_height="50dp"
             android:checked="true"
-            android:drawableTop="@drawable/momoents"
-            android:text="@string/menu_moments" />
+            android:drawableTop="@drawable/ic_action_view_as_list"
+            android:text="My Claims" />
 
         <RadioButton
-            android:id="@+id/add_menu_button"
+            android:id="@+id/momentsMenuButton"
             style="@style/main_menu_bottom"
             android:layout_width="107dp"
             android:layout_height="match_parent"
-            android:drawableTop="@drawable/add_icon"
-            android:text="@string/menu_add" />
+            android:drawableTop="@drawable/momoents"
+            android:text="Monents" />
 
         <RadioButton
-            android:id="@+id/profile_menu_button"
+            android:id="@+id/myProfileMenuButton"
             style="@style/main_menu_bottom"
             android:layout_width="106dp"
             android:layout_height="match_parent"

@@ -94,7 +94,6 @@ public final class R {
         public static final int addCommentItemEditText=0x7f0a002f;
         public static final int addCommentsEditText=0x7f0a0011;
         public static final int addRecieptImageView=0x7f0a005b;
-        public static final int add_menu_button=0x7f0a0033;
         public static final int cancleSearchTextView=0x7f0a0068;
         public static final int claimDescriptionTextView=0x7f0a0049;
         public static final int claimDestinationTextView=0x7f0a004d;
@@ -158,9 +157,10 @@ public final class R {
         public static final int logOut=0x7f0a0061;
         public static final int mainActivityBottomMenu=0x7f0a0031;
         public static final int mainActivityPager=0x7f0a0030;
-        public static final int main_menu_button=0x7f0a0032;
+        public static final int momentsMenuButton=0x7f0a0033;
+        public static final int myClaimMenuButton=0x7f0a0032;
+        public static final int myProfileMenuButton=0x7f0a0034;
         public static final int photoButton=0x7f0a005d;
-        public static final int profile_menu_button=0x7f0a0034;
         public static final int radioGroup1=0x7f0a0062;
         public static final int searchBarEditText=0x7f0a0067;
         public static final int settingGroup=0x7f0a005e;
