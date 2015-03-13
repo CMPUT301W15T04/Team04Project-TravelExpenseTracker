@@ -75,8 +75,9 @@ public class SearchActivity extends Activity {
 		//return true;
 	}
 
-	public void search(MenuItem item) {
+	public void cancle(View view) {
 		Toast.makeText(SearchActivity.this, "We need to add search function" ,Toast.LENGTH_SHORT).show();
+		finish();
 	}
 	
 }
