@@ -27,6 +27,7 @@ import java.util.Vector;
 import ca.ualberta.cs.cmput301w15t04team04project.R;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.PagerAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.MainController;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.SignInController;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
@@ -49,6 +50,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 
 public class MainActivity extends FragmentActivity {
 	private ActionBar actionBar;
+	private SignInController signInController = new SignInController();
 	
 	private RadioGroup bottom_Rg;
 	private PagerAdapter mpageAdapter;
@@ -150,5 +152,23 @@ public class MainActivity extends FragmentActivity {
 	public void goToEditClaim(MenuItem item) {
 		controller.goToEditClaim(thisActivity);
 	}
+	
+	
+	/**
+	* Modify the following code
+	*
+	* @author  Chenrui Lei
+	* @version 1.0
+	* @since   2015-03-11
+	*/
+	public void logOut(View view) {
+		signInController.logOut(MainActivity.this);
 
+		// go back to signIn page
+		Intent intent3 = new Intent(MainActivity.this, SignInActivity.class);
+		startActivity(intent3);
+		
+		// stop current view
+		finish();
+    }
 }

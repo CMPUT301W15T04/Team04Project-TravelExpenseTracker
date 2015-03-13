@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical" >
 
-    <ImageView
-        android:id="@+id/photoButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="23dp"
-        android:background="@drawable/user2_icon" />
-
     <RadioGroup
         android:id="@+id/settingGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/radioGroup1"
+        android:layout_alignParentLeft="true"
         android:layout_marginTop="20dp" >
 
         <RadioButton
@@ -36,29 +32,48 @@
             android:layout_alignParentRight="true"
             android:drawableRight="@drawable/list2_icon"
             android:text="WaitingList" />
-
-        <RadioButton
-            android:id="@+id/logOut"
-            style="@style/setting_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="3.32"
-            android:drawableLeft="@drawable/log_out"
-            android:text="Log out" />
     </RadioGroup>
 
     <RadioGroup
         android:id="@+id/radioGroup1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true" >
     </RadioGroup>
 
     <TextView
         android:id="@+id/userNameDisplay"
         style="@style/charactor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="117dp"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="23dp"
+        android:layout_toRightOf="@+id/photoButton"
+        android:layout_weight="0.07"
+        android:hint="User Name"
         android:textSize="30sp" />
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/photoButton"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_weight="0.08"
+        android:background="@drawable/user2_icon" />
+
+    <TextView
+        android:id="@+id/logOutTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/settingGroup"
+        android:layout_centerHorizontal="true"
+        android:clickable="true"
+        android:drawableLeft="@drawable/log_out"
+        android:onClick="logOut"
+        android:text="Log Out"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>

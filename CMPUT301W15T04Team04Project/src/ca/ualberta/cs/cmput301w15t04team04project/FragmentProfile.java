@@ -60,6 +60,7 @@ public class FragmentProfile extends Fragment {
 		super.onActivityCreated(savedInstanceState);
         userName = (TextView) getView().findViewById(R.id.userNameDisplay);
         userName.setText(user.getName());
+        
         settingOption = (RadioGroup)getView().findViewById(R.id.settingGroup);
         settingOption.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -102,4 +103,8 @@ public class FragmentProfile extends Fragment {
 			}
 		});
 	}
+    
+    public void logOut(View view) {
+    	getActivity().finish();
+    }
 }
