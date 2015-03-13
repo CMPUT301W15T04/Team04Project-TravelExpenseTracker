@@ -39,13 +39,14 @@ public class FragmentProfile extends Fragment {
 	private TextView tv;
 	private TextView userName;
 	private RadioGroup settingOption;
-	private User user = SignInActivity.user;
+	private User user;
 	
 	private SignInController signInController = new SignInController();
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		user  = SignInManager.loadFromFile(getActivity(),"UserStatus");
 		return inflater.inflate(R.layout.fragment_profile, container, false);
 	}
     @Override  

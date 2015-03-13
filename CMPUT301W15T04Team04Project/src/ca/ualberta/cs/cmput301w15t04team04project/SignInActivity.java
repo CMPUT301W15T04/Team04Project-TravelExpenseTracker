@@ -37,8 +37,8 @@ import android.widget.Toast;
 
 public class SignInActivity extends Activity {
 	private EditText userName;
-	public static User user;
-	private SignInController signInConroller;
+	private User user;
+	private SignInController signInConroller = new SignInController();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -68,23 +68,7 @@ public class SignInActivity extends Activity {
 	 */
 	
 	public void signIn(View v){
-		String userNameInput = userName.getText().toString();
-		if(userNameInput.length() == 0){
-			Toast.makeText(this, "You must enter your name!" ,Toast.LENGTH_SHORT).show();
-		}else{
-			// create a new user and change it's longinStatus to true
-			user = new User(userNameInput);
-			user.changeLoginStatus();
-			
-			// goto the main page
-			Intent intent = new Intent(SignInActivity.this,
-					MainActivity.class);
-			startActivity(intent);
-			finish();
-			
-			// store the user info
-			SignInManager.saveInFile(user,this,"UserStatus");
-		}
+		signInConroller.signIn(this,userName);
 	}
 	
 }
