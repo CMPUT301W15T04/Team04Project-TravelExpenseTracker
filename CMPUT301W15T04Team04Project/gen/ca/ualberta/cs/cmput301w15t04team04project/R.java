@@ -56,25 +56,26 @@ public final class R {
         public static final int ic_action_discard=0x7f020007;
         public static final int ic_action_edit=0x7f020008;
         public static final int ic_action_new=0x7f020009;
-        public static final int ic_action_new_picture=0x7f02000a;
-        public static final int ic_action_refresh=0x7f02000b;
-        public static final int ic_action_search=0x7f02000c;
-        public static final int ic_flag=0x7f02000d;
-        public static final int ic_launcher=0x7f02000e;
-        public static final int icon_no_images4=0x7f02000f;
-        public static final int images=0x7f020010;
-        public static final int list2_icon=0x7f020011;
-        public static final int list_icon=0x7f020012;
-        public static final int log_out=0x7f020013;
-        public static final int mail_flag=0x7f020014;
-        public static final int menu_bottom_button=0x7f020015;
-        public static final int menu_btn_bg_selected=0x7f020016;
-        public static final int momoents=0x7f020017;
-        public static final int title_bar=0x7f020018;
-        public static final int toolbar_bg=0x7f020019;
-        public static final int user2_icon=0x7f02001a;
-        public static final int user_icon=0x7f02001b;
-        public static final int xlistview_arrow=0x7f02001c;
+        public static final int ic_action_new_event=0x7f02000a;
+        public static final int ic_action_new_picture=0x7f02000b;
+        public static final int ic_action_refresh=0x7f02000c;
+        public static final int ic_action_search=0x7f02000d;
+        public static final int ic_action_view_as_list=0x7f02000e;
+        public static final int ic_flag=0x7f02000f;
+        public static final int ic_launcher=0x7f020010;
+        public static final int icon_no_images4=0x7f020011;
+        public static final int list2_icon=0x7f020012;
+        public static final int list_icon=0x7f020013;
+        public static final int log_out=0x7f020014;
+        public static final int mail_flag=0x7f020015;
+        public static final int menu_bottom_button=0x7f020016;
+        public static final int menu_btn_bg_selected=0x7f020017;
+        public static final int momoents=0x7f020018;
+        public static final int title_bar=0x7f020019;
+        public static final int toolbar_bg=0x7f02001a;
+        public static final int user2_icon=0x7f02001b;
+        public static final int user_icon=0x7f02001c;
+        public static final int xlistview_arrow=0x7f02001d;
     }
     public static final class id {
         public static final int Destination=0x7f0a006e;
@@ -221,7 +222,6 @@ public final class R {
         public static final int xlistview_header_progressbar=0x7f0a0088;
         public static final int xlistview_header_text=0x7f0a0084;
         public static final int xlistview_header_time=0x7f0a0086;
-		protected static final int myClaimMenuButton = 0;
     }
     public static final class layout {
         public static final int activity_claim_detail=0x7f030000;
