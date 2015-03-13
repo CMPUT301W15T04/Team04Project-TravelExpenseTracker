@@ -61,6 +61,7 @@ public class FragmentProfile extends Fragment {
         userName = (TextView) getView().findViewById(R.id.userNameDisplay);
         userName.setText(user.getName());
         
+        /**
         settingOption = (RadioGroup)getView().findViewById(R.id.settingGroup);
         settingOption.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -79,6 +80,8 @@ public class FragmentProfile extends Fragment {
 					break;
 
 				case R.id.logOut:
+				**/
+        
 					/**
 					* Modify the following code
 					*
@@ -86,6 +89,7 @@ public class FragmentProfile extends Fragment {
 					* @version 1.0
 					* @since   2015-03-11
 					*/
+        /**
 					signInController.logOut(getActivity());
 					
 					// go back to signIn page
@@ -101,10 +105,7 @@ public class FragmentProfile extends Fragment {
 				}
 
 			}
-		});
+		});*/
 	}
-    
-    public void logOut(View view) {
-    	getActivity().finish();
-    }
+
 }

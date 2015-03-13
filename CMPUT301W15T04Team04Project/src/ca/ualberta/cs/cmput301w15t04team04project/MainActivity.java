@@ -85,7 +85,7 @@ public class MainActivity extends FragmentActivity {
 	private void initialisePaging() {
 		// TODO Auto-generated method stub
 		List<Fragment> fragments = new Vector<Fragment>();
-		fragments.add(Fragment.instantiate(this, FragmentMain.class.getName()));
+		fragments.add(Fragment.instantiate(this, FragmentMyClaims.class.getName()));
 		fragments.add(Fragment.instantiate(this, FragmentMoments.class.getName()));
 		fragments.add(Fragment.instantiate(this,FragmentProfile.class.getName()));
 		
@@ -101,8 +101,10 @@ public class MainActivity extends FragmentActivity {
 	 * setFragmentIndicator
 	 * 
 	 * @author Youdon Ma
+	 * @version 1.0
+	 * @since 2015-03-10
 	 * @author Yufei Zhang
-	 * @version 2.0
+	 * @version 1.1
 	 * @since 2015-03-13
 	 */
 	private void setFragmentIndicator() {
@@ -113,22 +115,23 @@ public class MainActivity extends FragmentActivity {
 			@Override
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
 				switch (checkedId) {
+				
 				case R.id.myClaimMenuButton:
 					pager.setCurrentItem(0);
 					actionBar.setTitle("My Local Claims");
-					actionBar.setIcon(R.drawable.ic_launcher);
+					//actionBar.setIcon(R.drawable.ic_launcher);
 					break;
 
 				case R.id.momentsMenuButton:
 					pager.setCurrentItem(1);
 					actionBar.setTitle("Sumbitted Claims");
-					actionBar.setIcon(R.drawable.ic_launcher);
+					//actionBar.setIcon(R.drawable.ic_launcher);
 					break;
 
 				case R.id.myProfileMenuButton:
 					pager.setCurrentItem(2);
-					actionBar.setTitle("Me");
-					actionBar.setIcon(R.drawable.user2_icon);
+					actionBar.setTitle("Approved Claims");
+					//actionBar.setIcon(R.drawable.user2_icon);
 					break;
 
 				default:
@@ -160,6 +163,9 @@ public class MainActivity extends FragmentActivity {
 	* @author  Chenrui Lei
 	* @version 1.0
 	* @since   2015-03-11
+	* @author  Yufei Zhang
+	* @version 1.1
+	* @since 2015-03-13
 	*/
 	public void logOut(View view) {
 		signInController.logOut(MainActivity.this);

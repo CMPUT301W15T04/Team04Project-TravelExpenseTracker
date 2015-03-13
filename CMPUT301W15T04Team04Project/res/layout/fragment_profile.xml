@@ -4,43 +4,10 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clickable="true"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical" >
-
-    <RadioGroup
-        android:id="@+id/settingGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/radioGroup1"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="20dp" >
-
-        <RadioButton
-            android:id="@+id/MyClaims"
-            style="@style/setting_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/list_icon"
-            android:text="My Claims" />
-
-        <RadioButton
-            android:id="@+id/waitingList"
-            style="@style/setting_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:drawableRight="@drawable/list2_icon"
-            android:text="WaitingList" />
-    </RadioGroup>
-
-    <RadioGroup
-        android:id="@+id/radioGroup1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true" >
-    </RadioGroup>
 
     <TextView
         android:id="@+id/userNameDisplay"
@@ -68,12 +35,22 @@
         android:id="@+id/logOutTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/settingGroup"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:clickable="true"
         android:drawableLeft="@drawable/log_out"
         android:onClick="logOut"
         android:text="Log Out"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ListView
+        android:id="@+id/approvedClaimsListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/logOutTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/photoButton" >
+
+    </ListView>
 
 </RelativeLayout>

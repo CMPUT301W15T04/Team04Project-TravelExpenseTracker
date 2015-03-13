@@ -62,7 +62,7 @@
             android:label="@string/title_activity_item_detail" >
         </activity>
         <activity
-            android:name=".FragmentMain"
+            android:name=".FragmentMoments"
             android:label="@string/title_activity_fragment_main" >
         </activity>
         <activity
@@ -86,7 +86,7 @@
             android:label="@string/title_activity_my_claim" >
         </activity>
         <activity
-            android:name=".FragmentMoments"
+            android:name=".FragmentMyClaims"
             android:label="@string/title_activity_fragment_moments" >
         </activity>
     </application>
