@@ -25,6 +25,8 @@ import android.content.Intent;
 import android.widget.Toast;
 import ca.ualberta.cs.cmput301w15t04team04project.EditClaimActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 /**
 * The MyLocalClaimList Controller is a controller of the MyClaimActivity
@@ -37,17 +39,16 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 * 
 */
 public class MyLocalClaimListController {
-	private ClaimList claimlist;
+	private ClaimList claimlist = new ClaimList();;
 
 	/**
 	 * MyLocalClaimListController is initial this class
 	 * 
 	 * @author Weijie Sun
-	 * @version 1.0
+	 * @version 1.1
 	 * @since 2015-03-12
 	 */
 	public MyLocalClaimListController(){
-		
 	}
 	/**
 	 * GoToEditClaim is go to EditClaimActivity

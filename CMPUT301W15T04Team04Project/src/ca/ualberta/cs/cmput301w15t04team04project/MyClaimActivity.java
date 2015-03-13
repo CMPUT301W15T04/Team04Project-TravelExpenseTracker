@@ -1,10 +1,14 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
+import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Listener;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -30,7 +34,9 @@ import android.widget.AdapterView.OnItemLongClickListener;
 
 public class MyClaimActivity extends Activity {
 
-	private ArrayList<String> claims = new ArrayList<String>();
+	//private ArrayList<String> claims = new ArrayList<String>();
+
+	private ClaimList claims = new ClaimList();
 	private MyLocalClaimListController controller = new MyLocalClaimListController();
 	private MyClaimActivity thisActivity = this;
 	
@@ -53,39 +59,31 @@ public class MyClaimActivity extends Activity {
 		*/
     	// should be changed
 		//List<Claim> claims = CLmanager.getClaimList().getClaimList();
-/*	
-		List<Claim> claims = null;
 		
-		Claim AClaim = new Claim("AClaim");
-		Claim BClaim = new Claim("BClaim");	
-		claims.add(AClaim);
-		claims.add(BClaim);*/
-		
+		//old
+		/*
 		for (int i=0;i<10;i++){
 			
 			claims.add("claims" + i);
+			
 		}
+		
+		ListView listView = (ListView) findViewById(R.id.MyClaimslistView);
+		final ArrayList<String> list = new ArrayList<String>(claims);
+		final ArrayAdapter<String> claimAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);*/
+
+		//new
+		
+		claims = controller.getClaimList();
 		
     	ListView listView = (ListView) findViewById(R.id.MyClaimslistView);
 
 		//final ArrayList<Claim> list = new ArrayList<Claim>(claims);
-		final ArrayList<String> list = new ArrayList<String>(claims);
-		//final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, list);
-		final ArrayAdapter<String> claimAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
+		//
+		final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, claims.getClaimList());
 
 		listView.setAdapter(claimAdapter);
 		claimAdapter.notifyDataSetChanged();
-		
-/*    	CLmanager.getClaimList().addListener(new Listener(){
-    		@Override
-    		public void update() {
-    			list.clear();
-    			Collection<Claim> claims = ClaimListController.getClaimList().getClaims();
-    			list.addAll(claims);
-    			claimAdapter.notifyDataSetChanged();
-    		}
- 
-    	});*/
    
     	listView.setOnItemLongClickListener(new OnItemLongClickListener(){
 
