@@ -154,8 +154,7 @@ public class EditClaimActivity extends FragmentActivity {
 		// claim.setTag(tag);
 		// clc.addClaim(claim);
 
-		Toast.makeText(EditClaimActivity.this, "Added", Toast.LENGTH_LONG)
-				.show();
+		Toast.makeText(EditClaimActivity.this, "We cannot add claim so far", Toast.LENGTH_LONG).show();
 		/*
 		 * Intent intent = new Intent(EditClaimActivity.this,
 		 * MainActivity.class); // Controller.saveClaimList();

@@ -24,25 +24,25 @@
         <RadioButton
             android:id="@+id/main_menu_button"
             style="@style/main_menu_bottom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="107dp"
+            android:layout_height="50dp"
             android:checked="true"
-            android:drawableTop="@drawable/home_icon"
-            android:text="@string/menu_home" />
+            android:drawableTop="@drawable/momoents"
+            android:text="@string/menu_moments" />
 
         <RadioButton
             android:id="@+id/add_menu_button"
             style="@style/main_menu_bottom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="107dp"
+            android:layout_height="match_parent"
             android:drawableTop="@drawable/add_icon"
             android:text="@string/menu_add" />
 
         <RadioButton
             android:id="@+id/profile_menu_button"
             style="@style/main_menu_bottom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="106dp"
+            android:layout_height="match_parent"
             android:drawableTop="@drawable/user_icon"
             android:text="@string/menu_profile" />
     </RadioGroup>

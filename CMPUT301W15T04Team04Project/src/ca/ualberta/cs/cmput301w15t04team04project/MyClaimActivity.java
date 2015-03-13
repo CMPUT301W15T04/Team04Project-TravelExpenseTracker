@@ -134,7 +134,14 @@ public class MyClaimActivity extends Activity {
 		});
 	
 	}
-
+	/**
+	* The MyClaimActivity relates to "My Claim" in "profile" of MainActivity.
+	* But it needs some button on the title bar to add claim
+	*
+	* @author  Yufei Zhang
+	* @version 1.0
+	* @since   2015-03-13
+	*/
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -142,15 +149,13 @@ public class MyClaimActivity extends Activity {
 		return true;
 	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
+	public void goToSearch(MenuItem item) {
+		Intent intent = new Intent(MyClaimActivity.this, SearchActivity.class);
+		startActivity(intent);
+	}
+
+	public void goToEditClaim(MenuItem item) {
+		Intent intent = new Intent(MyClaimActivity.this, EditClaimActivity.class);
+		startActivity(intent);
 	}
 }
