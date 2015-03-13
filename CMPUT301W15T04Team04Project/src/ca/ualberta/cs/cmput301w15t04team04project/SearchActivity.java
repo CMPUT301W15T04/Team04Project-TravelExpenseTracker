@@ -3,13 +3,20 @@ package ca.ualberta.cs.cmput301w15t04team04project;
 import android.app.ActionBar;
 import android.app.ActionBar.OnNavigationListener;
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.MenuItemCompat.OnActionExpandListener;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.SearchView;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
 /**
@@ -41,6 +48,10 @@ public class SearchActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
+		
+		ActionBar actionBar = getActionBar();
+		actionBar.setDisplayShowTitleEnabled(false);
+		actionBar.setIcon(R.drawable.ic_action_search);
 
 		Spinner spinner = (Spinner) findViewById(R.id.constactTagsSpinner);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(), 
@@ -59,18 +70,13 @@ public class SearchActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.search, menu);
-		return true;
+		
+		return super.onCreateOptionsMenu(menu);
+		//return true;
 	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
+	public void search(MenuItem item) {
+		Toast.makeText(SearchActivity.this, "We need to add search function" ,Toast.LENGTH_SHORT).show();
 	}
+	
 }
