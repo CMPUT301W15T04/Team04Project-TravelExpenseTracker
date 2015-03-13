@@ -86,18 +86,18 @@ public class MainActivity extends FragmentActivity {
 			@Override
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
 				switch (checkedId) {
-				case R.id.main_menu_button:
+				case R.id.myClaimMenuButton:
 					pager.setCurrentItem(0);
 					num = pager.getCurrentItem();
 					break;
 
-				case R.id.add_menu_button:
+				case R.id.momentsMenuButton:
 					// I change this to OneClaimActivity just for testing the rest of the layouts
 					Intent intent = new Intent(MainActivity.this, OneClaimActivity.class);
 					startActivity(intent);
 					break;
 
-				case R.id.profile_menu_button:
+				case R.id.profileMenuButton:
 					pager.setCurrentItem(1);
 					num = pager.getCurrentItem();
 					break;
