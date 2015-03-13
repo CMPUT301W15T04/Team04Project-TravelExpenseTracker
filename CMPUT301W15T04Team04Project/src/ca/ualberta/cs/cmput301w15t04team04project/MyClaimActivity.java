@@ -109,7 +109,7 @@ public class MyClaimActivity extends Activity {
 				adb.setPositiveButton("Delete", new OnClickListener(){
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						//MyLocalClaimListController.deleteClaim(which);
+						controller.deleteClaim(which);
 				}
 				});
 				adb.setNegativeButton("Cancel", new OnClickListener(){
