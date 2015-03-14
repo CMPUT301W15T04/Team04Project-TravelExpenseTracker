@@ -67,7 +67,8 @@ public class Claim {
 		destination = new ArrayList<Destination>();
 		tag = new ArrayList<String>();
 		status = "In Progress";
-		totalCurrency = new ArrayList<Currency>(); //only for test, 2015-03-14 Chenrui
+		totalCurrency = new ArrayList<Currency>();
+		startDate = new Date(System.currentTimeMillis()); // only for test. 2015-03-14 Chenrui
 	}
 	
 	/**
