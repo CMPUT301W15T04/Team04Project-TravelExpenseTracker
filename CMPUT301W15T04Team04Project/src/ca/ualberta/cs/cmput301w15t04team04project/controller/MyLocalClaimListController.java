@@ -81,29 +81,8 @@ public class MyLocalClaimListController {
 		return claimlist;
 	}
 	
-	public void GoToOneClaim(Context context, long id) {
-		// TODO Auto-generated method stub
-		Toast.makeText(context, "Edit Claim" ,Toast.LENGTH_SHORT).show();
-		Intent myintent = new Intent(context,
-				OneClaimActivity.class);
-		myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		myintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		myintent.putExtra("MyClaimid", id);
-		context.startActivity(myintent);
-	}
+
 	
-	public void goToSearch(Context context) {
-		// TODO Auto-generated method stub
-		Toast.makeText(context, "Search" ,Toast.LENGTH_SHORT).show();
-		Intent intent = new Intent(context, SearchActivity.class);
-		context.startActivity(intent);
-	}
-	
-	public void goToEditClaim(Context context){
-		
-		Toast.makeText(context, "Add Claim" ,Toast.LENGTH_SHORT).show();
-		Intent intent = new Intent(context, EditClaimActivity.class);
-		context.startActivity(intent);
-	}
+
 	
 }
