@@ -132,6 +132,22 @@ public class MyClaimActivity extends Activity {
 						MyLocalClaimListManager.saveClaimList(getApplicationContext(), controller.getClaimList(),"local");
 				}
 				});
+
+				adb.setNeutralButton("Edit", new OnClickListener(){
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						//controller.deleteClaim(finalPosition);
+						//MyLocalClaimListManager.saveClaimList(getApplicationContext(), controller.getClaimList(),"local");
+						Toast.makeText(MyClaimActivity.this, "Edit Claim"+finalPosition ,Toast.LENGTH_SHORT).show();
+						Intent myintent = new Intent(MyClaimActivity.this,
+								EditClaimActivity.class);
+						myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+						myintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+						myintent.putExtra("MyClaimid", finalPosition);
+						MyClaimActivity.this.startActivity(myintent);	
+					
+				}});
+				
 				adb.setNegativeButton("Cancel", new OnClickListener(){
 					@Override
 						public void onClick(DialogInterface dialog, int which) {
