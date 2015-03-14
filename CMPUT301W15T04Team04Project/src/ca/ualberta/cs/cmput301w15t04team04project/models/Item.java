@@ -46,7 +46,7 @@ public class Item {
 	private String description;
 	private double amount;
 	private String currency;
-	private ImageView receipt;
+	//private ImageView receipt;
 	private boolean isComplete = false;
 	
 	/**
@@ -149,7 +149,7 @@ public class Item {
 
 		this.currency = currency;
 	}
-
+/*
 	public ImageView getReceipt()
 	{
 
@@ -161,7 +161,7 @@ public class Item {
 
 		this.receipt = receipt;
 	}
-
+*/
 	public boolean isComplete()
 	{
 

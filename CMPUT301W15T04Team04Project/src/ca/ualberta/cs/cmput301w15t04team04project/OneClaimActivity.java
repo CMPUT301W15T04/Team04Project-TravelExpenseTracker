@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
+import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -29,6 +30,8 @@ public class OneClaimActivity extends Activity {
 	private OneClaimActivity thisActivity = this;
 	//private MyLocalClaimListManager manager = new MyLocalClaimListManager(this);
 	private Claim claim;
+	private ArrayList<Claim> claimList;
+	private int claimid;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +39,15 @@ public class OneClaimActivity extends Activity {
 		setContentView(R.layout.activity_one_claim);
 		
 		Bundle extras =getIntent().getExtras();
-		final int claimid = extras.getInt("MyClaimid");
+		claimid = extras.getInt("MyClaimid");
 		
-		claim = MyLocalClaimListManager.loadClaimList(this, "local").getClaimArrayList().get(claimid);
+		claimList = MyLocalClaimListManager.loadClaimList(this, "local").getClaimArrayList();
+		claim = claimList.get(claimid);
+		ArrayList<Item> items = claim.getItems();
+
 		
 		ListView itemlistview = (ListView) findViewById(R.id.OneCaimItemlistView);
 		//
-		ArrayList<Item> items = claim.getItems();
 		final ArrayAdapter<Item> itemAdapter = new ArrayAdapter<Item>(this, android.R.layout.simple_list_item_1, items);
 		
 		itemlistview.setAdapter(itemAdapter);
@@ -65,6 +70,22 @@ public class OneClaimActivity extends Activity {
 						//manager.saveClaimList(controller.getcClaimList());
 				}
 				});
+				adb.setNeutralButton("Edit", new OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						Toast.makeText(OneClaimActivity.this, "Item"+finalPosition ,Toast.LENGTH_SHORT).show();
+						Intent myintent = new Intent(OneClaimActivity.this,
+								OneClaimActivity.class);
+						myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+						myintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+						myintent.putExtra("MyItemid", finalPosition);
+						OneClaimActivity.this.startActivity(myintent);	
+						
+					}
+				});
+				
 				adb.setNegativeButton("Cancel", new OnClickListener(){
 					@Override
 						public void onClick(DialogInterface dialog, int which) {
@@ -108,6 +129,9 @@ public class OneClaimActivity extends Activity {
 	
 	public void goToEditItem(MenuItem item) {
 		Intent intent = new Intent(OneClaimActivity.this, EditItemActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		intent.putExtra("MyClaimid", claimid);
 		startActivity(intent);
 	}
 

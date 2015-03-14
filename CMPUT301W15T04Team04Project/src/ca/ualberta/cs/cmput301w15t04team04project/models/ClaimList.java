@@ -39,7 +39,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 
 public class ClaimList {
 
-	protected ArrayList<Claim> claimList = null;
+	protected ArrayList<Claim> claims = null;
 	protected transient ArrayList<Listener> listeners = null;
 	/**
 	 * The constructor of the class
@@ -47,7 +47,7 @@ public class ClaimList {
 	 * 
 	 */
 	public ClaimList() {
-		claimList = new ArrayList<Claim>();
+		claims = new ArrayList<Claim>();
 		listeners = new ArrayList<Listener>();
 	}
 
@@ -80,7 +80,7 @@ public class ClaimList {
 		/**
 		 * Notifies all of the receiver's listeners for events. 
 		 */
-	private void notifyListeners() {
+	public void notifyListeners() {
 		for (Listener listener : getListeners()) {
 			listener.update();
 		}
@@ -93,7 +93,7 @@ public class ClaimList {
 	 * @return claimList the claimList in the ArrayList type .
 	 */
 	public ArrayList<Claim> getClaimArrayList() {
-		return claimList;
+		return claims;
 	}
 
 }

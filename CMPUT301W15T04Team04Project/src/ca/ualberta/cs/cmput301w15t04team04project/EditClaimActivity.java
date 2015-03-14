@@ -25,8 +25,11 @@ import java.util.Vector;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.PagerAdapter;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
+import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -50,7 +53,8 @@ public class EditClaimActivity extends FragmentActivity {
 	private RadioGroup bottom_Rg;
 	private PagerAdapter mpageAdapter;
 	private ViewPager pager;
-
+	private MyLocalClaimListController controller;
+	private ClaimList claimList;
 	/**
 	 * Initializing the activity. Call the initialisePaging() function to allow
 	 * the pager
@@ -64,6 +68,10 @@ public class EditClaimActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_claim);
+		
+		claimList = MyLocalClaimListManager.loadClaimList(this, "local");
+		controller = new MyLocalClaimListController(claimList);
+		
 		initialisePaging();
 
 	}
@@ -139,7 +147,6 @@ public class EditClaimActivity extends FragmentActivity {
 	 * @since 2015-03-12
 	 */
 	public void confirm(MenuItem item) {
-		Claim claim = new Claim(null);
 		EditText claimName = (EditText) findViewById(R.id.claimNameEditText);
 		EditText description = (EditText) findViewById(R.id.descriptionEditText);
 		EditText tag = (EditText) findViewById(R.id.tagEditText);
@@ -149,17 +156,14 @@ public class EditClaimActivity extends FragmentActivity {
 		// Button confirm = (Button) findViewById(R.id.action_accept); // Bug
 		// cause by this 2015-3-12
 		// Controller clc = new Controller();
-		claim.setClaim(claimName.getText().toString());
+		Claim claim = new Claim(claimName.getText().toString());
 		// claim.setDescription(description);
 		// claim.setTag(tag);
 		// clc.addClaim(claim);
-
-		Toast.makeText(EditClaimActivity.this, "We cannot add claim so far", Toast.LENGTH_LONG).show();
-		/*
-		 * Intent intent = new Intent(EditClaimActivity.this,
-		 * MainActivity.class); // Controller.saveClaimList();
-		 * startActivity(intent);
-		 */
+		controller.addClaim(claim);
+		MyLocalClaimListManager.saveClaimList(this, claimList, "local");
+		Intent intent = new Intent(EditClaimActivity.this,	MainActivity.class); // Controller.saveClaimList();
+		startActivity(intent);
 		finish();
 	}
 
