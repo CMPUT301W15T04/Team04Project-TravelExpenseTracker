@@ -2,6 +2,7 @@ package ca.ualberta.cs.cmput301w15t04team04project;
 
 import java.util.ArrayList;
 
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
@@ -15,27 +16,81 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 
 public class OneClaimActivity extends Activity {
 	protected static boolean isClaimant = true;
 	private OneClaimController controller = new OneClaimController();
 	private OneClaimActivity thisActivity = this;
-	private ListView itemlistview = (ListView) findViewById(R.id.OneCaimItemlistView);
+	//private MyLocalClaimListManager manager = new MyLocalClaimListManager(this);
 	private Claim claim;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_one_claim);
-
+		
+		Bundle extras =getIntent().getExtras();
+		final int claimid = extras.getInt("MyClaimid");
+		
+		claim = MyLocalClaimListManager.loadClaimList(this, "local").getClaimArrayList().get(claimid);
+		
+		ListView itemlistview = (ListView) findViewById(R.id.OneCaimItemlistView);
+		//
 		ArrayList<Item> items = claim.getItems();
-		final ArrayAdapter<Item> claimAdapter = new ArrayAdapter<Item>(this, android.R.layout.simple_list_item_1, items);
+		final ArrayAdapter<Item> itemAdapter = new ArrayAdapter<Item>(this, android.R.layout.simple_list_item_1, items);
+		
+		itemlistview.setAdapter(itemAdapter);
+		itemAdapter.notifyDataSetChanged();
+		itemlistview.setOnItemLongClickListener(new OnItemLongClickListener(){
 
-		itemlistview.setAdapter(claimAdapter);
-		claimAdapter.notifyDataSetChanged();
+			@Override
+			public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+				final int finalPosition = position;
+				//Claim claim = list.get(finalPosition);
+				AlertDialog.Builder adb = new AlertDialog.Builder(OneClaimActivity.this);
+				//adb.setMessage(claim.getClaim()+" total cost \n"+claim.getAmount()+"\n From "+claim.getStartDate()+" to "+claim.getEndDate());
+				adb.setCancelable(true);
+
+				adb.setPositiveButton("Delete", new OnClickListener(){
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						controller.deleteItem(which);
+						//controller.deleteClaim(which);
+						//manager.saveClaimList(controller.getcClaimList());
+				}
+				});
+				adb.setNegativeButton("Cancel", new OnClickListener(){
+					@Override
+						public void onClick(DialogInterface dialog, int which) {
+					}
+				});
+				adb.show();
+				return true;
+			}
+    		
+    		}
+    	
+   	);
+
+		itemlistview.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> adapterView, View view,
+					int position, long id) {
+				int itemPosition = position;
+				Toast.makeText(OneClaimActivity.this, "Item"+id ,Toast.LENGTH_SHORT).show();
+				
+				
+				showItemDetailC(view,position);
+								
+			}
+		});
+		
 		
 	}
 
@@ -137,7 +192,7 @@ public class OneClaimActivity extends Activity {
 		adb.show();
 	}
 	
-	public void showItemDetailC(View view) {
+	public void showItemDetailC(View view, int id) {
 		isClaimant = true;
 		AlertDialog.Builder adb = new AlertDialog.Builder(OneClaimActivity.this);
 		
@@ -158,7 +213,7 @@ public class OneClaimActivity extends Activity {
 		adb.show();
 	}
 	
-	public void showItemDetailA(View view) {
+	public void showItemDetailA(View view, int id) {
 		isClaimant = false;
 		AlertDialog.Builder adb = new AlertDialog.Builder(OneClaimActivity.this);
 		

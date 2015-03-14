@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.widget.Toast;
 import ca.ualberta.cs.cmput301w15t04team04project.EditClaimActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.SearchActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 /**
  * OneClaimController is the controller of the OneClaimActivity
  * 
@@ -13,6 +14,8 @@ import ca.ualberta.cs.cmput301w15t04team04project.SearchActivity;
  * @since 2015-03-13
  */
 public class OneClaimController {
+	private Claim claim 
+	;
 	
 	/**
 	 * OneClaimController is initial
@@ -75,6 +78,15 @@ public class OneClaimController {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+
+	public void deleteItem(int which) {
+		// TODO Auto-generated method stub
+		claim.getItems().remove(which);
+		
+	}
 	
+
 	
 }
