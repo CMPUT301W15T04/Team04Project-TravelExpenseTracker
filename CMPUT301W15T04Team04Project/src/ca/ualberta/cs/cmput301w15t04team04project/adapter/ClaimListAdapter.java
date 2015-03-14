@@ -76,9 +76,9 @@ public class ClaimListAdapter extends ArrayAdapter<Claim> {
 		
 		
 		
-		//holder.startDate.setText(claim.getStartDate().getDate());
+		holder.startDate.setText(claim.getStartDate().getDate());
 		//holder.endDate.setText(claim.getEndDate().getDate());
-		// holder.tags
+		holder.tags.setText(claim.TagListToString());
 		holder.destination.setText(claim.DestinationListToString());//"destination"); //claim.getDestination());
 		holder.claimState.setText(claim.getStatus());//"In Progress");  //claim.getStatus();
 		holder.totalAmount.setText(claim.TotalCurrencyListToString());//"$ CAD 88.88"); //claim.getAmount();

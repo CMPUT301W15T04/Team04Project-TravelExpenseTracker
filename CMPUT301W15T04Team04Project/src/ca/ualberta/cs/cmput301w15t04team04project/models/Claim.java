@@ -105,6 +105,30 @@ public class Claim {
      * @author Chenrui Lei
      * @since  2015-03-14
      */
+	public String TagListToString(){
+		String out = "";
+		if (tag.size() != 0) {
+			out += tag.get(0).toString();
+
+			for (int i = 1; i < tag.size(); i++) {
+				out += "\n" + tag.get(i).toString();
+			}
+		} else {
+			out = "N/A";
+		}
+		return out;
+	}
+	
+	/**
+     * Returns the string representation of the totalCurrency list. 
+     * The presentation has a specific format. Elements
+     * are separated by '\n' (new line).
+     *
+     * @return the string representation of this.totalCurrency.
+     * 
+     * @author Chenrui Lei
+     * @since  2015-03-14
+     */
 	public String TotalCurrencyListToString(){
 		String out = "";
 		if (totalCurrency.size() != 0) {
