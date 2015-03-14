@@ -75,6 +75,7 @@ public class MyLocalClaimListController {
 		return getcClaimList().getClaimArrayList();
 	}
 	
+
 	public void addClaim(Claim claim){
 		getClaimList().add(claim);
 	}
@@ -101,12 +102,8 @@ public class MyLocalClaimListController {
 		Intent intent = new Intent(context, SearchActivity.class);
 		context.startActivity(intent);
 	}
+
 	
-	public void goToEditClaim(Context context){
-		
-		Toast.makeText(context, "Add Claim" ,Toast.LENGTH_SHORT).show();
-		Intent intent = new Intent(context, EditClaimActivity.class);
-		context.startActivity(intent);
-	}
+
 	
 }

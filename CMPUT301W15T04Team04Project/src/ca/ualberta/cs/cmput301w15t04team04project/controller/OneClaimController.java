@@ -26,32 +26,7 @@ public class OneClaimController {
 	
 	}
 	
-	/**
-	 * OneClaimController is initial
-	 * 
-	 * @author Weijie Sun
-	 * @version 1.1
-	 * @since 2015-03-13
-	 */
-	public void goToSearch(Context context) {
-		// TODO Auto-generated method stub
-		Toast.makeText(context, "Search" ,Toast.LENGTH_SHORT).show();
-		Intent intent = new Intent(context, SearchActivity.class);
-		context.startActivity(intent);
-	}
-	/**
-	 * OneClaimController is initial
-	 * 
-	 * @author Weijie Sun
-	 * @version 1.1
-	 * @since 2015-03-13
-	 */
-	public void goToEditClaim(Context context){
-		
-		Toast.makeText(context, "Add Claim" ,Toast.LENGTH_SHORT).show();
-		Intent intent = new Intent(context, EditClaimActivity.class);
-		context.startActivity(intent);
-	}
+
 
 	/**
 	 * submittedClaim is submitted Claim
@@ -100,5 +75,6 @@ public class OneClaimController {
 		// TODO Auto-generated method stub
 		
 	}
+	
 	
 }

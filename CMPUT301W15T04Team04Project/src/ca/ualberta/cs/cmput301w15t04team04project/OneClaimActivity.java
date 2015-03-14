@@ -1,6 +1,10 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import java.util.ArrayList;
+
 import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -11,18 +15,28 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 public class OneClaimActivity extends Activity {
 	protected static boolean isClaimant = true;
 	private OneClaimController controller = new OneClaimController();
 	private OneClaimActivity thisActivity = this;
+	private ListView itemlistview = (ListView) findViewById(R.id.OneCaimItemlistView);
+	private Claim claim;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_one_claim);
 
+		ArrayList<Item> items = claim.getItems();
+		final ArrayAdapter<Item> claimAdapter = new ArrayAdapter<Item>(this, android.R.layout.simple_list_item_1, items);
+
+		itemlistview.setAdapter(claimAdapter);
+		claimAdapter.notifyDataSetChanged();
+		
 	}
 
 	@Override
@@ -33,15 +47,13 @@ public class OneClaimActivity extends Activity {
 	}
 
 	public void goToSearch(MenuItem item) {
-		controller.goToSearch(thisActivity);
-		//Intent intent = new Intent(OneClaimActivity.this, SearchActivity.class);
-		//startActivity(intent);
+		Intent intent = new Intent(OneClaimActivity.this, SearchActivity.class);
+		startActivity(intent);
 	}
 	
 	public void goToEditItem(MenuItem item) {
-		controller.goToEditClaim(thisActivity);
-		//Intent intent = new Intent(OneClaimActivity.this, EditItemActivity.class);
-		//startActivity(intent);
+		Intent intent = new Intent(OneClaimActivity.this, EditItemActivity.class);
+		startActivity(intent);
 	}
 
 	public void showClaimDetailC(View view) {
@@ -168,4 +180,6 @@ public class OneClaimActivity extends Activity {
 		adb.setCancelable(true);
 		adb.show();
 	}
+	
+	
 }

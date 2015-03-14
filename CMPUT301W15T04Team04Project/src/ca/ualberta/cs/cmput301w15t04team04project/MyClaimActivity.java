@@ -52,9 +52,12 @@ public class MyClaimActivity extends Activity {
 		
 		actionBar = getActionBar();
 		if (mode == 0) {
-			actionBar.setTitle("Submitted Claims");
+			actionBar.setTitle("Progresing Claims");
 		}
 		else if (mode == 1) {
+			actionBar.setTitle("Submitted Claims");
+		}
+		else if (mode == 2) {
 			actionBar.setTitle("Approved Claims");
 		}
 		else {
@@ -136,8 +139,13 @@ public class MyClaimActivity extends Activity {
 			public void onItemClick(AdapterView<?> adapterView, View view,
 					int position, long id) {
 				int itemPosition = position;
-				controller.GoToOneClaim(thisActivity,id);
-				
+				Toast.makeText(MyClaimActivity.this, "Edit Claim" ,Toast.LENGTH_SHORT).show();
+				Intent myintent = new Intent(MyClaimActivity.this,
+						OneClaimActivity.class);
+				myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				myintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				myintent.putExtra("MyClaimid", id);
+				MyClaimActivity.this.startActivity(myintent);				
 			}
 		});
 	
@@ -158,12 +166,12 @@ public class MyClaimActivity extends Activity {
 	}
 
 	public void goToSearch(MenuItem item) {
-		controller.goToSearch(thisActivity);
-
+		Intent intent = new Intent(MyClaimActivity.this, SearchActivity.class);
+		startActivity(intent);
 	}
 
 	public void goToEditClaim(MenuItem item) {
-		controller.goToEditClaim(thisActivity);
-
+		Intent intent = new Intent(MyClaimActivity.this, EditItemActivity.class);
+		startActivity(intent);
 	}
 }
