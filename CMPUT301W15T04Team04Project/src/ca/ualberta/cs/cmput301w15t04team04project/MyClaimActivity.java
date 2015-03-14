@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
+import ca.ualberta.cs.cmput301w15t04team04project.adapter.ClaimListAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
@@ -141,8 +143,26 @@ public class MyClaimActivity extends Activity {
 				
 			}
 		});
+		
+		
+		
+		/**
+		* set up claim listing adapter
+		*
+		* @author  Chenrui Lei
+		* @version 1.0
+		* @since   2015-03-13
+		*/
+		// set up claim listing adapter
+		ClaimListAdapter claimListAdapter = new ClaimListAdapter(this, R.layout.single_claim,
+				claims.getClaimArrayList());
+		listView.setAdapter(claimListAdapter);
+		claimListAdapter.notifyDataSetChanged();
 	
 	}
+	
+	
+	
 	/**
 	* The MyClaimActivity relates to "My Claim" in "profile" of MainActivity.
 	* But it needs some button on the title bar to add claim
