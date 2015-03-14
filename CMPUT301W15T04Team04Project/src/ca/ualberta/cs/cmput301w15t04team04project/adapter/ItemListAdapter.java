@@ -41,6 +41,9 @@ public class ItemListAdapter extends ArrayAdapter<Item>
 
 		itemList.get(position);
 	
+		//get views
+		
+		//set content in views
 
 		
 
