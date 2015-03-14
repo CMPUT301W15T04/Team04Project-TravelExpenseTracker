@@ -164,7 +164,6 @@ public class EditClaimActivity extends FragmentActivity {
 		MyLocalClaimListManager.saveClaimList(this, claimList, "local");
 		Intent intent = new Intent(EditClaimActivity.this,	MainActivity.class); // Controller.saveClaimList();
 		startActivity(intent);
-		 
 		finish();
 	}
 

@@ -33,6 +33,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Listener;
 /**
 * The MyLocalClaimList Controller is a controller of the MyClaimActivity
 * simply Change the Thing that Activity related
@@ -58,7 +59,7 @@ public class MyLocalClaimListController {
 		this.claimList = claimList;
 	}
 	
-	public ClaimList getcClaimList(){
+	public ClaimList getClaimList(){
 
 		return claimList;
 	}
@@ -70,18 +71,20 @@ public class MyLocalClaimListController {
 	 * @version 1.0
 	 * @since 2015-03-12
 	 */	
-	public ArrayList<Claim> getClaimList(){
+	public ArrayList<Claim> getClaims(){
 
-		return getcClaimList().getClaimArrayList();
+		return getClaimList().getClaimArrayList();
 	}
 	
 
 	public void addClaim(Claim claim){
-		getClaimList().add(claim);
+		getClaims().add(claim);
+		getClaimList().notifyListeners();
 	}
 	
 	public void deleteClaim(int index){
-		getClaimList().remove(index);
+		getClaims().remove(index);
+		getClaimList().notifyListeners();
 	}
 	
 	
