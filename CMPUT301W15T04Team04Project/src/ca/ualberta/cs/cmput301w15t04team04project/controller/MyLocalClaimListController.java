@@ -75,9 +75,7 @@ public class MyLocalClaimListController {
 		return getcClaimList().getClaimArrayList();
 	}
 	
-<<<<<<< HEAD
 
-=======
 	public void addClaim(Claim claim){
 		getClaimList().add(claim);
 	}
@@ -104,7 +102,7 @@ public class MyLocalClaimListController {
 		Intent intent = new Intent(context, SearchActivity.class);
 		context.startActivity(intent);
 	}
->>>>>>> a5a36e2c64781d17c9ca51a7405d9384806adef2
+
 	
 
 	
