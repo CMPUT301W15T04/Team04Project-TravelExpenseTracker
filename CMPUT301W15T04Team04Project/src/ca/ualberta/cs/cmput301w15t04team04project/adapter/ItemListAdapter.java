@@ -43,6 +43,7 @@ public class ItemListAdapter extends ArrayAdapter<Item>
 	
 		//get views
 		
+		
 		//set content in views
 
 		
