@@ -62,11 +62,13 @@ public class EditItemActivity extends FragmentActivity {
 	private ClaimList claimList;
 	private int claimid;
 	
+	
 	/**
 	 * Initializing the activity. Call the initialisePaging() function to allow
 	 * the pager
-	 * 
-	 * 
+	 * @author Weijie Sun
+	 * @version 1.1
+	 * @since 2015-03-13
 	 * @author Ji Yang
 	 * @version 1.0
 	 * @since 2015-03-10
@@ -182,6 +184,10 @@ public class EditItemActivity extends FragmentActivity {
 		MyLocalClaimListManager.saveClaimList(this, claimList, "local");
 		
 		Intent intent = new Intent(EditItemActivity.this, OneClaimActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		intent.putExtra("MyClaimid", claimid);
+		
 		startActivity(intent);
 		
 		finish();

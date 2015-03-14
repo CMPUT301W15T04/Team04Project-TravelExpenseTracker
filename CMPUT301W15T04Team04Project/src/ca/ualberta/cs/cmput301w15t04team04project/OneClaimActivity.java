@@ -1,12 +1,15 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
+import ca.ualberta.cs.cmput301w15t04team04project.adapter.ItemListAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Listener;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -26,7 +29,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 
 public class OneClaimActivity extends Activity {
 	protected static boolean isClaimant = true;
-	private OneClaimController controller = new OneClaimController();
+	private OneClaimController controller ;
 	private OneClaimActivity thisActivity = this;
 	//private MyLocalClaimListManager manager = new MyLocalClaimListManager(this);
 	private Claim claim;
@@ -43,15 +46,25 @@ public class OneClaimActivity extends Activity {
 		
 		claimList = MyLocalClaimListManager.loadClaimList(this, "local").getClaimArrayList();
 		claim = claimList.get(claimid);
-		ArrayList<Item> items = claim.getItems();
-
+		final ArrayList<Item> items = claim.getItems();
+		
 		
 		ListView itemlistview = (ListView) findViewById(R.id.OneCaimItemlistView);
-		//
+		controller = new OneClaimController(claim);
 		final ArrayAdapter<Item> itemAdapter = new ArrayAdapter<Item>(this, android.R.layout.simple_list_item_1, items);
 		
 		itemlistview.setAdapter(itemAdapter);
 		itemAdapter.notifyDataSetChanged();
+		controller.getClaim().addListener(new Listener(){
+			@Override
+			public void update() {
+				// TODO Auto-generated method stub
+				items.clear();
+				Collection<Item> items = controller.getItem();
+				items.addAll(items);
+				itemAdapter.notifyDataSetChanged();
+			}
+		});
 		itemlistview.setOnItemLongClickListener(new OnItemLongClickListener(){
 
 			@Override
@@ -77,10 +90,11 @@ public class OneClaimActivity extends Activity {
 						// TODO Auto-generated method stub
 						Toast.makeText(OneClaimActivity.this, "Item"+finalPosition ,Toast.LENGTH_SHORT).show();
 						Intent myintent = new Intent(OneClaimActivity.this,
-								OneClaimActivity.class);
+								EditItemActivity.class);
 						myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						myintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 						myintent.putExtra("MyItemid", finalPosition);
+						myintent.putExtra("MyClaimid", claimid);
 						OneClaimActivity.this.startActivity(myintent);	
 						
 					}

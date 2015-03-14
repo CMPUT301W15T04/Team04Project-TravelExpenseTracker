@@ -17,8 +17,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
  * @since 2015-03-13
  */
 public class OneClaimController {
-	private Claim claim 
-	;
+	private Claim claim ;
 	public OneClaimController(Claim claim){
 		
 		this.claim = claim;
@@ -36,6 +35,7 @@ public class OneClaimController {
 	
 	public void addItem(Item item){
 		getItem().add(item);
+
 		
 	}
 	

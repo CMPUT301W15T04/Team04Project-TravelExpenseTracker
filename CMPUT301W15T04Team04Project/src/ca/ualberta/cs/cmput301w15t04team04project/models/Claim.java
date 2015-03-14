@@ -270,7 +270,7 @@ public class Claim {
 	 * Notifies all of the receiver's listeners for events.
 	 */
 	private void notifyListener() {
-		for (Listener listener : itemListener) {
+		for (Listener listener : getListeners()) {
 			listener.update();
 		}
 	}
