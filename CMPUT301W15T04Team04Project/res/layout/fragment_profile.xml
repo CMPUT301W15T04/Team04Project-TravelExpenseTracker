@@ -43,14 +43,47 @@
         android:text="Log Out"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <ListView
-        android:id="@+id/approvedClaimsListView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/logOutTextView"
+    <TextView
+        android:id="@+id/submitedClaimsTextView"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/photoButton" >
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/photoButton"
+        android:layout_marginTop="18dp"
+        android:clickable="true"
+        android:drawableLeft="@drawable/list2_icon"
+        android:gravity="center_vertical|center_horizontal"
+        android:onClick="showSubmitted"
+        android:text="Submitted Claims"
+        android:textSize="32dp" />
 
-    </ListView>
+    <TextView
+        android:id="@+id/approvedClaimsTextView"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/submitedClaimsTextView"
+        android:clickable="true"
+        android:drawableLeft="@drawable/list_icon"
+        android:gravity="center_vertical|center_horizontal"
+        android:onClick="showApproved"
+        android:text="Approved Claims"
+        android:textSize="32dp" />
+
+    <TextView
+        android:id="@+id/savedClaimsTextView"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/approvedClaimsTextView"
+        android:clickable="true"
+        android:drawableLeft="@drawable/ic_action_save"
+        android:gravity="center_vertical|center_horizontal"
+        android:onClick="showSaved"
+        android:text="Saved Claims"
+        android:textSize="32dp" />
 
 </RelativeLayout>

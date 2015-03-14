@@ -168,6 +168,9 @@ public class MainActivity extends FragmentActivity {
 	* @since 2015-03-13
 	*/
 	public void logOut(View view) {
+		/**
+		 * You need to move the sinInController to the mainController
+		 **/
 		signInController.logOut(MainActivity.this);
 
 		// go back to signIn page
@@ -176,5 +179,50 @@ public class MainActivity extends FragmentActivity {
 		
 		// stop current view
 		finish();
-    }
+	}
+	
+	/**
+	* Modify the following code
+	*
+	* @author  Chenrui Lei
+	* @version 1.0
+	* @since   2015-03-11
+	* @author  Yufei Zhang
+	* @version 1.1
+	* @since 2015-03-13
+	*/
+	public void showSubmitted(View view) {
+		Intent intent = new Intent(MainActivity.this, OneClaimActivity.class);
+		startActivity(intent);
+	}
+	
+	/**
+	* Modify the following code
+	*
+	* @author  Chenrui Lei
+	* @version 1.0
+	* @since   2015-03-11
+	* @author  Yufei Zhang
+	* @version 1.1
+	* @since 2015-03-13
+	*/
+	public void showApproved(View view) {
+		Intent intent = new Intent(MainActivity.this, OneClaimActivity.class);
+		startActivity(intent);
+	}
+	
+	/**
+	* Modify the following code
+	*
+	* @author  Chenrui Lei
+	* @version 1.0
+	* @since   2015-03-11
+	* @author  Yufei Zhang
+	* @version 1.1
+	* @since 2015-03-13
+	*/
+	public void showSaved(View view) {
+		Intent intent = new Intent(MainActivity.this, OneClaimActivity.class);
+		startActivity(intent);
+	}
 }
