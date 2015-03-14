@@ -77,12 +77,9 @@ public final class R {
         public static final int xlistview_arrow=0x7f02001c;
     }
     public static final class id {
-        public static final int Destination=0x7f0a006e;
-        public static final int EndTime=0x7f0a006c;
         public static final int LinearLayout1=0x7f0a0066;
         public static final int OneCaimItemlistView=0x7f0a0039;
         public static final int RelativeLayout1=0x7f0a005d;
-        public static final int StartTime=0x7f0a006a;
         public static final int TotalAmount=0x7f0a0070;
         public static final int action_accept=0x7f0a008a;
         public static final int action_logout=0x7f0a008c;
@@ -120,15 +117,12 @@ public final class R {
         public static final int currentItemDateTextView=0x7f0a0026;
         public static final int currentItemNameTextView=0x7f0a0025;
         public static final int currentRecieptImageView=0x7f0a002b;
-        public static final int dateEndDisplay=0x7f0a006d;
-        public static final int dateStartDisplay=0x7f0a006b;
         public static final int descriptionEditText=0x7f0a004a;
         public static final int desplayTags=0x7f0a0074;
         public static final int destinationDialogEditText=0x7f0a003f;
         public static final int destinationDialogReasonEditTextView=0x7f0a0041;
         public static final int destinationDialogReasonTextView=0x7f0a0040;
         public static final int destinationDialogTextView=0x7f0a003e;
-        public static final int destinationDisplay=0x7f0a006f;
         public static final int destinationandReasonEditText=0x7f0a004c;
         public static final int editClaimActivityPager=0x7f0a001a;
         public static final int editClaimBottomMenu=0x7f0a001b;
@@ -189,6 +183,12 @@ public final class R {
         public static final int showStartDateCTextView=0x7f0a0000;
         public static final int showTags=0x7f0a0073;
         public static final int signInTextView=0x7f0a003d;
+        public static final int singleClaimDistinationDisplayTextView=0x7f0a006f;
+        public static final int singleClaimDistinationTextView=0x7f0a006e;
+        public static final int singleClaimFromTextView=0x7f0a006a;
+        public static final int singleClaimStartDateTextView=0x7f0a006c;
+        public static final int singleClaimStartMonthTextView=0x7f0a006b;
+        public static final int singleClaimStartYearTextView=0x7f0a006d;
         public static final int singleItemAmountShowTextView=0x7f0a007e;
         public static final int singleItemAmountTextView=0x7f0a007a;
         public static final int singleItemCategoryShowTextView=0x7f0a007d;

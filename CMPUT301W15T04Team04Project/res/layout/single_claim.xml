@@ -18,7 +18,7 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/StartTime"
+                android:id="@+id/singleClaimFromTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="0dp"
@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content" >
 
                 <TextView
-                    android:id="@+id/dateStartDisplay"
+                    android:id="@+id/singleClaimStartMonthTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="0dp"
@@ -40,7 +40,7 @@
                     android:textSize="13sp" />
 
                 <TextView
-                    android:id="@+id/EndTime"
+                    android:id="@+id/singleClaimStartDateTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="0dp"
@@ -51,7 +51,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/dateEndDisplay"
+                android:id="@+id/singleClaimStartYearTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -71,7 +71,7 @@
             android:paddingLeft="0dp" >
 
             <TextView
-                android:id="@+id/Destination"
+                android:id="@+id/singleClaimDistinationTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Destination:"
@@ -79,7 +79,7 @@
                 android:textSize="8sp" />
 
             <TextView
-                android:id="@+id/destinationDisplay"
+                android:id="@+id/singleClaimDistinationDisplayTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Edmonton\nBanff"

@@ -56,15 +56,15 @@ public class ClaimListAdapter extends ArrayAdapter<Claim> {
 		claimList.get(position);
 		
 		holder.startMonth = (TextView) convertView
-				.findViewById(R.id.dateStartDisplay);
+				.findViewById(R.id.singleClaimStartMonthTextView);
 		holder.startDate = (TextView) convertView
-				.findViewById(R.id.EndTime);
+				.findViewById(R.id.singleClaimStartDateTextView);
 		holder.startYear = (TextView) convertView
-				.findViewById(R.id.dateEndDisplay);
+				.findViewById(R.id.singleClaimStartYearTextView);
 		holder.tags = (TextView) convertView
 				.findViewById(R.id.desplayTags);
 		holder.destination = (TextView) convertView
-				.findViewById(R.id.destinationDisplay);
+				.findViewById(R.id.singleClaimDistinationDisplayTextView);
 		holder.claimState = (TextView) convertView
 				.findViewById(R.id.claimState);
 		holder.totalAmount = (TextView) convertView
