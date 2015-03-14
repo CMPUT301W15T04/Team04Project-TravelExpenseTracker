@@ -138,7 +138,7 @@ public class CLmanager {
 	public ClaimList getClaimList(ArrayList<Long> listID, String string) {
 		ClaimList claimList = new ClaimList();
 		for (long Id : listID) {
-			claimList.addClaim(getClaim(Id, string));
+			//claimList.addClaim(getClaim(Id, string));
 		}
 		return claimList;
 	}

@@ -41,10 +41,11 @@ public class MyClaimActivity extends Activity {
 	protected static int mode;
 	private ActionBar actionBar;
 
-	private ClaimList claims = new ClaimList();
-	private MyLocalClaimListController controller = new MyLocalClaimListController();
-	private MyClaimActivity thisActivity = this;
 	
+	private MyLocalClaimListController controller = null;
+	private MyClaimActivity thisActivity = this;
+	private MyLocalClaimListManager manager = new MyLocalClaimListManager(this);
+	private ClaimList claims = manager.loadClaimList();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -90,13 +91,11 @@ public class MyClaimActivity extends Activity {
 
 		//new
 		
-		claims = controller.getClaimList();
-		
     	ListView listView = (ListView) findViewById(R.id.myClaimsListView);
 
 		//final ArrayList<Claim> list = new ArrayList<Claim>(claims);
 		//
-		final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, claims.getClaimList());
+		final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, controller.getClaimList());
 
 		listView.setAdapter(claimAdapter);
 		claimAdapter.notifyDataSetChanged();
@@ -117,6 +116,7 @@ public class MyClaimActivity extends Activity {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						controller.deleteClaim(which);
+						manager.saveClaimList(controller.getcClaimList());
 				}
 				});
 				adb.setNegativeButton("Cancel", new OnClickListener(){
