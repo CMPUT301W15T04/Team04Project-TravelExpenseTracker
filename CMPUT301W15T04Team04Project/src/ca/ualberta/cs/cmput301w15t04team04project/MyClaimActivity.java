@@ -46,7 +46,7 @@ public class MyClaimActivity extends Activity {
 	
 	private MyLocalClaimListController controller;
 	private MyClaimActivity thisActivity = this;
-	private ClaimList claims;
+	private ClaimList claimList;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -65,7 +65,7 @@ public class MyClaimActivity extends Activity {
 		else {
 			actionBar.setTitle("Saved Claims");
 		}
-		claims = MyLocalClaimListManager.loadClaimList(this, "local");
+		claimList = MyLocalClaimListManager.loadClaimList(this, "local");
 /*    	CLmanager.initManager(this.getApplicationContext());
  
 		ListView listView = (ListView) findViewById(R.id.claimListView);
@@ -96,14 +96,24 @@ public class MyClaimActivity extends Activity {
 		//new
 		
     	ListView listView = (ListView) findViewById(R.id.myClaimsListView);
-    	controller = new MyLocalClaimListController(claims);
+    	controller = new MyLocalClaimListController(claimList);
 		//final ArrayList<Claim> list = new ArrayList<Claim>(claims);
 		//
-		final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, controller.getClaimList());
+    	final ArrayList<Claim> claims = controller.getClaims();
+    	final ClaimListAdapter claimListAdapter = new ClaimListAdapter(this, R.layout.single_claim,
+				claims);
+		listView.setAdapter(claimListAdapter);
+		controller.getClaimList().addListener(new Listener() {
 
-		listView.setAdapter(claimAdapter);
-		claimAdapter.notifyDataSetChanged();
-   
+			@Override
+			public void update() {
+				// TODO Auto-generated method stub
+				claims.clear();
+				Collection<Claim> claims = controller.getClaims();
+				claims.addAll(claims);
+				claimListAdapter.notifyDataSetChanged();
+			}
+		});
     	listView.setOnItemLongClickListener(new OnItemLongClickListener(){
 
 			@Override
@@ -117,8 +127,8 @@ public class MyClaimActivity extends Activity {
 				adb.setPositiveButton("Delete", new OnClickListener(){
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						controller.deleteClaim(which);
-						MyLocalClaimListManager.saveClaimList(getApplicationContext(), controller.getcClaimList(),"local");
+						controller.deleteClaim(finalPosition);
+						MyLocalClaimListManager.saveClaimList(getApplicationContext(), controller.getClaimList(),"local");
 				}
 				});
 				adb.setNegativeButton("Cancel", new OnClickListener(){
@@ -159,10 +169,7 @@ public class MyClaimActivity extends Activity {
 		* @since   2015-03-13
 		*/
 		// set up claim listing adapter
-		ClaimListAdapter claimListAdapter = new ClaimListAdapter(this, R.layout.single_claim,
-				claims.getClaimArrayList());
-		listView.setAdapter(claimListAdapter);
-		claimListAdapter.notifyDataSetChanged();
+		
 	
 	}
 	
