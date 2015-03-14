@@ -53,6 +53,30 @@ public class Claim {
 	protected String Comment;
 	protected String totalCurrency;
 	
+	/**
+	 * The constructor of the class
+	 * 
+	 * @param claimName
+	 *            The name of the claim.
+	 */
+	public Claim(String claimName) {
+
+		this.claimName = claimName;
+		items = new ArrayList<Item>();
+		itemListener = new ArrayList<Listener>();
+		destination = new ArrayList<Destination>();
+		tag = new ArrayList<String>();
+		status = "In Progress";
+		totalCurrency = "$ USD 30"; //only for test, 2015-03-14 Chenrui
+	}
+	
+	/**
+     * Returns the string representation of the destination list. 
+     * The presentation has a specific format. Elements
+     * are separated by '\n' (new line).
+     *
+     * @return the string representation of this.destination.
+     */
 	public String DestinationListToString(){
 		String out = "";
 		if (destination.size() != 0) {
@@ -153,19 +177,6 @@ public class Claim {
 	 */
 	public void setApproverName(User approverName) {
 		ApproverName = approverName;
-	}
-
-	/**
-	 * The constructor of the class
-	 * 
-	 * @param claimName
-	 *            The name of the claim.
-	 */
-	public Claim(String claimName) {
-
-		this.claimName = claimName;
-		items = new ArrayList<Item>();
-		itemListener = new ArrayList<Listener>();
 	}
 
 	/**
