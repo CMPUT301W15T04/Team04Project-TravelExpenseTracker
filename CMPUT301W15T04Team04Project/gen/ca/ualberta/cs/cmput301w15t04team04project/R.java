@@ -86,26 +86,15 @@ public final class R {
         public static final int TotalAmount=0x7f0a0070;
         public static final int action_accept=0x7f0a008a;
         public static final int action_logout=0x7f0a008c;
-        public static final int action_new=0x7f0a008d;
-        public static final int action_newItme=0x7f0a008f;
+        public static final int action_new_claim=0x7f0a008d;
+        public static final int action_new_itme=0x7f0a008f;
         public static final int action_search=0x7f0a008b;
         public static final int action_searchOC=0x7f0a008e;
         public static final int action_settings=0x7f0a0089;
         public static final int addCommentItemEditText=0x7f0a002f;
         public static final int addCommentsEditText=0x7f0a0011;
-<<<<<<< HEAD
-        public static final int addRecieptImageView=0x7f0a005a;
-        public static final int approvedClaimsTextView=0x7f0a005f;
-        public static final int cancleSearchTextView=0x7f0a0067;
-        public static final int claimDescriptionTextView=0x7f0a0048;
-        public static final int claimDestinationTextView=0x7f0a004c;
-        public static final int claimNameEditText=0x7f0a0042;
-        public static final int claimNameTextView=0x7f0a0041;
-        public static final int claimState=0x7f0a0074;
-        public static final int claimTagTextView=0x7f0a004a;
-=======
         public static final int addRecieptImageView=0x7f0a005b;
-        public static final int approvedClaimsTextView=0x7f0a0062;
+        public static final int approvedClaimsTextView=0x7f0a0060;
         public static final int cancleSearchTextView=0x7f0a0068;
         public static final int claimDescriptionTextView=0x7f0a0049;
         public static final int claimDestinationTextView=0x7f0a004d;
@@ -113,7 +102,6 @@ public final class R {
         public static final int claimNameTextView=0x7f0a0042;
         public static final int claimState=0x7f0a0075;
         public static final int claimTagTextView=0x7f0a004b;
->>>>>>> origin/master
         public static final int completeCheckBox=0x7f0a002e;
         public static final int constactTagsSpinner=0x7f0a003b;
         public static final int contectTagsTextView=0x7f0a003a;
@@ -172,17 +160,10 @@ public final class R {
         public static final int momentsMenuButton=0x7f0a0033;
         public static final int myClaimsListView=0x7f0a0034;
         public static final int myProfileMenuButton=0x7f0a0032;
-<<<<<<< HEAD
-        public static final int photoButton=0x7f0a005e;
-        public static final int progresClaimsTextView=0x7f0a0062;
-        public static final int savedClaimsTextView=0x7f0a0061;
-        public static final int searchBarEditText=0x7f0a0066;
-=======
         public static final int photoButton=0x7f0a005f;
-        public static final int progresClaimsTextView=0x7f0a0061;
-        public static final int savedClaimsTextView=0x7f0a0063;
+        public static final int progresClaimsTextView=0x7f0a0063;
+        public static final int savedClaimsTextView=0x7f0a0062;
         public static final int searchBarEditText=0x7f0a0067;
->>>>>>> origin/master
         public static final int showClaimDetailTextView=0x7f0a000c;
         public static final int showClaimEDATextView=0x7f0a000d;
         public static final int showClaimNameATextView=0x7f0a0019;
@@ -206,21 +187,6 @@ public final class R {
         public static final int showItemNameCTextView=0x7f0a0022;
         public static final int showReTextView=0x7f0a002c;
         public static final int showStartDateCTextView=0x7f0a0000;
-<<<<<<< HEAD
-        public static final int showTags=0x7f0a0072;
-        public static final int signInTextView=0x7f0a003c;
-        public static final int singleItemAmountShowTextView=0x7f0a007d;
-        public static final int singleItemAmountTextView=0x7f0a0079;
-        public static final int singleItemCategoryShowTextView=0x7f0a007c;
-        public static final int singleItemCategoryTextView=0x7f0a0078;
-        public static final int singleItemDateShowTextView=0x7f0a007a;
-        public static final int singleItemDateTextView=0x7f0a0076;
-        public static final int singleItemDescripShowTextView=0x7f0a007b;
-        public static final int singleItemDescriptionTextView=0x7f0a0077;
-        public static final int startDateTextView=0x7f0a0045;
-        public static final int submitedClaimsTextView=0x7f0a0060;
-        public static final int tagEditText=0x7f0a004d;
-=======
         public static final int showTags=0x7f0a0073;
         public static final int signInTextView=0x7f0a003d;
         public static final int singleItemAmountShowTextView=0x7f0a007e;
@@ -232,9 +198,8 @@ public final class R {
         public static final int singleItemDescripShowTextView=0x7f0a007c;
         public static final int singleItemDescriptionTextView=0x7f0a0078;
         public static final int startDateTextView=0x7f0a0046;
-        public static final int submitedClaimsTextView=0x7f0a0060;
+        public static final int submitedClaimsTextView=0x7f0a0061;
         public static final int tagEditText=0x7f0a004e;
->>>>>>> origin/master
         public static final int testApproverTextView=0x7f0a0036;
         public static final int testClaimantTextView=0x7f0a0035;
         public static final int textViewItemDA=0x7f0a0038;
