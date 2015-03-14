@@ -23,9 +23,15 @@ package ca.ualberta.cs.cmput301w15t04team04project;
 import java.util.List;
 import java.util.Vector;
 
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ClaimListAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.PagerAdapter;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
+import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -34,6 +40,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -50,7 +57,11 @@ public class EditItemActivity extends FragmentActivity {
 	private RadioGroup bottom_Rg;
 	private PagerAdapter mpageAdapter;
 	private ViewPager pager;
-
+	private OneClaimController controller;
+	private Item item;
+	private ClaimList claimList;
+	private int claimid;
+	
 	/**
 	 * Initializing the activity. Call the initialisePaging() function to allow
 	 * the pager
@@ -67,7 +78,18 @@ public class EditItemActivity extends FragmentActivity {
 		// setContentView(R.layout.fragment_edit_item_1);
 		// setContentView(R.layout.fragment_edit_item_2);
 		initialisePaging();
+		claimList = MyLocalClaimListManager.loadClaimList(this, "local");
+		Bundle bundle = getIntent().getExtras();
+		claimid = bundle.getInt("MyClaimid");
+		//claimList.getClaimArrayList().get(claimid);
+		
+		if (bundle.size() == 2){
+			final int temp = bundle.getInt("MyItemid");
 
+		}
+		else if (bundle.size() == 1){
+			
+		}
 	}
 
 	/**
@@ -150,6 +172,18 @@ public class EditItemActivity extends FragmentActivity {
 		 * 1. Add a new item to the current claim
 		 * 2. Update the changes of the chosen item
 		 **/
+		EditText itemName = (EditText) findViewById(R.id.itemNameEditText);
+		
+		this.item = new Item(itemName.getText().toString());
+		
+		//controller.addItem(this.item);
+		
+		claimList.getClaimArrayList().get(claimid).addItem(this.item);
+		MyLocalClaimListManager.saveClaimList(this, claimList, "local");
+		
+		Intent intent = new Intent(EditItemActivity.this, OneClaimActivity.class);
+		startActivity(intent);
+		
 		finish();
 	}
 	

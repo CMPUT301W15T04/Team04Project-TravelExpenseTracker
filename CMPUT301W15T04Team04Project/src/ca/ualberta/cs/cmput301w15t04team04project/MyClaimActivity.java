@@ -141,7 +141,7 @@ public class MyClaimActivity extends Activity {
 			public void onItemClick(AdapterView<?> adapterView, View view,
 					int position, long id) {
 				int itemPosition = position;
-				Toast.makeText(MyClaimActivity.this, "Edit Claim" ,Toast.LENGTH_SHORT).show();
+				Toast.makeText(MyClaimActivity.this, "Edit Claim"+position ,Toast.LENGTH_SHORT).show();
 				Intent myintent = new Intent(MyClaimActivity.this,
 						OneClaimActivity.class);
 				myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

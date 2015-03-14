@@ -44,7 +44,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 * 
 */
 public class MyLocalClaimListController {
-	private ClaimList claimList = new ClaimList();;
+	private ClaimList claimList = new ClaimList();
 	
 	/**
 	 * MyLocalClaimListController is initial this class
