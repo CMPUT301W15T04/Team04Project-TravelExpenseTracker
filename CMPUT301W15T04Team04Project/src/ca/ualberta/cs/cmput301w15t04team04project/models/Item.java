@@ -44,8 +44,7 @@ public class Item {
 	private Date date;
 	private String category;
 	private String description;
-	private double amount;
-	private String currency;
+	private Currency currency;
 	//private ImageView receipt;
 	private boolean isComplete = false;
 	
@@ -126,29 +125,6 @@ public class Item {
 		this.description = description;
 	}
 
-	public double getAmount()
-	{
-
-		return amount;
-	}
-
-	public void setAmount(double amount)
-	{
-
-		this.amount = amount;
-	}
-
-	public String getCurrency()
-	{
-
-		return currency;
-	}
-
-	public void setCurrency(String currency)
-	{
-
-		this.currency = currency;
-	}
 /*
 	public ImageView getReceipt()
 	{
@@ -175,6 +151,14 @@ public class Item {
 		} else {
 			this.isComplete = false;
 		}
+	}
+
+	public Currency getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(Currency currency) {
+		this.currency = currency;
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 
+
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ClaimListAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController;
@@ -100,13 +101,24 @@ public class MyClaimActivity extends Activity {
     	controller = new MyLocalClaimListController(claimList);
 		//final ArrayList<Claim> list = new ArrayList<Claim>(claims);
 		//
+<<<<<<< HEAD
 
+=======
+//<<<<<<< HEAD
+>>>>>>> e2dfa15299ed1ef0408d4dbd254dcdb2f9898f32
     	final ArrayList<Claim> claims = controller.getClaims();
     	final ClaimListAdapter claimListAdapter = new ClaimListAdapter(this, R.layout.single_claim,
 				claims);
 		listView.setAdapter(claimListAdapter);
 		controller.getClaimList().addListener(new Listener() {
+<<<<<<< HEAD
 
+=======
+/*=======
+    	
+		final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, controller.getClaimList());
+//>>>>>>> 233adc6b2d2e74e9c6b6ed96030f4c08474dea2d*/
+>>>>>>> e2dfa15299ed1ef0408d4dbd254dcdb2f9898f32
 
 			@Override
 			public void update() {
@@ -152,7 +164,7 @@ public class MyClaimActivity extends Activity {
 			public void onItemClick(AdapterView<?> adapterView, View view,
 					int position, long id) {
 				int itemPosition = position;
-				Toast.makeText(MyClaimActivity.this, "Edit Claim" ,Toast.LENGTH_SHORT).show();
+				Toast.makeText(MyClaimActivity.this, "Edit Claim"+position ,Toast.LENGTH_SHORT).show();
 				Intent myintent = new Intent(MyClaimActivity.this,
 						OneClaimActivity.class);
 				myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -172,10 +184,25 @@ public class MyClaimActivity extends Activity {
 		* @since   2015-03-13
 		*/
 		// set up claim listing adapter
+		/*
+		ClaimListAdapter claimListAdapter = new ClaimListAdapter(this, R.layout.single_claim,
+								claims.getClaimArrayList());
+		listView.setAdapter(claimListAdapter);
+		claimListAdapter.notifyDataSetChanged();
+		*/
 		
 	
 	}
 	
+	
+	
+	
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
+
+	}
 	
 	
 	/**
@@ -201,5 +228,6 @@ public class MyClaimActivity extends Activity {
 	public void goToEditClaim(MenuItem item) {
 		Intent intent = new Intent(MyClaimActivity.this, EditClaimActivity.class);
 		startActivity(intent);
+		finish();
 	}
 }

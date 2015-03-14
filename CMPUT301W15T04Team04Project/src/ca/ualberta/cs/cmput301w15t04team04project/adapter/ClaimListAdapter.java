@@ -21,6 +21,7 @@
 
 package ca.ualberta.cs.cmput301w15t04team04project.adapter;
 
+import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 
 import ca.ualberta.cs.cmput301w15t04team04project.R;
@@ -54,14 +55,16 @@ public class ClaimListAdapter extends ArrayAdapter<Claim> {
 		
 		claimList.get(position);
 		
+		holder.startMonth = (TextView) convertView
+				.findViewById(R.id.singleClaimStartMonthTextView);
 		holder.startDate = (TextView) convertView
-				.findViewById(R.id.dateStartDisplay);
-		holder.endDate = (TextView) convertView
-				.findViewById(R.id.dateEndDisplay);
+				.findViewById(R.id.singleClaimStartDateTextView);
+		holder.startYear = (TextView) convertView
+				.findViewById(R.id.singleClaimStartYearTextView);
 		holder.tags = (TextView) convertView
 				.findViewById(R.id.desplayTags);
 		holder.destination = (TextView) convertView
-				.findViewById(R.id.destinationDisplay);
+				.findViewById(R.id.singleClaimDistinationDisplayTextView);
 		holder.claimState = (TextView) convertView
 				.findViewById(R.id.claimState);
 		holder.totalAmount = (TextView) convertView
@@ -75,21 +78,22 @@ public class ClaimListAdapter extends ArrayAdapter<Claim> {
 		}
 		
 		
-		
-		//holder.startDate.setText(claim.getStartDate().getDate());
-		//holder.endDate.setText(claim.getEndDate().getDate());
-		// holder.tags
-		holder.destination.setText("destination"); //claim.getDestination());
-		holder.claimState.setText("In Progress");  //claim.getStatus();
-		holder.totalAmount.setText("$ CAD 88.88"); //claim.getAmount();
+		holder.startYear.setText(""+(claim.getStartDate().getYear()+1900));
+		holder.startMonth.setText(new DateFormatSymbols().getShortMonths()[claim.getStartDate().getMonth()]);
+		holder.startDate.setText(" "+claim.getStartDate().getDate()+",");
+		holder.tags.setText(claim.TagListToString());
+		holder.destination.setText(claim.DestinationListToString());//"destination"); //claim.getDestination());
+		holder.claimState.setText(claim.getStatus());//"In Progress");  //claim.getStatus();
+		holder.totalAmount.setText(claim.TotalCurrencyListToString());//"$ CAD 88.88"); //claim.getAmount();
 		
 		return convertView;
 		
 	}
 
 	class ViewHolder {
+		TextView startYear;
+		TextView startMonth;
 		TextView startDate;
-		TextView endDate;
 		TextView destination;
 		TextView totalAmount;
 		TextView tags;

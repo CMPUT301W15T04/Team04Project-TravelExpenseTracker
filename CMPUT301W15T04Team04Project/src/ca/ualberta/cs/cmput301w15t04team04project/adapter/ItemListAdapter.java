@@ -40,6 +40,8 @@ public class ItemListAdapter extends ArrayAdapter<Item>
 
 		itemList.get(position);
 	
+
+		//get views
 		iholder.date = (TextView) convertView.findViewById(R.id.singleItemDateShowTextView);
 		iholder.description = (TextView) convertView.findViewById(R.id.singleItemDescripShowTextView);
 		iholder.category = (TextView) convertView.findViewById(R.id.singleItemCategoryShowTextView);
@@ -47,11 +49,13 @@ public class ItemListAdapter extends ArrayAdapter<Item>
 
 		convertView.setTag(iholder);
 		
+		
 		Item item = itemList.get(position);
 		if (item!=null){
 			item = new Item("Testing");
 		}
 		
+		//set content in views
 		iholder.date.setText("date"); //claim.getDestination());
 		iholder.description.setText("In Progress");  //claim.getStatus();
 		iholder.category.setText("category");
