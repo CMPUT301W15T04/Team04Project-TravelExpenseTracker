@@ -9,7 +9,7 @@
         android:showAsAction="always"
         android:title="@string/title_activity_search"/>
     <item
-        android:id="@+id/action_new"
+        android:id="@+id/action_new_claim"
         android:icon="@drawable/ic_action_new"
         android:onClick="goToEditClaim"
         android:showAsAction="always"

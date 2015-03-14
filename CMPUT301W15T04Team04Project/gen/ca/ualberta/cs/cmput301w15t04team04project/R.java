@@ -86,8 +86,8 @@ public final class R {
         public static final int TotalAmount=0x7f0a0070;
         public static final int action_accept=0x7f0a008a;
         public static final int action_logout=0x7f0a008c;
-        public static final int action_new=0x7f0a008d;
-        public static final int action_newItme=0x7f0a008f;
+        public static final int action_new_claim=0x7f0a008d;
+        public static final int action_new_itme=0x7f0a008f;
         public static final int action_search=0x7f0a008b;
         public static final int action_searchOC=0x7f0a008e;
         public static final int action_settings=0x7f0a0089;
