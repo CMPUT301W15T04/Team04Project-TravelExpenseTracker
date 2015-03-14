@@ -100,16 +100,16 @@ public class MyClaimActivity extends Activity {
     	controller = new MyLocalClaimListController(claimList);
 		//final ArrayList<Claim> list = new ArrayList<Claim>(claims);
 		//
-<<<<<<< HEAD
+//<<<<<<< HEAD
     	final ArrayList<Claim> claims = controller.getClaims();
     	final ClaimListAdapter claimListAdapter = new ClaimListAdapter(this, R.layout.single_claim,
 				claims);
 		listView.setAdapter(claimListAdapter);
 		controller.getClaimList().addListener(new Listener() {
-=======
+/*=======
     	
 		final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, controller.getClaimList());
->>>>>>> 233adc6b2d2e74e9c6b6ed96030f4c08474dea2d
+//>>>>>>> 233adc6b2d2e74e9c6b6ed96030f4c08474dea2d*/
 
 			@Override
 			public void update() {
@@ -175,6 +175,12 @@ public class MyClaimActivity extends Activity {
 		* @since   2015-03-13
 		*/
 		// set up claim listing adapter
+		/*
+		ClaimListAdapter claimListAdapter = new ClaimListAdapter(this, R.layout.single_claim,
+								claims.getClaimArrayList());
+		listView.setAdapter(claimListAdapter);
+		claimListAdapter.notifyDataSetChanged();
+		*/
 		
 	
 	}
