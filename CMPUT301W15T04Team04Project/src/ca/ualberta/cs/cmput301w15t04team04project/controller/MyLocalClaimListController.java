@@ -20,6 +20,8 @@
 */
 package ca.ualberta.cs.cmput301w15t04team04project.controller;
 
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
@@ -42,8 +44,8 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 * 
 */
 public class MyLocalClaimListController {
-	private ClaimList claimlist = new ClaimList();;
-
+	private ClaimList claimList = new ClaimList();;
+	
 	/**
 	 * MyLocalClaimListController is initial this class
 	 * 
@@ -51,24 +53,16 @@ public class MyLocalClaimListController {
 	 * @version 1.1
 	 * @since 2015-03-12
 	 */
-	public MyLocalClaimListController(){
+	public MyLocalClaimListController(ClaimList claimList){
 		//claimlist = MyLocalClaimListManager.getMyLocalClaimListManager().loadClaimList();
-		
-		Claim claimA = new Claim("ClaimA");
-		claimlist.addClaim(claimA);
+		this.claimList = claimList;
 	}
+	
+	public ClaimList getcClaimList(){
 
-	/**
-	 * deleteClaim is delete the claim which the position of which
-	 * 
-	 * @author Weijie Sun
-	 * @version 1.0
-	 * @since 2015-03-12
-	 */
-	public void deleteClaim(int which) {
-		// TODO Auto-generated method stub
-		claimlist.deleteClaim(which);
+		return claimList;
 	}
+		
 	/**
 	 * getClaimList is get the claim list in the Manager
 	 * 
@@ -76,12 +70,41 @@ public class MyLocalClaimListController {
 	 * @version 1.0
 	 * @since 2015-03-12
 	 */	
-	public ClaimList getClaimList(){
+	public ArrayList<Claim> getClaimList(){
 
-		return claimlist;
+		return getcClaimList().getClaimArrayList();
 	}
 	
+<<<<<<< HEAD
 
+=======
+	public void addClaim(Claim claim){
+		getClaimList().add(claim);
+	}
+	
+	public void deleteClaim(int index){
+		getClaimList().remove(index);
+	}
+	
+	
+	public void GoToOneClaim(Context context, long id) {
+		// TODO Auto-generated method stub
+		Toast.makeText(context, "Edit Claim" ,Toast.LENGTH_SHORT).show();
+		Intent myintent = new Intent(context,
+				OneClaimActivity.class);
+		myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		myintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		myintent.putExtra("MyClaimid", id);
+		context.startActivity(myintent);
+	}
+	
+	public void goToSearch(Context context) {
+		// TODO Auto-generated method stub
+		Toast.makeText(context, "Search" ,Toast.LENGTH_SHORT).show();
+		Intent intent = new Intent(context, SearchActivity.class);
+		context.startActivity(intent);
+	}
+>>>>>>> a5a36e2c64781d17c9ca51a7405d9384806adef2
 	
 
 	

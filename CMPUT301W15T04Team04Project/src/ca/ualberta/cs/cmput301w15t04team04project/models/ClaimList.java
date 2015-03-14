@@ -41,7 +41,6 @@ public class ClaimList {
 
 	protected ArrayList<Claim> claimList = null;
 	protected transient ArrayList<Listener> listeners = null;
-	protected ArrayList<Claim> SubmittedClaimList = null;
 	/**
 	 * The constructor of the class
 	 * 
@@ -50,32 +49,6 @@ public class ClaimList {
 	public ClaimList() {
 		claimList = new ArrayList<Claim>();
 		listeners = new ArrayList<Listener>();
-	}
-	/**
-	 * get a getSubmittedClaimList in List date type
-	 * 
-	 * @return getSubmittedClaimList the getSubmittedClaimList in the List type .
-	 */
-	public ArrayList<Claim> getSubmittedClaimList() {
-		return SubmittedClaimList;
-	}
-	/**
-	 * set a getSubmittedClaimList in List date type
-	 * 
-	 * @return getSubmittedClaimList the getSubmittedClaimList in the List type .
-	 */
-	public void setSubmittedClaimList(ArrayList<Claim> submittedClaimList) {
-		SubmittedClaimList = submittedClaimList;
-	}
-
-	/**
-	 * get the position of the selected claim in the claim list in the view.
-	 * 
-	 * @return claimList.get(position) the position of the selected claim in the
-	 *         claim list in the view.
-	 */
-	public Claim getPosition(int position) {
-		return claimList.get(position);
 	}
 
 	private ArrayList<Listener> getListeners() {
@@ -113,38 +86,6 @@ public class ClaimList {
 		}
 	}
 
-	/**
-	 * add an new claim to claimList and notify the listener in order to update
-	 * the view
-	 * 
-	 * @param claim
-	 *            the added claim.
-	 */
-	public void addClaim(Claim claim) {
-		claimList.add(claim);
-		notifyListeners();
-	}
-
-	/**
-	 * remove a claim in the claimList and notify the listener in order to
-	 * update the view
-	 * 
-	 * @param claim
-	 *            the removed claim .
-	 */
-	public void deleteClaim(int i) {
-		claimList.remove(i);
-		notifyListeners();
-	}
-
-	/**
-	 * get a claim list in List date type
-	 * 
-	 * @return claimList the claimList in the List type .
-	 */
-	public List<Claim> getClaimList() {
-		return claimList;
-	}
 
 	/**
 	 * get a claim list in ArrayList date type
@@ -154,9 +95,5 @@ public class ClaimList {
 	public ArrayList<Claim> getClaimArrayList() {
 		return claimList;
 	}
-
-	
-	
-
 
 }
