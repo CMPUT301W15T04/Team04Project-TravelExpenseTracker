@@ -20,8 +20,6 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="New Claim Name" >
-
-        <requestFocus />
     </EditText>
 
     <TextView
