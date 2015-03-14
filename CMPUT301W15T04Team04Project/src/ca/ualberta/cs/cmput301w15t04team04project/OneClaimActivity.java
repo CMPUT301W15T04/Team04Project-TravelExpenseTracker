@@ -30,6 +30,13 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 
 public class OneClaimActivity extends Activity {
+	private TextView itemName;
+	private TextView amount;
+	private TextView itemDate;
+	private TextView category;
+	private TextView descript;
+	//private TextView itemAmount;
+	
 	protected static boolean isClaimant = true;
 	private OneClaimController controller ;
 	private OneClaimActivity thisActivity = this;
@@ -121,8 +128,6 @@ public class OneClaimActivity extends Activity {
 					int position, long id) {
 				int itemPosition = position;
 				Toast.makeText(OneClaimActivity.this, "Item"+id ,Toast.LENGTH_SHORT).show();
-				
-				
 				showItemDetailC(view,position);
 								
 			}
@@ -235,13 +240,23 @@ public class OneClaimActivity extends Activity {
 	public void showItemDetailC(View view, int id) {
 		isClaimant = true;
 		AlertDialog.Builder adb = new AlertDialog.Builder(OneClaimActivity.this);
-		/*TextView itemName = (TextView) findViewById(R.id.currentItemNameTextView);
-		itemName.setText("asdf");*/
 		LayoutInflater factory = LayoutInflater.from(OneClaimActivity.this);
-		View claimInfoCDialogView = factory.inflate(R.layout.activity_item_detail, null);
-		adb.setView(claimInfoCDialogView);
+		View itemInfoCDialogView = factory.inflate(R.layout.activity_item_detail, null);
+		adb.setView(itemInfoCDialogView);
 		
-
+		itemName = (TextView) itemInfoCDialogView.findViewById(R.id.currentItemNameTextView);
+		amount	 = (TextView) itemInfoCDialogView.findViewById(R.id.currentItemAmountTextView);
+		itemDate = (TextView) itemInfoCDialogView.findViewById(R.id.currentItemDateTextView);
+		category = (TextView) itemInfoCDialogView.findViewById(R.id.currentItemCateTextView);
+		descript = (TextView) itemInfoCDialogView.findViewById(R.id.currentDescripTextView);
+		
+		itemName.setText("Name Pass!");
+		amount.setText("CAD $ 888");
+		itemDate.setText("Jan-10-2001");
+		category.setText("Fuel");
+		descript.setText("This one is just a test!");
+		
+		
 		
 		// set the Edit Button on the Dialog
 		adb.setNeutralButton("Edit", new OnClickListener() {
@@ -261,8 +276,20 @@ public class OneClaimActivity extends Activity {
 		AlertDialog.Builder adb = new AlertDialog.Builder(OneClaimActivity.this);
 		
 		LayoutInflater factory = LayoutInflater.from(OneClaimActivity.this);
-		View claimInfoCDialogView = factory.inflate(R.layout.activity_item_detail_a, null);
-		adb.setView(claimInfoCDialogView);
+		View itemInfoCDialogView = factory.inflate(R.layout.activity_item_detail_a, null);
+		adb.setView(itemInfoCDialogView);
+		
+		itemName = (TextView) itemInfoCDialogView.findViewById(R.id.currentItemNameTextView);
+		amount	 = (TextView) itemInfoCDialogView.findViewById(R.id.currentItemAmountTextView);
+		itemDate = (TextView) itemInfoCDialogView.findViewById(R.id.currentItemDateTextView);
+		category = (TextView) itemInfoCDialogView.findViewById(R.id.currentItemCateTextView);
+		descript = (TextView) itemInfoCDialogView.findViewById(R.id.currentDescripTextView);
+		
+		itemName.setText("Name Pass!");
+		amount.setText("CAD $ 888");
+		itemDate.setText("Jan-10-2001");
+		category.setText("Fuel");
+		descript.setText("This one is just a test!");
 		
 		adb.setNeutralButton("Add Comment", new OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
