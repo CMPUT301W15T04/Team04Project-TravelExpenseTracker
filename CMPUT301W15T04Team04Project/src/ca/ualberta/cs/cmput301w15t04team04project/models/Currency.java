@@ -11,7 +11,7 @@ package ca.ualberta.cs.cmput301w15t04team04project.models;
  * @since    2015-03-14
  */
 public class Currency {
-	private String type;
+	private String type = "CAD";
 	private double amount;
 	
 

@@ -1,7 +1,11 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ItemListAdapter;
@@ -44,6 +48,7 @@ public class OneClaimActivity extends Activity {
 	private Claim claim;
 	private ArrayList<Claim> claimList;
 	private int claimid;
+	private int itemid;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -250,17 +255,24 @@ public class OneClaimActivity extends Activity {
 		category = (TextView) itemInfoCDialogView.findViewById(R.id.currentItemCateTextView);
 		descript = (TextView) itemInfoCDialogView.findViewById(R.id.currentDescripTextView);
 		
-		itemName.setText("Name Pass!");
-		amount.setText("CAD $ 888");
-		itemDate.setText("Jan-10-2001");
-		category.setText("Fuel");
-		descript.setText("This one is just a test!");
+		itemName.setText(claim.getItems().get(id).getItemName());
 		
+		//amount.setText(claim.getItems().get(id).getCurrency().getType()+String.valueOf(claim.getItems().get(id).getCurrency().getAmount()));
+
+		//Toast.makeText(this, claim.getItems().get(id).getCurrency().getType(), Toast.LENGTH_LONG).show();
+		//amount.setText(claim.getItems().get(id).getCurrency().getType());
+		//+String.valueOf(claim.getItems().get(id).getCurrency().getAmount())
+		//amount.setText(String.valueOf(claim.getItems().get(id).getCurrency().getAmount()));
+
+		/*Date idate = claim.getItems().get(id).getDate();
+		DateFormat df = new SimpleDateFormat("dd-MMM-yyyy");	
+		String dateOutput = df.format(idate);
+		itemDate.setText(dateOutput);*/
 		
-<<<<<<< HEAD
+		category.setText(claim.getItems().get(id).getCategory());
+		descript.setText(claim.getItems().get(id).getDescription());
 		
-=======
->>>>>>> c88e2cc3402cf807e14ee0ae975ce010e00d0e3d
+
 		
 		// set the Edit Button on the Dialog
 		adb.setNeutralButton("Edit", new OnClickListener() {
@@ -289,11 +301,22 @@ public class OneClaimActivity extends Activity {
 		category = (TextView) itemInfoCDialogView.findViewById(R.id.currentItemCateTextView);
 		descript = (TextView) itemInfoCDialogView.findViewById(R.id.currentDescripTextView);
 		
-		itemName.setText("Name Pass!");
+		
+		itemName.setText(claim.getItems().get(id).getItemName());
+		
+		amount.setText(claim.getItems().get(id).getCurrency().getType()+String.valueOf(claim.getItems().get(id).getCurrency().getAmount()));
+
+		Date idate = claim.getItems().get(id).getDate();
+		DateFormat df = new SimpleDateFormat("MMM-dd-yyyy");	
+		String dateOutput = df.format(idate);
+		itemDate.setText(dateOutput);
+		
+		category.setText(claim.getItems().get(id).getCategory());
+		descript.setText(claim.getItems().get(id).getDescription());
+
 		amount.setText("CAD $ 888");
 		itemDate.setText("Jan-10-2001");
-		category.setText("Fuel");
-		descript.setText("This one is just a test!");
+
 		
 		adb.setNeutralButton("Add Comment", new OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {

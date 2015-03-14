@@ -182,6 +182,7 @@ public class EditItemActivity extends FragmentActivity {
 		
 		claimList.getClaimArrayList().get(claimid).addItem(this.item);
 		MyLocalClaimListManager.saveClaimList(this, claimList, "local");
+		Toast.makeText(this, this.item.getItemName(), Toast.LENGTH_LONG).show();
 		
 		Intent intent = new Intent(EditItemActivity.this, OneClaimActivity.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

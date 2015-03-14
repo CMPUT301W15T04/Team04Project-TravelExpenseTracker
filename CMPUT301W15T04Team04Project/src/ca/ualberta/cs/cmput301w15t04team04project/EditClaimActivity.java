@@ -91,6 +91,11 @@ public class EditClaimActivity extends FragmentActivity {
 
 	}
 
+/*    public static void changeFragmentTextView(String s) {
+        Fragment frag = getFragmentManager().findFragmentById(R.id.yourFragment);
+        ((TextView) frag.getView().findViewById(R.id.textView)).setText(s);  
+    }*/
+	
 	/**
 	 * Initializing the pager for loading Fragments
 	 * 
