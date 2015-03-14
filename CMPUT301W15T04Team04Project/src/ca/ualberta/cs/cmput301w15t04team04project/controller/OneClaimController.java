@@ -83,7 +83,7 @@ public class OneClaimController {
 
 	public void deleteItem(int which) {
 		// TODO Auto-generated method stub
-		claim.getItems().remove(which);
+		//claim.getItems().remove(which);
 		
 	}
 	
