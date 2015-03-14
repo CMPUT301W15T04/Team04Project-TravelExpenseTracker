@@ -3,9 +3,8 @@
     tools:context="ca.ualberta.cs.cmput301w15t04team04project.MainActivity" >
     <item
         android:id="@+id/action_logout"
-        android:icon="@drawable/ic_action_new"
         android:onClick="logOut"
-        android:showAsAction="always"
+        android:showAsAction="always|collapseActionView"
         android:title="Log Out"/>
 
 </menu>
