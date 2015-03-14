@@ -95,10 +95,12 @@ public class MyClaimActivity extends Activity {
 
 		//new
 		
+
     	ListView listView = (ListView) findViewById(R.id.myClaimsListView);
     	controller = new MyLocalClaimListController(claims);
 		//final ArrayList<Claim> list = new ArrayList<Claim>(claims);
 		//
+    	
 		final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, controller.getClaimList());
 
 		listView.setAdapter(claimAdapter);
@@ -144,7 +146,7 @@ public class MyClaimActivity extends Activity {
 						OneClaimActivity.class);
 				myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				myintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				myintent.putExtra("MyClaimid", id);
+				myintent.putExtra("MyClaimid", itemPosition);
 				MyClaimActivity.this.startActivity(myintent);				
 			}
 		});
