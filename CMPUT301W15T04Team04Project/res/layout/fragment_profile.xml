@@ -32,30 +32,31 @@
         android:background="@drawable/user2_icon" />
 
     <TextView
-        android:id="@+id/logOutTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:clickable="true"
-        android:drawableLeft="@drawable/log_out"
-        android:onClick="logOut"
-        android:text="Log Out"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
         android:id="@+id/submitedClaimsTextView"
         android:layout_width="100dp"
         android:layout_height="80dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/photoButton"
-        android:layout_marginTop="18dp"
+        android:layout_centerVertical="true"
         android:clickable="true"
         android:drawableLeft="@drawable/list2_icon"
         android:gravity="center_vertical|center_horizontal"
         android:onClick="showSubmitted"
         android:text="Submitted Claims"
+        android:textSize="32dp" />
+
+    <TextView
+        android:id="@+id/progresClaimsTextView"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_above="@+id/submitedClaimsTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:clickable="true"
+        android:drawableLeft="@drawable/list2_icon"
+        android:gravity="center_vertical|center_horizontal"
+        android:onClick="showProgressing"
+        android:text="Progresing Claims"
         android:textSize="32dp" />
 
     <TextView

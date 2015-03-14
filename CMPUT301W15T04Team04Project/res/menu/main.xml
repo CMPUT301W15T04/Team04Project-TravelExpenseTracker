@@ -1,18 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="ca.ualberta.cs.cmput301w15t04team04project.MainActivity" >
-
     <item
-        android:id="@+id/action_search"
-        android:icon="@drawable/ic_action_search"
-        android:onClick="goToSearch"
-        android:showAsAction="always"
-        android:title="@string/title_activity_search"/>
-    <item
-        android:id="@+id/action_new"
+        android:id="@+id/action_logout"
         android:icon="@drawable/ic_action_new"
-        android:onClick="goToEditClaim"
+        android:onClick="logOut"
         android:showAsAction="always"
-        android:title="Add New Claim"/>
+        android:title="Log Out"/>
 
 </menu>
