@@ -99,14 +99,20 @@ public class MyClaimActivity extends Activity {
 
     	ListView listView = (ListView) findViewById(R.id.myClaimsListView);
     	controller = new MyLocalClaimListController(claimList);
+<<<<<<< HEAD
 		//final ArrayList<Claim> list = new ArrayList<Claim>(claims);
 		
+=======
+>>>>>>> 0ae5d31eefe35e1729654e37da931f2fc0f02874
     	final ArrayList<Claim> claims = controller.getClaims();
     	final ClaimListAdapter claimListAdapter = new ClaimListAdapter(this, R.layout.single_claim,
 				claims);
 		listView.setAdapter(claimListAdapter);
 		controller.getClaimList().addListener(new Listener() {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0ae5d31eefe35e1729654e37da931f2fc0f02874
 
 			@Override
 			public void update() {
