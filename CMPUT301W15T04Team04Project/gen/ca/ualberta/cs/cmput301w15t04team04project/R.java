@@ -46,37 +46,35 @@ public final class R {
         public static final int activity_vertical_margin=0x7f060001;
     }
     public static final class drawable {
-        public static final int add_icon=0x7f020000;
-        public static final int get_more_btn_bg=0x7f020001;
-        public static final int get_more_btn_bg_f=0x7f020002;
-        public static final int home_icon=0x7f020003;
-        public static final int ic_action_accept=0x7f020004;
-        public static final int ic_action_camera=0x7f020005;
-        public static final int ic_action_cancel=0x7f020006;
-        public static final int ic_action_discard=0x7f020007;
-        public static final int ic_action_edit=0x7f020008;
-        public static final int ic_action_new=0x7f020009;
-        public static final int ic_action_new_event=0x7f02000a;
-        public static final int ic_action_new_picture=0x7f02000b;
-        public static final int ic_action_refresh=0x7f02000c;
-        public static final int ic_action_save=0x7f02000d;
-        public static final int ic_action_search=0x7f02000e;
-        public static final int ic_action_view_as_list=0x7f02000f;
-        public static final int ic_flag=0x7f020010;
-        public static final int ic_launcher=0x7f020011;
-        public static final int icon_no_images4=0x7f020012;
-        public static final int list2_icon=0x7f020013;
-        public static final int list_icon=0x7f020014;
-        public static final int log_out=0x7f020015;
-        public static final int mail_flag=0x7f020016;
-        public static final int menu_bottom_button=0x7f020017;
-        public static final int menu_btn_bg_selected=0x7f020018;
-        public static final int momoents=0x7f020019;
-        public static final int title_bar=0x7f02001a;
-        public static final int toolbar_bg=0x7f02001b;
-        public static final int user2_icon=0x7f02001c;
-        public static final int user_icon=0x7f02001d;
-        public static final int xlistview_arrow=0x7f02001e;
+        public static final int get_more_btn_bg=0x7f020000;
+        public static final int get_more_btn_bg_f=0x7f020001;
+        public static final int ic_action_accept=0x7f020002;
+        public static final int ic_action_camera=0x7f020003;
+        public static final int ic_action_cancel=0x7f020004;
+        public static final int ic_action_discard=0x7f020005;
+        public static final int ic_action_edit=0x7f020006;
+        public static final int ic_action_new=0x7f020007;
+        public static final int ic_action_new_event=0x7f020008;
+        public static final int ic_action_new_picture=0x7f020009;
+        public static final int ic_action_refresh=0x7f02000a;
+        public static final int ic_action_save=0x7f02000b;
+        public static final int ic_action_search=0x7f02000c;
+        public static final int ic_action_view_as_list=0x7f02000d;
+        public static final int ic_flag=0x7f02000e;
+        public static final int ic_launcher=0x7f02000f;
+        public static final int icon_no_images4=0x7f020010;
+        public static final int list=0x7f020011;
+        public static final int list2_icon=0x7f020012;
+        public static final int list_icon=0x7f020013;
+        public static final int mail_flag=0x7f020014;
+        public static final int menu_bottom_button=0x7f020015;
+        public static final int menu_btn_bg_selected=0x7f020016;
+        public static final int momoents=0x7f020017;
+        public static final int title_bar=0x7f020018;
+        public static final int toolbar_bg=0x7f020019;
+        public static final int user2_icon=0x7f02001a;
+        public static final int user_icon=0x7f02001b;
+        public static final int xlistview_arrow=0x7f02001c;
     }
     public static final class id {
         public static final int Destination=0x7f0a006d;
@@ -95,7 +93,7 @@ public final class R {
         public static final int addCommentItemEditText=0x7f0a002f;
         public static final int addCommentsEditText=0x7f0a0011;
         public static final int addRecieptImageView=0x7f0a005a;
-        public static final int approvedClaimsTextView=0x7f0a0061;
+        public static final int approvedClaimsTextView=0x7f0a005f;
         public static final int cancleSearchTextView=0x7f0a0067;
         public static final int claimDescriptionTextView=0x7f0a0048;
         public static final int claimDestinationTextView=0x7f0a004c;
@@ -162,8 +160,8 @@ public final class R {
         public static final int myClaimsListView=0x7f0a0034;
         public static final int myProfileMenuButton=0x7f0a0032;
         public static final int photoButton=0x7f0a005e;
-        public static final int progresClaimsTextView=0x7f0a0060;
-        public static final int savedClaimsTextView=0x7f0a0062;
+        public static final int progresClaimsTextView=0x7f0a0062;
+        public static final int savedClaimsTextView=0x7f0a0061;
         public static final int searchBarEditText=0x7f0a0066;
         public static final int showClaimDetailTextView=0x7f0a000c;
         public static final int showClaimEDATextView=0x7f0a000d;
@@ -199,7 +197,7 @@ public final class R {
         public static final int singleItemDescripShowTextView=0x7f0a007b;
         public static final int singleItemDescriptionTextView=0x7f0a0077;
         public static final int startDateTextView=0x7f0a0045;
-        public static final int submitedClaimsTextView=0x7f0a005f;
+        public static final int submitedClaimsTextView=0x7f0a0060;
         public static final int tagEditText=0x7f0a004d;
         public static final int testApproverTextView=0x7f0a0036;
         public static final int testClaimantTextView=0x7f0a0035;
@@ -242,15 +240,14 @@ public final class R {
         public static final int fragment_edit_item_1=0x7f03000e;
         public static final int fragment_edit_item_2=0x7f03000f;
         public static final int fragment_moments=0x7f030010;
-        public static final int fragment_my_claims=0x7f030011;
-        public static final int fragment_profile=0x7f030012;
-        public static final int list_item=0x7f030013;
-        public static final int main=0x7f030014;
-        public static final int search_bar=0x7f030015;
-        public static final int single_claim=0x7f030016;
-        public static final int single_item=0x7f030017;
-        public static final int xlistview_footer=0x7f030018;
-        public static final int xlistview_header=0x7f030019;
+        public static final int fragment_profile=0x7f030011;
+        public static final int list_item=0x7f030012;
+        public static final int main=0x7f030013;
+        public static final int search_bar=0x7f030014;
+        public static final int single_claim=0x7f030015;
+        public static final int single_item=0x7f030016;
+        public static final int xlistview_footer=0x7f030017;
+        public static final int xlistview_header=0x7f030018;
     }
     public static final class menu {
         public static final int claim_detail=0x7f090000;
@@ -260,14 +257,13 @@ public final class R {
         public static final int fragement_edit_claim_activity1=0x7f090004;
         public static final int fragment_edit_item1=0x7f090005;
         public static final int fragment_moments=0x7f090006;
-        public static final int fragment_my_claims=0x7f090007;
-        public static final int fragment_profile=0x7f090008;
-        public static final int item_detail=0x7f090009;
-        public static final int main=0x7f09000a;
-        public static final int my_claim=0x7f09000b;
-        public static final int one_claim=0x7f09000c;
-        public static final int search=0x7f09000d;
-        public static final int signin=0x7f09000e;
+        public static final int fragment_profile=0x7f090007;
+        public static final int item_detail=0x7f090008;
+        public static final int main=0x7f090009;
+        public static final int my_claim=0x7f09000a;
+        public static final int one_claim=0x7f09000b;
+        public static final int search=0x7f09000c;
+        public static final int signin=0x7f09000d;
     }
     public static final class string {
         public static final int action_search=0x7f070011;

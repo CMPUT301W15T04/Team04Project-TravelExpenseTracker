@@ -52,9 +52,12 @@ public class MyClaimActivity extends Activity {
 		
 		actionBar = getActionBar();
 		if (mode == 0) {
-			actionBar.setTitle("Submitted Claims");
+			actionBar.setTitle("Progresing Claims");
 		}
 		else if (mode == 1) {
+			actionBar.setTitle("Submitted Claims");
+		}
+		else if (mode == 2) {
 			actionBar.setTitle("Approved Claims");
 		}
 		else {
