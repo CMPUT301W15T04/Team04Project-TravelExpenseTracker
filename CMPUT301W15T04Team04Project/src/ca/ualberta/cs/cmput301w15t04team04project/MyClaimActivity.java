@@ -110,8 +110,6 @@ public class MyClaimActivity extends Activity {
 				//adb.setMessage(claim.getClaim()+" total cost \n"+claim.getAmount()+"\n From "+claim.getStartDate()+" to "+claim.getEndDate());
 				adb.setCancelable(true);
 
-
-
 				adb.setPositiveButton("Delete", new OnClickListener(){
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
