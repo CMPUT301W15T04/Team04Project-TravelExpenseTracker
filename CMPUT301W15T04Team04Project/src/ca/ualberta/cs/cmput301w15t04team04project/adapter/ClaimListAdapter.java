@@ -68,17 +68,23 @@ public class ClaimListAdapter extends ArrayAdapter<Claim> {
 				.findViewById(R.id.totalAmountDisplay);
 		
 		convertView.setTag(holder);
+		
 		Claim claim = claimList.get(position);
 		if (claim!=null){
-			
+			claim = new Claim("Testing");
 		}
-		return convertView;
+		
+		
+		
 		//holder.startDate.setText(claim.getStartDate().getDate());
 		//holder.endDate.setText(claim.getEndDate().getDate());
-		//holder.tags
-		//holder.destination = claim.getDestination()
-		//holder.claimState = claim.getStatus();
-		//holder.totalAmount = claim.getAmount()
+		// holder.tags
+		holder.destination.setText("destination"); //claim.getDestination());
+		holder.claimState.setText("In Progress");  //claim.getStatus();
+		holder.totalAmount.setText("$ CAD 88.88"); //claim.getAmount();
+		
+		return convertView;
+		
 	}
 
 	class ViewHolder {
