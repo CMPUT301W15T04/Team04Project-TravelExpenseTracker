@@ -111,13 +111,7 @@ public class MyClaimActivity extends Activity {
 				//adb.setMessage(claim.getClaim()+" total cost \n"+claim.getAmount()+"\n From "+claim.getStartDate()+" to "+claim.getEndDate());
 				adb.setCancelable(true);
 
-				adb.setNeutralButton("Edit", new OnClickListener(){
-					public void onClick(DialogInterface dialog, int which){
-						
-						controller.GoToEditClaim(thisActivity, finalPosition);
-				}
-					
-				});
+
 
 				adb.setPositiveButton("Delete", new OnClickListener(){
 					@Override
@@ -143,7 +137,7 @@ public class MyClaimActivity extends Activity {
 			public void onItemClick(AdapterView<?> adapterView, View view,
 					int position, long id) {
 				int itemPosition = position;
-				
+				controller.GoToOneClaim(thisActivity,id);
 				
 			}
 		});
@@ -165,12 +159,12 @@ public class MyClaimActivity extends Activity {
 	}
 
 	public void goToSearch(MenuItem item) {
-		Intent intent = new Intent(MyClaimActivity.this, SearchActivity.class);
-		startActivity(intent);
+		controller.goToSearch(thisActivity);
+
 	}
 
 	public void goToEditClaim(MenuItem item) {
-		Intent intent = new Intent(MyClaimActivity.this, EditClaimActivity.class);
-		startActivity(intent);
+		controller.goToEditClaim(thisActivity);
+
 	}
 }

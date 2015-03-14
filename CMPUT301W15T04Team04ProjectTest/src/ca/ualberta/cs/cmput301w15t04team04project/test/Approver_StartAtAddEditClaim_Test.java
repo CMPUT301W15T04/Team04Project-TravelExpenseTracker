@@ -138,7 +138,7 @@ public class Approver_StartAtAddEditClaim_Test extends ActivityInstrumentationTe
 
 		Activity activity = getActivity();
 		
-		ListView listView = (ListView) activity.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.MainClaimListView); //listView
+		ListView listView = (ListView) activity.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.myClaimsListView); //listView
 		
 	    try {
 		listView.performItemClick(
