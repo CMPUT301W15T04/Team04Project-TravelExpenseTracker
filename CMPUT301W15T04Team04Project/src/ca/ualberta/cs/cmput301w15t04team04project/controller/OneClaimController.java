@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.widget.Toast;
 import ca.ualberta.cs.cmput301w15t04team04project.EditClaimActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.SearchActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 /**
  * OneClaimController is the controller of the OneClaimActivity
  * 
@@ -13,6 +14,8 @@ import ca.ualberta.cs.cmput301w15t04team04project.SearchActivity;
  * @since 2015-03-13
  */
 public class OneClaimController {
+	private Claim claim 
+	;
 	
 	/**
 	 * OneClaimController is initial
@@ -26,32 +29,7 @@ public class OneClaimController {
 	
 	}
 	
-	/**
-	 * OneClaimController is initial
-	 * 
-	 * @author Weijie Sun
-	 * @version 1.1
-	 * @since 2015-03-13
-	 */
-	public void goToSearch(Context context) {
-		// TODO Auto-generated method stub
-		Toast.makeText(context, "Search" ,Toast.LENGTH_SHORT).show();
-		Intent intent = new Intent(context, SearchActivity.class);
-		context.startActivity(intent);
-	}
-	/**
-	 * OneClaimController is initial
-	 * 
-	 * @author Weijie Sun
-	 * @version 1.1
-	 * @since 2015-03-13
-	 */
-	public void goToEditClaim(Context context){
-		
-		Toast.makeText(context, "Add Claim" ,Toast.LENGTH_SHORT).show();
-		Intent intent = new Intent(context, EditClaimActivity.class);
-		context.startActivity(intent);
-	}
+
 
 	/**
 	 * submittedClaim is submitted Claim
@@ -100,5 +78,15 @@ public class OneClaimController {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+
+	public void deleteItem(int which) {
+		// TODO Auto-generated method stub
+		claim.getItems().remove(which);
+		
+	}
+	
+
 	
 }

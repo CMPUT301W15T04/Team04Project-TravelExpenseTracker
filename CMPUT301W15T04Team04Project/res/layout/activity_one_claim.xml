@@ -60,4 +60,14 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         tools:ignore="HardcodedText,RtlHardcoded" />
 
+    <ListView
+        android:id="@+id/OneCaimItemlistView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewItemDA"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/textViewItemDA" >
+
+    </ListView>
+
 </RelativeLayout>

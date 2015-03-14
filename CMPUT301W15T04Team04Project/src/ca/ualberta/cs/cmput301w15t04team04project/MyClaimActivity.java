@@ -43,10 +43,10 @@ public class MyClaimActivity extends Activity {
 	protected static int mode;
 	private ActionBar actionBar;
 
-	private ClaimList claims = new ClaimList();
-	private MyLocalClaimListController controller = new MyLocalClaimListController();
-	private MyClaimActivity thisActivity = this;
 	
+	private MyLocalClaimListController controller;
+	private MyClaimActivity thisActivity = this;
+	private ClaimList claims;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -54,15 +54,18 @@ public class MyClaimActivity extends Activity {
 		
 		actionBar = getActionBar();
 		if (mode == 0) {
-			actionBar.setTitle("Submitted Claims");
+			actionBar.setTitle("Progresing Claims");
 		}
 		else if (mode == 1) {
+			actionBar.setTitle("Submitted Claims");
+		}
+		else if (mode == 2) {
 			actionBar.setTitle("Approved Claims");
 		}
 		else {
 			actionBar.setTitle("Saved Claims");
 		}
-
+		claims = MyLocalClaimListManager.loadClaimList(this, "local");
 /*    	CLmanager.initManager(this.getApplicationContext());
  
 		ListView listView = (ListView) findViewById(R.id.claimListView);
@@ -92,13 +95,11 @@ public class MyClaimActivity extends Activity {
 
 		//new
 		
-		claims = controller.getClaimList();
-		
     	ListView listView = (ListView) findViewById(R.id.myClaimsListView);
-
+    	controller = new MyLocalClaimListController(claims);
 		//final ArrayList<Claim> list = new ArrayList<Claim>(claims);
 		//
-		final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, claims.getClaimList());
+		final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, controller.getClaimList());
 
 		listView.setAdapter(claimAdapter);
 		claimAdapter.notifyDataSetChanged();
@@ -113,12 +114,11 @@ public class MyClaimActivity extends Activity {
 				//adb.setMessage(claim.getClaim()+" total cost \n"+claim.getAmount()+"\n From "+claim.getStartDate()+" to "+claim.getEndDate());
 				adb.setCancelable(true);
 
-
-
 				adb.setPositiveButton("Delete", new OnClickListener(){
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						controller.deleteClaim(which);
+						MyLocalClaimListManager.saveClaimList(getApplicationContext(), controller.getcClaimList(),"local");
 				}
 				});
 				adb.setNegativeButton("Cancel", new OnClickListener(){
@@ -139,8 +139,13 @@ public class MyClaimActivity extends Activity {
 			public void onItemClick(AdapterView<?> adapterView, View view,
 					int position, long id) {
 				int itemPosition = position;
-				controller.GoToOneClaim(thisActivity,id);
-				
+				Toast.makeText(MyClaimActivity.this, "Edit Claim" ,Toast.LENGTH_SHORT).show();
+				Intent myintent = new Intent(MyClaimActivity.this,
+						OneClaimActivity.class);
+				myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				myintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				myintent.putExtra("MyClaimid", id);
+				MyClaimActivity.this.startActivity(myintent);				
 			}
 		});
 		
@@ -179,12 +184,12 @@ public class MyClaimActivity extends Activity {
 	}
 
 	public void goToSearch(MenuItem item) {
-		controller.goToSearch(thisActivity);
-
+		Intent intent = new Intent(MyClaimActivity.this, SearchActivity.class);
+		startActivity(intent);
 	}
 
 	public void goToEditClaim(MenuItem item) {
-		controller.goToEditClaim(thisActivity);
-
+		Intent intent = new Intent(MyClaimActivity.this, EditItemActivity.class);
+		startActivity(intent);
 	}
 }

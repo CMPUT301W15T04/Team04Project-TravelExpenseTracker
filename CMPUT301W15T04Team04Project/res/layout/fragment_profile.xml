@@ -20,7 +20,7 @@
         android:layout_toRightOf="@+id/photoButton"
         android:layout_weight="0.07"
         android:hint="User Name"
-        android:textSize="30sp" />
+        android:textSize="34sp" />
 
     <ImageView
         android:id="@+id/photoButton"
@@ -30,34 +30,6 @@
         android:layout_alignParentTop="true"
         android:layout_weight="0.08"
         android:background="@drawable/user2_icon" />
-
-    <TextView
-        android:id="@+id/submitedClaimsTextView"
-        android:layout_width="100dp"
-        android:layout_height="80dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:clickable="true"
-        android:drawableLeft="@drawable/list2_icon"
-        android:gravity="center_vertical|center_horizontal"
-        android:onClick="showSubmitted"
-        android:text="Submitted Claims"
-        android:textSize="32dp" />
-
-    <TextView
-        android:id="@+id/progresClaimsTextView"
-        android:layout_width="100dp"
-        android:layout_height="80dp"
-        android:layout_above="@+id/submitedClaimsTextView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:clickable="true"
-        android:drawableLeft="@drawable/list2_icon"
-        android:gravity="center_vertical|center_horizontal"
-        android:onClick="showProgressing"
-        android:text="Progresing Claims"
-        android:textSize="32dp" />
 
     <TextView
         android:id="@+id/approvedClaimsTextView"
@@ -85,6 +57,35 @@
         android:gravity="center_vertical|center_horizontal"
         android:onClick="showSaved"
         android:text="Saved Claims"
+        android:textSize="32dp" />
+
+    <TextView
+        android:id="@+id/submitedClaimsTextView"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/progresClaimsTextView"
+        android:clickable="true"
+        android:drawableLeft="@drawable/list2_icon"
+        android:gravity="center_vertical|center_horizontal"
+        android:onClick="showSubmitted"
+        android:text="Submitted Claims"
+        android:textSize="32dp" />
+
+    <TextView
+        android:id="@+id/progresClaimsTextView"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/photoButton"
+        android:layout_marginTop="14dp"
+        android:clickable="true"
+        android:drawableLeft="@drawable/list"
+        android:gravity="center_vertical|center_horizontal"
+        android:onClick="showProgressing"
+        android:text="Progresing Claims"
         android:textSize="32dp" />
 
 </RelativeLayout>

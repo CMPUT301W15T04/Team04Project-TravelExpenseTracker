@@ -15,21 +15,13 @@ import com.google.gson.reflect.TypeToken;
 import android.content.Context;
 
 public class MyLocalClaimListManager {
-	private static Gson gson = new Gson();
-	final private String FILENAME = "localclaimlist";
-	private Context context;
-	static private MyLocalClaimListManager myLocalClaimListManager;
 	
-	public static MyLocalClaimListManager getMyLocalClaimListManager(){
-		
-		return myLocalClaimListManager;
+	public MyLocalClaimListManager()	{
 	}
 	
-	public MyLocalClaimListManager(Context context){
-		this.context = context;
-	}
 	
-	public void saveClaimList(ClaimList claimList){
+	public static void saveClaimList(Context context,ClaimList claimList, String FILENAME){
+		Gson gson = new Gson();
 		try
 		{
 			FileOutputStream fos = context.openFileOutput(FILENAME, 0);
@@ -44,9 +36,9 @@ public class MyLocalClaimListManager {
 		}
 	}
 	
-	public ClaimList loadClaimList(){
+	public static ClaimList loadClaimList(Context context, String FILENAME){
 		ClaimList claimList = new ClaimList();
-		
+		Gson gson = new Gson();
 		try{
 			FileInputStream fis = context.openFileInput(FILENAME);
 			Type listType = new TypeToken<ClaimList>(){}.getType();
@@ -58,6 +50,11 @@ public class MyLocalClaimListManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		if (claimList == null){
+			claimList = new ClaimList();
+		}
 		return claimList;
+		
 	}
 }
