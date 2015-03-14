@@ -189,7 +189,7 @@ public class MyClaimActivity extends Activity {
 	}
 
 	public void goToEditClaim(MenuItem item) {
-		Intent intent = new Intent(MyClaimActivity.this, EditItemActivity.class);
+		Intent intent = new Intent(MyClaimActivity.this, EditClaimActivity.class);
 		startActivity(intent);
 	}
 }
