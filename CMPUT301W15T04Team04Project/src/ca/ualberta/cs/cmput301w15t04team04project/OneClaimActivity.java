@@ -241,7 +241,7 @@ public class OneClaimActivity extends Activity {
 		View claimInfoCDialogView = factory.inflate(R.layout.activity_item_detail, null);
 		adb.setView(claimInfoCDialogView);
 		
-
+		
 		
 		// set the Edit Button on the Dialog
 		adb.setNeutralButton("Edit", new OnClickListener() {
