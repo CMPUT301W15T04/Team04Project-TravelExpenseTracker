@@ -53,6 +53,20 @@ public class Claim {
 	protected String Comment;
 	protected String totalCurrency;
 	
+	public String DestinationListToString(){
+		String out = "";
+		if (destination.size() != 0) {
+			out += destination.get(0).toString();
+
+			for (int i = 1; i < destination.size(); i++) {
+				out += "\n" + destination.get(i).toString();
+			}
+		} else {
+			out = "N/A";
+		}
+		return out;
+	}
+	
 	public int getTotalCurrency() {
 		// TODO Auto-generated method stub
 		return 0;
