@@ -99,26 +99,11 @@ public class MyClaimActivity extends Activity {
 
     	ListView listView = (ListView) findViewById(R.id.myClaimsListView);
     	controller = new MyLocalClaimListController(claimList);
-		//final ArrayList<Claim> list = new ArrayList<Claim>(claims);
-		//
-<<<<<<< HEAD
-
-=======
-//<<<<<<< HEAD
->>>>>>> e2dfa15299ed1ef0408d4dbd254dcdb2f9898f32
     	final ArrayList<Claim> claims = controller.getClaims();
     	final ClaimListAdapter claimListAdapter = new ClaimListAdapter(this, R.layout.single_claim,
 				claims);
 		listView.setAdapter(claimListAdapter);
 		controller.getClaimList().addListener(new Listener() {
-<<<<<<< HEAD
-
-=======
-/*=======
-    	
-		final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, controller.getClaimList());
-//>>>>>>> 233adc6b2d2e74e9c6b6ed96030f4c08474dea2d*/
->>>>>>> e2dfa15299ed1ef0408d4dbd254dcdb2f9898f32
 
 			@Override
 			public void update() {
