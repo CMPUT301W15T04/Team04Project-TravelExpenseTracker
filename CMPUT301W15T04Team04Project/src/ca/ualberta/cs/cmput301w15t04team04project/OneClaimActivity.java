@@ -27,20 +27,24 @@ public class OneClaimActivity extends Activity {
 	protected static boolean isClaimant = true;
 	private OneClaimController controller = new OneClaimController();
 	private OneClaimActivity thisActivity = this;
-	private ListView itemlistview = (ListView) findViewById(R.id.OneCaimItemlistView);
-	private MyLocalClaimListManager manager = new MyLocalClaimListManager(this);
+	//private MyLocalClaimListManager manager = new MyLocalClaimListManager(this);
 	private Claim claim;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_one_claim);
-
 		
+		Bundle extras =getIntent().getExtras();
+		final int claimid = extras.getInt("MyClaimid");
+		
+		claim = MyLocalClaimListManager.loadClaimList(this, "local").getClaimArrayList().get(claimid);
+		
+		ListView itemlistview = (ListView) findViewById(R.id.OneCaimItemlistView);
 		//
 		ArrayList<Item> items = claim.getItems();
 		final ArrayAdapter<Item> itemAdapter = new ArrayAdapter<Item>(this, android.R.layout.simple_list_item_1, items);
-
+		
 		itemlistview.setAdapter(itemAdapter);
 		itemAdapter.notifyDataSetChanged();
 		itemlistview.setOnItemLongClickListener(new OnItemLongClickListener(){
