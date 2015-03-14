@@ -51,7 +51,7 @@ public class Claim {
 	protected User ApproverName;
 	protected User ClaimiantName;
 	protected String Comment;
-	protected String totalCurrency;
+	protected ArrayList<Currency> totalCurrency;
 	
 	/**
 	 * The constructor of the class
@@ -67,7 +67,7 @@ public class Claim {
 		destination = new ArrayList<Destination>();
 		tag = new ArrayList<String>();
 		status = "In Progress";
-		totalCurrency = "$ USD 30"; //only for test, 2015-03-14 Chenrui
+		totalCurrency = new ArrayList<Currency>(); //only for test, 2015-03-14 Chenrui
 	}
 	
 	/**
@@ -76,6 +76,9 @@ public class Claim {
      * are separated by '\n' (new line).
      *
      * @return the string representation of this.destination.
+     * 
+     * @author Chenrui Lei
+     * @since  2015-03-14
      */
 	public String DestinationListToString(){
 		String out = "";
@@ -91,12 +94,36 @@ public class Claim {
 		return out;
 	}
 	
-	public int getTotalCurrency() {
-		// TODO Auto-generated method stub
-		return 0;
+	/**
+     * Returns the string representation of the totalCurrency list. 
+     * The presentation has a specific format. Elements
+     * are separated by '\n' (new line).
+     *
+     * @return the string representation of this.totalCurrency.
+     * 
+     * @author Chenrui Lei
+     * @since  2015-03-14
+     */
+	public String TotalCurrencyListToString(){
+		String out = "";
+		if (totalCurrency.size() != 0) {
+			out += totalCurrency.get(0).toString();
+
+			for (int i = 1; i < totalCurrency.size(); i++) {
+				out += "\n" + totalCurrency.get(i).toString();
+			}
+		} else {
+			out = "N/A";
+		}
+		return out;
 	}
 	
-	public void setTotalCurrency(String totalCurrency) {
+	public ArrayList<Currency> getTotalCurrency() {
+		// TODO Auto-generated method stub
+		return this.totalCurrency;
+	}
+	
+	public void setTotalCurrency(ArrayList<Currency> totalCurrency) {
 		this.totalCurrency = totalCurrency;
 	}
 
