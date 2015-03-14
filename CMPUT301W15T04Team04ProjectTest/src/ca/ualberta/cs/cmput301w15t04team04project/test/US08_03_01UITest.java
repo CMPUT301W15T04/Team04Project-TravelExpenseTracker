@@ -6,10 +6,17 @@ import junit.framework.TestCase;
 
 public class US08_03_01UITest extends ActivityInstrumentationTestCase2<MainActivity> {
 
-	public US08_03_01UITest(Class<MainActivity> activityClass) {
-		super(activityClass);
+	public US08_03_01UITest() {
+		super(MainActivity.class);
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	protected void setUp() throws Exception
+	{
+		getActivity();
+		super.setUp();
+	}
+	
 	
 }

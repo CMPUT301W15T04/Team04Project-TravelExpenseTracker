@@ -25,4 +25,6 @@ public class MainController {
 		Intent intent = new Intent(context, EditClaimActivity.class);
 		context.startActivity(intent);
 	}
+	
+	
 }
