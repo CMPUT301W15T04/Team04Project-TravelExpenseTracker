@@ -42,10 +42,9 @@ public class MyClaimActivity extends Activity {
 	private ActionBar actionBar;
 
 	
-	private MyLocalClaimListController controller = null;
+	private MyLocalClaimListController controller;
 	private MyClaimActivity thisActivity = this;
-	private MyLocalClaimListManager manager = new MyLocalClaimListManager(this);
-	private ClaimList claims = manager.loadClaimList();
+	private ClaimList claims;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -61,7 +60,7 @@ public class MyClaimActivity extends Activity {
 		else {
 			actionBar.setTitle("Saved Claims");
 		}
-
+		claims = MyLocalClaimListManager.loadClaimList(this, "local");
 /*    	CLmanager.initManager(this.getApplicationContext());
  
 		ListView listView = (ListView) findViewById(R.id.claimListView);
@@ -92,7 +91,7 @@ public class MyClaimActivity extends Activity {
 		//new
 		
     	ListView listView = (ListView) findViewById(R.id.myClaimsListView);
-
+    	controller = new MyLocalClaimListController(claims);
 		//final ArrayList<Claim> list = new ArrayList<Claim>(claims);
 		//
 		final ArrayAdapter<Claim> claimAdapter = new ArrayAdapter<Claim>(this, android.R.layout.simple_list_item_1, controller.getClaimList());
@@ -116,7 +115,7 @@ public class MyClaimActivity extends Activity {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						controller.deleteClaim(which);
-						manager.saveClaimList(controller.getcClaimList());
+						MyLocalClaimListManager.saveClaimList(getApplicationContext(), controller.getcClaimList(),"local");
 				}
 				});
 				adb.setNegativeButton("Cancel", new OnClickListener(){
