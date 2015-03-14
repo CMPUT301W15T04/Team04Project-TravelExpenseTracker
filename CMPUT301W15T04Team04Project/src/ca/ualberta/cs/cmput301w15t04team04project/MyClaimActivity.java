@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
@@ -36,6 +37,9 @@ import android.widget.AdapterView.OnItemLongClickListener;
 public class MyClaimActivity extends Activity {
 
 	//private ArrayList<String> claims = new ArrayList<String>();
+	
+	protected static int mode;
+	private ActionBar actionBar;
 
 	private ClaimList claims = new ClaimList();
 	private MyLocalClaimListController controller = new MyLocalClaimListController();
@@ -45,6 +49,17 @@ public class MyClaimActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_my_claim);
+		
+		actionBar = getActionBar();
+		if (mode == 0) {
+			actionBar.setTitle("Submitted Claims");
+		}
+		else if (mode == 1) {
+			actionBar.setTitle("Approved Claims");
+		}
+		else {
+			actionBar.setTitle("Saved Claims");
+		}
 
 /*    	CLmanager.initManager(this.getApplicationContext());
  
@@ -77,7 +92,7 @@ public class MyClaimActivity extends Activity {
 		
 		claims = controller.getClaimList();
 		
-    	ListView listView = (ListView) findViewById(R.id.MyClaimslistView);
+    	ListView listView = (ListView) findViewById(R.id.myClaimsListView);
 
 		//final ArrayList<Claim> list = new ArrayList<Claim>(claims);
 		//

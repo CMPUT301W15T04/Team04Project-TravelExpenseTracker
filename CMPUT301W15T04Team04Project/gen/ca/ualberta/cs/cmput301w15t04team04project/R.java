@@ -82,7 +82,6 @@ public final class R {
         public static final int Destination=0x7f0a006e;
         public static final int EndTime=0x7f0a006c;
         public static final int LinearLayout1=0x7f0a0066;
-        public static final int MyClaimslistView=0x7f0a0035;
         public static final int RelativeLayout1=0x7f0a005d;
         public static final int StartTime=0x7f0a006a;
         public static final int TotalAmount=0x7f0a0070;
@@ -161,6 +160,7 @@ public final class R {
         public static final int mainActivityPager=0x7f0a0030;
         public static final int momentsMenuButton=0x7f0a0033;
         public static final int myClaimMenuButton=0x7f0a0032;
+        public static final int myClaimsListView=0x7f0a0035;
         public static final int myProfileMenuButton=0x7f0a0034;
         public static final int photoButton=0x7f0a005f;
         public static final int savedClaimsTextView=0x7f0a0063;

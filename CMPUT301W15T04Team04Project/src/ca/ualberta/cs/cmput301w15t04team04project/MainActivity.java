@@ -48,6 +48,31 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
+import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Listener;
+import android.app.ActionBar;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
+
 public class MainActivity extends FragmentActivity {
 	private ActionBar actionBar;
 	private SignInController signInController = new SignInController();
@@ -59,6 +84,7 @@ public class MainActivity extends FragmentActivity {
 	//private int num = -1;
 	private MainController controller = new MainController();
 	private MainActivity thisActivity = this;
+	
 
 	
 	@Override
@@ -124,13 +150,13 @@ public class MainActivity extends FragmentActivity {
 
 				case R.id.momentsMenuButton:
 					pager.setCurrentItem(1);
-					actionBar.setTitle("Sumbitted Claims");
+					actionBar.setTitle("Moments");
 					//actionBar.setIcon(R.drawable.ic_launcher);
 					break;
 
 				case R.id.myProfileMenuButton:
 					pager.setCurrentItem(2);
-					actionBar.setTitle("Approved Claims");
+					actionBar.setTitle("Me");
 					//actionBar.setIcon(R.drawable.user2_icon);
 					break;
 
@@ -192,7 +218,8 @@ public class MainActivity extends FragmentActivity {
 	* @since 2015-03-13
 	*/
 	public void showSubmitted(View view) {
-		Intent intent = new Intent(MainActivity.this, OneClaimActivity.class);
+		MyClaimActivity.mode = 0;
+		Intent intent = new Intent(MainActivity.this, MyClaimActivity.class);
 		startActivity(intent);
 	}
 	
@@ -207,7 +234,8 @@ public class MainActivity extends FragmentActivity {
 	* @since 2015-03-13
 	*/
 	public void showApproved(View view) {
-		Intent intent = new Intent(MainActivity.this, OneClaimActivity.class);
+		MyClaimActivity.mode = 1;
+		Intent intent = new Intent(MainActivity.this, MyClaimActivity.class);
 		startActivity(intent);
 	}
 	
@@ -222,7 +250,8 @@ public class MainActivity extends FragmentActivity {
 	* @since 2015-03-13
 	*/
 	public void showSaved(View view) {
-		Intent intent = new Intent(MainActivity.this, OneClaimActivity.class);
+		MyClaimActivity.mode = 2;
+		Intent intent = new Intent(MainActivity.this, MyClaimActivity.class);
 		startActivity(intent);
 	}
 }

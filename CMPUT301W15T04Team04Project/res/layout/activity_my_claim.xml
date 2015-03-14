@@ -9,9 +9,9 @@
     tools:context="ca.ualberta.cs.cmput301w15t04team04project.MyClaimActivity" >
 
     <ListView
-        android:id="@+id/MyClaimslistView"
+        android:id="@+id/myClaimsListView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
