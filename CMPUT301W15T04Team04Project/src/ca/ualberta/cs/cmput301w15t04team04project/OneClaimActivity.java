@@ -51,7 +51,7 @@ public class OneClaimActivity extends Activity {
 		
 		ListView itemlistview = (ListView) findViewById(R.id.OneCaimItemlistView);
 		controller = new OneClaimController(claim);
-		final ArrayAdapter<Item> itemAdapter = new ArrayAdapter<Item>(this, android.R.layout.simple_list_item_1, items);
+		final ItemListAdapter itemAdapter = new ItemListAdapter(this, android.R.layout.simple_list_item_1, items);
 		
 		itemlistview.setAdapter(itemAdapter);
 		itemAdapter.notifyDataSetChanged();
