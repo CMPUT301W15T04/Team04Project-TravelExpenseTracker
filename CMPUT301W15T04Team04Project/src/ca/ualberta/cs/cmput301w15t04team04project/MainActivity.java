@@ -111,9 +111,8 @@ public class MainActivity extends FragmentActivity {
 	private void initialisePaging() {
 		// TODO Auto-generated method stub
 		List<Fragment> fragments = new Vector<Fragment>();
-		fragments.add(Fragment.instantiate(this, FragmentMyClaims.class.getName()));
-		fragments.add(Fragment.instantiate(this, FragmentMoments.class.getName()));
 		fragments.add(Fragment.instantiate(this,FragmentProfile.class.getName()));
+		fragments.add(Fragment.instantiate(this, FragmentMoments.class.getName()));
 		
 		mpageAdapter = new PagerAdapter(this.getSupportFragmentManager(),fragments);
 		pager = (ViewPager) findViewById(R.id.mainActivityPager);
@@ -141,23 +140,16 @@ public class MainActivity extends FragmentActivity {
 			@Override
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
 				switch (checkedId) {
-				
-				case R.id.myClaimMenuButton:
+				case R.id.myProfileMenuButton:
 					pager.setCurrentItem(0);
-					actionBar.setTitle("My Local Claims");
-					//actionBar.setIcon(R.drawable.ic_launcher);
+					actionBar.setTitle("Me");
+					//actionBar.setIcon(R.drawable.user2_icon);
 					break;
 
 				case R.id.momentsMenuButton:
 					pager.setCurrentItem(1);
 					actionBar.setTitle("Moments");
 					//actionBar.setIcon(R.drawable.ic_launcher);
-					break;
-
-				case R.id.myProfileMenuButton:
-					pager.setCurrentItem(2);
-					actionBar.setTitle("Me");
-					//actionBar.setIcon(R.drawable.user2_icon);
 					break;
 
 				default:
@@ -173,15 +165,6 @@ public class MainActivity extends FragmentActivity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-
-	public void goToSearch(MenuItem item) {
-		controller.goToSearch(thisActivity);
-	}
-
-	public void goToEditClaim(MenuItem item) {
-		controller.goToEditClaim(thisActivity);
-	}
-	
 	
 	/**
 	* Modify the following code
@@ -193,7 +176,7 @@ public class MainActivity extends FragmentActivity {
 	* @version 1.1
 	* @since 2015-03-13
 	*/
-	public void logOut(View view) {
+	public void logOut(MenuItem item) {
 		/**
 		 * You need to move the sinInController to the mainController
 		 **/
@@ -217,7 +200,7 @@ public class MainActivity extends FragmentActivity {
 	* @version 1.1
 	* @since 2015-03-13
 	*/
-	public void showSubmitted(View view) {
+	public void showProgressing(View view) {
 		MyClaimActivity.mode = 0;
 		Intent intent = new Intent(MainActivity.this, MyClaimActivity.class);
 		startActivity(intent);
@@ -233,7 +216,7 @@ public class MainActivity extends FragmentActivity {
 	* @version 1.1
 	* @since 2015-03-13
 	*/
-	public void showApproved(View view) {
+	public void showSubmitted(View view) {
 		MyClaimActivity.mode = 1;
 		Intent intent = new Intent(MainActivity.this, MyClaimActivity.class);
 		startActivity(intent);
@@ -249,8 +232,24 @@ public class MainActivity extends FragmentActivity {
 	* @version 1.1
 	* @since 2015-03-13
 	*/
-	public void showSaved(View view) {
+	public void showApproved(View view) {
 		MyClaimActivity.mode = 2;
+		Intent intent = new Intent(MainActivity.this, MyClaimActivity.class);
+		startActivity(intent);
+	}
+	
+	/**
+	* Modify the following code
+	*
+	* @author  Chenrui Lei
+	* @version 1.0
+	* @since   2015-03-11
+	* @author  Yufei Zhang
+	* @version 1.1
+	* @since 2015-03-13
+	*/
+	public void showSaved(View view) {
+		MyClaimActivity.mode = 3;
 		Intent intent = new Intent(MainActivity.this, MyClaimActivity.class);
 		startActivity(intent);
 	}

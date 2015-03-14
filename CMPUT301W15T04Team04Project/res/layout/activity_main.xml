@@ -24,14 +24,12 @@
         android:orientation="horizontal" >
 
         <RadioButton
-            android:id="@+id/myClaimMenuButton"
+            android:id="@+id/myProfileMenuButton"
             style="@style/main_menu_bottom"
-            android:layout_width="107dp"
-            android:layout_height="50dp"
-            android:checked="true"
-            android:drawableTop="@drawable/ic_action_view_as_list"
-            android:text="My Claims"
-            tools:ignore="HardcodedText" />
+            android:layout_width="106dp"
+            android:layout_height="match_parent"
+            android:drawableTop="@drawable/user_icon"
+            android:text="@string/menu_profile" />
 
         <RadioButton
             android:id="@+id/momentsMenuButton"
@@ -42,13 +40,6 @@
             android:text="Monents"
             tools:ignore="HardcodedText" />
 
-        <RadioButton
-            android:id="@+id/myProfileMenuButton"
-            style="@style/main_menu_bottom"
-            android:layout_width="106dp"
-            android:layout_height="match_parent"
-            android:drawableTop="@drawable/user_icon"
-            android:text="@string/menu_profile" />
     </RadioGroup>
 
 </LinearLayout>
