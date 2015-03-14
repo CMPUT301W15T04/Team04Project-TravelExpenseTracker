@@ -1,5 +1,6 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -14,6 +15,8 @@ import android.widget.Toast;
 
 public class OneClaimActivity extends Activity {
 	protected static boolean isClaimant = true;
+	private OneClaimController controller = new OneClaimController();
+	private OneClaimActivity thisActivity = this;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +33,15 @@ public class OneClaimActivity extends Activity {
 	}
 
 	public void goToSearch(MenuItem item) {
-		Intent intent = new Intent(OneClaimActivity.this, SearchActivity.class);
-		startActivity(intent);
+		controller.goToSearch(thisActivity);
+		//Intent intent = new Intent(OneClaimActivity.this, SearchActivity.class);
+		//startActivity(intent);
 	}
 	
 	public void goToEditItem(MenuItem item) {
-		Intent intent = new Intent(OneClaimActivity.this, EditItemActivity.class);
-		startActivity(intent);
+		controller.goToEditClaim(thisActivity);
+		//Intent intent = new Intent(OneClaimActivity.this, EditItemActivity.class);
+		//startActivity(intent);
 	}
 
 	public void showClaimDetailC(View view) {
@@ -51,6 +56,7 @@ public class OneClaimActivity extends Activity {
 		adb.setNeutralButton("Submit", new OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				Toast.makeText(OneClaimActivity.this, "Clicked On Submit" ,Toast.LENGTH_SHORT).show();
+				controller.submittedClaim(which);
 				/**
 				 * You need to add code here to do the submit stuff
 				 * Once the claimant click this, the claim will be submitted
@@ -61,6 +67,7 @@ public class OneClaimActivity extends Activity {
 		adb.setNegativeButton("Confirm", new OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				Toast.makeText(OneClaimActivity.this, "Clicked On Confirm" ,Toast.LENGTH_SHORT).show();
+				controller.confirmClaim(which);
 				/**
 				 * You need to add code here to do the confirm stuff
 				 * Once the claimant click this, the claim is updated
@@ -83,6 +90,7 @@ public class OneClaimActivity extends Activity {
 		adb.setNegativeButton("Return", new OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				Toast.makeText(OneClaimActivity.this, "Clicked On Return" ,Toast.LENGTH_SHORT).show();
+				controller.returnClaim(which);
 				/**
 				 * You need to add code here to do the return stuff
 				 * Once the approver click this, the claim will be returned
@@ -93,6 +101,7 @@ public class OneClaimActivity extends Activity {
 		adb.setNeutralButton("Approve", new OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				Toast.makeText(OneClaimActivity.this, "Clicked On Approve" ,Toast.LENGTH_SHORT).show();
+				controller.approveClaim(which);
 				/**
 				 * You need to add code here to do the approve stuff
 				 * Once the approver click this, the claim will be approved
