@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 
+
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ClaimListAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController;
@@ -187,6 +188,15 @@ public class MyClaimActivity extends Activity {
 	
 	
 	
+	
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
+
+	}
+	
+	
 	/**
 	* The MyClaimActivity relates to "My Claim" in "profile" of MainActivity.
 	* But it needs some button on the title bar to add claim
@@ -210,5 +220,6 @@ public class MyClaimActivity extends Activity {
 	public void goToEditClaim(MenuItem item) {
 		Intent intent = new Intent(MyClaimActivity.this, EditClaimActivity.class);
 		startActivity(intent);
+		finish();
 	}
 }
