@@ -40,6 +40,7 @@ public class OneClaimActivity extends Activity {
 		
 		claim = MyLocalClaimListManager.loadClaimList(this, "local").getClaimArrayList().get(claimid);
 		
+		
 		ListView itemlistview = (ListView) findViewById(R.id.OneCaimItemlistView);
 		//
 		ArrayList<Item> items = claim.getItems();
@@ -65,6 +66,22 @@ public class OneClaimActivity extends Activity {
 						//manager.saveClaimList(controller.getcClaimList());
 				}
 				});
+				adb.setNeutralButton("Edit", new OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						Toast.makeText(OneClaimActivity.this, "Item"+finalPosition ,Toast.LENGTH_SHORT).show();
+						Intent myintent = new Intent(OneClaimActivity.this,
+								OneClaimActivity.class);
+						myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+						myintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+						myintent.putExtra("MyItemid", finalPosition);
+						OneClaimActivity.this.startActivity(myintent);	
+						
+					}
+				});
+				
 				adb.setNegativeButton("Cancel", new OnClickListener(){
 					@Override
 						public void onClick(DialogInterface dialog, int which) {
