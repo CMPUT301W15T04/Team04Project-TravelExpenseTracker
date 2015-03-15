@@ -75,14 +75,25 @@ public class FragmentEditClaim1 extends Fragment {
 			myClaimId = bundle.getInt("myClaimId");
 			Claim currentClaim = claimList.getClaimArrayList().get(myClaimId);
 			
+			// get the views
 			claimName = (EditText) getView().findViewById(R.id.claimNameEditText);
 			startDate = (DatePicker) getView().findViewById(R.id.fromDatePicker);
 			endDate = (DatePicker) getView().findViewById(R.id.toDatePicker);
 			descript  = (EditText) getView().findViewById(R.id.descriptionEditText);
 			
+			// set content of view to dispaly
 			claimName.setText(currentClaim.getClaim());
-			startDate.init(2000, 0, 1, null);
-			endDate.init(2015, 2, 15, null);
+			
+			int date = currentClaim.getStartDate().getDate();
+			int month = currentClaim.getStartDate().getMonth();
+			int year = currentClaim.getStartDate().getYear() + 1900;
+			startDate.updateDate(year, month, date);
+			
+			date = currentClaim.getEndDate().getDate();
+			month = currentClaim.getEndDate().getMonth();
+			year = currentClaim.getEndDate().getYear() + 1900;
+			endDate.updateDate(year, month, date);
+			
 			descript.setText("We need to solve how to get the date");
 			
 			EditClaimActivity.myClaimId = this.myClaimId;
