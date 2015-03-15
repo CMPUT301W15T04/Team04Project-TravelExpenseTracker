@@ -62,7 +62,7 @@ public class ItemListAdapter extends ArrayAdapter<Item>
 		
 		DateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
 		String dateOutput = df.format(item.getDate());
-		iholder.date.setText(dateOutput);//item.getDate().toString());//"date"); //claim.getDestination());
+		iholder.date.setText(""+(item.getDate().getYear()));//dateOutput);//item.getDate().toString());//"date"); //claim.getDestination());
 		
 		iholder.description.setText(item.getDescription());  //claim.getStatus();
 		iholder.category.setText(item.getCategory());//"category");

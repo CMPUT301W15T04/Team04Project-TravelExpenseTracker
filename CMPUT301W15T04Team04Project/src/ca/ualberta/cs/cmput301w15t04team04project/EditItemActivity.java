@@ -198,7 +198,7 @@ public class EditItemActivity extends FragmentActivity {
 		int Year = itemDateDatePicker.getYear();
 		int Month = itemDateDatePicker.getMonth();
 		int DateOfMonth = itemDateDatePicker.getDayOfMonth();
-		this.item.setDate(new Date(Year-1900,Month,DateOfMonth));
+		this.item.setDate(new Date(Year,Month,DateOfMonth));
 		
 		this.item.setCategory(itemCategorySpinner.getSelectedItem().toString());
 		
