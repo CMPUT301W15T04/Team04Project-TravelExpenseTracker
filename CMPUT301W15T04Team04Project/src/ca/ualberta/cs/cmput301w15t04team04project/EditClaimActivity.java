@@ -93,7 +93,7 @@ public class EditClaimActivity extends FragmentActivity {
 		//claimList = controller.getClaims().get(myClaimId);
 		controller = new MyLocalClaimListController(claimList);
 		
-		
+		/*
 		Bundle bundle = this.getIntent().getExtras();
 		if (bundle == null){
 			
@@ -105,12 +105,12 @@ public class EditClaimActivity extends FragmentActivity {
 			Toast.makeText(this, "Expense Item" + claimid, Toast.LENGTH_SHORT).show();
 			Claim storeclaim = claimList.getClaimArrayList().get(claimid);
 			claimName = (EditText) findViewById(R.id.claimNameEditText);
-			String claimName = storeclaim.getClaim().toString();
-			//laimname.setText(claimName);
-			Toast.makeText(this, claimName, Toast.LENGTH_SHORT).show();
+			String claimNameStr = storeclaim.getClaim().toString();
+			//claimName.setText("Shabi");//storeclaim.getClaim().toString());//claimNameStr);
+			Toast.makeText(this, claimNameStr, Toast.LENGTH_SHORT).show();
 			
 		}
-		
+		*/
 
 		
 		
