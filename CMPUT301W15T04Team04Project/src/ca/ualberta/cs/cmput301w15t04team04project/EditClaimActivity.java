@@ -59,7 +59,7 @@ public class EditClaimActivity extends FragmentActivity {
 	private MyLocalClaimListController controller;
 	private ClaimList claimList;
 	private int addEditstatus = 0; //0 add 1 edit
-	private TextView claimname;
+	private EditText claimname;
 	private int MyClaimid;
 	
 	
@@ -81,7 +81,22 @@ public class EditClaimActivity extends FragmentActivity {
 		//claimList = controller.getClaims().get(MyClaimid);
 		controller = new MyLocalClaimListController(claimList);
 		
-		
+		Bundle bundle = this.getIntent().getExtras();
+		if (bundle == null){
+			
+			addEditstatus = 0;
+		}
+		else{
+			addEditstatus = 1;
+			int claimid = bundle.getInt("MyClaimid");
+			Toast.makeText(this, "Expense Item" + claimid, Toast.LENGTH_SHORT).show();
+			Claim storeclaim = claimList.getClaimArrayList().get(claimid);
+			claimname = (EditText) findViewById(R.id.claimNameEditText);
+			String claimName = storeclaim.getClaim().toString();
+			//laimname.setText(claimName);
+			Toast.makeText(this, claimName, Toast.LENGTH_SHORT).show();
+			
+		}
 		
 		
 		
@@ -116,22 +131,7 @@ public class EditClaimActivity extends FragmentActivity {
 		pager = (ViewPager) findViewById(R.id.editClaimActivityPager);
 		pager.setAdapter(mpageAdapter);
 		setFragmentIndicator();
-		Bundle bundle = this.getIntent().getExtras();
-		if (bundle == null){
-			
-			addEditstatus = 0;
-		}
-		else{
-			addEditstatus = 1;
-			int claimid = bundle.getInt("MyClaimid");
-			Toast.makeText(this, "Expense Item" + claimid, Toast.LENGTH_SHORT).show();
-			Claim storeclaim = claimList.getClaimArrayList().get(claimid);
-			claimname = (TextView) findViewById(R.id.claimNameEditText);
-			String claimName = storeclaim.getClaim().toString();
-			//claimname.setText(claimName);
-			Toast.makeText(this, claimName, Toast.LENGTH_SHORT).show();
-			
-		}
+
 	}
 
 	/**
@@ -188,6 +188,12 @@ public class EditClaimActivity extends FragmentActivity {
 		EditText destinationandReason = (EditText) findViewById(R.id.destinationandReasonEditText);
 		DatePicker fromDatePicker = (DatePicker) findViewById(R.id.fromDatePicker);
 		DatePicker toDatePicker = (DatePicker) findViewById(R.id.toDatePicker);
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(toDatePicker.getYear(), toDatePicker.getMonth(),
+				toDatePicker.getDayOfMonth());
+		Calendar calendarfrom = Calendar.getInstance();
+		calendarfrom.set(fromDatePicker.getYear(),
+				fromDatePicker.getMonth(), fromDatePicker.getDayOfMonth());
 		// Button confirm = (Button) findViewById(R.id.action_accept); // Bug
 		// cause by this 2015-3-12
 		// Controller clc = new Controller();
@@ -200,15 +206,11 @@ public class EditClaimActivity extends FragmentActivity {
 					.getText().toString());
 			claim.addDestionation(destionation);
 
-			Calendar calendar = Calendar.getInstance();
-			calendar.set(toDatePicker.getYear(), toDatePicker.getMonth(),
-					toDatePicker.getDayOfMonth());
+
 			claim.setEndDate(calendar.getTime());
 
-			Calendar calendarfrom = Calendar.getInstance();
-			calendarfrom.set(fromDatePicker.getYear(),
-					fromDatePicker.getMonth(), fromDatePicker.getDayOfMonth());
-			claim.setEndDate(calendarfrom.getTime());
+
+			claim.setStartDate(calendarfrom.getTime());
 
 			controller.addClaim(claim);
 			MyLocalClaimListManager.saveClaimList(this, claimList, "local");
@@ -216,8 +218,13 @@ public class EditClaimActivity extends FragmentActivity {
 		else{
 			
 			Claim claim = claimList.getClaimArrayList().get(MyClaimid);
+			claim.setClaim(claimName.getText().toString());
+			claim.setDescription(description.getText().toString());
+			claim.setTag(tag.getText().toString());
+			claim.setEndDate(calendar.getTime());
+			claim.setStartDate(calendarfrom.getTime());
 			
-			
+			MyLocalClaimListManager.saveClaimList(this, claimList, "local");
 		}
 		
 		// 

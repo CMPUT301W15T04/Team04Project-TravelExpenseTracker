@@ -3,15 +3,17 @@ package ca.ualberta.cs.cmput301w15t04team04project.test;
 import android.test.ActivityInstrumentationTestCase2;
 import ca.ualberta.cs.cmput301w15t04team04project.FragmentProfile;
 import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.OneClaimActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 
-public class US08_04_01 extends ActivityInstrumentationTestCase2<MainActivity> {
-	private MainActivity thisActivity;
+public class US08_04_01 extends ActivityInstrumentationTestCase2<OneClaimActivity> {
+	private OneClaimActivity thisActivity;
 	private FragmentProfile profilefragment;
-
+	
 	
 
 	public US08_04_01() {
-		super(MainActivity.class);
+		super(OneClaimActivity.class);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -19,16 +21,16 @@ public class US08_04_01 extends ActivityInstrumentationTestCase2<MainActivity> {
 	protected void setUp() throws Exception
 	{
 		super.setUp();
-		thisActivity = (MainActivity) getActivity();
-		profilefragment = (FragmentProfile) thisActivity.fragments.get(0);
+		thisActivity = (OneClaimActivity) getActivity();
 		
 	}
 	
 	public void testPreConditions(){
         assertNotNull(thisActivity);
-        assertNotNull(profilefragment);		
         
-        
+        Claim claim = new Claim("AClaim");
         
 	}
+	
+	
 }
