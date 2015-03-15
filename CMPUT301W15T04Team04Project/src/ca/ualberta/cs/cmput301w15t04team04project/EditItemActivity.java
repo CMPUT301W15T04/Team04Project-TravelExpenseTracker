@@ -221,7 +221,7 @@ public class EditItemActivity extends FragmentActivity {
 		MyLocalClaimListManager.saveClaimList(this, claimList, "local");
 		Toast.makeText(this, this.item.getItemName(), Toast.LENGTH_LONG).show();
 		/**
-		 * parts end here
+		 * part end here
 		 */
 		
 		
