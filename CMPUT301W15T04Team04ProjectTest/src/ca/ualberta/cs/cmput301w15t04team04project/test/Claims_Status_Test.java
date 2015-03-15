@@ -20,6 +20,8 @@
 */
 package ca.ualberta.cs.cmput301w15t04team04project.test;
 
+import java.util.Date;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
@@ -29,21 +31,21 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import ca.ualberta.cs.cmput301w15t04team04project.AddEditClaimActivity;
-import ca.ualberta.cs.cmput301w15t04team04project.Approval;
-import ca.ualberta.cs.cmput301w15t04team04project.Claim;
-import ca.ualberta.cs.cmput301w15t04team04project.ClaimList;
-import ca.ualberta.cs.cmput301w15t04team04project.Manager;
+import ca.ualberta.cs.cmput301w15t04team04project.OneClaimActivity;
 import junit.framework.TestCase;
-import ca.ualberta.cs.cmput301w15t04team04project.ShowClaimDetailActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
+import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
+import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 
 public class Claims_Status_Test extends
-		ActivityInstrumentationTestCase2<AddEditClaimActivity> {
+		ActivityInstrumentationTestCase2<OneClaimActivity> {
 	Activity activity;
-	ClaimList claimList = Manager.getClaimList();
+	ClaimList claimList;
+	MyLocalClaimListController controller = new MyLocalClaimListController(claimList);
 	public Claims_Status_Test() {
-		super(AddEditClaimActivity.class);
+		super(OneClaimActivity.class);
 	}
 
 	protected void setUp() throws Exception {
@@ -53,9 +55,9 @@ public class Claims_Status_Test extends
 		claim.setStartDate(new Date());
 		Item item = new Item("Item1");
 		claim.addItem(item);
-		claimList.addClaim(claim);
+		controller.addClaim(claim);
 		Intent intent = new Intent();
-		intent.putExtra("Index", 0);
+		intent.putExtra("MyClaimid", 0);
 		setActivityIntent(intent);
 		activity = getActivity();
 	}
@@ -64,8 +66,7 @@ public class Claims_Status_Test extends
 	 * US07.01.01
 	 */
 	public void testSubmitApprover() {
-		User user = new User("Claimant");
-		Claim claim = claimList.getPosition(0);
+		
 		activity = getActivity();
 		final Button button = (Button) activity
 				.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.submitClaim);
