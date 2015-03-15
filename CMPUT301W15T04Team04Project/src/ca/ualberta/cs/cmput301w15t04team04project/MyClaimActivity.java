@@ -35,6 +35,10 @@ import android.widget.AdapterView.OnItemLongClickListener;
 * @author  Weijie Sun
 * @version 1.0
 * @since   2015-03-11
+* @author  Chenrui Lei
+* @author  Yufei Zhang
+* @version 1.1
+* @since   2015-03-15
 */
 
 public class MyClaimActivity extends Activity {
