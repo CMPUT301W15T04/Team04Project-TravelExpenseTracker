@@ -56,10 +56,10 @@ public class ItemListAdapter extends ArrayAdapter<Item>
 		}
 		
 		//set content in views
-		iholder.date.setText("date"); //claim.getDestination());
-		iholder.description.setText("In Progress");  //claim.getStatus();
-		iholder.category.setText("category");
-		iholder.amount.setText("$ CAD 88.88"); //claim.getAmount();
+		iholder.date.setText(item.getDate().toString());//"date"); //claim.getDestination());
+		iholder.description.setText(item.getDescription());  //claim.getStatus();
+		iholder.category.setText(item.getCategory());//"category");
+		iholder.amount.setText(item.getCurrency().toString());//"$ CAD 88.88"); //claim.getAmount();
 		
 		return convertView;
 		
