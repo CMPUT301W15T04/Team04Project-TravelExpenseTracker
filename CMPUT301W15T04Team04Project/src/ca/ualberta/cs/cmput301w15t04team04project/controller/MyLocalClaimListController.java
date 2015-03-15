@@ -110,7 +110,7 @@ public class MyLocalClaimListController {
 	}
 
 	public void addClaim(Claim claim) {
-		getClaims().add(claim);
+		getClaims().add(0,claim);
 		getClaimList().notifyListeners();
 	}
 

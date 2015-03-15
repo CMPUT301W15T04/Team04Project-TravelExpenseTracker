@@ -270,7 +270,7 @@ public class Claim {
 	 *            the added item .
 	 */
 	public void addItem(Item aItem) {
-		items.add(aItem);
+		items.add(0,aItem);
 		notifyListener();
 	}
 
