@@ -75,9 +75,10 @@ public class FragmentEditItem1 extends Fragment {
 			int month = currentItem.getDate().getMonth();
 			int year = currentItem.getDate().getYear() + 1900;
 			datepicker.updateDate(year, month, date);
-<<<<<<< HEAD
 
-			amount.setText(""+storeItem.getCurrency().getAmount());
+
+			amount.setText(""+currentItem.getCurrency().getAmount());
+			/*
 			categoryAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, getCategory());
 			categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 			category.setAdapter(categoryAdapter);
@@ -95,12 +96,12 @@ public class FragmentEditItem1 extends Fragment {
 
 				             }
 			       });
-=======
+			       */
+
 			
 			// set item amount
-			amount.setText(Double.toString(currentItem.getCurrency().getAmount()));
+			//amount.setText(Double.toString(currentItem.getCurrency().getAmount()));
 			
->>>>>>> 1297ec66dd5094cc09804afe05829d0a70cd5b1c
 			
 		}
 	
