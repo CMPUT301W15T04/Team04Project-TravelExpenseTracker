@@ -7,6 +7,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/linearLayout1"
@@ -97,20 +98,25 @@
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" >
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+         >
 
         <ImageView
             android:id="@+id/hasRecieptImageView"
-            android:layout_width="64dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="0dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
             android:src="@drawable/icon_no_images4"
             tools:ignore="ContentDescription" />
-    </LinearLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>

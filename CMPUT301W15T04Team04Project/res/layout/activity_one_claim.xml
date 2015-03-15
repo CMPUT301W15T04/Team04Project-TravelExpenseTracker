@@ -3,43 +3,84 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="ca.ualberta.cs.cmput301w15t04team04project.OneClaimActivity" >
-    
-    <!-- android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    -->
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:background="#fafaf4" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/testClaimantTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:onClick="showClaimDetailC"
+                android:text="Claimant Show Claim Detail"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="30dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <TextView
+                android:id="@+id/testApproverTextView"
+                android:layout_width="186dp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:hint="Approver Show Claim Detail"
+                android:onClick="showClaimDetailA"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="25dp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" 
+            android:gravity="right" >
+
+            <TextView
+                android:id="@+id/oneClaimActivityTotalAmountTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Total Amount"
+                android:textSize="8dp" />
+
+            <TextView
+                android:id="@+id/oneClaimActivityTotalAmountShowTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CAD $800.0" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/linearLayout1"
+        android:background="#cccccc"
+        android:paddingStart="90dp"
+        android:text="Expence Items"
+        android:textColor="#ffffff"
+        android:textSize="12sp" />
 
     <ListView
         android:id="@+id/OneCaimItemListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_below="@+id/testApproverTextView" />
-
-
-    <TextView
-        android:id="@+id/testApproverTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/testClaimantTextView"
-        android:clickable="true"
-        android:onClick="showClaimDetailA"
-        android:text="Approver Show Claim Detail"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        tools:ignore="HardcodedText,RtlHardcoded" />
-
-    <TextView
-        android:id="@+id/testClaimantTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:clickable="true"
-        android:onClick="showClaimDetailC"
-        android:text="Claimant Show Claim Detail"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        tools:ignore="HardcodedText,RtlHardcoded" />
+        android:layout_below="@+id/textView1" />
 
 </RelativeLayout>
