@@ -132,7 +132,7 @@ public final class R {
         public static final int editItemBottomMenu=0x7f0a001f;
         public static final int editItemNext=0x7f0a0021;
         public static final int editItemPrevious=0x7f0a0020;
-        public static final int editText=0x7f0a0059;
+        public static final int fragmentEditItem2DiscriptionEditText=0x7f0a0059;
         public static final int fromDatePicker=0x7f0a0045;
         public static final int fromDateTextView=0x7f0a0044;
         public static final int hasRecieptImageView=0x7f0a007f;

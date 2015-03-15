@@ -1,6 +1,7 @@
 package ca.ualberta.cs.cmput301w15t04team04project.adapter;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import ca.ualberta.cs.cmput301w15t04team04project.R;
@@ -52,7 +53,7 @@ public class ItemListAdapter extends ArrayAdapter<Item>
 		
 		Item item = itemList.get(position);
 		if (item!=null){
-			item = new Item("Testing");
+			//item = new Item("Testing");
 		}
 		
 		//set content in views

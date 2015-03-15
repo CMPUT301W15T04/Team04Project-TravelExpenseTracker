@@ -69,6 +69,7 @@ public class OneClaimActivity extends Activity {
 		
 		itemlistview.setAdapter(itemAdapter);
 		itemAdapter.notifyDataSetChanged();
+		
 		controller.getClaim().addListener(new Listener(){
 			@Override
 			public void update() {
