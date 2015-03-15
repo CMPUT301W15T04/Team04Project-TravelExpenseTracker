@@ -21,53 +21,26 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         tools:ignore="HardcodedText,RtlHardcoded" />
 
+    <ListView
+        android:id="@+id/OneCaimItemlistView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/testApproverTextView" >
+
+    </ListView>
+
     <TextView
         android:id="@+id/testApproverTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/testClaimantTextView"
+        android:layout_alignLeft="@+id/OneCaimItemlistView"
         android:layout_below="@+id/testClaimantTextView"
-        android:layout_marginTop="58dp"
+        android:layout_marginTop="32dp"
         android:clickable="true"
         android:onClick="showClaimDetailA"
         android:text="Approver Show Claim Detail"
         android:textAppearance="?android:attr/textAppearanceLarge"
         tools:ignore="HardcodedText,RtlHardcoded" />
-
-    <TextView
-        android:id="@+id/textViewItemDC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/testApproverTextView"
-        android:layout_marginTop="63dp"
-        android:clickable="true"
-        android:onClick="showItemDetailC"
-        android:text="Show Item Detail Claimant"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        tools:ignore="HardcodedText,RtlHardcoded" />
-
-    <TextView
-        android:id="@+id/textViewItemDA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textViewItemDC"
-        android:layout_below="@+id/textViewItemDC"
-        android:layout_marginTop="56dp"
-        android:clickable="true"
-        android:onClick="showItemDetailA"
-        android:text="Show Item Detail Approver"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        tools:ignore="HardcodedText,RtlHardcoded" />
-
-    <ListView
-        android:id="@+id/OneCaimItemlistView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textViewItemDA"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/textViewItemDA" >
-
-    </ListView>
 
 </RelativeLayout>
