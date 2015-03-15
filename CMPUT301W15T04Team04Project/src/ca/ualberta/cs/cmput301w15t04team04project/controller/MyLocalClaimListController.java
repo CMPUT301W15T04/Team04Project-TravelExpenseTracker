@@ -74,37 +74,27 @@ public class MyLocalClaimListController {
 	 * @version 1.0
 	 * @since 2015-03-12
 	 */
-	public ArrayList<Claim> getApprovedClaims() {
-		ArrayList<Claim> approvedClaims = new ArrayList<Claim>();
-		for (int i = 0; i < getClaims().size(); i++){
-			if (getClaims().get(i).getStatus().equals("approved")){
-				approvedClaims.add(getClaims().get(i));
-			}
-		}
-		return approvedClaims;
-	}
-
-	public ArrayList<Claim> getSubmittedClaims() {
-		ArrayList<Claim> submittedClaims = new ArrayList<Claim>();
-		for (int i = 0; i < getClaims().size(); i++){
-			if (getClaims().get(i).getStatus().equals("submitted")){
-				submittedClaims.add(getClaims().get(i));
-			}
-		}
-		return submittedClaims;
-	}
+	
 
 	@SuppressWarnings("null")
-	public ArrayList<Claim> getInProgressClaims() {
-		ArrayList<Claim> inProgressClaims = new ArrayList<Claim>();
+	public ArrayList<Claim> getClaimsByIndex(ArrayList<Integer> indexList) {
+		ArrayList<Claim> claims = new ArrayList<Claim>();
+		for (int i = 0; i < indexList.size(); i++){
+			claims.add(getClaims().get(indexList.get(i)));
+		}
+		return claims;
+	}
+	
+	public ArrayList<Integer> getIndexList(String string){
+		ArrayList<Integer> indexList = new ArrayList<Integer>();
 		for (int i = 0; i < getClaims().size(); i++){
-			if (getClaims().get(i).getStatus().equals("In Progress")){
-				inProgressClaims.add(getClaims().get(i));
+			if (getClaims().get(i).getStatus().equals(string)){
+				indexList.add(i);
 			}
 		}
-		return inProgressClaims;
+		return indexList;
 	}
-
+	
 	public ArrayList<Claim> getClaims() {
 
 		return getClaimList().getClaimArrayList();
@@ -116,7 +106,7 @@ public class MyLocalClaimListController {
 	}
 
 	public void deleteClaim(int index) {
-		getInProgressClaims().remove(index);
+		getClaims().remove(index);
 		getClaimList().notifyListeners();
 	}
 

@@ -80,10 +80,37 @@ public class FragmentEditItem1 extends Fragment {
 			int date = currentItem.getDate().getDate();
 			int month = currentItem.getDate().getMonth();
 			int year = currentItem.getDate().getYear() + 1900;
+<<<<<<< HEAD
 			datePicker.updateDate(year, month, date);
+=======
+			datepicker.updateDate(year, month, date);
+
+
+			amount.setText(""+currentItem.getCurrency().getAmount());
+			/*
+			categoryAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, getCategory());
+			categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			category.setAdapter(categoryAdapter);
+			category.setOnItemSelectedListener(new OnItemSelectedListener(){
+				  			@Override
+				             public void onItemSelected(AdapterView<?> parent, View view,
+				                      int position, long id) {
+				           	
+
+				            	   
+				             }
+				 
+			            @Override
+				            public void onNothingSelected(AdapterView<?> parent) {
+
+				             }
+			       });
+			       */
+
+>>>>>>> origin/master
 			
 			// set item amount
-			amount.setText(Double.toString(currentItem.getCurrency().getAmount()));
+			//amount.setText(Double.toString(currentItem.getCurrency().getAmount()));
 			
 			// set category
 			res = getResources();
