@@ -29,7 +29,7 @@ public class US08_03_01UITest extends ActivityInstrumentationTestCase2<MainActiv
 	{
 		super.setUp();
 		thisActivity = (MainActivity) getActivity();
-		profilefragment = (FragmentProfile) thisActivity.fragments.get(0);
+		momentfragment = (FragmentMoments) thisActivity.fragments.get(1);
 		
 	}
 	

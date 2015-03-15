@@ -317,8 +317,6 @@ public class OneClaimActivity extends Activity {
 		category.setText(claim.getItems().get(id).getCategory());
 		descript.setText(claim.getItems().get(id).getDescription());
 
-		amount.setText("CAD $ 888");
-		itemDate.setText("Jan-10-2001");
 
 		
 		adb.setNeutralButton("Add Comment", new OnClickListener() {
