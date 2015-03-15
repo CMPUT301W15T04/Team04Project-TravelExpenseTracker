@@ -132,8 +132,7 @@ public final class R {
         public static final int editItemBottomMenu=0x7f0a001f;
         public static final int editItemNext=0x7f0a0021;
         public static final int editItemPrevious=0x7f0a0020;
-<<<<<<< HEAD
-        public static final int editText=0x7f0a0057;
+        public static final int fragmentEditItem2DiscriptionEditText=0x7f0a0057;
         public static final int fromDatePicker=0x7f0a0043;
         public static final int fromDateTextView=0x7f0a0042;
         public static final int hasRecieptImageView=0x7f0a007d;
@@ -150,25 +149,6 @@ public final class R {
         public static final int linearLayout1=0x7f0a0070;
         public static final int linearLayout3=0x7f0a0067;
         public static final int list_item_textview=0x7f0a0062;
-=======
-        public static final int fragmentEditItem2DiscriptionEditText=0x7f0a0059;
-        public static final int fromDatePicker=0x7f0a0045;
-        public static final int fromDateTextView=0x7f0a0044;
-        public static final int hasRecieptImageView=0x7f0a007f;
-        public static final int incomleteFlagImageView=0x7f0a0076;
-        public static final int itemAmountTextView=0x7f0a0056;
-        public static final int itemCategorySpinner=0x7f0a0054;
-        public static final int itemCurrencyEeditText=0x7f0a0057;
-        public static final int itemDateDatePicker=0x7f0a004f;
-        public static final int itemDtextView=0x7f0a0058;
-        public static final int itemNameEditText=0x7f0a0052;
-        public static final int itemNameTextView=0x7f0a0051;
-        public static final int itemReciptTextView=0x7f0a005a;
-        public static final int itemTypeTextView=0x7f0a0053;
-        public static final int linearLayout1=0x7f0a0072;
-        public static final int linearLayout3=0x7f0a0069;
-        public static final int list_item_textview=0x7f0a0064;
->>>>>>> origin/master
         public static final int mainActivityBottomMenu=0x7f0a0031;
         public static final int mainActivityPager=0x7f0a0030;
         public static final int momentsMenuButton=0x7f0a0033;

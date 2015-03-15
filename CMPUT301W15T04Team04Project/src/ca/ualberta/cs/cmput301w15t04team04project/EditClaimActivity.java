@@ -70,14 +70,9 @@ public class EditClaimActivity extends FragmentActivity {
 	private MyLocalClaimListController controller;
 	private ClaimList claimList;
 	private int addEditstatus = 0; //0 add 1 edit
-<<<<<<< HEAD
-	private EditText claimname;
-	private int MyClaimid;
-=======
 	private int myClaimId;
 	
 	protected static Claim thisClaim;
->>>>>>> 74477a81767994df51dd4de05182f69a72861e6f
 	
 	
 	/**
@@ -98,7 +93,7 @@ public class EditClaimActivity extends FragmentActivity {
 		//claimList = controller.getClaims().get(myClaimId);
 		controller = new MyLocalClaimListController(claimList);
 		
-<<<<<<< HEAD
+		
 		Bundle bundle = this.getIntent().getExtras();
 		if (bundle == null){
 			
@@ -109,17 +104,14 @@ public class EditClaimActivity extends FragmentActivity {
 			int claimid = bundle.getInt("MyClaimid");
 			Toast.makeText(this, "Expense Item" + claimid, Toast.LENGTH_SHORT).show();
 			Claim storeclaim = claimList.getClaimArrayList().get(claimid);
-			claimname = (EditText) findViewById(R.id.claimNameEditText);
+			claimName = (EditText) findViewById(R.id.claimNameEditText);
 			String claimName = storeclaim.getClaim().toString();
 			//laimname.setText(claimName);
 			Toast.makeText(this, claimName, Toast.LENGTH_SHORT).show();
 			
 		}
 		
-=======
-		
 
->>>>>>> 74477a81767994df51dd4de05182f69a72861e6f
 		
 		
 
@@ -150,42 +142,9 @@ public class EditClaimActivity extends FragmentActivity {
 		pager = (ViewPager) findViewById(R.id.editClaimActivityPager);
 		pager.setAdapter(mpageAdapter);
 		setFragmentIndicator();
-<<<<<<< HEAD
 
-=======
-				
-		Bundle bundle = this.getIntent().getExtras();
-		
-		if (bundle == null){
-			addEditstatus = 0;
-		}
-		
-		else{
-			addEditstatus = 1;
-			int claimid = bundle.getInt("myClaimId");
-			
-			Toast.makeText(this, "Expense Item" + claimid, Toast.LENGTH_SHORT).show();
-			
-			
-			
-			
-			
-			
-			thisClaim = claimList.getClaimArrayList().get(claimid);
-			
-			//claimName = (EditText) findViewById(R.id.claimNameEditText);
-			//String claimName = thisClaim.getClaim().toString();
-			//claimName.setText(claimName);
-			
-			
-			
-			
-			
-			
-			//Toast.makeText(this, claimName, Toast.LENGTH_SHORT).show();
-			
-		}
->>>>>>> 74477a81767994df51dd4de05182f69a72861e6f
+
+
 	}
 
 	/**
@@ -242,16 +201,14 @@ public class EditClaimActivity extends FragmentActivity {
 		EditText destinationAndReason = (EditText) findViewById(R.id.destinationandReasonEditText);
 		DatePicker fromDatePicker = (DatePicker) findViewById(R.id.fromDatePicker);
 		DatePicker toDatePicker = (DatePicker) findViewById(R.id.toDatePicker);
-<<<<<<< HEAD
+
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(toDatePicker.getYear(), toDatePicker.getMonth(),
 				toDatePicker.getDayOfMonth());
 		Calendar calendarfrom = Calendar.getInstance();
 		calendarfrom.set(fromDatePicker.getYear(),
 				fromDatePicker.getMonth(), fromDatePicker.getDayOfMonth());
-=======
-		
->>>>>>> 74477a81767994df51dd4de05182f69a72861e6f
+
 		// Button confirm = (Button) findViewById(R.id.action_accept); // Bug
 		// cause by this 2015-3-12
 		// Controller clc = new Controller();
@@ -275,8 +232,7 @@ public class EditClaimActivity extends FragmentActivity {
 		
 		else{
 			
-<<<<<<< HEAD
-			Claim claim = claimList.getClaimArrayList().get(MyClaimid);
+			Claim claim = claimList.getClaimArrayList().get(myClaimId);
 			claim.setClaim(claimName.getText().toString());
 			claim.setDescription(description.getText().toString());
 			claim.setTag(tag.getText().toString());
@@ -284,10 +240,7 @@ public class EditClaimActivity extends FragmentActivity {
 			claim.setStartDate(calendarfrom.getTime());
 			
 			MyLocalClaimListManager.saveClaimList(this, claimList, "local");
-=======
-			Claim claim = claimList.getClaimArrayList().get(myClaimId);
-			
->>>>>>> 74477a81767994df51dd4de05182f69a72861e6f
+
 		}
 		
 		

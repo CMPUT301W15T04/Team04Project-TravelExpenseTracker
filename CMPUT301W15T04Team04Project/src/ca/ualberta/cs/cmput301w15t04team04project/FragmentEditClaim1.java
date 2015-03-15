@@ -36,7 +36,7 @@ public class FragmentEditClaim1 extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 		//View editFrame1 = getActivity().findViewById(R.id.);
 		claimname = (TextView) getView().findViewById(R.id.claimNameEditText);
-		claimname.setText(EditClaimActivity.thisClaim.getClaim().toString());
+		//claimname.setText(EditClaimActivity.thisClaim.getClaim().toString());
 	}
 
 }
