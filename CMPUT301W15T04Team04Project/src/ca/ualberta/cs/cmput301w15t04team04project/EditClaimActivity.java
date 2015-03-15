@@ -103,7 +103,7 @@ public class EditClaimActivity extends FragmentActivity {
 		claimList = MyLocalClaimListManager.loadClaimList(this, "local");
 		controller = new MyLocalClaimListController(claimList);
 		
-		
+		/*
 		Bundle bundle = this.getIntent().getExtras();
 		if (bundle == null){
 			
@@ -111,6 +111,7 @@ public class EditClaimActivity extends FragmentActivity {
 		}
 		else{
 			addEditstatus = 1;
+<<<<<<< HEAD
 			
 			int claimId = bundle.getInt("myClaimId");
 			Toast.makeText(this, "claimId = " + claimId, Toast.LENGTH_SHORT).show();
@@ -126,9 +127,18 @@ public class EditClaimActivity extends FragmentActivity {
 			//datE = thisClaim.getEndDate().;
 			
 			Toast.makeText(this, claimNameF, Toast.LENGTH_SHORT).show();
+=======
+			int claimid = bundle.getInt("MyClaimid");
+			Toast.makeText(this, "Expense Item" + claimid, Toast.LENGTH_SHORT).show();
+			Claim storeclaim = claimList.getClaimArrayList().get(claimid);
+			claimName = (EditText) findViewById(R.id.claimNameEditText);
+			String claimNameStr = storeclaim.getClaim().toString();
+			//claimName.setText("Shabi");//storeclaim.getClaim().toString());//claimNameStr);
+			Toast.makeText(this, claimNameStr, Toast.LENGTH_SHORT).show();
+>>>>>>> origin/master
 			
 		}
-		
+		*/
 
 		
 		
