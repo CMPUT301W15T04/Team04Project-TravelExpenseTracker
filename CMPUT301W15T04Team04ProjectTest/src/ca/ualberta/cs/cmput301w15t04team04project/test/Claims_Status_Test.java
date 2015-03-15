@@ -23,8 +23,13 @@ package ca.ualberta.cs.cmput301w15t04team04project.test;
 import java.util.Date;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Instrumentation;
+import android.app.Instrumentation.ActivityMonitor;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
+import android.test.TouchUtils;
 import android.test.ViewAsserts;
 import android.view.View;
 import android.widget.Button;
@@ -41,6 +46,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 
 public class Claims_Status_Test extends
 		ActivityInstrumentationTestCase2<OneClaimActivity> {
+	
 	Activity activity;
 	ClaimList claimList;
 	MyLocalClaimListController controller = new MyLocalClaimListController(claimList);
@@ -66,10 +72,10 @@ public class Claims_Status_Test extends
 	 * US07.01.01
 	 */
 	public void testSubmitApprover() {
-		
-		activity = getActivity();
+		ActivityMonitor monitor =  getInstrumentation().addMonitor(OneClaimActivity.class.getName(), null, false);
+		OneClaimActivity myActivity = (OneClaimActivity) monitor.waitForActivity();
 		final Button button = (Button) activity
-				.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.submitClaim);
+				.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.testClaimantTextView);
 		activity.runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
@@ -77,13 +83,37 @@ public class Claims_Status_Test extends
 				button.performClick();
 			}
 		});
-		assertTrue("A claim with submitted status?",
-				claim.getStatus().equals("submitted"));
-		assertTrue("A claim with submitted status should not be editable",
-				claim.getEditable() == false);
+		
+  
 
+		// access the alert dialog using the getDialog() method created in the activity
+		AlertDialog dialog = myActivity.getDialog();
+		if (dialog.isShowing()) {
+	        try {
+	            performClick(dialog.getButton(DialogInterface.BUTTON_POSITIVE));
+	        } catch (Throwable e) {
+	            e.printStackTrace();
+	        }
+	    }
+		// access the button
+		myActivity.finish();
+		getInstrumentation().removeMonitor(monitor);
+		
+		
+		assertFalse("A claim with submitted status?",
+				controller.getClaims().get(0).getStatus().equals("submitted"));
+		
+		
 	}
-
+	private void performClick(final Button button) throws Throwable {
+	    runTestOnUiThread(new Runnable() {
+	        @Override
+	        public void run() {
+	            button.performClick();
+	        }
+	    });
+	    getInstrumentation().waitForIdleSync();
+	}
 	/*
 	 * US07.02.01
 	 */

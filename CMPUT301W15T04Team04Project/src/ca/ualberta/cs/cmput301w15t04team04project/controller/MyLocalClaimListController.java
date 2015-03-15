@@ -116,7 +116,7 @@ public class MyLocalClaimListController {
 	}
 
 	public void deleteClaim(int index) {
-		getClaims().remove(index);
+		getInProgressClaims().remove(index);
 		getClaimList().notifyListeners();
 	}
 
