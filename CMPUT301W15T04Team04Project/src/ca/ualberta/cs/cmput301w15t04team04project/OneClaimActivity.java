@@ -244,6 +244,7 @@ public class OneClaimActivity extends Activity {
 	}
 	
 	public void showItemDetailC(View view, int id) {
+		
 		isClaimant = true;
 		AlertDialog.Builder adb = new AlertDialog.Builder(OneClaimActivity.this);
 		LayoutInflater factory = LayoutInflater.from(OneClaimActivity.this);
