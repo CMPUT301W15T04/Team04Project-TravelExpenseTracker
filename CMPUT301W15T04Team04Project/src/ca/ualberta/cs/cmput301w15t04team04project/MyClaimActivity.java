@@ -2,6 +2,7 @@ package ca.ualberta.cs.cmput301w15t04team04project;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -54,7 +55,7 @@ public class MyClaimActivity extends Activity {
 	private MyClaimActivity thisActivity = this;
 	private ClaimList claimList;
 	private ArrayList<Claim> claims;
-	
+	private ArrayList<Integer> indeies;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -65,17 +66,17 @@ public class MyClaimActivity extends Activity {
 		actionBar = getActionBar();
 		if (mode == 0) {
 			actionBar.setTitle("Progresing Claims");
-			claims = controller.getInProgressClaims();
+			indeies = controller.getIndexList("In Progress");
 			progressing = true;
 		}
 		else if (mode == 1) {
 			actionBar.setTitle("Submitted Claims");
-			claims = controller.getSubmittedClaims();
+			indeies = controller.getIndexList("submitted");
 			progressing = false;
 		}
 		else if (mode == 2) {
 			actionBar.setTitle("Approved Claims");
-			claims = controller.getApprovedClaims();
+			indeies = controller.getIndexList("approved");
 			progressing = false;
 		}
 		else {
@@ -84,7 +85,7 @@ public class MyClaimActivity extends Activity {
 		}
 		
 
-		
+		claims = controller.getClaimsByIndex(indeies);
 
     	ListView listView = (ListView) findViewById(R.id.myClaimsListView);
     	final ClaimListAdapter claimListAdapter = new ClaimListAdapter(this, R.layout.single_claim,
@@ -96,8 +97,23 @@ public class MyClaimActivity extends Activity {
 			public void update() {
 				// TODO Auto-generated method stub
 				claims.clear();
-				Collection<Claim> claims = controller.getClaims();
-				claims.addAll(claims);
+				Collection<Claim> claims2 = null;
+				if (mode == 0) {
+					indeies = controller.getIndexList("In Progress");
+					claims2 = controller.getClaimsByIndex(indeies);
+				}
+				else if (mode == 1) {
+					indeies = controller.getIndexList("submitted");
+					claims2 = controller.getClaimsByIndex(indeies);
+				}
+				else if (mode == 2) {	
+					indeies = controller.getIndexList("approved");
+					claims2 = controller.getClaimsByIndex(indeies);
+				}
+				else {
+					progressing = false;
+				}
+				claims.addAll(claims2);
 				claimListAdapter.notifyDataSetChanged();
 			}
 		});
@@ -114,7 +130,7 @@ public class MyClaimActivity extends Activity {
 				adb.setPositiveButton("Delete", new OnClickListener(){
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						controller.deleteClaim(finalPosition);
+						controller.deleteClaim(indeies.get(finalPosition));
 						MyLocalClaimListManager.saveClaimList(getApplicationContext(), controller.getClaimList(),"local");
 				}
 				});
