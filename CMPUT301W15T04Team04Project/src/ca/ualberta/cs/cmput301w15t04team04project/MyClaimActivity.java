@@ -48,33 +48,35 @@ public class MyClaimActivity extends Activity {
 	private MyLocalClaimListController controller;
 	private MyClaimActivity thisActivity = this;
 	private ClaimList claimList;
-	
+	private ArrayList<Claim> claims;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_my_claim);
+		claimList = MyLocalClaimListManager.loadClaimList(this, "local");
+		controller = new MyLocalClaimListController(claimList);
 		
 		actionBar = getActionBar();
 		if (mode == 0) {
 			actionBar.setTitle("Progresing Claims");
+			claims = controller.getInProgressClaims();
 		}
 		else if (mode == 1) {
 			actionBar.setTitle("Submitted Claims");
+			claims = controller.getSubmittedClaims();
 		}
 		else if (mode == 2) {
 			actionBar.setTitle("Approved Claims");
+			claims = controller.getApprovedClaims();
 		}
 		else {
 			actionBar.setTitle("Saved Claims");
 		}
-		claimList = MyLocalClaimListManager.loadClaimList(this, "local");
+		
 
 		
 
     	ListView listView = (ListView) findViewById(R.id.myClaimsListView);
-    	controller = new MyLocalClaimListController(claimList);
-
-    	final ArrayList<Claim> claims = controller.getClaims();
     	final ClaimListAdapter claimListAdapter = new ClaimListAdapter(this, R.layout.single_claim,
 				claims);
 		listView.setAdapter(claimListAdapter);
