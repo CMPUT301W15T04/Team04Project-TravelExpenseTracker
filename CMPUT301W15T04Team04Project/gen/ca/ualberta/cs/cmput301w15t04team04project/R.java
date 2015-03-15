@@ -78,7 +78,7 @@ public final class R {
     }
     public static final class id {
         public static final int LinearLayout1=0x7f0a0064;
-        public static final int OneCaimItemlistView=0x7f0a0036;
+        public static final int OneCaimItemListView=0x7f0a0035;
         public static final int RelativeLayout1=0x7f0a005b;
         public static final int TotalAmount=0x7f0a006e;
         public static final int action_accept=0x7f0a0088;
@@ -200,8 +200,8 @@ public final class R {
         public static final int startDateTextView=0x7f0a0044;
         public static final int submitedClaimsTextView=0x7f0a005f;
         public static final int tagEditText=0x7f0a004c;
-        public static final int testApproverTextView=0x7f0a0037;
-        public static final int testClaimantTextView=0x7f0a0035;
+        public static final int testApproverTextView=0x7f0a0036;
+        public static final int testClaimantTextView=0x7f0a0037;
         public static final int text_search=0x7f0a008e;
         public static final int tiemDateTextView=0x7f0a004e;
         public static final int toDatePicker=0x7f0a0046;
