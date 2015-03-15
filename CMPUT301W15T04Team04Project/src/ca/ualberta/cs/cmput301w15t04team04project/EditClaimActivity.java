@@ -63,24 +63,13 @@ public class EditClaimActivity extends FragmentActivity {
 	private EditText destination;
 	private DatePicker fromDatePicker;
 	private DatePicker toDatePicker;
-	
-	protected static String claimNameF;
-	protected static int yearS;
-	protected static int monthS;
-	protected static int dayS;
-	protected static int yearD;
-	protected static int monthD;
-	protected static int dayD;
-	protected static String descript = "Is is a test";
-	
-	// still need tag and destinations
-	
+
 	private RadioGroup bottom_Rg;
 	private PagerAdapter mpageAdapter;
 	private ViewPager pager;
 	private MyLocalClaimListController controller;
 	private ClaimList claimList;
-	private int addEditstatus = 0; //0 add 1 edit
+	protected static int addEditstatus = 0; //0 add 1 edit
 	private int myClaimId;
 	
 	private Claim thisClaim;
@@ -102,47 +91,6 @@ public class EditClaimActivity extends FragmentActivity {
 		
 		claimList = MyLocalClaimListManager.loadClaimList(this, "local");
 		controller = new MyLocalClaimListController(claimList);
-		
-		/*
-		Bundle bundle = this.getIntent().getExtras();
-		if (bundle == null){
-			
-			addEditstatus = 0;
-		}
-		else{
-			addEditstatus = 1;
-<<<<<<< HEAD
-			
-			int claimId = bundle.getInt("myClaimId");
-			Toast.makeText(this, "claimId = " + claimId, Toast.LENGTH_SHORT).show();
-			thisClaim = claimList.getClaimArrayList().get(claimId);
-
-			claimNameF = thisClaim.getClaim().toString();
-			//yearS = thisClaim.getStartDate().;
-			//monthS = thisClaim.getStartDate().;
-			//dayS = thisClaim.getStartDate().;
-			
-			//yearE = thisClaim.getEndDate().;
-			//monthE = thisClaim.getEndDate().;
-			//datE = thisClaim.getEndDate().;
-			
-			Toast.makeText(this, claimNameF, Toast.LENGTH_SHORT).show();
-=======
-			int claimid = bundle.getInt("MyClaimid");
-			Toast.makeText(this, "Expense Item" + claimid, Toast.LENGTH_SHORT).show();
-			Claim storeclaim = claimList.getClaimArrayList().get(claimid);
-			claimName = (EditText) findViewById(R.id.claimNameEditText);
-			String claimNameStr = storeclaim.getClaim().toString();
-			//claimName.setText("Shabi");//storeclaim.getClaim().toString());//claimNameStr);
-			Toast.makeText(this, claimNameStr, Toast.LENGTH_SHORT).show();
->>>>>>> origin/master
-			
-		}
-		*/
-
-		
-		
-
 		
 		initialisePaging();
 
