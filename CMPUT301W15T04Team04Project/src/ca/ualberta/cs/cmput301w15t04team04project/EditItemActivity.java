@@ -226,10 +226,8 @@ public class EditItemActivity extends FragmentActivity {
 		 */
 		}
 		else{
-<<<<<<< HEAD
-			Claim claim = claimList.getClaimArrayList().get(claimId);
-=======
-			this.item = claimList.getClaimArrayList().get(claimid).getItems().get(itemId);
+
+			this.item = claimList.getClaimArrayList().get(claimId).getItems().get(itemId);
 			this.item.setItemName(itemName.getText().toString());
 			
 /*			int Year = itemDateDatePicker.getYear();
@@ -254,7 +252,6 @@ public class EditItemActivity extends FragmentActivity {
 			MyLocalClaimListManager.saveClaimList(this, claimList, "local");
 			Toast.makeText(this, this.item.getItemName(), Toast.LENGTH_LONG).show();
 
->>>>>>> origin/master
 			
 			
 		}

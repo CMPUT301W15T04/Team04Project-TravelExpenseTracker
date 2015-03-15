@@ -1,6 +1,7 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
@@ -8,6 +9,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.res.Resources;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -31,11 +33,14 @@ import android.widget.AdapterView.OnItemSelectedListener;
  */
 public class FragmentEditItem1 extends Fragment {
 	private TextView itemName;
-	private DatePicker datepicker;
+	private DatePicker datePicker;
+	private Spinner currencyUnit;
 	private TextView amount;
 	private Spinner category;
 	private int myItemId;
 	private int myClaimId;
+	private Resources res;
+	
 	//private ArrayAdapter<String> categoryAdapter ;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -63,8 +68,9 @@ public class FragmentEditItem1 extends Fragment {
 			Item currentItem = claimList.getClaimArrayList().get(myClaimId).getItems().get(myItemId);
 			
 			itemName = (TextView) getView().findViewById(R.id.itemNameEditText);
-			datepicker = (DatePicker) getView().findViewById(R.id.itemDateDatePicker);
+			datePicker = (DatePicker) getView().findViewById(R.id.itemDateDatePicker);
 			category = (Spinner) getView().findViewById(R.id.itemCategorySpinner);
+			currencyUnit = (Spinner) getView().findViewById(R.id.currencyUnitsSpinner);
 			amount = (TextView) getView().findViewById(R.id.itemCurrencyEeditText);
 			
 			// set item name
@@ -74,23 +80,27 @@ public class FragmentEditItem1 extends Fragment {
 			int date = currentItem.getDate().getDate();
 			int month = currentItem.getDate().getMonth();
 			int year = currentItem.getDate().getYear() + 1900;
-			datepicker.updateDate(year, month, date);
+			datePicker.updateDate(year, month, date);
 			
 			// set item amount
 			amount.setText(Double.toString(currentItem.getCurrency().getAmount()));
 			
+			// set category
+			res = getResources();
+			String[] cates = res.getStringArray(R.array.categories);
+			String selection = currentItem.getCategory();
+			int pick = Arrays.asList(cates).indexOf(selection);
+			category.setSelection(pick);
+			
+			// set currency unit 
+			String[] units = res.getStringArray(R.array.currencyUnits);
+			String selection2 = currentItem.getCurrency().getType();
+			int pick2 = Arrays.asList(units).indexOf(selection2);
+			currencyUnit.setSelection(pick2);
+			
 			
 		}
 	
-	}
-
-	private List<String> getCategory() {
-		// TODO Auto-generated method stub
-		List<String> categoryList = new ArrayList<String>();
-		categoryList.add("category1");
-		categoryList.add("category2");
-		
-		return categoryList;
 	}
 
 }
