@@ -13,25 +13,33 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
-        android:id="@+id/destinationandReasonEditText"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/claimDestinationTextView"
-        android:ems="10"
-        android:hint="Enter in format:Destination(Reason)" >
-
-        <requestFocus />
-    </EditText>
-
-    <EditText
         android:id="@+id/tagEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/claimTagTextView"
         android:ems="10"
-        android:hint="Enter tags (seperate by comma)" />
+        android:hint="Enter tags (seperate by comma)"
+        android:inputType="textMultiLine" />
+
+    <EditText
+        android:id="@+id/destinationandReasonEditText"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:ems="10"
+        android:hint="Enter in format:Destination(Reason)" />
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/destinationandReasonEditText"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/claimDestinationTextView" >
+
+    </ListView>
 
     <TextView
         android:id="@+id/claimDestinationTextView"
@@ -39,6 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/tagEditText"
+        android:layout_marginTop="27dp"
         android:text="Destination &amp; Reason"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
