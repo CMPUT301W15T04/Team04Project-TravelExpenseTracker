@@ -73,7 +73,7 @@ public class FragmentEditItem1 extends Fragment {
 			
 			datepicker.updateDate(year, month, date);
 
-			amount.setText(storeItem.getCurrency().toString());
+			amount.setText(""+storeItem.getCurrency().getAmount());
 			categoryAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, getCategory());
 			categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 			category.setAdapter(categoryAdapter);
