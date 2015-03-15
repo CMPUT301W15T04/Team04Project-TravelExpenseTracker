@@ -70,7 +70,7 @@ public class EditClaimActivity extends FragmentActivity {
 	private MyLocalClaimListController controller;
 	private ClaimList claimList;
 	protected static int addEditstatus = 0; //0 add 1 edit
-	private int myClaimId;
+	protected static int myClaimId;
 	
 	private Claim thisClaim;
 	

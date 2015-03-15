@@ -72,8 +72,8 @@ public class FragmentEditClaim1 extends Fragment {
 		else{
 			EditClaimActivity.addEditstatus = 1;
 			
-			int claimId = bundle.getInt("myClaimId");
-			Claim currentClaim = claimList.getClaimArrayList().get(claimId);
+			myClaimId = bundle.getInt("myClaimId");
+			Claim currentClaim = claimList.getClaimArrayList().get(myClaimId);
 			
 			claimName = (EditText) getView().findViewById(R.id.claimNameEditText);
 			startDate = (DatePicker) getView().findViewById(R.id.fromDatePicker);
@@ -84,6 +84,8 @@ public class FragmentEditClaim1 extends Fragment {
 			startDate.init(2000, 0, 1, null);
 			endDate.init(2015, 2, 15, null);
 			descript.setText("We need to solve how to get the date");
+			
+			EditClaimActivity.myClaimId = this.myClaimId;
 			
 			Toast.makeText(getActivity(), currentClaim.getClaim(), Toast.LENGTH_SHORT).show();
 		}

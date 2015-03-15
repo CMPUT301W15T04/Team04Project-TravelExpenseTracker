@@ -145,7 +145,7 @@ public class MyClaimActivity extends Activity {
 						OneClaimActivity.class);
 				myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				myintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				myintent.putExtra("MyClaimid", itemPosition);
+				myintent.putExtra("myClaimId", itemPosition);
 				MyClaimActivity.this.startActivity(myintent);				
 			}
 		});
