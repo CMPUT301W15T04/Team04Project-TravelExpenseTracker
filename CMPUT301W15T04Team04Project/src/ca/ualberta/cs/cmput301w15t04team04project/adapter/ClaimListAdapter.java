@@ -74,7 +74,7 @@ public class ClaimListAdapter extends ArrayAdapter<Claim> {
 		
 		Claim claim = claimList.get(position);
 		if (claim!=null){
-			claim = new Claim("Testing");
+			//claim = new Claim("Testing");
 		}
 		
 		

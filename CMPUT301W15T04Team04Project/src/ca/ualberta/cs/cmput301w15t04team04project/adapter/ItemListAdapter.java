@@ -1,6 +1,9 @@
 package ca.ualberta.cs.cmput301w15t04team04project.adapter;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import ca.ualberta.cs.cmput301w15t04team04project.R;
@@ -52,14 +55,18 @@ public class ItemListAdapter extends ArrayAdapter<Item>
 		
 		Item item = itemList.get(position);
 		if (item!=null){
-			item = new Item("Testing");
+			//item = new Item("Testing");
 		}
 		
 		//set content in views
-		iholder.date.setText("date"); //claim.getDestination());
-		iholder.description.setText("In Progress");  //claim.getStatus();
-		iholder.category.setText("category");
-		iholder.amount.setText("$ CAD 88.88"); //claim.getAmount();
+		
+		DateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+		String dateOutput = df.format(item.getDate());
+		iholder.date.setText(dateOutput);//item.getDate().toString());//"date"); //claim.getDestination());
+		
+		iholder.description.setText(item.getDescription());  //claim.getStatus();
+		iholder.category.setText(item.getCategory());//"category");
+		iholder.amount.setText(item.getCurrency().toString());//"$ CAD 88.88"); //claim.getAmount();
 		
 		return convertView;
 		

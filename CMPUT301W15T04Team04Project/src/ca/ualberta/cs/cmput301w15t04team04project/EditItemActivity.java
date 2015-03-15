@@ -20,6 +20,7 @@
  */
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
@@ -29,6 +30,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.adapter.PagerAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Currency;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import android.app.Activity;
 import android.content.Intent;
@@ -40,8 +42,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
@@ -174,15 +178,53 @@ public class EditItemActivity extends FragmentActivity {
 		 * 1. Add a new item to the current claim
 		 * 2. Update the changes of the chosen item
 		 **/
-		EditText itemName = (EditText) findViewById(R.id.itemNameEditText);
 		
+		/**
+		 * this part should be in controller. Chenrui
+		 */
+		// get the views
+		EditText itemName = (EditText) findViewById(R.id.itemNameEditText);
+		DatePicker itemDateDatePicker = (DatePicker) findViewById(R.id.itemDateDatePicker);
+		Spinner itemCategorySpinner = (Spinner) findViewById(R.id.itemCategorySpinner);
+		Spinner currencyUnitsSpinner = (Spinner) findViewById(R.id.currencyUnitsSpinner);
+		EditText itemCurrencyEeditText = (EditText) findViewById(R.id.itemCurrencyEeditText);
+		
+		EditText fragmentEditItem2DiscriptionEditText = (EditText) findViewById(R.id.fragmentEditItem2DiscriptionEditText);
+		
+		//create an item
 		this.item = new Item(itemName.getText().toString());
+		
+		//put information into this item
+		int Year = itemDateDatePicker.getYear();
+		int Month = itemDateDatePicker.getMonth();
+		int DateOfMonth = itemDateDatePicker.getDayOfMonth();
+		this.item.setDate(new Date(Year-1900,Month,DateOfMonth));
+		
+		this.item.setCategory(itemCategorySpinner.getSelectedItem().toString());
+		
+		String tempAmountStr = itemCurrencyEeditText.getText().toString();
+		float tempAmountFloat = 0;
+		try{
+			tempAmountFloat = Float.valueOf(tempAmountStr);
+		} catch (NumberFormatException e){
+			tempAmountFloat = 0;
+		}
+		Currency tempCurrency = new Currency(currencyUnitsSpinner
+				.getSelectedItem().toString(), tempAmountFloat);
+		this.item.setCurrency(tempCurrency);
+		
+		this.item.setDescription(fragmentEditItem2DiscriptionEditText.getText().toString());
 		
 		//controller.addItem(this.item);
 		
 		claimList.getClaimArrayList().get(claimid).addItem(this.item);
 		MyLocalClaimListManager.saveClaimList(this, claimList, "local");
 		Toast.makeText(this, this.item.getItemName(), Toast.LENGTH_LONG).show();
+		/**
+		 * part end here
+		 */
+		
+		
 		
 		Intent intent = new Intent(EditItemActivity.this, OneClaimActivity.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

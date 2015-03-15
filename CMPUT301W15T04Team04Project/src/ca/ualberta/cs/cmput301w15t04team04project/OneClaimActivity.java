@@ -69,6 +69,7 @@ public class OneClaimActivity extends Activity {
 		
 		itemlistview.setAdapter(itemAdapter);
 		itemAdapter.notifyDataSetChanged();
+		
 		controller.getClaim().addListener(new Listener(){
 			@Override
 			public void update() {
@@ -243,6 +244,7 @@ public class OneClaimActivity extends Activity {
 	}
 	
 	public void showItemDetailC(View view, int id) {
+		
 		isClaimant = true;
 		AlertDialog.Builder adb = new AlertDialog.Builder(OneClaimActivity.this);
 		LayoutInflater factory = LayoutInflater.from(OneClaimActivity.this);
@@ -258,16 +260,17 @@ public class OneClaimActivity extends Activity {
 		itemName.setText(claim.getItems().get(id).getItemName());
 		
 		//amount.setText(claim.getItems().get(id).getCurrency().getType()+String.valueOf(claim.getItems().get(id).getCurrency().getAmount()));
-
+		amount.setText(claim.getItems().get(id).getCurrency().toString());
+		
 		//Toast.makeText(this, claim.getItems().get(id).getCurrency().getType(), Toast.LENGTH_LONG).show();
 		//amount.setText(claim.getItems().get(id).getCurrency().getType());
 		//+String.valueOf(claim.getItems().get(id).getCurrency().getAmount())
 		//amount.setText(String.valueOf(claim.getItems().get(id).getCurrency().getAmount()));
 
-		/*Date idate = claim.getItems().get(id).getDate();
+		Date idate = claim.getItems().get(id).getDate();
 		DateFormat df = new SimpleDateFormat("dd-MMM-yyyy");	
 		String dateOutput = df.format(idate);
-		itemDate.setText(dateOutput);*/
+		itemDate.setText(dateOutput);
 		
 		category.setText(claim.getItems().get(id).getCategory());
 		descript.setText(claim.getItems().get(id).getDescription());
@@ -314,8 +317,6 @@ public class OneClaimActivity extends Activity {
 		category.setText(claim.getItems().get(id).getCategory());
 		descript.setText(claim.getItems().get(id).getDescription());
 
-		amount.setText("CAD $ 888");
-		itemDate.setText("Jan-10-2001");
 
 		
 		adb.setNeutralButton("Add Comment", new OnClickListener() {

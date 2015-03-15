@@ -20,7 +20,7 @@
         tools:ignore="HardcodedText" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/fragmentEditItem2DiscriptionEditText"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:layout_alignParentLeft="true"
@@ -39,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/fragmentEditItem2DiscriptionEditText"
         android:layout_marginTop="15dp"
         android:text="Reciept:"
         android:textAppearance="?android:attr/textAppearanceSmall"

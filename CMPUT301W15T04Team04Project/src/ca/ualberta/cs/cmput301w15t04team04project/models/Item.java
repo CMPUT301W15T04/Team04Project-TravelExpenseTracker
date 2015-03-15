@@ -60,6 +60,10 @@ public class Item {
 	public Item(String itemName) {
 		// TODO Auto-generated constructor stub
 		this.setItemName(itemName);
+		date = new Date();
+		category = "";
+		description = "";
+		currency = new Currency(null);
 	}
 
 	public void takeAPhoto() {
