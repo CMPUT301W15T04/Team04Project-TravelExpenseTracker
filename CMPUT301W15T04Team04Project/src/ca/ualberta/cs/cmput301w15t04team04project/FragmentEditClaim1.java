@@ -27,6 +27,9 @@ import android.widget.Toast;
  * @author Yang Zhang
  * @version 1.0
  * @since 2015-03-10
+ * @author Yufei Zhang
+ * @version 1.1
+ * @since 2015-03-15
  */
 public class FragmentEditClaim1 extends Fragment {
 	private TextView claimName;
@@ -36,15 +39,12 @@ public class FragmentEditClaim1 extends Fragment {
 	private int month;
 	private int day;
 	private EditText descript;
-	private int addEditstatus = 0; //0 add 1 edit
+	//private int addEditstatus = 0; //0 add 1 edit
 	private int myClaimId;
 	
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		
-		
-		
 		return inflater.inflate(R.layout.fragment_edit_claim_1, container, false);
 	}
 
@@ -75,15 +75,26 @@ public class FragmentEditClaim1 extends Fragment {
 			myClaimId = bundle.getInt("myClaimId");
 			Claim currentClaim = claimList.getClaimArrayList().get(myClaimId);
 			
+			// get the views
 			claimName = (EditText) getView().findViewById(R.id.claimNameEditText);
 			startDate = (DatePicker) getView().findViewById(R.id.fromDatePicker);
 			endDate = (DatePicker) getView().findViewById(R.id.toDatePicker);
 			descript  = (EditText) getView().findViewById(R.id.descriptionEditText);
 			
+			// set content of view to dispaly
 			claimName.setText(currentClaim.getClaim());
-			startDate.init(2000, 0, 1, null);
-			endDate.init(2015, 2, 15, null);
-			descript.setText("We need to solve how to get the date");
+			
+			day = currentClaim.getStartDate().getDate();
+			month = currentClaim.getStartDate().getMonth();
+			year = currentClaim.getStartDate().getYear() + 1900;
+			startDate.updateDate(year, month, day);
+			
+			day = currentClaim.getEndDate().getDate();
+			month = currentClaim.getEndDate().getMonth();
+			year = currentClaim.getEndDate().getYear() + 1900;
+			endDate.updateDate(year, month, day);
+			
+			descript.setText(currentClaim.getDescription());
 			
 			EditClaimActivity.myClaimId = this.myClaimId;
 			

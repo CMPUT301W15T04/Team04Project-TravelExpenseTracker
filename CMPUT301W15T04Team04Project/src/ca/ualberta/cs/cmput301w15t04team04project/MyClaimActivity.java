@@ -35,6 +35,10 @@ import android.widget.AdapterView.OnItemLongClickListener;
 * @author  Weijie Sun
 * @version 1.0
 * @since   2015-03-11
+* @author  Chenrui Lei
+* @author  Yufei Zhang
+* @version 1.1
+* @since   2015-03-15
 */
 
 public class MyClaimActivity extends Activity {
@@ -43,12 +47,14 @@ public class MyClaimActivity extends Activity {
 	
 	protected static int mode;
 	private ActionBar actionBar;
+	private boolean progressing;
 
 	
 	private MyLocalClaimListController controller;
 	private MyClaimActivity thisActivity = this;
 	private ClaimList claimList;
 	private ArrayList<Claim> claims;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -60,17 +66,21 @@ public class MyClaimActivity extends Activity {
 		if (mode == 0) {
 			actionBar.setTitle("Progresing Claims");
 			claims = controller.getInProgressClaims();
+			progressing = true;
 		}
 		else if (mode == 1) {
 			actionBar.setTitle("Submitted Claims");
 			claims = controller.getSubmittedClaims();
+			progressing = false;
 		}
 		else if (mode == 2) {
 			actionBar.setTitle("Approved Claims");
 			claims = controller.getApprovedClaims();
+			progressing = false;
 		}
 		else {
 			actionBar.setTitle("Saved Claims");
+			progressing = false;
 		}
 		
 
@@ -195,6 +205,8 @@ public class MyClaimActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.my_claim, menu);
+		menu.findItem(R.id.action_new_claim).setVisible(progressing);
+		menu.findItem(R.id.action_search).setVisible(progressing);
 		return true;
 	}
 
