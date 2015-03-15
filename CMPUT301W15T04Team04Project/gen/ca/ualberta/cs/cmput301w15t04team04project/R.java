@@ -70,11 +70,12 @@ public final class R {
         public static final int menu_bottom_button=0x7f020015;
         public static final int menu_btn_bg_selected=0x7f020016;
         public static final int momoents=0x7f020017;
-        public static final int title_bar=0x7f020018;
-        public static final int toolbar_bg=0x7f020019;
-        public static final int user2_icon=0x7f02001a;
-        public static final int user_icon=0x7f02001b;
-        public static final int xlistview_arrow=0x7f02001c;
+        public static final int outbox=0x7f020018;
+        public static final int title_bar=0x7f020019;
+        public static final int toolbar_bg=0x7f02001a;
+        public static final int user2_icon=0x7f02001b;
+        public static final int user_icon=0x7f02001c;
+        public static final int xlistview_arrow=0x7f02001d;
     }
     public static final class id {
         public static final int LinearLayout1=0x7f0a0068;

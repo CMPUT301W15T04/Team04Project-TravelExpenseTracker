@@ -53,10 +53,10 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/approvedClaimsTextView"
         android:clickable="true"
-        android:drawableLeft="@drawable/ic_action_save"
+        android:drawableLeft="@drawable/outbox"
         android:gravity="center_vertical|center_horizontal"
         android:onClick="showSaved"
-        android:text="Saved Claims"
+        android:text="Outbox Claims"
         android:textSize="32dp" />
 
     <TextView
