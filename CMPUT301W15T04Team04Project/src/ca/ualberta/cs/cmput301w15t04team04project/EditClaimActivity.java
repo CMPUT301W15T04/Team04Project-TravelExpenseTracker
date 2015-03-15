@@ -93,6 +93,8 @@ public class EditClaimActivity extends FragmentActivity {
 		controller = new MyLocalClaimListController(claimList);
 		
 		initialisePaging();
+		
+		
 
 	}
 

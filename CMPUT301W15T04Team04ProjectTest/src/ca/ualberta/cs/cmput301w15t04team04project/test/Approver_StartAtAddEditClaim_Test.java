@@ -176,7 +176,7 @@ public class Approver_StartAtAddEditClaim_Test extends ActivityInstrumentationTe
 		//assertTrue("picutre shows", imageButton.isShown());
 
 		
-		assertTrue("name is equal", Itemnametextview.toString().equals("1"));
+		assertTrue("name is equal", Itemnametextview.getText().toString().equals("1"));
 		assertTrue("starting date is equal", StartingDateTextView.equals(date));
 		assertTrue("ending date is equal", EndingDateTextView.equals(endDate));
 	}

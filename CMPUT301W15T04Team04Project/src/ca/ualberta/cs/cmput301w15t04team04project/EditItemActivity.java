@@ -65,7 +65,8 @@ public class EditItemActivity extends FragmentActivity {
 	private Item item;
 	private ClaimList claimList;
 	private int claimid;
-	
+	protected static int addEditItemStatus = 0; //0 add 1 edit
+	protected static int itemId;
 	
 	/**
 	 * Initializing the activity. Call the initialisePaging() function to allow
@@ -87,15 +88,10 @@ public class EditItemActivity extends FragmentActivity {
 		claimList = MyLocalClaimListManager.loadClaimList(this, "local");
 		Bundle bundle = getIntent().getExtras();
 		claimid = bundle.getInt("MyClaimid");
-		//claimList.getClaimArrayList().get(claimid);
 		
-		if (bundle.size() == 2){
-			final int temp = bundle.getInt("MyItemid");
+		
+		//itemId = bundle.getInt("MyItemid");
 
-		}
-		else if (bundle.size() == 1){
-			
-		}
 	}
 
 	/**
@@ -192,6 +188,8 @@ public class EditItemActivity extends FragmentActivity {
 		EditText fragmentEditItem2DiscriptionEditText = (EditText) findViewById(R.id.fragmentEditItem2DiscriptionEditText);
 		
 		//create an item
+		
+		if (addEditItemStatus == 0){
 		this.item = new Item(itemName.getText().toString());
 		
 		//put information into this item
@@ -223,8 +221,12 @@ public class EditItemActivity extends FragmentActivity {
 		/**
 		 * part end here
 		 */
-		
-		
+		}
+		else{
+			Claim claim = claimList.getClaimArrayList().get(claimid);
+			
+			
+		}
 		
 		Intent intent = new Intent(EditItemActivity.this, OneClaimActivity.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
