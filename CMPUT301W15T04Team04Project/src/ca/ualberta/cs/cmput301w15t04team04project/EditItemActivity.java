@@ -20,6 +20,7 @@
  */
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
@@ -179,6 +180,10 @@ public class EditItemActivity extends FragmentActivity {
 		// get the views
 		EditText itemName = (EditText) findViewById(R.id.itemNameEditText);
 		DatePicker itemDateDatePicker = (DatePicker) findViewById(R.id.itemDateDatePicker);
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(itemDateDatePicker.getYear(), itemDateDatePicker.getMonth(),
+				itemDateDatePicker.getDayOfMonth());
+		
 		Spinner itemCategorySpinner = (Spinner) findViewById(R.id.itemCategorySpinner);
 		Spinner currencyUnitsSpinner = (Spinner) findViewById(R.id.currencyUnitsSpinner);
 		EditText itemCurrencyEeditText = (EditText) findViewById(R.id.itemCurrencyEeditText);
@@ -191,10 +196,10 @@ public class EditItemActivity extends FragmentActivity {
 		this.item = new Item(itemName.getText().toString());
 		
 		//put information into this item
-		int Year = itemDateDatePicker.getYear();
+/*		int Year = itemDateDatePicker.getYear();
 		int Month = itemDateDatePicker.getMonth();
-		int DateOfMonth = itemDateDatePicker.getDayOfMonth();
-		this.item.setDate(new Date(Year-1900,Month,DateOfMonth));
+		int DateOfMonth = itemDateDatePicker.getDayOfMonth();*/
+		this.item.setDate(calendar.getTime());
 		
 		this.item.setCategory(itemCategorySpinner.getSelectedItem().toString());
 		
@@ -221,7 +226,35 @@ public class EditItemActivity extends FragmentActivity {
 		 */
 		}
 		else{
+<<<<<<< HEAD
 			Claim claim = claimList.getClaimArrayList().get(claimId);
+=======
+			this.item = claimList.getClaimArrayList().get(claimid).getItems().get(itemId);
+			this.item.setItemName(itemName.getText().toString());
+			
+/*			int Year = itemDateDatePicker.getYear();
+			int Month = itemDateDatePicker.getMonth();
+			int DateOfMonth = itemDateDatePicker.getDayOfMonth();
+			this.item.setDate(new Date(Year-1900,Month,DateOfMonth));*/
+			
+			this.item.setCategory(itemCategorySpinner.getSelectedItem().toString());
+			
+			String tempAmountStr = itemCurrencyEeditText.getText().toString();
+			float tempAmountFloat = 0;
+			try{
+				tempAmountFloat = Float.valueOf(tempAmountStr);
+			} catch (NumberFormatException e){
+				tempAmountFloat = 0;
+			}
+			Currency tempCurrency = new Currency(currencyUnitsSpinner
+					.getSelectedItem().toString(), tempAmountFloat);
+			this.item.setCurrency(tempCurrency);
+			
+			this.item.setDescription(fragmentEditItem2DiscriptionEditText.getText().toString());
+			MyLocalClaimListManager.saveClaimList(this, claimList, "local");
+			Toast.makeText(this, this.item.getItemName(), Toast.LENGTH_LONG).show();
+
+>>>>>>> origin/master
 			
 			
 		}
