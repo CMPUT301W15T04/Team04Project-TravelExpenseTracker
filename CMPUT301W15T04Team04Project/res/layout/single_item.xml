@@ -2,14 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="wrap_content" >
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/linearLayout1"
         tools:ignore="UseCompoundDrawables,UselessParent,RtlHardcoded" >
 
         <ImageView
@@ -22,7 +22,7 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical" >
 
             <TextView
@@ -60,7 +60,7 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical" >
 
             <TextView
@@ -95,12 +95,20 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 tools:ignore="HardcodedText" />
         </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" >
 
         <ImageView
             android:id="@+id/hasRecieptImageView"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.97"
+            android:layout_width="64dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="0dp"
             android:src="@drawable/icon_no_images4"
             tools:ignore="ContentDescription" />
     </LinearLayout>
