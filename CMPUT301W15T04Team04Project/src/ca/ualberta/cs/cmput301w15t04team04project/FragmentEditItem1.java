@@ -36,7 +36,7 @@ public class FragmentEditItem1 extends Fragment {
 	private Spinner category;
 	private int myItemId;
 	private int myClaimId;
-	private ArrayAdapter<String> categoryAdapter ;
+	//private ArrayAdapter<String> categoryAdapter ;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		
@@ -51,27 +51,31 @@ public class FragmentEditItem1 extends Fragment {
 		ClaimList claimList = MyLocalClaimListManager.loadClaimList(getActivity(), "local");
 		Bundle bundle = getActivity().getIntent().getExtras();
 		if (bundle.size() == 1){
-			EditClaimActivity.addEditstatus = 0;
-			
+			EditItemActivity.addEditItemStatus = 0;
 		}
 		else if (bundle.size() == 2)
 		{
-			EditClaimActivity.addEditstatus = 1;
-			myClaimId = bundle.getInt("MyClaimid");
-			myItemId = bundle.getInt("MyItemid");
-			Item storeItem = claimList.getClaimArrayList().get(myClaimId).getItems().get(myItemId);
+			EditItemActivity.addEditItemStatus = 1;
+			
+			myClaimId = bundle.getInt("myClaimId");
+			myItemId = bundle.getInt("myItemId");
+			
+			Item currentItem = claimList.getClaimArrayList().get(myClaimId).getItems().get(myItemId);
 			
 			itemName = (TextView) getView().findViewById(R.id.itemNameEditText);
 			datepicker = (DatePicker) getView().findViewById(R.id.itemDateDatePicker);
 			category = (Spinner) getView().findViewById(R.id.itemCategorySpinner);
 			amount = (TextView) getView().findViewById(R.id.itemCurrencyEeditText);
 			
-			itemName.setText(storeItem.getItemName());
-			int date = storeItem.getDate().getDate();
-			int month = storeItem.getDate().getMonth();
-			int year = storeItem.getDate().getYear() + 1900;
+			// set item name
+			itemName.setText(currentItem.getItemName());
 			
+			// set item date
+			int date = currentItem.getDate().getDate();
+			int month = currentItem.getDate().getMonth();
+			int year = currentItem.getDate().getYear() + 1900;
 			datepicker.updateDate(year, month, date);
+<<<<<<< HEAD
 
 			amount.setText(""+storeItem.getCurrency().getAmount());
 			categoryAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, getCategory());
@@ -91,6 +95,12 @@ public class FragmentEditItem1 extends Fragment {
 
 				             }
 			       });
+=======
+			
+			// set item amount
+			amount.setText(Double.toString(currentItem.getCurrency().getAmount()));
+			
+>>>>>>> 1297ec66dd5094cc09804afe05829d0a70cd5b1c
 			
 		}
 	

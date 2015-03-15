@@ -69,7 +69,7 @@ public class EditClaimActivity extends FragmentActivity {
 	private ViewPager pager;
 	private MyLocalClaimListController controller;
 	private ClaimList claimList;
-	protected static int addEditstatus = 0; //0 add 1 edit
+	protected static int addEditStatus = 0; //0 add 1 edit
 	protected static int myClaimId;
 	
 	private Claim thisClaim;
@@ -187,7 +187,7 @@ public class EditClaimActivity extends FragmentActivity {
 		// Button confirm = (Button) findViewById(R.id.action_accept); // Bug
 		// cause by this 2015-3-12
 		// Controller clc = new Controller();
-		if (addEditstatus == 0) {
+		if (addEditStatus == 0) {
 			Claim claim = new Claim(claimName.getText().toString());
 			claim.setDescription(description.getText().toString());
 			claim.setTag(tag.getText().toString());

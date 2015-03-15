@@ -65,9 +65,9 @@ public class EditItemActivity extends FragmentActivity {
 	private OneClaimController controller;
 	private Item item;
 	private ClaimList claimList;
-	private int claimid;
+	private int claimId;
 	protected static int addEditItemStatus = 0; //0 add 1 edit
-	protected static int itemId;
+	private int itemId;
 	
 	/**
 	 * Initializing the activity. Call the initialisePaging() function to allow
@@ -88,7 +88,7 @@ public class EditItemActivity extends FragmentActivity {
 		initialisePaging();
 		claimList = MyLocalClaimListManager.loadClaimList(this, "local");
 		Bundle bundle = getIntent().getExtras();
-		claimid = bundle.getInt("MyClaimid");
+		claimId = bundle.getInt("myClaimId");
 		
 		
 		//itemId = bundle.getInt("MyItemid");
@@ -105,12 +105,10 @@ public class EditItemActivity extends FragmentActivity {
 	private void initialisePaging() {
 		// TODO Auto-generated method stub
 		List<Fragment> fragments = new Vector<Fragment>();
-		fragments.add(Fragment.instantiate(this,
-				FragmentEditItem1.class.getName()));
-		fragments.add(Fragment.instantiate(this,
-				FragmentEditItem2.class.getName()));
-		mpageAdapter = new PagerAdapter(this.getSupportFragmentManager(),
-				fragments);
+		fragments.add(Fragment.instantiate(this, FragmentEditItem1.class.getName()));
+		fragments.add(Fragment.instantiate(this, FragmentEditItem2.class.getName()));
+		
+		mpageAdapter = new PagerAdapter(this.getSupportFragmentManager(), fragments);
 		pager = (ViewPager) findViewById(R.id.editItemActivityPager);
 		pager.setAdapter(mpageAdapter);
 		setFragmentIndicator();
@@ -220,7 +218,7 @@ public class EditItemActivity extends FragmentActivity {
 		
 		//controller.addItem(this.item);
 		
-		claimList.getClaimArrayList().get(claimid).addItem(this.item);
+		claimList.getClaimArrayList().get(claimId).addItem(this.item);
 		MyLocalClaimListManager.saveClaimList(this, claimList, "local");
 		Toast.makeText(this, this.item.getItemName(), Toast.LENGTH_LONG).show();
 		/**
@@ -228,7 +226,8 @@ public class EditItemActivity extends FragmentActivity {
 		 */
 		}
 		else{
-			this.item = claimList.getClaimArrayList().get(claimid).getItems().get(itemId);
+
+			this.item = claimList.getClaimArrayList().get(claimId).getItems().get(itemId);
 			this.item.setItemName(itemName.getText().toString());
 			
 /*			int Year = itemDateDatePicker.getYear();
@@ -260,7 +259,7 @@ public class EditItemActivity extends FragmentActivity {
 		Intent intent = new Intent(EditItemActivity.this, OneClaimActivity.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		intent.putExtra("MyClaimid", claimid);
+		intent.putExtra("myClaimId", claimId);
 		
 		startActivity(intent);
 		
@@ -279,6 +278,6 @@ public class EditItemActivity extends FragmentActivity {
 		 * we need to add code here doing the following things 
 		 * 1. Add a new reciept and show it on this imageView
 		 **/
-		Toast.makeText(EditItemActivity.this, "Add a Reciept" ,Toast.LENGTH_SHORT).show();
+		Toast.makeText(EditItemActivity.this, "Add a Reciept\nWe will finish it\nin project 5." ,Toast.LENGTH_SHORT).show();
 	}
 }

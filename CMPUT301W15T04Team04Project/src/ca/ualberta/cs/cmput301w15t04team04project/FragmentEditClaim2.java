@@ -63,10 +63,10 @@ public class FragmentEditClaim2 extends Fragment {
 		Bundle bundle = getActivity().getIntent().getExtras();
 		
 		if (bundle == null){
-			EditClaimActivity.addEditstatus = 0;
+			EditClaimActivity.addEditStatus = 0;
 		}
 		else{
-			EditClaimActivity.addEditstatus = 1;
+			EditClaimActivity.addEditStatus = 1;
 			
 			myClaimId = bundle.getInt("myClaimId");
 			Claim currentClaim = claimList.getClaimArrayList().get(myClaimId);
