@@ -80,6 +80,7 @@ public final class R {
     public static final class id {
         public static final int LinearLayout1=0x7f0a0069;
         public static final int OneCaimItemListView=0x7f0a003b;
+<<<<<<< HEAD
         public static final int RelativeLayout1=0x7f0a0060;
         public static final int TotalAmount=0x7f0a0073;
         public static final int action_accept=0x7f0a008c;
@@ -89,6 +90,16 @@ public final class R {
         public static final int action_search=0x7f0a008d;
         public static final int action_searchOC=0x7f0a0090;
         public static final int action_settings=0x7f0a008b;
+=======
+        public static final int RelativeLayout1=0x7f0a005f;
+        public static final int TotalAmount=0x7f0a0072;
+        public static final int action_logout=0x7f0a008c;
+        public static final int action_new_claim=0x7f0a008d;
+        public static final int action_new_itme=0x7f0a008f;
+        public static final int action_search=0x7f0a008b;
+        public static final int action_searchOC=0x7f0a008e;
+        public static final int action_settings=0x7f0a008a;
+>>>>>>> origin/master
         public static final int addCommentItemEditText=0x7f0a002f;
         public static final int addCommentsEditText=0x7f0a0011;
         public static final int addRecieptImageView=0x7f0a005e;
@@ -103,7 +114,11 @@ public final class R {
         public static final int completeCheckBox=0x7f0a002e;
         public static final int constactTagsSpinner=0x7f0a003d;
         public static final int contectTagsTextView=0x7f0a003c;
+<<<<<<< HEAD
         public static final int currencyUnitsSpinner=0x7f0a0058;
+=======
+        public static final int currencyUnitsSpinner=0x7f0a0055;
+>>>>>>> origin/master
         public static final int currentClaimEDATextView8=0x7f0a0015;
         public static final int currentClaimEDCTextView=0x7f0a000a;
         public static final int currentClaimNameATextView=0x7f0a0010;
@@ -136,6 +151,7 @@ public final class R {
         public static final int fragmentEditItem2DiscriptionEditText=0x7f0a005c;
         public static final int fromDatePicker=0x7f0a0047;
         public static final int fromDateTextView=0x7f0a0046;
+<<<<<<< HEAD
         public static final int hasRecieptImageView=0x7f0a0081;
         public static final int incomleteFlagImageView=0x7f0a0078;
         public static final int itemAmountTextView=0x7f0a0059;
@@ -147,6 +163,19 @@ public final class R {
         public static final int itemNameTextView=0x7f0a0054;
         public static final int itemReciptTextView=0x7f0a005d;
         public static final int itemTypeTextView=0x7f0a0056;
+=======
+        public static final int hasRecieptImageView=0x7f0a0080;
+        public static final int incomleteFlagImageView=0x7f0a0077;
+        public static final int itemAmountTextView=0x7f0a0056;
+        public static final int itemCategorySpinner=0x7f0a0053;
+        public static final int itemCurrencyEeditText=0x7f0a0057;
+        public static final int itemDateDatePicker=0x7f0a0058;
+        public static final int itemDtextView=0x7f0a005a;
+        public static final int itemNameEditText=0x7f0a0052;
+        public static final int itemNameTextView=0x7f0a0051;
+        public static final int itemReciptTextView=0x7f0a005c;
+        public static final int itemTypeTextView=0x7f0a0054;
+>>>>>>> origin/master
         public static final int linearLayout1=0x7f0a0035;
         public static final int linearLayout3=0x7f0a006c;
         public static final int listView1=0x7f0a0050;
@@ -207,8 +236,13 @@ public final class R {
         public static final int testApproverTextView=0x7f0a0037;
         public static final int testClaimantTextView=0x7f0a0036;
         public static final int textView1=0x7f0a003a;
+<<<<<<< HEAD
         public static final int text_search=0x7f0a0092;
         public static final int tiemDateTextView=0x7f0a0053;
+=======
+        public static final int text_search=0x7f0a0090;
+        public static final int tiemDateTextView=0x7f0a0059;
+>>>>>>> origin/master
         public static final int toDatePicker=0x7f0a004a;
         public static final int toDateTextView=0x7f0a0049;
         public static final int totalAmountDisplay=0x7f0a0074;
