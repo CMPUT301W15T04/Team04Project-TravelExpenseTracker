@@ -35,7 +35,7 @@
         <item>USD $</item>
         <item>EUR €</item>
         <item>GBP £</item>
-        <item>CHF </item>
+        <item>"CHF "</item>
         <item>JPY ¥</item>
         <item>CNY ¥</item>
     </string-array>
