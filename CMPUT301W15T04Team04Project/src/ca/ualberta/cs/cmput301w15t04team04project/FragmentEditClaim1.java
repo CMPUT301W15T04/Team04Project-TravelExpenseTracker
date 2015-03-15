@@ -11,6 +11,10 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView.FindListener;
+
+import android.widget.DatePicker;
+
+
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -25,8 +29,13 @@ import android.widget.Toast;
  * @since 2015-03-10
  */
 public class FragmentEditClaim1 extends Fragment {
-	private TextView claimname;
-	
+	private TextView claimName;
+	private DatePicker startDate;
+	private DatePicker endDate;
+	private int year;
+	private int month;
+	private int day;
+	private EditText descript;
 	private int addEditstatus = 0; //0 add 1 edit
 	private int myClaimId;
 	
@@ -34,7 +43,7 @@ public class FragmentEditClaim1 extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		
-
+		
 		
 		return inflater.inflate(R.layout.fragment_edit_claim_1, container, false);
 	}
@@ -42,36 +51,45 @@ public class FragmentEditClaim1 extends Fragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		//View editFrame1 = getActivity().findViewById(R.id.);
-		
-		/*
-		claimname = (EditText) getView().findViewById(R.id.claimNameEditText);
-		claimname.setText("Testing Edit Name");//EditClaimActivity.thisClaim.getClaim().toString());
-		*/
-		
+
 		/**
 		 * The following fix Weijie's problem
 		 * 
 		 * @author  Chenrui
 		 * @since   2015-03-15
+		 * 
+		 * Improve Chenrui's code
+		 * @author  Yufei
+		 * @since   2015-03-15
 		 */
 		ClaimList claimList = MyLocalClaimListManager.loadClaimList(getActivity(), "local");
 		
 		Bundle bundle = getActivity().getIntent().getExtras();
+		
 		if (bundle == null){
-			
-			addEditstatus = 0;
+			EditClaimActivity.addEditstatus = 0;
 		}
 		else{
-			addEditstatus = 1;
-			int claimid = bundle.getInt("MyClaimid");
-			Toast.makeText(getActivity(), "Expense Item" + claimid, Toast.LENGTH_SHORT).show();
-			Claim storeclaim = claimList.getClaimArrayList().get(claimid);
-			claimname = (EditText) getView().findViewById(R.id.claimNameEditText);
-			String claimNameStr = storeclaim.getClaim().toString();
-			claimname.setText(claimNameStr);//"Shabi");//storeclaim.getClaim().toString());//claimNameStr);
-			Toast.makeText(getActivity(), claimNameStr, Toast.LENGTH_SHORT).show();
+			EditClaimActivity.addEditstatus = 1;
+			
+			myClaimId = bundle.getInt("myClaimId");
+			Claim currentClaim = claimList.getClaimArrayList().get(myClaimId);
+			
+			claimName = (EditText) getView().findViewById(R.id.claimNameEditText);
+			startDate = (DatePicker) getView().findViewById(R.id.fromDatePicker);
+			endDate = (DatePicker) getView().findViewById(R.id.toDatePicker);
+			descript  = (EditText) getView().findViewById(R.id.descriptionEditText);
+			
+			claimName.setText(currentClaim.getClaim());
+			startDate.init(2000, 0, 1, null);
+			endDate.init(2015, 2, 15, null);
+			descript.setText("We need to solve how to get the date");
+			
+			EditClaimActivity.myClaimId = this.myClaimId;
+			
+			Toast.makeText(getActivity(), currentClaim.getClaim(), Toast.LENGTH_SHORT).show();
 		}
+
 	}
 
 }

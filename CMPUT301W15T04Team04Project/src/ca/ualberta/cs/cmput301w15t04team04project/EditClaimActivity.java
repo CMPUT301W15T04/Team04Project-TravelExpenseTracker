@@ -60,19 +60,19 @@ public class EditClaimActivity extends FragmentActivity {
 	private EditText claimName;
 	private EditText description;
 	private EditText tag;
-	private EditText destinationAndReason;
+	private EditText destination;
 	private DatePicker fromDatePicker;
 	private DatePicker toDatePicker;
-	
+
 	private RadioGroup bottom_Rg;
 	private PagerAdapter mpageAdapter;
 	private ViewPager pager;
 	private MyLocalClaimListController controller;
 	private ClaimList claimList;
-	private int addEditstatus = 0; //0 add 1 edit
-	private int myClaimId;
+	protected static int addEditstatus = 0; //0 add 1 edit
+	protected static int myClaimId;
 	
-	protected static Claim thisClaim;
+	private Claim thisClaim;
 	
 	
 	/**
@@ -90,31 +90,7 @@ public class EditClaimActivity extends FragmentActivity {
 		setContentView(R.layout.activity_edit_claim);
 		
 		claimList = MyLocalClaimListManager.loadClaimList(this, "local");
-		//claimList = controller.getClaims().get(myClaimId);
 		controller = new MyLocalClaimListController(claimList);
-		
-		/*
-		Bundle bundle = this.getIntent().getExtras();
-		if (bundle == null){
-			
-			addEditstatus = 0;
-		}
-		else{
-			addEditstatus = 1;
-			int claimid = bundle.getInt("MyClaimid");
-			Toast.makeText(this, "Expense Item" + claimid, Toast.LENGTH_SHORT).show();
-			Claim storeclaim = claimList.getClaimArrayList().get(claimid);
-			claimName = (EditText) findViewById(R.id.claimNameEditText);
-			String claimNameStr = storeclaim.getClaim().toString();
-			//claimName.setText("Shabi");//storeclaim.getClaim().toString());//claimNameStr);
-			Toast.makeText(this, claimNameStr, Toast.LENGTH_SHORT).show();
-			
-		}
-		*/
-
-		
-		
-
 		
 		initialisePaging();
 
@@ -142,9 +118,6 @@ public class EditClaimActivity extends FragmentActivity {
 		pager = (ViewPager) findViewById(R.id.editClaimActivityPager);
 		pager.setAdapter(mpageAdapter);
 		setFragmentIndicator();
-
-
-
 	}
 
 	/**
@@ -198,7 +171,7 @@ public class EditClaimActivity extends FragmentActivity {
 		EditText claimName = (EditText) findViewById(R.id.claimNameEditText);
 		EditText description = (EditText) findViewById(R.id.descriptionEditText);
 		EditText tag = (EditText) findViewById(R.id.tagEditText);
-		EditText destinationAndReason = (EditText) findViewById(R.id.destinationandReasonEditText);
+		EditText destination = (EditText) findViewById(R.id.destinationandReasonEditText);
 		DatePicker fromDatePicker = (DatePicker) findViewById(R.id.fromDatePicker);
 		DatePicker toDatePicker = (DatePicker) findViewById(R.id.toDatePicker);
 
@@ -216,8 +189,8 @@ public class EditClaimActivity extends FragmentActivity {
 			Claim claim = new Claim(claimName.getText().toString());
 			claim.setDescription(description.getText().toString());
 			claim.setTag(tag.getText().toString());
-			// claim.addDestionation(destinationAndReason.getText().toString());
-			Destination destionation = new Destination(destinationAndReason.getText().toString());
+			// claim.addDestionation(destination.getText().toString());
+			Destination destionation = new Destination(destination.getText().toString());
 			claim.addDestionation(destionation);
 
 

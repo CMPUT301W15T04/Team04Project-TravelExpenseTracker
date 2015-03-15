@@ -48,6 +48,7 @@ public class MyClaimActivity extends Activity {
 	private MyLocalClaimListController controller;
 	private MyClaimActivity thisActivity = this;
 	private ClaimList claimList;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -67,34 +68,7 @@ public class MyClaimActivity extends Activity {
 			actionBar.setTitle("Saved Claims");
 		}
 		claimList = MyLocalClaimListManager.loadClaimList(this, "local");
-/*    	CLmanager.initManager(this.getApplicationContext());
- 
-		ListView listView = (ListView) findViewById(R.id.claimListView);
-		List<Claim> claims = ClaimListController.getClaimList().getClaims();//change the collection into list
-		
-		Collections.sort(claims,new Comparator<Claim>() {
-	        @Override  
-            public int compare(Claim b1, Claim b2) {  
-                return b1.getStartDate().compareTo(b2.getStartDate());  
-            }  
-		});
-		*/
-    	// should be changed
-		//List<Claim> claims = CLmanager.getClaimList().getClaimList();
-		
-		//old
-		/*
-		for (int i=0;i<10;i++){
-			
-			claims.add("claims" + i);
-			
-		}
-		
-		ListView listView = (ListView) findViewById(R.id.MyClaimslistView);
-		final ArrayList<String> list = new ArrayList<String>(claims);
-		final ArrayAdapter<String> claimAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);*/
 
-		//new
 		
 
     	ListView listView = (ListView) findViewById(R.id.myClaimsListView);
@@ -138,13 +112,13 @@ public class MyClaimActivity extends Activity {
 					public void onClick(DialogInterface dialog, int which) {
 						//controller.deleteClaim(finalPosition);
 						//MyLocalClaimListManager.saveClaimList(getApplicationContext(), controller.getClaimList(),"local");
-						Toast.makeText(MyClaimActivity.this, "Edit Claim"+finalPosition ,Toast.LENGTH_SHORT).show();
-						Intent myintent = new Intent(MyClaimActivity.this,
+						Toast.makeText(MyClaimActivity.this, "Claim  "+finalPosition +" MC Act",Toast.LENGTH_SHORT).show();
+						Intent myIntent = new Intent(MyClaimActivity.this,
 								EditClaimActivity.class);
-						myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-						myintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-						myintent.putExtra("MyClaimid", finalPosition);
-						MyClaimActivity.this.startActivity(myintent);	
+						myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+						myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+						myIntent.putExtra("myClaimId", finalPosition);
+						MyClaimActivity.this.startActivity(myIntent);	
 					
 				}});
 				
@@ -171,7 +145,7 @@ public class MyClaimActivity extends Activity {
 						OneClaimActivity.class);
 				myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				myintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				myintent.putExtra("MyClaimid", itemPosition);
+				myintent.putExtra("myClaimId", itemPosition);
 				MyClaimActivity.this.startActivity(myintent);				
 			}
 		});

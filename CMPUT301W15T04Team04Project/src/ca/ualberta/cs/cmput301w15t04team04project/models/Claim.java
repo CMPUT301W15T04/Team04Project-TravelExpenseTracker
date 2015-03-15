@@ -42,6 +42,15 @@ public class Claim {
 	protected String claimName;
 	protected Date startDate;
 	protected Date endDate;
+	
+	private int yearS;
+	private int monthS;
+	private int dayS;
+	
+	private int yearE;
+	private int monthE;
+	private int dayE;
+	
 	protected String status;
 	protected String description;
 	protected ArrayList<Destination> destination;
@@ -467,5 +476,55 @@ public class Claim {
 	public ArrayList<Destination> getDestination() {
 		return destination;
 	}
+
+	public int getYearS() {
+		return yearS;
+	}
+
+	public void setYearS(int yearS) {
+		this.yearS = yearS;
+	}
+
+	public int getMonthS() {
+		return monthS;
+	}
+
+	public void setMonthS(int monthS) {
+		this.monthS = monthS;
+	}
+
+	public int getDayS() {
+		return dayS;
+	}
+
+	public void setDayS(int dayS) {
+		this.dayS = dayS;
+	}
+
+	public int getYearE() {
+		return yearE;
+	}
+
+	public void setYearE(int yearE) {
+		this.yearE = yearE;
+	}
+
+	public int getMonthE() {
+		return monthE;
+	}
+
+	public void setMonthE(int monthE) {
+		this.monthE = monthE;
+	}
+
+	public int getDayE() {
+		return dayE;
+	}
+
+	public void setDayE(int dayE) {
+		this.dayE = dayE;
+	}
+	
+	
 
 }
