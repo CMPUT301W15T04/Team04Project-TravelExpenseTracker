@@ -84,7 +84,7 @@ public class MainActivity extends FragmentActivity {
 	//private int num = -1;
 	private MainController controller = new MainController();
 	private MainActivity thisActivity = this;
-	
+	public List<Fragment> fragments ;
 
 	
 	@Override
@@ -110,7 +110,7 @@ public class MainActivity extends FragmentActivity {
 	 */
 	private void initialisePaging() {
 		// TODO Auto-generated method stub
-		List<Fragment> fragments = new Vector<Fragment>();
+		fragments = new Vector<Fragment>();
 		fragments.add(Fragment.instantiate(this,FragmentProfile.class.getName()));
 		fragments.add(Fragment.instantiate(this, FragmentMoments.class.getName()));
 		
