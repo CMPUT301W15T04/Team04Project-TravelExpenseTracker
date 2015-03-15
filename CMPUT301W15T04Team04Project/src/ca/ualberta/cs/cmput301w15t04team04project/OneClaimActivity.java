@@ -39,17 +39,16 @@ public class OneClaimActivity extends Activity {
 	private TextView itemDate;
 	private TextView category;
 	private TextView descript;
-	// private TextView itemAmount;
+
 	private TextView approverView;
 	protected static boolean isClaimant = true;
 	private OneClaimController controller;
 	private OneClaimActivity thisActivity = this;
-	// private MyLocalClaimListManager manager = new
-	// MyLocalClaimListManager(this);
+
 	private Claim claim;
 	private ArrayList<Claim> claimList;
-	private int claimid;
-	private int itemid;
+	private int claimId;
+	private int itemId;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,13 +56,13 @@ public class OneClaimActivity extends Activity {
 		setContentView(R.layout.activity_one_claim);
 		approverView = (TextView) findViewById(R.id.testApproverTextView);
 		Bundle extras = getIntent().getExtras();
-		claimid = extras.getInt("MyClaimid");
-
-		claimList = MyLocalClaimListManager.loadClaimList(this, "local")
-				.getClaimArrayList();
-		claim = claimList.get(claimid);
+		
+		claimId = extras.getInt("myClaimId");
+		claimList = MyLocalClaimListManager.loadClaimList(this, "local").getClaimArrayList();
+		claim = claimList.get(claimId);
+		
 		final ArrayList<Item> items = claim.getItems();
-
+		
 		ListView itemlistview = (ListView) findViewById(R.id.OneCaimItemListView);
 		controller = new OneClaimController(claim);
 		final ItemListAdapter itemAdapter = new ItemListAdapter(this,
@@ -71,6 +70,7 @@ public class OneClaimActivity extends Activity {
 
 		itemlistview.setAdapter(itemAdapter);
 		itemAdapter.notifyDataSetChanged();
+		
 		checkUserType();
 		controller.getClaim().addListener(new Listener() {
 			@Override
@@ -82,6 +82,7 @@ public class OneClaimActivity extends Activity {
 				itemAdapter.notifyDataSetChanged();
 			}
 		});
+		
 		itemlistview.setOnItemLongClickListener(new OnItemLongClickListener() {
 
 			@Override
@@ -96,27 +97,25 @@ public class OneClaimActivity extends Activity {
 
 				adb.setPositiveButton("Delete", new OnClickListener() {
 					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						controller.deleteItem(which);
+					public void onClick(DialogInterface dialog, int position) {
+						controller.deleteItem(finalPosition);
 						// controller.deleteClaim(which);
 						// manager.saveClaimList(controller.getcClaimList());
 					}
 				});
+				
 				adb.setNeutralButton("Edit", new OnClickListener() {
 
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						// TODO Auto-generated method stub
-						Toast.makeText(OneClaimActivity.this,
-								"Item" + finalPosition, Toast.LENGTH_SHORT)
-								.show();
-						Intent myintent = new Intent(OneClaimActivity.this,
-								EditItemActivity.class);
-						myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-						myintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-						myintent.putExtra("MyItemid", finalPosition);
-						myintent.putExtra("MyClaimid", claimid);
-						OneClaimActivity.this.startActivity(myintent);
+						Toast.makeText(OneClaimActivity.this,"OCA Item " + finalPosition, Toast.LENGTH_SHORT).show();
+						Intent myIntent = new Intent(OneClaimActivity.this,EditItemActivity.class);
+						myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+						myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+						myIntent.putExtra("myItemId", finalPosition);
+						myIntent.putExtra("myClaimId", claimId);
+						OneClaimActivity.this.startActivity(myIntent);
 
 					}
 				});
@@ -165,7 +164,7 @@ public class OneClaimActivity extends Activity {
 				EditItemActivity.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		intent.putExtra("MyClaimid", claimid);
+		intent.putExtra("myClaimId", claimId);
 		startActivity(intent);
 	}
 
