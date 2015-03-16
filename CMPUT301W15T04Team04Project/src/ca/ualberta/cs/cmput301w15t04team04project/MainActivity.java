@@ -73,7 +73,6 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 /**
-<<<<<<< HEAD
  * The MyClaim Activity is the profile my claims. which is write without
  * Internet environment .
  * @author youdong
@@ -84,14 +83,6 @@ import android.widget.AdapterView.OnItemLongClickListener;
  * @author Yufei Zhang
  * @version 1.1
  * @since 2015-03-15
-=======
- * The MainActivity Activity is which has to show all the claim submitted in the sever and the proflie of each user
- * Internet environment .
- *
- * @author Weijie Sun
- * @version 1.0
- * @since 2015-03-16
->>>>>>> d95e25615b9430c6379e0a4e51001b98d9d0c78d
  */
 
 public class MainActivity extends FragmentActivity {

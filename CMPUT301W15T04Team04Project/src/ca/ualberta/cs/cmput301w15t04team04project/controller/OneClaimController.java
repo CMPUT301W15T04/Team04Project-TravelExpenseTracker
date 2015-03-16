@@ -114,8 +114,7 @@ public class OneClaimController {
 	 * @param which
 	 */
 	public void submittedClaim(int which) {
-		// TODO Auto-generated method stub
-
+		claim.setStatus("submitted");
 	}
 
 	/**

@@ -6,10 +6,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ItemListAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController2;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
+import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Listener;
 import android.app.Activity;
@@ -55,7 +57,8 @@ public class OneClaimActivity extends Activity {
 	private OneClaimActivity thisActivity = this;
 
 	private Claim claim;
-	private ArrayList<Claim> claimList;
+	private ClaimList claimList;
+	private ArrayList<Claim> claims;
 	private int claimId;
 	private int itemId;
 
@@ -67,9 +70,9 @@ public class OneClaimActivity extends Activity {
 		Bundle extras = getIntent().getExtras();
 
 		claimId = extras.getInt("myClaimId");
-		claimList = MyLocalClaimListManager.loadClaimList(this)
-				.getClaimArrayList();
-		claim = claimList.get(claimId);
+		claimList = MyLocalClaimListManager.loadClaimList(this);		
+		claims = claimList.getClaimArrayList(); 
+		claim = claims.get(claimId);
 
 		final ArrayList<Item> items = claim.getItems();
 
@@ -195,7 +198,7 @@ public class OneClaimActivity extends Activity {
 
 		claimName = (TextView) claimInfoCDialogView
 				.findViewById(R.id.currentClaimNameCTextView);
-		claimName.setText(claimList.get(claimId).getItems().get(itemId).getItemName());
+		claimName.setText(claims.get(claimId).getClaim());
 		
 		
 		adb.setNeutralButton("Submit", new OnClickListener() {
@@ -203,6 +206,10 @@ public class OneClaimActivity extends Activity {
 				Toast.makeText(OneClaimActivity.this, "Clicked On Submit",
 						Toast.LENGTH_SHORT).show();
 				controller.submittedClaim(which);
+				MyLocalClaimListManager.saveClaimList(getApplicationContext(), claimList);
+				Intent intent = new Intent(OneClaimActivity.this,
+						MyClaimActivity.class);
+				startActivity(intent);
 				/**
 				 * You need to add code here to do the submit stuff Once the
 				 * claimant click this, the claim will be submitted
@@ -210,7 +217,7 @@ public class OneClaimActivity extends Activity {
 			}
 		});
 
-		adb.setNegativeButton("Confirm", new OnClickListener() {
+		adb.setNegativeButton("Cancel", new OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				Toast.makeText(OneClaimActivity.this, "Clicked On Confirm",
 						Toast.LENGTH_SHORT).show();

@@ -178,6 +178,7 @@ public class MyClaimActivity extends Activity {
 				myintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				myintent.putExtra("myClaimId", indeies.get(itemPosition));
 				MyClaimActivity.this.startActivity(myintent);
+				finish();
 			}
 		});
 

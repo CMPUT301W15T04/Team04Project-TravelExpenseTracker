@@ -46,7 +46,8 @@ import android.widget.TextView;
 
 /**
  * @author youdong
- *
+ * @version 1.0
+ * @since 2015-03-09
  */
 public class XListView extends ListView implements OnScrollListener {
 
