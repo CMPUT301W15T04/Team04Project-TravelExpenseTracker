@@ -30,6 +30,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 public class MyLocalClaimListController2 extends MyLocalClaimListController {
 
 	/**
+	 * MyLocalClaimListController2 is initialed with a claimList
 	 * @param claimList
 	 */
 	public MyLocalClaimListController2(ClaimList claimList) {
@@ -37,6 +38,7 @@ public class MyLocalClaimListController2 extends MyLocalClaimListController {
 	}
 
 	/**
+	 * insert an claim
 	 * @param claim
 	 */
 	public void addClaim(Claim claim) {

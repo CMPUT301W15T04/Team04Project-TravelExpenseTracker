@@ -50,9 +50,10 @@ public class MyLocalClaimListController {
 	private static ClaimList claimList = new ClaimList();
 
 	/**
-	 * MyLocalClaimListController is initial this class
+	 * MyLocalClaimListController is initialed with a claimList
 	 * 
 	 * @author Youdong Ma
+	 * @param claimList
 	 * @version 1.1
 	 * @since 2015-03-12
 	 */
@@ -72,8 +73,10 @@ public class MyLocalClaimListController {
 
 	/**
 	 * getClaimsByIndex is get the claims by the given status
+	 * 
 	 * @param indexList
 	 * @author Youdong Ma
+	 * @return claims
 	 * @version 1.0
 	 * @since 2015-03-12
 	 */
@@ -86,8 +89,10 @@ public class MyLocalClaimListController {
 		}
 		return claims;
 	}
+
 	/**
-	 * getClaimList is get the claim list  in the Manager
+	 * getClaimList is get the claim list in the Manager
+	 * 
 	 * @param indexList
 	 * @author Youdong Ma
 	 * @version 1.0
@@ -104,7 +109,9 @@ public class MyLocalClaimListController {
 	}
 
 	/**
-	 * @return
+	 * get ArrayList of Claim
+	 * 
+	 * @return ArrayList of Claim
 	 */
 	public ArrayList<Claim> getClaims() {
 
@@ -112,38 +119,14 @@ public class MyLocalClaimListController {
 	}
 
 	/**
+	 * delete the claim by given index
+	 * 
 	 * @author Youdong Ma
 	 * @param index
 	 */
 	public void deleteClaim(int index) {
 		getClaims().remove(index);
 		getClaimList().notifyListeners();
-	}
-
-	/**
-	 * @author Youdong Ma
-	 * @param context
-	 * @param id
-	 */
-	public void GoToOneClaim(Context context, long id) {
-		// TODO Auto-generated method stub
-		Toast.makeText(context, "Edit Claim", Toast.LENGTH_SHORT).show();
-		Intent myintent = new Intent(context, OneClaimActivity.class);
-		myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		myintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		myintent.putExtra("MyClaimid", id);
-		context.startActivity(myintent);
-	}
-
-	/**
-	 * @author Youdong Ma
-	 * @param context
-	 */
-	public void goToSearch(Context context) {
-		// TODO Auto-generated method stub
-		Toast.makeText(context, "Search", Toast.LENGTH_SHORT).show();
-		Intent intent = new Intent(context, SearchActivity.class);
-		context.startActivity(intent);
 	}
 
 }

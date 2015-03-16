@@ -39,6 +39,10 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+/**
+ * @author youdong
+ *
+ */
 public class XListViewHeader extends LinearLayout {
 	private LinearLayout mContainer;
 	private ImageView mArrowImageView;
@@ -55,6 +59,9 @@ public class XListViewHeader extends LinearLayout {
 	public final static int STATE_READY = 1;
 	public final static int STATE_REFRESHING = 2;
 
+	/**
+	 * @param context
+	 */
 	public XListViewHeader(Context context) {
 		super(context);
 		initView(context);
@@ -69,6 +76,9 @@ public class XListViewHeader extends LinearLayout {
 		initView(context);
 	}
 
+	/**
+	 * @param context
+	 */
 	private void initView(Context context) {
 		// 初始情况，设置下拉刷新view高度为0
 		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
@@ -94,6 +104,9 @@ public class XListViewHeader extends LinearLayout {
 		mRotateDownAnim.setFillAfter(true);
 	}
 
+	/**
+	 * @param state
+	 */
 	public void setState(int state) {
 		if (state == mState) return ;
 		
@@ -132,6 +145,9 @@ public class XListViewHeader extends LinearLayout {
 		mState = state;
 	}
 	
+	/**
+	 * @param height
+	 */
 	public void setVisiableHeight(int height) {
 		if (height < 0)
 			height = 0;
@@ -141,6 +157,9 @@ public class XListViewHeader extends LinearLayout {
 		mContainer.setLayoutParams(lp);
 	}
 
+	/**
+	 * @return the Height
+	 */
 	public int getVisiableHeight() {
 		return mContainer.getHeight();
 	}

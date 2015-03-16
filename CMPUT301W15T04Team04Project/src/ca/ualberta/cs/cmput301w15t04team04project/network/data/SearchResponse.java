@@ -19,7 +19,13 @@
  * limitations under the License.
  */
 package ca.ualberta.cs.cmput301w15t04team04project.network.data;
-
+/**
+ * The class is for elastic search
+ * Internet environment .
+ * @author youdong
+ * @version 1.0
+ * @since 2015-03-11
+ */
 public class SearchResponse<T> {
 	String _index;
 	String _type;

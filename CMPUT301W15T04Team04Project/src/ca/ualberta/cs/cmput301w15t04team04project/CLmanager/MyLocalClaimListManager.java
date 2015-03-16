@@ -48,6 +48,7 @@ public class MyLocalClaimListManager {
 	}
 
 	/**
+	 * save claimList in certain file
 	 * @author Youdong Ma
 	 * @param context
 	 * @param claimList
@@ -68,6 +69,7 @@ public class MyLocalClaimListManager {
 	}
 
 	/**
+	 * load claimList form certain file
 	 * @author Youdong Ma
 	 * @param context
 	 * @return

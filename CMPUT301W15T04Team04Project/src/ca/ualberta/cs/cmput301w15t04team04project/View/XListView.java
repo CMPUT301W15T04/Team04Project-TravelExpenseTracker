@@ -44,6 +44,10 @@ import android.widget.RelativeLayout;
 import android.widget.Scroller;
 import android.widget.TextView;
 
+/**
+ * @author youdong
+ *
+ */
 public class XListView extends ListView implements OnScrollListener {
 
 	private float mLastY = -1; // save event y
@@ -87,16 +91,28 @@ public class XListView extends ListView implements OnScrollListener {
 	/**
 	 * @param context
 	 */
+	/**
+	 * @param context
+	 */
 	public XListView(Context context) {
 		super(context);
 		initWithContext(context);
 	}
 
+	/**
+	 * @param context
+	 * @param attrs
+	 */
 	public XListView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		initWithContext(context);
 	}
 
+	/**
+	 * @param context
+	 * @param attrs
+	 * @param defStyle
+	 */
 	public XListView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		initWithContext(context);
@@ -131,6 +147,9 @@ public class XListView extends ListView implements OnScrollListener {
 				});
 	}
 
+	/* (non-Javadoc)
+	 * @see android.widget.ListView#setAdapter(android.widget.ListAdapter)
+	 */
 	@Override
 	public void setAdapter(ListAdapter adapter) {
 		// make sure XListViewFooter is the last footer view, and only add once.
@@ -188,6 +207,9 @@ public class XListView extends ListView implements OnScrollListener {
 	/**
 	 * stop refresh, reset header view.
 	 */
+	/**
+	 * 
+	 */
 	public void stopRefresh() {
 		if (mPullRefreshing == true) {
 			mPullRefreshing = false;
@@ -197,6 +219,9 @@ public class XListView extends ListView implements OnScrollListener {
 
 	/**
 	 * stop load more, reset footer view.
+	 */
+	/**
+	 * 
 	 */
 	public void stopLoadMore() {
 		if (mPullLoading == true) {
@@ -208,6 +233,9 @@ public class XListView extends ListView implements OnScrollListener {
 	/**
 	 * set last refresh time
 	 * 
+	 * @param time
+	 */
+	/**
 	 * @param time
 	 */
 	public void setRefreshTime(String time) {
@@ -290,6 +318,9 @@ public class XListView extends ListView implements OnScrollListener {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see android.widget.AbsListView#onTouchEvent(android.view.MotionEvent)
+	 */
 	@Override
 	public boolean onTouchEvent(MotionEvent ev) {
 		if (mLastY == -1) {
@@ -341,6 +372,9 @@ public class XListView extends ListView implements OnScrollListener {
 		return super.onTouchEvent(ev);
 	}
 
+	/* (non-Javadoc)
+	 * @see android.view.View#computeScroll()
+	 */
 	@Override
 	public void computeScroll() {
 		if (mScroller.computeScrollOffset()) {
@@ -355,11 +389,17 @@ public class XListView extends ListView implements OnScrollListener {
 		super.computeScroll();
 	}
 
+	/* (non-Javadoc)
+	 * @see android.widget.AbsListView#setOnScrollListener(android.widget.AbsListView.OnScrollListener)
+	 */
 	@Override
 	public void setOnScrollListener(OnScrollListener l) {
 		mScrollListener = l;
 	}
 
+	/* (non-Javadoc)
+	 * @see android.widget.AbsListView.OnScrollListener#onScrollStateChanged(android.widget.AbsListView, int)
+	 */
 	@Override
 	public void onScrollStateChanged(AbsListView view, int scrollState) {
 		if (mScrollListener != null) {
@@ -367,6 +407,9 @@ public class XListView extends ListView implements OnScrollListener {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see android.widget.AbsListView.OnScrollListener#onScroll(android.widget.AbsListView, int, int, int)
+	 */
 	@Override
 	public void onScroll(AbsListView view, int firstVisibleItem,
 			int visibleItemCount, int totalItemCount) {
@@ -378,6 +421,9 @@ public class XListView extends ListView implements OnScrollListener {
 		}
 	}
 
+	/**
+	 * @param l
+	 */
 	public void setXListViewListener(IXListViewListener l) {
 		mListViewListener = l;
 	}

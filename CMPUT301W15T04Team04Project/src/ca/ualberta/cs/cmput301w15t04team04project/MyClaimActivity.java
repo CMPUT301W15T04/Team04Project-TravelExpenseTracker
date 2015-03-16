@@ -32,7 +32,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 /**
  * The MyClaim Activity is the profile my claims. which is write without
  * Internet environment .
- *
+ * @author youdong
  * @author Weijie Sun
  * @version 1.0
  * @since 2015-03-11

@@ -29,7 +29,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
-
+/**
+ * The one Activity is to see the detail and the items of a certain claim
+ * @author youdong
+ * @author Weijie Sun
+ * @version 1.0
+ * @since 2015-03-11
+ * @author Chenrui Lei
+ * @author Yufei Zhang
+ * @version 1.1
+ * @since 2015-03-15
+ */
 public class OneClaimActivity extends Activity {
 	private TextView itemName;
 	private TextView amount;

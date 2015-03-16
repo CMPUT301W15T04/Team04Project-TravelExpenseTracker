@@ -35,6 +35,10 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+/**
+ * @author youdong
+ *
+ */
 public class XListViewFooter extends LinearLayout {
 	public final static int STATE_NORMAL = 0;
 	public final static int STATE_READY = 1;
@@ -46,16 +50,26 @@ public class XListViewFooter extends LinearLayout {
 	private View mProgressBar;
 	private TextView mHintView;
 
+	/**
+	 * @param context
+	 */
 	public XListViewFooter(Context context) {
 		super(context);
 		initView(context);
 	}
 
+	/**
+	 * @param context
+	 * @param attrs
+	 */
 	public XListViewFooter(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		initView(context);
 	}
 
+	/**
+	 * @param state
+	 */
 	public void setState(int state) {
 		mHintView.setVisibility(View.INVISIBLE);
 		mProgressBar.setVisibility(View.INVISIBLE);
@@ -71,6 +85,9 @@ public class XListViewFooter extends LinearLayout {
 		}
 	}
 
+	/**
+	 * @param height
+	 */
 	public void setBottomMargin(int height) {
 		if (height < 0)
 			return;
@@ -80,6 +97,9 @@ public class XListViewFooter extends LinearLayout {
 		mContentView.setLayoutParams(lp);
 	}
 
+	/**
+	 * @return
+	 */
 	public int getBottomMargin() {
 		LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) mContentView
 				.getLayoutParams();
@@ -89,6 +109,9 @@ public class XListViewFooter extends LinearLayout {
 	/**
 	 * normal status
 	 */
+	/**
+	 * 
+	 */
 	public void normal() {
 		mHintView.setVisibility(View.VISIBLE);
 		mProgressBar.setVisibility(View.GONE);
@@ -97,6 +120,9 @@ public class XListViewFooter extends LinearLayout {
 	/**
 	 * loading status
 	 */
+	/**
+	 * 
+	 */
 	public void loading() {
 		mHintView.setVisibility(View.GONE);
 		mProgressBar.setVisibility(View.VISIBLE);
@@ -104,6 +130,9 @@ public class XListViewFooter extends LinearLayout {
 
 	/**
 	 * hide footer when disable pull load more
+	 */
+	/**
+	 * 
 	 */
 	public void hide() {
 		LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) mContentView
@@ -114,6 +143,9 @@ public class XListViewFooter extends LinearLayout {
 
 	/**
 	 * show footer
+	 */
+	/**
+	 * 
 	 */
 	public void show() {
 		LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) mContentView
