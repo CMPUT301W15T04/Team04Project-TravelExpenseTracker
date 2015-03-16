@@ -135,17 +135,10 @@ public final class R {
         public static final int fragmentEditItem2DiscriptionEditText=0x7f0a005d;
         public static final int fromDatePicker=0x7f0a0047;
         public static final int fromDateTextView=0x7f0a0046;
-<<<<<<< HEAD
         public static final int hasRecieptImageView=0x7f0a007d;
         public static final int incomleteFlagImageView=0x7f0a007a;
-        public static final int itemAmountTextView=0x7f0a0057;
-        public static final int itemCategorySpinner=0x7f0a0054;
-=======
-        public static final int hasRecieptImageView=0x7f0a0082;
-        public static final int incomleteFlagImageView=0x7f0a0079;
         public static final int itemAmountTextView=0x7f0a0059;
         public static final int itemCategorySpinner=0x7f0a005a;
->>>>>>> origin/master
         public static final int itemCurrencyEeditText=0x7f0a0058;
         public static final int itemDateDatePicker=0x7f0a0056;
         public static final int itemDateDatePicker2=0x7f0a0054;
@@ -215,14 +208,8 @@ public final class R {
         public static final int tagEditText=0x7f0a004e;
         public static final int testApproverTextView=0x7f0a0037;
         public static final int testClaimantTextView=0x7f0a0036;
-<<<<<<< HEAD
         public static final int text_search=0x7f0a0093;
-        public static final int tiemDateTextView=0x7f0a005b;
-=======
-        public static final int textView1=0x7f0a003a;
-        public static final int text_search=0x7f0a0092;
         public static final int tiemDateTextView=0x7f0a0055;
->>>>>>> origin/master
         public static final int toDatePicker=0x7f0a004a;
         public static final int toDateTextView=0x7f0a0049;
         public static final int totalAmountDisplay=0x7f0a0075;
