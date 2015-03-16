@@ -43,9 +43,19 @@ public class SignInManager {
 	// private static String FILENAME = "UserStatus";
 	public static User user = new User(null);
 
+	/**
+	 * constructor of SignInManager
+	 */
 	public SignInManager() {
 	}
 
+	/**
+	 * load User profile from a local storage
+	 * 
+	 * @param context the view that pass in
+	 * @param FILENAME the filename of the file that need to load from
+	 * @return the User that be stored in FILENAME
+	 */
 	public static User loadFromFile(Context context, String FILENAME) {
 		User user = new User(null);
 
@@ -71,6 +81,13 @@ public class SignInManager {
 		return user;
 	}
 
+	/**
+	 * Store user profile into a local file
+	 * 
+	 * @param user the User that need to store
+	 * @param context the view that pass in
+	 * @param FILENAME the filename of the file that need to store to
+	 */
 	public static void saveInFile(User user, Context context, String FILENAME) {
 
 		Gson gson = new Gson();

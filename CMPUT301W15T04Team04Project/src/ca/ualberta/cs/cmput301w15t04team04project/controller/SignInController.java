@@ -49,10 +49,6 @@ public class SignInController {
 	 * 
 	 * @param user the User need to store
 	 * @param context the view that pass in
-	 * 
-	 * @author Chenrui Lei
-	 * @version 1.0
-	 * @since 2015-03-12
 	 */
 	public void storeUserProfile(User user, Context context) {
 		SignInManager.saveInFile(user, context, "UserStatus");
@@ -63,8 +59,6 @@ public class SignInController {
 	 * 
 	 * @param context the view that pass in
 	 * @param userName the EditText that user inputed at
-	 * @author Chenrui Lei
-	 * @version 1.0
 	 * @since 2015-03-12
 	 */
 	public void signIn(Context context, EditText userName) {
@@ -91,8 +85,6 @@ public class SignInController {
 	 * logOut is use to react when logOut button be clicked
 	 * 
 	 * @param context the view that pass in
-	 * @author Chenrui Lei
-	 * @version 1.0
 	 * @since 2015-03-12
 	 */
 	public void logOut(Context context) {
