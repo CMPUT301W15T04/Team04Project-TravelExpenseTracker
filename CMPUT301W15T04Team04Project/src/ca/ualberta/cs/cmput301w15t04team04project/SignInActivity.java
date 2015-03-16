@@ -61,7 +61,7 @@ public class SignInActivity extends Activity {
 
 		getActionBar().hide();
 		// load the old user
-		user = SignInManager.loadFromFile(this, "UserStatus");
+		user = SignInManager.loadFromFile(this);
 
 		if (user.getLoginStatus() == true) {
 			// skip login page if already loged in

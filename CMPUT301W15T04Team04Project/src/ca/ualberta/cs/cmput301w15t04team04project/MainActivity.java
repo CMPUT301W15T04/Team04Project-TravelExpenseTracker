@@ -75,7 +75,6 @@ import android.widget.AdapterView.OnItemLongClickListener;
 
 public class MainActivity extends FragmentActivity {
 	private ActionBar actionBar;
-	private SignInController signInController = new SignInController();
 
 	private RadioGroup bottom_Rg;
 	private PagerAdapter mpageAdapter;
@@ -177,10 +176,8 @@ public class MainActivity extends FragmentActivity {
 	 * @since 2015-03-13
 	 */
 	public void logOut(MenuItem item) {
-		/**
-		 * You need to move the sinInController to the mainController
-		 **/
-		signInController.logOut(MainActivity.this);
+		// call controller to logout
+		controller.logOut(MainActivity.this);
 
 		// go back to signIn page
 		Intent intent3 = new Intent(MainActivity.this, SignInActivity.class);

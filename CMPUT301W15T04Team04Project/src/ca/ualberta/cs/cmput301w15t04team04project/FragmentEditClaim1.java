@@ -83,7 +83,7 @@ public class FragmentEditClaim1 extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 
 		ClaimList claimList = MyLocalClaimListManager.loadClaimList(
-				getActivity(), "local");
+				getActivity());
 
 		Bundle bundle = getActivity().getIntent().getExtras();
 

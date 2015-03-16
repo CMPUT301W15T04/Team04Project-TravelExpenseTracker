@@ -45,16 +45,6 @@ public class SignInController {
 	}
 
 	/**
-	 * storeUserProfile is use to store the user profile
-	 * 
-	 * @param user the User need to store
-	 * @param context the view that pass in
-	 */
-	public void storeUserProfile(User user, Context context) {
-		SignInManager.saveInFile(user, context, "UserStatus");
-	}
-
-	/**
 	 * signIn is use to react when signIn button be clicked
 	 * 
 	 * @param context the view that pass in
@@ -73,27 +63,11 @@ public class SignInController {
 			// SignInActivity.user = user;
 
 			// store the user info
-			storeUserProfile(user, context);
+			SignInManager.saveInFile(context, user);
 
 			// goto the main page
 			Intent intent = new Intent(context, MainActivity.class);
 			context.startActivity(intent);
 		}
 	}
-
-	/**
-	 * logOut is use to react when logOut button be clicked
-	 * 
-	 * @param context the view that pass in
-	 * @since 2015-03-12
-	 */
-	public void logOut(Context context) {
-		// change the user info as not logged in
-		User user = new User(null);
-		user.setName(null);
-
-		// store the user info
-		storeUserProfile(user, context);
-	}
-
 }

@@ -54,7 +54,7 @@ public class OneClaimActivity extends Activity {
 		Bundle extras = getIntent().getExtras();
 
 		claimId = extras.getInt("myClaimId");
-		claimList = MyLocalClaimListManager.loadClaimList(this, "local")
+		claimList = MyLocalClaimListManager.loadClaimList(this)
 				.getClaimArrayList();
 		claim = claimList.get(claimId);
 
