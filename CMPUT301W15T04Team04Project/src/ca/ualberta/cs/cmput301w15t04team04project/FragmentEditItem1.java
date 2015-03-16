@@ -82,6 +82,10 @@ public class FragmentEditItem1 extends Fragment {
 			int year = currentItem.getDate().getYear() + 1900;
 
 			datePicker.updateDate(year, month, date);
+<<<<<<< HEAD
+=======
+
+>>>>>>> f82d8fc1078be758fbde201bf32ce9b78e9e48b9
 
 
 			amount.setText(""+currentItem.getCurrency().getAmount());
@@ -105,6 +109,10 @@ public class FragmentEditItem1 extends Fragment {
 			       });
 			       */
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f82d8fc1078be758fbde201bf32ce9b78e9e48b9
 			
 			// set item amount
 			//amount.setText(Double.toString(currentItem.getCurrency().getAmount()));
