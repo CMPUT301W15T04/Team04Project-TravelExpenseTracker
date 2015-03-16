@@ -36,6 +36,13 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
+/**
+ * FragmentProfile is like the activity which get the User name
+ * 
+ * @author weijie2
+ * @version 1.1
+ * @date 2015-3-16
+ */
 public class FragmentProfile extends Fragment {
 	private TextView tv;
 	private TextView userName;
@@ -47,6 +54,9 @@ public class FragmentProfile extends Fragment {
 
 	private SignInController signInController = new SignInController();
 
+	/* (non-Javadoc)
+	 * @see android.support.v4.app.Fragment#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)
+	 */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -54,6 +64,9 @@ public class FragmentProfile extends Fragment {
 		return inflater.inflate(R.layout.fragment_profile, container, false);
 	}
 
+	/* (non-Javadoc)
+	 * @see android.support.v4.app.Fragment#onActivityCreated(android.os.Bundle)
+	 */
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);

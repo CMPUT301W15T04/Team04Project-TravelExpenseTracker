@@ -66,20 +66,23 @@ public class FragmentEditClaim2 extends Fragment {
 				false);
 	}
 
+	
+	/**onActivityCreated is Edit Claim or Add Claim
+	 * 
+	 * The following fix Weijie's problem
+	 * 
+	 * @author Chenrui
+	 * @since 2015-03-15
+	 * 
+	 *        Improve Chenrui's code
+	 * @author Yufei
+	 * @since 2015-03-15
+	 */
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
-		/**
-		 * The following fix Weijie's problem
-		 * 
-		 * @author Chenrui
-		 * @since 2015-03-15
-		 * 
-		 *        Improve Chenrui's code
-		 * @author Yufei
-		 * @since 2015-03-15
-		 */
+
 		ClaimList claimList = MyLocalClaimListManager.loadClaimList(
 				getActivity());
 
