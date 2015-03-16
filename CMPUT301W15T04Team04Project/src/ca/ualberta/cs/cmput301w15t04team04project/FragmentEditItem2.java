@@ -20,6 +20,9 @@
  */
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
+import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import android.os.Bundle;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
@@ -28,6 +31,9 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView.FindListener;
+import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * This is the fragment part 2 for adding/editing an item.
@@ -38,6 +44,10 @@ import android.view.ViewGroup;
  * @since 2015-03-10
  */
 public class FragmentEditItem2 extends Fragment {
+	private int myItemId;
+	private int myClaimId;
+	private TextView itemDescription;
+
 	/**
 	 * This is the onCreateView of initial the view
 	 * 
@@ -66,6 +76,26 @@ public class FragmentEditItem2 extends Fragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		
+		ClaimList claimList = MyLocalClaimListManager.loadClaimList(
+				getActivity());
+		Bundle bundle = getActivity().getIntent().getExtras();
+		if (bundle.size() == 1) {
+			EditItemActivity.addEditItemStatus = 0;
+		} else if (bundle.size() == 2) {
+			EditItemActivity.addEditItemStatus = 1;
+			myClaimId = bundle.getInt("myClaimId");
+			myItemId = bundle.getInt("myItemId");
+			Toast.makeText(getActivity(), "Frag ItemID = " + myItemId,
+					Toast.LENGTH_SHORT).show();
+			
+			Item currentItem = claimList.getClaimArrayList().get(myClaimId)
+					.getItems().get(myItemId);
+			
+			itemDescription = (TextView) getView().findViewById(R.id.fragmentEditItem2DiscriptionEditText);
+			itemDescription.setText(currentItem.getDescription());
+		}
+		
 	}
 
 }
