@@ -88,7 +88,8 @@ public class Claims_Overall_Test<ActionMenuItemView> extends
 				((View) saveButton).performClick();
 			}
 		});
-		assertEquals("Pass","test", MyLocalClaimListController.getClaimList().getClaimArrayList().get(0).getClaim() );
+		assertEquals("Pass", "test", MyLocalClaimListController.getClaimList()
+				.getClaimArrayList().get(0).getClaim());
 	}
 
 	// US01.02.01
@@ -126,8 +127,9 @@ public class Claims_Overall_Test<ActionMenuItemView> extends
 				((View) saveButton).performClick();
 			}
 		});
-		assertEquals("Pass","test", MyLocalClaimListController.getClaimList().getClaimArrayList().get(0).getDestination());
+		assertEquals("Pass", "test", MyLocalClaimListController.getClaimList()
+				.getClaimArrayList().get(0).getDestination());
 	}
-	
+
 	
 }
