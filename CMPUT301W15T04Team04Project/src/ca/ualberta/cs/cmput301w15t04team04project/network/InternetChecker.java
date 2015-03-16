@@ -25,9 +25,16 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+/**
+ * @author youdong
+ *
+ */
 public class InternetChecker extends Application {
 	private static Context context;
 
+	/* (non-Javadoc)
+	 * @see android.app.Application#onCreate()
+	 */
 	@Override
 	public void onCreate() {
 		super.onCreate();

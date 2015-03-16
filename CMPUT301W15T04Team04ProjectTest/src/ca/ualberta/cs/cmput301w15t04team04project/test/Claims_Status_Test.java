@@ -36,6 +36,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import ca.ualberta.cs.cmput301w15t04team04project.MyClaimActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.OneClaimActivity;
 import junit.framework.TestCase;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController;
@@ -44,16 +45,26 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 
+/**
+ * @author youdong
+ *
+ */
 public class Claims_Status_Test extends
 		ActivityInstrumentationTestCase2<OneClaimActivity> {
 	
 	Activity activity;
 	ClaimList claimList;
 	MyLocalClaimListController controller = new MyLocalClaimListController(claimList);
+	/**
+	 * 
+	 */
 	public Claims_Status_Test() {
 		super(OneClaimActivity.class);
 	}
 
+	/* (non-Javadoc)
+	 * @see android.test.ActivityInstrumentationTestCase2#setUp()
+	 */
 	protected void setUp() throws Exception {
 		super.setUp();
 		// add a claim to test on
@@ -70,6 +81,9 @@ public class Claims_Status_Test extends
 
 	/*
 	 * US07.01.01
+	 */
+	/**
+	 * 
 	 */
 	public void testSubmitApprover() {
 		ActivityMonitor monitor =  getInstrumentation().addMonitor(OneClaimActivity.class.getName(), null, false);
@@ -118,6 +132,9 @@ public class Claims_Status_Test extends
 	 * US07.02.01
 	 */
 
+	/**
+	 * 
+	 */
 	public void testSubmitWarning() {
 		Claim claim = claimList.getPosition(0);
 		Item item = claim.getItem(0);
@@ -141,6 +158,9 @@ public class Claims_Status_Test extends
 	 * US07.03.01
 	 */
 
+	/**
+	 * 
+	 */
 	public void ClaimStatusReturned() {
 		Approval approver = new Approval("jack");
 		Claim claim = claimList.getPosition(0);
@@ -164,6 +184,9 @@ public class Claims_Status_Test extends
 	 * US07.04.01
 	 */
 	
+	/**
+	 * 
+	 */
 	public void ClaimStatusApproved() {
 		Approval approver = new Approval("jack");
 		activity = getActivity();
@@ -188,6 +211,9 @@ public class Claims_Status_Test extends
 	/*
 	 * US07.05.01
 	 */
+	/**
+	 * 
+	 */
 	public void showFeedback() {
 		Approval approver = new Approval("jack");
 		Claim claim = claimList.getPosition(0);
@@ -199,6 +225,9 @@ public class Claims_Status_Test extends
 		ViewAsserts.assertOnScreen(activity.getWindow().getDecorView(), view);
 	}
 
+	/**
+	 * @author Youdong Ma 
+	 */
 	public void chechEmptyElement(){
 		((Button) activity.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.submitClaim)).performClick();
 		assertTrue("Claim has empty elements.", claim.checkEmpty() == True);

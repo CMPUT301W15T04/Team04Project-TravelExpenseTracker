@@ -41,7 +41,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.Listener;
  * 
  * @param claimlist
  *            is the ClaimList get from Manager
- * @author Weijie Sun
+ * @author Youdong Ma
  * @version 1.0
  * @since 2015-03-12
  * 
@@ -52,7 +52,7 @@ public class MyLocalClaimListController {
 	/**
 	 * MyLocalClaimListController is initial this class
 	 * 
-	 * @author Weijie Sun
+	 * @author Youdong Ma
 	 * @version 1.1
 	 * @since 2015-03-12
 	 */
@@ -62,15 +62,18 @@ public class MyLocalClaimListController {
 		this.claimList = claimList;
 	}
 
+	/**
+	 * @return claimList
+	 */
 	public static ClaimList getClaimList() {
 
 		return claimList;
 	}
 
 	/**
-	 * getClaimList is get the claim list in the Manager
-	 * 
-	 * @author Weijie Sun
+	 * getClaimsByIndex is get the claims by the given status
+	 * @param indexList
+	 * @author Youdong Ma
 	 * @version 1.0
 	 * @since 2015-03-12
 	 */
@@ -83,7 +86,13 @@ public class MyLocalClaimListController {
 		}
 		return claims;
 	}
-
+	/**
+	 * getClaimList is get the claim list  in the Manager
+	 * @param indexList
+	 * @author Youdong Ma
+	 * @version 1.0
+	 * @since 2015-03-12
+	 */
 	public ArrayList<Integer> getIndexList(String string) {
 		ArrayList<Integer> indexList = new ArrayList<Integer>();
 		for (int i = 0; i < getClaims().size(); i++) {
@@ -94,16 +103,28 @@ public class MyLocalClaimListController {
 		return indexList;
 	}
 
+	/**
+	 * @return
+	 */
 	public ArrayList<Claim> getClaims() {
 
 		return getClaimList().getClaimArrayList();
 	}
 
+	/**
+	 * @author Youdong Ma
+	 * @param index
+	 */
 	public void deleteClaim(int index) {
 		getClaims().remove(index);
 		getClaimList().notifyListeners();
 	}
 
+	/**
+	 * @author Youdong Ma
+	 * @param context
+	 * @param id
+	 */
 	public void GoToOneClaim(Context context, long id) {
 		// TODO Auto-generated method stub
 		Toast.makeText(context, "Edit Claim", Toast.LENGTH_SHORT).show();
@@ -114,6 +135,10 @@ public class MyLocalClaimListController {
 		context.startActivity(myintent);
 	}
 
+	/**
+	 * @author Youdong Ma
+	 * @param context
+	 */
 	public void goToSearch(Context context) {
 		// TODO Auto-generated method stub
 		Toast.makeText(context, "Search", Toast.LENGTH_SHORT).show();

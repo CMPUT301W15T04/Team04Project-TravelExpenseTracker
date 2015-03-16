@@ -31,6 +31,9 @@ import android.net.NetworkInfo;
 import android.test.ActivityInstrumentationTestCase2;
 
 public class Claims_Offline_Test extends ActivityInstrumentationTestCase2<MyClaimActivity> {
+	/**
+	 * @param activityClass
+	 */
 	public Claims_Offline_Test(Class<MyClaimActivity> activityClass) {
 		super(activityClass);
 		// TODO Auto-generated constructor stub
@@ -49,6 +52,13 @@ public class Claims_Offline_Test extends ActivityInstrumentationTestCase2<MyClai
 	 *  US09.01.01
 	 */
 	
+	private ConnectivityManager getSystemService(String connectivityService) {
+		return null;
+	}
+
+	/**
+	 * 
+	 */
 	public void testReadOnlineInfo() {
 		
 		ClaimList claimListFromOnline;
@@ -60,6 +70,9 @@ public class Claims_Offline_Test extends ActivityInstrumentationTestCase2<MyClai
 	}
 
 	// http://stackoverflow.com/questions/4238921/detect-whether-there-is-an-internet-connection-available-on-android
+	/**
+	 * @return boolean
+	 */
 	public boolean isNetworkAvailable() {
 		return activeNetworkInfo != null && activeNetworkInfo.isConnected();
 	}

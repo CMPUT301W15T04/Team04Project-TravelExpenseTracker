@@ -23,12 +23,22 @@ package ca.ualberta.cs.cmput301w15t04team04project.controller;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 
+/**
+ * @author youdong
+ * 
+ */
 public class MyLocalClaimListController2 extends MyLocalClaimListController {
 
+	/**
+	 * @param claimList
+	 */
 	public MyLocalClaimListController2(ClaimList claimList) {
 		super(claimList);
 	}
 
+	/**
+	 * @param claim
+	 */
 	public void addClaim(Claim claim) {
 		getClaims().add(0, claim);
 		getClaimList().notifyListeners();

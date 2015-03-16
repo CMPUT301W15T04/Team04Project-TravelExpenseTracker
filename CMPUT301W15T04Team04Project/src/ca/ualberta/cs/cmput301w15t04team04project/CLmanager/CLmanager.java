@@ -42,15 +42,29 @@ import java.lang.reflect.Type;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * @author youdong
+ *
+ */
 public class CLmanager {
 	private static final String RESOURCE_URL = "http://cmput301.softwareprocess.es:8080/cmput301w15t04/";
 	private static Gson gson;
 	private static HttpClient httpClient = new DefaultHttpClient();
 
+	/**
+	 * 
+	 */
 	public CLmanager() {
 		gson = new Gson();
 	}
 
+	/**
+	 * @author youdong
+	 * @param claim
+	 * @param string
+	 * @throws IllegalStateException
+	 * @throws IOException
+	 */
 	public void insertClaim(Claim claim, String string)
 			throws IllegalStateException, IOException {
 		HttpPost httpPost = new HttpPost(RESOURCE_URL + string + "/"
@@ -74,6 +88,10 @@ public class CLmanager {
 		}
 	}
 
+	/**
+	 * @author youdong
+	 * @param questionId
+	 */
 	public void deleteClaim(long questionId) {
 		HttpDelete deleteRequest = new HttpDelete(RESOURCE_URL + questionId);
 		deleteRequest.setHeader("Accept", "application/json");
@@ -87,6 +105,12 @@ public class CLmanager {
 		}
 	}
 
+	/**
+	 * @author youdong
+	 * @param claim
+	 * @throws IllegalStateException
+	 * @throws IOException
+	 */
 	public void updateClaim(Claim claim) throws IllegalStateException,
 			IOException {
 		HttpPost updateRequest = new HttpPost(RESOURCE_URL + "waitingList"
@@ -110,6 +134,12 @@ public class CLmanager {
 		}
 	}
 
+	/**
+	 * @author youdong
+	 * @param ID
+	 * @param string
+	 * @return
+	 */
 	public static Claim getClaim(long ID, String string) {
 
 		HttpGet getRequest = new HttpGet(RESOURCE_URL + string + "/" + ID);
@@ -135,6 +165,12 @@ public class CLmanager {
 		return claim;
 	}
 
+	/**
+	 * @author youdong
+	 * @param listID
+	 * @param string
+	 * @return
+	 */
 	public ClaimList getClaimList(ArrayList<Long> listID, String string) {
 		ClaimList claimList = new ClaimList();
 		for (long Id : listID) {
@@ -143,6 +179,12 @@ public class CLmanager {
 		return claimList;
 	}
 
+	/**
+	 * @author youdong
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
 	public static String getEntityContent(HttpResponse response)
 			throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(

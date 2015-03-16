@@ -34,12 +34,24 @@ import com.google.gson.reflect.TypeToken;
 
 import android.content.Context;
 
+/**
+ * @author Youdong Ma
+ *
+ */
 public class MyLocalClaimListManager {
 	protected static String FILENAME = "LocalClaimList";
 
+	/**
+	 * 
+	 */
 	public MyLocalClaimListManager() {
 	}
 
+	/**
+	 * @author Youdong Ma
+	 * @param context
+	 * @param claimList
+	 */
 	public static void saveClaimList(Context context, ClaimList claimList) {
 		Gson gson = new Gson();
 		try {
@@ -55,6 +67,11 @@ public class MyLocalClaimListManager {
 		}
 	}
 
+	/**
+	 * @author Youdong Ma
+	 * @param context
+	 * @return
+	 */
 	public static ClaimList loadClaimList(Context context) {
 		ClaimList claimList = new ClaimList();
 		Gson gson = new Gson();

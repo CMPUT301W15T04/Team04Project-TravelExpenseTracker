@@ -33,16 +33,29 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+/**
+ * @author youdong
+ *
+ */
 public class ClaimListAdapter extends ArrayAdapter<Claim> {
 	private ArrayList<Claim> claimList = null;
 	private ViewHolder holder = null;
 
+	/**
+	 * @author youdong
+	 * @param context
+	 * @param resource
+	 * @param objects
+	 */
 	public ClaimListAdapter(Context context, int resource,
 			ArrayList<Claim> objects) {
 		super(context, resource, objects);
 		this.claimList = objects;
 	}
 
+	/* (non-Javadoc)
+	 * @see android.widget.ArrayAdapter#getView(int, android.view.View, android.view.ViewGroup)
+	 */
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		if (convertView == null) {
@@ -93,6 +106,10 @@ public class ClaimListAdapter extends ArrayAdapter<Claim> {
 
 	}
 
+	/**
+	 * @author youdong
+	 *
+	 */
 	class ViewHolder {
 		TextView startYear;
 		TextView startMonth;
