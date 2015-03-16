@@ -21,7 +21,6 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
-import ca.ualberta.cs.cmput301w15t04team04project.controller.FragmentProfileController;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.SignInController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.os.Bundle;
@@ -42,7 +41,7 @@ public class FragmentProfile extends Fragment {
 	private TextView userName;
 	private RadioGroup settingOption;
 	private User user;
-	private FragmentProfileController controller = new FragmentProfileController();
+	//private FragmentProfileController controller = new FragmentProfileController();
 	private Context FragmentProfile = getActivity();
 	
 	private SignInController signInController = new SignInController();

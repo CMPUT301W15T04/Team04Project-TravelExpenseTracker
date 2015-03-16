@@ -91,19 +91,12 @@ public class FragmentEditItem1 extends Fragment {
 			// set ammount
 			amount.setText(""+currentItem.getCurrency().getAmount());
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 89b071c96095c5577b0e516125d92f1618125c4d
+
 
 			
 			// set item amount
 			//amount.setText(Double.toString(currentItem.getCurrency().getAmount()));
-			
->>>>>>> origin/master
+
 			// set category
 			res = getResources();
 			String[] cates = res.getStringArray(R.array.categories);
