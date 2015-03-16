@@ -72,7 +72,7 @@
         tools:ignore="HardcodedText" />
 
     <DatePicker
-        android:id="@+id/itemDateDatePicker"
+        android:id="@+id/itemDateDatePicker2"
         android:layout_width="wrap_content"
         android:layout_height="120dp"
         android:layout_alignRight="@+id/itemNameEditText"

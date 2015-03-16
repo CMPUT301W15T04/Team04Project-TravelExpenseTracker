@@ -179,7 +179,7 @@ public class EditItemActivity extends FragmentActivity {
 		 */
 		// get the views
 		EditText itemName = (EditText) findViewById(R.id.itemNameEditText);
-		DatePicker itemDateDatePicker = (DatePicker) findViewById(R.id.itemDateDatePicker);
+		DatePicker itemDateDatePicker = (DatePicker) findViewById(R.id.itemDateDatePicker2);
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(itemDateDatePicker.getYear(), itemDateDatePicker.getMonth(),
 				itemDateDatePicker.getDayOfMonth());

@@ -100,10 +100,6 @@ public class MyLocalClaimListController {
 		return getClaimList().getClaimArrayList();
 	}
 
-	public void addClaim(Claim claim) {
-		getClaims().add(0,claim);
-		getClaimList().notifyListeners();
-	}
 
 	public void deleteClaim(int index) {
 		getClaims().remove(index);

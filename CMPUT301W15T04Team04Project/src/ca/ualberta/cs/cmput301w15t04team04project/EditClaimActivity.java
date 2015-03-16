@@ -29,7 +29,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.PagerAdapter;
-import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController2;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Destination;
@@ -67,7 +67,7 @@ public class EditClaimActivity extends FragmentActivity {
 	private RadioGroup bottom_Rg;
 	private PagerAdapter mpageAdapter;
 	private ViewPager pager;
-	private MyLocalClaimListController controller;
+	private MyLocalClaimListController2 controller;
 	private ClaimList claimList;
 	protected static int addEditStatus = 0; //0 add 1 edit
 	protected static int myClaimId;
@@ -90,7 +90,7 @@ public class EditClaimActivity extends FragmentActivity {
 		setContentView(R.layout.activity_edit_claim);
 		
 		claimList = MyLocalClaimListManager.loadClaimList(this, "local");
-		controller = new MyLocalClaimListController(claimList);
+		controller = new MyLocalClaimListController2(claimList);
 		
 		initialisePaging();
 		
