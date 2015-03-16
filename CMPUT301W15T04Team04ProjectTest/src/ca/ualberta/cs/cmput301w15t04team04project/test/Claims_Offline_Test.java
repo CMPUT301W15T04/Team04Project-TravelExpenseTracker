@@ -20,16 +20,23 @@
 */
 package ca.ualberta.cs.cmput301w15t04team04project.test;
 
-import ca.ualberta.cs.cmput301w15t04team04project.ClaimList;
-import ca.ualberta.cs.cmput301w15t04team04project.Controller;
-import ca.ualberta.cs.cmput301w15t04team04project.Manager;
+
+import ca.ualberta.cs.cmput301w15t04team04project.MyClaimActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController;
+import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.test.ActivityInstrumentationTestCase2;
 
-public class Claims_Offline extends ActivityInstrumentationTestCase2<T> {
-	ClaimList claimlist = Manager.getClaimList();
+public class Claims_Offline_Test extends ActivityInstrumentationTestCase2<MyClaimActivity> {
+	public Claims_Offline_Test(Class<MyClaimActivity> activityClass) {
+		super(activityClass);
+		// TODO Auto-generated constructor stub
+	}
+
+	ClaimList claimlist = MyLocalClaimListController.getClaimList();
 	ConnectivityManager connectManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 	NetworkInfo activeNetworkInfo = connectManager
 			.getActiveNetworkInfo();
@@ -46,8 +53,8 @@ public class Claims_Offline extends ActivityInstrumentationTestCase2<T> {
 		
 		ClaimList claimListFromOnline;
 		assertTrue(isNetworkAvailable());
-		Controller.SaveToOnline();
-		claimListFromOnline = Controller.LoadFromOnline();
+		MyLocalClaimListController.SaveToOnline();
+		claimListFromOnline = MyLocalClaimListController.LoadFromOnline();
 		assertEquals("was ClaimList succefully written to db?",
 				claimlist.toString(), claimListFromOnline.toString());
 	}

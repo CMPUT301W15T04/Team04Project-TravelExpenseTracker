@@ -88,51 +88,46 @@ public class Claims_Overall_Test<ActionMenuItemView> extends
 				((View) saveButton).performClick();
 			}
 		});
+		assertEquals("Pass","test", MyLocalClaimListController.getClaimList().getClaimArrayList().get(0).getClaim() );
 	}
 
-	// US01.01.01
+	// US01.02.01
 	public void testAddDestinationAndTags() {
 		// get activity and assert user has logged in
 		Intent intent = new Intent();
 		setActivityIntent(intent);
 		activity = getActivity();
 		MyLocalClaimListController.getClaimList();
-		assertEquals("No claims", MyLocalClaimListController.getClaimList()
-				.size(), 0);
 
 		ActivityMonitor activityMonitor = getInstrumentation().addMonitor(
 				MyClaimActivity.class.getName(), null, false);
 		// get the button and press it
-		final Button button = (Button) activity
+		final View button = (View) activity
 				.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.action_new_claim);
 		activity.runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
 				// click button and open the add claim activity.
-				button.performClick();
+				((View) button).performClick();
 			}
 		});
 		final EditClaimActivity activity1 = (EditClaimActivity) instrumentation
-				.waitForMonitorWithTimeout(activityMonitor, 5000);
-		final Button saveButton = (Button) activity1
+				.waitForMonitorWithTimeout(activityMonitor, 10000);
+		final View saveButton = (View) activity1
 				.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.confirmClaim);
 		activity1.runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
 				// click button and save and finish the activity.
 
-				TextView claimName = (TextView) activity1
+				TextView Destination = (TextView) activity1
 						.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.claimNameEditText);
-				DatePicker startDate = (DatePicker) activity1
-						.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.fromDatePicker);
-				DatePicker endDate = (DatePicker) activity1
-						.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.toDatePicker);
-
-				claimName.setText("test");
-				startDate.updateDate(2012, 12, 12);
-				endDate.updateDate(2015, 03, 15);
-				saveButton.performClick();
+				Destination.setText("testDestination");
+				((View) saveButton).performClick();
 			}
 		});
+		assertEquals("Pass","test", MyLocalClaimListController.getClaimList().getClaimArrayList().get(0).getDestination());
 	}
+	
+	
 }

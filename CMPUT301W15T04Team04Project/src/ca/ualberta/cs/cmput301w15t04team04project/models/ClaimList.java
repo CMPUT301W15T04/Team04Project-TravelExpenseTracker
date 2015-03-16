@@ -103,4 +103,9 @@ public class ClaimList {
 		return claims;
 	}
 
+	public int size() {
+		// TODO Auto-generated method stub
+		return claims.size();
+	}
+
 }

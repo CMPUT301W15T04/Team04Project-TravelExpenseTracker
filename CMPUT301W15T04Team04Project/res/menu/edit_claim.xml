@@ -3,7 +3,7 @@
     tools:context="ca.ualberta.cs.cmput301w15t04team04project.EditClaimActivity" >
 
     <item
-        android:id="@+id/itemDateDatePicker"
+        android:id="@+id/confirmClaim"
         android:icon="@drawable/ic_action_accept"
         android:title="Confirm"
         android:showAsAction="always" 

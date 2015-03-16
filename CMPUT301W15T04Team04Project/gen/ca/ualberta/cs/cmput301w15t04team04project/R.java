@@ -82,11 +82,11 @@ public final class R {
         public static final int OneCaimItemListView=0x7f0a003b;
         public static final int RelativeLayout1=0x7f0a0061;
         public static final int TotalAmount=0x7f0a0074;
-        public static final int action_logout=0x7f0a008f;
-        public static final int action_new_claim=0x7f0a0090;
-        public static final int action_new_itme=0x7f0a0092;
-        public static final int action_search=0x7f0a008e;
-        public static final int action_searchOC=0x7f0a0091;
+        public static final int action_logout=0x7f0a0091;
+        public static final int action_new_claim=0x7f0a0092;
+        public static final int action_new_itme=0x7f0a0094;
+        public static final int action_search=0x7f0a0090;
+        public static final int action_searchOC=0x7f0a0093;
         public static final int action_settings=0x7f0a008d;
         public static final int addCommentItemEditText=0x7f0a002f;
         public static final int addCommentsEditText=0x7f0a0011;
@@ -100,6 +100,8 @@ public final class R {
         public static final int claimState=0x7f0a0078;
         public static final int claimTagTextView=0x7f0a004d;
         public static final int completeCheckBox=0x7f0a002e;
+        public static final int confirmClaim=0x7f0a008e;
+        public static final int confirmItem=0x7f0a008f;
         public static final int constactTagsSpinner=0x7f0a003d;
         public static final int contectTagsTextView=0x7f0a003c;
         public static final int currencyUnitsSpinner=0x7f0a0057;
@@ -208,7 +210,7 @@ public final class R {
         public static final int tagEditText=0x7f0a004e;
         public static final int testApproverTextView=0x7f0a0037;
         public static final int testClaimantTextView=0x7f0a0036;
-        public static final int text_search=0x7f0a0093;
+        public static final int text_search=0x7f0a0095;
         public static final int tiemDateTextView=0x7f0a0055;
         public static final int toDatePicker=0x7f0a004a;
         public static final int toDateTextView=0x7f0a0049;
