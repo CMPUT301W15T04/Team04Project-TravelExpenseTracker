@@ -110,7 +110,9 @@ public class Claims_Listing_Test extends ActivityInstrumentationTestCase2<MyClai
 	    assertNotNull("claim status is null. ", claimState);
 	    assertNotNull("start year is null. ", startYear);
 	    assertEquals("status equal", claimState.getText().toString(), Aclaim.getStatus());
-		//assertEquals("index 0 equals", claimlistview.getChildAt(0).equals(Aclaim));
+	    assertEquals("year equal", startYear.getText().toString(), String.valueOf(Aclaim.getStartDate().getYear()));
+
+	    //assertEquals("index 0 equals", claimlistview.getChildAt(0).equals(Aclaim));
 	}
 	
 	// US02.02.01
