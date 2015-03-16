@@ -69,6 +69,7 @@ public class SignInActivity extends Activity {
 	}
 
 	/**
+	 * Call signInController to react the sign in action
 	 * 
 	 * @author Chenrui Lei
 	 * @author Yufei Zhang
