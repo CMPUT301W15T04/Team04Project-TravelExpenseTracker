@@ -68,7 +68,7 @@ public class FragmentEditItem1 extends Fragment {
 			Item currentItem = claimList.getClaimArrayList().get(myClaimId).getItems().get(myItemId);
 			
 			itemName = (TextView) getView().findViewById(R.id.itemNameEditText);
-			datePicker = (DatePicker) getView().findViewById(R.id.itemDateDatePicker);
+			datePicker = (DatePicker) getView().findViewById(R.id.itemDateDatePicker2);
 			category = (Spinner) getView().findViewById(R.id.itemCategorySpinner);
 			currencyUnit = (Spinner) getView().findViewById(R.id.currencyUnitsSpinner);
 			amount = (TextView) getView().findViewById(R.id.itemCurrencyEeditText);
@@ -80,10 +80,8 @@ public class FragmentEditItem1 extends Fragment {
 			int date = currentItem.getDate().getDate();
 			int month = currentItem.getDate().getMonth();
 			int year = currentItem.getDate().getYear() + 1900;
-<<<<<<< HEAD
+
 			datePicker.updateDate(year, month, date);
-=======
-			datepicker.updateDate(year, month, date);
 
 
 			amount.setText(""+currentItem.getCurrency().getAmount());
@@ -107,7 +105,6 @@ public class FragmentEditItem1 extends Fragment {
 			       });
 			       */
 
->>>>>>> origin/master
 			
 			// set item amount
 			//amount.setText(Double.toString(currentItem.getCurrency().getAmount()));

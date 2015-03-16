@@ -145,7 +145,7 @@ public class MyClaimActivity extends Activity {
 								EditClaimActivity.class);
 						myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-						myIntent.putExtra("myClaimId", finalPosition);
+						myIntent.putExtra("myClaimId", indeies.get(finalPosition));
 						MyClaimActivity.this.startActivity(myIntent);	
 					
 				}});
@@ -173,7 +173,7 @@ public class MyClaimActivity extends Activity {
 						OneClaimActivity.class);
 				myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				myintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				myintent.putExtra("myClaimId", itemPosition);
+				myintent.putExtra("myClaimId", indeies.get(itemPosition));
 				MyClaimActivity.this.startActivity(myintent);				
 			}
 		});
