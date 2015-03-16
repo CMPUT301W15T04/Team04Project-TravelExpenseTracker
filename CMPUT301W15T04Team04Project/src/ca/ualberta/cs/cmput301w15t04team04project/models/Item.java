@@ -136,7 +136,7 @@ public class Item {
 		return isComplete;
 	}
 
-	public void changeIsComplete(boolean isComplete) {
+	public void changeIsComplete() {
 		if (this.isComplete == false) {
 			this.isComplete = true;
 		} else {

@@ -24,6 +24,7 @@ import java.util.Date;
 
 import ca.ualberta.cs.cmput301w15t04team04project.AddEditExpenseActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.Claim;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Currency;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import junit.framework.TestCase;
 
@@ -34,11 +35,11 @@ public class Items_Overall_Test extends TestCase {
 	public void testItem() {
 		Item item = new Item(itemname);
 		item.setDate(new Date());
-		item.setCategary(new String());
-		item.setDes(new String());
-		int a = 100;
-		item.setAmount(a);
-		item.setUnit(new String());
+		item.setCategory(new String());
+		item.setDate(new Date());
+		float a = 100;
+		String unit = "CAD $";
+		item.setCurrency(new Currency(unit,a));
 		
 		assertFalse("Problems with getter and setter of status",
 				itemname.equals(item.getItemName()));
@@ -50,10 +51,10 @@ public class Items_Overall_Test extends TestCase {
 
 	public void testFlag() {
 		Item item = new Item(itemname);
-		item.addFlag();
+		
 		assertFalse("Problems with getter and setter of status",
-				item.getFlag() == 1);
-		item.removeFlag();
+				item.isComplete() == false);
+		item.changeIsComplete();
 		assertFalse("Problems with getter and setter of status",
 				item.getFlag() == 0);
 	}
