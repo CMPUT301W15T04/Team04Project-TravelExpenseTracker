@@ -4,16 +4,18 @@ import android.test.ActivityInstrumentationTestCase2;
 import ca.ualberta.cs.cmput301w15t04team04project.FragmentProfile;
 import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.OneClaimActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController2;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 
-public class US08_04_01 extends ActivityInstrumentationTestCase2<OneClaimActivity> {
-	private OneClaimActivity thisActivity;
+public class US08_04_01 extends ActivityInstrumentationTestCase2<MainActivity> {
+	private MainActivity thisActivity;
 	private FragmentProfile profilefragment;
-	
-	
+	private Claim claim ;
+	private MyLocalClaimListController2 controller;
+	S
 
 	public US08_04_01() {
-		super(OneClaimActivity.class);
+		super(MainActivity.class);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -21,7 +23,7 @@ public class US08_04_01 extends ActivityInstrumentationTestCase2<OneClaimActivit
 	protected void setUp() throws Exception
 	{
 		super.setUp();
-		thisActivity = (OneClaimActivity) getActivity();
+		thisActivity = (MainActivity) getActivity();
 		
 	}
 	
@@ -29,7 +31,8 @@ public class US08_04_01 extends ActivityInstrumentationTestCase2<OneClaimActivit
         assertNotNull(thisActivity);
         
         Claim claim = new Claim("AClaim");
-        
+        claim.setStatus("Submitted");
+       // claim.set
 	}
 	
 	
