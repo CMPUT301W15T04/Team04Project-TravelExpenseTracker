@@ -21,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
 /**
@@ -30,6 +31,9 @@ import android.widget.AdapterView.OnItemSelectedListener;
  * @author Yang Zhang
  * @version 1.0
  * @since 2015-03-10
+ * @author Yufei Zhang
+ * @version 1.1
+ * @since 2015-03-15
  */
 public class FragmentEditItem1 extends Fragment {
 	private TextView itemName;
@@ -64,6 +68,7 @@ public class FragmentEditItem1 extends Fragment {
 			
 			myClaimId = bundle.getInt("myClaimId");
 			myItemId = bundle.getInt("myItemId");
+			Toast.makeText(getActivity(),"Frag ItemID = " + myItemId, Toast.LENGTH_SHORT).show();
 			
 			Item currentItem = claimList.getClaimArrayList().get(myClaimId).getItems().get(myItemId);
 			
@@ -80,37 +85,12 @@ public class FragmentEditItem1 extends Fragment {
 			int date = currentItem.getDate().getDate();
 			int month = currentItem.getDate().getMonth();
 			int year = currentItem.getDate().getYear() + 1900;
-
 			datePicker.updateDate(year, month, date);
 
 
-
+			// set ammount
 			amount.setText(""+currentItem.getCurrency().getAmount());
-			/*
-			categoryAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, getCategory());
-			categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-			category.setAdapter(categoryAdapter);
-			category.setOnItemSelectedListener(new OnItemSelectedListener(){
-				  			@Override
-				             public void onItemSelected(AdapterView<?> parent, View view,
-				                      int position, long id) {
-				           	
 
-				            	   
-				             }
-				 
-			            @Override
-				            public void onNothingSelected(AdapterView<?> parent) {
-
-				             }
-			       });
-			       */
-
-
-			
-			// set item amount
-			//amount.setText(Double.toString(currentItem.getCurrency().getAmount()));
-			
 			// set category
 			res = getResources();
 			String[] cates = res.getStringArray(R.array.categories);
@@ -124,7 +104,7 @@ public class FragmentEditItem1 extends Fragment {
 			int pick2 = Arrays.asList(units).indexOf(selection2);
 			currencyUnit.setSelection(pick2);
 			
-			
+			EditItemActivity.itemId = this.myItemId;
 		}
 	
 	}

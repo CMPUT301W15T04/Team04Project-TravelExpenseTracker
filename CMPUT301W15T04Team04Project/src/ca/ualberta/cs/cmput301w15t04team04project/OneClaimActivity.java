@@ -88,7 +88,8 @@ public class OneClaimActivity extends Activity {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> adapterView,
 					View view, int position, long id) {
-				final int finalPosition = position;
+				//final int finalPosition = position;
+				itemId = position;
 				// Claim claim = list.get(finalPosition);
 				AlertDialog.Builder adb = new AlertDialog.Builder(
 						OneClaimActivity.this);
@@ -98,7 +99,7 @@ public class OneClaimActivity extends Activity {
 				adb.setPositiveButton("Delete", new OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int position) {
-						controller.deleteItem(finalPosition);
+						controller.deleteItem(itemId);
 						// controller.deleteClaim(which);
 						// manager.saveClaimList(controller.getcClaimList());
 					}
@@ -109,11 +110,11 @@ public class OneClaimActivity extends Activity {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						// TODO Auto-generated method stub
-						Toast.makeText(OneClaimActivity.this,"OCA Item " + finalPosition, Toast.LENGTH_SHORT).show();
+						Toast.makeText(OneClaimActivity.this,"OCA ItemID = " + itemId, Toast.LENGTH_SHORT).show();
 						Intent myIntent = new Intent(OneClaimActivity.this,EditItemActivity.class);
 						myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-						myIntent.putExtra("myItemId", finalPosition);
+						myIntent.putExtra("myItemId", itemId);
 						myIntent.putExtra("myClaimId", claimId);
 						OneClaimActivity.this.startActivity(myIntent);
 
@@ -138,7 +139,7 @@ public class OneClaimActivity extends Activity {
 			public void onItemClick(AdapterView<?> adapterView, View view,
 					int position, long id) {
 				int itemPosition = position;
-				Toast.makeText(OneClaimActivity.this, "Item" + id,
+				Toast.makeText(OneClaimActivity.this, "Item " + id,
 						Toast.LENGTH_SHORT).show();
 				showItemDetailC(view, position);
 
@@ -276,7 +277,7 @@ public class OneClaimActivity extends Activity {
 		descript = (TextView) itemInfoCDialogView
 				.findViewById(R.id.currentDescripTextView);
 
-		itemName.setText(claim.getItems().get(id).getItemName());
+		descript.setText(claim.getItems().get(id).getItemName());
 
 		// amount.setText(claim.getItems().get(id).getCurrency().getType()+String.valueOf(claim.getItems().get(id).getCurrency().getAmount()));
 		amount.setText(claim.getItems().get(id).getCurrency().toString());
@@ -297,15 +298,15 @@ public class OneClaimActivity extends Activity {
 		descript.setText(claim.getItems().get(id).getDescription());
 
 		// set the Edit Button on the Dialog
+		/*
 		adb.setNeutralButton("Edit", new OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
-				Toast.makeText(OneClaimActivity.this, "Clicked On Edit",
-						Toast.LENGTH_SHORT).show();
-				Intent intent = new Intent(OneClaimActivity.this,
-						EditItemActivity.class);
+				Toast.makeText(OneClaimActivity.this, "Clicked On Edit",Toast.LENGTH_SHORT).show();
+				Intent intent = new Intent(OneClaimActivity.this, EditItemActivity.class);
 				startActivity(intent);
 			}
 		});
+		*/
 
 		adb.setCancelable(true);
 		adb.show();
