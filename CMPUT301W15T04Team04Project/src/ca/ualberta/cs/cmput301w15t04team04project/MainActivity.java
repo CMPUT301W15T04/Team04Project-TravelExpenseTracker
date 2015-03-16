@@ -72,6 +72,14 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
+/**
+ * The MainActivity Activity is which has to show all the claim submitted in the sever and the proflie of each user
+ * Internet environment .
+ *
+ * @author Weijie Sun
+ * @version 1.0
+ * @since 2015-03-16
+ */
 
 public class MainActivity extends FragmentActivity {
 	private ActionBar actionBar;
@@ -85,6 +93,9 @@ public class MainActivity extends FragmentActivity {
 	private MainActivity thisActivity = this;
 	public List<Fragment> fragments;
 
+	/* (non-Javadoc)
+	 * @see android.support.v4.app.FragmentActivity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -159,6 +170,9 @@ public class MainActivity extends FragmentActivity {
 		});
 	}
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
@@ -174,6 +188,9 @@ public class MainActivity extends FragmentActivity {
 	 * @author Yufei Zhang
 	 * @version 1.1
 	 * @since 2015-03-13
+	 */
+	/**
+	 * @param item
 	 */
 	public void logOut(MenuItem item) {
 		// call controller to logout
@@ -197,6 +214,9 @@ public class MainActivity extends FragmentActivity {
 	 * @version 1.1
 	 * @since 2015-03-13
 	 */
+	/**
+	 * @param view
+	 */
 	public void showProgressing(View view) {
 		MyClaimActivity.mode = 0;
 		Intent intent = new Intent(MainActivity.this, MyClaimActivity.class);
@@ -212,6 +232,9 @@ public class MainActivity extends FragmentActivity {
 	 * @author Yufei Zhang
 	 * @version 1.1
 	 * @since 2015-03-13
+	 */
+	/**
+	 * @param view
 	 */
 	public void showSubmitted(View view) {
 		MyClaimActivity.mode = 1;
@@ -229,6 +252,9 @@ public class MainActivity extends FragmentActivity {
 	 * @version 1.1
 	 * @since 2015-03-13
 	 */
+	/**
+	 * @param view
+	 */
 	public void showApproved(View view) {
 		MyClaimActivity.mode = 2;
 		Intent intent = new Intent(MainActivity.this, MyClaimActivity.class);
@@ -244,6 +270,9 @@ public class MainActivity extends FragmentActivity {
 	 * @author Yufei Zhang
 	 * @version 1.1
 	 * @since 2015-03-13
+	 */
+	/**
+	 * @param view
 	 */
 	public void showSaved(View view) {
 		MyClaimActivity.mode = 3;

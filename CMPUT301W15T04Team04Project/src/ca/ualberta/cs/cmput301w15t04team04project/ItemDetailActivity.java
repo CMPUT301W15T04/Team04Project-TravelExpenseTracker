@@ -25,6 +25,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+/**
+ * ItemDetailActivity is the Activity show the detail information of the Item
+ * 
+ * @author weijie2
+ * @version 1.1
+ * @date 2015-3-16
+ */
 public class ItemDetailActivity extends Activity {
 
 	private boolean isClaimant = OneClaimActivity.isClaimant;
@@ -40,6 +47,9 @@ public class ItemDetailActivity extends Activity {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -47,6 +57,9 @@ public class ItemDetailActivity extends Activity {
 		return true;
 	}
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
+	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will
