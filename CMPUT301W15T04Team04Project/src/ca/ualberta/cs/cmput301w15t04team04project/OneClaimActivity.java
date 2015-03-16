@@ -145,7 +145,7 @@ public class OneClaimActivity extends Activity {
 				Toast.makeText(OneClaimActivity.this, "Item " + id,
 						Toast.LENGTH_SHORT).show();
 				showItemDetailC(view, position);
-
+				
 			}
 		});
 

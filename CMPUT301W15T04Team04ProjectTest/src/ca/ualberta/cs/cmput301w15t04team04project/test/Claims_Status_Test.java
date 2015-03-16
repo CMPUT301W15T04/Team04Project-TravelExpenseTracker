@@ -52,7 +52,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 public class Claims_Status_Test extends
 		ActivityInstrumentationTestCase2<OneClaimActivity> {
 	
-	Activity activity;
+	 Activity activity;
 	ClaimList claimList;
 	MyLocalClaimListController controller = new MyLocalClaimListController(claimList);
 	/**

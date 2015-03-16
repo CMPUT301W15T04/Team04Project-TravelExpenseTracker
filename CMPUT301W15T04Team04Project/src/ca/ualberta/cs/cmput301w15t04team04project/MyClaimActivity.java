@@ -46,7 +46,7 @@ public class MyClaimActivity extends Activity {
 
 	// private ArrayList<String> claims = new ArrayList<String>();
 
-	protected static int mode;
+	public static int mode;
 	private ActionBar actionBar;
 	private boolean progressing;
 
