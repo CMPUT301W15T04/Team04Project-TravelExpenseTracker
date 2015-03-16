@@ -11,6 +11,15 @@ public class MainController {
 	
 	public MainController(){
 	}
+	
+	public void logOut(Context context){
+		// change the user info as not logged in
+		User user = new User(null);
+		user.setName(null);
+		
+		// store the user info
+		storeUserProfile(user, context);
+	}
 
 	
 	
