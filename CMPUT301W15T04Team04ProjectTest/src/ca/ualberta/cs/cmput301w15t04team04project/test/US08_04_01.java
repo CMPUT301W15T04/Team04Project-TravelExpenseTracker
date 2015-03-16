@@ -1,21 +1,31 @@
 package ca.ualberta.cs.cmput301w15t04team04project.test;
 
+import java.sql.Date;
+import java.util.Calendar;
+
 import android.test.ActivityInstrumentationTestCase2;
 import ca.ualberta.cs.cmput301w15t04team04project.FragmentProfile;
 import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.OneClaimActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController2;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
+import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 
-public class US08_04_01 extends ActivityInstrumentationTestCase2<MainActivity> {
-	private MainActivity thisActivity;
-	private FragmentProfile profilefragment;
+public class US08_04_01 extends ActivityInstrumentationTestCase2<OneClaimActivity> {
+	private OneClaimActivity thisActivity;
+	//private FragmentProfile profilefragment;
 	private Claim claim ;
 	private MyLocalClaimListController2 controller;
+	private
+	private Item item;
+	private Date date;
+	private Calendar calender = Calendar.getInstance();;
+	private User approver;
 	
-
+	
 	public US08_04_01() {
-		super(MainActivity.class);
+		super(OneClaimActivity.class);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -23,7 +33,7 @@ public class US08_04_01 extends ActivityInstrumentationTestCase2<MainActivity> {
 	protected void setUp() throws Exception
 	{
 		super.setUp();
-		thisActivity = (MainActivity) getActivity();
+		thisActivity = (OneClaimActivity) getActivity();
 		
 	}
 	
@@ -32,8 +42,22 @@ public class US08_04_01 extends ActivityInstrumentationTestCase2<MainActivity> {
         
         Claim claim = new Claim("AClaim");
         claim.setStatus("Submitted");
-       // claim.set
+        controller.addClaim(claim);
+        item = new Item("AItem");
+        claim.addItem(item);
+        calender.set(2005, 1,
+				12);
+        date = (Date) calender.getTime();
+        item.setDate(date);
+        String description = "testdescription";
+        item.setDescription(description);
+        
 	}
 	
+	protected void AllItemDetailofSubmittedClaim(){
+		
+		
+		
+	}
 	
 }

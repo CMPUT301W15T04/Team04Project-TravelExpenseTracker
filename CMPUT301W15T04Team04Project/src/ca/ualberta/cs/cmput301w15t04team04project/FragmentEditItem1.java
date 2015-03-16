@@ -64,7 +64,13 @@ public class FragmentEditItem1 extends Fragment {
 	private int myItemId;
 	private int myClaimId;
 	private Resources res;
-
+	/**
+	 * This is the onCreateView of initial the view
+	 * 
+	 * @author Weijie Sun
+	 * @version 1.1
+	 * @since 2015-03-15
+	 */
 	// private ArrayAdapter<String> categoryAdapter ;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -74,7 +80,13 @@ public class FragmentEditItem1 extends Fragment {
 				.inflate(R.layout.fragment_edit_item_1, container, false);
 
 	}
-
+	/**
+	 * This is the onActivityCreated of create Item or Edit item set the original information in the View
+	 * 
+	 * @author Weijie Sun
+	 * @version 1.1
+	 * @since 2015-03-15
+	 */
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
