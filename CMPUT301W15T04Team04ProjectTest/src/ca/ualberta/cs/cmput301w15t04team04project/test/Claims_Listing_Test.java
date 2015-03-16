@@ -40,6 +40,10 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 
 
+/**
+ * @author Ji Yang
+ *
+ */
 public class Claims_Listing_Test extends ActivityInstrumentationTestCase2<MyClaimActivity> {
     private MyClaimActivity thisActivity;
     private MyLocalClaimListController2 controller;
@@ -51,11 +55,17 @@ public class Claims_Listing_Test extends ActivityInstrumentationTestCase2<MyClai
 	private ClaimList claimList;
 	private int mode;
 	
+	/**
+	 * 
+	 */
 	public Claims_Listing_Test() {
 		super(MyClaimActivity.class);
 		// TODO Auto-generated constructor stub
 	}
 	// US01.03.01
+	/**
+	 * 
+	 */
 	public void testViewClaims() {
 		ListView claimlistview = (ListView) thisActivity.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.myClaimsListView); //listView
 		assertEquals("index 0 equals", claimlistview.getChildAt(0).equals(Aclaim));
@@ -70,6 +80,9 @@ public class Claims_Listing_Test extends ActivityInstrumentationTestCase2<MyClai
 		MyClaimActivity.mode = 1;
 	}
 	
+	/**
+	 * 
+	 */
 	@SuppressWarnings("deprecation")
 	public void testPreConditions() {
         assertNotNull(thisActivity);
@@ -86,16 +99,19 @@ public class Claims_Listing_Test extends ActivityInstrumentationTestCase2<MyClai
         Bclaim.setClaim("Test");
         Cclaim = new Claim("Cclaim");
         Cclaim.setStatus("Proceed");
+        controller = new MyLocalClaimListController2(new ClaimList());
         controller.addClaim(Aclaim);
         controller.addClaim(Bclaim);
         controller.addClaim(Cclaim);
-        claimList.getClaimArrayList().add(Aclaim);
-        claimList.getClaimArrayList().add(Bclaim);
-        claimList.getClaimArrayList().add(Cclaim);
+
+
     }
 
 
 	// US02.01.01
+	/**
+	 * 
+	 */
 	public void testListClaims() {
 		ListView claimlistview = (ListView) thisActivity.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.myClaimsListView); //listView
 		//some problem here
@@ -116,18 +132,28 @@ public class Claims_Listing_Test extends ActivityInstrumentationTestCase2<MyClai
 	}
 	
 	// US02.02.01
+	/**
+	 * 
+	 */
 	public void testSortClaimList() {
 		ListView claimlistview = (ListView) thisActivity.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.myClaimsListView); //listView
-
+		controller = new MyLocalClaimListController2(new ClaimList());
+	    controller.addClaim(Aclaim);
+	    controller.addClaim(Bclaim);
 		assertEquals("index 0 equals", claimlistview.getChildAt(0).equals(Bclaim));
 		assertEquals("index 1 equals", claimlistview.getChildAt(1).equals(Aclaim));
 		
 	}
 	// US01.05.01
+		/**
+		 * 
+		 */
 		public void testCantDeleteClaim() {
-			controller.deleteClaim(1);
-			controller.deleteClaim(0);
-			controller.deleteClaim(2);
+		    controller = new MyLocalClaimListController2(new ClaimList());
+		    controller.addClaim(Aclaim);
+		    assertEquals("No claims", MyLocalClaimListController2.getClaimList()
+					.size(), 1);
+		    controller.deleteClaim(0);
 			assertEquals("No claims", MyLocalClaimListController2.getClaimList()
 					.size(), 0);
 		}
