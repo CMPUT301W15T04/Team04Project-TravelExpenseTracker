@@ -40,8 +40,7 @@ import android.content.Context;
  * @since 2015-03-11
  */
 public class SignInManager {
-	// private static String FILENAME = "UserStatus";
-	public static User user = new User(null);
+	protected static String FILENAME = "UserStatus";
 
 	/**
 	 * constructor of SignInManager
@@ -56,7 +55,7 @@ public class SignInManager {
 	 * @param FILENAME the filename of the file that need to load from
 	 * @return the User that be stored in FILENAME
 	 */
-	public static User loadFromFile(Context context, String FILENAME) {
+	public static User loadFromFile(Context context) {
 		User user = new User(null);
 
 		Gson gson = new Gson();
@@ -88,7 +87,7 @@ public class SignInManager {
 	 * @param context the view that pass in
 	 * @param FILENAME the filename of the file that need to store to
 	 */
-	public static void saveInFile(User user, Context context, String FILENAME) {
+	public static void saveInFile( Context context, User user) {
 
 		Gson gson = new Gson();
 		try {

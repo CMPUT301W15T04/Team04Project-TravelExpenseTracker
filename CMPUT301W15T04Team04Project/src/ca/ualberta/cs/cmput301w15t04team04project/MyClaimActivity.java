@@ -60,7 +60,7 @@ public class MyClaimActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_my_claim);
-		claimList = MyLocalClaimListManager.loadClaimList(this, "local");
+		claimList = MyLocalClaimListManager.loadClaimList(this);
 		controller = new MyLocalClaimListController(claimList);
 
 		actionBar = getActionBar();
@@ -128,7 +128,7 @@ public class MyClaimActivity extends Activity {
 						controller.deleteClaim(indeies.get(finalPosition));
 						MyLocalClaimListManager.saveClaimList(
 								getApplicationContext(),
-								controller.getClaimList(), "local");
+								controller.getClaimList());
 					}
 				});
 

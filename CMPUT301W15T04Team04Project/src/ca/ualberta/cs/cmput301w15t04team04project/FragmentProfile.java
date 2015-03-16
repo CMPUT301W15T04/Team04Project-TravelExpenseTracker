@@ -50,7 +50,7 @@ public class FragmentProfile extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		user = SignInManager.loadFromFile(getActivity(), "UserStatus");
+		user = SignInManager.loadFromFile(getActivity());
 		return inflater.inflate(R.layout.fragment_profile, container, false);
 	}
 
