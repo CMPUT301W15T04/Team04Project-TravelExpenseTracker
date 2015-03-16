@@ -24,37 +24,33 @@ package ca.ualberta.cs.cmput301w15t04team04project.models;
 /**
  * The User model is just a rough User's information simply store set and get
  * all of the User
- *
+ * 
+ * @author Chenrui Lei
  * @author Weijie Sun
  * @version 1.0
  * @since 2015-03-08
+ * 
  */
 
 public class User {
 	private boolean loginStatus = false;
 	private String name = null;
 
+	/*
+	 * Constructor of User
+	 */
 	public User(String userName) {
 		name = userName;
 	}
 
-	/*
-	 * public User(){ }
-	 */
-
-	/**
-	 * The following two method is the getter and setter for loginStatus
-	 * attribute The getter simply get the context in loginStatus The setter
-	 * simply change the boolean loginStatus context
-	 *
-	 * @author Chenrui Lei
-	 * @version 1.0
-	 * @since 2015-03-11
-	 */
+	
 	public boolean getLoginStatus() {
 		return loginStatus;
 	}
 
+	/**
+	 * changeLoginStatus is to change attribute loginStatus under a User
+	 */
 	public void changeLoginStatus() {
 		if (loginStatus) {
 			loginStatus = false;
@@ -63,15 +59,6 @@ public class User {
 		}
 	}
 
-	/**
-	 * The following two method is the getter and setter for name attribute The
-	 * getter simply get the context of name The setter simply change the
-	 * context of name
-	 *
-	 * @author Chenrui Lei
-	 * @version 1.0
-	 * @since 2015-03-11
-	 */
 	public String getName() {
 		return name;
 	}

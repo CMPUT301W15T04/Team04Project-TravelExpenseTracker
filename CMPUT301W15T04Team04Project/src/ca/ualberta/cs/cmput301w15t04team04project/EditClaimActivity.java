@@ -76,7 +76,7 @@ public class EditClaimActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_claim);
 
-		claimList = MyLocalClaimListManager.loadClaimList(this, "local");
+		claimList = MyLocalClaimListManager.loadClaimList(this);
 		controller = new MyLocalClaimListController2(claimList);
 
 		initialisePaging();
@@ -190,7 +190,7 @@ public class EditClaimActivity extends FragmentActivity {
 			claim.setStartDate(calendarfrom.getTime());
 
 			controller.addClaim(claim);
-			MyLocalClaimListManager.saveClaimList(this, claimList, "local");
+			MyLocalClaimListManager.saveClaimList(this, claimList);
 		}
 
 		else {
@@ -202,7 +202,7 @@ public class EditClaimActivity extends FragmentActivity {
 			claim.setEndDate(calendar.getTime());
 			claim.setStartDate(calendarfrom.getTime());
 
-			MyLocalClaimListManager.saveClaimList(this, claimList, "local");
+			MyLocalClaimListManager.saveClaimList(this, claimList);
 
 		}
 

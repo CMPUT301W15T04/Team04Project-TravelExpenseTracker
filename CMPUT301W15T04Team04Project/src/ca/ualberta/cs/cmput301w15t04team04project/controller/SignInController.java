@@ -36,23 +36,21 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.User;
  * @version 1.0
  * @since 2015-03-12
  */
+
 public class SignInController {
 
+	
 	public SignInController() {
-		// TODO Auto-generated constructor stub
+		// constructor stub
 	}
 
 	/**
-	 * storeUserProfile is use to store the user profile
+	 * signIn is use to react when signIn button be clicked
 	 * 
-	 * @author Chenrui Lei
-	 * @version 1.0
+	 * @param context the view that pass in
+	 * @param userName the EditText that user inputed at
 	 * @since 2015-03-12
 	 */
-	public void storeUserProfile(User user, Context context) {
-		SignInManager.saveInFile(user, context, "UserStatus");
-	}
-
 	public void signIn(Context context, EditText userName) {
 		String userNameInput = userName.getText().toString();
 		if (userNameInput.length() == 0) {
@@ -65,21 +63,11 @@ public class SignInController {
 			// SignInActivity.user = user;
 
 			// store the user info
-			storeUserProfile(user, context);
+			SignInManager.saveInFile(context, user);
 
 			// goto the main page
 			Intent intent = new Intent(context, MainActivity.class);
 			context.startActivity(intent);
 		}
 	}
-
-	public void logOut(Context context) {
-		// change the user info as not logged in
-		User user = new User(null);
-		user.setName(null);
-
-		// store the user info
-		storeUserProfile(user, context);
-	}
-
 }

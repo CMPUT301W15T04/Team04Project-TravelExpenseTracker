@@ -34,6 +34,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * SignInActivity is a page that provide a way for user to sign in
+ * 
+ * @author CHENRUI
+ * @author Yufei Zhang
+ * @version 1.0
+ * @since 2015-03-13
+ */
 public class SignInActivity extends Activity {
 	private EditText userName;
 	private User user;
@@ -45,7 +53,6 @@ public class SignInActivity extends Activity {
 	 * 
 	 * @author Chenrui Lei
 	 * @author Yufei Zhang
-	 * @version 2.0
 	 * @since 2015-03-13
 	 */
 	@Override
@@ -54,7 +61,7 @@ public class SignInActivity extends Activity {
 
 		getActionBar().hide();
 		// load the old user
-		user = SignInManager.loadFromFile(this, "UserStatus");
+		user = SignInManager.loadFromFile(this);
 
 		if (user.getLoginStatus() == true) {
 			// skip login page if already loged in
@@ -69,13 +76,14 @@ public class SignInActivity extends Activity {
 	}
 
 	/**
+	 * Call signInController to react the sign in action
+	 * 
+	 * @param v the view of SignInActivity
 	 * 
 	 * @author Chenrui Lei
 	 * @author Yufei Zhang
-	 * @version 1.0
 	 * @since 2015-03-11
 	 */
-
 	public void signIn(View v) {
 		signInConroller.signIn(this, userName);
 		finish();

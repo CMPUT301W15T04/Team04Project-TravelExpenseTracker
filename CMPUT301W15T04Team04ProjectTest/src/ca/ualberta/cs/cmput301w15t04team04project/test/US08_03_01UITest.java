@@ -8,6 +8,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.FragmentMoments;
 import ca.ualberta.cs.cmput301w15t04team04project.FragmentProfile;
 import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController2;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import junit.framework.TestCase;
 //resource from http://blog.denevell.org/android-testing-fragments.html
@@ -17,7 +18,12 @@ public class US08_03_01UITest extends ActivityInstrumentationTestCase2<MainActiv
     private MainActivity thisActivity;
 	private FragmentProfile profilefragment;
 	private FragmentMoments momentfragment;
-    private MyLocalClaimListController controller;
+    private MyLocalClaimListController2 controller;
+	private Claim Aclaim;
+	private Claim Bclaim;
+	private Claim Cclaim;
+
+	
 	
 	public US08_03_01UITest() {
 		super(MainActivity.class);
@@ -52,8 +58,8 @@ public class US08_03_01UITest extends ActivityInstrumentationTestCase2<MainActiv
 	protected void AllClaimDetailsUItest(){
 		ListView listView = (ListView) thisActivity.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.myClaimsListView); //listView
 
-		assertEquals("index 0 equals", listView.getChildAt(0).equals(AClaim));
-		assertEquals("index 1 equals", listView.getChildAt(1).equals(BClaim));
+		assertEquals("index 0 equals", listView.getChildAt(0).equals(Aclaim));
+		assertEquals("index 1 equals", listView.getChildAt(1).equals(Bclaim));
 		
 	}
 	

@@ -83,7 +83,7 @@ public class EditItemActivity extends FragmentActivity {
 		// setContentView(R.layout.fragment_edit_item_1);
 		// setContentView(R.layout.fragment_edit_item_2);
 		initialisePaging();
-		claimList = MyLocalClaimListManager.loadClaimList(this, "local");
+		claimList = MyLocalClaimListManager.loadClaimList(this);
 		Bundle bundle = getIntent().getExtras();
 		claimId = bundle.getInt("myClaimId");
 
@@ -221,7 +221,7 @@ public class EditItemActivity extends FragmentActivity {
 			// controller.addItem(this.item);
 
 			claimList.getClaimArrayList().get(claimId).addItem(this.item);
-			MyLocalClaimListManager.saveClaimList(this, claimList, "local");
+			MyLocalClaimListManager.saveClaimList(this, claimList);
 			Toast.makeText(this, this.item.getItemName(), Toast.LENGTH_LONG)
 					.show();
 			/**
@@ -258,7 +258,7 @@ public class EditItemActivity extends FragmentActivity {
 
 			this.item.setDescription(fragmentEditItem2DiscriptionEditText
 					.getText().toString());
-			MyLocalClaimListManager.saveClaimList(this, claimList, "local");
+			MyLocalClaimListManager.saveClaimList(this, claimList);
 			Toast.makeText(this, this.item.getItemName(), Toast.LENGTH_LONG)
 					.show();
 

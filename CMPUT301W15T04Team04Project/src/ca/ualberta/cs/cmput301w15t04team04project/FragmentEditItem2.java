@@ -38,7 +38,13 @@ import android.view.ViewGroup;
  * @since 2015-03-10
  */
 public class FragmentEditItem2 extends Fragment {
-
+	/**
+	 * This is the onCreateView of initial the view
+	 * 
+	 * @author Weijie Sun
+	 * @version 1.1
+	 * @since 2015-03-15
+	 */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -50,7 +56,13 @@ public class FragmentEditItem2 extends Fragment {
 		// false);
 
 	}
-
+	/**
+	 * This is the onActivityCreated of create Item or Edit item set the original information in the View
+	 * 
+	 * @author Weijie Sun
+	 * @version 1.1
+	 * @since 2015-03-15
+	 */
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);

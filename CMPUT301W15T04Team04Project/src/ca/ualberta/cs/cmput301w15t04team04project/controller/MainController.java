@@ -20,26 +20,39 @@
  */
 package ca.ualberta.cs.cmput301w15t04team04project.controller;
 
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.content.Context;
 
+/**
+ * @author Chenrui Lei
+ * @version 1.0
+ * @since 2015-03-12
+ */
 public class MainController {
 
+	/**
+	 * Constructor
+	 */
 	public MainController() {
 	}
 
-	public void storeUserProfile(User user, Context context) {
-		SignInManager.saveInFile(user, context, "UserStatus");
-	}
-
+	/**
+	 * logOut is use to react when logOut button be clicked
+	 * 
+	 * @param context the view that pass in
+	 * @author Chenrui Lei
+	 */
 	public void logOut(Context context) {
 		// change the user info as not logged in
 		User user = new User(null);
 		user.setName(null);
 
 		// store the user info
-		storeUserProfile(user, context);
+		SignInManager.saveInFile(context, user);
+		
+		// clean the local storage
+		MyLocalClaimListManager.saveClaimList(context, null);
 	}
-
 }
