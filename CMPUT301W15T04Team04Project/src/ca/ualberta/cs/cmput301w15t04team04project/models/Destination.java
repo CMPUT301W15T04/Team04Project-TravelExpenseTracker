@@ -54,10 +54,10 @@ public class Destination {
 	public void setdReason(String dReason) {
 		this.dReason = dReason;
 	}
-	
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return dName;
-	}
+	} 
 
 }

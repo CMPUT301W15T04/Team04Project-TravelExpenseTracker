@@ -21,19 +21,16 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
 import java.util.Calendar;
-import java.util.Date;
+
 import java.util.List;
 import java.util.Vector;
 
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
-import ca.ualberta.cs.cmput301w15t04team04project.adapter.ClaimListAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.PagerAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController;
-import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Currency;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -42,7 +39,6 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -66,12 +62,13 @@ public class EditItemActivity extends FragmentActivity {
 	private Item item;
 	private ClaimList claimList;
 	private int claimId;
-	protected static int addEditItemStatus = 0; //0 add 1 edit
+	protected static int addEditItemStatus = 0; // 0 add 1 edit
 	protected static int itemId;
-	
+
 	/**
 	 * Initializing the activity. Call the initialisePaging() function to allow
 	 * the pager
+	 * 
 	 * @author Weijie Sun
 	 * @version 1.1
 	 * @since 2015-03-13
@@ -89,9 +86,8 @@ public class EditItemActivity extends FragmentActivity {
 		claimList = MyLocalClaimListManager.loadClaimList(this, "local");
 		Bundle bundle = getIntent().getExtras();
 		claimId = bundle.getInt("myClaimId");
-		
-		
-		//itemId = bundle.getInt("MyItemid");
+
+		// itemId = bundle.getInt("MyItemid");
 
 	}
 
@@ -105,10 +101,13 @@ public class EditItemActivity extends FragmentActivity {
 	private void initialisePaging() {
 		// TODO Auto-generated method stub
 		List<Fragment> fragments = new Vector<Fragment>();
-		fragments.add(Fragment.instantiate(this, FragmentEditItem1.class.getName()));
-		fragments.add(Fragment.instantiate(this, FragmentEditItem2.class.getName()));
-		
-		mpageAdapter = new PagerAdapter(this.getSupportFragmentManager(), fragments);
+		fragments.add(Fragment.instantiate(this,
+				FragmentEditItem1.class.getName()));
+		fragments.add(Fragment.instantiate(this,
+				FragmentEditItem2.class.getName()));
+
+		mpageAdapter = new PagerAdapter(this.getSupportFragmentManager(),
+				fragments);
 		pager = (ViewPager) findViewById(R.id.editItemActivityPager);
 		pager.setAdapter(mpageAdapter);
 		setFragmentIndicator();
@@ -145,7 +144,6 @@ public class EditItemActivity extends FragmentActivity {
 		});
 	}
 
-	
 	/**
 	 * active the Menu
 	 * 
@@ -169,11 +167,10 @@ public class EditItemActivity extends FragmentActivity {
 	 */
 	public void confirm(MenuItem item) {
 		/**
-		 * we need to add code here doing the following things:
-		 * 1. Add a new item to the current claim
-		 * 2. Update the changes of the chosen item
+		 * we need to add code here doing the following things: 1. Add a new
+		 * item to the current claim 2. Update the changes of the chosen item
 		 **/
-		
+
 		/**
 		 * this part should be in controller. Chenrui
 		 */
@@ -181,92 +178,103 @@ public class EditItemActivity extends FragmentActivity {
 		EditText itemName = (EditText) findViewById(R.id.itemNameEditText);
 		DatePicker itemDateDatePicker = (DatePicker) findViewById(R.id.itemDateDatePicker2);
 		Calendar calendar = Calendar.getInstance();
-		calendar.set(itemDateDatePicker.getYear(), itemDateDatePicker.getMonth(),
+		calendar.set(itemDateDatePicker.getYear(),
+				itemDateDatePicker.getMonth(),
 				itemDateDatePicker.getDayOfMonth());
-		
+
 		Spinner itemCategorySpinner = (Spinner) findViewById(R.id.itemCategorySpinner);
 		Spinner currencyUnitsSpinner = (Spinner) findViewById(R.id.currencyUnitsSpinner);
 		EditText itemCurrencyEeditText = (EditText) findViewById(R.id.itemCurrencyEeditText);
-		
-		EditText fragmentEditItem2DiscriptionEditText = (EditText) findViewById(R.id.fragmentEditItem2DiscriptionEditText);
-		
-		//create an item
-		
-		if (addEditItemStatus == 0){
-		this.item = new Item(itemName.getText().toString());
-		
-		//put information into this item
-/*		int Year = itemDateDatePicker.getYear();
-		int Month = itemDateDatePicker.getMonth();
-		int DateOfMonth = itemDateDatePicker.getDayOfMonth();*/
-		this.item.setDate(calendar.getTime());
-		
-		this.item.setCategory(itemCategorySpinner.getSelectedItem().toString());
-		
-		String tempAmountStr = itemCurrencyEeditText.getText().toString();
-		float tempAmountFloat = 0;
-		try{
-			tempAmountFloat = Float.valueOf(tempAmountStr);
-		} catch (NumberFormatException e){
-			tempAmountFloat = 0;
-		}
-		Currency tempCurrency = new Currency(currencyUnitsSpinner
-				.getSelectedItem().toString(), tempAmountFloat);
-		this.item.setCurrency(tempCurrency);
-		
-		this.item.setDescription(fragmentEditItem2DiscriptionEditText.getText().toString());
-		
-		//controller.addItem(this.item);
-		
-		claimList.getClaimArrayList().get(claimId).addItem(this.item);
-		MyLocalClaimListManager.saveClaimList(this, claimList, "local");
-		Toast.makeText(this, this.item.getItemName(), Toast.LENGTH_LONG).show();
-		/**
-		 * part end here
-		 */
-		}
-		
-		else{
 
-			this.item = claimList.getClaimArrayList().get(claimId).getItems().get(itemId);
-			this.item.setItemName(itemName.getText().toString());
-			
-/*			int Year = itemDateDatePicker.getYear();
-			int Month = itemDateDatePicker.getMonth();
-			int DateOfMonth = itemDateDatePicker.getDayOfMonth();
-			this.item.setDate(new Date(Year-1900,Month,DateOfMonth));*/
-			
-			this.item.setCategory(itemCategorySpinner.getSelectedItem().toString());
-			
+		EditText fragmentEditItem2DiscriptionEditText = (EditText) findViewById(R.id.fragmentEditItem2DiscriptionEditText);
+
+		// create an item
+
+		if (addEditItemStatus == 0) {
+			this.item = new Item(itemName.getText().toString());
+
+			// put information into this item
+			/*
+			 * int Year = itemDateDatePicker.getYear(); int Month =
+			 * itemDateDatePicker.getMonth(); int DateOfMonth =
+			 * itemDateDatePicker.getDayOfMonth();
+			 */
+			this.item.setDate(calendar.getTime());
+
+			this.item.setCategory(itemCategorySpinner.getSelectedItem()
+					.toString());
+
 			String tempAmountStr = itemCurrencyEeditText.getText().toString();
 			float tempAmountFloat = 0;
-			try{
+			try {
 				tempAmountFloat = Float.valueOf(tempAmountStr);
-			} catch (NumberFormatException e){
+			} catch (NumberFormatException e) {
 				tempAmountFloat = 0;
 			}
 			Currency tempCurrency = new Currency(currencyUnitsSpinner
 					.getSelectedItem().toString(), tempAmountFloat);
 			this.item.setCurrency(tempCurrency);
-			
-			this.item.setDescription(fragmentEditItem2DiscriptionEditText.getText().toString());
-			MyLocalClaimListManager.saveClaimList(this, claimList, "local");
-			Toast.makeText(this, this.item.getItemName(), Toast.LENGTH_LONG).show();
 
-			
-			
+			this.item.setDescription(fragmentEditItem2DiscriptionEditText
+					.getText().toString());
+
+			// controller.addItem(this.item);
+
+			claimList.getClaimArrayList().get(claimId).addItem(this.item);
+			MyLocalClaimListManager.saveClaimList(this, claimList, "local");
+			Toast.makeText(this, this.item.getItemName(), Toast.LENGTH_LONG)
+					.show();
+			/**
+			 * part end here
+			 */
 		}
-		
-		Intent intent = new Intent(EditItemActivity.this, OneClaimActivity.class);
+
+		else {
+
+			this.item = claimList.getClaimArrayList().get(claimId).getItems()
+					.get(itemId);
+			this.item.setItemName(itemName.getText().toString());
+
+			/*
+			 * int Year = itemDateDatePicker.getYear(); int Month =
+			 * itemDateDatePicker.getMonth(); int DateOfMonth =
+			 * itemDateDatePicker.getDayOfMonth(); this.item.setDate(new
+			 * Date(Year-1900,Month,DateOfMonth));
+			 */
+
+			this.item.setCategory(itemCategorySpinner.getSelectedItem()
+					.toString());
+
+			String tempAmountStr = itemCurrencyEeditText.getText().toString();
+			float tempAmountFloat = 0;
+			try {
+				tempAmountFloat = Float.valueOf(tempAmountStr);
+			} catch (NumberFormatException e) {
+				tempAmountFloat = 0;
+			}
+			Currency tempCurrency = new Currency(currencyUnitsSpinner
+					.getSelectedItem().toString(), tempAmountFloat);
+			this.item.setCurrency(tempCurrency);
+
+			this.item.setDescription(fragmentEditItem2DiscriptionEditText
+					.getText().toString());
+			MyLocalClaimListManager.saveClaimList(this, claimList, "local");
+			Toast.makeText(this, this.item.getItemName(), Toast.LENGTH_LONG)
+					.show();
+
+		}
+
+		Intent intent = new Intent(EditItemActivity.this,
+				OneClaimActivity.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		intent.putExtra("myClaimId", claimId);
-		
+
 		startActivity(intent);
-		
+
 		finish();
 	}
-	
+
 	/**
 	 * active the camera button
 	 * 
@@ -276,9 +284,11 @@ public class EditItemActivity extends FragmentActivity {
 	 */
 	public void addReciept(View view) {
 		/**
-		 * we need to add code here doing the following things 
-		 * 1. Add a new reciept and show it on this imageView
+		 * we need to add code here doing the following things 1. Add a new
+		 * reciept and show it on this imageView
 		 **/
-		Toast.makeText(EditItemActivity.this, "Add a Reciept\nWe will finish it\nin project 5." ,Toast.LENGTH_SHORT).show();
+		Toast.makeText(EditItemActivity.this,
+				"Add a Reciept\nWe will finish it\nin project 5.",
+				Toast.LENGTH_SHORT).show();
 	}
 }

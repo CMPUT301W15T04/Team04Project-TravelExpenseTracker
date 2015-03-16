@@ -1,3 +1,23 @@
+/*
+ * Copyright 2015 Weijie Sun
+ * Copyright 2015 Youdong Ma
+ * Copyright 2015 Yufei Zhang
+ * Copyright 2015 Chenrui Lei
+ * Copyright 2015 Yang Zhang
+ * Copyright 2015 Ji Yang
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package ca.ualberta.cs.cmput301w15t04team04project;
 
 import java.util.ArrayList;
@@ -44,58 +64,61 @@ public class FragmentEditItem1 extends Fragment {
 	private int myItemId;
 	private int myClaimId;
 	private Resources res;
-	
-	//private ArrayAdapter<String> categoryAdapter ;
+
+	// private ArrayAdapter<String> categoryAdapter ;
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		
-		return inflater.inflate(R.layout.fragment_edit_item_1, container, false);
-		
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+
+		return inflater
+				.inflate(R.layout.fragment_edit_item_1, container, false);
+
 	}
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		
-		ClaimList claimList = MyLocalClaimListManager.loadClaimList(getActivity(), "local");
+
+		ClaimList claimList = MyLocalClaimListManager.loadClaimList(
+				getActivity(), "local");
 		Bundle bundle = getActivity().getIntent().getExtras();
-		if (bundle.size() == 1){
+		if (bundle.size() == 1) {
 			EditItemActivity.addEditItemStatus = 0;
-		}
-		else if (bundle.size() == 2)
-		{
+		} else if (bundle.size() == 2) {
 			EditItemActivity.addEditItemStatus = 1;
-			
+
 			myClaimId = bundle.getInt("myClaimId");
 			myItemId = bundle.getInt("myItemId");
-			Toast.makeText(getActivity(),"Frag ItemID = " + myItemId, Toast.LENGTH_SHORT).show();
-			
-			Item currentItem = claimList.getClaimArrayList().get(myClaimId).getItems().get(myItemId);
-			
+			Toast.makeText(getActivity(), "Frag ItemID = " + myItemId,
+					Toast.LENGTH_SHORT).show();
+
+			Item currentItem = claimList.getClaimArrayList().get(myClaimId)
+					.getItems().get(myItemId);
+
 			itemName = (TextView) getView().findViewById(R.id.itemNameEditText);
-			datePicker = (DatePicker) getView().findViewById(R.id.itemDateDatePicker2);
-			category = (Spinner) getView().findViewById(R.id.itemCategorySpinner);
-			currencyUnit = (Spinner) getView().findViewById(R.id.currencyUnitsSpinner);
-			amount = (TextView) getView().findViewById(R.id.itemCurrencyEeditText);
-			
+			datePicker = (DatePicker) getView().findViewById(
+					R.id.itemDateDatePicker2);
+			category = (Spinner) getView().findViewById(
+					R.id.itemCategorySpinner);
+			currencyUnit = (Spinner) getView().findViewById(
+					R.id.currencyUnitsSpinner);
+			amount = (TextView) getView().findViewById(
+					R.id.itemCurrencyEeditText);
+
 			// set item name
 			itemName.setText(currentItem.getItemName());
-			
+
 			// set item date
 			int date = currentItem.getDate().getDate();
 			int month = currentItem.getDate().getMonth();
 			int year = currentItem.getDate().getYear() + 1900;
 			datePicker.updateDate(year, month, date);
 
-
 			// set ammount
-			amount.setText(""+currentItem.getCurrency().getAmount());
+			amount.setText("" + currentItem.getCurrency().getAmount());
 
-
-
-			
 			// set item amount
-			//amount.setText(Double.toString(currentItem.getCurrency().getAmount()));
+			// amount.setText(Double.toString(currentItem.getCurrency().getAmount()));
 
 			// set category
 			res = getResources();
@@ -103,16 +126,16 @@ public class FragmentEditItem1 extends Fragment {
 			String selection = currentItem.getCategory();
 			int pick = Arrays.asList(cates).indexOf(selection);
 			category.setSelection(pick);
-			
-			// set currency unit 
+
+			// set currency unit
 			String[] units = res.getStringArray(R.array.currencyUnits);
 			String selection2 = currentItem.getCurrency().getType();
 			int pick2 = Arrays.asList(units).indexOf(selection2);
 			currencyUnit.setSelection(pick2);
-			
+
 			EditItemActivity.itemId = this.myItemId;
 		}
-	
+
 	}
 
 }

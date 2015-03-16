@@ -5,18 +5,15 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ItemListAdapter;
-import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController2;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
-import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Listener;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -26,7 +23,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,10 +36,9 @@ public class OneClaimActivity extends Activity {
 	private TextView itemDate;
 	private TextView category;
 	private TextView descript;
-
+	private OneClaimController2 controller;
 	private TextView approverView;
 	protected static boolean isClaimant = true;
-	private OneClaimController controller;
 	private OneClaimActivity thisActivity = this;
 
 	private Claim claim;
@@ -56,21 +52,22 @@ public class OneClaimActivity extends Activity {
 		setContentView(R.layout.activity_one_claim);
 		approverView = (TextView) findViewById(R.id.testApproverTextView);
 		Bundle extras = getIntent().getExtras();
-		
+
 		claimId = extras.getInt("myClaimId");
-		claimList = MyLocalClaimListManager.loadClaimList(this, "local").getClaimArrayList();
+		claimList = MyLocalClaimListManager.loadClaimList(this, "local")
+				.getClaimArrayList();
 		claim = claimList.get(claimId);
-		
+
 		final ArrayList<Item> items = claim.getItems();
-		
+
 		ListView itemlistview = (ListView) findViewById(R.id.OneCaimItemListView);
-		controller = new OneClaimController(claim);
+		controller = new OneClaimController2(claim);
 		final ItemListAdapter itemAdapter = new ItemListAdapter(this,
 				android.R.layout.simple_list_item_1, items);
 
 		itemlistview.setAdapter(itemAdapter);
 		itemAdapter.notifyDataSetChanged();
-		
+
 		checkUserType();
 		controller.getClaim().addListener(new Listener() {
 			@Override
@@ -82,13 +79,13 @@ public class OneClaimActivity extends Activity {
 				itemAdapter.notifyDataSetChanged();
 			}
 		});
-		
+
 		itemlistview.setOnItemLongClickListener(new OnItemLongClickListener() {
 
 			@Override
 			public boolean onItemLongClick(AdapterView<?> adapterView,
 					View view, int position, long id) {
-				//final int finalPosition = position;
+				// final int finalPosition = position;
 				itemId = position;
 				// Claim claim = list.get(finalPosition);
 				AlertDialog.Builder adb = new AlertDialog.Builder(
@@ -104,14 +101,17 @@ public class OneClaimActivity extends Activity {
 						// manager.saveClaimList(controller.getcClaimList());
 					}
 				});
-				
+
 				adb.setNeutralButton("Edit", new OnClickListener() {
 
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						// TODO Auto-generated method stub
-						Toast.makeText(OneClaimActivity.this,"OCA ItemID = " + itemId, Toast.LENGTH_SHORT).show();
-						Intent myIntent = new Intent(OneClaimActivity.this,EditItemActivity.class);
+						Toast.makeText(OneClaimActivity.this,
+								"OCA ItemID = " + itemId, Toast.LENGTH_SHORT)
+								.show();
+						Intent myIntent = new Intent(OneClaimActivity.this,
+								EditItemActivity.class);
 						myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 						myIntent.putExtra("myItemId", itemId);
@@ -299,14 +299,13 @@ public class OneClaimActivity extends Activity {
 
 		// set the Edit Button on the Dialog
 		/*
-		adb.setNeutralButton("Edit", new OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-				Toast.makeText(OneClaimActivity.this, "Clicked On Edit",Toast.LENGTH_SHORT).show();
-				Intent intent = new Intent(OneClaimActivity.this, EditItemActivity.class);
-				startActivity(intent);
-			}
-		});
-		*/
+		 * adb.setNeutralButton("Edit", new OnClickListener() { public void
+		 * onClick(DialogInterface dialog, int which) {
+		 * Toast.makeText(OneClaimActivity.this,
+		 * "Clicked On Edit",Toast.LENGTH_SHORT).show(); Intent intent = new
+		 * Intent(OneClaimActivity.this, EditItemActivity.class);
+		 * startActivity(intent); } });
+		 */
 
 		adb.setCancelable(true);
 		adb.show();

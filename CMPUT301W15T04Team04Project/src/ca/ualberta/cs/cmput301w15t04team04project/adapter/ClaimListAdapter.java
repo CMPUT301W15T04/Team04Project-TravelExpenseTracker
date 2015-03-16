@@ -42,52 +42,55 @@ public class ClaimListAdapter extends ArrayAdapter<Claim> {
 		super(context, resource, objects);
 		this.claimList = objects;
 	}
-	
+
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		if (convertView == null) {
 			LayoutInflater inflater = LayoutInflater.from(this.getContext());
 			holder = new ViewHolder();
 			convertView = inflater.inflate(R.layout.single_claim, null);
-		}else {
+		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		
+
 		claimList.get(position);
-		
+
 		holder.startMonth = (TextView) convertView
 				.findViewById(R.id.singleClaimStartMonthTextView);
 		holder.startDate = (TextView) convertView
 				.findViewById(R.id.singleClaimStartDateTextView);
 		holder.startYear = (TextView) convertView
 				.findViewById(R.id.singleClaimStartYearTextView);
-		holder.tags = (TextView) convertView
-				.findViewById(R.id.desplayTags);
+		holder.tags = (TextView) convertView.findViewById(R.id.desplayTags);
 		holder.destination = (TextView) convertView
 				.findViewById(R.id.singleClaimDistinationDisplayTextView);
 		holder.claimState = (TextView) convertView
 				.findViewById(R.id.claimState);
 		holder.totalAmount = (TextView) convertView
 				.findViewById(R.id.totalAmountDisplay);
-		
+
 		convertView.setTag(holder);
-		
+
 		Claim claim = claimList.get(position);
-		if (claim!=null){
-			//claim = new Claim("Testing");
+		if (claim != null) {
+			// claim = new Claim("Testing");
 		}
-		
-		
-		holder.startYear.setText(""+(claim.getStartDate().getYear()+1900));
-		holder.startMonth.setText(new DateFormatSymbols().getShortMonths()[claim.getStartDate().getMonth()]);
-		holder.startDate.setText(" "+claim.getStartDate().getDate()+",");
+
+		holder.startYear.setText("" + (claim.getStartDate().getYear() + 1900));
+		holder.startMonth
+				.setText(new DateFormatSymbols().getShortMonths()[claim
+						.getStartDate().getMonth()]);
+		holder.startDate.setText(" " + claim.getStartDate().getDate() + ",");
 		holder.tags.setText(claim.TagListToString());
-		holder.destination.setText(claim.DestinationListToString());//"destination"); //claim.getDestination());
-		holder.claimState.setText(claim.getStatus());//"In Progress");  //claim.getStatus();
-		holder.totalAmount.setText(claim.TotalCurrencyListToString());//"$ CAD 88.88"); //claim.getAmount();
-		
+		holder.destination.setText(claim.DestinationListToString());// "destination");
+																	// //claim.getDestination());
+		holder.claimState.setText(claim.getStatus());// "In Progress");
+														// //claim.getStatus();
+		holder.totalAmount.setText(claim.TotalCurrencyListToString());// "$ CAD 88.88");
+																		// //claim.getAmount();
+
 		return convertView;
-		
+
 	}
 
 	class ViewHolder {

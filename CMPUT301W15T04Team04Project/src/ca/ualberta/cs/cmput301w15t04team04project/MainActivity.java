@@ -1,23 +1,23 @@
 /*
-* Copyright 2015 Weijie Sun
-* Copyright 2015 Youdong Ma
-* Copyright 2015 Yufei Zhang
-* Copyright 2015 Chenrui Lei
-* Copyright 2015 Yang Zhang
-* Copyright 2015 Ji Yang
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright 2015 Weijie Sun
+ * Copyright 2015 Youdong Ma
+ * Copyright 2015 Yufei Zhang
+ * Copyright 2015 Chenrui Lei
+ * Copyright 2015 Yang Zhang
+ * Copyright 2015 Ji Yang
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 package ca.ualberta.cs.cmput301w15t04team04project;
 
@@ -76,30 +76,28 @@ import android.widget.AdapterView.OnItemLongClickListener;
 public class MainActivity extends FragmentActivity {
 	private ActionBar actionBar;
 	private SignInController signInController = new SignInController();
-	
+
 	private RadioGroup bottom_Rg;
 	private PagerAdapter mpageAdapter;
 	private ViewPager pager;
-	
-	//private int num = -1;
+
+	// private int num = -1;
 	private MainController controller = new MainController();
 	private MainActivity thisActivity = this;
-	public List<Fragment> fragments ;
+	public List<Fragment> fragments;
 
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//searchClaim.setVisible(true);
+		// searchClaim.setVisible(true);
 		setContentView(R.layout.activity_main);
-		
+
 		actionBar = getActionBar();
 		actionBar.setTitle("My Local Claims");
 
 		initialisePaging();
 	}
 
-	
 	/**
 	 * set initialisePaging
 	 * 
@@ -111,17 +109,19 @@ public class MainActivity extends FragmentActivity {
 	private void initialisePaging() {
 		// TODO Auto-generated method stub
 		fragments = new Vector<Fragment>();
-		fragments.add(Fragment.instantiate(this,FragmentProfile.class.getName()));
-		fragments.add(Fragment.instantiate(this, FragmentMoments.class.getName()));
-		
-		mpageAdapter = new PagerAdapter(this.getSupportFragmentManager(),fragments);
+		fragments.add(Fragment.instantiate(this,
+				FragmentProfile.class.getName()));
+		fragments.add(Fragment.instantiate(this,
+				FragmentMoments.class.getName()));
+
+		mpageAdapter = new PagerAdapter(this.getSupportFragmentManager(),
+				fragments);
 		pager = (ViewPager) findViewById(R.id.mainActivityPager);
 		pager.setAdapter(mpageAdapter);
 		setFragmentIndicator();
-		//num = pager.getCurrentItem();
+		// num = pager.getCurrentItem();
 	}
 
-	
 	/**
 	 * setFragmentIndicator
 	 * 
@@ -143,13 +143,13 @@ public class MainActivity extends FragmentActivity {
 				case R.id.myProfileMenuButton:
 					pager.setCurrentItem(0);
 					actionBar.setTitle("Me");
-					//actionBar.setIcon(R.drawable.user2_icon);
+					// actionBar.setIcon(R.drawable.user2_icon);
 					break;
 
 				case R.id.momentsMenuButton:
 					pager.setCurrentItem(1);
 					actionBar.setTitle("Moments");
-					//actionBar.setIcon(R.drawable.ic_launcher);
+					// actionBar.setIcon(R.drawable.ic_launcher);
 					break;
 
 				default:
@@ -165,17 +165,17 @@ public class MainActivity extends FragmentActivity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-	
+
 	/**
-	* Modify the following code
-	*
-	* @author  Chenrui Lei
-	* @version 1.0
-	* @since   2015-03-11
-	* @author  Yufei Zhang
-	* @version 1.1
-	* @since 2015-03-13
-	*/
+	 * Modify the following code
+	 *
+	 * @author Chenrui Lei
+	 * @version 1.0
+	 * @since 2015-03-11
+	 * @author Yufei Zhang
+	 * @version 1.1
+	 * @since 2015-03-13
+	 */
 	public void logOut(MenuItem item) {
 		/**
 		 * You need to move the sinInController to the mainController
@@ -185,77 +185,79 @@ public class MainActivity extends FragmentActivity {
 		// go back to signIn page
 		Intent intent3 = new Intent(MainActivity.this, SignInActivity.class);
 		startActivity(intent3);
-		
+
 		// stop current view
 		finish();
 	}
-	
+
 	/**
-	* Modify the following code
-	*
-	* @author  Chenrui Lei
-	* @version 1.0
-	* @since   2015-03-11
-	* @author  Yufei Zhang
-	* @version 1.1
-	* @since 2015-03-13
-	*/
+	 * Modify the following code
+	 *
+	 * @author Chenrui Lei
+	 * @version 1.0
+	 * @since 2015-03-11
+	 * @author Yufei Zhang
+	 * @version 1.1
+	 * @since 2015-03-13
+	 */
 	public void showProgressing(View view) {
 		MyClaimActivity.mode = 0;
 		Intent intent = new Intent(MainActivity.this, MyClaimActivity.class);
 		startActivity(intent);
 	}
-	
+
 	/**
-	* Modify the following code
-	*
-	* @author  Chenrui Lei
-	* @version 1.0
-	* @since   2015-03-11
-	* @author  Yufei Zhang
-	* @version 1.1
-	* @since 2015-03-13
-	*/
+	 * Modify the following code
+	 *
+	 * @author Chenrui Lei
+	 * @version 1.0
+	 * @since 2015-03-11
+	 * @author Yufei Zhang
+	 * @version 1.1
+	 * @since 2015-03-13
+	 */
 	public void showSubmitted(View view) {
 		MyClaimActivity.mode = 1;
 		Intent intent = new Intent(MainActivity.this, MyClaimActivity.class);
 		startActivity(intent);
 	}
-	
+
 	/**
-	* Modify the following code
-	*
-	* @author  Chenrui Lei
-	* @version 1.0
-	* @since   2015-03-11
-	* @author  Yufei Zhang
-	* @version 1.1
-	* @since 2015-03-13
-	*/
+	 * Modify the following code
+	 *
+	 * @author Chenrui Lei
+	 * @version 1.0
+	 * @since 2015-03-11
+	 * @author Yufei Zhang
+	 * @version 1.1
+	 * @since 2015-03-13
+	 */
 	public void showApproved(View view) {
 		MyClaimActivity.mode = 2;
 		Intent intent = new Intent(MainActivity.this, MyClaimActivity.class);
 		startActivity(intent);
 	}
-	
+
 	/**
-	* Modify the following code
-	*
-	* @author  Chenrui Lei
-	* @version 1.0
-	* @since   2015-03-11
-	* @author  Yufei Zhang
-	* @version 1.1
-	* @since 2015-03-13
-	*/
+	 * Modify the following code
+	 *
+	 * @author Chenrui Lei
+	 * @version 1.0
+	 * @since 2015-03-11
+	 * @author Yufei Zhang
+	 * @version 1.1
+	 * @since 2015-03-13
+	 */
 	public void showSaved(View view) {
 		MyClaimActivity.mode = 3;
-		Toast.makeText(MainActivity.this, "This part will be done in project 5" ,Toast.LENGTH_SHORT).show();
+		Toast.makeText(MainActivity.this,
+				"This part will be done in project 5", Toast.LENGTH_SHORT)
+				.show();
 		/**
 		 * We will finish this part in project 5
-		 
-		Intent intent = new Intent(MainActivity.this, MyClaimActivity.class);
-		startActivity(intent);
-		*/
+		 * 
+		 * Intent intent = new Intent(MainActivity.this, MyClaimActivity.class);
+		 * startActivity(intent);
+		 */
 	}
 }

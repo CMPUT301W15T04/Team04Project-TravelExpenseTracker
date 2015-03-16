@@ -74,32 +74,30 @@ public class MyLocalClaimListController {
 	 * @version 1.0
 	 * @since 2015-03-12
 	 */
-	
 
 	@SuppressWarnings("null")
 	public ArrayList<Claim> getClaimsByIndex(ArrayList<Integer> indexList) {
 		ArrayList<Claim> claims = new ArrayList<Claim>();
-		for (int i = 0; i < indexList.size(); i++){
+		for (int i = 0; i < indexList.size(); i++) {
 			claims.add(getClaims().get(indexList.get(i)));
 		}
 		return claims;
 	}
-	
-	public ArrayList<Integer> getIndexList(String string){
+
+	public ArrayList<Integer> getIndexList(String string) {
 		ArrayList<Integer> indexList = new ArrayList<Integer>();
-		for (int i = 0; i < getClaims().size(); i++){
-			if (getClaims().get(i).getStatus().equals(string)){
+		for (int i = 0; i < getClaims().size(); i++) {
+			if (getClaims().get(i).getStatus().equals(string)) {
 				indexList.add(i);
 			}
 		}
 		return indexList;
 	}
-	
+
 	public ArrayList<Claim> getClaims() {
 
 		return getClaimList().getClaimArrayList();
 	}
-
 
 	public void deleteClaim(int index) {
 		getClaims().remove(index);

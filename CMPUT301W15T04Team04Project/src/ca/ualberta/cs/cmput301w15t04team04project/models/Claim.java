@@ -41,7 +41,7 @@ public class Claim {
 
 	protected String claimName;
 	protected Date startDate;
-	protected Date endDate;	
+	protected Date endDate;
 	protected String status;
 	protected String description;
 	protected ArrayList<Destination> destination;
@@ -52,7 +52,7 @@ public class Claim {
 	protected User ClaimiantName;
 	protected String Comment;
 	protected ArrayList<Currency> totalCurrency;
-	
+
 	/**
 	 * The constructor of the class
 	 * 
@@ -68,20 +68,22 @@ public class Claim {
 		tag = new ArrayList<String>();
 		status = "In Progress";
 		totalCurrency = new ArrayList<Currency>();
-		startDate = new Date(System.currentTimeMillis()); // only for test. 2015-03-14 Chenrui
+		startDate = new Date(System.currentTimeMillis()); // only for test.
+															// 2015-03-14
+															// Chenrui
 	}
-	
+
 	/**
-     * Returns the string representation of the destination list. 
-     * The presentation has a specific format. Elements
-     * are separated by '\n' (new line).
-     *
-     * @return the string representation of this.destination.
-     * 
-     * @author Chenrui Lei
-     * @since  2015-03-14
-     */
-	public String DestinationListToString(){
+	 * Returns the string representation of the destination list. The
+	 * presentation has a specific format. Elements are separated by '\n' (new
+	 * line).
+	 *
+	 * @return the string representation of this.destination.
+	 * 
+	 * @author Chenrui Lei
+	 * @since 2015-03-14
+	 */
+	public String DestinationListToString() {
 		String out = "";
 		if (destination.size() != 0) {
 			out += destination.get(0).toString();
@@ -94,18 +96,18 @@ public class Claim {
 		}
 		return out;
 	}
-	
+
 	/**
-     * Returns the string representation of the totalCurrency list. 
-     * The presentation has a specific format. Elements
-     * are separated by '\n' (new line).
-     *
-     * @return the string representation of this.totalCurrency.
-     * 
-     * @author Chenrui Lei
-     * @since  2015-03-14
-     */
-	public String TagListToString(){
+	 * Returns the string representation of the totalCurrency list. The
+	 * presentation has a specific format. Elements are separated by '\n' (new
+	 * line).
+	 *
+	 * @return the string representation of this.totalCurrency.
+	 * 
+	 * @author Chenrui Lei
+	 * @since 2015-03-14
+	 */
+	public String TagListToString() {
 		String out = "";
 		if (tag.size() != 0) {
 			out += tag.get(0).toString();
@@ -118,18 +120,18 @@ public class Claim {
 		}
 		return out;
 	}
-	
+
 	/**
-     * Returns the string representation of the totalCurrency list. 
-     * The presentation has a specific format. Elements
-     * are separated by '\n' (new line).
-     *
-     * @return the string representation of this.totalCurrency.
-     * 
-     * @author Chenrui Lei
-     * @since  2015-03-14
-     */
-	public String TotalCurrencyListToString(){
+	 * Returns the string representation of the totalCurrency list. The
+	 * presentation has a specific format. Elements are separated by '\n' (new
+	 * line).
+	 *
+	 * @return the string representation of this.totalCurrency.
+	 * 
+	 * @author Chenrui Lei
+	 * @since 2015-03-14
+	 */
+	public String TotalCurrencyListToString() {
 		String out = "";
 		if (totalCurrency.size() != 0) {
 			out += totalCurrency.get(0).toString();
@@ -142,12 +144,12 @@ public class Claim {
 		}
 		return out;
 	}
-	
+
 	public ArrayList<Currency> getTotalCurrency() {
 		// TODO Auto-generated method stub
 		return this.totalCurrency;
 	}
-	
+
 	public void setTotalCurrency(ArrayList<Currency> totalCurrency) {
 		this.totalCurrency = totalCurrency;
 	}
@@ -158,21 +160,22 @@ public class Claim {
 	 * @param newdestination
 	 *            the newdestination of this claim
 	 */
-	public void addDestionation(Destination newdestination){
+	public void addDestionation(Destination newdestination) {
 		destination.add(newdestination);
-		
+
 	}
-	
+
 	/**
 	 * removeDestination of this claim
 	 * 
 	 * @param olddestination
 	 *            the old destination need to be removed of this claim
 	 */
-	public void removeDestination(Destination olddestination){
+	public void removeDestination(Destination olddestination) {
 		destination.remove(olddestination);
-		
+
 	}
+
 	/**
 	 * get the Comment of this claim
 	 * 
@@ -182,6 +185,7 @@ public class Claim {
 	public String getComment() {
 		return Comment;
 	}
+
 	/**
 	 * get the Comment of this claim
 	 * 
@@ -221,6 +225,7 @@ public class Claim {
 	public User getApproverName() {
 		return ApproverName;
 	}
+
 	/**
 	 * set the ApproverName of this claim
 	 * 
@@ -261,7 +266,7 @@ public class Claim {
 	 *            the added item .
 	 */
 	public void addItem(Item aItem) {
-		items.add(0,aItem);
+		items.add(0, aItem);
 		notifyListener();
 	}
 
@@ -441,8 +446,8 @@ public class Claim {
 	}
 
 	/**
-	 * get the tag of this claim
-	 * s
+	 * get the tag of this claim s
+	 * 
 	 * @return tag
 	 */
 	public ArrayList<String> getTag() {
@@ -466,6 +471,6 @@ public class Claim {
 	 */
 	public ArrayList<Destination> getDestination() {
 		return destination;
-	}	
+	}
 
 }

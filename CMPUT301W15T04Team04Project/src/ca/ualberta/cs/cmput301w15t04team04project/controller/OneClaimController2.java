@@ -18,11 +18,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package ca.ualberta.cs.cmput301w15t04team04project.controller;
 
-package ca.ualberta.cs.cmput301w15t04team04project.models;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 
-public interface Listener {
+public class OneClaimController2 extends OneClaimController {
 
-	public void update();
+	public OneClaimController2() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-} 
+	public OneClaimController2(Claim claim) {
+		super(claim);
+		// TODO Auto-generated constructor stub
+	}
+
+}

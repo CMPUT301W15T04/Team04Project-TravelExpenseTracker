@@ -1,23 +1,23 @@
 /*
-* Copyright 2015 Weijie Sun
-* Copyright 2015 Youdong Ma
-* Copyright 2015 Yufei Zhang
-* Copyright 2015 Chenrui Lei
-* Copyright 2015 Yang Zhang
-* Copyright 2015 Ji Yang
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright 2015 Weijie Sun
+ * Copyright 2015 Youdong Ma
+ * Copyright 2015 Yufei Zhang
+ * Copyright 2015 Chenrui Lei
+ * Copyright 2015 Yang Zhang
+ * Copyright 2015 Ji Yang
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 /**
  * @file XListView.java
  * @package me.maxwin.view
@@ -27,6 +27,7 @@
  * 		Implement IXListViewListener, and see stopRefresh() / stopLoadMore().
  */
 package ca.ualberta.cs.cmput301w15t04team04project.View;
+
 //https://github.com/mayoudong1993/XListView-Android 2015-03-10
 import ca.ualberta.cs.cmput301w15t04team04project.R;
 import android.content.Context;
@@ -67,7 +68,7 @@ public class XListView extends ListView implements OnScrollListener {
 	private boolean mEnablePullLoad;
 	private boolean mPullLoading;
 	private boolean mIsFooterReady = false;
-	
+
 	// total list items, used to detect is at the bottom of listview.
 	private int mTotalItemCount;
 
@@ -164,13 +165,15 @@ public class XListView extends ListView implements OnScrollListener {
 		if (!mEnablePullLoad) {
 			mFooterView.hide();
 			mFooterView.setOnClickListener(null);
-			//make sure "pull up" don't show a line in bottom when listview with one page 
+			// make sure "pull up" don't show a line in bottom when listview
+			// with one page
 			setFooterDividersEnabled(false);
 		} else {
 			mPullLoading = false;
 			mFooterView.show();
 			mFooterView.setState(XListViewFooter.STATE_NORMAL);
-			//make sure "pull up" don't show a line in bottom when listview with one page  
+			// make sure "pull up" don't show a line in bottom when listview
+			// with one page
 			setFooterDividersEnabled(true);
 			// both "pull up" and "click" will invoke load more.
 			mFooterView.setOnClickListener(new OnClickListener() {
@@ -266,7 +269,7 @@ public class XListView extends ListView implements OnScrollListener {
 		}
 		mFooterView.setBottomMargin(height);
 
-//		setSelection(mTotalItemCount - 1); // scroll to bottom
+		// setSelection(mTotalItemCount - 1); // scroll to bottom
 	}
 
 	private void resetFooterHeight() {
@@ -327,8 +330,8 @@ public class XListView extends ListView implements OnScrollListener {
 			} else if (getLastVisiblePosition() == mTotalItemCount - 1) {
 				// invoke load more.
 				if (mEnablePullLoad
-				    && mFooterView.getBottomMargin() > PULL_LOAD_MORE_DELTA
-				    && !mPullLoading) {
+						&& mFooterView.getBottomMargin() > PULL_LOAD_MORE_DELTA
+						&& !mPullLoading) {
 					startLoadMore();
 				}
 				resetFooterHeight();

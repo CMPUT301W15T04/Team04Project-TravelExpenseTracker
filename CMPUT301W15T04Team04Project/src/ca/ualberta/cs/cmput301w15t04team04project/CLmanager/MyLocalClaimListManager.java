@@ -1,3 +1,23 @@
+/*
+ * Copyright 2015 Weijie Sun
+ * Copyright 2015 Youdong Ma
+ * Copyright 2015 Yufei Zhang
+ * Copyright 2015 Chenrui Lei
+ * Copyright 2015 Yang Zhang
+ * Copyright 2015 Ji Yang
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package ca.ualberta.cs.cmput301w15t04team04project.CLmanager;
 
 import java.io.FileInputStream;
@@ -15,15 +35,14 @@ import com.google.gson.reflect.TypeToken;
 import android.content.Context;
 
 public class MyLocalClaimListManager {
-	
-	public MyLocalClaimListManager()	{
+
+	public MyLocalClaimListManager() {
 	}
-	
-	
-	public static void saveClaimList(Context context,ClaimList claimList, String FILENAME){
+
+	public static void saveClaimList(Context context, ClaimList claimList,
+			String FILENAME) {
 		Gson gson = new Gson();
-		try
-		{
+		try {
 			FileOutputStream fos = context.openFileOutput(FILENAME, 0);
 			OutputStreamWriter osw = new OutputStreamWriter(fos);
 			gson.toJson(claimList, osw);
@@ -35,13 +54,14 @@ public class MyLocalClaimListManager {
 			e.printStackTrace();
 		}
 	}
-	
-	public static ClaimList loadClaimList(Context context, String FILENAME){
+
+	public static ClaimList loadClaimList(Context context, String FILENAME) {
 		ClaimList claimList = new ClaimList();
 		Gson gson = new Gson();
-		try{
+		try {
 			FileInputStream fis = context.openFileInput(FILENAME);
-			Type listType = new TypeToken<ClaimList>(){}.getType();
+			Type listType = new TypeToken<ClaimList>() {
+			}.getType();
 			InputStreamReader isr = new InputStreamReader(fis);
 			claimList = gson.fromJson(isr, listType);
 			fis.close();
@@ -50,11 +70,11 @@ public class MyLocalClaimListManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		if (claimList == null){
+
+		if (claimList == null) {
 			claimList = new ClaimList();
 		}
 		return claimList;
-		
+
 	}
 }

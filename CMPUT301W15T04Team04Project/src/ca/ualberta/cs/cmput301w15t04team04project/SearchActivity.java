@@ -20,41 +20,38 @@ import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
 /**
- * The mission of SearchActivity are:
- * 1. The users can be both claimants and approvers.
- * 2. Users can search a claim by tag.
- * 3. Users can search a claim by some keywords.
+ * The mission of SearchActivity are: 1. The users can be both claimants and
+ * approvers. 2. Users can search a claim by tag. 3. Users can search a claim by
+ * some keywords.
+ * 
  * @author Yufei Zhang
  * @version 1.0
  * @since 2015-03-12
  */
 public class SearchActivity extends Activity {
-	
+
 	// An array of strings to populate drop down list */
-	
+
 	/**
 	 * The following String[] is using for store the contact Tags.
 	 * **/
-	String[] contectTags = new String[] {
-		"Tag",
-		"Friend",
-		"Classmate"
-		,"A1","A2","A3","A4","A5","A6","A7"
-		,"A8","A9","A10","A11","A12","A13","A14"
-		,"A15","A16","A17","A18","A19","A20","A21"
-	};
+	String[] contectTags = new String[] { "Tag", "Friend", "Classmate", "A1",
+			"A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11",
+			"A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20",
+			"A21" };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
-		
+
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setIcon(R.drawable.ic_action_search);
 
 		Spinner spinner = (Spinner) findViewById(R.id.constactTagsSpinner);
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(), 
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+				getBaseContext(),
 				android.R.layout.simple_spinner_dropdown_item, contectTags);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
@@ -62,6 +59,7 @@ public class SearchActivity extends Activity {
 
 	/**
 	 * This boolean function is to activate the option menu.
+	 * 
 	 * @author Yufei Zhang
 	 * @version 1.0
 	 * @since 2015-03-12
@@ -70,14 +68,15 @@ public class SearchActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.search, menu);
-		
+
 		return super.onCreateOptionsMenu(menu);
-		//return true;
+		// return true;
 	}
 
 	public void cancle(View view) {
-		Toast.makeText(SearchActivity.this, "We need to add search function" ,Toast.LENGTH_SHORT).show();
+		Toast.makeText(SearchActivity.this, "We need to add search function",
+				Toast.LENGTH_SHORT).show();
 		finish();
 	}
-	
+
 }
