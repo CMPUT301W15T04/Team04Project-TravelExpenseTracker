@@ -8,6 +8,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.FragmentProfile;
 import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.OneClaimActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController2;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController2;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
@@ -17,7 +18,7 @@ public class US08_04_01 extends ActivityInstrumentationTestCase2<OneClaimActivit
 	//private FragmentProfile profilefragment;
 	private Claim claim ;
 	private MyLocalClaimListController2 controller;
-	private
+	private OneClaimController2 itemcontroller;
 	private Item item;
 	private Date date;
 	private Calendar calender = Calendar.getInstance();;
@@ -51,11 +52,14 @@ public class US08_04_01 extends ActivityInstrumentationTestCase2<OneClaimActivit
         item.setDate(date);
         String description = "testdescription";
         item.setDescription(description);
-        
+        approver = new User("approver");
 	}
 	
 	protected void AllItemDetailofSubmittedClaim(){
 		
+		assertEquals("Name is equal", "approver", item.getItemName());
+		assertTrue(item.getDate().equals(date));
+		assertEquals("description", "testdescription", item.getDescription());
 		
 		
 	}
