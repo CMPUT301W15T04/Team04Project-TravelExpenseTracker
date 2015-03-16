@@ -23,6 +23,8 @@ package ca.ualberta.cs.cmput301w15t04team04project.test;
 import java.util.Date;
 
 import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.MyClaimActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.OneClaimActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
@@ -37,7 +39,7 @@ import android.widget.ListView;
 * @version 1.0
 * @since   2015-03-09
 */
-public class Approver_02_Test extends ActivityInstrumentationTestCase2<MainActivity>{
+public class Approver_02_Test extends ActivityInstrumentationTestCase2<MyClaimActivity>{
 	/**
 	* The Approver_02_Test method is extend the super class MainActivity
 	*
@@ -45,7 +47,7 @@ public class Approver_02_Test extends ActivityInstrumentationTestCase2<MainActiv
 	* @version 1.0
 	* @since   2015-03-08
 	*/
-	public Approver_02_Test(Class<MainActivity> activityClass) {
+	public Approver_02_Test(Class<MyClaimActivity> activityClass) {
 		super(activityClass);
 		// TODO Auto-generated constructor stub
 	}
@@ -63,9 +65,9 @@ public class Approver_02_Test extends ActivityInstrumentationTestCase2<MainActiv
 		Claim AClaim = new Claim("A");
 		Claim BClaim = new Claim("B");
 		Claim CClaim = new Claim("C");
-		testClaimList.addClaim(AClaim);
-		testClaimList.addClaim(BClaim);
-		testClaimList.addClaim(CClaim);
+		testClaimList.getClaimArrayList().add(AClaim);
+		testClaimList.getClaimArrayList().add(BClaim);
+		testClaimList.getClaimArrayList().add(CClaim);
 		AClaim.setStatus("Submitted");
 		BClaim.setStatus("Submitted");
 		AClaim.setClaim("1");
@@ -81,7 +83,7 @@ public class Approver_02_Test extends ActivityInstrumentationTestCase2<MainActiv
 		BClaim.setStartDate(Bdate);
 		CClaim.setStartDate(Cdate);
 		
-		ListView listview = (ListView) findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.MainClaimListView);  
+		ListView listview = (ListView) getActivity().findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.myClaimsListView);  
 		
 		assertEquals("index 0 equals", listview.getChildAt(0).equals(AClaim));
 		assertEquals("index 1 equals", listview.getChildAt(1).equals(BClaim));

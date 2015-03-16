@@ -20,18 +20,26 @@
  */
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import java.io.File;
+
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.webkit.WebView.FindListener;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +56,9 @@ public class FragmentEditItem2 extends Fragment {
 	private int myClaimId;
 	private TextView itemDescription;
 
+    private Uri imageFileUri;
+    private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
+	
 	/**
 	 * This is the onCreateView of initial the view
 	 * 
@@ -59,11 +70,19 @@ public class FragmentEditItem2 extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		return inflater
-				.inflate(R.layout.fragment_edit_item_2, container, false);
 
 		// return inflater.inflate(R.layout.fragment_edit_item_2, container,
 		// false);
+		View view =inflater.inflate(R.layout.fragment_edit_item_2, container, false);        
+		ImageButton button = (ImageButton) view.findViewById(R.id.addRecieptImageButton);
+        OnClickListener listener = new OnClickListener() {
+            public void onClick(View v){
+                takeAPhoto();
+            }
+        };
+        button.setOnClickListener(listener);
+
+		return view;
 
 	}
 	/**
@@ -97,5 +116,22 @@ public class FragmentEditItem2 extends Fragment {
 		}
 		
 	}
-
+	
+	 public void takeAPhoto() {
+	        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+	        
+	        String folder = Environment.getExternalStorageDirectory().getAbsolutePath() + "/tmp";
+	        File folderF = new File(folder);
+	        if (!folderF.exists()) {
+	            folderF.mkdir();
+	        }
+	        
+	        String imageFilePath = folder + "/" + String.valueOf(System.currentTimeMillis()) + "jpg";
+	        File imageFile = new File(imageFilePath);
+	        imageFileUri = Uri.fromFile(imageFile);
+	        
+	        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageFileUri);
+	        startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
+	    }
 }
+	

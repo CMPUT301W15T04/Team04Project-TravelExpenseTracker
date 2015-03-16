@@ -90,7 +90,7 @@ public final class R {
         public static final int action_settings=0x7f0a008d;
         public static final int addCommentItemEditText=0x7f0a002f;
         public static final int addCommentsEditText=0x7f0a0011;
-        public static final int addRecieptImageView=0x7f0a005f;
+        public static final int addRecieptImageButton=0x7f0a005f;
         public static final int approvedClaimsTextView=0x7f0a0064;
         public static final int cancleSearchTextView=0x7f0a006c;
         public static final int claimDescriptionTextView=0x7f0a004b;
