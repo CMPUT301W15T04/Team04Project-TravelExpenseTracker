@@ -67,7 +67,7 @@ public class EditItemActivity extends FragmentActivity {
 	private ClaimList claimList;
 	private int claimId;
 	protected static int addEditItemStatus = 0; //0 add 1 edit
-	private int itemId;
+	protected static int itemId;
 	
 	/**
 	 * Initializing the activity. Call the initialisePaging() function to allow
@@ -225,6 +225,7 @@ public class EditItemActivity extends FragmentActivity {
 		 * part end here
 		 */
 		}
+		
 		else{
 
 			this.item = claimList.getClaimArrayList().get(claimId).getItems().get(itemId);
