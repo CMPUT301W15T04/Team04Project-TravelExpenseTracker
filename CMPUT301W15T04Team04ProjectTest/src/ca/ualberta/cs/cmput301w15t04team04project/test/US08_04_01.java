@@ -12,7 +12,7 @@ public class US08_04_01 extends ActivityInstrumentationTestCase2<MainActivity> {
 	private FragmentProfile profilefragment;
 	private Claim claim ;
 	private MyLocalClaimListController2 controller;
-	S
+	
 
 	public US08_04_01() {
 		super(MainActivity.class);
