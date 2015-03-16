@@ -69,19 +69,19 @@ public class FragmentEditClaim1 extends Fragment {
 	}
 
 	@Override
+	/**
+	 * The following fix Weijie's problem
+	 * 
+	 * @author Chenrui
+	 * @since 2015-03-15
+	 * 
+	 *        Improve Chenrui's code
+	 * @author Yufei
+	 * @since 2015-03-15
+	 */
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
-		/**
-		 * The following fix Weijie's problem
-		 * 
-		 * @author Chenrui
-		 * @since 2015-03-15
-		 * 
-		 *        Improve Chenrui's code
-		 * @author Yufei
-		 * @since 2015-03-15
-		 */
 		ClaimList claimList = MyLocalClaimListManager.loadClaimList(
 				getActivity(), "local");
 
