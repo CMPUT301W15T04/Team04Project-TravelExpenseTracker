@@ -32,29 +32,60 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
  * @version 1.0
  * @since 2015-03-13
  */
+
 public class OneClaimController {
 	private Claim claim;
 
+	/**
+	 * @param claim
+	 * @author Weijie Sun
+	 * @version 1.1
+	 * @since 2015-03-13
+	 */
 	public OneClaimController(Claim claim) {
 
 		this.claim = claim;
 	}
 
+	/**
+	 * @return claim
+	 * @author Weijie Sun
+	 * @version 1.1
+	 * @since 2015-03-13
+	 */
 	public Claim getClaim() {
 
 		return claim;
 	}
 
+	/**
+	 * @return  ArrayList<Item> 
+	 * @author Weijie Sun
+	 * @version 1.1
+	 * @since 2015-03-13
+	 */
 	public ArrayList<Item> getItem() {
 
 		return getClaim().getItems();
 	}
 
+	/**
+	 * @param item
+	 * @author Weijie Sun
+	 * @version 1.1
+	 * @since 2015-03-13
+	 */
 	public void addItem(Item item) {
 		getItem().add(item);
 
 	}
 
+	/**
+	 * @param index
+	 * @author Weijie Sun
+	 * @version 1.1
+	 * @since 2015-03-13
+	 */
 	public void deleteItem1(int index) {
 		getItem().remove(index);
 	}
@@ -79,6 +110,9 @@ public class OneClaimController {
 	 * @version 1.1
 	 * @since 2015-03-13
 	 */
+	/**
+	 * @param which
+	 */
 	public void submittedClaim(int which) {
 		// TODO Auto-generated method stub
 
@@ -91,6 +125,9 @@ public class OneClaimController {
 	 * @version 1.1
 	 * @since 2015-03-13
 	 */
+	/**
+	 * @param which
+	 */
 	public void confirmClaim(int which) {
 		// TODO Auto-generated method stub
 
@@ -99,10 +136,12 @@ public class OneClaimController {
 	/**
 	 * returnClaim is return Claim
 	 * 
+	 * 
 	 * @author Weijie Sun
 	 * @version 1.1
 	 * @since 2015-03-13
 	 */
+
 	public void returnClaim(int which) {
 		// TODO Auto-generated method stub
 
@@ -110,16 +149,23 @@ public class OneClaimController {
 
 	/**
 	 * approveClaim is approve Claim
-	 * 
+	 * @param which
 	 * @author Weijie Sun
 	 * @version 1.1
 	 * @since 2015-03-13
 	 */
+
 	public void approveClaim(int which) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * @param which
+	 * @author Weijie Sun
+	 * @version 1.1
+	 * @since 2015-03-13
+	 */
 	public void deleteItem(int which) {
 		// TODO Auto-generated method stub
 		// claim.getItems().remove(which);

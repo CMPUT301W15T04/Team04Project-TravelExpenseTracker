@@ -22,13 +22,27 @@ package ca.ualberta.cs.cmput301w15t04team04project.controller;
 
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 
+/**
+ * OneClaimController2 is the controller of the editClaimAcitvity 
+ * 
+ * @author Weijie Sun
+ * @version 1.0
+ * @since 2015-03-13
+ */
+
 public class OneClaimController2 extends OneClaimController {
 
+	/**
+	 * OneClaimController2 is extend the OneClaimController
+	 */
 	public OneClaimController2() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * @param claim
+	 */
 	public OneClaimController2(Claim claim) {
 		super(claim);
 		// TODO Auto-generated constructor stub
