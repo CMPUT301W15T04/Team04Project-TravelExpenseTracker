@@ -71,12 +71,12 @@ public class SignInActivity extends Activity {
 	/**
 	 * Call signInController to react the sign in action
 	 * 
+	 * @param v the view of SignInActivity
+	 * 
 	 * @author Chenrui Lei
 	 * @author Yufei Zhang
-	 * @version 1.0
 	 * @since 2015-03-11
 	 */
-
 	public void signIn(View v) {
 		signInConroller.signIn(this, userName);
 		finish();
