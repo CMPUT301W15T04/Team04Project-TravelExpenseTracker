@@ -4,14 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content" >
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/linearLayout1"
-        tools:ignore="UseCompoundDrawables,UselessParent,RtlHardcoded" >
+        android:layout_height="wrap_content" >
 
         <ImageView
             android:id="@+id/incomleteFlagImageView"
@@ -20,103 +16,108 @@
             android:clickable="true"
             android:src="@drawable/mail_flag"
             tools:ignore="ContentDescription" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/singleItemDateTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Date:"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                tools:ignore="HardcodedText" />
-
-            <TextView
-                android:id="@+id/singleItemDescriptionTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Description:"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                tools:ignore="HardcodedText" />
-
-            <TextView
-                android:id="@+id/singleItemCategoryTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Category:"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                tools:ignore="HardcodedText" />
-
-            <TextView
-                android:id="@+id/singleItemAmountTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Amount:"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/singleItemDateShowTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="MM-DD-YYYY"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                tools:ignore="DuplicateIds,HardcodedText" />
-
-            <TextView
-                android:id="@+id/singleItemDescripShowTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="The trip to Oosaka"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                tools:ignore="HardcodedText" />
-
-            <TextView
-                android:id="@+id/singleItemCategoryShowTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ground Transport"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                tools:ignore="HardcodedText" />
-
-            <TextView
-                android:id="@+id/singleItemAmountShowTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="JPY  30000"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/linearLayout1"
+        android:id="@+id/relativeLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-         >
-
-        <ImageView
-            android:id="@+id/hasRecieptImageView"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:src="@drawable/icon_no_images4"
-            tools:ignore="ContentDescription" />
-
+        android:layout_marginRight="27dp" >
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/singleItemDescripShowTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/singleItemDescriptionTextView"
+        android:layout_toLeftOf="@+id/hasRecieptImageView"
+        android:layout_toRightOf="@+id/singleItemDescriptionTextView"
+        android:hint="The trip to Oosaka.This is the set. This is not long enough"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
+
+    <ImageView
+        android:id="@+id/hasRecieptImageView"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/relativeLayout2"
+        android:src="@drawable/icon_no_images4"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/singleItemDescriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/singleItemDateShowTextView"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/relativeLayout1"
+        android:text="Description:  "
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/singleItemDateShowTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/hasRecieptImageView"
+        android:layout_alignLeft="@+id/singleItemDescripShowTextView"
+        android:layout_marginBottom="18dp"
+        android:layout_toLeftOf="@+id/hasRecieptImageView"
+        android:hint="MMM-DD-YYYY"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="DuplicateIds,HardcodedText" />
+
+    <TextView
+        android:id="@+id/singleItemDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/singleItemDescriptionTextView"
+        android:layout_below="@+id/singleItemDescriptionTextView"
+        android:layout_toLeftOf="@+id/singleItemDescripShowTextView"
+        android:text="Date:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/singleItemCategoryShowTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/hasRecieptImageView"
+        android:layout_toRightOf="@+id/singleItemDescriptionTextView"
+        android:hint="Ground Transport"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/singleItemCategoryTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/singleItemDateTextView"
+        android:layout_toRightOf="@+id/relativeLayout1"
+        android:text="Category:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/singleItemAmountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/singleItemDateShowTextView"
+        android:layout_toRightOf="@+id/relativeLayout1"
+        android:text="Amount:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/singleItemAmountShowTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/singleItemDateShowTextView"
+        android:layout_below="@+id/singleItemDateShowTextView"
+        android:layout_toRightOf="@+id/singleItemDateTextView"
+        android:hint="CAD $ 300"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
 
 </RelativeLayout>

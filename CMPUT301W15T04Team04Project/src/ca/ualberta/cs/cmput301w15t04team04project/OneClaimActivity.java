@@ -38,6 +38,9 @@ public class OneClaimActivity extends Activity {
 	private TextView descript;
 	private OneClaimController2 controller;
 	private TextView approverView;
+	
+	private TextView claimName;
+	
 	protected static boolean isClaimant = true;
 	private OneClaimActivity thisActivity = this;
 
@@ -179,6 +182,12 @@ public class OneClaimActivity extends Activity {
 				R.layout.activity_claim_detail, null);
 		adb.setView(claimInfoCDialogView);
 
+
+		claimName = (TextView) claimInfoCDialogView
+				.findViewById(R.id.currentClaimNameCTextView);
+		claimName.setText(claimList.get(claimId).getItems().get(itemId).getItemName());
+		
+		
 		adb.setNeutralButton("Submit", new OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				Toast.makeText(OneClaimActivity.this, "Clicked On Submit",
@@ -293,7 +302,7 @@ public class OneClaimActivity extends Activity {
 		DateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
 		String dateOutput = df.format(idate);
 		itemDate.setText(dateOutput);
-
+		itemName.setText(claim.getItems().get(id).getItemName());
 		category.setText(claim.getItems().get(id).getCategory());
 		descript.setText(claim.getItems().get(id).getDescription());
 
