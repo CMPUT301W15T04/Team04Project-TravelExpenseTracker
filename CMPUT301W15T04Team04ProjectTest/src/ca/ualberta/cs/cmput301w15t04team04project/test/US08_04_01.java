@@ -4,9 +4,14 @@ import java.sql.Date;
 import java.util.Calendar;
 
 import android.test.ActivityInstrumentationTestCase2;
+import android.view.View;
+import android.widget.ListView;
 import ca.ualberta.cs.cmput301w15t04team04project.FragmentProfile;
 import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.OneClaimActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
+import ca.ualberta.cs.cmput301w15t04team04project.adapter.ClaimListAdapter;
+import ca.ualberta.cs.cmput301w15t04team04project.adapter.ItemListAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController2;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController2;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
@@ -23,7 +28,8 @@ public class US08_04_01 extends ActivityInstrumentationTestCase2<OneClaimActivit
 	private Date date;
 	private Calendar calender = Calendar.getInstance();;
 	private User approver;
-	
+	private ItemListAdapter itemListAdapter;
+	private MyLocalClaimListManager manager;
 	
 	public US08_04_01() {
 		super(OneClaimActivity.class);
@@ -35,13 +41,14 @@ public class US08_04_01 extends ActivityInstrumentationTestCase2<OneClaimActivit
 	{
 		super.setUp();
 		thisActivity = (OneClaimActivity) getActivity();
-		
+		manager = new MyLocalClaimListManager();
+		claim = manager.loadClaimList(getActivity()).getClaimArrayList().get(0);
+		controller = new MyLocalClaimListController2(manager.loadClaimList(getActivity()));
 	}
 	
 	public void testPreConditions(){
         assertNotNull(thisActivity);
         
-        Claim claim = new Claim("AClaim");
         claim.setStatus("Submitted");
         controller.addClaim(claim);
         item = new Item("AItem");
@@ -56,6 +63,14 @@ public class US08_04_01 extends ActivityInstrumentationTestCase2<OneClaimActivit
 	}
 	
 	protected void AllItemDetailofSubmittedClaim(){
+		itemListAdapter = new ItemListAdapter(getActivity(), 0, claim.getItems());
+
+		ListView itemListView = (ListView) getActivity().findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.OneCaimItemListView); //listView
+
+		View view = itemListAdapter.getView(0, null, null);
+		ListView listview = (ListView) getActivity().findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.OneCaimItemListView);  
+		
+		
 		
 		assertEquals("Name is equal", "approver", item.getItemName());
 		assertTrue(item.getDate().equals(date));

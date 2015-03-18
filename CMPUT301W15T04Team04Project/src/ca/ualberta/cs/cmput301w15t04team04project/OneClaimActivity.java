@@ -171,11 +171,17 @@ public class OneClaimActivity extends Activity {
 		return true;
 	}
 
+	/**
+	 * @param item
+	 */
 	public void goToSearch(MenuItem item) {
 		Intent intent = new Intent(OneClaimActivity.this, SearchActivity.class);
 		startActivity(intent);
 	}
 
+	/**
+	 * @param item
+	 */
 	public void goToEditItem(MenuItem item) {
 		Intent intent = new Intent(OneClaimActivity.this,
 				EditItemActivity.class);
@@ -185,6 +191,9 @@ public class OneClaimActivity extends Activity {
 		startActivity(intent);
 	}
 
+	/**
+	 * @param view
+	 */
 	public void showClaimDetailC(View view) {
 		isClaimant = true;
 
@@ -233,6 +242,9 @@ public class OneClaimActivity extends Activity {
 		adb.show();
 	}
 
+	/**
+	 * @param view
+	 */
 	public void showClaimDetailA(View view) {
 		isClaimant = false;
 		AlertDialog.Builder adb = new AlertDialog.Builder(OneClaimActivity.this);
@@ -283,6 +295,10 @@ public class OneClaimActivity extends Activity {
 		adb.show();
 	}
 
+	/**
+	 * @param view
+	 * @param id
+	 */
 	public void showItemDetailC(View view, int id) {
 
 		isClaimant = true;
@@ -337,6 +353,10 @@ public class OneClaimActivity extends Activity {
 		adb.show();
 	}
 
+	/**
+	 * @param view
+	 * @param id
+	 */
 	public void showItemDetailA(View view, int id) {
 		isClaimant = false;
 		AlertDialog.Builder adb = new AlertDialog.Builder(OneClaimActivity.this);
@@ -387,6 +407,9 @@ public class OneClaimActivity extends Activity {
 		adb.show();
 	}
 
+	/**
+	 * 
+	 */
 	public void checkUserType() {
 		if (isClaimant) {
 

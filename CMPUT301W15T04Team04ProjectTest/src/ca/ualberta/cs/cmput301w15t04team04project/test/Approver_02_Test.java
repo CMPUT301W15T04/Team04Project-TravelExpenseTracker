@@ -25,6 +25,7 @@ import java.util.Date;
 import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.MyClaimActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.OneClaimActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.adapter.ClaimListAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
@@ -40,6 +41,9 @@ import android.widget.ListView;
 * @since   2015-03-09
 */
 public class Approver_02_Test extends ActivityInstrumentationTestCase2<MyClaimActivity>{
+	
+	private ClaimListAdapter claimAdapter; 
+
 	/**
 	* The Approver_02_Test method is extend the super class MainActivity
 	*
@@ -82,9 +86,13 @@ public class Approver_02_Test extends ActivityInstrumentationTestCase2<MyClaimAc
 		AClaim.setStartDate(Adate);
 		BClaim.setStartDate(Bdate);
 		CClaim.setStartDate(Cdate);
-		
+		ListView claimlistview = (ListView) getActivity().findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.myClaimsListView); //listView
+		//some problem here
+		claimAdapter = new ClaimListAdapter(getActivity(), 0, testClaimList.getClaimArrayList());
+		View view = claimAdapter.getView(0, null, null);
 		ListView listview = (ListView) getActivity().findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.myClaimsListView);  
 		
+		//
 		assertEquals("index 0 equals", listview.getChildAt(0).equals(AClaim));
 		assertEquals("index 1 equals", listview.getChildAt(1).equals(BClaim));
 		assertEquals("index 2 equals", listview.getChildAt(2).equals(CClaim));
