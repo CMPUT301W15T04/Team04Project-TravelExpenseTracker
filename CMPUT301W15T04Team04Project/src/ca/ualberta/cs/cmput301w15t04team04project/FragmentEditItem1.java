@@ -121,13 +121,16 @@ public class FragmentEditItem1 extends Fragment {
 			itemName.setText(currentItem.getItemName());
 
 			// set item date
-			int date = currentItem.getDate().getDate();
-			int month = currentItem.getDate().getMonth();
-			int year = currentItem.getDate().getYear() + 1900;
+			@SuppressWarnings("deprecation")
+			int date = currentItem.getItemDate().getDate();
+			@SuppressWarnings("deprecation")
+			int month = currentItem.getItemDate().getMonth();
+			@SuppressWarnings("deprecation")
+			int year = currentItem.getItemDate().getYear() + 1900;
 			datePicker.updateDate(year, month, date);
 
 			// set ammount
-			amount.setText("" + currentItem.getCurrency().getAmount());
+			amount.setText("" + currentItem.getItemCurrency().getAmount());
 
 			// set item amount
 			// amount.setText(Double.toString(currentItem.getCurrency().getAmount()));
@@ -135,13 +138,13 @@ public class FragmentEditItem1 extends Fragment {
 			// set category
 			res = getResources();
 			String[] cates = res.getStringArray(R.array.categories);
-			String selection = currentItem.getCategory();
+			String selection = currentItem.getItemCategory();
 			int pick = Arrays.asList(cates).indexOf(selection);
 			category.setSelection(pick);
 
 			// set currency unit
 			String[] units = res.getStringArray(R.array.currencyUnits);
-			String selection2 = currentItem.getCurrency().getType();
+			String selection2 = currentItem.getItemCurrency().getType();
 			int pick2 = Arrays.asList(units).indexOf(selection2);
 			currencyUnit.setSelection(pick2);
 

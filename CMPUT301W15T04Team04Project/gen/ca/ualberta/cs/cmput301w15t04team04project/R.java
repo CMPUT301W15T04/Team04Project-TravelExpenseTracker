@@ -88,6 +88,7 @@ public final class R {
         public static final int action_search=0x7f0a0090;
         public static final int action_searchOC=0x7f0a0093;
         public static final int action_settings=0x7f0a008d;
+        public static final int addClaimButton=0x7f0a0068;
         public static final int addCommentItemEditText=0x7f0a002f;
         public static final int addCommentsEditText=0x7f0a0011;
         public static final int addRecieptImageButton=0x7f0a005f;
@@ -152,7 +153,7 @@ public final class R {
         public static final int linearLayout1=0x7f0a0035;
         public static final int linearLayout3=0x7f0a006d;
         public static final int listView1=0x7f0a0050;
-        public static final int list_item_textview=0x7f0a0068;
+        public static final int list_item_textview=0x7f0a0069;
         public static final int mainActivityBottomMenu=0x7f0a0031;
         public static final int mainActivityPager=0x7f0a0030;
         public static final int momentsMenuButton=0x7f0a0033;
@@ -218,7 +219,6 @@ public final class R {
         public static final int userNameDisplay=0x7f0a0062;
         public static final int userNameEditText=0x7f0a003e;
         public static final int xListView=0x7f0a0060;
-        public static final int xListView2=0x7f0a0069;
         public static final int xlistview_footer_content=0x7f0a0084;
         public static final int xlistview_footer_hint_textview=0x7f0a0086;
         public static final int xlistview_footer_progressbar=0x7f0a0085;
@@ -249,12 +249,11 @@ public final class R {
         public static final int fragment_moments=0x7f030010;
         public static final int fragment_profile=0x7f030011;
         public static final int list_item=0x7f030012;
-        public static final int main=0x7f030013;
-        public static final int search_bar=0x7f030014;
-        public static final int single_claim=0x7f030015;
-        public static final int single_item=0x7f030016;
-        public static final int xlistview_footer=0x7f030017;
-        public static final int xlistview_header=0x7f030018;
+        public static final int search_bar=0x7f030013;
+        public static final int single_claim=0x7f030014;
+        public static final int single_item=0x7f030015;
+        public static final int xlistview_footer=0x7f030016;
+        public static final int xlistview_header=0x7f030017;
     }
     public static final class menu {
         public static final int claim_detail=0x7f090000;

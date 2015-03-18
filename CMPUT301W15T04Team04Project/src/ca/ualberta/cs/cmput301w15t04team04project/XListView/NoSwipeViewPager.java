@@ -18,7 +18,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ca.ualberta.cs.cmput301w15t04team04project.View;
+package ca.ualberta.cs.cmput301w15t04team04project.XListView;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;

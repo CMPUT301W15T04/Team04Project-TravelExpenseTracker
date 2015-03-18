@@ -112,7 +112,7 @@ public class FragmentEditItem2 extends Fragment {
 					.getItems().get(myItemId);
 			
 			itemDescription = (TextView) getView().findViewById(R.id.fragmentEditItem2DiscriptionEditText);
-			itemDescription.setText(currentItem.getDescription());
+			itemDescription.setText(currentItem.getItemDescription());
 		}
 		
 	}

@@ -199,9 +199,9 @@ public class EditItemActivity extends FragmentActivity {
 			 * itemDateDatePicker.getMonth(); int DateOfMonth =
 			 * itemDateDatePicker.getDayOfMonth();
 			 */
-			this.item.setDate(calendar.getTime());
+			this.item.setItemDate(calendar.getTime());
 
-			this.item.setCategory(itemCategorySpinner.getSelectedItem()
+			this.item.setItemCategory(itemCategorySpinner.getSelectedItem()
 					.toString());
 
 			String tempAmountStr = itemCurrencyEeditText.getText().toString();
@@ -213,9 +213,9 @@ public class EditItemActivity extends FragmentActivity {
 			}
 			Currency tempCurrency = new Currency(currencyUnitsSpinner
 					.getSelectedItem().toString(), tempAmountFloat);
-			this.item.setCurrency(tempCurrency);
+			this.item.setItemCurrency(tempCurrency);
 
-			this.item.setDescription(fragmentEditItem2DiscriptionEditText
+			this.item.setItemDescription(fragmentEditItem2DiscriptionEditText
 					.getText().toString());
 
 			// controller.addItem(this.item);
@@ -242,7 +242,7 @@ public class EditItemActivity extends FragmentActivity {
 			 * Date(Year-1900,Month,DateOfMonth));
 			 */
 
-			this.item.setCategory(itemCategorySpinner.getSelectedItem()
+			this.item.setItemCategory(itemCategorySpinner.getSelectedItem()
 					.toString());
 
 			String tempAmountStr = itemCurrencyEeditText.getText().toString();
@@ -254,9 +254,9 @@ public class EditItemActivity extends FragmentActivity {
 			}
 			Currency tempCurrency = new Currency(currencyUnitsSpinner
 					.getSelectedItem().toString(), tempAmountFloat);
-			this.item.setCurrency(tempCurrency);
+			this.item.setItemCurrency(tempCurrency);
 
-			this.item.setDescription(fragmentEditItem2DiscriptionEditText
+			this.item.setItemDescription(fragmentEditItem2DiscriptionEditText
 					.getText().toString());
 			MyLocalClaimListManager.saveClaimList(this, claimList);
 			Toast.makeText(this, this.item.getItemName(), Toast.LENGTH_LONG)

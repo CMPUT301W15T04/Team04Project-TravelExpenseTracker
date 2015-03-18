@@ -322,7 +322,7 @@ public class OneClaimActivity extends Activity {
 		descript.setText(claim.getItems().get(id).getItemName());
 
 		// amount.setText(claim.getItems().get(id).getCurrency().getType()+String.valueOf(claim.getItems().get(id).getCurrency().getAmount()));
-		amount.setText(claim.getItems().get(id).getCurrency().toString());
+		amount.setText(claim.getItems().get(id).getItemCurrency().toString());
 
 		// Toast.makeText(this,
 		// claim.getItems().get(id).getCurrency().getType(),
@@ -331,13 +331,13 @@ public class OneClaimActivity extends Activity {
 		// +String.valueOf(claim.getItems().get(id).getCurrency().getAmount())
 		// amount.setText(String.valueOf(claim.getItems().get(id).getCurrency().getAmount()));
 
-		Date idate = claim.getItems().get(id).getDate();
+		Date idate = claim.getItems().get(id).getItemDate();
 		DateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
 		String dateOutput = df.format(idate);
 		itemDate.setText(dateOutput);
 		itemName.setText(claim.getItems().get(id).getItemName());
-		category.setText(claim.getItems().get(id).getCategory());
-		descript.setText(claim.getItems().get(id).getDescription());
+		category.setText(claim.getItems().get(id).getItemCategory());
+		descript.setText(claim.getItems().get(id).getItemDescription());
 
 		// set the Edit Button on the Dialog
 		/*
@@ -379,17 +379,17 @@ public class OneClaimActivity extends Activity {
 
 		itemName.setText(claim.getItems().get(id).getItemName());
 
-		amount.setText(claim.getItems().get(id).getCurrency().getType()
-				+ String.valueOf(claim.getItems().get(id).getCurrency()
+		amount.setText(claim.getItems().get(id).getItemCurrency().getType()
+				+ String.valueOf(claim.getItems().get(id).getItemCurrency()
 						.getAmount()));
 
-		Date idate = claim.getItems().get(id).getDate();
+		Date idate = claim.getItems().get(id).getItemDate();
 		DateFormat df = new SimpleDateFormat("MMM-dd-yyyy");
 		String dateOutput = df.format(idate);
 		itemDate.setText(dateOutput);
 
-		category.setText(claim.getItems().get(id).getCategory());
-		descript.setText(claim.getItems().get(id).getDescription());
+		category.setText(claim.getItems().get(id).getItemCategory());
+		descript.setText(claim.getItems().get(id).getItemDescription());
 
 		adb.setNeutralButton("Add Comment", new OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
@@ -412,9 +412,7 @@ public class OneClaimActivity extends Activity {
 	 */
 	public void checkUserType() {
 		if (isClaimant) {
-
 			approverView.setVisibility(View.GONE);
-
 		}
 
 	}

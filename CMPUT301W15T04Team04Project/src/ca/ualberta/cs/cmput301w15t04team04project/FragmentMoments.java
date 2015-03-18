@@ -21,8 +21,9 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
 import java.util.ArrayList;
-import ca.ualberta.cs.cmput301w15t04team04project.View.XListView;
-import ca.ualberta.cs.cmput301w15t04team04project.View.XListView.IXListViewListener;
+
+import ca.ualberta.cs.cmput301w15t04team04project.XListView.XListView;
+import ca.ualberta.cs.cmput301w15t04team04project.XListView.XListView.IXListViewListener;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;

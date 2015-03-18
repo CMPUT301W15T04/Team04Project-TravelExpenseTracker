@@ -83,13 +83,13 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
 		// set content in views
 
 		DateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
-		String dateOutput = df.format(item.getDate());
+		String dateOutput = df.format(item.getItemDate());
 		iholder.date.setText(dateOutput);// item.getDate().toString());//"date");
 											// //claim.getDestination());
 
-		iholder.description.setText(item.getDescription()); // claim.getStatus();
-		iholder.category.setText(item.getCategory());// "category");
-		iholder.amount.setText(item.getCurrency().toString());// "$ CAD 88.88");
+		iholder.description.setText(item.getItemDescription()); // claim.getStatus();
+		iholder.category.setText(item.getItemCategory());// "category");
+		iholder.amount.setText(item.getItemCurrency().toString());// "$ CAD 88.88");
 																// //claim.getAmount();
 
 		return convertView;

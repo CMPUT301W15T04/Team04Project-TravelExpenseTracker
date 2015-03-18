@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <ca.ualberta.cs.cmput301w15t04team04project.View.NoSwipeViewPager
+    <ca.ualberta.cs.cmput301w15t04team04project.XListView.NoSwipeViewPager
         android:id="@+id/editItemActivityPager"
         android:layout_width="fill_parent"
         android:layout_height="348dp"
@@ -12,7 +12,7 @@
         android:layout_alignParentTop="true"
         android:layout_weight="1.21"
         tools:ignore="ObsoleteLayoutParam" >
-    </ca.ualberta.cs.cmput301w15t04team04project.View.NoSwipeViewPager>
+    </ca.ualberta.cs.cmput301w15t04team04project.XListView.NoSwipeViewPager>
 
     <RadioGroup
         android:id="@+id/editItemBottomMenu"

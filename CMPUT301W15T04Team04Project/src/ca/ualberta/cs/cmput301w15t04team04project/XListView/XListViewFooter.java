@@ -24,7 +24,7 @@
  * @author Maxwin
  * @description XListView's footer
  */
-package ca.ualberta.cs.cmput301w15t04team04project.View;
+package ca.ualberta.cs.cmput301w15t04team04project.XListView;
 
 //https://github.com/mayoudong1993/XListView-Android 2015-03-10
 import ca.ualberta.cs.cmput301w15t04team04project.R;

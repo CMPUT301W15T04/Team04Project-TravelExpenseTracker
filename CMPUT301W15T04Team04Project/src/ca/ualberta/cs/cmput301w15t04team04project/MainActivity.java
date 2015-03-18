@@ -201,13 +201,16 @@ public class MainActivity extends FragmentActivity {
 		controller.logOut(MainActivity.this);
 
 		// go back to signIn page
-		Intent intent3 = new Intent(MainActivity.this, SignInActivity.class);
-		startActivity(intent3);
+		Intent intent = new Intent(MainActivity.this, SignInActivity.class);
+		startActivity(intent);
 
 		// stop current view
 		finish();
 	}
-
+	public void addClaim(View v){
+		Intent intent = new Intent(MainActivity.this, EditClaimActivity.class);
+		startActivity(intent);
+	}
 	/**
 	 * Modify the following code
 	 *

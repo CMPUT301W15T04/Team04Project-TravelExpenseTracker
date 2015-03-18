@@ -40,17 +40,17 @@ import java.util.Date;
 public class Claim {
 
 	protected String claimName;
-	protected Date startDate;
-	protected Date endDate;
 	protected String status;
 	protected String description;
+	protected String Comment;
+	protected Date startDate;
+	protected Date endDate;
 	protected ArrayList<Destination> destination;
 	protected ArrayList<Item> items;
-	protected ArrayList<String> tag;
+	protected ArrayList<String> tags;
 	protected transient ArrayList<Listener> itemListener;
-	protected User ApproverName;
-	protected User ClaimiantName;
-	protected String Comment;
+	protected User Approver;
+	protected User Claimiant;
 	protected ArrayList<Currency> totalCurrency;
 
 	/**
@@ -65,7 +65,7 @@ public class Claim {
 		items = new ArrayList<Item>();
 		itemListener = new ArrayList<Listener>();
 		destination = new ArrayList<Destination>();
-		tag = new ArrayList<String>();
+		tags = new ArrayList<String>();
 		status = "In Progress";
 		totalCurrency = new ArrayList<Currency>();
 		startDate = new Date(System.currentTimeMillis()); // only for test.
@@ -77,7 +77,7 @@ public class Claim {
 	 * Returns the string representation of the destination list. The
 	 * presentation has a specific format. Elements are separated by '\n' (new
 	 * line).
-	 *
+	 * 
 	 * @return the string representation of this.destination.
 	 * 
 	 * @author Chenrui Lei
@@ -101,7 +101,7 @@ public class Claim {
 	 * Returns the string representation of the totalCurrency list. The
 	 * presentation has a specific format. Elements are separated by '\n' (new
 	 * line).
-	 *
+	 * 
 	 * @return the string representation of this.totalCurrency.
 	 * 
 	 * @author Chenrui Lei
@@ -109,11 +109,11 @@ public class Claim {
 	 */
 	public String TagListToString() {
 		String out = "";
-		if (tag.size() != 0) {
-			out += tag.get(0).toString();
+		if (tags.size() != 0) {
+			out += tags.get(0).toString();
 
-			for (int i = 1; i < tag.size(); i++) {
-				out += "\n" + tag.get(i).toString();
+			for (int i = 1; i < tags.size(); i++) {
+				out += "\n" + tags.get(i).toString();
 			}
 		} else {
 			out = "N/A";
@@ -125,7 +125,7 @@ public class Claim {
 	 * Returns the string representation of the totalCurrency list. The
 	 * presentation has a specific format. Elements are separated by '\n' (new
 	 * line).
-	 *
+	 * 
 	 * @return the string representation of this.totalCurrency.
 	 * 
 	 * @author Chenrui Lei
@@ -202,8 +202,8 @@ public class Claim {
 	 * @param ClaimiantName
 	 *            the ClaimiantName of this claim
 	 */
-	public User getClaimiantName() {
-		return ClaimiantName;
+	public User getClaimiant() {
+		return Claimiant;
 	}
 
 	/**
@@ -212,8 +212,8 @@ public class Claim {
 	 * @param ClaimiantName
 	 *            the ClaimiantName of this claim
 	 */
-	public void setClaimiantName(User claimiantName) {
-		ClaimiantName = claimiantName;
+	public void setClaimiant(User claimiant) {
+		this.Claimiant = claimiant;
 	}
 
 	/**
@@ -222,8 +222,8 @@ public class Claim {
 	 * @param ApproverName
 	 *            the ApproverName of this claim
 	 */
-	public User getApproverName() {
-		return ApproverName;
+	public User getApprover() {
+		return Approver;
 	}
 
 	/**
@@ -232,8 +232,8 @@ public class Claim {
 	 * @param ApproverName
 	 *            the ApproverName of this claim
 	 */
-	public void setApproverName(User approverName) {
-		ApproverName = approverName;
+	public void setApproverName(User approver) {
+		this.Approver = approver;
 	}
 
 	/**
@@ -270,16 +270,6 @@ public class Claim {
 		notifyListener();
 	}
 
-	// http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fswt%2Fwidgets%2FWidget.html
-	/**
-	 * Notifies all of the receiver's listeners for events.
-	 */
-	private void notifyListener() {
-		for (Listener listener : getListeners()) {
-			listener.update();
-		}
-	}
-
 	/**
 	 * remove an item in this claim and notify the listener in order to update
 	 * the view
@@ -290,6 +280,16 @@ public class Claim {
 	public void removeItem(Item oldItem) {
 		items.remove(oldItem);
 		notifyListener();
+	}
+
+	// http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fswt%2Fwidgets%2FWidget.html
+	/**
+	 * Notifies all of the receiver's listeners for events.
+	 */
+	private void notifyListener() {
+		for (Listener listener : getListeners()) {
+			listener.update();
+		}
 	}
 
 	// http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fswt%2Fwidgets%2FWidget.html
@@ -306,15 +306,6 @@ public class Claim {
 		getListeners().add(l);
 	}
 
-	/**
-	 * get the position of the selected item in the item list of this claim.
-	 * 
-	 * @return items.get(position)
-	 */
-	public Item getPosition(int position) {
-		return items.get(position);
-	}
-
 	// http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fswt%2Fwidgets%2FWidget.html
 	/**
 	 * Removes the listener from the collection of listeners who will be
@@ -325,6 +316,15 @@ public class Claim {
 	 */
 	public void removeListener(Listener l) {
 		getListeners().remove(l);
+	}
+
+	/**
+	 * get the position of the selected item in the item list of this claim.
+	 * 
+	 * @return items.get(position)
+	 */
+	public Item getPosition(int position) {
+		return items.get(position);
 	}
 
 	/**
@@ -451,7 +451,7 @@ public class Claim {
 	 * @return tag
 	 */
 	public ArrayList<String> getTag() {
-		return tag;
+		return tags;
 	}
 
 	/**
@@ -461,7 +461,7 @@ public class Claim {
 	 *            a new tag of this claim
 	 */
 	public void setTag(String tag) {
-		this.tag.add(tag);
+		this.tags.add(tag);
 	}
 
 	/**

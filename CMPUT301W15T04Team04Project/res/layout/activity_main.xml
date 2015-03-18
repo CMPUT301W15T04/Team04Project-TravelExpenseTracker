@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <ca.ualberta.cs.cmput301w15t04team04project.View.NoSwipeViewPager
+    <ca.ualberta.cs.cmput301w15t04team04project.XListView.NoSwipeViewPager
         android:id="@+id/mainActivityPager"
         android:layout_width="fill_parent"
         android:layout_height="348dp"
         android:layout_weight="1.21"
         tools:ignore="InefficientWeight" >
 
-    </ca.ualberta.cs.cmput301w15t04team04project.View.NoSwipeViewPager>
+    </ca.ualberta.cs.cmput301w15t04team04project.XListView.NoSwipeViewPager>
 
     <RadioGroup
         android:id="@+id/mainActivityBottomMenu"

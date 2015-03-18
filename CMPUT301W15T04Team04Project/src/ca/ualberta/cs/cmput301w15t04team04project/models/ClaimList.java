@@ -29,7 +29,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 /**
  * The ClaimList model is design for store Claim objects in order to be used by
  * the view and modified by the controller.
- *
+ * 
  * @author Ji Yang
  * @author Yang Zhang
  * @author Weijie Sun
@@ -64,7 +64,7 @@ public class ClaimList {
 	 * 
 	 * Adds the listener to the collection of listeners who will be notified
 	 * when an event of the given type occurs.
-	 *
+	 * 
 	 * @param l
 	 *            the new listener
 	 */
@@ -104,7 +104,6 @@ public class ClaimList {
 	}
 
 	public int size() {
-		// TODO Auto-generated method stub
 		return claims.size();
 	}
 
