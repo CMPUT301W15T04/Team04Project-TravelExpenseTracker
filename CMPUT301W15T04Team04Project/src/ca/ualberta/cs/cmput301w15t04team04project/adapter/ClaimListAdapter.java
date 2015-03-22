@@ -34,7 +34,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 /**
- * @author youdong
+ * @author Youdong Ma
  *
  */
 public class ClaimListAdapter extends ArrayAdapter<Claim> {
@@ -42,7 +42,7 @@ public class ClaimListAdapter extends ArrayAdapter<Claim> {
 	private ViewHolder holder = null;
 
 	/**
-	 * @author youdong
+	 * @author Youdong Ma
 	 * @param context
 	 * @param resource
 	 * @param objects
@@ -65,9 +65,8 @@ public class ClaimListAdapter extends ArrayAdapter<Claim> {
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-
+		
 		claimList.get(position);
-
 		holder.startMonth = (TextView) convertView
 				.findViewById(R.id.singleClaimStartMonthTextView);
 		holder.startDate = (TextView) convertView
@@ -107,7 +106,7 @@ public class ClaimListAdapter extends ArrayAdapter<Claim> {
 	}
 
 	/**
-	 * @author youdong
+	 * @author Youdong Ma
 	 *
 	 */
 	class ViewHolder {

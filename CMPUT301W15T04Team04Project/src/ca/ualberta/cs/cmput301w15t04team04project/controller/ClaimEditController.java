@@ -36,7 +36,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 public class ClaimEditController extends MyLocalClaimListController {
 
 	/**
-	 * MyLocalClaimListController2 is initialed with a claimList
+	 * ClaimEditController is initialed with a claimList
 	 * 
 	 * @param claimList
 	 */
@@ -58,15 +58,7 @@ public class ClaimEditController extends MyLocalClaimListController {
 		return claim;
 	}
 
-	public Claim setEditClaim(Claim claim, String cName, String cDescription,
-			String cTag, Date sDate, Date eDate) {
-		claim.setClaim(cName);
-		claim.setDescription(cDescription);
-		claim.setTag(tagSplit(cTag));
-		claim.setStartDate(sDate);
-		claim.setEndDate(eDate);
-		return claim;
-	};
+
 
 	/*
 	 * public String loadTag(ArrayList<String> tagsArray) { String tagString

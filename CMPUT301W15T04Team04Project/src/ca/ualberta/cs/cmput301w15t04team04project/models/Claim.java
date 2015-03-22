@@ -59,6 +59,7 @@ public class Claim {
 	 * @param claimName
 	 *            The name of the claim.
 	 */
+	
 	public Claim(String claimName) {
 
 		this.claimName = claimName;
@@ -72,7 +73,7 @@ public class Claim {
 															// 2015-03-14
 															// Chenrui
 	}
-
+/*
 	/**
 	 * Returns the string representation of the destination list. The
 	 * presentation has a specific format. Elements are separated by '\n' (new
@@ -461,11 +462,6 @@ public class Claim {
 	 *            a new tag of this claim
 	 */
 	public void setTag(ArrayList<String> tagList) {
-		/*
-		 * for (int i = 0; i < tagList.size(); i++) { if
-		 * (tags.contains(tagList.get(i))){ } else{ tags.add(tagList.get(i)); }
-		 * }
-		 */
 		this.tags = tagList;
 	}
 

@@ -20,6 +20,7 @@
  */
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -40,8 +41,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
@@ -152,11 +156,15 @@ public class EditClaimActivity extends FragmentActivity {
 	 * @version 1.2
 	 * @since 2015-03-20
 	 */
+	public void addDestination(View v){
+	
+	}
+	
+	@SuppressWarnings("deprecation")
 	public void confirmClaim(MenuItem item) {
 		EditText claimName = (EditText) findViewById(R.id.claimNameEditText);
 		EditText description = (EditText) findViewById(R.id.descriptionEditText);
 		EditText tag = (EditText) findViewById(R.id.tagEditText);
-		EditText destination = (EditText) findViewById(R.id.destinationandReasonEditText);
 		DatePicker fromDatePicker = (DatePicker) findViewById(R.id.fromDatePicker);
 		DatePicker toDatePicker = (DatePicker) findViewById(R.id.toDatePicker);
 		Date sDate = new Date();
@@ -170,7 +178,6 @@ public class EditClaimActivity extends FragmentActivity {
 		eDate.setDate(toDatePicker.getDayOfMonth());
 		eDate.setMonth(toDatePicker.getMonth());
 		eDate.setYear(toDatePicker.getYear() - 1900);
-
 		/*
 		 * Calendar calendar = Calendar.getInstance();
 		 * calendar.set(toDatePicker.getYear(), toDatePicker.getMonth(),
@@ -187,11 +194,7 @@ public class EditClaimActivity extends FragmentActivity {
 		}
 
 		else {
-
 			Claim claim = claimList.getClaimArrayList().get(myClaimId);
-			// claimName.setText(claim.getClaim());
-			// description.setText(claim.getDescription());
-			// tag.setText(controller.loadTag(claim.getTag()));
 			claim = controller.setClaim(claim, cName, cDescription, cTag,
 					sDate, eDate);
 			MyLocalClaimListManager.saveClaimList(this, claimList);

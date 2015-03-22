@@ -99,7 +99,7 @@ public class FragmentEditClaim2 extends Fragment {
 			// get the views
 			tags = (EditText) getView().findViewById(R.id.tagEditText);
 			destinations = (EditText) getView().findViewById(
-					R.id.destinationandReasonEditText);
+					R.id.reasonEditText);
 
 			// get the size of two ListViews
 			int tagsSize = currentClaim.getTag().size();

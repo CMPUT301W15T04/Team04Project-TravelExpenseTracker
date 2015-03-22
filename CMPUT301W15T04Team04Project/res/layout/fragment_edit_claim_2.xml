@@ -19,27 +19,30 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/claimTagTextView"
         android:ems="10"
-        android:hint="Enter tags (seperate by comma)"
-        android:inputType="textMultiLine" />
-
-    <EditText
-        android:id="@+id/destinationandReasonEditText"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:ems="10"
-        android:hint="Enter in format:Destination(Reason)" />
+        android:hint="Enter tags (seperate by comma)" />
 
     <ListView
-        android:id="@+id/listView1"
+        android:id="@+id/destinationListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/destinationandReasonEditText"
+        android:layout_above="@+id/destinationEditText"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/claimDestinationTextView" >
 
     </ListView>
+
+    <EditText
+        android:id="@+id/reasonEditText"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/button1"
+        android:ems="10"
+        android:hint="Reason" >
+
+        <requestFocus />
+    </EditText>
 
     <TextView
         android:id="@+id/claimDestinationTextView"
@@ -47,8 +50,26 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/tagEditText"
-        android:layout_marginTop="27dp"
         android:text="Destination &amp; Reason"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/destinationEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/reasonEditText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:ems="10"
+        android:hint="Destination" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/reasonEditText"
+        android:text="Add" />
 
 </RelativeLayout>
