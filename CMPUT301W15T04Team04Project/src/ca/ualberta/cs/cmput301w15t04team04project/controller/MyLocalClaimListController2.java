@@ -20,6 +20,8 @@
  */
 package ca.ualberta.cs.cmput301w15t04team04project.controller;
 
+import java.util.Date;
+
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 
@@ -37,6 +39,21 @@ public class MyLocalClaimListController2 extends MyLocalClaimListController {
 		super(claimList);
 	}
 
+	
+	public Claim setClaim(Claim claim, String cName, String cDescription, String cTag, Date sDate, Date eDate ){
+		claim.setClaim(cName);
+		claim.setDescription(cDescription);
+		claim.setTag(cTag);
+		claim.setStartDate(sDate);
+		claim.setEndDate(eDate);
+		return claim;
+	}
+	
+	public void tagSplit(){
+		
+	}
+	
+	
 	/**
 	 * insert an claim
 	 * @param claim
