@@ -1,5 +1,6 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Listener;
+import ca.ualberta.cs.cmput301w15t04team04project.network.InternetChecker;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -55,13 +57,23 @@ public class OneClaimActivity extends Activity {
 	
 	protected static boolean isClaimant = true;
 	private OneClaimActivity thisActivity = this;
-
+	private InternetChecker iC;
 	private Claim claim;
 	private ClaimList claimList;
 	private ArrayList<Claim> claims;
 	private int claimId;
 	private int itemId;
-
+	private CLmanager onlineManager = new CLmanager();;
+	
+	/**
+	 * This method will be called when the user finishes asking a question to
+	 * stop the the current thread.
+	 */
+	private Runnable doFinishAdd = new Runnable() {
+		public void run() {
+			finish();
+		}
+	};
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -213,12 +225,17 @@ public class OneClaimActivity extends Activity {
 		adb.setNeutralButton("Submit", new OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				Toast.makeText(OneClaimActivity.this, "Clicked On Submit",
-						Toast.LENGTH_SHORT).show();
+							Toast.LENGTH_SHORT).show();
+				iC = new InternetChecker(thisActivity);
+				if (iC.isNetworkAvailable()){
+					
+				}
 				controller.submittedClaim(which);
 				MyLocalClaimListManager.saveClaimList(getApplicationContext(), claimList);
 				Intent intent = new Intent(OneClaimActivity.this,
 						MyClaimActivity.class);
 				startActivity(intent);
+				finish();
 				/**
 				 * You need to add code here to do the submit stuff Once the
 				 * claimant click this, the claim will be submitted
@@ -416,4 +433,32 @@ public class OneClaimActivity extends Activity {
 		}
 
 	}
+	
+	class AddClaimThread extends Thread{
+		private Claim claim;
+		
+		public AddClaimThread(Claim claim){
+			this.claim = claim;
+		}
+		
+		public void run(){
+			try {
+				onlineManager.insertClaim(claim);
+			} catch (IllegalStateException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			runOnUiThread(doFinishAdd);
+		}
+		
+	}
+	
 }

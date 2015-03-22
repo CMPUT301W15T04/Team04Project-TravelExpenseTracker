@@ -29,23 +29,18 @@ import android.net.NetworkInfo;
  * @author youdong
  *
  */
-public class InternetChecker extends Application {
+public class InternetChecker{
 	private static Context context;
 
-	/* (non-Javadoc)
-	 * @see android.app.Application#onCreate()
-	 */
-	@Override
-	public void onCreate() {
-		super.onCreate();
-		context = getApplicationContext();
-	}
+	public InternetChecker(Context context) {
+        this.context = context;
+    }
 	/**
 	 * Check if the device connects the Internet
 	 * 
 	 * @return true if the Internet is connected; else return false.
 	 */
-	public final static boolean isNetworkAvailable() {
+	public final boolean isNetworkAvailable() {
 		ConnectivityManager connectivityManager = (ConnectivityManager) context
 				.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo wifiNetwork = connectivityManager

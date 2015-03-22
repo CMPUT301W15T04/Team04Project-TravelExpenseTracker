@@ -47,7 +47,7 @@ import com.google.gson.reflect.TypeToken;
  *
  */
 public class CLmanager {
-	private static final String RESOURCE_URL = "http://cmput301.softwareprocess.es:8080/cmput301w15t04/";
+	private static final String RESOURCE_URL = "http://cmput301.softwareprocess.es:8080/cmput301w15t04/claim/";
 	private static Gson gson;
 	private static HttpClient httpClient = new DefaultHttpClient();
 
@@ -65,10 +65,10 @@ public class CLmanager {
 	 * @throws IllegalStateException
 	 * @throws IOException
 	 */
-	public void insertClaim(Claim claim, String string)
+	public void insertClaim(Claim claim)
 			throws IllegalStateException, IOException {
-		HttpPost httpPost = new HttpPost(RESOURCE_URL + string + "/"
-				+ claim.getStartDate().getTime());
+		HttpPost httpPost = new HttpPost(RESOURCE_URL
+				+ claim.getClaim());
 		StringEntity stringEntity = null;
 		try {
 			stringEntity = new StringEntity(gson.toJson(claim));
@@ -90,10 +90,10 @@ public class CLmanager {
 
 	/**
 	 * @author youdong
-	 * @param questionId
+	 * @param claimId
 	 */
-	public void deleteClaim(long questionId) {
-		HttpDelete deleteRequest = new HttpDelete(RESOURCE_URL + questionId);
+	public void deleteClaim(long claimId) {
+		HttpDelete deleteRequest = new HttpDelete(RESOURCE_URL + claimId);
 		deleteRequest.setHeader("Accept", "application/json");
 		HttpResponse deleteResponse = null;
 		try {
