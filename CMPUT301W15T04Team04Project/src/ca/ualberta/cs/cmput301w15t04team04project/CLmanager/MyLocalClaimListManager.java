@@ -36,7 +36,7 @@ import android.content.Context;
 
 /**
  * @author Youdong Ma
- *
+ * 
  */
 public class MyLocalClaimListManager {
 	protected static String FILENAME = "LocalClaimList";
@@ -49,6 +49,7 @@ public class MyLocalClaimListManager {
 
 	/**
 	 * save claimList in certain file
+	 * 
 	 * @author Youdong Ma
 	 * @param context
 	 * @param claimList
@@ -70,6 +71,7 @@ public class MyLocalClaimListManager {
 
 	/**
 	 * load claimList form certain file
+	 * 
 	 * @author Youdong Ma
 	 * @param context
 	 * @return

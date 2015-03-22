@@ -36,6 +36,7 @@ public class MainController {
 	 * Constructor
 	 */
 	public MainController() {
+		
 	}
 
 	/**
@@ -48,10 +49,8 @@ public class MainController {
 		// change the user info as not logged in
 		User user = new User(null);
 		user.setName(null);
-
 		// store the user info
 		SignInManager.saveInFile(context, user);
-		
 		// clean the local storage
 		MyLocalClaimListManager.saveClaimList(context, null);
 	}

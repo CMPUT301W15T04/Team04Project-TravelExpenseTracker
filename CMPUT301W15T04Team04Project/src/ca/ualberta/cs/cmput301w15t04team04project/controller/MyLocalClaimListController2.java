@@ -20,6 +20,11 @@
  */
 package ca.ualberta.cs.cmput301w15t04team04project.controller;
 
+import java.util.ArrayList;
+import java.util.Date;
+
+import android.hardware.Camera.Size;
+
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 
@@ -31,14 +36,53 @@ public class MyLocalClaimListController2 extends MyLocalClaimListController {
 
 	/**
 	 * MyLocalClaimListController2 is initialed with a claimList
+	 * 
 	 * @param claimList
 	 */
 	public MyLocalClaimListController2(ClaimList claimList) {
 		super(claimList);
 	}
 
+	public Claim setClaim(Claim claim, String cName, String cDescription,
+			String cTag, Date sDate, Date eDate) {
+		claim.setClaim(cName);
+		claim.setDescription(cDescription);
+		claim.setTag(tagSplit(cTag));
+		claim.setStartDate(sDate);
+		claim.setEndDate(eDate);
+		return claim;
+	}
+	public Claim setEditClaim(Claim claim, String cName, String cDescription,
+			String cTag, Date sDate, Date eDate){
+		claim.setClaim(cName);
+		claim.setDescription(cDescription);
+		claim.setTag(tagSplit(cTag));
+		claim.setStartDate(sDate);
+		claim.setEndDate(eDate);
+		return claim;
+	};
+
+	/*public String loadTag(ArrayList<String> tagsArray) {
+		String tagString ="";
+		for (String item : tagsArray)
+		{
+			tagString += item + ",";
+		}
+		return tagString;
+	}*/
+
+	public ArrayList<String> tagSplit(String tag) {
+		ArrayList<String> tags = new ArrayList<String>();
+		String[] temp = tag.split(",");
+		for (int i = 0; i < temp.length; i++) {
+			tags.add(temp[i]);
+		}
+		return tags;
+	}
+
 	/**
 	 * insert an claim
+	 * 
 	 * @param claim
 	 */
 	public void addClaim(Claim claim) {
