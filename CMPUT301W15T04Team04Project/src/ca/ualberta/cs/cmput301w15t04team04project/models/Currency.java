@@ -30,8 +30,8 @@ package ca.ualberta.cs.cmput301w15t04team04project.models;
  * @since 2015-03-14
  */
 public class Currency {
-	private String type;
-	private double amount;
+	protected String type;
+	protected double amount;
 
 	public Currency(String type, double d) {
 		this.setType(type);

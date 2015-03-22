@@ -33,8 +33,8 @@ package ca.ualberta.cs.cmput301w15t04team04project.models;
  */
 
 public class User {
-	private boolean loginStatus = false;
-	private String name = null;
+	protected boolean loginStatus = false;
+	protected String name = null;
 
 	/*
 	 * Constructor of User
