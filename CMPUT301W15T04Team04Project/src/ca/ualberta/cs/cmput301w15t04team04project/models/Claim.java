@@ -448,7 +448,7 @@ public class Claim {
 	/**
 	 * get the tag of this claim s
 	 * 
-	 * @return tag
+	 * @return tags
 	 */
 	public ArrayList<String> getTag() {
 		return tags;
@@ -460,8 +460,14 @@ public class Claim {
 	 * @param tag
 	 *            a new tag of this claim
 	 */
-	public void setTag(String tag) {
-		this.tags.add(tag);
+	public void setTag(ArrayList<String> tagList) {
+		for (int i = 0; i < tagList.size(); i++) {
+			if (tags.contains(tagList.get(i))){
+			}
+			else{
+				tags.add(tagList.get(i));
+			}
+		}
 	}
 
 	/**

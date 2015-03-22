@@ -76,12 +76,9 @@ public class EditClaimActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_claim);
-
 		claimList = MyLocalClaimListManager.loadClaimList(this);
 		controller = new MyLocalClaimListController2(claimList);
-
 		initialisePaging();
-
 	}
 
 	/*
@@ -98,8 +95,6 @@ public class EditClaimActivity extends FragmentActivity {
 	 * @since 2015-03-10
 	 */
 	private void initialisePaging() {
-
-		// TODO Auto-generated method stub
 		List<Fragment> fragments = new Vector<Fragment>();
 		fragments.add(Fragment.instantiate(this,
 				FragmentEditClaim1.class.getName()));
@@ -123,22 +118,18 @@ public class EditClaimActivity extends FragmentActivity {
 
 		bottom_Rg = (RadioGroup) findViewById(R.id.editClaimBottomMenu);
 		bottom_Rg.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
 			@Override
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
 				switch (checkedId) {
 				case R.id.editClaimPrevious:
 					pager.setCurrentItem(0);
 					break;
-
 				case R.id.editClaimNext:
 					pager.setCurrentItem(1);
 					break;
-
 				default:
 					break;
 				}
-
 			}
 		});
 	}
@@ -198,12 +189,11 @@ public class EditClaimActivity extends FragmentActivity {
 		else {
 
 			Claim claim = claimList.getClaimArrayList().get(myClaimId);
-			claim.setClaim(claimName.getText().toString());
-			claim.setDescription(description.getText().toString());
-			claim.setTag(tag.getText().toString());
-			// claim.setEndDate(calendar.getTime());
-			// claim.setStartDate(calendarfrom.getTime());
-
+			// claimName.setText(claim.getClaim());
+			// description.setText(claim.getDescription());
+			// tag.setText(controller.loadTag(claim.getTag()));
+			claim = controller.setClaim(claim, cName, cDescription, cTag,
+					sDate, eDate);
 			MyLocalClaimListManager.saveClaimList(this, claimList);
 
 		}

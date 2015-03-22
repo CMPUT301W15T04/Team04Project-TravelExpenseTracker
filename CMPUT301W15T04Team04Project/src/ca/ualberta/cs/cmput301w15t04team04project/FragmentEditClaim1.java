@@ -109,12 +109,12 @@ public class FragmentEditClaim1 extends Fragment {
 
 			day = currentClaim.getStartDate().getDate();
 			month = currentClaim.getStartDate().getMonth();
-			year = currentClaim.getStartDate().getYear() + 1900;
+			year = currentClaim.getStartDate().getYear() ;
 			startDate.updateDate(year, month, day);
 
 			day = currentClaim.getEndDate().getDate();
 			month = currentClaim.getEndDate().getMonth();
-			year = currentClaim.getEndDate().getYear() + 1900;
+			year = currentClaim.getEndDate().getYear() ;
 			endDate.updateDate(year, month, day);
 
 			descript.setText(currentClaim.getDescription());
