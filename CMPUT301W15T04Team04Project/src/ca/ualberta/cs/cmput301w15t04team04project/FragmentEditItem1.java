@@ -64,6 +64,7 @@ public class FragmentEditItem1 extends Fragment {
 	private int myItemId;
 	private int myClaimId;
 	private Resources res;
+
 	/**
 	 * This is the onCreateView of initial the view
 	 * 
@@ -80,8 +81,10 @@ public class FragmentEditItem1 extends Fragment {
 				.inflate(R.layout.fragment_edit_item_1, container, false);
 
 	}
+
 	/**
-	 * This is the onActivityCreated of create Item or Edit item set the original information in the View
+	 * This is the onActivityCreated of create Item or Edit item set the
+	 * original information in the View
 	 * 
 	 * @author Weijie Sun
 	 * @version 1.1
@@ -91,8 +94,8 @@ public class FragmentEditItem1 extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
-		ClaimList claimList = MyLocalClaimListManager.loadClaimList(
-				getActivity());
+		ClaimList claimList = MyLocalClaimListManager
+				.loadClaimList(getActivity());
 		Bundle bundle = getActivity().getIntent().getExtras();
 		if (bundle.size() == 1) {
 			EditItemActivity.addEditItemStatus = 0;

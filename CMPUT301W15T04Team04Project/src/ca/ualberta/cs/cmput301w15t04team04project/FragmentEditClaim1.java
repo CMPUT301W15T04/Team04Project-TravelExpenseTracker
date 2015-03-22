@@ -82,8 +82,8 @@ public class FragmentEditClaim1 extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
-		ClaimList claimList = MyLocalClaimListManager.loadClaimList(
-				getActivity());
+		ClaimList claimList = MyLocalClaimListManager
+				.loadClaimList(getActivity());
 
 		Bundle bundle = getActivity().getIntent().getExtras();
 
@@ -109,12 +109,12 @@ public class FragmentEditClaim1 extends Fragment {
 
 			day = currentClaim.getStartDate().getDate();
 			month = currentClaim.getStartDate().getMonth();
-			year = currentClaim.getStartDate().getYear() ;
+			year = currentClaim.getStartDate().getYear() + 1900;
 			startDate.updateDate(year, month, day);
 
 			day = currentClaim.getEndDate().getDate();
 			month = currentClaim.getEndDate().getMonth();
-			year = currentClaim.getEndDate().getYear() ;
+			year = currentClaim.getEndDate().getYear() + 1900;
 			endDate.updateDate(year, month, day);
 
 			descript.setText(currentClaim.getDescription());

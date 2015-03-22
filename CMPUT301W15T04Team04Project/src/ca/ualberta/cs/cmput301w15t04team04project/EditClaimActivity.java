@@ -166,10 +166,10 @@ public class EditClaimActivity extends FragmentActivity {
 		String cTag = tag.getText().toString();
 		sDate.setDate(fromDatePicker.getDayOfMonth());
 		sDate.setMonth(fromDatePicker.getMonth());
-		sDate.setYear(fromDatePicker.getYear());
+		sDate.setYear(fromDatePicker.getYear() - 1900);
 		eDate.setDate(toDatePicker.getDayOfMonth());
 		eDate.setMonth(toDatePicker.getMonth());
-		eDate.setYear(toDatePicker.getYear());
+		eDate.setYear(toDatePicker.getYear() - 1900);
 
 		/*
 		 * Calendar calendar = Calendar.getInstance();

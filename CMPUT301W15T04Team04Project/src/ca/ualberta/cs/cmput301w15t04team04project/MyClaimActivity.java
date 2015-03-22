@@ -32,6 +32,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 /**
  * The MyClaim Activity is the profile my claims. which is write without
  * Internet environment .
+ * 
  * @author youdong
  * @author Weijie Sun
  * @version 1.0
@@ -184,7 +185,7 @@ public class MyClaimActivity extends Activity {
 
 		/**
 		 * set up claim listing adapter
-		 *
+		 * 
 		 * @author Chenrui Lei
 		 * @version 1.0
 		 * @since 2015-03-13
@@ -208,7 +209,7 @@ public class MyClaimActivity extends Activity {
 	/**
 	 * The MyClaimActivity relates to "My Claim" in "profile" of MainActivity.
 	 * But it needs some button on the title bar to add claim
-	 *
+	 * 
 	 * @author Yufei Zhang
 	 * @version 1.0
 	 * @since 2015-03-13
