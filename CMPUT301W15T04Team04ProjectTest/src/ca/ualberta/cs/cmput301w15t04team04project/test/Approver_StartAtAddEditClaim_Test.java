@@ -56,7 +56,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.MyClaimActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.SignInActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
-import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController2;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Destination;
@@ -75,7 +75,7 @@ public class Approver_StartAtAddEditClaim_Test extends ActivityInstrumentationTe
 
 
 	private ListView claimlistview;
-	private MyLocalClaimListController2 controller;
+	private ClaimEditController controller;
 	private ClaimList claimList;
 	private MyLocalClaimListManager manager;
 	
@@ -101,7 +101,7 @@ public class Approver_StartAtAddEditClaim_Test extends ActivityInstrumentationTe
 		super.setUp();
 		manager = new MyLocalClaimListManager();
 		claimList = manager.loadClaimList(getActivity());
-		controller = new MyLocalClaimListController2(claimList);
+		controller = new ClaimEditController(claimList);
 	}
 	
 	/**

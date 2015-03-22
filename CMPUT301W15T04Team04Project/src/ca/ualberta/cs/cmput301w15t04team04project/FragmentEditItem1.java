@@ -112,13 +112,13 @@ public class FragmentEditItem1 extends Fragment {
 
 			itemName = (TextView) getView().findViewById(R.id.itemNameEditText);
 			datePicker = (DatePicker) getView().findViewById(
-					R.id.itemDateDatePicker2);
+					R.id.itemDateDatePicker);
 			category = (Spinner) getView().findViewById(
 					R.id.itemCategorySpinner);
 			currencyUnit = (Spinner) getView().findViewById(
 					R.id.currencyUnitsSpinner);
 			amount = (TextView) getView().findViewById(
-					R.id.itemCurrencyEeditText);
+					R.id.itemCurrencyEditText);
 
 			// set item name
 			itemName.setText(currentItem.getItemName());

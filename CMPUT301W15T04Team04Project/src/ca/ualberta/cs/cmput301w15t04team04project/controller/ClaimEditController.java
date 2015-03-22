@@ -29,18 +29,23 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 
 /**
- * @author youdong
+ * @author Youdong Ma
+ * @author Ji Yang
  * 
  */
-public class MyLocalClaimListController2 extends MyLocalClaimListController {
+public class ClaimEditController extends MyLocalClaimListController {
 
 	/**
 	 * MyLocalClaimListController2 is initialed with a claimList
 	 * 
 	 * @param claimList
 	 */
-	public MyLocalClaimListController2(ClaimList claimList) {
+	public ClaimEditController(ClaimList claimList) {
 		super(claimList);
+	}
+
+	public ArrayList<Claim> getClaims() {
+		return getClaimList().getClaimArrayList();
 	}
 
 	public Claim setClaim(Claim claim, String cName, String cDescription,
@@ -52,8 +57,9 @@ public class MyLocalClaimListController2 extends MyLocalClaimListController {
 		claim.setEndDate(eDate);
 		return claim;
 	}
+
 	public Claim setEditClaim(Claim claim, String cName, String cDescription,
-			String cTag, Date sDate, Date eDate){
+			String cTag, Date sDate, Date eDate) {
 		claim.setClaim(cName);
 		claim.setDescription(cDescription);
 		claim.setTag(tagSplit(cTag));
@@ -62,14 +68,11 @@ public class MyLocalClaimListController2 extends MyLocalClaimListController {
 		return claim;
 	};
 
-	/*public String loadTag(ArrayList<String> tagsArray) {
-		String tagString ="";
-		for (String item : tagsArray)
-		{
-			tagString += item + ",";
-		}
-		return tagString;
-	}*/
+	/*
+	 * public String loadTag(ArrayList<String> tagsArray) { String tagString
+	 * =""; for (String item : tagsArray) { tagString += item + ","; } return
+	 * tagString; }
+	 */
 
 	public ArrayList<String> tagSplit(String tag) {
 		ArrayList<String> tags = new ArrayList<String>();

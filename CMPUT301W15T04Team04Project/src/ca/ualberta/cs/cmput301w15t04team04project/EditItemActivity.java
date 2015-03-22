@@ -176,7 +176,7 @@ public class EditItemActivity extends FragmentActivity {
 		 */
 		// get the views
 		EditText itemName = (EditText) findViewById(R.id.itemNameEditText);
-		DatePicker itemDateDatePicker = (DatePicker) findViewById(R.id.itemDateDatePicker2);
+		DatePicker itemDateDatePicker = (DatePicker) findViewById(R.id.itemDateDatePicker);
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(itemDateDatePicker.getYear(),
 				itemDateDatePicker.getMonth(),
@@ -184,7 +184,7 @@ public class EditItemActivity extends FragmentActivity {
 
 		Spinner itemCategorySpinner = (Spinner) findViewById(R.id.itemCategorySpinner);
 		Spinner currencyUnitsSpinner = (Spinner) findViewById(R.id.currencyUnitsSpinner);
-		EditText itemCurrencyEeditText = (EditText) findViewById(R.id.itemCurrencyEeditText);
+		EditText itemCurrencyEeditText = (EditText) findViewById(R.id.itemCurrencyEditText);
 
 		EditText fragmentEditItem2DiscriptionEditText = (EditText) findViewById(R.id.fragmentEditItem2DiscriptionEditText);
 

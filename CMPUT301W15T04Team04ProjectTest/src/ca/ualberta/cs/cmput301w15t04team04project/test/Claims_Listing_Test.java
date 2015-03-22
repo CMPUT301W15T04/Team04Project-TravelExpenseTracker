@@ -35,7 +35,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.R;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ClaimListAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ItemListAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController;
-import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController2;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 
@@ -46,7 +46,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
  */
 public class Claims_Listing_Test extends ActivityInstrumentationTestCase2<MyClaimActivity> {
     private MyClaimActivity thisActivity;
-    private MyLocalClaimListController2 controller;
+    private ClaimEditController controller;
 	private Claim Aclaim;
 	private Claim Bclaim;
 	private Claim Cclaim;
@@ -99,7 +99,7 @@ public class Claims_Listing_Test extends ActivityInstrumentationTestCase2<MyClai
         Bclaim.setClaim("Test");
         Cclaim = new Claim("Cclaim");
         Cclaim.setStatus("Proceed");
-        controller = new MyLocalClaimListController2(new ClaimList());
+        controller = new ClaimEditController(new ClaimList());
         controller.addClaim(Aclaim);
         controller.addClaim(Bclaim);
         controller.addClaim(Cclaim);
@@ -137,7 +137,7 @@ public class Claims_Listing_Test extends ActivityInstrumentationTestCase2<MyClai
 	 */
 	public void testSortClaimList() {
 		ListView claimlistview = (ListView) thisActivity.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.myClaimsListView); //listView
-		controller = new MyLocalClaimListController2(new ClaimList());
+		controller = new ClaimEditController(new ClaimList());
 	    controller.addClaim(Aclaim);
 	    controller.addClaim(Bclaim);
 		assertEquals("index 0 equals", claimlistview.getChildAt(0).equals(Bclaim));
@@ -149,12 +149,12 @@ public class Claims_Listing_Test extends ActivityInstrumentationTestCase2<MyClai
 		 * 
 		 */
 		public void testCantDeleteClaim() {
-		    controller = new MyLocalClaimListController2(new ClaimList());
+		    controller = new ClaimEditController(new ClaimList());
 		    controller.addClaim(Aclaim);
-		    assertEquals("No claims", MyLocalClaimListController2.getClaimList()
+		    assertEquals("No claims", ClaimEditController.getClaimList()
 					.size(), 1);
 		    controller.deleteClaim(0);
-			assertEquals("No claims", MyLocalClaimListController2.getClaimList()
+			assertEquals("No claims", ClaimEditController.getClaimList()
 					.size(), 0);
 		}
 

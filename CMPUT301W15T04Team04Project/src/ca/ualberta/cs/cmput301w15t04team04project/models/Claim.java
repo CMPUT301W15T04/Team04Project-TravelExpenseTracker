@@ -461,13 +461,12 @@ public class Claim {
 	 *            a new tag of this claim
 	 */
 	public void setTag(ArrayList<String> tagList) {
-		for (int i = 0; i < tagList.size(); i++) {
-			if (tags.contains(tagList.get(i))){
-			}
-			else{
-				tags.add(tagList.get(i));
-			}
-		}
+		/*
+		 * for (int i = 0; i < tagList.size(); i++) { if
+		 * (tags.contains(tagList.get(i))){ } else{ tags.add(tagList.get(i)); }
+		 * }
+		 */
+		this.tags = tagList;
 	}
 
 	/**

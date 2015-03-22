@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ca.ualberta.cs.cmput301w15t04team04project"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="17"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Holo.Light" >
+        <activity
+            android:name=".SignInActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".XListViewActivity"
+            android:label="@string/action_settings" >
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main" >
+        </activity>
+        <activity
+            android:name=".SearchActivity"
+            android:label="@string/title_activity_search" >
+        </activity>
+        <activity
+            android:name=".EditClaimActivity"
+            android:label="@string/title_activity_edit_claim" >
+        </activity>
+        <activity
+            android:name=".OneClaimActivity"
+            android:label="@string/title_activity_one_claim" >
+        </activity>
+        <activity
+            android:name=".EditItemActivity"
+            android:label="@string/title_activity_edit_item" >
+        </activity>
+        <activity
+            android:name=".ClaimDetailActivity"
+            android:label="@string/title_activity_claim_detail" >
+        </activity>
+        <activity
+            android:name=".ItemDetailActivity"
+            android:label="@string/title_activity_item_detail" >
+        </activity>
+        <activity
+            android:name=".FragmentMoments"
+            android:label="@string/title_activity_fragment_main" >
+        </activity>
+        <activity
+            android:name=".FragmentProfile"
+            android:label="@string/title_activity_fragment_profile" >
+        </activity>
+        <activity
+            android:name=".FragmentEditClaim2"
+            android:label="@string/title_activity_edit_claim_activity2" >
+        </activity>
+        <activity
+            android:name=".FragementEditClaimActivity1"
+            android:label="@string/title_activity_fragement_edit_claim_activity1" >
+        </activity>
+        <activity
+            android:name=".FragmentEditItem1"
+            android:label="@string/title_activity_fragment_edit_item1" >
+        </activity>
+        <activity
+            android:name=".MyClaimActivity"
+            android:label="@string/title_activity_my_claim" >
+        </activity>
+        <activity
+            android:name=".FragmentMyClaims"
+            android:label="@string/title_activity_fragment_moments" >
+        </activity>
+    </application>
+
+</manifest>
