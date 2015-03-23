@@ -21,20 +21,13 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
-import ca.ualberta.cs.cmput301w15t04team04project.controller.SignInController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.os.Bundle;
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.RadioGroup.OnCheckedChangeListener;
 
 /**
  * FragmentProfile is like the activity which get the User name
@@ -44,16 +37,11 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
  * @date 2015-3-16
  */
 public class FragmentProfile extends Fragment {
-	private TextView tv;
 	private TextView userName;
-	private RadioGroup settingOption;
 	private User user;
-	// private FragmentProfileController controller = new
-	// FragmentProfileController();
-	private Context FragmentProfile = getActivity();
-
-	private SignInController signInController = new SignInController();
-
+	private TextView progress;
+	private TextView approved;
+	private TextView outBox;
 	/* (non-Javadoc)
 	 * @see android.support.v4.app.Fragment#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)
 	 */
@@ -72,7 +60,10 @@ public class FragmentProfile extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 		userName = (TextView) getView().findViewById(R.id.userNameDisplay);
 		userName.setText(user.getName());
-
+		progress = (TextView) getView().findViewById(R.id.progresClaimsTextView);
+		approved = (TextView) getView().findViewById(R.id.approvedClaimsTextView);
+		outBox = (TextView) getView().findViewById(R.id.savedClaimsTextView);
+		check();
 		/**
 		 * settingOption =
 		 * (RadioGroup)getView().findViewById(R.id.settingGroup);
@@ -110,4 +101,11 @@ public class FragmentProfile extends Fragment {
 		 */
 	}
 
+	private void check() {
+		if (user.getName().equals("approval")){
+			progress.setVisibility(View.GONE);
+			approved.setVisibility(View.GONE);
+			outBox.setVisibility(View.GONE);
+		}
+	}
 }

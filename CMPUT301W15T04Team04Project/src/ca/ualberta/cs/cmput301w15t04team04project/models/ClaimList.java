@@ -22,8 +22,6 @@
 package ca.ualberta.cs.cmput301w15t04team04project.models;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 
 /**
