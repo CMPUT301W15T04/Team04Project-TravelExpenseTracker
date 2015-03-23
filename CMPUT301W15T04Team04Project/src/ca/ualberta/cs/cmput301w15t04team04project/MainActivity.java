@@ -23,55 +23,23 @@ package ca.ualberta.cs.cmput301w15t04team04project;
 
 import java.util.List;
 import java.util.Vector;
-
 import ca.ualberta.cs.cmput301w15t04team04project.R;
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.PagerAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.MainController;
-import ca.ualberta.cs.cmput301w15t04team04project.controller.SignInController;
+import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.View.OnClickListener;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.widget.RadioGroup.OnCheckedChangeListener;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
-import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController;
-import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
-import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
-import ca.ualberta.cs.cmput301w15t04team04project.models.Listener;
-import android.app.ActionBar;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
 /**
  * The MyClaim Activity is the profile my claims. which is write without
  * Internet environment .
@@ -87,14 +55,13 @@ import android.widget.AdapterView.OnItemLongClickListener;
 
 public class MainActivity extends FragmentActivity {
 	private ActionBar actionBar;
-
+	private User user;
 	private RadioGroup bottom_Rg;
 	private PagerAdapter mpageAdapter;
 	private ViewPager pager;
 
 	// private int num = -1;
 	private MainController controller = new MainController();
-	private MainActivity thisActivity = this;
 	public List<Fragment> fragments;
 
 	/* (non-Javadoc)
@@ -105,7 +72,7 @@ public class MainActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		// searchClaim.setVisible(true);
 		setContentView(R.layout.activity_main);
-
+		user = SignInManager.loadFromFile(this);
 		actionBar = getActionBar();
 		actionBar.setTitle("My Local Claims");
 

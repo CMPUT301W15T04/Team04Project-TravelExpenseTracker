@@ -46,6 +46,15 @@ public class Item {
 	protected Date itemDate;
 	// private ImageView receipt;
 	protected boolean isComplete = false;
+	protected String receipt;
+
+	public String getReceipt() {
+		return receipt;
+	}
+
+	public void setReceipt(String receipt) {
+		this.receipt = receipt;
+	}
 
 	/**
 	 * The Item model is just a rough Item's information simply store set and
@@ -117,6 +126,7 @@ public class Item {
 		return null;
 	}
 
+	
 	/*
 	 * public ImageView getReceipt() {
 	 * 
