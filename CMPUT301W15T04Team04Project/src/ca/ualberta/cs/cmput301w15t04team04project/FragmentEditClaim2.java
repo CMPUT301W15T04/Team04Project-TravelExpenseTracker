@@ -95,15 +95,11 @@ public class FragmentEditClaim2 extends Fragment {
 		Bundle bundle = getActivity().getIntent().getExtras();
 		
 		ListView DestinationListView = (ListView) getActivity().findViewById(R.id.destinationListView);
-		//System.out.println(DestinationListView==null);
 		Button addDestinationButton = (Button) getActivity().findViewById(R.id.button1);
-		//System.out.println(findViewById(R.id.toDatePicker));
 		ButtonListener addDestinationButtonListener = new ButtonListener();
 		addDestinationButton.setOnClickListener(addDestinationButtonListener);
 		
-		
 		DestinationListAdapter = new ArrayAdapter<String>(getActivity(),R.layout.list_item, DestinationList);
-		//System.out.println(DestinationListAdapter==null);
 		DestinationListView.setAdapter(DestinationListAdapter);
 		DestinationListAdapter.notifyDataSetChanged();
 		
@@ -161,7 +157,11 @@ public class FragmentEditClaim2 extends Fragment {
 		}
 	}
 	
-	
+	/**
+	 * @since  2015-03-23
+	 * @author CHENRUI
+	 *
+	 */
 	class ButtonListener implements View.OnClickListener{
 		@Override
 		public void onClick(View view) {
