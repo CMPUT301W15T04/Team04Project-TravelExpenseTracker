@@ -29,24 +29,25 @@ import java.util.Vector;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.PagerAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Destination;
-
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 /**
@@ -64,9 +65,10 @@ public class EditClaimActivity extends FragmentActivity {
 	private ViewPager pager;
 	private ClaimEditController controller;
 	private ClaimList claimList;
+	private Button addDestinationButton;
 	protected static int addEditStatus = 0; // 0 add 1 edit
 	protected static int myClaimId;
-
+	protected Activity thisActivity = this;
 	/**
 	 * Initializing the activity. Call the initialisePaging() function to allow
 	 * the pager
@@ -83,6 +85,7 @@ public class EditClaimActivity extends FragmentActivity {
 		claimList = MyLocalClaimListManager.loadClaimList(this);
 		controller = new ClaimEditController(claimList);
 		initialisePaging();
+		
 	}
 
 	/*
@@ -156,9 +159,25 @@ public class EditClaimActivity extends FragmentActivity {
 	 * @version 1.2
 	 * @since 2015-03-20
 	 */
-	public void addDestination(View v){
+	private ArrayAdapter<String> DestinationListAdapter;
+	//private ListView DestinationListView;
+	private ArrayList<String> DestinationList;
+	/*
+	public void addDestination(){
+		DestinationListView = (ListView) findViewById(R.id.destinationListView);
+		
+		addDestinationButton = (Button) findViewById(R.id.button1);
+		//System.out.println(DestinationListView==null);
+		ButtonListener addDestinationButtonListener = new ButtonListener();
+		addDestinationButton.setOnClickListener(addDestinationButtonListener);
+		
+		DestinationListAdapter = new ArrayAdapter<String>(this,R.layout.list_item, DestinationList);
+		DestinationListView.setAdapter(DestinationListAdapter);
+		DestinationListAdapter.notifyDataSetChanged();
+	}*/
 	
-	}
+	
+	
 	
 	@SuppressWarnings("deprecation")
 	public void confirmClaim(MenuItem item) {
@@ -185,6 +204,8 @@ public class EditClaimActivity extends FragmentActivity {
 		 * Calendar.getInstance(); calendarfrom.set(fromDatePicker.getYear(),
 		 * fromDatePicker.getMonth(), fromDatePicker.getDayOfMonth());
 		 */
+		//System.out.println(tag==null);
+		
 		if (addEditStatus == 0) {
 			Claim claim = new Claim(null);
 			claim = controller.setClaim(claim, cName, cDescription, cTag,

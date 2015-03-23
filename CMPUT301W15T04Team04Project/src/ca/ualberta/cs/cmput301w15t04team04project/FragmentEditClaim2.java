@@ -33,9 +33,12 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Toast;
 
 /**
@@ -58,6 +61,9 @@ public class FragmentEditClaim2 extends Fragment {
 	// private ArrayList<Destination> destinations;
 	private EditText destinations;
 	private String destination = "";
+	
+	private ArrayList<String> DestinationList = new ArrayList<String>();
+	private ArrayAdapter<String> DestinationListAdapter;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -87,7 +93,20 @@ public class FragmentEditClaim2 extends Fragment {
 				getActivity());
 
 		Bundle bundle = getActivity().getIntent().getExtras();
-
+		
+		ListView DestinationListView = (ListView) getActivity().findViewById(R.id.destinationListView);
+		//System.out.println(DestinationListView==null);
+		Button addDestinationButton = (Button) getActivity().findViewById(R.id.button1);
+		//System.out.println(findViewById(R.id.toDatePicker));
+		ButtonListener addDestinationButtonListener = new ButtonListener();
+		addDestinationButton.setOnClickListener(addDestinationButtonListener);
+		
+		
+		DestinationListAdapter = new ArrayAdapter<String>(getActivity(),R.layout.list_item, DestinationList);
+		//System.out.println(DestinationListAdapter==null);
+		DestinationListView.setAdapter(DestinationListAdapter);
+		DestinationListAdapter.notifyDataSetChanged();
+		
 		if (bundle == null) {
 			EditClaimActivity.addEditStatus = 0;
 		} else {
@@ -139,6 +158,23 @@ public class FragmentEditClaim2 extends Fragment {
 			// EditClaimActivity.myClaimId = this.myClaimId;
 
 			Toast.makeText(getActivity(), tag, Toast.LENGTH_SHORT).show();
+		}
+	}
+	
+	
+	class ButtonListener implements View.OnClickListener{
+		@Override
+		public void onClick(View view) {
+			// find informations from views
+			String destination = ((EditText)getActivity().findViewById(R.id.destinationEditText)).getText().toString();
+			
+			DestinationList.add(destination);
+			DestinationListAdapter.notifyDataSetChanged();
+
+			// show to user
+			Toast.makeText(getActivity().getBaseContext(), "Destination added",Toast.LENGTH_SHORT).show();
+			
+			///finish();
 		}
 	}
 
