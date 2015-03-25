@@ -228,7 +228,8 @@ public class OneClaimActivity extends Activity {
 							Toast.LENGTH_SHORT).show();
 				iC = new InternetChecker(thisActivity);
 				if (iC.isNetworkAvailable()){
-					
+					Thread addQuestionThread = new AddClaimThread(claim);
+					addQuestionThread.start();
 				}
 				controller.submittedClaim(which);
 				MyLocalClaimListManager.saveClaimList(getApplicationContext(), claimList);

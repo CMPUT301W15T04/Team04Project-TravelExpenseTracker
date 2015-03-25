@@ -84,5 +84,9 @@ public class ClaimEditController extends MyLocalClaimListController {
 		getClaims().add(0, claim);
 		getClaimList().notifyListeners();
 	}
+	
+	public void appendClaim(Claim claim){
+		getClaims().add(claim);
+	}
 
 }

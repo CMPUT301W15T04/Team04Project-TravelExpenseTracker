@@ -5,12 +5,15 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ClaimListAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Listener;
+import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -56,35 +59,45 @@ public class MyClaimActivity extends Activity {
 	private ClaimList claimList;
 	private ArrayList<Claim> claims;
 	private ArrayList<Integer> indeies;
+	private User user;
+	private ListView listView;
+	private CLmanager onlineManager = new CLmanager();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_my_claim);
-		claimList = MyLocalClaimListManager.loadClaimList(this);
-		controller = new MyLocalClaimListController(claimList);
-
+		user = SignInManager.loadFromFile(this);
 		actionBar = getActionBar();
-		if (mode == 0) {
-			actionBar.setTitle("Progresing Claims");
-			indeies = controller.getIndexList("In Progress");
-			progressing = true;
-		} else if (mode == 1) {
-			actionBar.setTitle("Submitted Claims");
-			indeies = controller.getIndexList("submitted");
-			progressing = false;
-		} else if (mode == 2) {
-			actionBar.setTitle("Approved Claims");
-			indeies = controller.getIndexList("approved");
-			progressing = false;
+		if (user.getName().equals("approval")) {
+			Thread search = new SearchClaimThread("");
+			search.start();
+			controller = new MyLocalClaimListController(claimList);
+			claims = controller.getClaims();
+			Toast.makeText(this, "claim" + claims.size(), Toast.LENGTH_SHORT)
+					.show();
 		} else {
-			actionBar.setTitle("Saved Claims");
-			progressing = false;
+			claimList = MyLocalClaimListManager.loadClaimList(this);
+			controller = new MyLocalClaimListController(claimList);
+			if (mode == 0) {
+				actionBar.setTitle("Progresing Claims");
+				indeies = controller.getIndexList("In Progress");
+				progressing = true;
+			} else if (mode == 1) {
+				actionBar.setTitle("Submitted Claims");
+				indeies = controller.getIndexList("submitted");
+				progressing = false;
+			} else if (mode == 2) {
+				actionBar.setTitle("Approved Claims");
+				indeies = controller.getIndexList("approved");
+				progressing = false;
+			} else {
+				actionBar.setTitle("Saved Claims");
+				progressing = false;
+			}
+			claims = controller.getClaimsByIndex(indeies);
 		}
-
-		claims = controller.getClaimsByIndex(indeies);
-
-		ListView listView = (ListView) findViewById(R.id.myClaimsListView);
+		listView = (ListView) findViewById(R.id.myClaimsListView);
 		final ClaimListAdapter claimListAdapter = new ClaimListAdapter(this,
 				R.layout.single_claim, claims);
 		listView.setAdapter(claimListAdapter);
@@ -111,6 +124,7 @@ public class MyClaimActivity extends Activity {
 				claimListAdapter.notifyDataSetChanged();
 			}
 		});
+
 		listView.setOnItemLongClickListener(new OnItemLongClickListener() {
 
 			@Override
@@ -171,7 +185,13 @@ public class MyClaimActivity extends Activity {
 			public void onItemClick(AdapterView<?> adapterView, View view,
 					int position, long id) {
 				int itemPosition = position;
-				Toast.makeText(MyClaimActivity.this, "Edit Claim" + position,
+				Toast.makeText(
+						MyClaimActivity.this,
+						"Edit Claim"
+								+ position
+								+ controller.getClaims()
+										.get(indeies.get(itemPosition))
+										.getStartDate().getTime(),
 						Toast.LENGTH_SHORT).show();
 				Intent myintent = new Intent(MyClaimActivity.this,
 						OneClaimActivity.class);
@@ -234,4 +254,17 @@ public class MyClaimActivity extends Activity {
 		startActivity(intent);
 		finish();
 	}
+
+	class SearchClaimThread extends Thread {
+		private String status;
+
+		public SearchClaimThread(String string) {
+			this.status = string;
+		}
+
+		public void run() {
+			claimList = onlineManager.searchClaimList(status);
+		}
+	}
+
 }

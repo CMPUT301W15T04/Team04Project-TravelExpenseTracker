@@ -34,9 +34,16 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.entity.StringEntity;
+
+import android.util.Log;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
+import ca.ualberta.cs.cmput301w15t04team04project.network.data.Hits;
+import ca.ualberta.cs.cmput301w15t04team04project.network.data.SearchHit;
 import ca.ualberta.cs.cmput301w15t04team04project.network.data.SearchResponse;
+import ca.ualberta.cs.cmput301w15t04team04project.network.data.SimpleSearchCommand;
 
 import java.lang.reflect.Type;
 import com.google.gson.Gson;
@@ -44,12 +51,14 @@ import com.google.gson.reflect.TypeToken;
 
 /**
  * @author youdong
- *
+ * 
  */
 public class CLmanager {
 	private static final String RESOURCE_URL = "http://cmput301.softwareprocess.es:8080/cmput301w15t04/claim/";
+	private static final String SEARCH_URL = "http://cmput301.softwareprocess.es:8080/cmput301w15t04/claim/_search";
 	private static Gson gson;
 	private static HttpClient httpClient = new DefaultHttpClient();
+	private static final String TAG = "ClaimSearch";
 
 	/**
 	 * 
@@ -65,10 +74,9 @@ public class CLmanager {
 	 * @throws IllegalStateException
 	 * @throws IOException
 	 */
-	public void insertClaim(Claim claim)
-			throws IllegalStateException, IOException {
-		HttpPost httpPost = new HttpPost(RESOURCE_URL
-				+ claim.getClaim());
+	public void insertClaim(Claim claim) throws IllegalStateException,
+			IOException {
+		HttpPost httpPost = new HttpPost(RESOURCE_URL + claim.getClaim());
 		StringEntity stringEntity = null;
 		try {
 			stringEntity = new StringEntity(gson.toJson(claim));
@@ -140,9 +148,9 @@ public class CLmanager {
 	 * @param string
 	 * @return
 	 */
-	public static Claim getClaim(long ID, String string) {
+	public static Claim getClaim(String string) {
 
-		HttpGet getRequest = new HttpGet(RESOURCE_URL + string + "/" + ID);
+		HttpGet getRequest = new HttpGet(RESOURCE_URL);
 		getRequest.setHeader("Accept", "application/json");
 		HttpResponse getResponse;
 		Claim claim = null;
@@ -153,8 +161,7 @@ public class CLmanager {
 			Type responseType = new TypeToken<SearchResponse<Claim>>() {
 			}.getType();
 			// Now we expect to get a Recipe response
-			SearchResponse<Claim> esResponse = gson
-					.fromJson(json, responseType);
+			SearchHit<Claim> esResponse = gson.fromJson(json, responseType);
 			// We get the recipe from it!
 			claim = esResponse.getSource();
 		} catch (ClientProtocolException e) {
@@ -163,6 +170,57 @@ public class CLmanager {
 			e.printStackTrace();
 		}
 		return claim;
+	}
+
+	public ClaimList searchClaimList(String searchString) {
+		ClaimList claimList = new ClaimList();
+		ClaimEditController controller = new ClaimEditController(claimList);
+		
+		if (searchString == null || "".equals(searchString)) {
+			searchString = "*";
+		}
+		try {
+			HttpPost searchRequest = createSearchRequest(searchString);
+			HttpClient httpClient = new DefaultHttpClient();
+			HttpResponse response = httpClient.execute(searchRequest);
+
+			String status = response.getStatusLine().toString();
+
+			SearchResponse<Claim> esResponse = parseSearchResponse(response);
+			Hits<Claim> hits = esResponse.getHits();
+
+			if (hits != null) {
+				if (hits.getHits() != null) {
+					for (SearchHit<Claim> sesr : hits.getHits()) {
+						controller.appendClaim((sesr.getSource()));
+					}
+				}
+			}
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return claimList;
+	}
+
+	private HttpPost createSearchRequest(String searchString) throws UnsupportedEncodingException {
+		// TODO Auto-generated method stub
+		HttpPost searchRequest = new HttpPost(SEARCH_URL);
+		SimpleSearchCommand command = new SimpleSearchCommand(searchString);
+
+		String query = command.getJsonCommand();
+		Log.i(TAG, "Json command: " + query);
+
+		StringEntity stringEntity;
+		stringEntity = new StringEntity(query);
+
+		searchRequest.setHeader("Accept", "application/json");
+		searchRequest.setEntity(stringEntity);
+
+		return searchRequest;
 	}
 
 	/**
@@ -185,16 +243,31 @@ public class CLmanager {
 	 * @return
 	 * @throws IOException
 	 */
+	private SearchResponse<Claim> parseSearchResponse(HttpResponse response)
+			throws IOException {
+		String json;
+		json = getEntityContent(response);
+
+		Type searchResponseType = new TypeToken<SearchResponse<Claim>>() {
+		}.getType();
+
+		SearchResponse<Claim> esResponse = gson.fromJson(json,
+				searchResponseType);
+
+		return esResponse;
+	}
+
 	public static String getEntityContent(HttpResponse response)
 			throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(
 				(response.getEntity().getContent())));
-		String output = "";
-		String json = "";
-		while ((output = br.readLine()) != null) {
-			json += output;
+		StringBuffer result = new StringBuffer();
+		String line = "";
+		while ((line = br.readLine()) != null) {
+			result.append(line);
 		}
-		return json;
+
+		return result.toString();
 	}
 	// private SearchHit<Claim> parseClaimHit(HttpResponse response) {
 	// TODO Auto-generated method stub
