@@ -69,6 +69,7 @@ public class EditClaimActivity extends FragmentActivity {
 	protected static int addEditStatus = 0; // 0 add 1 edit
 	protected static int myClaimId;
 	protected Activity thisActivity = this;
+
 	/**
 	 * Initializing the activity. Call the initialisePaging() function to allow
 	 * the pager
@@ -85,7 +86,7 @@ public class EditClaimActivity extends FragmentActivity {
 		claimList = MyLocalClaimListManager.loadClaimList(this);
 		controller = new ClaimEditController(claimList);
 		initialisePaging();
-		
+
 	}
 
 	/*
@@ -159,26 +160,7 @@ public class EditClaimActivity extends FragmentActivity {
 	 * @version 1.2
 	 * @since 2015-03-20
 	 */
-	private ArrayAdapter<String> DestinationListAdapter;
-	//private ListView DestinationListView;
-	private ArrayList<String> DestinationList;
-	/*
-	public void addDestination(){
-		DestinationListView = (ListView) findViewById(R.id.destinationListView);
-		
-		addDestinationButton = (Button) findViewById(R.id.button1);
-		//System.out.println(DestinationListView==null);
-		ButtonListener addDestinationButtonListener = new ButtonListener();
-		addDestinationButton.setOnClickListener(addDestinationButtonListener);
-		
-		DestinationListAdapter = new ArrayAdapter<String>(this,R.layout.list_item, DestinationList);
-		DestinationListView.setAdapter(DestinationListAdapter);
-		DestinationListAdapter.notifyDataSetChanged();
-	}*/
-	
-	
-	
-	
+
 	@SuppressWarnings("deprecation")
 	public void confirmClaim(MenuItem item) {
 		EditText claimName = (EditText) findViewById(R.id.claimNameEditText);
@@ -197,6 +179,7 @@ public class EditClaimActivity extends FragmentActivity {
 		eDate.setDate(toDatePicker.getDayOfMonth());
 		eDate.setMonth(toDatePicker.getMonth());
 		eDate.setYear(toDatePicker.getYear() - 1900);
+
 		/*
 		 * Calendar calendar = Calendar.getInstance();
 		 * calendar.set(toDatePicker.getYear(), toDatePicker.getMonth(),
@@ -204,20 +187,18 @@ public class EditClaimActivity extends FragmentActivity {
 		 * Calendar.getInstance(); calendarfrom.set(fromDatePicker.getYear(),
 		 * fromDatePicker.getMonth(), fromDatePicker.getDayOfMonth());
 		 */
-		//System.out.println(tag==null);
-		
+		// System.out.println(tag==null);
+
 		if (addEditStatus == 0) {
-			Claim claim = new Claim(null);
-			claim = controller.setClaim(claim, cName, cDescription, cTag,
-					sDate, eDate);
-			controller.addClaim(claim);
+			controller.setClaim(cName, cDescription, cTag, sDate, eDate);
+			controller.addClaim();
 			MyLocalClaimListManager.saveClaimList(this, claimList);
 		}
 
 		else {
 			Claim claim = claimList.getClaimArrayList().get(myClaimId);
-			claim = controller.setClaim(claim, cName, cDescription, cTag,
-					sDate, eDate);
+			controller.setClaimObj(claim);
+			controller.setClaim(cName, cDescription, cTag, sDate, eDate);
 			MyLocalClaimListManager.saveClaimList(this, claimList);
 
 		}

@@ -37,36 +37,45 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.Destination;
  */
 public class ClaimEditController extends MyLocalClaimListController {
 
+	private Claim claim;
+
 	/**
 	 * ClaimEditController is initialed with a claimList
 	 * 
 	 * @param claimList
 	 */
+
 	public ClaimEditController(ClaimList claimList) {
 		super(claimList);
+		claim = new Claim(null);
+	}
+
+	public void setClaimObj(Claim claim) {
+		this.claim = claim;
 	}
 
 	public ArrayList<Claim> getClaims() {
 		return getClaimList().getClaimArrayList();
 	}
 
-	public Claim setClaim(Claim claim, String cName, String cDescription,
-			String cTag, Date sDate, Date eDate ) {
+	public Claim setClaim(String cName, String cDescription, String cTag,
+			Date sDate, Date eDate) {
 		claim.setClaim(cName);
 		claim.setDescription(cDescription);
 		claim.setTag(tagSplit(cTag));
 		claim.setStartDate(sDate);
-		claim.setEndDate(eDate);	
+		claim.setEndDate(eDate);
 		return claim;
 	}
 
-
-	public ArrayList<Destination> destinationSet(ArrayList<Destination> desList, String desName, String desReason){
+	public ArrayList<Destination> destinationSet(
+			ArrayList<Destination> desList, String desName, String desReason) {
 		Destination des = new Destination(desName);
 		des.setdReason(desReason);
 		desList.add(des);
 		return desList;
 	}
+
 	/*
 	 * public String loadTag(ArrayList<String> tagsArray) { String tagString
 	 * =""; for (String item : tagsArray) { tagString += item + ","; } return
@@ -87,12 +96,12 @@ public class ClaimEditController extends MyLocalClaimListController {
 	 * 
 	 * @param claim
 	 */
-	public void addClaim(Claim claim) {
-		getClaims().add(0, claim);
+	public void addClaim() {
+		getClaims().add(this.claim);
 		getClaimList().notifyListeners();
 	}
-	
-	public void appendClaim(Claim claim){
+
+	public void appendClaim(Claim claim) {
 		getClaims().add(claim);
 	}
 
