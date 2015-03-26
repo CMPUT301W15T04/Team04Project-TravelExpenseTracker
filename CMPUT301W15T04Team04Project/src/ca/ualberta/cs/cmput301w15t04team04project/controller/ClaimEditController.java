@@ -22,11 +22,13 @@ package ca.ualberta.cs.cmput301w15t04team04project.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.jar.Attributes.Name;
 
 import android.hardware.Camera.Size;
 
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Destination;
 
 /**
  * @author Youdong Ma
@@ -49,17 +51,22 @@ public class ClaimEditController extends MyLocalClaimListController {
 	}
 
 	public Claim setClaim(Claim claim, String cName, String cDescription,
-			String cTag, Date sDate, Date eDate) {
+			String cTag, Date sDate, Date eDate ) {
 		claim.setClaim(cName);
 		claim.setDescription(cDescription);
 		claim.setTag(tagSplit(cTag));
 		claim.setStartDate(sDate);
-		claim.setEndDate(eDate);
+		claim.setEndDate(eDate);	
 		return claim;
 	}
 
 
-
+	public ArrayList<Destination> destinationSet(ArrayList<Destination> desList, String desName, String desReason){
+		Destination des = new Destination(desName);
+		des.setdReason(desReason);
+		desList.add(des);
+		return desList;
+	}
 	/*
 	 * public String loadTag(ArrayList<String> tagsArray) { String tagString
 	 * =""; for (String item : tagsArray) { tagString += item + ","; } return

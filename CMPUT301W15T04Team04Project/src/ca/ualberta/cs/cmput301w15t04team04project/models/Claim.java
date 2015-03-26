@@ -73,7 +73,10 @@ public class Claim {
 															// 2015-03-14
 															// Chenrui
 	}
-/*
+public void setDestination(ArrayList<Destination> destination) {
+		this.destination = destination;
+	}
+	/*
 	/**
 	 * Returns the string representation of the destination list. The
 	 * presentation has a specific format. Elements are separated by '\n' (new

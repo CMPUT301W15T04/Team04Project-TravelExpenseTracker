@@ -23,6 +23,7 @@ package ca.ualberta.cs.cmput301w15t04team04project;
 import java.util.ArrayList;
 
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Destination;
@@ -61,10 +62,10 @@ public class FragmentEditClaim2 extends Fragment {
 	// private ArrayList<Destination> destinations;
 	private EditText destinations;
 	private String destination = "";
-	
+	protected ClaimEditController controller;
 	private ArrayList<String> DestinationList = new ArrayList<String>();
+	
 	private ArrayAdapter<String> DestinationListAdapter;
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -114,7 +115,7 @@ public class FragmentEditClaim2 extends Fragment {
 			// get the views
 			tags = (EditText) getView().findViewById(R.id.tagEditText);
 			destinations = (EditText) getView().findViewById(
-					R.id.reasonEditText);
+					R.id.destinationEditText);
 
 			// get the size of two ListViews
 			int tagsSize = currentClaim.getTag().size();
@@ -162,14 +163,16 @@ public class FragmentEditClaim2 extends Fragment {
 	 * @author CHENRUI
 	 *
 	 */
+	protected static ArrayList<Destination> desList = new ArrayList<Destination>();
 	class ButtonListener implements View.OnClickListener{
 		@Override
 		public void onClick(View view) {
 			// find informations from views
 			String destination = ((EditText)getActivity().findViewById(R.id.destinationEditText)).getText().toString();
-			
+			String reason = ((EditText)getActivity().findViewById(R.id.reasonEditText)).getText().toString();
 			DestinationList.add(destination);
 			DestinationListAdapter.notifyDataSetChanged();
+			controller.destinationSet(desList, destination,reason);
 
 			// show to user
 			Toast.makeText(getActivity().getBaseContext(), "Destination added",Toast.LENGTH_SHORT).show();
