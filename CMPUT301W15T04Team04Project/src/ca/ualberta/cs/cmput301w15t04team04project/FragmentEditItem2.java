@@ -138,7 +138,9 @@ public class FragmentEditItem2 extends Fragment {
 			if (currentItem.getReceipt() != null){
 			
 				Bitmap bitmap = currentItem.getReceipBitmap();
-				button.setImageBitmap(bitmap);
+				button.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 256, 256, false));
+
+				//button.setImageBitmap(bitmap);
 
 			};
 			
