@@ -32,6 +32,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Currency;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -41,6 +42,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -64,7 +66,8 @@ public class EditItemActivity extends FragmentActivity {
 	private int claimId;
 	protected static int addEditItemStatus = 0; // 0 add 1 edit
 	protected static int itemId;
-
+	private Bitmap bitmap;
+	private int receiptFlag = 0;
 	/**
 	 * Initializing the activity. Call the initialisePaging() function to allow
 	 * the pager
@@ -86,7 +89,7 @@ public class EditItemActivity extends FragmentActivity {
 		claimList = MyLocalClaimListManager.loadClaimList(this);
 		Bundle bundle = getIntent().getExtras();
 		claimId = bundle.getInt("myClaimId");
-
+		receiptFlag = 0;
 		// itemId = bundle.getInt("MyItemid");
 
 	}
@@ -188,6 +191,8 @@ public class EditItemActivity extends FragmentActivity {
 
 		EditText fragmentEditItem2DiscriptionEditText = (EditText) findViewById(R.id.fragmentEditItem2DiscriptionEditText);
 
+		ImageButton imageButton = (ImageButton) findViewById(R.id.addRecieptImageButton);
+
 		// create an item
 
 		if (addEditItemStatus == 0) {
@@ -219,7 +224,10 @@ public class EditItemActivity extends FragmentActivity {
 					.getText().toString());
 
 			// controller.addItem(this.item);
+			if (receiptFlag == 1){
+				this.item.setReceipBitmap(bitmap);
 
+			}
 			claimList.getClaimArrayList().get(claimId).addItem(this.item);
 			MyLocalClaimListManager.saveClaimList(this, claimList);
 			Toast.makeText(this, this.item.getItemName(), Toast.LENGTH_LONG)
@@ -258,6 +266,10 @@ public class EditItemActivity extends FragmentActivity {
 
 			this.item.setItemDescription(fragmentEditItem2DiscriptionEditText
 					.getText().toString());
+			if (receiptFlag == 1){
+				this.item.setReceipBitmap(bitmap);
+
+			}	
 			MyLocalClaimListManager.saveClaimList(this, claimList);
 			Toast.makeText(this, this.item.getItemName(), Toast.LENGTH_LONG)
 					.show();
@@ -290,5 +302,11 @@ public class EditItemActivity extends FragmentActivity {
 		Toast.makeText(EditItemActivity.this,
 				"Add a Reciept\nWe will finish it\nin project 5.",
 				Toast.LENGTH_SHORT).show();
+	}
+	
+	public void setReceiptBitmap(Bitmap bitmap , int receiptFlag) {
+		// TODO Auto-generated method stub
+		this.bitmap = bitmap;
+		this.receiptFlag = receiptFlag;
 	}
 }

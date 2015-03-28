@@ -10,6 +10,7 @@ import java.util.Date;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ItemListAdapter;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController2;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
@@ -64,7 +65,7 @@ public class OneClaimActivity extends Activity {
 	private int claimId;
 	private int itemId;
 	private CLmanager onlineManager = new CLmanager();;
-	
+	private OneClaimController controller1;
 	/**
 	 * This method will be called when the user finishes asking a question to
 	 * stop the the current thread.
@@ -125,8 +126,9 @@ public class OneClaimActivity extends Activity {
 					@Override
 					public void onClick(DialogInterface dialog, int position) {
 						controller.deleteItem(itemId);
-						// controller.deleteClaim(which);
-						// manager.saveClaimList(controller.getcClaimList());
+						MyLocalClaimListManager.saveClaimList(
+								getApplicationContext(),
+								claimList);
 					}
 				});
 
@@ -134,7 +136,7 @@ public class OneClaimActivity extends Activity {
 
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						// TODO Auto-generated method stub
+						// TODO Auto-generated method stsub
 						Toast.makeText(OneClaimActivity.this,
 								"OCA ItemID = " + itemId, Toast.LENGTH_SHORT)
 								.show();
