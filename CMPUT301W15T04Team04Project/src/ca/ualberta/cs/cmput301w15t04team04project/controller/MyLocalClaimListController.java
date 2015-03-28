@@ -47,7 +47,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.Listener;
  * 
  */
 public class MyLocalClaimListController {
-	private static ClaimList claimList = new ClaimList();
+	private static ClaimList claimList;
 
 	/**
 	 * MyLocalClaimListController is initialed with a claimList
@@ -57,18 +57,19 @@ public class MyLocalClaimListController {
 	 * @version 1.1
 	 * @since 2015-03-12
 	 */
-	public MyLocalClaimListController(ClaimList claimList) {
-		// claimlist =
-		// MyLocalClaimListManager.getMyLocalClaimListManager().loadClaimList();
-		this.claimList = claimList;
-	}
-
-	/**
-	 * @return claimList
-	 */
-	public static ClaimList getClaimList() {
-
+	public ClaimList getClaimList(){
+		if (claimList == null) {
+			claimList = new ClaimList();
+		}
 		return claimList;
+	}
+	
+	public void addall(ArrayList<Claim> arrayList){
+		getClaimList().getClaimArrayList().addAll(arrayList);
+	}
+	
+	public void clear(){
+		getClaimList().getClaimArrayList().clear();
 	}
 
 	/**

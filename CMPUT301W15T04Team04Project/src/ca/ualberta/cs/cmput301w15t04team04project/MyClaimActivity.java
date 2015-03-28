@@ -14,6 +14,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Listener;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
+import ca.ualberta.cs.cmput301w15t04team04project.network.data.SearchResponse;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -53,7 +54,7 @@ public class MyClaimActivity extends Activity {
 	public static int mode;
 	private ActionBar actionBar;
 	private boolean progressing;
-
+	private SearchResponse<Claim> esResponse;
 	private MyLocalClaimListController controller;
 	private MyClaimActivity thisActivity = this;
 	private ClaimList claimList;
@@ -62,23 +63,25 @@ public class MyClaimActivity extends Activity {
 	private User user;
 	private ListView listView;
 	private CLmanager onlineManager = new CLmanager();
+	private ClaimListAdapter claimListAdapter = null;
+	private Runnable doFinishSearch = new Runnable() {
+		public void run() {
+			claimListAdapter.notifyDataSetChanged();
+		}
 
+	};
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_my_claim);
 		user = SignInManager.loadFromFile(this);
 		actionBar = getActionBar();
+		controller = new MyLocalClaimListController();
 		if (user.getName().equals("approval")) {
-			Thread search = new SearchClaimThread("");
+			Thread search = new SearchClaimThread();
 			search.start();
-			controller = new MyLocalClaimListController(claimList);
-			claims = controller.getClaims();
-			Toast.makeText(this, "claim" + claims.size(), Toast.LENGTH_SHORT)
-					.show();
 		} else {
 			claimList = MyLocalClaimListManager.loadClaimList(this);
-			controller = new MyLocalClaimListController(claimList);
 			if (mode == 0) {
 				actionBar.setTitle("Progresing Claims");
 				indeies = controller.getIndexList("In Progress");
@@ -98,8 +101,7 @@ public class MyClaimActivity extends Activity {
 			claims = controller.getClaimsByIndex(indeies);
 		}
 		listView = (ListView) findViewById(R.id.myClaimsListView);
-		final ClaimListAdapter claimListAdapter = new ClaimListAdapter(this,
-				R.layout.single_claim, claims);
+		claimListAdapter = new ClaimListAdapter(thisActivity, R.layout.single_claim, controller.getClaims());
 		listView.setAdapter(claimListAdapter);
 		controller.getClaimList().addListener(new Listener() {
 
@@ -256,14 +258,13 @@ public class MyClaimActivity extends Activity {
 	}
 
 	class SearchClaimThread extends Thread {
-		private String status;
-
-		public SearchClaimThread(String string) {
-			this.status = string;
+		public SearchClaimThread() {
 		}
 
 		public void run() {
-			claimList = onlineManager.searchClaimList(status);
+			controller.clear();
+			controller.addall(onlineManager.searchClaimList(""));
+			runOnUiThread(doFinishSearch);
 		}
 	}
 

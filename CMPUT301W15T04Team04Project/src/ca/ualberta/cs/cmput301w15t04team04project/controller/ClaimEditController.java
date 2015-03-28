@@ -46,7 +46,6 @@ public class ClaimEditController extends MyLocalClaimListController {
 	 */
 
 	public ClaimEditController(ClaimList claimList) {
-		super(claimList);
 		claim = new Claim(null);
 	}
 

@@ -172,21 +172,15 @@ public class CLmanager {
 		return claim;
 	}
 
-	public ClaimList searchClaimList(String searchString) {
+/*	public SearchResponse<Claim> searchClaimList() {
 		ClaimList claimList = new ClaimList();
 		ClaimEditController controller = new ClaimEditController(claimList);
-		
-		if (searchString == null || "".equals(searchString)) {
-			searchString = "*";
-		}
+		SearchResponse<Claim> esResponse = null;
 		try {
-			HttpPost searchRequest = createSearchRequest(searchString);
+			HttpPost searchRequest = new HttpPost(SEARCH_URL);
 			HttpClient httpClient = new DefaultHttpClient();
 			HttpResponse response = httpClient.execute(searchRequest);
-
-			String status = response.getStatusLine().toString();
-
-			SearchResponse<Claim> esResponse = parseSearchResponse(response);
+			esResponse = parseSearchResponse(response);
 			Hits<Claim> hits = esResponse.getHits();
 
 			if (hits != null) {
@@ -203,9 +197,41 @@ public class CLmanager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return claimList;
-	}
+		return esResponse;
+	}*/
 
+	public ArrayList<Claim> searchClaimList(String searchString) {
+		ArrayList<Claim> claims = new ArrayList<Claim>();
+		if (searchString == null || "".equals(searchString)) {
+			searchString = "*";
+		}
+		try {
+			HttpPost searchRequest = createSearchRequest(searchString);
+			HttpClient httpClient = new DefaultHttpClient();
+			HttpResponse response = httpClient.execute(searchRequest);
+
+			String status = response.getStatusLine().toString();
+
+			SearchResponse<Claim> esResponse = parseSearchResponse(response);
+			Hits<Claim> hits = esResponse.getHits();
+
+			if (hits != null) {
+				if (hits.getHits() != null) {
+					for (SearchHit<Claim> sesr : hits.getHits()) {
+						claims.add((sesr.getSource()));
+					}
+				}
+			}
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return claims;
+	}
+	
 	private HttpPost createSearchRequest(String searchString) throws UnsupportedEncodingException {
 		// TODO Auto-generated method stub
 		HttpPost searchRequest = new HttpPost(SEARCH_URL);
@@ -223,6 +249,7 @@ public class CLmanager {
 		return searchRequest;
 	}
 
+	
 	/**
 	 * @author youdong
 	 * @param listID
