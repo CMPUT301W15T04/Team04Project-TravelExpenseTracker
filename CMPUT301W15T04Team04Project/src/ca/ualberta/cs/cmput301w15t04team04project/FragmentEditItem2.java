@@ -20,6 +20,7 @@
  */
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 
 
@@ -33,9 +34,12 @@ import android.provider.MediaStore;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -63,7 +67,10 @@ public class FragmentEditItem2 extends Fragment {
 	private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
 	private Item currentItem;
 	private String stringUri = null;
-
+	private String imagepath = null;
+	private String encodedImage = null;
+	
+	private EditItemActivity myActivity;
 	
 	/**
 	 * This is the onCreateView of initial the view
@@ -125,10 +132,12 @@ public class FragmentEditItem2 extends Fragment {
 					R.id.fragmentEditItem2DiscriptionEditText);
 			itemDescription.setText(currentItem.getItemDescription());
 			
-			/*ImageButton button = (ImageButton) thisview.findViewById(R.id.addRecieptImageButton);
-			imageFileUri = Uri.parse(currentItem.getReceipt());
-			button.setImageDrawable(Drawable.createFromPath(imageFileUri
-					.getPath()));*/
+			
+			ImageButton button = (ImageButton) thisview.findViewById(R.id.addRecieptImageButton);
+			
+			Bitmap bitmap = currentItem.getReceipBitmap();
+		
+			button.setImageBitmap(bitmap);
 		}
 
 	}
@@ -152,23 +161,44 @@ public class FragmentEditItem2 extends Fragment {
 		intent.putExtra(MediaStore.EXTRA_OUTPUT, imageFileUri);
 		startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
 	}
-
+	
+	// from http://stackoverflow.com/questions/13116104/best-practice-to-reference-the-parent-activity-of-a-fragment March 26
+	@Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            myActivity = (EditItemActivity ) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() + " must be EditItemActivity ");
+        }	
+	}
+	
+    // "http://stackoverflow.com/questions/4830711/how-to-convert-a-image-into-base64-string" March 26
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
-			if (resultCode == -1) {
+			if (resultCode == -1 ) { // requestCode == 1 &&
 				
-				stringUri = imageFileUri.getPath();
-				Toast.makeText(getActivity(), stringUri,Toast.LENGTH_LONG ).show();
+				//stringUri = imageFileUri.getPath();
+				Toast.makeText(getActivity(), "1",Toast.LENGTH_LONG ).show();
 				//currentItem.setReceipt(stringUri);
+				//imageFileUri = data.getData();
+				//imagepath = getPath(imageFileUri);
+				
+
+				Drawable drawable = Drawable.createFromPath(imageFileUri
+						.getPath());
+				Bitmap bitmap=BitmapFactory.decodeFile(imageFileUri.getPath());
+				myActivity.setReceiptBitmap(bitmap);
+				
 				ImageButton button = (ImageButton) thisview.findViewById(R.id.addRecieptImageButton);
-				button.setImageDrawable(Drawable.createFromPath(imageFileUri
-						.getPath()));
+				button.setImageDrawable(drawable);
+				//button.setImageBitmap(bitmap);
 			}
 		}
 		
 		
 	}
-
+    //  "http://geekonjava.blogspot.ca/2014/03/upload-image-on-server-in-android-using.html" March 24 2015
 	public String getPath(Uri uri) {
 		String[] projection = { MediaStore.Images.Media.DATA };
 		Cursor cursor = getActivity().managedQuery(uri, projection, null, null, null);

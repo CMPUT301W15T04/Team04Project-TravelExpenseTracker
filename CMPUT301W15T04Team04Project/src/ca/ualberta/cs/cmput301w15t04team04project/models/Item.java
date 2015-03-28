@@ -21,8 +21,13 @@
 
 package ca.ualberta.cs.cmput301w15t04team04project.models;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Date;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.util.Base64;
 import android.widget.ImageView;
 
 /**
@@ -47,6 +52,7 @@ public class Item {
 	// private ImageView receipt;
 	protected boolean isComplete = false;
 	protected String receipt;
+	
 
 	public String getReceipt() {
 		return receipt;
@@ -55,6 +61,30 @@ public class Item {
 	public void setReceipt(String receipt) {
 		this.receipt = receipt;
 	}
+	
+	
+	//resource from "http://stackoverflow.com/questions/19743851/base64-java-encode-and-decode-a-string" March 28
+	public Bitmap getReceipBitmap(){
+		//String receipt = this.receipt;
+		//ByteArrayOutputStream baos = new ByteArrayOutputStream();  
+		//byte[] b = receipt.getBytes();
+		//Bitmap bitmap = BitmapFactory.decodeByteArray(b, 0, 50000);
+		//return bitmap;
+		byte[] valueDecoded= Base64.decode(receipt,Base64.DEFAULT);
+		Bitmap result = BitmapFactory.decodeByteArray(valueDecoded, 0, valueDecoded.length);
+		
+		return result;
+	}
+	
+	public void setReceipBitmap(Bitmap bitmap){
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();  
+		bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object   
+		byte[] b = baos.toByteArray(); 
+		receipt = Base64.encodeToString(b, Base64.DEFAULT);
+	}
+	/* At some point in the code there's going to be that GSON stuff. You just need to tell GSON how to
+	 * handle a Drawable properly.
+	 */
 
 	/**
 	 * The Item model is just a rough Item's information simply store set and
