@@ -52,6 +52,7 @@ public class Claim {
 	protected User Approver;
 	protected User Claimiant;
 	protected ArrayList<Currency> totalCurrency;
+	protected transient ArrayList<Listener> listeners = null;
 
 	/**
 	 * The constructor of the class
@@ -72,8 +73,11 @@ public class Claim {
 		startDate = new Date(System.currentTimeMillis()); // only for test.
 															// 2015-03-14
 															// Chenrui
+
 	}
-public void setDestination(ArrayList<Destination> destination) {
+	
+	
+	public void setDestination(ArrayList<Destination> destination) {
 		this.destination = destination;
 	}
 	/*
@@ -290,7 +294,7 @@ public void setDestination(ArrayList<Destination> destination) {
 	/**
 	 * Notifies all of the receiver's listeners for events.
 	 */
-	private void notifyListener() {
+	public void notifyListener() {
 		for (Listener listener : getListeners()) {
 			listener.update();
 		}

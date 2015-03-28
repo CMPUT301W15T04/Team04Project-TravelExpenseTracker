@@ -77,7 +77,7 @@ public class OneClaimController {
 	 */
 	public void addItem(Item item) {
 		getItem().add(item);
-
+		getClaim().notifyListener();
 	}
 
 	/**
@@ -86,8 +86,10 @@ public class OneClaimController {
 	 * @version 1.1
 	 * @since 2015-03-13
 	 */
-	public void deleteItem1(int index) {
+	public void deleteItem(int index) {
 		getItem().remove(index);
+		getClaim().notifyListener();
+
 	}
 
 	/**
@@ -159,16 +161,6 @@ public class OneClaimController {
 
 	}
 
-	/**
-	 * @param which
-	 * @author Weijie Sun
-	 * @version 1.1
-	 * @since 2015-03-13
-	 */
-	public void deleteItem(int which) {
-		// TODO Auto-generated method stub
-		// claim.getItems().remove(which);
 
-	}
 
 }

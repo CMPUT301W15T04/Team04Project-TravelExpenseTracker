@@ -135,9 +135,13 @@ public class FragmentEditItem2 extends Fragment {
 			
 			ImageButton button = (ImageButton) thisview.findViewById(R.id.addRecieptImageButton);
 			
-			Bitmap bitmap = currentItem.getReceipBitmap();
-		
-			button.setImageBitmap(bitmap);
+			if (currentItem.getReceipt() != null){
+			
+				Bitmap bitmap = currentItem.getReceipBitmap();
+				button.setImageBitmap(bitmap);
+
+			};
+			
 		}
 
 	}
@@ -188,7 +192,7 @@ public class FragmentEditItem2 extends Fragment {
 				Drawable drawable = Drawable.createFromPath(imageFileUri
 						.getPath());
 				Bitmap bitmap=BitmapFactory.decodeFile(imageFileUri.getPath());
-				myActivity.setReceiptBitmap(bitmap);
+				myActivity.setReceiptBitmap(bitmap,1);
 				
 				ImageButton button = (ImageButton) thisview.findViewById(R.id.addRecieptImageButton);
 				button.setImageDrawable(drawable);
