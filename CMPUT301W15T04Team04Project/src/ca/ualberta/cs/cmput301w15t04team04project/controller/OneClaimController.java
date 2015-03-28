@@ -34,7 +34,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
  */
 
 public class OneClaimController {
-	private Claim claim;
+	private Claim claim ;
 
 	/**
 	 * @param claim
