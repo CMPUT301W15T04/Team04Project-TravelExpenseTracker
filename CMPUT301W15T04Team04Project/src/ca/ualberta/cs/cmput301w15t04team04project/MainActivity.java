@@ -87,11 +87,11 @@ public class MainActivity extends FragmentActivity {
 
 		LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-		if (location != null){
+		/*if (location != null){
 			TextView tv = (TextView) findViewById(R.id.gpsHomeLocationTextView);
 			tv.setText("Lat: " + location.getLatitude()
 			+ "\nLong: " + location.getLongitude());
-		}
+		}*/
 		lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, listener);
 		
 		
