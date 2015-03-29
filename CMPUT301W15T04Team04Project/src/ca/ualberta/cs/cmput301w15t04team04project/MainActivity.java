@@ -21,6 +21,7 @@
 
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 import ca.ualberta.cs.cmput301w15t04team04project.R;
@@ -29,12 +30,17 @@ import ca.ualberta.cs.cmput301w15t04team04project.adapter.PagerAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.MainController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -64,6 +70,9 @@ public class MainActivity extends FragmentActivity {
 	private MainController controller = new MainController();
 	public List<Fragment> fragments;
 
+	//resurce from "https://github.com/joshua2ua/CurrentLocation" March 28
+	public static final String MOCK_PROVIDER = "mockLocationProvider";
+
 	/* (non-Javadoc)
 	 * @see android.support.v4.app.FragmentActivity#onCreate(android.os.Bundle)
 	 */
@@ -76,6 +85,16 @@ public class MainActivity extends FragmentActivity {
 		actionBar = getActionBar();
 		actionBar.setTitle("My Local Claims");
 
+		LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+		if (location != null){
+			TextView tv = (TextView) findViewById(R.id.gpsHomeLocationTextView);
+			tv.setText("Lat: " + location.getLatitude()
+			+ "\nLong: " + location.getLongitude());
+		}
+		lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, listener);
+		
+		
 		initialisePaging();
 	}
 
@@ -260,4 +279,33 @@ public class MainActivity extends FragmentActivity {
 		 * startActivity(intent);
 		 */
 	}
+	
+	private final LocationListener listener = new LocationListener() {
+		public void onLocationChanged (Location location) {
+			TextView tv = (TextView) findViewById(R.id.gpsHomeLocationTextView);
+			if (location != null) {
+				double lat = location.getLatitude();
+				double lng = location.getLongitude();
+				Date date = new Date(location.getTime());
+				
+				tv.setText("Latitude: " + lat
+						+ "\nLongitude: " + lng
+						+ "\n at time: " + date.toString());
+			} else {
+				tv.setText("Cannot get the location");
+			}
+		}
+		
+		public void onProviderDisabled (String provider) {
+			
+		}
+		
+		public  void onProviderEnabled (String provider) {
+			
+		}
+		
+		public void onStatusChanged (String provider, int status, Bundle extras) {
+			
+		}
+	};
 }

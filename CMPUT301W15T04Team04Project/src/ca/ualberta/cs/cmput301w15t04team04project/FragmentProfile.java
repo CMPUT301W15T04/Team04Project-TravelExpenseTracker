@@ -20,8 +20,14 @@
  */
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import java.util.Date;
+
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
+import android.content.Context;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -42,6 +48,8 @@ public class FragmentProfile extends Fragment {
 	private TextView progress;
 	private TextView approved;
 	private TextView outBox;
+	
+
 	/* (non-Javadoc)
 	 * @see android.support.v4.app.Fragment#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)
 	 */
@@ -64,6 +72,16 @@ public class FragmentProfile extends Fragment {
 		approved = (TextView) getView().findViewById(R.id.approvedClaimsTextView);
 		outBox = (TextView) getView().findViewById(R.id.savedClaimsTextView);
 		check();
+		
+		/*LocationManager lm = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+		Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+		if (location != null){
+			TextView tv = (TextView) getView().findViewById(R.id.gpsHomeLocationTextView);
+			tv.setText("Lat: " + location.getLatitude()
+			+ "\nLong: " + location.getLongitude());
+		}
+		lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, listener);*/
+		
 		/**
 		 * settingOption =
 		 * (RadioGroup)getView().findViewById(R.id.settingGroup);
@@ -101,6 +119,35 @@ public class FragmentProfile extends Fragment {
 		 */
 	}
 
+/*	private final LocationListener listener = new LocationListener() {
+		public void onLocationChanged (Location location) {
+			TextView tv = (TextView) getView().findViewById(R.id.gpsHomeLocationTextView);
+			if (location != null) {
+				double lat = location.getLatitude();
+				double lng = location.getLongitude();
+				Date date = new Date(location.getTime());
+				
+				tv.setText("The location is: \nLatitude: " + lat
+						+ "\nLongitude: " + lng
+						+ "\n at time: " + date.toString());
+			} else {
+				tv.setText("Cannot get the location");
+			}
+		}
+		
+		public void onProviderDisabled (String provider) {
+			
+		}
+		
+		public  void onProviderEnabled (String provider) {
+			
+		}
+		
+		public void onStatusChanged (String provider, int status, Bundle extras) {
+			
+		}
+	};*/
+	
 	private void check() {
 		if (user.getName().equals("approval")){
 			progress.setVisibility(View.GONE);
