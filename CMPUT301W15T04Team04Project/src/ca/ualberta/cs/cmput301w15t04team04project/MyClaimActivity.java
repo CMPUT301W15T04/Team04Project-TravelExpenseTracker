@@ -59,17 +59,17 @@ public class MyClaimActivity extends Activity {
 	private MyClaimActivity thisActivity = this;
 	private ClaimList claimList;
 	private ArrayList<Claim> claims;
-	private ArrayList<Integer> indeies;
 	private User user;
 	private ListView listView;
 	private CLmanager onlineManager = new CLmanager();
 	private ClaimListAdapter claimListAdapter = null;
-	private Runnable doFinishSearch = new Runnable() {
+	private Runnable doFinish = new Runnable() {
 		public void run() {
 			claimListAdapter.notifyDataSetChanged();
 		}
 
 	};
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -78,54 +78,47 @@ public class MyClaimActivity extends Activity {
 		actionBar = getActionBar();
 		controller = new MyLocalClaimListController();
 		if (user.getName().equals("approval")) {
-			Thread search = new SearchClaimThread();
+			Thread search = new SearchClaimThread("submitted");
 			search.start();
 		} else {
-			claimList = MyLocalClaimListManager.loadClaimList(this);
 			if (mode == 0) {
 				actionBar.setTitle("Progresing Claims");
-				indeies = controller.getIndexList("In Progress");
 				progressing = true;
+				Thread search = new SearchClaimThread("In Progress");
+				search.start();
 			} else if (mode == 1) {
 				actionBar.setTitle("Submitted Claims");
-				indeies = controller.getIndexList("submitted");
 				progressing = false;
+				Thread search = new SearchClaimThread("submitted");
+				search.start();
 			} else if (mode == 2) {
 				actionBar.setTitle("Approved Claims");
-				indeies = controller.getIndexList("approved");
+				Thread search = new SearchClaimThread("approved");
+				search.start();
 				progressing = false;
 			} else {
 				actionBar.setTitle("Saved Claims");
 				progressing = false;
 			}
-			claims = controller.getClaimsByIndex(indeies);
 		}
 		listView = (ListView) findViewById(R.id.myClaimsListView);
-		claimListAdapter = new ClaimListAdapter(thisActivity, R.layout.single_claim, controller.getClaims());
+		claimListAdapter = new ClaimListAdapter(thisActivity,
+				R.layout.single_claim, controller.getClaims());
 		listView.setAdapter(claimListAdapter);
-		controller.getClaimList().addListener(new Listener() {
-
-			@Override
-			public void update() {
-				// TODO Auto-generated method stub
-				claims.clear();
-				Collection<Claim> claims2 = null;
-				if (mode == 0) {
-					indeies = controller.getIndexList("In Progress");
-					claims2 = controller.getClaimsByIndex(indeies);
-				} else if (mode == 1) {
-					indeies = controller.getIndexList("submitted");
-					claims2 = controller.getClaimsByIndex(indeies);
-				} else if (mode == 2) {
-					indeies = controller.getIndexList("approved");
-					claims2 = controller.getClaimsByIndex(indeies);
-				} else {
-					progressing = false;
-				}
-				claims.addAll(claims2);
-				claimListAdapter.notifyDataSetChanged();
-			}
-		});
+		/*
+		 * controller.getClaimList().addListener(new Listener() {
+		 * 
+		 * @Override public void update() { // TODO Auto-generated method stub
+		 * claims.clear(); Collection<Claim> claims2 = null; if (mode == 0) {
+		 * indeies = controller.getIndexList("In Progress"); claims2 =
+		 * controller.getClaimsByIndex(indeies); } else if (mode == 1) { indeies
+		 * = controller.getIndexList("submitted"); claims2 =
+		 * controller.getClaimsByIndex(indeies); } else if (mode == 2) { indeies
+		 * = controller.getIndexList("approved"); claims2 =
+		 * controller.getClaimsByIndex(indeies); } else { progressing = false; }
+		 * claims.addAll(claims2); claimListAdapter.notifyDataSetChanged(); }
+		 * });
+		 */
 
 		listView.setOnItemLongClickListener(new OnItemLongClickListener() {
 
@@ -142,10 +135,8 @@ public class MyClaimActivity extends Activity {
 				adb.setPositiveButton("Delete", new OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						controller.deleteClaim(indeies.get(finalPosition));
-						MyLocalClaimListManager.saveClaimList(
-								getApplicationContext(),
-								controller.getClaimList());
+						Thread delete = new DeleteThread(controller.getClaims()
+								.get(finalPosition).getClaim(), finalPosition);
 					}
 				});
 
@@ -162,8 +153,8 @@ public class MyClaimActivity extends Activity {
 								EditClaimActivity.class);
 						myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-						myIntent.putExtra("myClaimId",
-								indeies.get(finalPosition));
+						myIntent.putExtra("MyClaimName", controller.getClaims()
+								.get(finalPosition).getClaim());
 						MyClaimActivity.this.startActivity(myIntent);
 
 					}
@@ -187,19 +178,14 @@ public class MyClaimActivity extends Activity {
 			public void onItemClick(AdapterView<?> adapterView, View view,
 					int position, long id) {
 				int itemPosition = position;
-				Toast.makeText(
-						MyClaimActivity.this,
-						"Edit Claim"
-								+ position
-								+ controller.getClaims()
-										.get(indeies.get(itemPosition))
-										.getStartDate().getTime(),
+				Toast.makeText(MyClaimActivity.this, "Edit Claim" + position,
 						Toast.LENGTH_SHORT).show();
 				Intent myintent = new Intent(MyClaimActivity.this,
 						OneClaimActivity.class);
 				myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				myintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				myintent.putExtra("myClaimId", indeies.get(itemPosition));
+				myintent.putExtra("MyClaimName", controller.getClaims()
+						.get(itemPosition).getClaim());
 				MyClaimActivity.this.startActivity(myintent);
 				finish();
 			}
@@ -258,13 +244,31 @@ public class MyClaimActivity extends Activity {
 	}
 
 	class SearchClaimThread extends Thread {
-		public SearchClaimThread() {
+		private String status;
+
+		public SearchClaimThread(String status) {
+			this.status = status;
 		}
 
 		public void run() {
 			controller.clear();
-			controller.addall(onlineManager.searchClaimList(""));
-			runOnUiThread(doFinishSearch);
+			controller.addall(onlineManager.searchClaimList(status));
+			runOnUiThread(doFinish);
+		}
+	}
+
+	class DeleteThread extends Thread {
+		private String claimName;
+		private int pos;
+
+		public DeleteThread(String claimName, int pos) {
+			this.claimName = claimName;
+		}
+
+		public void run() {
+			onlineManager.deleteClaim(claimName);
+			controller.deleteClaim(pos);
+			runOnUiThread(doFinish);
 		}
 	}
 

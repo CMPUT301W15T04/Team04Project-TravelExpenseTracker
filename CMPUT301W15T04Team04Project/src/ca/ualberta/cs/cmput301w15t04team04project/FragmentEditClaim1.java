@@ -20,6 +20,9 @@
  */
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import java.io.IOException;
+
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
@@ -54,13 +57,16 @@ public class FragmentEditClaim1 extends Fragment {
 	private TextView claimName;
 	private DatePicker startDate;
 	private DatePicker endDate;
+	private Claim claim;
 	private int year;
 	private int month;
 	private int day;
 	private EditText descript;
 	// private int addEditstatus = 0; //0 add 1 edit
-	private int myClaimId;
+	private String ClaimName;
+	private CLmanager onlineManager;
 
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -91,11 +97,6 @@ public class FragmentEditClaim1 extends Fragment {
 			EditClaimActivity.addEditStatus = 0;
 		} else {
 			EditClaimActivity.addEditStatus = 1;
-
-			myClaimId = bundle.getInt("myClaimId");
-			Claim currentClaim = claimList.getClaimArrayList().get(myClaimId);
-
-			// get the views
 			claimName = (EditText) getView().findViewById(
 					R.id.claimNameEditText);
 			startDate = (DatePicker) getView()
@@ -103,28 +104,42 @@ public class FragmentEditClaim1 extends Fragment {
 			endDate = (DatePicker) getView().findViewById(R.id.toDatePicker);
 			descript = (EditText) getView().findViewById(
 					R.id.descriptionEditText);
-
+			ClaimName = bundle.getString("ClaimName");
+			Thread getClaim = new GetThread(ClaimName);
 			// set content of view to dispaly
-			claimName.setText(currentClaim.getClaim());
-
-			day = currentClaim.getStartDate().getDate();
-			month = currentClaim.getStartDate().getMonth();
-			year = currentClaim.getStartDate().getYear() + 1900;
-			startDate.updateDate(year, month, day);
-
-			day = currentClaim.getEndDate().getDate();
-			month = currentClaim.getEndDate().getMonth();
-			year = currentClaim.getEndDate().getYear() + 1900;
-			endDate.updateDate(year, month, day);
-
-			descript.setText(currentClaim.getDescription());
-
-			EditClaimActivity.myClaimId = this.myClaimId;
-
-			Toast.makeText(getActivity(), currentClaim.getClaim(),
-					Toast.LENGTH_SHORT).show();
+			
 		}
 
+	}
+	
+	class GetThread extends Thread {
+		private String cName;
+
+		public GetThread(String claimName) {
+			this.cName = claimName;
+		}
+
+		@SuppressWarnings("deprecation")
+		@Override
+		public void run() {
+			try {
+				claim = onlineManager.getClaim(cName);
+				claimName.setText(claim.getClaim());
+				day = claim.getStartDate().getDate();
+				month = claim.getStartDate().getMonth();
+				year = claim.getStartDate().getYear() + 1900;
+				startDate.updateDate(year, month, day);
+				day = claim.getEndDate().getDate();
+				month = claim.getEndDate().getMonth();
+				year = claim.getEndDate().getYear() + 1900;
+				endDate.updateDate(year, month, day);
+
+				descript.setText(claim.getDescription());
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 }

@@ -62,17 +62,17 @@ public class OneClaimActivity extends Activity {
 	private Claim claim;
 	private ClaimList claimList;
 	private ArrayList<Claim> claims;
-	private int claimId;
+	private String ClaimName;
 	private int itemId;
-	private CLmanager onlineManager = new CLmanager();;
-	private OneClaimController controller1;
+	private CLmanager onlineManager = new CLmanager();
+	private ItemListAdapter itemAdapter;
 	/**
 	 * This method will be called when the user finishes asking a question to
 	 * stop the the current thread.
 	 */
-	private Runnable doFinishAdd = new Runnable() {
+	private Runnable doFinish = new Runnable() {
 		public void run() {
-			finish();
+			itemAdapter.notifyDataSetChanged();
 		}
 	};
 	@Override
@@ -81,28 +81,21 @@ public class OneClaimActivity extends Activity {
 		setContentView(R.layout.activity_one_claim);
 		approverView = (TextView) findViewById(R.id.testApproverTextView);
 		Bundle extras = getIntent().getExtras();
-
-		claimId = extras.getInt("myClaimId");
-		claimList = MyLocalClaimListManager.loadClaimList(this);		
-		claims = claimList.getClaimArrayList(); 
-		claim = claims.get(claimId);
-
-		final ArrayList<Item> items = claim.getItems();
-
+		controller = new OneClaimController2();
+		ClaimName = extras.getString("MyClaimName");
 		ListView itemlistview = (ListView) findViewById(R.id.OneCaimItemListView);
-		controller = new OneClaimController2(claim);
-		final ItemListAdapter itemAdapter = new ItemListAdapter(this,
-				android.R.layout.simple_list_item_1, items);
+		itemAdapter = new ItemListAdapter(this,
+				android.R.layout.simple_list_item_1, controller.getItem());
 
 		itemlistview.setAdapter(itemAdapter);
-		itemAdapter.notifyDataSetChanged();
+		
 
 		checkUserType();
 		controller.getClaim().addListener(new Listener() {
 			@Override
 			public void update() {
 				// TODO Auto-generated method stub
-				items.clear();
+				controller.clear();
 				Collection<Item> items = controller.getItem();
 				items.addAll(items);
 				itemAdapter.notifyDataSetChanged();
@@ -145,7 +138,7 @@ public class OneClaimActivity extends Activity {
 						myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 						myIntent.putExtra("myItemId", itemId);
-						myIntent.putExtra("myClaimId", claimId);
+						//myIntent.putExtra("myClaimId", claimId);
 						OneClaimActivity.this.startActivity(myIntent);
 
 					}
@@ -201,7 +194,7 @@ public class OneClaimActivity extends Activity {
 				EditItemActivity.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		intent.putExtra("myClaimId", claimId);
+		intent.putExtra("ClaimName", ClaimName);
 		startActivity(intent);
 	}
 
@@ -221,7 +214,7 @@ public class OneClaimActivity extends Activity {
 
 		claimName = (TextView) claimInfoCDialogView
 				.findViewById(R.id.currentClaimNameCTextView);
-		claimName.setText(claims.get(claimId).getClaim());
+		//claimName.setText(claims.get(claimId).getClaim());
 		
 		
 		adb.setNeutralButton("Submit", new OnClickListener() {
@@ -230,8 +223,8 @@ public class OneClaimActivity extends Activity {
 							Toast.LENGTH_SHORT).show();
 				iC = new InternetChecker(thisActivity);
 				if (iC.isNetworkAvailable()){
-					Thread addQuestionThread = new AddClaimThread(claim);
-					addQuestionThread.start();
+					Thread addClaimThread = new AddClaimThread(claim);
+					addClaimThread.start();
 				}
 				controller.submittedClaim(which);
 				MyLocalClaimListManager.saveClaimList(getApplicationContext(), claimList);
@@ -459,7 +452,22 @@ public class OneClaimActivity extends Activity {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			runOnUiThread(doFinishAdd);
+			runOnUiThread(doFinish);
+		}
+		
+	}
+	
+	class getClaimThread extends Thread{
+		private String claimName;
+		
+		public getClaimThread(String claimName){
+			this.claimName = claimName;
+		}
+		
+		public void run(){
+			claim = onlineManager.getClaim(claimName);
+			controller = new OneClaimController2(claim);
+			runOnUiThread(doFinish);
 		}
 		
 	}

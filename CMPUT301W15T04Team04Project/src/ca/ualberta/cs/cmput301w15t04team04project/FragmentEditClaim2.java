@@ -55,7 +55,7 @@ import android.widget.Toast;
  */
 
 public class FragmentEditClaim2 extends Fragment {
-	private int myClaimId;
+	private String ClaimName;
 	// private ArrayList<String> tags;
 	private EditText tags;
 	private String tag = "";
@@ -109,8 +109,8 @@ public class FragmentEditClaim2 extends Fragment {
 		} else {
 			EditClaimActivity.addEditStatus = 1;
 
-			myClaimId = bundle.getInt("myClaimId");
-			Claim currentClaim = claimList.getClaimArrayList().get(myClaimId);
+			/*ClaimName = bundle.getString("ClaimName");
+			Claim currentClaim = claimList.getClaimArrayList().get(0);
 
 			// get the views
 			tags = (EditText) getView().findViewById(R.id.tagEditText);
@@ -153,7 +153,7 @@ public class FragmentEditClaim2 extends Fragment {
 			// descript.setText(currentClaim.getDescription());
 
 			// EditClaimActivity.myClaimId = this.myClaimId;
-
+*/
 			Toast.makeText(getActivity(), tag, Toast.LENGTH_SHORT).show();
 		}
 	}

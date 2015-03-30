@@ -60,7 +60,6 @@ public class Claim {
 	 * @param claimName
 	 *            The name of the claim.
 	 */
-	
 	public Claim(String claimName) {
 
 		this.claimName = claimName;

@@ -76,7 +76,7 @@ public class CLmanager {
 	 */
 	public void insertClaim(Claim claim) throws IllegalStateException,
 			IOException {
-		HttpPost httpPost = new HttpPost(RESOURCE_URL + claim.getClaim());
+		HttpPost addRequest = new HttpPost(RESOURCE_URL + claim.getClaim());
 		StringEntity stringEntity = null;
 		try {
 			stringEntity = new StringEntity(gson.toJson(claim));
@@ -84,11 +84,10 @@ public class CLmanager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		httpPost.setHeader("Accept", "application/json");
-		httpPost.setEntity(stringEntity);
-		HttpResponse response = null;
+		addRequest.setEntity(stringEntity);
+		HttpResponse addResponse = null;
 		try {
-			response = httpClient.execute(httpPost);
+			addResponse = httpClient.execute(addRequest);
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -100,8 +99,8 @@ public class CLmanager {
 	 * @author youdong
 	 * @param claimId
 	 */
-	public void deleteClaim(long claimId) {
-		HttpDelete deleteRequest = new HttpDelete(RESOURCE_URL + claimId);
+	public void deleteClaim(String claimName) {
+		HttpDelete deleteRequest = new HttpDelete(RESOURCE_URL + claimName);
 		deleteRequest.setHeader("Accept", "application/json");
 		HttpResponse deleteResponse = null;
 		try {
@@ -148,9 +147,9 @@ public class CLmanager {
 	 * @param string
 	 * @return
 	 */
-	public static Claim getClaim(String string) {
+	public Claim getClaim(String string) {
 
-		HttpGet getRequest = new HttpGet(RESOURCE_URL);
+		HttpGet getRequest = new HttpGet(RESOURCE_URL + string);
 		getRequest.setHeader("Accept", "application/json");
 		HttpResponse getResponse;
 		Claim claim = null;
