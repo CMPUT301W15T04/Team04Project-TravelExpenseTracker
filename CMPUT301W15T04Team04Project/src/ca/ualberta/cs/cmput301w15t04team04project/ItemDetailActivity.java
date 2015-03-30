@@ -48,7 +48,7 @@ public class ItemDetailActivity extends Activity {
 	}
 
 	/* (non-Javadoc)
-	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 * @see android.app.Activity#onCreasteOptionsMenu(android.view.Menu)
 	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
