@@ -20,6 +20,7 @@
  */
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -29,6 +30,7 @@ import java.util.Vector;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.PagerAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
@@ -59,7 +61,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
  * @since 2015-03-10
  */
 public class EditClaimActivity extends FragmentActivity {
-
+	private CLmanager onlineManager = new CLmanager();
 	private RadioGroup bottom_Rg;
 	private PagerAdapter mpageAdapter;
 	private ViewPager pager;
@@ -67,9 +69,15 @@ public class EditClaimActivity extends FragmentActivity {
 	private ClaimList claimList;
 	private Button addDestinationButton;
 	protected static int addEditStatus = 0; // 0 add 1 edit
-	protected static int myClaimId;
+	protected static String ClaimName;
 	protected Activity thisActivity = this;
-
+	
+	
+	private Runnable doFinish = new Runnable() {
+		public void run() {
+			finish();
+		}
+	};
 	/**
 	 * Initializing the activity. Call the initialisePaging() function to allow
 	 * the pager
@@ -190,23 +198,38 @@ public class EditClaimActivity extends FragmentActivity {
 		// System.out.println(tag==null);
 
 		if (addEditStatus == 0) {
-			controller.setClaim(cName, cDescription, cTag, sDate, eDate);
-			controller.addClaim();
-			MyLocalClaimListManager.saveClaimList(this, claimList);
+			Claim claim = controller.setClaim(cName, cDescription, cTag, sDate, eDate);
+			Thread add = new AddThread(claim);
+			add.start();
 		}
 
-		else {
+		/*else {
 			Claim claim = claimList.getClaimArrayList().get(myClaimId);
 			controller.setClaimObj(claim);
 			controller.setClaim(cName, cDescription, cTag, sDate, eDate);
-			MyLocalClaimListManager.saveClaimList(this, claimList);
+		}*/
+		
+	}
+	class AddThread extends Thread {
+		private Claim claim;
 
+		public AddThread(Claim claim) {
+			this.claim = claim;
 		}
 
-		Intent intent = new Intent(EditClaimActivity.this,
-				MyClaimActivity.class); // Controller.saveClaimList();
-		startActivity(intent);
-		finish();
+		@Override
+		public void run() {
+			try {
+				onlineManager.insertClaim(claim);
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			runOnUiThread(doFinish);
+		}
 	}
 
 }

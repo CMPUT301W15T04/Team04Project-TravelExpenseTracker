@@ -23,6 +23,7 @@ package ca.ualberta.cs.cmput301w15t04team04project.controller;
 import java.util.ArrayList;
 
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
+import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 
 /**
@@ -54,10 +55,16 @@ public class OneClaimController {
 	 * @since 2015-03-13
 	 */
 	public Claim getClaim() {
-
+		if (claim == null) {
+			claim = new Claim("");
+		}
 		return claim;
 	}
 
+	
+	public void clear(){
+		claim.getItems().clear();
+	}
 	/**
 	 * @return  ArrayList<Item> 
 	 * @author Weijie Sun
