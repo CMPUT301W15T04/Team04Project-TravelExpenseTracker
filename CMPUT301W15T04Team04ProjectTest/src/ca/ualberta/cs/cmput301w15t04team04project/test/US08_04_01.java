@@ -50,15 +50,15 @@ public class US08_04_01 extends ActivityInstrumentationTestCase2<OneClaimActivit
         assertNotNull(thisActivity);
         
         claim.setStatus("Submitted");
-        controller.addClaim(claim);
+        controller.appendClaim(claim);
         item = new Item("AItem");
         claim.addItem(item);
         calender.set(2005, 1,
 				12);
         date = (Date) calender.getTime();
-        item.setDate(date);
+        item.setItemDate(date);
         String description = "testdescription";
-        item.setDescription(description);
+        item.setItemDescription(description);
         approver = new User("approver");
 	}
 	
@@ -70,11 +70,9 @@ public class US08_04_01 extends ActivityInstrumentationTestCase2<OneClaimActivit
 		View view = itemListAdapter.getView(0, null, null);
 		ListView listview = (ListView) getActivity().findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.OneCaimItemListView);  
 		
-		
-		
 		assertEquals("Name is equal", "approver", item.getItemName());
-		assertTrue(item.getDate().equals(date));
-		assertEquals("description", "testdescription", item.getDescription());
+		assertTrue(item.getItemDate().equals(date));
+		assertEquals("description", "testdescription", item.getItemDescription());
 		
 		
 	}
