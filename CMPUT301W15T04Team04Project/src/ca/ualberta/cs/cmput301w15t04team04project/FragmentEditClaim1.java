@@ -24,6 +24,7 @@ import java.io.IOException;
 
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import android.os.Bundle;
@@ -65,7 +66,25 @@ public class FragmentEditClaim1 extends Fragment {
 	// private int addEditstatus = 0; //0 add 1 edit
 	private String ClaimName;
 	private CLmanager onlineManager;
+	private ClaimEditController controller;
+	
+	private Runnable doFinish = new Runnable() {
+		@SuppressWarnings("deprecation")
+		public void run() {
+			claimName.setText(controller.getClaim().getClaim());
+			day = controller.getClaim().getStartDate().getDate();
+			month = controller.getClaim().getStartDate().getMonth();
+			year = controller.getClaim().getStartDate().getYear() + 1900;
+			startDate.updateDate(year, month, day);
+			day = controller.getClaim().getEndDate().getDate();
+			month = controller.getClaim().getEndDate().getMonth();
+			year = controller.getClaim().getEndDate().getYear() + 1900;
+			endDate.updateDate(year, month, day);
+			descript.setText(controller.getClaim().getDescription());
+		}
 
+	};
+	
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -92,7 +111,7 @@ public class FragmentEditClaim1 extends Fragment {
 				.loadClaimList(getActivity());
 
 		Bundle bundle = getActivity().getIntent().getExtras();
-
+		onlineManager = new CLmanager();
 		if (bundle == null) {
 			EditClaimActivity.addEditStatus = 0;
 		} else {
@@ -104,10 +123,11 @@ public class FragmentEditClaim1 extends Fragment {
 			endDate = (DatePicker) getView().findViewById(R.id.toDatePicker);
 			descript = (EditText) getView().findViewById(
 					R.id.descriptionEditText);
-			ClaimName = bundle.getString("ClaimName");
-			Thread getClaim = new GetThread(ClaimName);
-			// set content of view to dispaly
 			
+			ClaimName = bundle.getString("MyClaimName");
+			GetThread getClaim = new GetThread(ClaimName);
+			// set content of view to dispaly
+			getClaim.start();
 		}
 
 	}
@@ -119,26 +139,20 @@ public class FragmentEditClaim1 extends Fragment {
 			this.cName = claimName;
 		}
 
-		@SuppressWarnings("deprecation")
 		@Override
 		public void run() {
 			try {
-				claim = onlineManager.getClaim(cName);
-				claimName.setText(claim.getClaim());
-				day = claim.getStartDate().getDate();
-				month = claim.getStartDate().getMonth();
-				year = claim.getStartDate().getYear() + 1900;
-				startDate.updateDate(year, month, day);
-				day = claim.getEndDate().getDate();
-				month = claim.getEndDate().getMonth();
-				year = claim.getEndDate().getYear() + 1900;
-				endDate.updateDate(year, month, day);
-
-				descript.setText(claim.getDescription());
+				Thread.sleep(500);
+				controller = new ClaimEditController();
+				controller.setClaimObj(onlineManager.getClaim(cName));
 			} catch (IllegalStateException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+			getActivity().runOnUiThread(doFinish);
 		}
 	}
 

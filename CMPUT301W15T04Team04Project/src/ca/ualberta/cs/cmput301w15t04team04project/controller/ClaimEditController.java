@@ -45,6 +45,10 @@ public class ClaimEditController extends MyLocalClaimListController {
 	 * @param claimList
 	 */
 
+	public ClaimEditController() {
+		claim = new Claim(null);
+	}
+
 	public ClaimEditController(ClaimList claimList) {
 		claim = new Claim(null);
 	}
@@ -102,6 +106,10 @@ public class ClaimEditController extends MyLocalClaimListController {
 
 	public void appendClaim(Claim claim) {
 		getClaims().add(claim);
+	}
+
+	public Claim getClaim(){
+		return claim;
 	}
 
 }

@@ -137,6 +137,7 @@ public class MyClaimActivity extends Activity {
 					public void onClick(DialogInterface dialog, int which) {
 						Thread delete = new DeleteThread(controller.getClaims()
 								.get(finalPosition).getClaim(), finalPosition);
+						delete.start();
 					}
 				});
 
@@ -146,9 +147,9 @@ public class MyClaimActivity extends Activity {
 						// controller.deleteClaim(finalPosition);
 						// MyLocalClaimListManager.saveClaimList(getApplicationContext(),
 						// controller.getClaimList(),"local");
-						Toast.makeText(MyClaimActivity.this,
+						/*Toast.makeText(MyClaimActivity.this,
 								"Claim  " + finalPosition + " MC Act",
-								Toast.LENGTH_SHORT).show();
+								Toast.LENGTH_SHORT).show();*/
 						Intent myIntent = new Intent(MyClaimActivity.this,
 								EditClaimActivity.class);
 						myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -156,7 +157,7 @@ public class MyClaimActivity extends Activity {
 						myIntent.putExtra("MyClaimName", controller.getClaims()
 								.get(finalPosition).getClaim());
 						MyClaimActivity.this.startActivity(myIntent);
-
+						finish();
 					}
 				});
 
@@ -263,6 +264,7 @@ public class MyClaimActivity extends Activity {
 
 		public DeleteThread(String claimName, int pos) {
 			this.claimName = claimName;
+			this.pos = pos;
 		}
 
 		public void run() {

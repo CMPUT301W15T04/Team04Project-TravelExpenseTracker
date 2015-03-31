@@ -21,7 +21,7 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
 import java.util.ArrayList;
-
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
@@ -62,10 +62,47 @@ public class FragmentEditClaim2 extends Fragment {
 	// private ArrayList<Destination> destinations;
 	private EditText destinations;
 	private String destination = "";
-	protected ClaimEditController controller;
+	protected ClaimEditController controller2;
 	private ArrayList<String> DestinationList = new ArrayList<String>();
-	
+	private CLmanager onlineManager2;
 	private ArrayAdapter<String> DestinationListAdapter;
+
+	private Runnable doFinish2 = new Runnable() {
+		public void run() {
+			int tagsSize = controller2.getClaim().getTag().size();
+			int desnSize = controller2.getClaim().getDestination().size();
+
+			// Build the new tags and destinations
+			for (int i = 0; i < tagsSize; i++) {
+				if (i != 0) {
+					tag = tag + "," + controller2.getClaim().getTag().get(i);
+				} else {
+					tag = controller2.getClaim().getTag().get(i);
+				}
+			}
+
+			for (int j = 0; j < desnSize; j++) {
+				if (j == 0) {
+					destination = controller2.getClaim().getDestination().get(j)
+							.getdName()
+							+ "("
+							+ controller2.getClaim().getDestination().get(j)
+									.getdReason() + ")";
+				} else {
+					destination = destination
+							+ "\n"
+							+ controller2.getClaim().getDestination().get(j)
+									.getdName()
+							+ "("
+							+ controller2.getClaim().getDestination().get(j)
+									.getdReason() + ")";
+				}
+			}
+			tags.setText(tag);
+			destinations.setText(destination);
+		}
+	};
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -73,8 +110,8 @@ public class FragmentEditClaim2 extends Fragment {
 				false);
 	}
 
-	
-	/**onActivityCreated is Edit Claim or Add Claim
+	/**
+	 * onActivityCreated is Edit Claim or Add Claim
 	 * 
 	 * The following fix Weijie's problem
 	 * 
@@ -84,101 +121,85 @@ public class FragmentEditClaim2 extends Fragment {
 	 *        Improve Chenrui's code
 	 * @author Yufei
 	 * @since 2015-03-15
-	 */
+	 **/
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-
-
-		ClaimList claimList = MyLocalClaimListManager.loadClaimList(
-				getActivity());
-
+		onlineManager2 = new CLmanager();
 		Bundle bundle = getActivity().getIntent().getExtras();
-		
-		ListView DestinationListView = (ListView) getActivity().findViewById(R.id.destinationListView);
-		Button addDestinationButton = (Button) getActivity().findViewById(R.id.button1);
+		ListView DestinationListView = (ListView) getActivity().findViewById(
+				R.id.destinationListView);
+		Button addDestinationButton = (Button) getActivity().findViewById(
+				R.id.button1);
 		ButtonListener addDestinationButtonListener = new ButtonListener();
 		addDestinationButton.setOnClickListener(addDestinationButtonListener);
-		
-		DestinationListAdapter = new ArrayAdapter<String>(getActivity(),R.layout.list_item, DestinationList);
+		DestinationListAdapter = new ArrayAdapter<String>(getActivity(),
+				R.layout.list_item, DestinationList);
 		DestinationListView.setAdapter(DestinationListAdapter);
 		DestinationListAdapter.notifyDataSetChanged();
-		
+		controller2 = new ClaimEditController();
 		if (bundle == null) {
 			EditClaimActivity.addEditStatus = 0;
 		} else {
 			EditClaimActivity.addEditStatus = 1;
-
-			/*ClaimName = bundle.getString("ClaimName");
-			Claim currentClaim = claimList.getClaimArrayList().get(0);
-
-			// get the views
 			tags = (EditText) getView().findViewById(R.id.tagEditText);
 			destinations = (EditText) getView().findViewById(
 					R.id.destinationEditText);
+			ClaimName = bundle.getString("MyClaimName");
+			GetThread2 getClaim2 = new GetThread2(ClaimName);
+			getClaim2.start();
+			// get the views
 
 			// get the size of two ListViews
-			int tagsSize = currentClaim.getTag().size();
-			int desnSize = currentClaim.getDestination().size();
-
-			// Build the new tags and destinations
-			for (int i = 0; i < tagsSize; i++) {
-				if (i != 0) {
-					tag = tag + "," + currentClaim.getTag().get(i);
-				} else {
-					tag = currentClaim.getTag().get(i);
-				}
-			}
-
-			for (int j = 0; j < desnSize; j++) {
-				if (j == 0) {
-					destination = currentClaim.getDestination().get(j)
-							.getdName()
-							+ "("
-							+ currentClaim.getDestination().get(j).getdReason()
-							+ ")";
-				} else {
-					destination = destination + "\n"
-							+ currentClaim.getDestination().get(j).getdName()
-							+ "("
-							+ currentClaim.getDestination().get(j).getdReason()
-							+ ")";
-				}
-			}
 
 			// set content of view to dispaly
-			tags.setText(tag);
-			destinations.setText(destination);
+			
 
 			// descript.setText(currentClaim.getDescription());
 
 			// EditClaimActivity.myClaimId = this.myClaimId;
-*/
-			Toast.makeText(getActivity(), tag, Toast.LENGTH_SHORT).show();
 		}
 	}
-	
-	/**
-	 * @since  2015-03-23
-	 * @author CHENRUI
-	 *
-	 */
+
 	protected static ArrayList<Destination> desList = new ArrayList<Destination>();
-	class ButtonListener implements View.OnClickListener{
+
+	class ButtonListener implements View.OnClickListener {
 		@Override
 		public void onClick(View view) {
 			// find informations from views
-			String destination = ((EditText)getActivity().findViewById(R.id.destinationEditText)).getText().toString();
-			String reason = ((EditText)getActivity().findViewById(R.id.reasonEditText)).getText().toString();
+			String destination = ((EditText) getActivity().findViewById(
+					R.id.destinationEditText)).getText().toString();
+			String reason = ((EditText) getActivity().findViewById(
+					R.id.reasonEditText)).getText().toString();
 			DestinationList.add(destination);
 			DestinationListAdapter.notifyDataSetChanged();
-			controller.destinationSet(desList, destination,reason);
-
-			// show to user
-			Toast.makeText(getActivity().getBaseContext(), "Destination added",Toast.LENGTH_SHORT).show();
+			controller2.destinationSet(desList, destination, reason);
 			
-			///finish();
+			// show to user
+			Toast.makeText(getActivity().getBaseContext(), "Destination added",
+					Toast.LENGTH_SHORT).show();
+
+			// /finish();
 		}
 	}
 
+	class GetThread2 extends Thread {
+		private String cName;
+
+		public GetThread2(String claimName) {
+			this.cName = claimName;
+		}
+
+		@Override
+		public void run() {
+			try {
+				Claim claim = onlineManager2.getClaim(cName);
+				controller2.setClaimObj(claim);
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			getActivity().runOnUiThread(doFinish2);
+		}
+	}
 }

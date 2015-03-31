@@ -203,11 +203,11 @@ public class EditClaimActivity extends FragmentActivity {
 			add.start();
 		}
 
-		/*else {
-			Claim claim = claimList.getClaimArrayList().get(myClaimId);
-			controller.setClaimObj(claim);
-			controller.setClaim(cName, cDescription, cTag, sDate, eDate);
-		}*/
+		else {
+			Claim claim = controller.setClaim(cName, cDescription, cTag, sDate, eDate);
+			Thread update = new UpdateThread(claim);
+			update.start();
+		}
 		
 	}
 	class AddThread extends Thread {
@@ -231,5 +231,25 @@ public class EditClaimActivity extends FragmentActivity {
 			runOnUiThread(doFinish);
 		}
 	}
+	class UpdateThread extends Thread {
+		private Claim claim;
 
+		public UpdateThread(Claim claim) {
+			this.claim = claim;
+		}
+
+		@Override
+		public void run() {
+			try {
+				onlineManager.updateClaim(claim);
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			runOnUiThread(doFinish);
+		}
+	}
 }
