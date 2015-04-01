@@ -150,9 +150,9 @@ public class OneClaimController {
 	 * @since 2015-03-13
 	 */
 
-	public void returnClaim(int which) {
+	public void returnClaim() {
 		// TODO Auto-generated method stub
-
+		claim.setStatus("returned");
 	}
 
 	/**
@@ -163,9 +163,9 @@ public class OneClaimController {
 	 * @since 2015-03-13
 	 */
 
-	public void approveClaim(int which) {
+	public void approveClaim() {
 		// TODO Auto-generated method stub
-
+		claim.setStatus("approved");
 	}
 
 

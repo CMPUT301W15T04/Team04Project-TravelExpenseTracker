@@ -9,15 +9,14 @@ import java.util.Date;
 
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
-import ca.ualberta.cs.cmput301w15t04team04project.FragmentEditClaim1.GetThread;
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ItemListAdapter;
-import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
-import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController2;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Listener;
+import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import ca.ualberta.cs.cmput301w15t04team04project.network.InternetChecker;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -55,19 +54,18 @@ public class OneClaimActivity extends Activity {
 	private TextView descript;
 	private OneClaimController2 controller;
 	private TextView approverView;
-	
 	private TextView claimName;
-	
-	protected static boolean isClaimant = true;
+	private TextView claimantView;
+	static boolean isClaimant;
 	private OneClaimActivity thisActivity = this;
 	private InternetChecker iC;
 	private Claim claim;
 	private ClaimList claimList;
-	private ArrayList<Claim> claims;
 	private String ClaimName;
 	private int itemId;
 	private CLmanager onlineManager = new CLmanager();
 	private ItemListAdapter itemAdapter;
+	private User user;
 	/**
 	 * This method will be called when the user finishes asking a question to
 	 * stop the the current thread.
@@ -92,6 +90,12 @@ public class OneClaimActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		user = SignInManager.loadFromFile(this);
+		if(user.getName().equals("approval")){
+			isClaimant = false;
+		}else{
+			isClaimant = true;
+		}
 		setContentView(R.layout.activity_one_claim);
 		approverView = (TextView) findViewById(R.id.testApproverTextView);
 		Bundle extras = getIntent().getExtras();
@@ -218,8 +222,6 @@ public class OneClaimActivity extends Activity {
 	 * @param view
 	 */
 	public void showClaimDetailC(View view) {
-		isClaimant = true;
-
 		AlertDialog.Builder adb = new AlertDialog.Builder(OneClaimActivity.this);
 
 		LayoutInflater factory = LayoutInflater.from(OneClaimActivity.this);
@@ -244,7 +246,7 @@ public class OneClaimActivity extends Activity {
 					UpdateClaimThread.start();
 				}
 				Intent intent = new Intent(OneClaimActivity.this,
-						MyClaimActivity.class);
+						MainActivity.class);
 				startActivity(intent);
 				finish();
 				/**
@@ -274,7 +276,6 @@ public class OneClaimActivity extends Activity {
 	 * @param view
 	 */
 	public void showClaimDetailA(View view) {
-		isClaimant = false;
 		AlertDialog.Builder adb = new AlertDialog.Builder(OneClaimActivity.this);
 
 		LayoutInflater factory = LayoutInflater.from(OneClaimActivity.this);
@@ -286,11 +287,16 @@ public class OneClaimActivity extends Activity {
 			public void onClick(DialogInterface dialog, int which) {
 				Toast.makeText(OneClaimActivity.this, "Clicked On Return",
 						Toast.LENGTH_SHORT).show();
-				controller.returnClaim(which);
-				/**
-				 * You need to add code here to do the return stuff Once the
-				 * approver click this, the claim will be returned
-				 **/
+				iC = new InternetChecker(thisActivity);
+				if (iC.isNetworkAvailable()){
+					controller.returnClaim();
+					Thread UpdateClaimThread = new UpdateThread(controller.getClaim());
+					UpdateClaimThread.start();
+				}
+				Intent intent = new Intent(OneClaimActivity.this,
+						MainActivity.class);
+				startActivity(intent);
+				finish();
 			}
 		});
 
@@ -298,11 +304,16 @@ public class OneClaimActivity extends Activity {
 			public void onClick(DialogInterface dialog, int which) {
 				Toast.makeText(OneClaimActivity.this, "Clicked On Approve",
 						Toast.LENGTH_SHORT).show();
-				controller.approveClaim(which);
-				/**
-				 * You need to add code here to do the approve stuff Once the
-				 * approver click this, the claim will be approved
-				 **/
+				iC = new InternetChecker(thisActivity);
+				if (iC.isNetworkAvailable()){
+					controller.approveClaim();
+					Thread UpdateClaimThread = new UpdateThread(controller.getClaim());
+					UpdateClaimThread.start();
+				}
+				Intent intent = new Intent(OneClaimActivity.this,
+						MainActivity.class);
+				startActivity(intent);
+				finish();
 			}
 		});
 
@@ -328,8 +339,6 @@ public class OneClaimActivity extends Activity {
 	 * @param id
 	 */
 	public void showItemDetailC(View view, int id) {
-
-		isClaimant = true;
 		AlertDialog.Builder adb = new AlertDialog.Builder(OneClaimActivity.this);
 		LayoutInflater factory = LayoutInflater.from(OneClaimActivity.this);
 		View itemInfoCDialogView = factory.inflate(
@@ -386,7 +395,6 @@ public class OneClaimActivity extends Activity {
 	 * @param id
 	 */
 	public void showItemDetailA(View view, int id) {
-		isClaimant = false;
 		AlertDialog.Builder adb = new AlertDialog.Builder(OneClaimActivity.this);
 
 		LayoutInflater factory = LayoutInflater.from(OneClaimActivity.this);
@@ -404,7 +412,8 @@ public class OneClaimActivity extends Activity {
 				.findViewById(R.id.currentItemCateTextView);
 		descript = (TextView) itemInfoCDialogView
 				.findViewById(R.id.currentDescripTextView);
-
+		claimantView = (TextView) itemInfoCDialogView
+		.findViewById(R.id.testClaimantTextView);
 		itemName.setText(claim.getItems().get(id).getItemName());
 
 		amount.setText(claim.getItems().get(id).getItemCurrency().getType()
@@ -441,6 +450,8 @@ public class OneClaimActivity extends Activity {
 	public void checkUserType() {
 		if (isClaimant) {
 			approverView.setVisibility(View.GONE);
+		}else{
+			claimantView.setVisibility(View.GONE);
 		}
 
 	}

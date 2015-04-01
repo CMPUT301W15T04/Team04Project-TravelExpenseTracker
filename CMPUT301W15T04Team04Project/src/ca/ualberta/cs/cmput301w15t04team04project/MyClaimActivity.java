@@ -54,11 +54,8 @@ public class MyClaimActivity extends Activity {
 	public static int mode;
 	private ActionBar actionBar;
 	private boolean progressing;
-	private SearchResponse<Claim> esResponse;
 	private MyLocalClaimListController controller;
 	private MyClaimActivity thisActivity = this;
-	private ClaimList claimList;
-	private ArrayList<Claim> claims;
 	private User user;
 	private ListView listView;
 	private CLmanager onlineManager = new CLmanager();
@@ -119,61 +116,65 @@ public class MyClaimActivity extends Activity {
 		 * claims.addAll(claims2); claimListAdapter.notifyDataSetChanged(); }
 		 * });
 		 */
+		if (user.getName().equals("approval")) {
+		}else{
+			listView.setOnItemLongClickListener(new OnItemLongClickListener() {
 
-		listView.setOnItemLongClickListener(new OnItemLongClickListener() {
+				@Override
+				public boolean onItemLongClick(AdapterView<?> adapterView,
+						View view, int position, long id) {
+					final int finalPosition = position;
+					// Claim claim = list.get(finalPosition);
+					AlertDialog.Builder adb = new AlertDialog.Builder(
+							MyClaimActivity.this);
+					// adb.setMessage(claim.getClaim()+" total cost \n"+claim.getAmount()+"\n From "+claim.getStartDate()+" to "+claim.getEndDate());
+					adb.setCancelable(true);
 
-			@Override
-			public boolean onItemLongClick(AdapterView<?> adapterView,
-					View view, int position, long id) {
-				final int finalPosition = position;
-				// Claim claim = list.get(finalPosition);
-				AlertDialog.Builder adb = new AlertDialog.Builder(
-						MyClaimActivity.this);
-				// adb.setMessage(claim.getClaim()+" total cost \n"+claim.getAmount()+"\n From "+claim.getStartDate()+" to "+claim.getEndDate());
-				adb.setCancelable(true);
+					adb.setPositiveButton("Delete", new OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							Thread delete = new DeleteThread(controller
+									.getClaims().get(finalPosition).getClaim(),
+									finalPosition);
+							delete.start();
+						}
+					});
 
-				adb.setPositiveButton("Delete", new OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						Thread delete = new DeleteThread(controller.getClaims()
-								.get(finalPosition).getClaim(), finalPosition);
-						delete.start();
-					}
-				});
+					adb.setNeutralButton("Edit", new OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							// controller.deleteClaim(finalPosition);
+							// MyLocalClaimListManager.saveClaimList(getApplicationContext(),
+							// controller.getClaimList(),"local");
+							/*
+							 * Toast.makeText(MyClaimActivity.this, "Claim  " +
+							 * finalPosition + " MC Act",
+							 * Toast.LENGTH_SHORT).show();
+							 */
+							Intent myIntent = new Intent(MyClaimActivity.this,
+									EditClaimActivity.class);
+							myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+							myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+							myIntent.putExtra("MyClaimName", controller
+									.getClaims().get(finalPosition).getClaim());
+							MyClaimActivity.this.startActivity(myIntent);
+							finish();
+						}
+					});
 
-				adb.setNeutralButton("Edit", new OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						// controller.deleteClaim(finalPosition);
-						// MyLocalClaimListManager.saveClaimList(getApplicationContext(),
-						// controller.getClaimList(),"local");
-						/*Toast.makeText(MyClaimActivity.this,
-								"Claim  " + finalPosition + " MC Act",
-								Toast.LENGTH_SHORT).show();*/
-						Intent myIntent = new Intent(MyClaimActivity.this,
-								EditClaimActivity.class);
-						myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-						myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-						myIntent.putExtra("MyClaimName", controller.getClaims()
-								.get(finalPosition).getClaim());
-						MyClaimActivity.this.startActivity(myIntent);
-						finish();
-					}
-				});
+					adb.setNegativeButton("Cancel", new OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+						}
+					});
+					adb.show();
+					return true;
+				}
 
-				adb.setNegativeButton("Cancel", new OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-					}
-				});
-				adb.show();
-				return true;
 			}
 
+			);
 		}
-
-		);
-
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> adapterView, View view,
@@ -185,8 +186,8 @@ public class MyClaimActivity extends Activity {
 						OneClaimActivity.class);
 				myintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				myintent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				myintent.putExtra("MyClaimName", controller.getClaims()
-						.get(itemPosition).getClaim());
+				myintent.putExtra("MyClaimName",
+						controller.getClaims().get(itemPosition).getClaim());
 				MyClaimActivity.this.startActivity(myintent);
 				finish();
 			}

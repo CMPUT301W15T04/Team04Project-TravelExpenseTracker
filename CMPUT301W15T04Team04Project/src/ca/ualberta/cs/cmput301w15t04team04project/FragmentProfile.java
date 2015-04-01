@@ -33,6 +33,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -48,7 +49,7 @@ public class FragmentProfile extends Fragment {
 	private TextView progress;
 	private TextView approved;
 	private TextView outBox;
-	
+	private Button addClaim;
 
 	/* (non-Javadoc)
 	 * @see android.support.v4.app.Fragment#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)
@@ -71,6 +72,7 @@ public class FragmentProfile extends Fragment {
 		progress = (TextView) getView().findViewById(R.id.progresClaimsTextView);
 		approved = (TextView) getView().findViewById(R.id.approvedClaimsTextView);
 		outBox = (TextView) getView().findViewById(R.id.savedClaimsTextView);
+		addClaim = (Button) getView().findViewById(R.id.addClaimButton);
 		check();
 		
 		/*LocationManager lm = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
@@ -153,6 +155,7 @@ public class FragmentProfile extends Fragment {
 			progress.setVisibility(View.GONE);
 			approved.setVisibility(View.GONE);
 			outBox.setVisibility(View.GONE);
+			addClaim.setVisibility(View.GONE);
 		}
 	}
 }

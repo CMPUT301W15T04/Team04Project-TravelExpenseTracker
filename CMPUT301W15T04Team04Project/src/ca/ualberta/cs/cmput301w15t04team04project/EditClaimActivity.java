@@ -66,8 +66,6 @@ public class EditClaimActivity extends FragmentActivity {
 	private PagerAdapter mpageAdapter;
 	private ViewPager pager;
 	private ClaimEditController controller;
-	private ClaimList claimList;
-	private Button addDestinationButton;
 	protected static int addEditStatus = 0; // 0 add 1 edit
 	protected static String ClaimName;
 	protected Activity thisActivity = this;
@@ -91,8 +89,6 @@ public class EditClaimActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_claim);
-		claimList = MyLocalClaimListManager.loadClaimList(this);
-		controller = new ClaimEditController(claimList);
 		initialisePaging();
 
 	}

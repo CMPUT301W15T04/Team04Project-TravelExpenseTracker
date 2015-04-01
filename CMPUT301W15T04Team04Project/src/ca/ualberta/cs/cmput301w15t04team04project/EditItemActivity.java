@@ -89,6 +89,8 @@ public class EditItemActivity extends FragmentActivity {
 		claimList = MyLocalClaimListManager.loadClaimList(this);
 		Bundle bundle = getIntent().getExtras();
 		claimName = bundle.getString("myClaimName");
+		Toast.makeText(this, claimName, Toast.LENGTH_LONG)
+		.show();
 		receiptFlag = 0;
 		// itemId = bundle.getInt("MyItemid");
 
