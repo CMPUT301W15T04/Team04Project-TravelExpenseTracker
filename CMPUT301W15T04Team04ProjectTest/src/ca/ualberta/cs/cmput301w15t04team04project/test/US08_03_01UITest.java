@@ -50,9 +50,9 @@ public class US08_03_01UITest extends ActivityInstrumentationTestCase2<MainActiv
         Cclaim.setStatus("Proceed");
 
         
-        controller.addClaim(Aclaim);
-        controller.addClaim(Bclaim);
-        controller.addClaim(Cclaim);
+        controller.appendClaim(Aclaim);
+        controller.appendClaim(Bclaim);
+        controller.appendClaim(Cclaim);
     }
 	
 	protected void AllClaimDetailsUItest(){
