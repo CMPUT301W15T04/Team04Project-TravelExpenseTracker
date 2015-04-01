@@ -9,7 +9,9 @@ import java.util.Date;
 
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
+import ca.ualberta.cs.cmput301w15t04team04project.FragmentEditClaim1.GetThread;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ItemListAdapter;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController2;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
@@ -70,9 +72,21 @@ public class OneClaimActivity extends Activity {
 	 * This method will be called when the user finishes asking a question to
 	 * stop the the current thread.
 	 */
-	private Runnable doFinish = new Runnable() {
+	private Runnable doFinishAddItem = new Runnable() {
 		public void run() {
 			itemAdapter.notifyDataSetChanged();
+		}
+	};
+	
+	private Runnable doFinishUpdate = new Runnable() {
+		public void run() {
+			finish();
+		}
+	};
+	
+	private Runnable doFinishLoad = new Runnable() {
+		public void run() {
+			
 		}
 	};
 	@Override
@@ -81,15 +95,17 @@ public class OneClaimActivity extends Activity {
 		setContentView(R.layout.activity_one_claim);
 		approverView = (TextView) findViewById(R.id.testApproverTextView);
 		Bundle extras = getIntent().getExtras();
+		onlineManager = new CLmanager();
 		controller = new OneClaimController2();
 		ClaimName = extras.getString("MyClaimName");
+		Toast.makeText(this, ClaimName,	Toast.LENGTH_SHORT).show();
+		getClaimThread getClaim = new getClaimThread(ClaimName);
+		// set content of view to dispaly
+		getClaim.start();
 		ListView itemlistview = (ListView) findViewById(R.id.OneCaimItemListView);
 		itemAdapter = new ItemListAdapter(this,
 				android.R.layout.simple_list_item_1, controller.getItem());
-
 		itemlistview.setAdapter(itemAdapter);
-		
-
 		checkUserType();
 		controller.getClaim().addListener(new Listener() {
 			@Override
@@ -194,7 +210,7 @@ public class OneClaimActivity extends Activity {
 				EditItemActivity.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		intent.putExtra("ClaimName", ClaimName);
+		intent.putExtra("MyClaimName", ClaimName);
 		startActivity(intent);
 	}
 
@@ -223,11 +239,10 @@ public class OneClaimActivity extends Activity {
 							Toast.LENGTH_SHORT).show();
 				iC = new InternetChecker(thisActivity);
 				if (iC.isNetworkAvailable()){
-					Thread addClaimThread = new AddClaimThread(claim);
-					addClaimThread.start();
+					controller.submittedClaim();
+					Thread UpdateClaimThread = new UpdateThread(controller.getClaim());
+					UpdateClaimThread.start();
 				}
-				controller.submittedClaim(which);
-				MyLocalClaimListManager.saveClaimList(getApplicationContext(), claimList);
 				Intent intent = new Intent(OneClaimActivity.this,
 						MyClaimActivity.class);
 				startActivity(intent);
@@ -243,7 +258,7 @@ public class OneClaimActivity extends Activity {
 			public void onClick(DialogInterface dialog, int which) {
 				Toast.makeText(OneClaimActivity.this, "Clicked On Confirm",
 						Toast.LENGTH_SHORT).show();
-				controller.confirmClaim(which);
+				controller.confirmClaim();
 				/**
 				 * You need to add code here to do the confirm stuff Once the
 				 * claimant click this, the claim is updated
@@ -429,32 +444,26 @@ public class OneClaimActivity extends Activity {
 		}
 
 	}
-	
-	class AddClaimThread extends Thread{
+	class UpdateThread extends Thread {
 		private Claim claim;
-		
-		public AddClaimThread(Claim claim){
+
+		public UpdateThread(Claim claim) {
 			this.claim = claim;
 		}
-		
-		public void run(){
+
+		@Override
+		public void run() {
 			try {
-				onlineManager.insertClaim(claim);
-			} catch (IllegalStateException e1) {
+				onlineManager.updateClaim(claim);
+			} catch (IllegalStateException e) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (IOException e1) {
+				e.printStackTrace();
+			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			runOnUiThread(doFinish);
+			runOnUiThread(doFinishUpdate);
 		}
-		
 	}
 	
 	class getClaimThread extends Thread{
@@ -465,9 +474,8 @@ public class OneClaimActivity extends Activity {
 		}
 		
 		public void run(){
-			claim = onlineManager.getClaim(claimName);
-			controller = new OneClaimController2(claim);
-			runOnUiThread(doFinish);
+			controller = new OneClaimController2(onlineManager.getClaim(claimName));
+			runOnUiThread(doFinishLoad);
 		}
 		
 	}

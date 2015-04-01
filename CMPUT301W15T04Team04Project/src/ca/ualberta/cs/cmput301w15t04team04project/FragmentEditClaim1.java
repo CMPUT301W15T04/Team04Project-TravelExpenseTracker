@@ -58,7 +58,6 @@ public class FragmentEditClaim1 extends Fragment {
 	private TextView claimName;
 	private DatePicker startDate;
 	private DatePicker endDate;
-	private Claim claim;
 	private int year;
 	private int month;
 	private int day;
@@ -66,21 +65,21 @@ public class FragmentEditClaim1 extends Fragment {
 	// private int addEditstatus = 0; //0 add 1 edit
 	private String ClaimName;
 	private CLmanager onlineManager;
-	private ClaimEditController controller;
+	private ClaimEditController controller1;
 	
 	private Runnable doFinish = new Runnable() {
 		@SuppressWarnings("deprecation")
 		public void run() {
-			claimName.setText(controller.getClaim().getClaim());
-			day = controller.getClaim().getStartDate().getDate();
-			month = controller.getClaim().getStartDate().getMonth();
-			year = controller.getClaim().getStartDate().getYear() + 1900;
+			claimName.setText(controller1.getClaim().getClaim());
+			day = controller1.getClaim().getStartDate().getDate();
+			month = controller1.getClaim().getStartDate().getMonth();
+			year = controller1.getClaim().getStartDate().getYear() + 1900;
 			startDate.updateDate(year, month, day);
-			day = controller.getClaim().getEndDate().getDate();
-			month = controller.getClaim().getEndDate().getMonth();
-			year = controller.getClaim().getEndDate().getYear() + 1900;
+			day = controller1.getClaim().getEndDate().getDate();
+			month = controller1.getClaim().getEndDate().getMonth();
+			year = controller1.getClaim().getEndDate().getYear() + 1900;
 			endDate.updateDate(year, month, day);
-			descript.setText(controller.getClaim().getDescription());
+			descript.setText(controller1.getClaim().getDescription());
 		}
 
 	};
@@ -106,10 +105,6 @@ public class FragmentEditClaim1 extends Fragment {
 	 */
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-
-		ClaimList claimList = MyLocalClaimListManager
-				.loadClaimList(getActivity());
-
 		Bundle bundle = getActivity().getIntent().getExtras();
 		onlineManager = new CLmanager();
 		if (bundle == null) {
@@ -143,8 +138,8 @@ public class FragmentEditClaim1 extends Fragment {
 		public void run() {
 			try {
 				Thread.sleep(500);
-				controller = new ClaimEditController();
-				controller.setClaimObj(onlineManager.getClaim(cName));
+				controller1 = new ClaimEditController();
+				controller1.setClaimObj(onlineManager.getClaim(cName));
 			} catch (IllegalStateException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

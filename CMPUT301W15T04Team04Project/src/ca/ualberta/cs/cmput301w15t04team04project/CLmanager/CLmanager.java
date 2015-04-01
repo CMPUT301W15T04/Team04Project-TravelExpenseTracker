@@ -120,8 +120,7 @@ public class CLmanager {
 	 */
 	public void updateClaim(Claim claim) throws IllegalStateException,
 			IOException {
-		HttpPost updateRequest = new HttpPost(RESOURCE_URL + "waitingList"
-				+ "/" + claim.getStartDate().getTime());
+		HttpPost updateRequest = new HttpPost(RESOURCE_URL + claim.getClaim());
 		StringEntity stringEntity = null;
 		try {
 			stringEntity = new StringEntity(gson.toJson(claim));
@@ -143,32 +142,29 @@ public class CLmanager {
 
 	/**
 	 * @author youdong
-	 * @param ID
 	 * @param string
 	 * @return
 	 */
 	public Claim getClaim(String string) {
 
 		HttpGet getRequest = new HttpGet(RESOURCE_URL + string);
-		getRequest.setHeader("Accept", "application/json");
 		HttpResponse getResponse;
-		Claim claim = null;
 		try {
 			getResponse = httpClient.execute(getRequest);
 			String json = getEntityContent(getResponse);
 			// We have to tell GSON what type we expect
-			Type responseType = new TypeToken<SearchResponse<Claim>>() {
+			Type searchHitType = new TypeToken<SearchHit<Claim>>() {
 			}.getType();
 			// Now we expect to get a Recipe response
-			SearchHit<Claim> esResponse = gson.fromJson(json, responseType);
+			SearchHit<Claim> esResponse = gson.fromJson(json, searchHitType);
 			// We get the recipe from it!
-			claim = esResponse.getSource();
+			return esResponse.getSource();
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return claim;
+		return null;
 	}
 
 /*	public SearchResponse<Claim> searchClaimList() {

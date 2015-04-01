@@ -122,7 +122,7 @@ public class OneClaimController {
 	/**
 	 * @param which
 	 */
-	public void submittedClaim(int which) {
+	public void submittedClaim() {
 		claim.setStatus("submitted");
 	}
 
@@ -136,7 +136,7 @@ public class OneClaimController {
 	/**
 	 * @param which
 	 */
-	public void confirmClaim(int which) {
+	public void confirmClaim() {
 		// TODO Auto-generated method stub
 
 	}

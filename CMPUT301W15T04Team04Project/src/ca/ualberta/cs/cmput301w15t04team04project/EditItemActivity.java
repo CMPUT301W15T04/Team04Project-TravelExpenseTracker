@@ -63,7 +63,7 @@ public class EditItemActivity extends FragmentActivity {
 	private OneClaimController controller;
 	private Item item;
 	private ClaimList claimList;
-	private int claimId;
+	private String claimName;
 	protected static int addEditItemStatus = 0; // 0 add 1 edit
 	protected static int itemId;
 	private Bitmap bitmap;
@@ -88,7 +88,7 @@ public class EditItemActivity extends FragmentActivity {
 		initialisePaging();
 		claimList = MyLocalClaimListManager.loadClaimList(this);
 		Bundle bundle = getIntent().getExtras();
-		claimId = bundle.getInt("myClaimId");
+		claimName = bundle.getString("myClaimName");
 		receiptFlag = 0;
 		// itemId = bundle.getInt("MyItemid");
 
@@ -228,8 +228,7 @@ public class EditItemActivity extends FragmentActivity {
 				this.item.setReceipBitmap(bitmap);
 
 			}
-			claimList.getClaimArrayList().get(claimId).addItem(this.item);
-			MyLocalClaimListManager.saveClaimList(this, claimList);
+			
 			Toast.makeText(this, this.item.getItemName(), Toast.LENGTH_LONG)
 					.show();
 			/**
@@ -238,9 +237,7 @@ public class EditItemActivity extends FragmentActivity {
 		}
 
 		else {
-
-			this.item = claimList.getClaimArrayList().get(claimId).getItems()
-					.get(itemId);
+			
 			this.item.setItemName(itemName.getText().toString());
 
 			/*
@@ -280,7 +277,7 @@ public class EditItemActivity extends FragmentActivity {
 				OneClaimActivity.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		intent.putExtra("myClaimId", claimId);
+		intent.putExtra("MyClaimName", claimName);
 
 		startActivity(intent);
 

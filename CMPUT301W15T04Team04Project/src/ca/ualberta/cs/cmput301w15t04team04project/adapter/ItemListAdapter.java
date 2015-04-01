@@ -32,7 +32,6 @@ import ca.ualberta.cs.cmput301w15t04team04project.adapter.ClaimListAdapter.ViewH
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,10 +72,7 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
 				.findViewById(R.id.singleItemCategoryShowTextView);
 		iholder.amount = (TextView) convertView
 				.findViewById(R.id.singleItemAmountShowTextView);
-		iholder.receipt = (ImageView) convertView
-				.findViewById(R.id.hasRecieptImageView);
-		
-		
+
 		convertView.setTag(iholder);
 
 		Item item = itemList.get(position);
@@ -94,15 +90,8 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
 		iholder.description.setText(item.getItemDescription()); // claim.getStatus();
 		iholder.category.setText(item.getItemCategory());// "category");
 		iholder.amount.setText(item.getItemCurrency().toString());// "$ CAD 88.88");
-												// //claim.getAmount();
+																// //claim.getAmount();
 
-		if (item.getReceipt() != null){
-					
-			Bitmap bitmap = item.getReceipBitmap();
-			iholder.receipt.setImageBitmap(bitmap);
-
-		};				
-				
 		return convertView;
 
 	}

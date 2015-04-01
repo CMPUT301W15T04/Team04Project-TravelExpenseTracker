@@ -41,6 +41,11 @@ public class Destination {
 	public Destination(String dName) {
 		this.dName = dName;
 	}
+	
+	public Destination(String dName, String dReason) {
+		this.dName = dName;
+		this.dReason = dReason;
+	}
 
 	public String getdName() {
 		return dName;

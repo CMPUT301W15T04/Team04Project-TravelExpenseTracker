@@ -62,12 +62,13 @@ public class ClaimEditController extends MyLocalClaimListController {
 	}
 
 	public Claim setClaim(String cName, String cDescription, String cTag,
-			Date sDate, Date eDate) {
+			Date sDate, Date eDate, ArrayList<Destination> destination) {
 		claim.setClaim(cName);
 		claim.setDescription(cDescription);
 		claim.setTag(tagSplit(cTag));
 		claim.setStartDate(sDate);
 		claim.setEndDate(eDate);
+		claim.setDestination(destination);
 		return claim;
 	}
 

@@ -45,7 +45,7 @@ public class Claim {
 	protected String Comment;
 	protected Date startDate;
 	protected Date endDate;
-	protected ArrayList<Destination> destination;
+	protected ArrayList<Destination> destination = new ArrayList<Destination>();
 	protected ArrayList<Item> items;
 	protected ArrayList<String> tags;
 	protected transient ArrayList<Listener> itemListener;
@@ -153,7 +153,6 @@ public class Claim {
 	}
 
 	public ArrayList<Currency> getTotalCurrency() {
-		// TODO Auto-generated method stub
 		return this.totalCurrency;
 	}
 
