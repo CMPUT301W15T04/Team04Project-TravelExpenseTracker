@@ -53,6 +53,7 @@ public class MyClaimActivity extends Activity {
 
 	public static int mode;
 	private ActionBar actionBar;
+	private Menu claimMenu;
 	private boolean progressing;
 	private MyLocalClaimListController controller;
 	private MyClaimActivity thisActivity = this;
@@ -230,6 +231,7 @@ public class MyClaimActivity extends Activity {
 		getMenuInflater().inflate(R.menu.my_claim, menu);
 		menu.findItem(R.id.action_new_claim).setVisible(progressing);
 		menu.findItem(R.id.action_search).setVisible(progressing);
+		claimMenu=menu;
 		return true;
 	}
 
@@ -244,7 +246,12 @@ public class MyClaimActivity extends Activity {
 		startActivity(intent);
 		finish();
 	}
-
+	
+	//get the menuItem for testing
+	public MenuItem getMyClaimMenuItem(){
+		return claimMenu.findItem(R.id.action_new_claim);
+	}
+	
 	class SearchClaimThread extends Thread {
 		private String status;
 

@@ -84,7 +84,7 @@ public final class R {
         public static final int TotalAmount=0x7f0a0073;
         public static final int action_logout=0x7f0a0090;
         public static final int action_new_claim=0x7f0a0091;
-        public static final int action_new_itme=0x7f0a0093;
+        public static final int action_new_item=0x7f0a0093;
         public static final int action_search=0x7f0a008f;
         public static final int action_searchOC=0x7f0a0092;
         public static final int action_settings=0x7f0a008c;

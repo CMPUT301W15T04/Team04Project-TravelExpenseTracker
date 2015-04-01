@@ -66,6 +66,7 @@ public class OneClaimActivity extends Activity {
 	private CLmanager onlineManager = new CLmanager();
 	private ItemListAdapter itemAdapter;
 	private User user;
+	private Menu itemMenu;
 	/**
 	 * This method will be called when the user finishes asking a question to
 	 * stop the the current thread.
@@ -195,6 +196,7 @@ public class OneClaimActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.one_claim, menu);
+		itemMenu=menu;
 		return true;
 	}
 
@@ -216,6 +218,12 @@ public class OneClaimActivity extends Activity {
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		intent.putExtra("MyClaimName", ClaimName);
 		startActivity(intent);
+	}
+	
+	//get the menuItem for testing
+	public MenuItem getItemMenuItem(){
+		
+		return itemMenu.findItem(R.id.action_new_item);
 	}
 
 	/**
