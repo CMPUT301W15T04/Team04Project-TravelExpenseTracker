@@ -1,5 +1,11 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import java.util.ArrayList;
+
+import ca.ualberta.cs.cmput301w15t04team04project.controller.searchController;
+import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
+import ca.ualberta.cs.cmput301w15t04team04project.models.User;
+
 import android.app.ActionBar;
 import android.app.ActionBar.OnNavigationListener;
 import android.app.Activity;
@@ -35,11 +41,14 @@ public class SearchActivity extends Activity {
 	/**
 	 * The following String[] is using for store the contact Tags.
 	 * **/
-	String[] contectTags = new String[] { "Tag", "Friend", "Classmate", "A1",
+/*	String[] contectTags = new String[] { "Tag", "Friend", "Classmate", "A1",
 			"A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11",
 			"A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20",
-			"A21" };
-
+			"A21" };*/
+	private User user;
+	private ArrayList<String> contectTags = new ArrayList<String> ();
+	private searchController controller = new searchController();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -48,6 +57,9 @@ public class SearchActivity extends Activity {
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setIcon(R.drawable.ic_action_search);
+		
+		
+		ClaimList searchClaimList = controller.searchAllClaimList(user);
 
 		Spinner spinner = (Spinner) findViewById(R.id.constactTagsSpinner);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(

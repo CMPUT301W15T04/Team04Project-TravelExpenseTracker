@@ -100,20 +100,22 @@
         android:text="New Claim" />
 
     <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/userNameDisplay"
-        android:text="Home Location" />
-
-    <TextView
         android:id="@+id/gpsHomeLocationTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/userNameDisplay"
-        android:layout_toRightOf="@+id/textView1"
+        android:layout_toRightOf="@+id/setHomeLocationButton"
         android:text="GPS Location" />
+
+    <Button
+        android:id="@+id/setHomeLocationButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/gpsHomeLocationTextView"
+        android:layout_alignBottom="@+id/gpsHomeLocationTextView"
+        android:layout_alignParentLeft="true"
+        android:text="Button" />
 
 </RelativeLayout>

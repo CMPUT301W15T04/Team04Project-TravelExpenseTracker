@@ -112,7 +112,7 @@ public class FragmentEditClaim2 extends Fragment {
 		DestinationListView = (ListView) getActivity().findViewById(
 				R.id.destinationListView);
 		Button addDestinationButton = (Button) getActivity().findViewById(
-				R.id.button1);
+				R.id.setHomeLocationButton);
 		ButtonListener addDestinationButtonListener = new ButtonListener();
 		addDestinationButton.setOnClickListener(addDestinationButtonListener);
 		DestinationListAdapter = new ArrayAdapter<Destination>(getActivity(),
