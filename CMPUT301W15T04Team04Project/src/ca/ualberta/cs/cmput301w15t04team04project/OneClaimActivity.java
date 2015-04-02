@@ -76,11 +76,9 @@ public class OneClaimActivity extends Activity {
 	private CLmanager onlineManager = new CLmanager();
 	private ItemListAdapter itemAdapter;
 	private User user;
-<<<<<<< HEAD
 	private ListView itemlistview;
-=======
 	private Menu itemMenu;
->>>>>>> 6a8d3bbc1ac57fa4b394b410025e1b5fb5fccc3b
+
 	/**
 	 * This method will be called when the user finishes asking a question to
 	 * stop the the current thread.
@@ -88,6 +86,7 @@ public class OneClaimActivity extends Activity {
 
 	private Runnable doFinishUpdate = new Runnable() {
 		public void run() {
+			itemAdapter.notifyDataSetChanged();
 			finish();
 		}
 	};
@@ -113,10 +112,8 @@ public class OneClaimActivity extends Activity {
 		approverView = (TextView) findViewById(R.id.testApproverTextView);
 		claimantView = (TextView) findViewById(R.id.testClaimantTextView);
 		Bundle extras = getIntent().getExtras();
-		onlineManager = new CLmanager();
 		controller = new OneClaimController();
 		ClaimName = extras.getString("MyClaimName");
-		Toast.makeText(this, ClaimName, Toast.LENGTH_SHORT).show();
 		getClaimThread getClaim = new getClaimThread(ClaimName);
 		// set content of view to dispaly
 		getClaim.start();
@@ -125,7 +122,6 @@ public class OneClaimActivity extends Activity {
 				android.R.layout.simple_list_item_1, controller.getItem());
 		itemlistview.setAdapter(itemAdapter);
 		checkUserType();
-		
 		itemlistview.setOnItemLongClickListener(new OnItemLongClickListener() {
 
 			@Override
@@ -143,8 +139,8 @@ public class OneClaimActivity extends Activity {
 					@Override
 					public void onClick(DialogInterface dialog, int position) {
 						controller.deleteItem(itemId);
-						MyLocalClaimListManager.saveClaimList(
-								getApplicationContext(), claimList);
+						UpdateThread deleteItem = new UpdateThread(controller.getClaim());
+						deleteItem.start();
 					}
 				});
 

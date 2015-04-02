@@ -53,7 +53,11 @@ public class Item {
 	protected boolean isComplete = false;
 	protected String receipt;
 	
-
+	public Item(String itemName) {
+		this.itemName = itemName;
+		
+	}
+	
 	public String getReceipt() {
 		return receipt;
 	}
@@ -96,10 +100,7 @@ public class Item {
 	 * @version 1.0
 	 * @since 2015-03-08
 	 */
-	public Item(String itemName) {
-		this.setItemName(itemName);
 
-	}
 
 	public String getItemName() {
 		return itemName;

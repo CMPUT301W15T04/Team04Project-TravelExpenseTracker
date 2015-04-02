@@ -1,23 +1,22 @@
 package ca.ualberta.cs.cmput301w15t04team04project.controller;
 
+import java.util.ArrayList;
+
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 
-public class ItemEditController extends OneClaimController {
+public class ItemEditController{
+	private Claim claim;
 
-	/**
-	 * ItemEditController is extend the OneClaimController
-	 */
-	public ItemEditController() {
-		super();
-		// TODO Auto-generated constructor stub
+	
+	public ItemEditController(){
+		
 	}
-
 	/**
 	 * @param claim
 	 */
 	public ItemEditController(Claim claim) {
-		super(claim);
+		this.claim = claim;
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -30,5 +29,16 @@ public class ItemEditController extends OneClaimController {
 
 	public void addItem(Item item) {
 		getItem().add(item);
+	}
+	
+	public Claim getClaim() {
+		if (claim == null) {
+			claim = new Claim("");
+		}
+		return claim;
+	}
+
+	public ArrayList<Item> getItem() {
+		return getClaim().getItems();
 	}
 }

@@ -30,6 +30,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.PagerAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ItemEditController;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Currency;
@@ -71,9 +72,15 @@ public class EditItemActivity extends FragmentActivity {
 	private int receiptFlag = 0;
 	private CLmanager onlineManager = new CLmanager();
 	private Bundle bundle;
+	
 	private Runnable doFinishEdit = new Runnable() {
 		public void run() {
-			finish();
+			//finish();
+		}
+	};
+	private Runnable FinishLoad = new Runnable() {
+		public void run() {
+			Toast.makeText(getApplicationContext(), controller.getClaim().getClaim(), Toast.LENGTH_LONG).show();
 		}
 	};
 	
@@ -95,11 +102,15 @@ public class EditItemActivity extends FragmentActivity {
 		// setContentView(R.layout.fragment_edit_item_1);
 		// setContentView(R.layout.fragment_edit_item_2);
 		initialisePaging();
+		onlineManager = new CLmanager();
 		bundle = getIntent().getExtras();
-		controller = new ItemEditController();
-		claimName = bundle.getString("myClaimName");
-		Toast.makeText(this, claimName, Toast.LENGTH_LONG)
+		claimName = bundle.getString("MyClaimName");
+		Toast.makeText(getApplicationContext(), claimName, Toast.LENGTH_LONG)
 		.show();
+		controller = new ItemEditController();
+		getClaimThread get = new getClaimThread(claimName);
+		get.start();
+		//Toast.makeText(this, claimName, Toast.LENGTH_LONG).show();
 		receiptFlag = 0;
 		// itemId = bundle.getInt("MyItemid");
 
@@ -208,13 +219,6 @@ public class EditItemActivity extends FragmentActivity {
 
 		if (addEditItemStatus == 0) {
 			Item newitem = new Item(itemName.getText().toString());
-
-			/*// put information into this item
-			
-			 * int Year = itemDateDatePicker.getYear(); int Month =
-			 * itemDateDatePicker.getMonth(); int DateOfMonth =
-			 * itemDateDatePicker.getDayOfMonth();
-			 
 			newitem.setItemDate(calendar.getTime());
 
 			newitem.setItemCategory(itemCategorySpinner.getSelectedItem()
@@ -238,27 +242,26 @@ public class EditItemActivity extends FragmentActivity {
 			if (receiptFlag == 1){
 				newitem.setReceipBitmap(bitmap);
 
-			}*/
+			}
 			controller.addItem(newitem);
 			UpdateThread update = new UpdateThread(controller.getClaim());
-			update.run();
-			Toast.makeText(this, newitem.getItemName(), Toast.LENGTH_LONG)
-					.show();
+			update.start();
+			
 			/**
 			 * part end here
 			 */
 		}
 
-		else {
+		/*else {
 			
 			controller.getClaim().getPosition(itemId).setItemName(itemName.getText().toString());
 
-			/*
+			
 			 * int Year = itemDateDatePicker.getYear(); int Month =
 			 * itemDateDatePicker.getMonth(); int DateOfMonth =
 			 * itemDateDatePicker.getDayOfMonth(); this.item.setDate(new
 			 * Date(Year-1900,Month,DateOfMonth));
-			 */
+			 
 
 			controller.getClaim().getPosition(itemId).setItemCategory(itemCategorySpinner.getSelectedItem()
 					.toString());
@@ -280,11 +283,11 @@ public class EditItemActivity extends FragmentActivity {
 
 			}
 			UpdateThread update = new UpdateThread(controller.getClaim());
-			update.run();
+			//update.run();
 			Toast.makeText(this, controller.getClaim().getPosition(itemId).getItemName(), Toast.LENGTH_LONG)
 					.show();
 
-		}
+		}*/
 
 		Intent intent = new Intent(EditItemActivity.this,
 				OneClaimActivity.class);
@@ -341,16 +344,17 @@ public class EditItemActivity extends FragmentActivity {
 			runOnUiThread(doFinishEdit);
 		}
 	}
-	class getThread extends Thread{ 
+	class getClaimThread extends Thread {
 		private String claimName;
-		
-		public getThread(String claimName){
+
+		public getClaimThread(String claimName) {
 			this.claimName = claimName;
 		}
-		
-		public void run(){
-			controller = new ItemEditController(onlineManager.getClaim(claimName));
+
+		public void run() {
+			controller = new ItemEditController(
+					onlineManager.getClaim(claimName));
+			runOnUiThread(FinishLoad);
 		}
-		
 	}
 }

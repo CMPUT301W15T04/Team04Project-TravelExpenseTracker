@@ -94,23 +94,16 @@ public class FragmentEditItem1 extends Fragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-
-		ClaimList claimList = MyLocalClaimListManager
-				.loadClaimList(getActivity());
 		Bundle bundle = getActivity().getIntent().getExtras();
 		if (bundle.size() == 1) {
 			EditItemActivity.addEditItemStatus = 0;
 		} else if (bundle.size() == 2) {
-			EditItemActivity.addEditItemStatus = 1;
+			/*EditItemActivity.addEditItemStatus = 1;
 
 			myClaimId = bundle.getInt("myClaimId");
 			myItemId = bundle.getInt("myItemId");
 			Toast.makeText(getActivity(), "Frag ItemID = " + myItemId,
 					Toast.LENGTH_SHORT).show();
-
-			Item currentItem = claimList.getClaimArrayList().get(myClaimId)
-					.getItems().get(myItemId);
-
 			itemName = (TextView) getView().findViewById(R.id.itemNameEditText);
 			datePicker = (DatePicker) getView().findViewById(
 					R.id.itemDateDatePicker);
@@ -152,7 +145,7 @@ public class FragmentEditItem1 extends Fragment {
 			int pick2 = Arrays.asList(units).indexOf(selection2);
 			currencyUnit.setSelection(pick2);
 
-			EditItemActivity.itemId = this.myItemId;
+			EditItemActivity.itemId = this.myItemId;*/
 		}
 
 	}
