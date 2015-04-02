@@ -23,7 +23,9 @@ package ca.ualberta.cs.cmput301w15t04team04project;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.ItemEditController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import android.net.Uri;
@@ -59,18 +61,36 @@ import android.widget.Toast;
  */
 public class FragmentEditItem2 extends Fragment {
 	private int myItemId;
-	private int myClaimId;
+	private String claimName;
 	private TextView itemDescription;
 	private View thisview;
 	private Uri imageFileUri;
 	private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
-	private Item currentItem;
 	private String stringUri = null;
 	private String imagepath = null;
 	private String encodedImage = null;
-
+	private ItemEditController controller;
+	private CLmanager onlineManager = new CLmanager();
 	private EditItemActivity myActivity;
+	private Runnable finishLoad =  new Runnable() {
+		public void run() {
+			Item currentItem = controller.getClaim().getPosition(myItemId);
+			itemDescription.setText(currentItem.getItemDescription());
 
+			ImageButton button = (ImageButton) thisview
+					.findViewById(R.id.addRecieptImageButton);
+
+			if (currentItem.getReceipt() != null) {
+
+				Bitmap bitmap = currentItem.getReceipBitmap();
+				button.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 256,
+						256, false));
+
+				// button.setImageBitmap(bitmap);
+
+			}
+		}
+	};
 	/**
 	 * This is the onCreateView of initial the view
 	 * 
@@ -111,39 +131,16 @@ public class FragmentEditItem2 extends Fragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-
-		ClaimList claimList = MyLocalClaimListManager
-				.loadClaimList(getActivity());
 		Bundle bundle = getActivity().getIntent().getExtras();
 		if (bundle.size() == 1) {
 			EditItemActivity.addEditItemStatus = 0;
 		} else if (bundle.size() == 2) {
 			EditItemActivity.addEditItemStatus = 1;
-			myClaimId = bundle.getInt("myClaimId");
+			claimName = bundle.getString("MyClaimName");
 			myItemId = bundle.getInt("myItemId");
-			Toast.makeText(getActivity(), "Frag ItemID = " + myItemId,
-					Toast.LENGTH_SHORT).show();
-
-			currentItem = claimList.getClaimArrayList().get(myClaimId)
-					.getItems().get(myItemId);
-
 			itemDescription = (TextView) getView().findViewById(
 					R.id.fragmentEditItem2DiscriptionEditText);
-			itemDescription.setText(currentItem.getItemDescription());
-
-			ImageButton button = (ImageButton) thisview
-					.findViewById(R.id.addRecieptImageButton);
-
-			if (currentItem.getReceipt() != null) {
-
-				Bitmap bitmap = currentItem.getReceipBitmap();
-				button.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 256,
-						256, false));
-
-				// button.setImageBitmap(bitmap);
-
-			}
-			;
+			
 
 		}
 
@@ -220,5 +217,24 @@ public class FragmentEditItem2 extends Fragment {
 				.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
 		cursor.moveToFirst();
 		return cursor.getString(column_index);
+	}
+	class GetThread extends Thread{ 
+		private String claimName;
+		
+		public GetThread(String claimName){
+			this.claimName = claimName;
+		}
+		
+		public void run(){
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			controller = new ItemEditController(onlineManager.getClaim(claimName));
+			getActivity().runOnUiThread(finishLoad);
+		}
+		
 	}
 }

@@ -24,7 +24,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.ItemEditController;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
@@ -65,7 +67,37 @@ public class FragmentEditItem1 extends Fragment {
 	private int myItemId;
 	private int myClaimId;
 	private Resources res;
+	private ItemEditController controller;
+	private CLmanager onlineManager = new CLmanager();
+	private String claimName;
+	
+	private Runnable finishLoad =  new Runnable() {
+		public void run() {
+			Item currentItem = controller.getClaim().getPosition(myItemId);
+			itemName.setText(currentItem.getItemName());
 
+			// set item date
+			@SuppressWarnings("deprecation")
+			int date = currentItem.getItemDate().getDate();
+			@SuppressWarnings("deprecation")
+			int month = currentItem.getItemDate().getMonth();
+			@SuppressWarnings("deprecation")
+			int year = currentItem.getItemDate().getYear() + 1900;
+			datePicker.updateDate(year, month, date);
+			// set ammount
+			amount.setText("" + currentItem.getItemCurrency().getAmount());
+			res = getResources();
+			String[] cates = res.getStringArray(R.array.categories);
+			String selection = currentItem.getItemCategory();
+			int pick = Arrays.asList(cates).indexOf(selection);
+			category.setSelection(pick);
+			String[] units = res.getStringArray(R.array.currencyUnits);
+			String selection2 = currentItem.getItemCurrency().getType();
+			int pick2 = Arrays.asList(units).indexOf(selection2);
+			currencyUnit.setSelection(pick2);
+		}
+	};
+	
 	/**
 	 * This is the onCreateView of initial the view
 	 * 
@@ -98,12 +130,9 @@ public class FragmentEditItem1 extends Fragment {
 		if (bundle.size() == 1) {
 			EditItemActivity.addEditItemStatus = 0;
 		} else if (bundle.size() == 2) {
-			/*EditItemActivity.addEditItemStatus = 1;
-
-			myClaimId = bundle.getInt("myClaimId");
+			EditItemActivity.addEditItemStatus = 1;
+			claimName = bundle.getString("MyClaimName");
 			myItemId = bundle.getInt("myItemId");
-			Toast.makeText(getActivity(), "Frag ItemID = " + myItemId,
-					Toast.LENGTH_SHORT).show();
 			itemName = (TextView) getView().findViewById(R.id.itemNameEditText);
 			datePicker = (DatePicker) getView().findViewById(
 					R.id.itemDateDatePicker);
@@ -113,51 +142,32 @@ public class FragmentEditItem1 extends Fragment {
 					R.id.currencyUnitsSpinner);
 			amount = (TextView) getView().findViewById(
 					R.id.itemCurrencyEditText);
-
+			EditItemActivity.itemId = this.myItemId;
+			GetThread get = new GetThread(claimName);
+			get.start();
 			// set item name
-			itemName.setText(currentItem.getItemName());
+			
 
-			// set item date
-			@SuppressWarnings("deprecation")
-			int date = currentItem.getItemDate().getDate();
-			@SuppressWarnings("deprecation")
-			int month = currentItem.getItemDate().getMonth();
-			@SuppressWarnings("deprecation")
-			int year = currentItem.getItemDate().getYear() + 1900;
-			datePicker.updateDate(year, month, date);
-
-			// set ammount
-			amount.setText("" + currentItem.getItemCurrency().getAmount());
-
-			// set item amount
-			// amount.setText(Double.toString(currentItem.getCurrency().getAmount()));
-
-			// set category
-			res = getResources();
-			String[] cates = res.getStringArray(R.array.categories);
-			String selection = currentItem.getItemCategory();
-			int pick = Arrays.asList(cates).indexOf(selection);
-			category.setSelection(pick);
-
-			// set currency unit
-			String[] units = res.getStringArray(R.array.currencyUnits);
-			String selection2 = currentItem.getItemCurrency().getType();
-			int pick2 = Arrays.asList(units).indexOf(selection2);
-			currencyUnit.setSelection(pick2);
-
-			EditItemActivity.itemId = this.myItemId;*/
+			
 		}
 
 	}
-	class getThread extends Thread{ 
+	class GetThread extends Thread{ 
 		private String claimName;
 		
-		public getThread(String claimName){
+		public GetThread(String claimName){
 			this.claimName = claimName;
 		}
 		
 		public void run(){
-			//controller = new OneClaimController(onlineManager.getClaim(claimName));
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			controller = new ItemEditController(onlineManager.getClaim(claimName));
+			getActivity().runOnUiThread(finishLoad);
 		}
 		
 	}

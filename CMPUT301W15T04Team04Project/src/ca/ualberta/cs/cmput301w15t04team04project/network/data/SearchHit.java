@@ -9,7 +9,6 @@ public class SearchHit<T> {
 	private T _source;
 
 	public SearchHit() {
-
 	}
 
 	public String get_index() {

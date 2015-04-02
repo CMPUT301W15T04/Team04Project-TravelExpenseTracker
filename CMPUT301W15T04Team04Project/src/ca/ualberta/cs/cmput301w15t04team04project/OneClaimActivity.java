@@ -149,17 +149,13 @@ public class OneClaimActivity extends Activity {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						// TODO Auto-generated method stsub
-						Toast.makeText(OneClaimActivity.this,
-								"OCA ItemID = " + itemId, Toast.LENGTH_SHORT)
-								.show();
 						Intent myIntent = new Intent(OneClaimActivity.this,
 								EditItemActivity.class);
 						myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 						myIntent.putExtra("myItemId", itemId);
 						myIntent.putExtra("MyClaimName", ClaimName);
-						// myIntent.putExtra("myClaimId", claimId);
-						OneClaimActivity.this.startActivity(myIntent);
+						startActivity(myIntent);
 
 					}
 				});
@@ -182,8 +178,6 @@ public class OneClaimActivity extends Activity {
 			public void onItemClick(AdapterView<?> adapterView, View view,
 					int position, long id) {
 				int itemPosition = position;
-				Toast.makeText(OneClaimActivity.this, "Item " + id,
-						Toast.LENGTH_SHORT).show();
 				showItemDetailC(view, position);
 
 			}
@@ -431,10 +425,10 @@ public class OneClaimActivity extends Activity {
 		descript = (TextView) itemInfoCDialogView
 				.findViewById(R.id.currentDescripTextView);
 
-		descript.setText(claim.getItems().get(id).getItemName());
+		descript.setText(controller.getClaim().getItems().get(id).getItemName());
 
 		// amount.setText(claim.getItems().get(id).getCurrency().getType()+String.valueOf(claim.getItems().get(id).getCurrency().getAmount()));
-		amount.setText(claim.getItems().get(id).getItemCurrency().toString());
+		amount.setText(controller.getClaim().getItems().get(id).getItemCurrency().toString());
 
 		// Toast.makeText(this,
 		// claim.getItems().get(id).getCurrency().getType(),
@@ -443,13 +437,13 @@ public class OneClaimActivity extends Activity {
 		// +String.valueOf(claim.getItems().get(id).getCurrency().getAmount())
 		// amount.setText(String.valueOf(claim.getItems().get(id).getCurrency().getAmount()));
 
-		Date idate = claim.getItems().get(id).getItemDate();
+		Date idate = controller.getClaim().getItems().get(id).getItemDate();
 		DateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
 		String dateOutput = df.format(idate);
 		itemDate.setText(dateOutput);
-		itemName.setText(claim.getItems().get(id).getItemName());
-		category.setText(claim.getItems().get(id).getItemCategory());
-		descript.setText(claim.getItems().get(id).getItemDescription());
+		itemName.setText(controller.getClaim().getItems().get(id).getItemName());
+		category.setText(controller.getClaim().getItems().get(id).getItemCategory());
+		descript.setText(controller.getClaim().getItems().get(id).getItemDescription());
 
 		// set the Edit Button on the Dialog
 		/*

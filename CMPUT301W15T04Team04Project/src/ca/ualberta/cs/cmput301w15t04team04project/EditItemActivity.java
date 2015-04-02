@@ -22,17 +22,12 @@ package ca.ualberta.cs.cmput301w15t04team04project;
 
 import java.io.IOException;
 import java.util.Calendar;
-
 import java.util.List;
 import java.util.Vector;
-
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
-import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.PagerAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ItemEditController;
-import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
-import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Currency;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import android.content.Intent;
@@ -102,18 +97,14 @@ public class EditItemActivity extends FragmentActivity {
 		// setContentView(R.layout.fragment_edit_item_1);
 		// setContentView(R.layout.fragment_edit_item_2);
 		initialisePaging();
-		onlineManager = new CLmanager();
 		bundle = getIntent().getExtras();
 		claimName = bundle.getString("MyClaimName");
-		Toast.makeText(getApplicationContext(), claimName, Toast.LENGTH_LONG)
+		Toast.makeText(this, claimName, Toast.LENGTH_LONG)
 		.show();
 		controller = new ItemEditController();
-		getClaimThread get = new getClaimThread(claimName);
+		GetClaimThread get = new GetClaimThread(claimName);
 		get.start();
-		//Toast.makeText(this, claimName, Toast.LENGTH_LONG).show();
 		receiptFlag = 0;
-		// itemId = bundle.getInt("MyItemid");
-
 	}
 
 	/**
@@ -250,19 +241,11 @@ public class EditItemActivity extends FragmentActivity {
 			/**
 			 * part end here
 			 */
-		}
-
-		/*else {
-			
+		}else {
+			Toast.makeText(this, controller.getClaim().getClaim()+itemId+controller.getClaim().getItems().size(), Toast.LENGTH_LONG)
+			.show();
+			controller.getClaim().getPosition(itemId).setItemDate(calendar.getTime());
 			controller.getClaim().getPosition(itemId).setItemName(itemName.getText().toString());
-
-			
-			 * int Year = itemDateDatePicker.getYear(); int Month =
-			 * itemDateDatePicker.getMonth(); int DateOfMonth =
-			 * itemDateDatePicker.getDayOfMonth(); this.item.setDate(new
-			 * Date(Year-1900,Month,DateOfMonth));
-			 
-
 			controller.getClaim().getPosition(itemId).setItemCategory(itemCategorySpinner.getSelectedItem()
 					.toString());
 			String tempAmountStr = itemCurrencyEeditText.getText().toString();
@@ -283,11 +266,10 @@ public class EditItemActivity extends FragmentActivity {
 
 			}
 			UpdateThread update = new UpdateThread(controller.getClaim());
-			//update.run();
-			Toast.makeText(this, controller.getClaim().getPosition(itemId).getItemName(), Toast.LENGTH_LONG)
-					.show();
+			update.start();
+			
 
-		}*/
+		}
 
 		Intent intent = new Intent(EditItemActivity.this,
 				OneClaimActivity.class);
@@ -344,10 +326,10 @@ public class EditItemActivity extends FragmentActivity {
 			runOnUiThread(doFinishEdit);
 		}
 	}
-	class getClaimThread extends Thread {
+	class GetClaimThread extends Thread {
 		private String claimName;
 
-		public getClaimThread(String claimName) {
+		public GetClaimThread(String claimName) {
 			this.claimName = claimName;
 		}
 

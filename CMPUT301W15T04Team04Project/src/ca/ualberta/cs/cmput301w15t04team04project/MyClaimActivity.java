@@ -1,20 +1,12 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+
 
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
-import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ClaimListAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController;
-import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
-import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
-import ca.ualberta.cs.cmput301w15t04team04project.models.Listener;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
-import ca.ualberta.cs.cmput301w15t04team04project.network.data.SearchResponse;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -26,9 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
@@ -281,5 +271,4 @@ public class MyClaimActivity extends Activity {
 			runOnUiThread(doFinish);
 		}
 	}
-
 }
