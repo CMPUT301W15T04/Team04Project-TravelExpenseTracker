@@ -89,6 +89,7 @@ public class EditClaimActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_claim);
+		controller = new ClaimEditController();
 		initialisePaging();
 
 	}
@@ -194,7 +195,6 @@ public class EditClaimActivity extends FragmentActivity {
 		// System.out.println(tag==null);
 
 		if (addEditStatus == 0) {
-			destinationList.add(new Destination("a","b"));
 			Claim claim = controller.setClaim(cName, cDescription, cTag, sDate, eDate, destinationList);
 			Thread add = new AddThread(claim);
 			add.start();

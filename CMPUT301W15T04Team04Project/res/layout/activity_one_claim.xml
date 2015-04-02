@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:hint="Approver Show Claim Detail"
-                android:onClick="showClaimDetailA"
+                android:onClick="showClaimDetailC"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="25dp"
                 tools:ignore="HardcodedText,RtlHardcoded" />

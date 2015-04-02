@@ -11,9 +11,10 @@ import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ItemListAdapter;
-import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController2;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Destination;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Listener;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
@@ -30,13 +31,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
+
 /**
  * The one Activity is to see the detail and the items of a certain claim
+ * 
  * @author youdong
  * @author Weijie Sun
  * @version 1.0
@@ -52,10 +57,15 @@ public class OneClaimActivity extends Activity {
 	private TextView itemDate;
 	private TextView category;
 	private TextView descript;
-	private OneClaimController2 controller;
+	private OneClaimController controller;
 	private TextView approverView;
-	private TextView claimName;
 	private TextView claimantView;
+	private TextView claimName;
+	private TextView startDate;
+	private TextView endDate;
+	private TextView state;
+	private ListView tags;
+	private ListView destinations;
 	static boolean isClaimant;
 	private OneClaimActivity thisActivity = this;
 	private InternetChecker iC;
@@ -66,62 +76,52 @@ public class OneClaimActivity extends Activity {
 	private CLmanager onlineManager = new CLmanager();
 	private ItemListAdapter itemAdapter;
 	private User user;
+	private ListView itemlistview;
 	/**
 	 * This method will be called when the user finishes asking a question to
 	 * stop the the current thread.
 	 */
-	private Runnable doFinishAddItem = new Runnable() {
-		public void run() {
-			itemAdapter.notifyDataSetChanged();
-		}
-	};
-	
+
 	private Runnable doFinishUpdate = new Runnable() {
 		public void run() {
 			finish();
 		}
 	};
-	
+
 	private Runnable doFinishLoad = new Runnable() {
 		public void run() {
-			
+			itemAdapter = new ItemListAdapter(getApplication(),
+					android.R.layout.simple_list_item_1, controller.getItem());
+			itemlistview.setAdapter(itemAdapter);
 		}
 	};
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		user = SignInManager.loadFromFile(this);
-		if(user.getName().equals("approval")){
+		if (user.getName().equals("approval")) {
 			isClaimant = false;
-		}else{
+		} else {
 			isClaimant = true;
 		}
 		setContentView(R.layout.activity_one_claim);
 		approverView = (TextView) findViewById(R.id.testApproverTextView);
+		claimantView = (TextView) findViewById(R.id.testClaimantTextView);
 		Bundle extras = getIntent().getExtras();
 		onlineManager = new CLmanager();
-		controller = new OneClaimController2();
+		controller = new OneClaimController();
 		ClaimName = extras.getString("MyClaimName");
-		Toast.makeText(this, ClaimName,	Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, ClaimName, Toast.LENGTH_SHORT).show();
 		getClaimThread getClaim = new getClaimThread(ClaimName);
 		// set content of view to dispaly
 		getClaim.start();
-		ListView itemlistview = (ListView) findViewById(R.id.OneCaimItemListView);
+		itemlistview = (ListView) findViewById(R.id.OneCaimItemListView);
 		itemAdapter = new ItemListAdapter(this,
 				android.R.layout.simple_list_item_1, controller.getItem());
 		itemlistview.setAdapter(itemAdapter);
 		checkUserType();
-		controller.getClaim().addListener(new Listener() {
-			@Override
-			public void update() {
-				// TODO Auto-generated method stub
-				controller.clear();
-				Collection<Item> items = controller.getItem();
-				items.addAll(items);
-				itemAdapter.notifyDataSetChanged();
-			}
-		});
-
+		
 		itemlistview.setOnItemLongClickListener(new OnItemLongClickListener() {
 
 			@Override
@@ -140,8 +140,7 @@ public class OneClaimActivity extends Activity {
 					public void onClick(DialogInterface dialog, int position) {
 						controller.deleteItem(itemId);
 						MyLocalClaimListManager.saveClaimList(
-								getApplicationContext(),
-								claimList);
+								getApplicationContext(), claimList);
 					}
 				});
 
@@ -158,7 +157,8 @@ public class OneClaimActivity extends Activity {
 						myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 						myIntent.putExtra("myItemId", itemId);
-						//myIntent.putExtra("myClaimId", claimId);
+						myIntent.putExtra("MyClaimName", ClaimName);
+						// myIntent.putExtra("myClaimId", claimId);
 						OneClaimActivity.this.startActivity(myIntent);
 
 					}
@@ -185,7 +185,7 @@ public class OneClaimActivity extends Activity {
 				Toast.makeText(OneClaimActivity.this, "Item " + id,
 						Toast.LENGTH_SHORT).show();
 				showItemDetailC(view, position);
-				
+
 			}
 		});
 
@@ -226,55 +226,122 @@ public class OneClaimActivity extends Activity {
 
 		LayoutInflater factory = LayoutInflater.from(OneClaimActivity.this);
 		View claimInfoCDialogView = factory.inflate(
-				R.layout.activity_claim_detail, null);
+				R.layout.activity_claim_detail_a, null);
 		adb.setView(claimInfoCDialogView);
-
-
 		claimName = (TextView) claimInfoCDialogView
-				.findViewById(R.id.currentClaimNameCTextView);
-		//claimName.setText(claims.get(claimId).getClaim());
-		
-		
-		adb.setNeutralButton("Submit", new OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-				Toast.makeText(OneClaimActivity.this, "Clicked On Submit",
+				.findViewById(R.id.currentClaimNameATextView);
+		startDate = (TextView) claimInfoCDialogView
+				.findViewById(R.id.currentClaimSDATextView);
+		endDate = (TextView) claimInfoCDialogView
+				.findViewById(R.id.currentClaimEDATextView);
+		state = (TextView) claimInfoCDialogView
+				.findViewById(R.id.currentClaimStatusATextView);
+		tags = (ListView) claimInfoCDialogView
+				.findViewById(R.id.showClaimTagsAListView);
+		destinations = (ListView) claimInfoCDialogView
+				.findViewById(R.id.showDestinationsAListView);
+		claimName.setText(controller.getClaim().getClaim());
+		Date date = controller.getClaim().getStartDate();
+		DateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+		String dateOutput = df.format(date);
+		startDate.setText(dateOutput);
+		date = controller.getClaim().getEndDate();
+		df = new SimpleDateFormat("dd-MMM-yyyy");
+		dateOutput = df.format(date);
+		endDate.setText(dateOutput);
+		state.setText(controller.getClaim().getStatus());
+		ArrayList<String> claimTags = controller.getClaim().getTag();
+		ArrayAdapter<String> tagAdapter = new ArrayAdapter<String>(
+				thisActivity, android.R.layout.simple_list_item_1, claimTags);
+		tags.setAdapter(tagAdapter);
+		Collection<Destination> destinationCollection = controller.getClaim()
+				.getDestination();
+		ArrayList<Destination> destinationList = new ArrayList<Destination>(
+				destinationCollection);
+		ArrayAdapter<Destination> destinationAdapter = new ArrayAdapter<Destination>(
+				thisActivity, android.R.layout.simple_list_item_1,
+				destinationList);
+		destinations.setAdapter(destinationAdapter);
+		if (isClaimant == true) {
+			TextView comment = (TextView)claimInfoCDialogView.findViewById(R.id.addCommentsEditText);
+			comment.setVisibility(View.GONE);
+			adb.setNeutralButton("Submit", new OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					Toast.makeText(OneClaimActivity.this, "Clicked On Submit",
 							Toast.LENGTH_SHORT).show();
-				iC = new InternetChecker(thisActivity);
-				if (iC.isNetworkAvailable()){
-					controller.submittedClaim();
-					Thread UpdateClaimThread = new UpdateThread(controller.getClaim());
-					UpdateClaimThread.start();
+					iC = new InternetChecker(thisActivity);
+					if (iC.isNetworkAvailable()) {
+						controller.submittedClaim();
+						Thread UpdateClaimThread = new UpdateThread(controller
+								.getClaim());
+						UpdateClaimThread.start();
+					}
+					Intent intent = new Intent(OneClaimActivity.this,
+							MainActivity.class);
+					startActivity(intent);
+					finish();
+					/**
+					 * You need to add code here to do the submit stuff Once the
+					 * claimant click this, the claim will be submitted
+					 **/
 				}
-				Intent intent = new Intent(OneClaimActivity.this,
-						MainActivity.class);
-				startActivity(intent);
-				finish();
-				/**
-				 * You need to add code here to do the submit stuff Once the
-				 * claimant click this, the claim will be submitted
-				 **/
-			}
-		});
+			});
 
-		adb.setNegativeButton("Cancel", new OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-				Toast.makeText(OneClaimActivity.this, "Clicked On Confirm",
-						Toast.LENGTH_SHORT).show();
-				controller.confirmClaim();
-				/**
-				 * You need to add code here to do the confirm stuff Once the
-				 * claimant click this, the claim is updated
-				 **/
-			}
-		});
+			adb.setNegativeButton("Cancel", new OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					Toast.makeText(OneClaimActivity.this, "Clicked On Confirm",
+							Toast.LENGTH_SHORT).show();
+					controller.confirmClaim();
+					/**
+					 * You need to add code here to do the confirm stuff Once
+					 * the claimant click this, the claim is updated
+					 **/
+				}
+			});
+		}else{
+			adb.setNegativeButton("Return", new OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					Toast.makeText(OneClaimActivity.this, "Clicked On Return",
+							Toast.LENGTH_SHORT).show();
+					iC = new InternetChecker(thisActivity);
+					if (iC.isNetworkAvailable()) {
+						controller.returnClaim();
+						Thread UpdateClaimThread = new UpdateThread(controller
+								.getClaim());
+						UpdateClaimThread.start();
+					}
+					Intent intent = new Intent(OneClaimActivity.this,
+							MainActivity.class);
+					startActivity(intent);
+					finish();
+				}
+			});
 
+			adb.setNeutralButton("Approve", new OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					Toast.makeText(OneClaimActivity.this, "Clicked On Approve",
+							Toast.LENGTH_SHORT).show();
+					iC = new InternetChecker(thisActivity);
+					if (iC.isNetworkAvailable()) {
+						controller.approveClaim();
+						Thread UpdateClaimThread = new UpdateThread(controller
+								.getClaim());
+						UpdateClaimThread.start();
+					}
+					Intent intent = new Intent(OneClaimActivity.this,
+							MainActivity.class);
+					startActivity(intent);
+					finish();
+				}
+			});
+		}
 		adb.setCancelable(true);
 		adb.show();
 	}
 
-	/**
+/*	*//**
 	 * @param view
-	 */
+	 *//*
 	public void showClaimDetailA(View view) {
 		AlertDialog.Builder adb = new AlertDialog.Builder(OneClaimActivity.this);
 
@@ -282,15 +349,15 @@ public class OneClaimActivity extends Activity {
 		View claimInfoCDialogView = factory.inflate(
 				R.layout.activity_claim_detail_a, null);
 		adb.setView(claimInfoCDialogView);
-
 		adb.setNegativeButton("Return", new OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				Toast.makeText(OneClaimActivity.this, "Clicked On Return",
 						Toast.LENGTH_SHORT).show();
 				iC = new InternetChecker(thisActivity);
-				if (iC.isNetworkAvailable()){
+				if (iC.isNetworkAvailable()) {
 					controller.returnClaim();
-					Thread UpdateClaimThread = new UpdateThread(controller.getClaim());
+					Thread UpdateClaimThread = new UpdateThread(controller
+							.getClaim());
 					UpdateClaimThread.start();
 				}
 				Intent intent = new Intent(OneClaimActivity.this,
@@ -305,9 +372,10 @@ public class OneClaimActivity extends Activity {
 				Toast.makeText(OneClaimActivity.this, "Clicked On Approve",
 						Toast.LENGTH_SHORT).show();
 				iC = new InternetChecker(thisActivity);
-				if (iC.isNetworkAvailable()){
+				if (iC.isNetworkAvailable()) {
 					controller.approveClaim();
-					Thread UpdateClaimThread = new UpdateThread(controller.getClaim());
+					Thread UpdateClaimThread = new UpdateThread(controller
+							.getClaim());
 					UpdateClaimThread.start();
 				}
 				Intent intent = new Intent(OneClaimActivity.this,
@@ -321,18 +389,18 @@ public class OneClaimActivity extends Activity {
 			public void onClick(DialogInterface dialog, int which) {
 				Toast.makeText(OneClaimActivity.this, "Clicked On Comment",
 						Toast.LENGTH_SHORT).show();
-				/**
+				*//**
 				 * You need to add code here to do the comment stuff Once the
 				 * approver click this, some comments will be add However, I
 				 * think we don't need this button Because whether we click on
 				 * Approve or Return, a comment is needed to be add
-				 **/
+				 **//*
 			}
 		});
 
 		adb.setCancelable(true);
 		adb.show();
-	}
+	}*/
 
 	/**
 	 * @param view
@@ -412,8 +480,6 @@ public class OneClaimActivity extends Activity {
 				.findViewById(R.id.currentItemCateTextView);
 		descript = (TextView) itemInfoCDialogView
 				.findViewById(R.id.currentDescripTextView);
-		claimantView = (TextView) itemInfoCDialogView
-		.findViewById(R.id.testClaimantTextView);
 		itemName.setText(claim.getItems().get(id).getItemName());
 
 		amount.setText(claim.getItems().get(id).getItemCurrency().getType()
@@ -450,11 +516,12 @@ public class OneClaimActivity extends Activity {
 	public void checkUserType() {
 		if (isClaimant) {
 			approverView.setVisibility(View.GONE);
-		}else{
+		} else {
 			claimantView.setVisibility(View.GONE);
 		}
 
 	}
+
 	class UpdateThread extends Thread {
 		private Claim claim;
 
@@ -476,19 +543,18 @@ public class OneClaimActivity extends Activity {
 			runOnUiThread(doFinishUpdate);
 		}
 	}
-	
-	class getClaimThread extends Thread{
+
+	class getClaimThread extends Thread {
 		private String claimName;
-		
-		public getClaimThread(String claimName){
+
+		public getClaimThread(String claimName) {
 			this.claimName = claimName;
 		}
-		
-		public void run(){
-			controller = new OneClaimController2(onlineManager.getClaim(claimName));
+
+		public void run() {
+			controller = new OneClaimController(
+					onlineManager.getClaim(claimName));
 			runOnUiThread(doFinishLoad);
 		}
-		
 	}
-	
 }

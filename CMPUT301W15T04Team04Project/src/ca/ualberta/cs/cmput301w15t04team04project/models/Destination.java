@@ -65,7 +65,7 @@ public class Destination {
 
 	@Override
 	public String toString() {
-		return dName;
+		return dName+"("+dReason+")";
 	} 
 
 }

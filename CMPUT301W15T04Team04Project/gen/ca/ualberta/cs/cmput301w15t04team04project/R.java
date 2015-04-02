@@ -107,7 +107,7 @@ public final class R {
         public static final int constactTagsSpinner=0x7f0a003d;
         public static final int contectTagsTextView=0x7f0a003c;
         public static final int currencyUnitsSpinner=0x7f0a0056;
-        public static final int currentClaimEDATextView8=0x7f0a0015;
+        public static final int currentClaimEDATextView=0x7f0a0015;
         public static final int currentClaimEDCTextView=0x7f0a000a;
         public static final int currentClaimNameATextView=0x7f0a0010;
         public static final int currentClaimNameCTextView=0x7f0a0002;

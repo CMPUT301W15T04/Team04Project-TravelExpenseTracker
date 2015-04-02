@@ -25,6 +25,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import android.os.Bundle;
@@ -155,5 +156,16 @@ public class FragmentEditItem1 extends Fragment {
 		}
 
 	}
-
+	class getThread extends Thread{ 
+		private String claimName;
+		
+		public getThread(String claimName){
+			this.claimName = claimName;
+		}
+		
+		public void run(){
+			//controller = new OneClaimController(onlineManager.getClaim(claimName));
+		}
+		
+	}
 }

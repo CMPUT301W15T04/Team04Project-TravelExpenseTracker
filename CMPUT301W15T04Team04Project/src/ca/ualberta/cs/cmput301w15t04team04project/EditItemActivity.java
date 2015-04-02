@@ -20,14 +20,17 @@
  */
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import java.io.IOException;
 import java.util.Calendar;
 
 import java.util.List;
 import java.util.Vector;
 
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.PagerAdapter;
-import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.ItemEditController;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Currency;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
@@ -60,14 +63,20 @@ public class EditItemActivity extends FragmentActivity {
 	private RadioGroup bottom_Rg;
 	private PagerAdapter mpageAdapter;
 	private ViewPager pager;
-	private OneClaimController controller;
-	private Item item;
-	private ClaimList claimList;
+	private ItemEditController controller;
 	private String claimName;
-	protected static int addEditItemStatus = 0; // 0 add 1 edit
-	protected static int itemId;
+	static int addEditItemStatus = 0; // 0 add 1 edit
+	static int itemId;
 	private Bitmap bitmap;
 	private int receiptFlag = 0;
+	private CLmanager onlineManager = new CLmanager();
+	private Bundle bundle;
+	private Runnable doFinishEdit = new Runnable() {
+		public void run() {
+			finish();
+		}
+	};
+	
 	/**
 	 * Initializing the activity. Call the initialisePaging() function to allow
 	 * the pager
@@ -86,8 +95,8 @@ public class EditItemActivity extends FragmentActivity {
 		// setContentView(R.layout.fragment_edit_item_1);
 		// setContentView(R.layout.fragment_edit_item_2);
 		initialisePaging();
-		claimList = MyLocalClaimListManager.loadClaimList(this);
-		Bundle bundle = getIntent().getExtras();
+		bundle = getIntent().getExtras();
+		controller = new ItemEditController();
 		claimName = bundle.getString("myClaimName");
 		Toast.makeText(this, claimName, Toast.LENGTH_LONG)
 		.show();
@@ -198,7 +207,7 @@ public class EditItemActivity extends FragmentActivity {
 		// create an item
 
 		if (addEditItemStatus == 0) {
-			this.item = new Item(itemName.getText().toString());
+			Item newitem = new Item(itemName.getText().toString());
 
 			// put information into this item
 			/*
@@ -206,32 +215,34 @@ public class EditItemActivity extends FragmentActivity {
 			 * itemDateDatePicker.getMonth(); int DateOfMonth =
 			 * itemDateDatePicker.getDayOfMonth();
 			 */
-			this.item.setItemDate(calendar.getTime());
+			newitem.setItemDate(calendar.getTime());
 
-			this.item.setItemCategory(itemCategorySpinner.getSelectedItem()
+			newitem.setItemCategory(itemCategorySpinner.getSelectedItem()
 					.toString());
 
 			String tempAmountStr = itemCurrencyEeditText.getText().toString();
-			float tempAmountFloat = 0;
+			int tempAmountInt = 0;
 			try {
-				tempAmountFloat = Float.valueOf(tempAmountStr);
+				tempAmountInt = Integer.valueOf(tempAmountStr);
 			} catch (NumberFormatException e) {
-				tempAmountFloat = 0;
+				tempAmountInt = 0;
 			}
 			Currency tempCurrency = new Currency(currencyUnitsSpinner
-					.getSelectedItem().toString(), tempAmountFloat);
-			this.item.setItemCurrency(tempCurrency);
+					.getSelectedItem().toString(), tempAmountInt);
+			newitem.setItemCurrency(tempCurrency);
 
-			this.item.setItemDescription(fragmentEditItem2DiscriptionEditText
+			newitem.setItemDescription(fragmentEditItem2DiscriptionEditText
 					.getText().toString());
 
 			// controller.addItem(this.item);
 			if (receiptFlag == 1){
-				this.item.setReceipBitmap(bitmap);
+				newitem.setReceipBitmap(bitmap);
 
 			}
-			
-			Toast.makeText(this, this.item.getItemName(), Toast.LENGTH_LONG)
+			controller.addItem(newitem);
+			UpdateThread update = new UpdateThread(controller.getClaim());
+			update.run();
+			Toast.makeText(this, newitem.getItemName(), Toast.LENGTH_LONG)
 					.show();
 			/**
 			 * part end here
@@ -240,7 +251,7 @@ public class EditItemActivity extends FragmentActivity {
 
 		else {
 			
-			this.item.setItemName(itemName.getText().toString());
+			controller.getClaim().getPosition(itemId).setItemName(itemName.getText().toString());
 
 			/*
 			 * int Year = itemDateDatePicker.getYear(); int Month =
@@ -249,28 +260,28 @@ public class EditItemActivity extends FragmentActivity {
 			 * Date(Year-1900,Month,DateOfMonth));
 			 */
 
-			this.item.setItemCategory(itemCategorySpinner.getSelectedItem()
+			controller.getClaim().getPosition(itemId).setItemCategory(itemCategorySpinner.getSelectedItem()
 					.toString());
-
 			String tempAmountStr = itemCurrencyEeditText.getText().toString();
-			float tempAmountFloat = 0;
+			int tempAmountInt = 0;
 			try {
-				tempAmountFloat = Float.valueOf(tempAmountStr);
+				tempAmountInt = Integer.valueOf(tempAmountStr);
 			} catch (NumberFormatException e) {
-				tempAmountFloat = 0;
+				tempAmountInt = 0;
 			}
 			Currency tempCurrency = new Currency(currencyUnitsSpinner
-					.getSelectedItem().toString(), tempAmountFloat);
-			this.item.setItemCurrency(tempCurrency);
+					.getSelectedItem().toString(), tempAmountInt);
+			controller.getClaim().getPosition(itemId).setItemCurrency(tempCurrency);
 
-			this.item.setItemDescription(fragmentEditItem2DiscriptionEditText
+			controller.getClaim().getPosition(itemId).setItemDescription(fragmentEditItem2DiscriptionEditText
 					.getText().toString());
 			if (receiptFlag == 1){
-				this.item.setReceipBitmap(bitmap);
+				controller.getClaim().getPosition(itemId).setReceipBitmap(bitmap);
 
-			}	
-			MyLocalClaimListManager.saveClaimList(this, claimList);
-			Toast.makeText(this, this.item.getItemName(), Toast.LENGTH_LONG)
+			}
+			UpdateThread update = new UpdateThread(controller.getClaim());
+			update.run();
+			Toast.makeText(this, controller.getClaim().getPosition(itemId).getItemName(), Toast.LENGTH_LONG)
 					.show();
 
 		}
@@ -307,5 +318,39 @@ public class EditItemActivity extends FragmentActivity {
 		// TODO Auto-generated method stub
 		this.bitmap = bitmap;
 		this.receiptFlag = receiptFlag;
+	}
+	class UpdateThread extends Thread {
+		private Claim claim;
+
+		public UpdateThread(Claim claim) {
+			this.claim = claim;
+		}
+
+		@Override
+		public void run() {
+			
+			try {
+				onlineManager.updateClaim(claim);
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			runOnUiThread(doFinishEdit);
+		}
+	}
+	class getThread extends Thread{ 
+		private String claimName;
+		
+		public getThread(String claimName){
+			this.claimName = claimName;
+		}
+		
+		public void run(){
+			controller = new ItemEditController(onlineManager.getClaim(claimName));
+		}
+		
 	}
 }

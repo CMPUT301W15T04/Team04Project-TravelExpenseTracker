@@ -76,16 +76,6 @@ public class OneClaimController {
 		return getClaim().getItems();
 	}
 
-	/**
-	 * @param item
-	 * @author Weijie Sun
-	 * @version 1.1
-	 * @since 2015-03-13
-	 */
-	public void addItem(Item item) {
-		getItem().add(item);
-		getClaim().notifyListener();
-	}
 
 	/**
 	 * @param index

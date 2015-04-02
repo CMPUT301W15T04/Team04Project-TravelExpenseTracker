@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/showClaimStatusTextView"
         android:layout_alignBottom="@+id/showClaimStatusTextView"
-        android:layout_alignLeft="@+id/currentClaimEDATextView8"
+        android:layout_alignLeft="@+id/currentClaimEDATextView"
         android:text="Submited"
         android:textAppearance="?android:attr/textAppearanceSmall"
         tools:ignore="HardcodedText" />
@@ -115,7 +115,7 @@
         tools:ignore="HardcodedText" />
 
     <TextView
-        android:id="@+id/currentClaimEDATextView8"
+        android:id="@+id/currentClaimEDATextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/showClaimStatusTextView"

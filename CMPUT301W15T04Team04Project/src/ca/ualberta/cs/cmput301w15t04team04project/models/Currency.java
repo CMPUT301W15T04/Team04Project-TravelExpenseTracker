@@ -31,9 +31,9 @@ package ca.ualberta.cs.cmput301w15t04team04project.models;
  */
 public class Currency {
 	protected String type;
-	protected double amount;
+	protected int amount;
 
-	public Currency(String type, double d) {
+	public Currency(String type, int d) {
 		this.setType(type);
 		this.setAmount(d);
 	}
@@ -55,7 +55,7 @@ public class Currency {
 		return amount;
 	}
 
-	public void setAmount(double amount) {
+	public void setAmount(int amount) {
 		this.amount = amount;
 	}
 
