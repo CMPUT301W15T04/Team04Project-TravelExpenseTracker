@@ -209,12 +209,12 @@ public class EditItemActivity extends FragmentActivity {
 		if (addEditItemStatus == 0) {
 			Item newitem = new Item(itemName.getText().toString());
 
-			// put information into this item
-			/*
+			/*// put information into this item
+			
 			 * int Year = itemDateDatePicker.getYear(); int Month =
 			 * itemDateDatePicker.getMonth(); int DateOfMonth =
 			 * itemDateDatePicker.getDayOfMonth();
-			 */
+			 
 			newitem.setItemDate(calendar.getTime());
 
 			newitem.setItemCategory(itemCategorySpinner.getSelectedItem()
@@ -238,7 +238,7 @@ public class EditItemActivity extends FragmentActivity {
 			if (receiptFlag == 1){
 				newitem.setReceipBitmap(bitmap);
 
-			}
+			}*/
 			controller.addItem(newitem);
 			UpdateThread update = new UpdateThread(controller.getClaim());
 			update.run();
