@@ -24,6 +24,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 /**
  * ItemDetailActivity is the Activity show the detail information of the Item
@@ -35,16 +36,20 @@ import android.view.MenuItem;
 public class ItemDetailActivity extends Activity {
 
 	private boolean isClaimant = OneClaimActivity.isClaimant;
-
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		if (isClaimant) {
-			setContentView(R.layout.activity_item_detail);
+			setContentView(R.layout.activity_item_detail);			
+			
 		} else {
 			setContentView(R.layout.activity_item_detail_a);
 		}
+		
+		
 	}
 
 	/* (non-Javadoc)

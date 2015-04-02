@@ -24,6 +24,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -33,6 +34,7 @@ import android.widget.AdapterView;
 
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -66,6 +68,8 @@ public class OneClaimActivity extends Activity {
 	private TextView state;
 	private ListView tags;
 	private ListView destinations;
+	private ImageView receiptImageView ;
+	
 	static boolean isClaimant;
 	private OneClaimActivity thisActivity = this;
 	private InternetChecker iC;
@@ -241,6 +245,10 @@ public class OneClaimActivity extends Activity {
 				.findViewById(R.id.showClaimTagsAListView);
 		destinations = (ListView) claimInfoCDialogView
 				.findViewById(R.id.showDestinationsAListView);
+
+		
+		
+		
 		claimName.setText(controller.getClaim().getClaim());
 		Date date = controller.getClaim().getStartDate();
 		DateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
@@ -251,6 +259,7 @@ public class OneClaimActivity extends Activity {
 		dateOutput = df.format(date);
 		endDate.setText(dateOutput);
 		state.setText(controller.getClaim().getStatus());
+		
 		ArrayList<String> claimTags = controller.getClaim().getTag();
 		ArrayAdapter<String> tagAdapter = new ArrayAdapter<String>(
 				thisActivity, android.R.layout.simple_list_item_1, claimTags);
@@ -424,7 +433,9 @@ public class OneClaimActivity extends Activity {
 				.findViewById(R.id.currentItemCateTextView);
 		descript = (TextView) itemInfoCDialogView
 				.findViewById(R.id.currentDescripTextView);
-
+		receiptImageView = (ImageView) itemInfoCDialogView
+				.findViewById(R.id.currentRecieptImageView);
+		
 		descript.setText(controller.getClaim().getItems().get(id).getItemName());
 
 		// amount.setText(claim.getItems().get(id).getCurrency().getType()+String.valueOf(claim.getItems().get(id).getCurrency().getAmount()));
@@ -444,7 +455,15 @@ public class OneClaimActivity extends Activity {
 		itemName.setText(controller.getClaim().getItems().get(id).getItemName());
 		category.setText(controller.getClaim().getItems().get(id).getItemCategory());
 		descript.setText(controller.getClaim().getItems().get(id).getItemDescription());
+		if (controller.getClaim().getItems().get(id).getReceipt() != null) {
 
+			Bitmap bitmap = controller.getClaim().getItems().get(id).getReceipBitmap();
+			receiptImageView.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 256,
+					256, false));
+
+			// button.setImageBitmap(bitmap);
+
+		}
 		// set the Edit Button on the Dialog
 		/*
 		 * adb.setNeutralButton("Edit", new OnClickListener() { public void
@@ -481,6 +500,8 @@ public class OneClaimActivity extends Activity {
 				.findViewById(R.id.currentItemCateTextView);
 		descript = (TextView) itemInfoCDialogView
 				.findViewById(R.id.currentDescripTextView);
+		receiptImageView = (ImageView) itemInfoCDialogView
+				.findViewById(R.id.currentRecieptImageView);
 		itemName.setText(claim.getItems().get(id).getItemName());
 
 		amount.setText(claim.getItems().get(id).getItemCurrency().getType()
@@ -494,7 +515,16 @@ public class OneClaimActivity extends Activity {
 
 		category.setText(claim.getItems().get(id).getItemCategory());
 		descript.setText(claim.getItems().get(id).getItemDescription());
+		if (claim.getItems().get(id).getReceipt() != null) {
 
+			Bitmap bitmap = claim.getItems().get(id).getReceipBitmap();
+			receiptImageView.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 256,
+					256, false));
+
+			// button.setImageBitmap(bitmap);
+
+		}
+		
 		adb.setNeutralButton("Add Comment", new OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				Toast.makeText(OneClaimActivity.this, "Clicked On Add Comment",
