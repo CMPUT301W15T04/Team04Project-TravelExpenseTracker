@@ -130,7 +130,7 @@ public class MyLocalClaimListController {
 		//getClaimList().notifyListeners();
 	}
 	
-	public void sortClaim(){
+	public void sortClaimNewFirst(){
 		for (int i = 0; i < (getClaims().size() - 1); i++) {
 			for (int j = i; j < (getClaimList().size() - 1 - i); j++) {
 				if (getClaims().get(j).getStartDate().getTime()  > getClaims().get(j+1).getStartDate().getTime()) {
@@ -147,4 +147,20 @@ public class MyLocalClaimListController {
 		}
 	}
 
+	public void sortClaimOldFirst(){
+		for (int i = 0; i < (getClaims().size() - 1); i++) {
+			for (int j = i; j < (getClaimList().size() - 1 - i); j++) {
+				if (getClaims().get(j).getStartDate().getTime()  < getClaims().get(j+1).getStartDate().getTime()) {
+					Claim bigger = getClaims().get(j);
+					getClaims().remove(bigger);
+					getClaims().add(bigger);
+				}else{
+					Claim bigger = getClaims().get(j+1);
+					getClaims().remove(bigger);
+					getClaims().add(bigger);
+				}
+				
+			}
+		}
+	}
 }

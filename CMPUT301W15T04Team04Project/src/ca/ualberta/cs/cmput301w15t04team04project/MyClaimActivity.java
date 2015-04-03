@@ -251,7 +251,11 @@ public class MyClaimActivity extends Activity {
 		public void run() {
 			controller.clear();
 			controller.addall(onlineManager.searchClaimList(status));
-			controller.sortClaim();
+			if (user.getName().equals("approval")) {
+				controller.sortClaimOldFirst();
+			} else {
+				controller.sortClaimNewFirst();
+			}
 			runOnUiThread(doFinish);
 		}
 	}
