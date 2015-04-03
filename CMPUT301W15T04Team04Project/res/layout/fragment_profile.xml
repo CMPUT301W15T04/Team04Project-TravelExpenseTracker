@@ -116,6 +116,7 @@
         android:layout_alignBaseline="@+id/gpsHomeLocationTextView"
         android:layout_alignBottom="@+id/gpsHomeLocationTextView"
         android:layout_alignParentLeft="true"
+        android:onClick="goToMapAction"
         android:text="Button" />
 
 </RelativeLayout>

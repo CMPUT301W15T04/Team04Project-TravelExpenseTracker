@@ -16,6 +16,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
     
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/> 
 
     <application
         android:allowBackup="true"
@@ -31,6 +32,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
         <activity
             android:name=".XListViewActivity"
             android:label="@string/action_settings" >
@@ -90,6 +92,10 @@
         <activity
             android:name=".FragmentMyClaims"
             android:label="@string/title_activity_fragment_moments" >
+        </activity>
+        <activity
+            android:name=".osmMainActivity"
+            android:label="osm" >
         </activity>
     </application>
 
