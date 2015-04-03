@@ -55,7 +55,6 @@ public class MyClaimActivity extends Activity {
 		public void run() {
 			claimListAdapter.notifyDataSetChanged();
 		}
-
 	};
 
 	@Override
@@ -107,7 +106,7 @@ public class MyClaimActivity extends Activity {
 		 * claims.addAll(claims2); claimListAdapter.notifyDataSetChanged(); }
 		 * });
 		 */
-		if (user.getName().equals("approval")) {
+		if (user.getName().equals("approval") || (mode == 1) || (mode == 2)) {
 		}else{
 			listView.setOnItemLongClickListener(new OnItemLongClickListener() {
 
@@ -252,6 +251,7 @@ public class MyClaimActivity extends Activity {
 		public void run() {
 			controller.clear();
 			controller.addall(onlineManager.searchClaimList(status));
+			controller.sortClaim();
 			runOnUiThread(doFinish);
 		}
 	}
