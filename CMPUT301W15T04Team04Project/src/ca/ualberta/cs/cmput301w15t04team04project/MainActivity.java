@@ -308,4 +308,10 @@ public class MainActivity extends FragmentActivity {
 			
 		}
 	};
+	
+	
+	public void goToMapAction(View v){
+		Intent intent = new Intent(MainActivity.this, osmMainActivity.class);
+		startActivity(intent);
+	}
 }
