@@ -49,8 +49,8 @@ public class Claim {
 	protected ArrayList<Item> items;
 	protected ArrayList<String> tags;
 	protected transient ArrayList<Listener> itemListener;
-	protected User Approver;
-	protected User Claimiant;
+	protected String Approver;
+	protected String Claimiant;
 	protected ArrayList<Currency> totalCurrency;
 	protected transient ArrayList<Listener> listeners = null;
 
@@ -74,7 +74,6 @@ public class Claim {
 															// Chenrui
 
 	}
-	
 	
 	public void setDestination(ArrayList<Destination> destination) {
 		this.destination = destination;
@@ -208,7 +207,7 @@ public class Claim {
 	 * @param ClaimiantName
 	 *            the ClaimiantName of this claim
 	 */
-	public User getClaimiant() {
+	public String getClaimiant() {
 		return Claimiant;
 	}
 
@@ -218,7 +217,7 @@ public class Claim {
 	 * @param ClaimiantName
 	 *            the ClaimiantName of this claim
 	 */
-	public void setClaimiant(User claimiant) {
+	public void setClaimiant(String claimiant) {
 		this.Claimiant = claimiant;
 	}
 
@@ -228,7 +227,7 @@ public class Claim {
 	 * @param ApproverName
 	 *            the ApproverName of this claim
 	 */
-	public User getApprover() {
+	public String getApprover() {
 		return Approver;
 	}
 
@@ -238,7 +237,7 @@ public class Claim {
 	 * @param ApproverName
 	 *            the ApproverName of this claim
 	 */
-	public void setApproverName(User approver) {
+	public void setApproverName(String approver) {
 		this.Approver = approver;
 	}
 

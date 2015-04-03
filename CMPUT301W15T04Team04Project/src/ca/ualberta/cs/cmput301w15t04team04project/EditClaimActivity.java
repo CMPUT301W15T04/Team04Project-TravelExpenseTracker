@@ -32,11 +32,13 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.PagerAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Destination;
+import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -66,6 +68,7 @@ public class EditClaimActivity extends FragmentActivity {
 	private PagerAdapter mpageAdapter;
 	private ViewPager pager;
 	private ClaimEditController controller;
+	private User user;
 	protected static int addEditStatus = 0; // 0 add 1 edit
 	protected static String ClaimName;
 	protected Activity thisActivity = this;
@@ -90,6 +93,7 @@ public class EditClaimActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_claim);
 		controller = new ClaimEditController();
+		user = SignInManager.loadFromFile(this);
 		initialisePaging();
 
 	}
@@ -195,13 +199,13 @@ public class EditClaimActivity extends FragmentActivity {
 		// System.out.println(tag==null);
 
 		if (addEditStatus == 0) {
-			Claim claim = controller.setClaim(cName, cDescription, cTag, sDate, eDate, destinationList);
+			Claim claim = controller.setClaim(cName, cDescription, cTag, sDate, eDate, destinationList, user.getName());
 			Thread add = new AddThread(claim);
 			add.start();
 		}
 
 		else {
-			Claim claim = controller.setClaim(cName, cDescription, cTag, sDate, eDate, destinationList);
+			Claim claim = controller.setClaim(cName, cDescription, cTag, sDate, eDate, destinationList, user.getName());
 			Thread update = new UpdateThread(claim);
 			update.start();
 		}

@@ -215,6 +215,7 @@ public class OneClaimActivity extends Activity {
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		intent.putExtra("MyClaimName", ClaimName);
 		startActivity(intent);
+		finish();
 	}
 	
 	//get the menuItem for testing

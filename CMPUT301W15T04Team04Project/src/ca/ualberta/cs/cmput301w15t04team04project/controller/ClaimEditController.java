@@ -29,6 +29,7 @@ import android.hardware.Camera.Size;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Destination;
+import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 
 /**
  * @author Youdong Ma
@@ -62,13 +63,14 @@ public class ClaimEditController extends MyLocalClaimListController {
 	}
 
 	public Claim setClaim(String cName, String cDescription, String cTag,
-			Date sDate, Date eDate, ArrayList<Destination> destination) {
+			Date sDate, Date eDate, ArrayList<Destination> destination, String user) {
 		claim.setClaim(cName);
 		claim.setDescription(cDescription);
 		claim.setTag(tagSplit(cTag));
 		claim.setStartDate(sDate);
 		claim.setEndDate(eDate);
 		claim.setDestination(destination);
+		claim.setClaimiant(user);
 		return claim;
 	}
 

@@ -276,9 +276,7 @@ public class EditItemActivity extends FragmentActivity {
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		intent.putExtra("MyClaimName", claimName);
-
 		startActivity(intent);
-
 		finish();
 	}
 
