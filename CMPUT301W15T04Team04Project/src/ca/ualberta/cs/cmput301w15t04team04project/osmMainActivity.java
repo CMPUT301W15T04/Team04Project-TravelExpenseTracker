@@ -13,6 +13,7 @@ import org.osmdroid.views.MapView;
 
 import ca.ualberta.cs.cmput301w15t04team04project.R.drawable;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
+import ca.ualberta.cs.cmput301w15t04team04project.models.mapReceiver;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,13 +26,19 @@ import org.osmdroid.views.overlay.OverlayItem.HotspotPlace;
 
 
 
-public class osmMainActivity extends Activity {
+
+
+
+public class osmMainActivity extends Activity implements mapReceiver{
 	private GeoPoint homeGeoPoint;
 	private ItemizedIconOverlay<OverlayItem> pointsOverlay;
 	private List<OverlayItem> points;
 	private ResourceProxy mResourceProxy;
 	private OverlayItem homeMark;
 	private MapView map;
+	private OverlayItem pick = null;
+	private static boolean canEdit;
+	private static String focusOn; 
 
 	
 	@Override
@@ -69,9 +76,41 @@ public class osmMainActivity extends Activity {
 		
 		pointsOverlay.addItem(homeMark);
 		
+		
 		map.getOverlays().add(pointsOverlay);
 
+		
     }
+
+
+	@Override
+	public boolean singleTapConfirmedHelper(GeoPoint p) {
+		if(canEdit == true){
+			if(pick == null){
+				pick = new OverlayItem("Picked Location","Pick", p);
+	            pick.setMarker(getResources().getDrawable((drawable.person)));
+	            pointsOverlay.addItem(pick);
+	             
+			}else{
+				pointsOverlay.removeItem(pick);
+	         	pick = new OverlayItem("Picked Location","Pick", p);
+	         	pick.setMarker(getResources().getDrawable((drawable.person)));
+	         	pointsOverlay.addItem(pick);
+	        }
+			map.invalidate();
+			
+		}
+		   
+	     return false;
+	}
+
+
+	@Override
+	public boolean longPressHelper(GeoPoint p) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
 	
 	

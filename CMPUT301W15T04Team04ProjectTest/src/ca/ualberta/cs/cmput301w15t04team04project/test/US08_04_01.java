@@ -13,7 +13,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListMana
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ClaimListAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ItemListAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
-import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController2;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
@@ -23,7 +23,7 @@ public class US08_04_01 extends ActivityInstrumentationTestCase2<OneClaimActivit
 	//private FragmentProfile profilefragment;
 	private Claim claim ;
 	private ClaimEditController controller;
-	private OneClaimController2 itemcontroller;
+	private OneClaimController itemcontroller;
 	private Item item;
 	private Date date;
 	private Calendar calender = Calendar.getInstance();;

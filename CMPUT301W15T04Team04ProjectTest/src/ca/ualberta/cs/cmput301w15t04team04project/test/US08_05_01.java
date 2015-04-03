@@ -14,7 +14,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.OneClaimActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ItemListAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
-import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController2;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
@@ -23,7 +23,7 @@ public class US08_05_01 extends ActivityInstrumentationTestCase2<OneClaimActivit
 	private OneClaimActivity thisActivity;
 	private MyLocalClaimListManager manager;
 	private ClaimEditController controller;
-	private OneClaimController2 itemcontroller;
+	private OneClaimController itemcontroller;
 	private Claim claim ;
 	private Item item;
 	private ItemListAdapter itemListAdapter;
