@@ -70,6 +70,7 @@ public class FragmentEditClaim1 extends Fragment {
 	private Runnable doFinish = new Runnable() {
 		@SuppressWarnings("deprecation")
 		public void run() {
+			EditClaimActivity.items = controller1.getClaim().getItems();
 			claimName.setText(controller1.getClaim().getClaim());
 			day = controller1.getClaim().getStartDate().getDate();
 			month = controller1.getClaim().getStartDate().getMonth();

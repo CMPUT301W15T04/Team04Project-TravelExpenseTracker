@@ -158,4 +158,28 @@ public class OneClaimController {
 		claim.setStatus("approved");
 	}
 
+	public boolean checkComplete() {
+		// TODO Auto-generated method stub
+		for (int i = 0;i<claim.getItems().size();i++){
+			if (claim.getItems().get(i).getItemName().isEmpty()==true){
+				return false;	
+			}else if(claim.getItems().get(i).getItemDescription().isEmpty()==true){
+				return false;	
+			}else if(claim.getItems().get(i).getItemDescription().isEmpty()==true){
+				return false;
+			}
+		}
+		if (claim.getClaim().isEmpty()==true){
+			return false;
+		}else if (claim.getDescription().isEmpty()==true){
+			return false;
+		}else if (claim.getTag().isEmpty()==true){
+			return false;
+		}else{
+		return true;
+		}
+		
+		
+	}
+
 }

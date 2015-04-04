@@ -29,6 +29,7 @@ import android.hardware.Camera.Size;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Destination;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 
 /**
@@ -63,7 +64,7 @@ public class ClaimEditController extends MyLocalClaimListController {
 	}
 
 	public Claim setClaim(String cName, String cDescription, String cTag,
-			Date sDate, Date eDate, ArrayList<Destination> destination, String user) {
+			Date sDate, Date eDate, ArrayList<Destination> destination, String user, ArrayList<Item> items) {
 		claim.setClaim(cName);
 		claim.setDescription(cDescription);
 		claim.setTag(tagSplit(cTag));
@@ -71,6 +72,7 @@ public class ClaimEditController extends MyLocalClaimListController {
 		claim.setEndDate(eDate);
 		claim.setDestination(destination);
 		claim.setClaimiant(user);
+		claim.setItems(items);
 		return claim;
 	}
 

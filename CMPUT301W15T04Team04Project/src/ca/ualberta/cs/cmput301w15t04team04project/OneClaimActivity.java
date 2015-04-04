@@ -68,7 +68,7 @@ public class OneClaimActivity extends Activity {
 	private TextView state;
 	private ListView tags;
 	private ListView destinations;
-	private ImageView receiptImageView ;
+	private ImageView receiptImageView;
 	private OneClaimController controller;
 	static boolean isClaimant;
 	private OneClaimActivity thisActivity = this;
@@ -144,7 +144,8 @@ public class OneClaimActivity extends Activity {
 					@Override
 					public void onClick(DialogInterface dialog, int position) {
 						controller.deleteItem(itemId);
-						UpdateThread deleteItem = new UpdateThread(controller.getClaim());
+						UpdateThread deleteItem = new UpdateThread(controller
+								.getClaim());
 						deleteItem.start();
 					}
 				});
@@ -194,7 +195,7 @@ public class OneClaimActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.one_claim, menu);
-		itemMenu=menu;
+		itemMenu = menu;
 		return true;
 	}
 
@@ -218,10 +219,10 @@ public class OneClaimActivity extends Activity {
 		startActivity(intent);
 		finish();
 	}
-	
-	//get the menuItem for testing
-	public MenuItem getItemMenuItem(){
-		
+
+	// get the menuItem for testing
+	public MenuItem getItemMenuItem() {
+
 		return itemMenu.findItem(R.id.action_new_item);
 	}
 
@@ -248,9 +249,6 @@ public class OneClaimActivity extends Activity {
 		destinations = (ListView) claimInfoCDialogView
 				.findViewById(R.id.showDestinationsAListView);
 
-		
-		
-		
 		claimName.setText(controller.getClaim().getClaim());
 		Date date = controller.getClaim().getStartDate();
 		DateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
@@ -261,7 +259,7 @@ public class OneClaimActivity extends Activity {
 		dateOutput = df.format(date);
 		endDate.setText(dateOutput);
 		state.setText(controller.getClaim().getStatus());
-		
+
 		ArrayList<String> claimTags = controller.getClaim().getTag();
 		ArrayAdapter<String> tagAdapter = new ArrayAdapter<String>(
 				thisActivity, android.R.layout.simple_list_item_1, claimTags);
@@ -275,27 +273,70 @@ public class OneClaimActivity extends Activity {
 				destinationList);
 		destinations.setAdapter(destinationAdapter);
 		if (isClaimant == true) {
-			TextView comment = (TextView)claimInfoCDialogView.findViewById(R.id.addCommentsEditText);
+			TextView comment = (TextView) claimInfoCDialogView
+					.findViewById(R.id.addCommentsEditText);
 			comment.setVisibility(View.GONE);
 			adb.setNeutralButton("Submit", new OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
-					Toast.makeText(OneClaimActivity.this, "Clicked On Submit",
-							Toast.LENGTH_SHORT).show();
-					iC = new InternetChecker(thisActivity);
-					if (iC.isNetworkAvailable()) {
-						controller.submittedClaim();
-						Thread UpdateClaimThread = new UpdateThread(controller
-								.getClaim());
-						UpdateClaimThread.start();
+					if (controller.checkComplete() == true) {
+						Toast.makeText(OneClaimActivity.this,
+								"Clicked On Submit", Toast.LENGTH_SHORT).show();
+						iC = new InternetChecker(thisActivity);
+						if (iC.isNetworkAvailable()) {
+							controller.submittedClaim();
+							Thread UpdateClaimThread = new UpdateThread(
+									controller.getClaim());
+							UpdateClaimThread.start();
+						}
+						Intent intent = new Intent(OneClaimActivity.this,
+								MainActivity.class);
+						startActivity(intent);
+						finish();
+						/**
+						 * You need to add code here to do the submit stuff Once
+						 * the claimant click this, the claim will be submitted
+						 **/
+					} else {
+						Toast.makeText(OneClaimActivity.this, "not complete",
+								Toast.LENGTH_SHORT).show();
+
+						AlertDialog.Builder checkComplete = new AlertDialog.Builder(
+								OneClaimActivity.this);
+						checkComplete
+								.setMessage("You need to complete all the TextView and receipt");
+						checkComplete.setNeutralButton("Continue",
+								new OnClickListener() {
+									public void onClick(DialogInterface dialog,
+											int which) {
+										Toast.makeText(OneClaimActivity.this,
+												"Clicked Submit",
+												Toast.LENGTH_SHORT).show();
+
+										/**
+										 * You need to add code here to do the
+										 * submit stuff Once the claimant click
+										 * this, the claim will be submitted
+										 **/
+									}
+								});
+
+						checkComplete.setNegativeButton("Cancel",
+								new OnClickListener() {
+									public void onClick(DialogInterface dialog,
+											int which) {
+										Toast.makeText(OneClaimActivity.this,
+												"Cancel", Toast.LENGTH_SHORT)
+												.show();
+										/**
+										 * You need to add code here to do the
+										 * confirm stuff Once the claimant click
+										 * this, the claim is updated
+										 **/
+									}
+								});
+						checkComplete.setCancelable(true);
+						checkComplete.show();
 					}
-					Intent intent = new Intent(OneClaimActivity.this,
-							MainActivity.class);
-					startActivity(intent);
-					finish();
-					/**
-					 * You need to add code here to do the submit stuff Once the
-					 * claimant click this, the claim will be submitted
-					 **/
 				}
 			});
 
@@ -310,7 +351,7 @@ public class OneClaimActivity extends Activity {
 					 **/
 				}
 			});
-		}else{
+		} else {
 			adb.setNegativeButton("Return", new OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
 					Toast.makeText(OneClaimActivity.this, "Clicked On Return",
@@ -351,68 +392,50 @@ public class OneClaimActivity extends Activity {
 		adb.show();
 	}
 
-/*	*//**
+	/*	*//**
 	 * @param view
-	 *//*
-	public void showClaimDetailA(View view) {
-		AlertDialog.Builder adb = new AlertDialog.Builder(OneClaimActivity.this);
-
-		LayoutInflater factory = LayoutInflater.from(OneClaimActivity.this);
-		View claimInfoCDialogView = factory.inflate(
-				R.layout.activity_claim_detail_a, null);
-		adb.setView(claimInfoCDialogView);
-		adb.setNegativeButton("Return", new OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-				Toast.makeText(OneClaimActivity.this, "Clicked On Return",
-						Toast.LENGTH_SHORT).show();
-				iC = new InternetChecker(thisActivity);
-				if (iC.isNetworkAvailable()) {
-					controller.returnClaim();
-					Thread UpdateClaimThread = new UpdateThread(controller
-							.getClaim());
-					UpdateClaimThread.start();
-				}
-				Intent intent = new Intent(OneClaimActivity.this,
-						MainActivity.class);
-				startActivity(intent);
-				finish();
-			}
-		});
-
-		adb.setNeutralButton("Approve", new OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-				Toast.makeText(OneClaimActivity.this, "Clicked On Approve",
-						Toast.LENGTH_SHORT).show();
-				iC = new InternetChecker(thisActivity);
-				if (iC.isNetworkAvailable()) {
-					controller.approveClaim();
-					Thread UpdateClaimThread = new UpdateThread(controller
-							.getClaim());
-					UpdateClaimThread.start();
-				}
-				Intent intent = new Intent(OneClaimActivity.this,
-						MainActivity.class);
-				startActivity(intent);
-				finish();
-			}
-		});
-
-		adb.setPositiveButton("Comment", new OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
-				Toast.makeText(OneClaimActivity.this, "Clicked On Comment",
-						Toast.LENGTH_SHORT).show();
-				*//**
-				 * You need to add code here to do the comment stuff Once the
-				 * approver click this, some comments will be add However, I
-				 * think we don't need this button Because whether we click on
-				 * Approve or Return, a comment is needed to be add
-				 **//*
-			}
-		});
-
-		adb.setCancelable(true);
-		adb.show();
-	}*/
+	 */
+	/*
+	 * public void showClaimDetailA(View view) { AlertDialog.Builder adb = new
+	 * AlertDialog.Builder(OneClaimActivity.this);
+	 * 
+	 * LayoutInflater factory = LayoutInflater.from(OneClaimActivity.this); View
+	 * claimInfoCDialogView = factory.inflate( R.layout.activity_claim_detail_a,
+	 * null); adb.setView(claimInfoCDialogView); adb.setNegativeButton("Return",
+	 * new OnClickListener() { public void onClick(DialogInterface dialog, int
+	 * which) { Toast.makeText(OneClaimActivity.this, "Clicked On Return",
+	 * Toast.LENGTH_SHORT).show(); iC = new InternetChecker(thisActivity); if
+	 * (iC.isNetworkAvailable()) { controller.returnClaim(); Thread
+	 * UpdateClaimThread = new UpdateThread(controller .getClaim());
+	 * UpdateClaimThread.start(); } Intent intent = new
+	 * Intent(OneClaimActivity.this, MainActivity.class); startActivity(intent);
+	 * finish(); } });
+	 * 
+	 * adb.setNeutralButton("Approve", new OnClickListener() { public void
+	 * onClick(DialogInterface dialog, int which) {
+	 * Toast.makeText(OneClaimActivity.this, "Clicked On Approve",
+	 * Toast.LENGTH_SHORT).show(); iC = new InternetChecker(thisActivity); if
+	 * (iC.isNetworkAvailable()) { controller.approveClaim(); Thread
+	 * UpdateClaimThread = new UpdateThread(controller .getClaim());
+	 * UpdateClaimThread.start(); } Intent intent = new
+	 * Intent(OneClaimActivity.this, MainActivity.class); startActivity(intent);
+	 * finish(); } });
+	 * 
+	 * adb.setPositiveButton("Comment", new OnClickListener() { public void
+	 * onClick(DialogInterface dialog, int which) {
+	 * Toast.makeText(OneClaimActivity.this, "Clicked On Comment",
+	 * Toast.LENGTH_SHORT).show();
+	 *//**
+	 * You need to add code here to do the comment stuff Once the approver
+	 * click this, some comments will be add However, I think we don't need this
+	 * button Because whether we click on Approve or Return, a comment is needed
+	 * to be add
+	 **/
+	/*
+	 * } });
+	 * 
+	 * adb.setCancelable(true); adb.show(); }
+	 */
 
 	/**
 	 * @param view
@@ -437,11 +460,12 @@ public class OneClaimActivity extends Activity {
 				.findViewById(R.id.currentDescripTextView);
 		receiptImageView = (ImageView) itemInfoCDialogView
 				.findViewById(R.id.currentRecieptImageView);
-		
+
 		descript.setText(controller.getClaim().getItems().get(id).getItemName());
 
 		// amount.setText(claim.getItems().get(id).getCurrency().getType()+String.valueOf(claim.getItems().get(id).getCurrency().getAmount()));
-		amount.setText(controller.getClaim().getItems().get(id).getItemCurrency().toString());
+		amount.setText(controller.getClaim().getItems().get(id)
+				.getItemCurrency().toString());
 
 		// Toast.makeText(this,
 		// claim.getItems().get(id).getCurrency().getType(),
@@ -455,13 +479,16 @@ public class OneClaimActivity extends Activity {
 		String dateOutput = df.format(idate);
 		itemDate.setText(dateOutput);
 		itemName.setText(controller.getClaim().getItems().get(id).getItemName());
-		category.setText(controller.getClaim().getItems().get(id).getItemCategory());
-		descript.setText(controller.getClaim().getItems().get(id).getItemDescription());
+		category.setText(controller.getClaim().getItems().get(id)
+				.getItemCategory());
+		descript.setText(controller.getClaim().getItems().get(id)
+				.getItemDescription());
 		if (controller.getClaim().getItems().get(id).getReceipt() != null) {
 
-			Bitmap bitmap = controller.getClaim().getItems().get(id).getReceipBitmap();
-			receiptImageView.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 256,
-					256, false));
+			Bitmap bitmap = controller.getClaim().getItems().get(id)
+					.getReceipBitmap();
+			receiptImageView.setImageBitmap(Bitmap.createScaledBitmap(bitmap,
+					256, 256, false));
 
 			// button.setImageBitmap(bitmap);
 
@@ -520,13 +547,13 @@ public class OneClaimActivity extends Activity {
 		if (claim.getItems().get(id).getReceipt() != null) {
 
 			Bitmap bitmap = claim.getItems().get(id).getReceipBitmap();
-			receiptImageView.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 256,
-					256, false));
+			receiptImageView.setImageBitmap(Bitmap.createScaledBitmap(bitmap,
+					256, 256, false));
 
 			// button.setImageBitmap(bitmap);
 
 		}
-		
+
 		adb.setNeutralButton("Add Comment", new OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				Toast.makeText(OneClaimActivity.this, "Clicked On Add Comment",
