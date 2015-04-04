@@ -80,14 +80,18 @@ public class FragmentEditItem2 extends Fragment {
 			ImageButton button = (ImageButton) thisview
 					.findViewById(R.id.addRecieptImageButton);
 
+			
 			if (currentItem.getReceipt() != null) {
 
 				Bitmap bitmap = currentItem.getReceipBitmap();
 				button.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 256,
 						256, false));
-
+				Toast.makeText(myActivity, "has photo",Toast.LENGTH_LONG ).show();
 				// button.setImageBitmap(bitmap);
 
+			}
+			else{
+				Toast.makeText(myActivity, "No photo",Toast.LENGTH_LONG ).show();
 			}
 		}
 	};
@@ -140,8 +144,8 @@ public class FragmentEditItem2 extends Fragment {
 			myItemId = bundle.getInt("myItemId");
 			itemDescription = (TextView) getView().findViewById(
 					R.id.fragmentEditItem2DiscriptionEditText);
-			
-
+			GetThread get = new GetThread(claimName);
+			get.start();
 		}
 
 	}
@@ -187,21 +191,27 @@ public class FragmentEditItem2 extends Fragment {
 			if (resultCode == -1) { // requestCode == 1 &&
 
 				// stringUri = imageFileUri.getPath();
-				Toast.makeText(getActivity(), "1", Toast.LENGTH_LONG).show();
+				//Toast.makeText(getActivity(), "1", Toast.LENGTH_LONG).show();
 				// currentItem.setReceipt(stringUri);
 				// imageFileUri = data.getData();
 				// imagepath = getPath(imageFileUri);
 
+				
 				Drawable drawable = Drawable.createFromPath(imageFileUri
 						.getPath());
 				Bitmap bitmap = BitmapFactory
 						.decodeFile(imageFileUri.getPath());
+				
+				Toast.makeText(getActivity(), ""+bitmap.getByteCount(), Toast.LENGTH_LONG).show();
+
 				myActivity.setReceiptBitmap(bitmap, 1);
 
 				ImageButton button = (ImageButton) thisview
 						.findViewById(R.id.addRecieptImageButton);
-				button.setImageDrawable(drawable);
+				button.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 256,
+						256, false));
 				// button.setImageBitmap(bitmap);
+				
 			}
 		}
 
@@ -227,7 +237,7 @@ public class FragmentEditItem2 extends Fragment {
 		
 		public void run(){
 			try {
-				Thread.sleep(500);
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

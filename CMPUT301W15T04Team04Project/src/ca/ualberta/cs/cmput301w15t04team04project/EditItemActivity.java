@@ -25,12 +25,17 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Vector;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
+import ca.ualberta.cs.cmput301w15t04team04project.OneClaimActivity.UpdateThread;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.PagerAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ItemEditController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Currency;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
+import ca.ualberta.cs.cmput301w15t04team04project.network.InternetChecker;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -191,48 +196,93 @@ public class EditItemActivity extends FragmentActivity {
 		 * this part should be in controller. Chenrui
 		 */
 		// get the views
+		boolean completeCheck = true;
+		
 		EditText itemName = (EditText) findViewById(R.id.itemNameEditText);
+		if (itemName.getText().toString().isEmpty() == true){
+			completeCheck = false;
+		}
 		DatePicker itemDateDatePicker = (DatePicker) findViewById(R.id.itemDateDatePicker);
+		
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(itemDateDatePicker.getYear(),
 				itemDateDatePicker.getMonth(),
 				itemDateDatePicker.getDayOfMonth());
 
 		Spinner itemCategorySpinner = (Spinner) findViewById(R.id.itemCategorySpinner);
+		
 		Spinner currencyUnitsSpinner = (Spinner) findViewById(R.id.currencyUnitsSpinner);
 		EditText itemCurrencyEeditText = (EditText) findViewById(R.id.itemCurrencyEditText);
-
+		if (itemCurrencyEeditText.getText().toString().isEmpty() == true){
+			completeCheck = false;
+		}
 		EditText fragmentEditItem2DiscriptionEditText = (EditText) findViewById(R.id.fragmentEditItem2DiscriptionEditText);
-
+		if (fragmentEditItem2DiscriptionEditText.getText().toString().isEmpty() == true){
+			completeCheck = false;
+		}
 		ImageButton imageButton = (ImageButton) findViewById(R.id.addRecieptImageButton);
-
+		if (bitmap == null){
+			completeCheck = false;
+		}
+		
 		// create an item
+		if (completeCheck == false){
+			Toast.makeText(EditItemActivity.this, "You need to complete all the TextView and receipt",
+					Toast.LENGTH_SHORT).show();
+			AlertDialog.Builder adb = new AlertDialog.Builder(EditItemActivity.this);
+			adb.setMessage("You need to complete all the TextView and receipt");
+			adb.setNeutralButton("Continue", new OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					Toast.makeText(EditItemActivity.this, "Clicked Submit",
+							Toast.LENGTH_SHORT).show();
+					
+					/**
+					 * You need to add code here to do the submit stuff Once the
+					 * claimant click this, the claim will be submitted
+					 **/
+				}
+			});
 
-		if (addEditItemStatus == 0) {
-			Item newitem = new Item(itemName.getText().toString());
-			newitem.setItemDate(calendar.getTime());
+			adb.setNegativeButton("Cancel", new OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					Toast.makeText(EditItemActivity.this, "Cancel",
+							Toast.LENGTH_SHORT).show();
+					/**
+					 * You need to add code here to do the confirm stuff Once
+					 * the claimant click this, the claim is updated
+					 **/
+				}
+			});
+			adb.setCancelable(true);
+			adb.show();
+		}else{
+			if (addEditItemStatus == 0) {
+				Item newitem = new Item(itemName.getText().toString());
+				newitem.setItemDate(calendar.getTime());
 
-			newitem.setItemCategory(itemCategorySpinner.getSelectedItem()
-					.toString());
+				newitem.setItemCategory(itemCategorySpinner.getSelectedItem()
+						.toString());
 
-			String tempAmountStr = itemCurrencyEeditText.getText().toString();
-			int tempAmountInt = 0;
-			try {
-				tempAmountInt = Integer.valueOf(tempAmountStr);
-			} catch (NumberFormatException e) {
-				tempAmountInt = 0;
-			}
-			Currency tempCurrency = new Currency(currencyUnitsSpinner
-					.getSelectedItem().toString(), tempAmountInt);
-			newitem.setItemCurrency(tempCurrency);
+				String tempAmountStr = itemCurrencyEeditText.getText()
+						.toString();
+				int tempAmountInt = 0;
+				try {
+					tempAmountInt = Integer.valueOf(tempAmountStr);
+				} catch (NumberFormatException e) {
+					tempAmountInt = 0;
+				}
+				Currency tempCurrency = new Currency(currencyUnitsSpinner
+						.getSelectedItem().toString(), tempAmountInt);
+				newitem.setItemCurrency(tempCurrency);
 
-			newitem.setItemDescription(fragmentEditItem2DiscriptionEditText
-					.getText().toString());
+				newitem.setItemDescription(fragmentEditItem2DiscriptionEditText
+						.getText().toString());
 
-			// controller.addItem(this.item);
-			if (receiptFlag == 1){
-				newitem.setReceipBitmap(bitmap);
+				// controller.addItem(this.item);
+				if (receiptFlag == 1) {
+					newitem.setReceipBitmap(bitmap);
 
+<<<<<<< HEAD
 			}
 			controller.addItem(newitem);
 			UpdateThread update = new UpdateThread(controller.getClaim());
@@ -262,21 +312,69 @@ public class EditItemActivity extends FragmentActivity {
 					.getText().toString());
 			if (receiptFlag == 1){
 				controller.getClaim().getPosition(itemId).setReceipBitmap(bitmap);
+=======
+				}
+				controller.addItem(newitem);
+				UpdateThread update = new UpdateThread(controller.getClaim());
+				update.start();
+
+				/**
+				 * part end here
+				 */
+			} else {
+				Toast.makeText(
+						this,
+						controller.getClaim().getClaim() + itemId
+								+ controller.getClaim().getItems().size(),
+						Toast.LENGTH_LONG).show();
+				controller.getClaim().getPosition(itemId)
+						.setItemDate(calendar.getTime());
+				controller.getClaim().getPosition(itemId)
+						.setItemName(itemName.getText().toString());
+				controller
+						.getClaim()
+						.getPosition(itemId)
+						.setItemCategory(
+								itemCategorySpinner.getSelectedItem()
+										.toString());
+				String tempAmountStr = itemCurrencyEeditText.getText()
+						.toString();
+				int tempAmountInt = 0;
+				try {
+					tempAmountInt = Integer.valueOf(tempAmountStr);
+				} catch (NumberFormatException e) {
+					tempAmountInt = 0;
+				}
+				Currency tempCurrency = new Currency(currencyUnitsSpinner
+						.getSelectedItem().toString(), tempAmountInt);
+				controller.getClaim().getPosition(itemId)
+						.setItemCurrency(tempCurrency);
+
+				controller
+						.getClaim()
+						.getPosition(itemId)
+						.setItemDescription(
+								fragmentEditItem2DiscriptionEditText.getText()
+										.toString());
+				if (receiptFlag == 1) {
+					controller.getClaim().getPosition(itemId)
+							.setReceipBitmap(bitmap);
+
+				}
+				UpdateThread update = new UpdateThread(controller.getClaim());
+				update.start();
+>>>>>>> ce8114d26388fc9dec9fc17c358159d50dde398a
 
 			}
-			UpdateThread update = new UpdateThread(controller.getClaim());
-			update.start();
-			
 
+			Intent intent = new Intent(EditItemActivity.this,
+					OneClaimActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			intent.putExtra("MyClaimName", claimName);
+			startActivity(intent);
+			finish();
 		}
-
-		Intent intent = new Intent(EditItemActivity.this,
-				OneClaimActivity.class);
-		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		intent.putExtra("MyClaimName", claimName);
-		startActivity(intent);
-		finish();
 	}
 
 	/**

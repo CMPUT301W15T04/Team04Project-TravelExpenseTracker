@@ -40,7 +40,10 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Destination;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -198,6 +201,47 @@ public class EditClaimActivity extends FragmentActivity {
 		 */
 		// System.out.println(tag==null);
 
+		boolean completeCheck = true;
+		if (claimName.getText().toString().isEmpty() == true){
+			completeCheck = false;
+		}
+		if (description.getText().toString().isEmpty() == true){
+			completeCheck = false;
+		}
+		if (tag.getText().toString().isEmpty() == true){
+			completeCheck = false;
+		}
+		if (completeCheck == false){
+			Toast.makeText(EditClaimActivity.this, "You need to complete all the TextView and receipt",
+					Toast.LENGTH_SHORT).show();
+			AlertDialog.Builder adb = new AlertDialog.Builder(EditClaimActivity.this);
+			adb.setMessage("You need to complete all the TextView and receipt");
+			adb.setNeutralButton("Continue", new OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					Toast.makeText(EditClaimActivity.this, "Clicked Submit",
+							Toast.LENGTH_SHORT).show();
+					
+					/**
+					 * You need to add code here to do the submit stuff Once the
+					 * claimant click this, the claim will be submitted
+					 **/
+				}
+			});
+
+			adb.setNegativeButton("Cancel", new OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					Toast.makeText(EditClaimActivity.this, "Cancel",
+							Toast.LENGTH_SHORT).show();
+					/**
+					 * You need to add code here to do the confirm stuff Once
+					 * the claimant click this, the claim is updated
+					 **/
+				}
+			});
+			adb.setCancelable(true);
+			adb.show();}else{
+		
+		
 		if (addEditStatus == 0) {
 			Claim claim = controller.setClaim(cName, cDescription, cTag, sDate, eDate, destinationList, user.getName());
 			Thread add = new AddThread(claim);
@@ -209,7 +253,7 @@ public class EditClaimActivity extends FragmentActivity {
 			Thread update = new UpdateThread(claim);
 			update.start();
 		}
-		
+			}
 	}
 	class AddThread extends Thread {
 		private Claim claim;
