@@ -51,7 +51,7 @@ public class Claim {
 	protected transient ArrayList<Listener> itemListener;
 	protected String Approver;
 	protected String Claimiant;
-	protected ArrayList<Currency> totalCurrency;
+	protected ArrayList<Currency> totalCurrency ;
 	protected transient ArrayList<Listener> listeners = null;
 
 	/**
@@ -91,7 +91,7 @@ public class Claim {
 	 */
 	public String DestinationListToString() {
 		String out = "";
-		if (destination.size() != 0) {
+/*		if (destination.size() != 0) {
 			out += destination.get(0).toString();
 
 			for (int i = 1; i < destination.size(); i++) {
@@ -99,7 +99,7 @@ public class Claim {
 			}
 		} else {
 			out = "N/A";
-		}
+		}*/
 		return out;
 	}
 
@@ -139,7 +139,7 @@ public class Claim {
 	 */
 	public String TotalCurrencyListToString() {
 		String out = "";
-		if (totalCurrency.size() != 0) {
+/*		if (totalCurrency.size() != 0) {
 			out += totalCurrency.get(0).toString();
 
 			for (int i = 1; i < totalCurrency.size(); i++) {
@@ -147,7 +147,7 @@ public class Claim {
 			}
 		} else {
 			out = "N/A";
-		}
+		}*/
 		return out;
 	}
 
