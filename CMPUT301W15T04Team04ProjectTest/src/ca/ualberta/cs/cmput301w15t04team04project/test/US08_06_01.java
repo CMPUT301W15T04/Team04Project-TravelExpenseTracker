@@ -101,15 +101,6 @@ public class US08_06_01 extends ActivityInstrumentationTestCase2<MyClaimActivity
 				R.layout.activity_claim_detail_a, null);
 		nextActivity.showClaimDetailC(claimInfoCDialogView);
 		
-/*		adb.setNeutralButton("Submit",  new DialogInterface.OnClickListener(){
-			public void onClick(DialogInterface dialog, int which) {
-			    onNeutralButtonClicked(); 
-			  }
-		});
-		
-		Button okButton = adb.getButton(DialogInterface.BUTTON_POSITIVE);
-		okButton.performClick();*/
-		
 		AlertDialog.Builder alBuilder = new AlertDialog.Builder(nextActivity);
         alBuilder
                 .setMessage("Do you wamt to exit?")
