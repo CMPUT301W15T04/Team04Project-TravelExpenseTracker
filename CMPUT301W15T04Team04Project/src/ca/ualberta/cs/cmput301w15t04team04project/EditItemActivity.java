@@ -207,7 +207,9 @@ public class EditItemActivity extends FragmentActivity {
 		ImageButton imageButton = (ImageButton) findViewById(R.id.addRecieptImageButton);
 
 		// create an item
-
+		
+		
+		
 		if (addEditItemStatus == 0) {
 			Item newitem = new Item(itemName.getText().toString());
 			newitem.setItemDate(calendar.getTime());

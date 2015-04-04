@@ -17,12 +17,14 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.mapReceiver;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.widget.EditText;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.ItemizedIconOverlay;
 import org.osmdroid.views.overlay.ItemizedOverlay;
 import org.osmdroid.views.overlay.OverlayItem;
 import org.osmdroid.views.overlay.OverlayItem.HotspotPlace;
+
 
 
 
@@ -40,6 +42,10 @@ public class osmMainActivity extends Activity implements mapReceiver{
 	private static boolean canEdit;
 	private static String focusOn; 
 
+	
+	private static final int GOTO_HOME = Menu.FIRST;
+	private static final int GOTO_CURRENT = GOTO_HOME + 1;
+	private static final int GOTO_PICK = GOTO_HOME +2;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +81,8 @@ public class osmMainActivity extends Activity implements mapReceiver{
 		},mResourceProxy);
 		
 		pointsOverlay.addItem(homeMark);
-		
+		pointsOverlay.setFocus(pick);
+		mapController.setCenter(startPoint);
 		
 		map.getOverlays().add(pointsOverlay);
 
@@ -98,7 +105,7 @@ public class osmMainActivity extends Activity implements mapReceiver{
 	         	pointsOverlay.addItem(pick);
 	        }
 			map.invalidate();
-			
+
 		}
 		   
 	     return false;
