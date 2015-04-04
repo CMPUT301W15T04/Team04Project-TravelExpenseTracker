@@ -1,19 +1,30 @@
 package ca.ualberta.cs.cmput301w15t04team04project.network.data;
 
 public class SimpleSearchCommand {
-	private String query;
-	private String[] fields;
-
-	public SimpleSearchCommand(String query) {
-		this(query, null);
+	private String user;
+	private String status;
+	private String tag;
+	public SimpleSearchCommand(String user) {
+		this(user, null, null);
 	}
 
-	public SimpleSearchCommand(String query, String[] fields) {
-		this.query = query;
-		this.fields = fields;
+	public SimpleSearchCommand(String user, String status) {
+		this(user, status, null);
 	}
 
+	public SimpleSearchCommand(String user, String status, String tag) {
+		this.user = user;
+		this.status = status;
+		this.tag = tag;
+	}
+	
 	public String getJsonCommand() {
+		StringBuffer command = new StringBuffer(
+				"{\"query\" : {\"bool\" : {\"must\" :{\"match\" :{\"tags\" : \"yangji\"}}}}}   ");
+		return command.toString();
+	}
+	
+	/*public String getJsonCommand() {
 		StringBuffer command = new StringBuffer(
 				"{\"query\" : {\"query_string\" : {\"query\" : \"" + query
 						+ "\"");
@@ -27,5 +38,5 @@ public class SimpleSearchCommand {
 		}
 		command.append("}}}");
 		return command.toString();
-	}
+	}*/
 }

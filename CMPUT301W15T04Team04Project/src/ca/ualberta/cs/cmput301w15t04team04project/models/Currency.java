@@ -51,7 +51,7 @@ public class Currency {
 		this.type = type;
 	}
 
-	public double getAmount() {
+	public int getAmount() {
 		return amount;
 	}
 

@@ -51,7 +51,6 @@ public class Claim {
 	protected transient ArrayList<Listener> itemListener;
 	protected String Approver;
 	protected String Claimiant;
-	protected ArrayList<Currency> totalCurrency;
 	protected transient ArrayList<Listener> listeners = null;
 
 	/**
@@ -68,7 +67,6 @@ public class Claim {
 		destination = new ArrayList<Destination>();
 		tags = new ArrayList<String>();
 		status = "In Progress";
-		totalCurrency = new ArrayList<Currency>();
 		startDate = new Date(System.currentTimeMillis()); // only for test.
 															// 2015-03-14
 															// Chenrui
@@ -125,38 +123,6 @@ public class Claim {
 			out = "N/A";
 		}
 		return out;
-	}
-
-	/**
-	 * Returns the string representation of the totalCurrency list. The
-	 * presentation has a specific format. Elements are separated by '\n' (new
-	 * line).
-	 * 
-	 * @return the string representation of this.totalCurrency.
-	 * 
-	 * @author Chenrui Lei
-	 * @since 2015-03-14
-	 */
-	public String TotalCurrencyListToString() {
-		String out = "";
-		if (totalCurrency.size() != 0) {
-			out += totalCurrency.get(0).toString();
-
-			for (int i = 1; i < totalCurrency.size(); i++) {
-				out += "\n" + totalCurrency.get(i).toString();
-			}
-		} else {
-			out = "N/A";
-		}
-		return out;
-	}
-
-	public ArrayList<Currency> getTotalCurrency() {
-		return this.totalCurrency;
-	}
-
-	public void setTotalCurrency(ArrayList<Currency> totalCurrency) {
-		this.totalCurrency = totalCurrency;
 	}
 
 	/**
@@ -476,6 +442,25 @@ public class Claim {
 	 */
 	public ArrayList<Destination> getDestination() {
 		return destination;
+	}
+
+	public String currencySummary(){
+		ArrayList<Currency> currencyList = new ArrayList<Currency>();
+		for (int i = 0; i < getItems().size(); i++){
+			for (int j = 0; j < currencyList.size(); j++){
+				if (getItems().get(i).getItemCurrency().getType() == currencyList.get(j).getType()){
+					int c = currencyList.get(j).getAmount();
+					currencyList.get(j).setAmount(c + getItems().get(i).getItemCurrency().getAmount());
+					break;
+				}
+			}
+			currencyList.add(getItems().get(i).getItemCurrency());
+		}
+		String summary = "";
+		for (int j = 0; j < currencyList.size(); j++){
+			summary += currencyList.get(j).getType() + currencyList.get(j).getAmount()+"\n";
+		}
+		return summary;
 	}
 
 }

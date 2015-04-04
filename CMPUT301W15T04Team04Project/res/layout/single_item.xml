@@ -32,7 +32,7 @@
         android:layout_alignBottom="@+id/singleItemDescriptionTextView"
         android:layout_toLeftOf="@+id/hasRecieptImageView"
         android:layout_toRightOf="@+id/singleItemDescriptionTextView"
-        android:hint="The trip to Oosaka.This is the set. This is not long enough"
+        android:hint="DescriptionEmpty"
         android:textAppearance="?android:attr/textAppearanceSmall"
         tools:ignore="HardcodedText" />
 

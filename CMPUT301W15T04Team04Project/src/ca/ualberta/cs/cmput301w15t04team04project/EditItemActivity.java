@@ -242,8 +242,7 @@ public class EditItemActivity extends FragmentActivity {
 			 * part end here
 			 */
 		}else {
-			Toast.makeText(this, controller.getClaim().getClaim()+itemId+controller.getClaim().getItems().size(), Toast.LENGTH_LONG)
-			.show();
+			
 			controller.getClaim().getPosition(itemId).setItemDate(calendar.getTime());
 			controller.getClaim().getPosition(itemId).setItemName(itemName.getText().toString());
 			controller.getClaim().getPosition(itemId).setItemCategory(itemCategorySpinner.getSelectedItem()
@@ -258,7 +257,7 @@ public class EditItemActivity extends FragmentActivity {
 			Currency tempCurrency = new Currency(currencyUnitsSpinner
 					.getSelectedItem().toString(), tempAmountInt);
 			controller.getClaim().getPosition(itemId).setItemCurrency(tempCurrency);
-
+			Toast.makeText(this, controller.getClaim().getPosition(itemId).getItemCurrency().getType(), Toast.LENGTH_LONG).show();
 			controller.getClaim().getPosition(itemId).setItemDescription(fragmentEditItem2DiscriptionEditText
 					.getText().toString());
 			if (receiptFlag == 1){

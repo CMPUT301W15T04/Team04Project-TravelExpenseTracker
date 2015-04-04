@@ -98,7 +98,7 @@ public class ClaimListAdapter extends ArrayAdapter<Claim> {
 																	// //claim.getDestination());
 		holder.claimState.setText(claim.getStatus());// "In Progress");
 														// //claim.getStatus();
-		holder.totalAmount.setText(claim.TotalCurrencyListToString());// "$ CAD 88.88");
+		holder.totalAmount.setText(claim.currencySummary());// "$ CAD 88.88");
 																		// //claim.getAmount();
 
 		return convertView;

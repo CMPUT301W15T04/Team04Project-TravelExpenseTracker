@@ -56,10 +56,10 @@ import android.widget.AdapterView.OnItemLongClickListener;
 public class OneClaimActivity extends Activity {
 	private TextView itemName;
 	private TextView amount;
+	private TextView claimAmount;
 	private TextView itemDate;
 	private TextView category;
 	private TextView descript;
-	private OneClaimController controller;
 	private TextView approverView;
 	private TextView claimantView;
 	private TextView claimName;
@@ -69,12 +69,11 @@ public class OneClaimActivity extends Activity {
 	private ListView tags;
 	private ListView destinations;
 	private ImageView receiptImageView ;
-	
+	private OneClaimController controller;
 	static boolean isClaimant;
 	private OneClaimActivity thisActivity = this;
 	private InternetChecker iC;
 	private Claim claim;
-	private ClaimList claimList;
 	private String ClaimName;
 	private int itemId;
 	private CLmanager onlineManager = new CLmanager();
@@ -97,6 +96,7 @@ public class OneClaimActivity extends Activity {
 
 	private Runnable doFinishLoad = new Runnable() {
 		public void run() {
+			claimAmount.setText(controller.getClaim().currencySummary());
 			itemAdapter = new ItemListAdapter(getApplication(),
 					android.R.layout.simple_list_item_1, controller.getItem());
 			itemlistview.setAdapter(itemAdapter);
@@ -121,6 +121,7 @@ public class OneClaimActivity extends Activity {
 		getClaimThread getClaim = new getClaimThread(ClaimName);
 		// set content of view to dispaly
 		getClaim.start();
+		claimAmount = (TextView) findViewById(R.id.oneClaimActivityTotalAmountShowTextView);
 		itemlistview = (ListView) findViewById(R.id.OneCaimItemListView);
 		itemAdapter = new ItemListAdapter(this,
 				android.R.layout.simple_list_item_1, controller.getItem());
@@ -160,7 +161,7 @@ public class OneClaimActivity extends Activity {
 						myIntent.putExtra("myItemId", itemId);
 						myIntent.putExtra("MyClaimName", ClaimName);
 						startActivity(myIntent);
-
+						finish();
 					}
 				});
 
