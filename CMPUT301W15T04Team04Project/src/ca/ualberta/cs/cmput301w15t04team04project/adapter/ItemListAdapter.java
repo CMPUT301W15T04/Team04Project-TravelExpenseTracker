@@ -29,15 +29,18 @@ import java.util.List;
 
 import ca.ualberta.cs.cmput301w15t04team04project.R;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ClaimListAdapter.ViewHolder;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.searchController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ItemListAdapter extends ArrayAdapter<Item> {
 	private ArrayList<Item> itemList = null;
@@ -72,7 +75,8 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
 				.findViewById(R.id.singleItemCategoryShowTextView);
 		iholder.amount = (TextView) convertView
 				.findViewById(R.id.singleItemAmountShowTextView);
-
+		iholder.receipt = (ImageView) convertView.findViewById(R.id.hasRecieptImageView);
+		
 		convertView.setTag(iholder);
 
 		Item item = itemList.get(position);
@@ -91,7 +95,16 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
 		iholder.category.setText(item.getItemCategory());// "category");
 		iholder.amount.setText(item.getItemCurrency().toString());// "$ CAD 88.88");
 																// //claim.getAmount();
+		if (item.getReceipt() != null) {
 
+			Bitmap bitmap = item.getReceipBitmap();
+			iholder.receipt.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 256,
+					256, false));
+			// button.setImageBitmap(bitmap);
+
+		}
+		
+		
 		return convertView;
 
 	}
