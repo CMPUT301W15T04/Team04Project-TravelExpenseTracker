@@ -70,7 +70,7 @@ public class MyClaimActivity extends Activity {
 			if (mode == 0) {
 				actionBar.setTitle("Progresing Claims");
 				progressing = true;
-				Thread search = new SearchClaimThread("yangji", null);
+				Thread search = new SearchClaimThread("Progress", null);
 				search.start();
 			} else if (mode == 1) {
 				actionBar.setTitle("Submitted Claims");

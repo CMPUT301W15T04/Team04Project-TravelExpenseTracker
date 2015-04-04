@@ -4,13 +4,6 @@ public class SimpleSearchCommand {
 	private String user;
 	private String status;
 	private String tag;
-	public SimpleSearchCommand(String user) {
-		this(user, null, null);
-	}
-
-	public SimpleSearchCommand(String user, String status) {
-		this(user, status, null);
-	}
 
 	public SimpleSearchCommand(String user, String status, String tag) {
 		this.user = user;
@@ -19,8 +12,18 @@ public class SimpleSearchCommand {
 	}
 	
 	public String getJsonCommand() {
-		StringBuffer command = new StringBuffer(
-				"{\"query\" : {\"bool\" : {\"must\" :{\"match\" :{\"status\" : \"Progress\"}}}}}   ");
+		StringBuffer command = new StringBuffer("{\"query\" : {\"bool\" : {\"must\" :[");
+		if (user != null){
+			command.append("{\"match\" :{\"Claimiant\" : \""+user+"\"}}, ");
+		}
+		if (status != null){
+			command.append("{\"match\" :{\"status\" : \""+status+"\"}}, ");
+		}
+		if (tag != null){
+			command.append("{\"match\" :{\"tags\" : \""+tag+"\"}}, ");
+		}
+		command.delete(command.length() - 2, command.length());
+		command.append(	"] }}}");
 		return command.toString();
 	}
 	
