@@ -51,10 +51,8 @@ public class Claim {
 	protected transient ArrayList<Listener> itemListener;
 	protected String Approver;
 	protected String Claimiant;
-<<<<<<< HEAD
-=======
 	protected ArrayList<Currency> totalCurrency ;
->>>>>>> ce8114d26388fc9dec9fc17c358159d50dde398a
+
 	protected transient ArrayList<Listener> listeners = null;
 
 	/**

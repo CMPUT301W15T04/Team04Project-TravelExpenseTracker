@@ -20,7 +20,7 @@ public class SimpleSearchCommand {
 	
 	public String getJsonCommand() {
 		StringBuffer command = new StringBuffer(
-				"{\"query\" : {\"bool\" : {\"must\" :{\"match\" :{\"tags\" : \"yangji\"}}}}}   ");
+				"{\"query\" : {\"bool\" : {\"must\" :{\"match\" :{\"status\" : \"Progress\"}}}}}   ");
 		return command.toString();
 	}
 	

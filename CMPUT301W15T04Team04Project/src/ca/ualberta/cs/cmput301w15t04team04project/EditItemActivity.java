@@ -282,37 +282,7 @@ public class EditItemActivity extends FragmentActivity {
 				if (receiptFlag == 1) {
 					newitem.setReceipBitmap(bitmap);
 
-<<<<<<< HEAD
-			}
-			controller.addItem(newitem);
-			UpdateThread update = new UpdateThread(controller.getClaim());
-			update.start();
-			
-			/**
-			 * part end here
-			 */
-		}else {
-			
-			controller.getClaim().getPosition(itemId).setItemDate(calendar.getTime());
-			controller.getClaim().getPosition(itemId).setItemName(itemName.getText().toString());
-			controller.getClaim().getPosition(itemId).setItemCategory(itemCategorySpinner.getSelectedItem()
-					.toString());
-			String tempAmountStr = itemCurrencyEeditText.getText().toString();
-			int tempAmountInt = 0;
-			try {
-				tempAmountInt = Integer.valueOf(tempAmountStr);
-			} catch (NumberFormatException e) {
-				tempAmountInt = 0;
-			}
-			Currency tempCurrency = new Currency(currencyUnitsSpinner
-					.getSelectedItem().toString(), tempAmountInt);
-			controller.getClaim().getPosition(itemId).setItemCurrency(tempCurrency);
-			Toast.makeText(this, controller.getClaim().getPosition(itemId).getItemCurrency().getType(), Toast.LENGTH_LONG).show();
-			controller.getClaim().getPosition(itemId).setItemDescription(fragmentEditItem2DiscriptionEditText
-					.getText().toString());
-			if (receiptFlag == 1){
-				controller.getClaim().getPosition(itemId).setReceipBitmap(bitmap);
-=======
+
 				}
 				controller.addItem(newitem);
 				UpdateThread update = new UpdateThread(controller.getClaim());
@@ -363,7 +333,6 @@ public class EditItemActivity extends FragmentActivity {
 				}
 				UpdateThread update = new UpdateThread(controller.getClaim());
 				update.start();
->>>>>>> ce8114d26388fc9dec9fc17c358159d50dde398a
 
 			}
 

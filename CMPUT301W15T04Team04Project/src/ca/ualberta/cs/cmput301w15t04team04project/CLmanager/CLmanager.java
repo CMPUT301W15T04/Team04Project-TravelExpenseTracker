@@ -195,18 +195,12 @@ public class CLmanager {
 		return esResponse;
 	}*/
 
-	public ArrayList<Claim> searchClaimList(String searchString) {
+	public ArrayList<Claim> searchClaimList(String userName ,String searchString, String tags) {
 		ArrayList<Claim> claims = new ArrayList<Claim>();
-		if (searchString == null || "".equals(searchString)) {
-			searchString = "*";
-		}
 		try {
-			HttpPost searchRequest = createSearchRequest(searchString);
+			HttpPost searchRequest = createSearchRequest(userName, searchString, tags);
 			HttpClient httpClient = new DefaultHttpClient();
 			HttpResponse response = httpClient.execute(searchRequest);
-
-			String status = response.getStatusLine().toString();
-
 			SearchResponse<Claim> esResponse = parseSearchResponse(response);
 			Hits<Claim> hits = esResponse.getHits();
 
@@ -227,10 +221,10 @@ public class CLmanager {
 		return claims;
 	}
 	
-	private HttpPost createSearchRequest(String searchString) throws UnsupportedEncodingException {
+	private HttpPost createSearchRequest(String userName ,String searchString, String tags) throws UnsupportedEncodingException {
 		// TODO Auto-generated method stub
 		HttpPost searchRequest = new HttpPost(SEARCH_URL);
-		SimpleSearchCommand command = new SimpleSearchCommand(searchString);
+		SimpleSearchCommand command = new SimpleSearchCommand(userName, searchString, tags);
 
 		String query = command.getJsonCommand();
 		Log.i(TAG, "Json command: " + query);

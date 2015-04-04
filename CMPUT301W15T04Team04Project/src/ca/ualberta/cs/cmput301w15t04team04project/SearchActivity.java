@@ -57,10 +57,6 @@ public class SearchActivity extends Activity {
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setIcon(R.drawable.ic_action_search);
-		
-		
-		ClaimList searchClaimList = controller.searchAllClaimList(user);
-
 		Spinner spinner = (Spinner) findViewById(R.id.constactTagsSpinner);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
 				getBaseContext(),
@@ -68,7 +64,17 @@ public class SearchActivity extends Activity {
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
 	}
-
+	
+	public void search(){
+		MyClaimActivity.mode = 4;
+		
+		Intent intent = new Intent(SearchActivity.this,
+				MyClaimActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		intent.putExtra("tag", "");
+		startActivity(intent);
+	}
 	/**
 	 * This boolean function is to activate the option menu.
 	 * 

@@ -1,7 +1,5 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
-
-
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ClaimListAdapter;
@@ -51,6 +49,7 @@ public class MyClaimActivity extends Activity {
 	private ListView listView;
 	private CLmanager onlineManager = new CLmanager();
 	private ClaimListAdapter claimListAdapter = null;
+	private String tag = null;
 	private Runnable doFinish = new Runnable() {
 		public void run() {
 			claimListAdapter.notifyDataSetChanged();
@@ -65,22 +64,29 @@ public class MyClaimActivity extends Activity {
 		actionBar = getActionBar();
 		controller = new MyLocalClaimListController();
 		if (user.getName().equals("approval")) {
-			Thread search = new SearchClaimThread("submitted");
+			Thread search = new SearchClaimThread("submitted", null);
 			search.start();
 		} else {
 			if (mode == 0) {
 				actionBar.setTitle("Progresing Claims");
 				progressing = true;
-				Thread search = new SearchClaimThread("yangji");
+				Thread search = new SearchClaimThread("yangji", null);
 				search.start();
 			} else if (mode == 1) {
 				actionBar.setTitle("Submitted Claims");
 				progressing = false;
-				Thread search = new SearchClaimThread("submitted");
+				Thread search = new SearchClaimThread("submitted", null);
 				search.start();
 			} else if (mode == 2) {
 				actionBar.setTitle("Approved Claims");
-				Thread search = new SearchClaimThread("approved");
+				Thread search = new SearchClaimThread("approved", null);
+				search.start();
+				progressing = false;
+			} else if (mode == 4) {
+				actionBar.setTitle("Search Results");
+				Bundle bundle = getIntent().getExtras();
+				tag = bundle.getString("tag");
+				Thread search = new SearchClaimThread(null, tag);
 				search.start();
 				progressing = false;
 			} else {
@@ -107,7 +113,7 @@ public class MyClaimActivity extends Activity {
 		 * });
 		 */
 		if (user.getName().equals("approval") || (mode == 1) || (mode == 2)) {
-		}else{
+		} else {
 			listView.setOnItemLongClickListener(new OnItemLongClickListener() {
 
 				@Override
@@ -220,7 +226,7 @@ public class MyClaimActivity extends Activity {
 		getMenuInflater().inflate(R.menu.my_claim, menu);
 		menu.findItem(R.id.action_new_claim).setVisible(progressing);
 		menu.findItem(R.id.action_search).setVisible(progressing);
-		claimMenu=menu;
+		claimMenu = menu;
 		return true;
 	}
 
@@ -235,22 +241,23 @@ public class MyClaimActivity extends Activity {
 		startActivity(intent);
 		finish();
 	}
-	
-	//get the menuItem for testing
-	public MenuItem getMyClaimMenuItem(){
+
+	// get the menuItem for testing
+	public MenuItem getMyClaimMenuItem() {
 		return claimMenu.findItem(R.id.action_new_claim);
 	}
-	
+
 	class SearchClaimThread extends Thread {
 		private String status;
-
-		public SearchClaimThread(String status) {
+		private String tag;
+		public SearchClaimThread(String status, String tag) {
 			this.status = status;
+			this.tag = tag;
 		}
 
 		public void run() {
 			controller.clear();
-			controller.addall(onlineManager.searchClaimList(status));
+			controller.addall(onlineManager.searchClaimList(user.getName(), status, tag));
 			if (user.getName().equals("approval")) {
 				controller.sortClaimOldFirst();
 			} else {

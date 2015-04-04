@@ -27,4 +27,14 @@
         android:layout_below="@+id/contectTagsTextView"
         tools:ignore="RtlHardcoded" />
 
+    <Button
+        android:id="@+id/searchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="44dp"
+        android:layout_toRightOf="@+id/contectTagsTextView"
+        android:onClick="search"
+        android:text="search" />
+
 </RelativeLayout>
