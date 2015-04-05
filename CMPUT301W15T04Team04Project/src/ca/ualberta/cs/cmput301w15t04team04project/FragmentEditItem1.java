@@ -20,6 +20,7 @@
  */
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -48,7 +49,17 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
 /**
- * This is the fragment part 1 for adding/editing an item.
+ * <b>This is the fragment part 1 for adding/editing an item.</b><br>
+ * <OL>
+ * <LI>In this part, you need to fill out the information shown on the scream.
+ * <UL>
+ * <LI>The Item name (String)
+ * <LI> The Date of adding the item (DatePicker)<br>
+ * <LI>Select a category of the item from Spinner<br>
+ * <LI>Select the unit of currency from the Spinner<br>
+ * <LI>And enter a digital amount of an item
+ * </UL> 
+ * </OL>
  * 
  * @author Ji Yang
  * @author Yang Zhang
@@ -152,6 +163,12 @@ public class FragmentEditItem1 extends Fragment {
 		}
 
 	}
+	/**
+	* This class is get a claim thread by the claimName(string)
+	* @param claimName This is a string of the name of a claim 
+	* @exception IllegalStateException On input error.
+	* @see IllegalStateException
+	*/
 	class GetThread extends Thread{ 
 		private String claimName;
 		
