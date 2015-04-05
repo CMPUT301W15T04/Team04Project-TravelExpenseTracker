@@ -27,19 +27,4 @@ public class SimpleSearchCommand {
 		return command.toString();
 	}
 	
-	/*public String getJsonCommand() {
-		StringBuffer command = new StringBuffer(
-				"{\"query\" : {\"query_string\" : {\"query\" : \"" + query
-						+ "\"");
-		if (fields != null) {
-			command.append(", \"fields\": [");
-			for (int i = 0; i < fields.length; i++) {
-				command.append("\"" + fields[i] + "\", ");
-			}
-			command.delete(command.length() - 2, command.length());
-			command.append("]");
-		}
-		command.append("}}}");
-		return command.toString();
-	}*/
 }

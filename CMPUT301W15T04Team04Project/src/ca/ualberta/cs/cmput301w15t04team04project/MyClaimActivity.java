@@ -224,14 +224,8 @@ public class MyClaimActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.my_claim, menu);
 		menu.findItem(R.id.action_new_claim).setVisible(progressing);
-		menu.findItem(R.id.action_search).setVisible(progressing);
 		claimMenu = menu;
 		return true;
-	}
-
-	public void goToSearch(MenuItem item) {
-		Intent intent = new Intent(MyClaimActivity.this, SearchActivity.class);
-		startActivity(intent);
 	}
 
 	public void goToEditClaim(MenuItem item) {

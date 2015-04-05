@@ -38,10 +38,7 @@ public class OneClaimController {
 	private Claim claim ;
 
 	/**
-	 * @param claim
-	 * @author Weijie Sun
-	 * @version 1.1
-	 * @since 2015-03-13
+	 *
 	 */
 	public OneClaimController(Claim claim) {
 
@@ -61,15 +58,15 @@ public class OneClaimController {
 		return claim;
 	}
 
+	/**
+	 * clear the item arraylist in the claim
+	 */
 	
 	public void clear(){
 		claim.getItems().clear();
 	}
 	/**
-	 * @return  ArrayList<Item> 
-	 * @author Weijie Sun
-	 * @version 1.1
-	 * @since 2015-03-13
+	 * get items from a claim
 	 */
 	public ArrayList<Item> getItem() {
 
@@ -78,10 +75,7 @@ public class OneClaimController {
 
 
 	/**
-	 * @param index
-	 * @author Weijie Sun
-	 * @version 1.1
-	 * @since 2015-03-13
+	 * delete a item in a claim by given index
 	 */
 	public void deleteItem(int index) {
 		getItem().remove(index);
@@ -92,9 +86,6 @@ public class OneClaimController {
 	/**
 	 * OneClaimController is initial
 	 * 
-	 * @author Weijie Sun
-	 * @version 1.1
-	 * @since 2015-03-13
 	 */
 
 	public OneClaimController() {
@@ -103,41 +94,14 @@ public class OneClaimController {
 	}
 
 	/**
-	 * submittedClaim is submitted Claim
-	 * 
-	 * @author Weijie Sun
-	 * @version 1.1
-	 * @since 2015-03-13
-	 */
-	/**
-	 * @param which
+	 * submitted a Claim
 	 */
 	public void submittedClaim() {
 		claim.setStatus("submitted");
 	}
 
 	/**
-	 * confirmClaim is confirm Claim
-	 * 
-	 * @author Weijie Sun
-	 * @version 1.1
-	 * @since 2015-03-13
-	 */
-	/**
-	 * @param which
-	 */
-	public void confirmClaim() {
-		// TODO Auto-generated method stub
-
-	}
-
-	/**
 	 * returnClaim is return Claim
-	 * 
-	 * 
-	 * @author Weijie Sun
-	 * @version 1.1
-	 * @since 2015-03-13
 	 */
 
 	public void returnClaim() {
@@ -146,11 +110,7 @@ public class OneClaimController {
 	}
 
 	/**
-	 * approveClaim is approve Claim
-	 * @param which
-	 * @author Weijie Sun
-	 * @version 1.1
-	 * @since 2015-03-13
+	 * approve a claim.
 	 */
 
 	public void approveClaim() {
@@ -158,6 +118,9 @@ public class OneClaimController {
 		claim.setStatus("approved");
 	}
 
+	/**
+	 * check if a claim complete or not
+	 */
 	public boolean checkComplete() {
 		// TODO Auto-generated method stub
 		for (int i = 0;i<claim.getItems().size();i++){
@@ -181,7 +144,10 @@ public class OneClaimController {
 		
 		
 	}
-
+	
+	/**
+	 * approal adds a comment to a claim
+	 */
 	public void addComment(String commentString) {
 		// TODO Auto-generated method stub
 		ArrayList<String> comments = claim.getComment();

@@ -74,6 +74,7 @@ public class SearchActivity extends Activity {
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		intent.putExtra("tag", "");
 		startActivity(intent);
+		finish();
 	}
 	/**
 	 * This boolean function is to activate the option menu.
@@ -92,8 +93,6 @@ public class SearchActivity extends Activity {
 	}
 
 	public void cancle(View view) {
-		Toast.makeText(SearchActivity.this, "We need to add search function",
-				Toast.LENGTH_SHORT).show();
 		finish();
 	}
 
