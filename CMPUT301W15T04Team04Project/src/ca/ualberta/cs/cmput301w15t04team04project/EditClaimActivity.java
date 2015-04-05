@@ -211,6 +211,12 @@ public class EditClaimActivity extends FragmentActivity {
 					eDate, destinationList, user.getName(), cItem,cComments);
 			Thread add = new AddThread(claim);
 			add.start();
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		else {
@@ -219,6 +225,13 @@ public class EditClaimActivity extends FragmentActivity {
 					eDate, destinationList, user.getName(), items, comments);
 			Thread update = new UpdateThread(claim);
 			update.start();
+			
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 	}
@@ -253,6 +266,7 @@ public class EditClaimActivity extends FragmentActivity {
 		@Override
 		public void run() {
 			try {
+				
 				onlineManager.updateClaim(claim);
 			} catch (IllegalStateException e) {
 				// TODO Auto-generated catch block

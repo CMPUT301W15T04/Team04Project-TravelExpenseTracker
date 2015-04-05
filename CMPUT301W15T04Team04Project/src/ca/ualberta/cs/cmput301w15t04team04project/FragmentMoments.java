@@ -70,10 +70,6 @@ public class FragmentMoments extends Fragment implements IXListViewListener {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-<<<<<<< HEAD
-		
-=======
->>>>>>> c1923b21cb60f9b17c0360e6fd38218d9d111389
 		mListView = (XListView) getView().findViewById(R.id.xListView);
 		mListView.setPullLoadEnable(true);
 		controller = new MyLocalClaimListController();

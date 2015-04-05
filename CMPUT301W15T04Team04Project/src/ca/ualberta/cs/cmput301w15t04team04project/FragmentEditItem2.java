@@ -86,6 +86,8 @@ public class FragmentEditItem2 extends Fragment {
 				Bitmap bitmap = currentItem.getReceipBitmap();
 				button.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 256,
 						256, false));
+				Toast.makeText(getActivity(), ""+bitmap.getByteCount(), Toast.LENGTH_LONG).show();
+
 				Toast.makeText(myActivity, "has photo",Toast.LENGTH_LONG ).show();
 				// button.setImageBitmap(bitmap);
 
