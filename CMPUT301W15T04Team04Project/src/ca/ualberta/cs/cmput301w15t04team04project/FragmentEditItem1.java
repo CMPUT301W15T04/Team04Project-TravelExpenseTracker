@@ -20,6 +20,7 @@
  */
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -48,7 +49,17 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
 /**
- * This is the fragment part 1 for adding/editing an item.
+ * <b>This is the fragment part 1 for adding/editing an item.</b><br>
+ * <OL>
+ * <LI>In this part, you need to fill out the information shown on the scream.
+ * <UL>
+ * <LI>Enter the name of an item(String).
+ * <LI>Select the date of adding the item (DatePicker).
+ * <LI>Select category of an item form the corresponding spinner.
+ * <LI>Select the unit of the currency from the corresponding spinner.
+ * <LI>Enter the price of the expense item in decimal numbers.
+ * </UL> 
+ * </OL>
  * 
  * @author Ji Yang
  * @author Yang Zhang
@@ -99,7 +110,7 @@ public class FragmentEditItem1 extends Fragment {
 	};
 	
 	/**
-	 * This is the onCreateView of initial the view
+	 * <b>This is the onCreateView of initial the view</b>
 	 * 
 	 * @author Weijie Sun
 	 * @version 1.1
@@ -116,8 +127,8 @@ public class FragmentEditItem1 extends Fragment {
 	}
 
 	/**
-	 * This is the onActivityCreated of create Item or Edit item set the
-	 * original information in the View
+	 * <b>This is the onActivityCreated of create Item or Edit item set the
+	 * original information in the View</b>
 	 * 
 	 * @author Weijie Sun
 	 * @version 1.1
@@ -152,6 +163,12 @@ public class FragmentEditItem1 extends Fragment {
 		}
 
 	}
+	/**
+	* <b>This class is get a claim thread by the claimName(string)</b>
+	* @param claimName This is a string of the name of a claim 
+	* @exception IllegalStateException On input error.
+	* @see IllegalStateException
+	*/
 	class GetThread extends Thread{ 
 		private String claimName;
 		

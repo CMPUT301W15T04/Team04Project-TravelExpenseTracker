@@ -40,7 +40,7 @@ import android.widget.ListView;
 * @version 1.0
 * @since   2015-03-09
 */
-public class Approver_02_Test extends ActivityInstrumentationTestCase2<MyClaimActivity>{
+public class US08_02_01 extends ActivityInstrumentationTestCase2<MyClaimActivity>{
 	
 	private ClaimListAdapter claimAdapter; 
 
@@ -51,7 +51,7 @@ public class Approver_02_Test extends ActivityInstrumentationTestCase2<MyClaimAc
 	* @version 1.0
 	* @since   2015-03-08
 	*/
-	public Approver_02_Test(Class<MyClaimActivity> activityClass) {
+	public US08_02_01(Class<MyClaimActivity> activityClass) {
 		super(activityClass);
 		// TODO Auto-generated constructor stub
 	}
@@ -89,13 +89,15 @@ public class Approver_02_Test extends ActivityInstrumentationTestCase2<MyClaimAc
 		ListView claimlistview = (ListView) getActivity().findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.myClaimsListView); //listView
 		//some problem here
 		claimAdapter = new ClaimListAdapter(getActivity(), 0, testClaimList.getClaimArrayList());
-		View view = claimAdapter.getView(0, null, null);
+		View view1 = claimAdapter.getView(0, null, null);
+		View view2 = claimAdapter.getView(1, null, null);
+		View view3 = claimAdapter.getView(2, null, null);
 		ListView listview = (ListView) getActivity().findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.myClaimsListView);  
 		
 		//
-		assertEquals("index 0 equals", listview.getChildAt(0).equals(AClaim));
-		assertEquals("index 1 equals", listview.getChildAt(1).equals(BClaim));
-		assertEquals("index 2 equals", listview.getChildAt(2).equals(CClaim));
+		assertEquals("index 0 equals", listview.getChildAt(0).equals(view1));
+		assertEquals("index 1 equals", listview.getChildAt(1).equals(view2));
+		assertEquals("index 2 equals", listview.getChildAt(2).equals(view3));
 
 		
 /*		assertTrue("first item is true", testClaimList.getSubmittedClaimList()

@@ -77,7 +77,6 @@ public class Approver_StartAtAddEditClaim_Test extends ActivityInstrumentationTe
 	private ListView claimlistview;
 	private ClaimEditController controller;
 	private ClaimList claimList;
-	private MyLocalClaimListManager manager;
 	
 	/**
 	* The Approver_StartAtAddEditClaim_Test method is extend the super class MainAcitivity
@@ -99,8 +98,6 @@ public class Approver_StartAtAddEditClaim_Test extends ActivityInstrumentationTe
 	*/
 	protected void setUp() throws Exception {
 		super.setUp();
-		manager = new MyLocalClaimListManager();
-		claimList = manager.loadClaimList(getActivity());
 		controller = new ClaimEditController(claimList);
 	}
 	

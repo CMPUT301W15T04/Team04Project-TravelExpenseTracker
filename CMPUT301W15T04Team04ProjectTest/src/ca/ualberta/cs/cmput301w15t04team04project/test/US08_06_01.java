@@ -1,5 +1,8 @@
 package ca.ualberta.cs.cmput301w15t04team04project.test;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 import ca.ualberta.cs.cmput301w15t04team04project.MyClaimActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.OneClaimActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.R;
@@ -46,27 +49,31 @@ public class US08_06_01 extends ActivityInstrumentationTestCase2<MyClaimActivity
 	{
 		super.setUp();
 		thisActivity = (MyClaimActivity) getActivity();
-		manager = new MyLocalClaimListManager();
 		claim = new Claim("test");
-		manager.loadClaimList(getActivity()).getClaimArrayList().add(claim);
-		controller = new ClaimEditController(manager.loadClaimList(getActivity()));
-		
+		controller = new ClaimEditController();
+		controller.setClaimObj(claim);
 	}
 
 	public void testPreConditions(){
         assertNotNull(thisActivity);
         claim.setClaimiant("testClaimiant");
-        
         claim.setStatus("Submitted");
-        controller.appendClaim(claim);
+        controller.addClaim();
         item = new Item("AItem");
-        claim.addItem(item);
         approver = new User("approver");
-        //ImageView image = (ImageView) findViewById(R.id.test_image);
-        Bitmap bMap = BitmapFactory.decodeResource(thisActivity.getResources(), R.drawable.ic_launcher);
-        Bitmap bMapScaled = Bitmap.createScaledBitmap(bMap, 150, 100, true);
-        //image.setImageBitmap(bMapScaled);        
-        item.setReceipBitmap(bMap);
+        ArrayList<Item> items = new ArrayList<Item>();
+        items.add(item);
+        ArrayList<String> comments = new ArrayList<String>();
+        comments.add("reason of approve "+approver.getName());
+        Date date1 = new Date();
+        date1.setYear(1999);
+        Date date2 = new Date();
+        date2.setYear(2000);  
+        controller.setClaim("test", "", "", date1, date2, null, "testClaimiant", items, comments);
+        claim.setStatus("Approved");
+        
+        assertTrue("comments are equal", claim.getComment().equals(comments));
+        assertTrue("status are approved", claim.getStatus().equals("Approved"));
 	}
 	
 	public void test(){

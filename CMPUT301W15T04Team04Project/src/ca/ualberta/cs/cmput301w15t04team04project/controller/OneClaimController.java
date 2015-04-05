@@ -130,6 +130,8 @@ public class OneClaimController {
 				return false;	
 			}else if(claim.getItems().get(i).getItemDescription().isEmpty()==true){
 				return false;
+			}else if(claim.getItems().get(i).getisComplete() == false){
+				return false;
 			}
 		}
 		if (claim.getClaim().isEmpty()==true){
@@ -138,7 +140,10 @@ public class OneClaimController {
 			return false;
 		}else if (claim.getTag().isEmpty()==true){
 			return false;
-		}else{
+		}else if (claim.getDestination().isEmpty() == true){
+			return false;
+		}
+		else{
 		return true;
 		}
 		

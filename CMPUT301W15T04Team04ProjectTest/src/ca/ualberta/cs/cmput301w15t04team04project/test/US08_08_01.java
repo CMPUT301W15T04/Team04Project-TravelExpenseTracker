@@ -1,5 +1,8 @@
 package ca.ualberta.cs.cmput301w15t04team04project.test;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 import android.app.Instrumentation;
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.View;
@@ -8,7 +11,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.MyClaimActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ItemListAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
-import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController2;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
@@ -17,7 +20,7 @@ public class US08_08_01 extends ActivityInstrumentationTestCase2<MyClaimActivity
 	private MyClaimActivity thisActivity;
 	private MyLocalClaimListManager manager;
 	private ClaimEditController controller;
-	private OneClaimController2 itemcontroller;
+	private OneClaimController itemcontroller;
 	private Claim claim ;
 	private Item item;
 	private ItemListAdapter itemListAdapter;
@@ -33,22 +36,36 @@ public class US08_08_01 extends ActivityInstrumentationTestCase2<MyClaimActivity
 	{
 		super.setUp();
 		thisActivity = (MyClaimActivity) getActivity();
-		manager = new MyLocalClaimListManager();
-		claim = manager.loadClaimList(getActivity()).getClaimArrayList().get(0);
-		controller = new ClaimEditController(manager.loadClaimList(getActivity()));
+
+		controller = new ClaimEditController();
 		
 	}
 	
 	public void testPreConditions(){
         assertNotNull(thisActivity);
-        
+        claim.setClaimiant("testClaimiant");
         claim.setStatus("Submitted");
-        controller.appendClaim(claim);
+        controller.addClaim();
         item = new Item("AItem");
-        claim.addItem(item);
         approver = new User("approver");
+        ArrayList<Item> items = new ArrayList<Item>();
+        items.add(item);
+        ArrayList<String> comments = new ArrayList<String>();
+        comments.add("reason of approve "+approver.getName());
+        Date date1 = new Date();
+        date1.setYear(1999);
+        Date date2 = new Date();
+        date2.setYear(2000);  
+        controller.setClaim("test", "", "", date1, date2, null, "testClaimiant", items, comments);
+        claim.setStatus("Approved");
+        
+        assertTrue("comments are equal", claim.getComment().equals(comments));
+        assertTrue("status are approved", claim.getStatus().equals("Approved"));
        
 	}
+	
+	
+	
 	
 	public void test(){
 		//set activity user is approver?

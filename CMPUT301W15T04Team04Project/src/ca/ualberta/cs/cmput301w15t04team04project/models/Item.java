@@ -53,6 +53,10 @@ public class Item {
 	protected boolean isComplete = false;
 	protected String receipt;
 	
+	public void setComplete(boolean isComplete) {
+		this.isComplete = isComplete;
+	}
+
 	public Item(String itemName) {
 		this.itemName = itemName;
 		
@@ -167,7 +171,7 @@ public class Item {
 	 * 
 	 * this.receipt = receipt; }
 	 */
-	public boolean isComplete() {
+	public boolean getisComplete() {
 
 		return isComplete;
 	}

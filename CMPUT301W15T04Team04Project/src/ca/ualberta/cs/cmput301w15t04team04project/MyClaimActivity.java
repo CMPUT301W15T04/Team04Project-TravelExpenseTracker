@@ -1,5 +1,7 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import java.io.IOException;
+
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ClaimListAdapter;
@@ -53,6 +55,15 @@ public class MyClaimActivity extends Activity {
 		}
 	};
 
+	/**
+	 * This method is to create the MyClaimActivity and get the ClaimList from
+	 * Manager by different requirement onCreate method Once the activity is
+	 * created, this method will give each view an object to help other methods
+	 * set data or listeners.
+	 * 
+	 * @param savedInstanceState
+	 *            the saved instance state bundle
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -204,7 +215,9 @@ public class MyClaimActivity extends Activity {
 		 */
 
 	}
-
+	/**
+	* This method is start activity
+	*/
 	@Override
 	protected void onStart() {
 		super.onStart();
@@ -228,6 +241,7 @@ public class MyClaimActivity extends Activity {
 		return true;
 	}
 
+
 	public void goToEditClaim(MenuItem item) {
 		Intent intent = new Intent(MyClaimActivity.this,
 				EditClaimActivity.class);
@@ -239,7 +253,14 @@ public class MyClaimActivity extends Activity {
 	public MenuItem getMyClaimMenuItem() {
 		return claimMenu.findItem(R.id.action_new_claim);
 	}
-
+	/**
+	* This class is search the Claim in the thread which meet the tag 
+	* @param claim This is the claim which should be add in the CLManager 
+	* @exception IOException On input error.
+	* @see IOException
+	* @exception IllegalStateException On input error.
+	* @see IllegalStateException
+	*/
 	class SearchClaimThread extends Thread {
 		private String userName;
 		private String status;
@@ -262,7 +283,14 @@ public class MyClaimActivity extends Activity {
 			runOnUiThread(doFinish);
 		}
 	}
-
+	/**
+	* This class is delete claim thread to delete the claim that user choose the position
+	* @param claim This is the claim which should be add in the CLManager 
+	* @exception IOException On input error.
+	* @see IOException
+	* @exception IllegalStateException On input error.
+	* @see IllegalStateException
+	*/
 	class DeleteThread extends Thread {
 		private String claimName;
 		private int pos;
