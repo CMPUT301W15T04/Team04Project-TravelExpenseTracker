@@ -33,36 +33,38 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 
 /**
+ * This controller can control add or edit claim in ClaimEditActivity
  * @author Youdong Ma
- * @author Ji Yang
- * 
+ * @author Ji Yang 
  */
+
 public class ClaimEditController extends MyLocalClaimListController {
 
 	private Claim claim;
 
 	/**
-	 * ClaimEditController is initialed with a claimList
-	 * 
-	 * @param claimList
+	 * ClaimEditController is initialed
 	 */
-
 	public ClaimEditController() {
-		claim = new Claim(null);
-	}
-
-	public ClaimEditController(ClaimList claimList) {
 		claim = new Claim(null);
 	}
 
 	public void setClaimObj(Claim claim) {
 		this.claim = claim;
 	}
-
-	public ArrayList<Claim> getClaims() {
-		return getClaimList().getClaimArrayList();
-	}
-
+	/**
+	 * setClaim 
+	 * @param cName
+	 * @param cDescription
+	 * @param cTag
+	 * @param sDate
+	 * @param eDate
+	 * @param destination
+	 * @param user
+	 * @param items
+	 * @param comments
+	 * @return
+	 */
 	public Claim setClaim(String cName, String cDescription, String cTag,
 			Date sDate, Date eDate, ArrayList<Destination> destination, String user, ArrayList<Item> items, ArrayList<String> comments) {
 		claim.setClaim(cName);
@@ -77,18 +79,10 @@ public class ClaimEditController extends MyLocalClaimListController {
 		return claim;
 	}
 
-	public ArrayList<Destination> destinationSet(
-			ArrayList<Destination> desList, String desName, String desReason) {
-		Destination des = new Destination(desName);
-		des.setdReason(desReason);
-		desList.add(des);
-		return desList;
-	}
-
-	/*
-	 * public String loadTag(ArrayList<String> tagsArray) { String tagString
-	 * =""; for (String item : tagsArray) { tagString += item + ","; } return
-	 * tagString; }
+	/**
+	 * tag is a string with ',', we need to split it by ',' to be a Array list of string
+	 * @param tag
+	 * @return
 	 */
 
 	public ArrayList<String> tagSplit(String tag) {
@@ -99,20 +93,10 @@ public class ClaimEditController extends MyLocalClaimListController {
 		}
 		return tags;
 	}
-
 	/**
-	 * insert an claim
-	 * 
-	 * @param claim
+	 * get claim from this controller
+	 * @return Claim
 	 */
-	public void addClaim() {
-		getClaims().add(this.claim);
-		getClaimList().notifyListeners();
-	}
-
-	public void appendClaim(Claim claim) {
-		getClaims().add(claim);
-	}
 
 	public Claim getClaim(){
 		return claim;

@@ -50,7 +50,7 @@ public class MyLocalClaimListController {
 	private static ClaimList claimList;
 
 	/**
-	 * get claimList
+	 * get the list of claims if the list does not exist, create a new one
 	 */
 	public ClaimList getClaimList(){
 		if (claimList == null) {
@@ -67,6 +67,10 @@ public class MyLocalClaimListController {
 	public void addall(ArrayList<Claim> arrayList){
 		getClaimList().getClaimArrayList().addAll(arrayList);
 	}
+	
+	/**
+	 * clean the list of claims
+	 */
 	
 	public void clear(){
 		getClaimList().getClaimArrayList().clear();

@@ -41,7 +41,7 @@ public class MainController {
 
 	/**
 	 * logOut is use to react when logOut button be clicked
-	 * 
+	 * Delete the user name saved in local
 	 * @param context the view that pass in
 	 * @author Chenrui Lei
 	 */
