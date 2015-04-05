@@ -52,12 +52,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 /**
- * This is the fragment part 2 for adding/editing an item.
+ * <p><b>
+ * This is the fragment part 2 for adding/editing an item.</b><br>
+ * In this part of the fragment, you can add the description of an item and receipt<br>
+ * You also can edit the item if you already add one item and choose the one you want to edit.<br>
+ * You can enter the description as much as you want but you can add only one receipt.<br>
+ * The size of the receipt is 65536 byte at most
+ * </p>
+ * 
+ * @since 2015-03-10
+ * @version 1.0
  * 
  * @author Ji Yang
  * @author Yang Zhang
- * @version 1.0
- * @since 2015-03-10
+ * @author Yufei Zhang
+ * @author Weijie Sun
  */
 public class FragmentEditItem2 extends Fragment {
 	private int myItemId;
@@ -98,7 +107,11 @@ public class FragmentEditItem2 extends Fragment {
 		}
 	};
 	/**
-	 * This is the onCreateView of initial the view
+	 * <b>This is the onCreateView of initial the view</b>
+	 * 
+	 * @param inflater
+	 * @param container
+	 * @param savedInstanceState
 	 * 
 	 * @author Weijie Sun
 	 * @version 1.1
@@ -152,7 +165,14 @@ public class FragmentEditItem2 extends Fragment {
 
 	}
 
-	// resource from https://github.com/joshua2ua/BogoPicLab
+	/**
+	 * <p>This part of code are copied from the following link:<br>
+	 * {@link https://github.com/joshua2ua/BogoPicLab}<br>
+	 * This part is using for taking a picture.</p>
+	 * 
+	 * @author Jushua
+	 */
+
 	public void takeAPhoto() {
 		Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
@@ -171,10 +191,12 @@ public class FragmentEditItem2 extends Fragment {
 		intent.putExtra(MediaStore.EXTRA_OUTPUT, imageFileUri);
 		startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
 	}
-
-	// from
-	// http://stackoverflow.com/questions/13116104/best-practice-to-reference-the-parent-activity-of-a-fragment
-	// March 26
+	
+	/**
+	 * <p>This part of code is copied from:<br>
+	 * {@link http://stackoverflow.com/questions/13116104/best-practice-to-reference-the-parent-activity-of-a-fragment}
+	 * @since March 26
+	 */
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
@@ -186,8 +208,11 @@ public class FragmentEditItem2 extends Fragment {
 		}
 	}
 
-	// "http://stackoverflow.com/questions/4830711/how-to-convert-a-image-into-base64-string"
-	// March 26
+	/**
+	 * <b>This part of code is from:</b><br>
+	 * {@link http://stackoverflow.com/questions/4830711/how-to-convert-a-image-into-base64-string}<br>
+	 * @since March 26
+	 */
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
 			if (resultCode == -1) { // requestCode == 1 &&
@@ -219,6 +244,13 @@ public class FragmentEditItem2 extends Fragment {
 
 	}
 
+	/**
+	 * <b>This part of code if copied from:</b><br>
+	 * {@link http://geekonjava.blogspot.ca/2014/03/upload-image-on-server-in-android-using.html}
+	 * 
+	 * @param uri
+	 * @return the value of one column as a String.
+	 */
 	// "http://geekonjava.blogspot.ca/2014/03/upload-image-on-server-in-android-using.html"
 	// March 24 2015
 	public String getPath(Uri uri) {
