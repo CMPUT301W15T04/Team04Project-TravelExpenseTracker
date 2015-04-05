@@ -45,7 +45,16 @@ import android.widget.Toast;
 public class ItemListAdapter extends ArrayAdapter<Item> {
 	private ArrayList<Item> itemList = null;
 	private ViewHolder iholder = null;
-
+	/**
+	 * Constructs the adapter and initializes its context.
+	 * 
+	 * @param context
+	 *            The Context in which the adapter is running.
+	 * @param objects
+	 *            The Item list.
+	 * @param source
+	 *            the posiion of the Item
+	 */
 	public ItemListAdapter(Context context, int resource,
 			ArrayList<Item> objects) {
 
@@ -54,6 +63,19 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
 		this.itemList = objects;
 	}
 
+	/**
+	 * Gets a View that displays the given view holder for the specific values
+	 * in a reply.
+	 * 
+	 * @param position
+	 *            The position of the Item.
+	 * @param convertView
+	 *            A previous recycled view.
+	 * @param parent
+	 *            Parent view
+	 * 
+	 * @return The View
+	 */
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		if (convertView == null) {
@@ -109,6 +131,12 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
 
 	}
 
+	/**
+	 * The container of the views for a single Item
+	 * @author Weijie Sun
+	 *
+	 * 
+	 */
 	class ViewHolder {
 		TextView itemName;
 		TextView description;

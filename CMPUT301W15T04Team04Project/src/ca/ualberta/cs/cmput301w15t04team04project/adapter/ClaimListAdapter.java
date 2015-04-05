@@ -41,11 +41,16 @@ public class ClaimListAdapter extends ArrayAdapter<Claim> {
 	private ArrayList<Claim> claimList = null;
 	private ViewHolder holder = null;
 
+
 	/**
-	 * @author Youdong Ma
+	 * Constructs the adapter and initializes its context.
+	 * 
 	 * @param context
-	 * @param resource
+	 *            The Context in which the adapter is running.
 	 * @param objects
+	 *            The Claim list.
+	 * @param source
+	 *            the posiion of the claim
 	 */
 	public ClaimListAdapter(Context context, int resource,
 			ArrayList<Claim> objects) {
@@ -53,6 +58,19 @@ public class ClaimListAdapter extends ArrayAdapter<Claim> {
 		this.claimList = objects;
 	}
 
+	/**
+	 * Gets a View that displays the given view holder for the specific values
+	 * in a reply.
+	 * 
+	 * @param position
+	 *            The position of the Claim.
+	 * @param convertView
+	 *            A previous recycled view.
+	 * @param parent
+	 *            Parent view
+	 * 
+	 * @return The View
+	 */
 	/* (non-Javadoc)
 	 * @see android.widget.ArrayAdapter#getView(int, android.view.View, android.view.ViewGroup)
 	 */
@@ -107,8 +125,10 @@ public class ClaimListAdapter extends ArrayAdapter<Claim> {
 	}
 
 	/**
+	 * The container of the views for a single Claim
 	 * @author Youdong Ma
 	 *
+	 * 
 	 */
 	class ViewHolder {
 		TextView claimName;
