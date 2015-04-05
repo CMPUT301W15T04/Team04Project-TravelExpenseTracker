@@ -63,7 +63,9 @@ assertNotNull(thisActivity);
         destination2.setdReason("test2");
         destinations.add(destination2);
         
-        controller.setClaim("test", "", "", date1, date2, destinations, "testclaimiant", items);
+        ArrayList<String> comments = new ArrayList<String>();
+
+        controller.setClaim("test", "", "", date1, date2, destinations, "testclaimiant", items,comments);
 
         Date startDate = new Date();
         startDate = testClaim.getStartDate();

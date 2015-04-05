@@ -653,7 +653,7 @@ public class OneClaimActivity extends Activity {
 		
 		String commentString = addComment.getText().toString(); 
 		
-		controller.addComment(commentString);
+		controller.addComment(commentString + user.getName());
 		//controller.getClaim().getComment().add(commentString);
 	}
 	
