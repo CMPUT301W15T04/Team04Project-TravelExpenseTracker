@@ -22,8 +22,12 @@ package ca.ualberta.cs.cmput301w15t04team04project;
 
 import java.util.ArrayList;
 
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
 import ca.ualberta.cs.cmput301w15t04team04project.XListView.XListView;
 import ca.ualberta.cs.cmput301w15t04team04project.XListView.XListView.IXListViewListener;
+import ca.ualberta.cs.cmput301w15t04team04project.adapter.ClaimListAdapter;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController;
+import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -36,13 +40,22 @@ import android.widget.LinearLayout;
 public class FragmentMoments extends Fragment implements IXListViewListener {
 	private XListView mListView;
 	// private ClaimListAdapter mAdapter;
-	private ArrayAdapter<String> mAdapter;
+	private ClaimListAdapter mAdapter;
 	// private ArrayList<Claim> items = new ArrayList<Claim>();
-	private ArrayList<String> items = new ArrayList<String>();
+	private ArrayList<Claim> Claims;
 	private Handler mHandler;
 	private int start = 0;
 	private static int refreshCnt = 0;
-
+	private MyLocalClaimListController controller;
+	private CLmanager onlineManager = new CLmanager();
+	
+	
+	private Runnable doFinish = new Runnable(){
+		public void run() {
+			mAdapter.notifyDataSetChanged();
+			onLoad();
+		}
+	};
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -57,11 +70,13 @@ public class FragmentMoments extends Fragment implements IXListViewListener {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		geneItems();
+		SearchThread search = new SearchThread();
+		search.start();
 		mListView = (XListView) getView().findViewById(R.id.xListView);
 		mListView.setPullLoadEnable(true);
-		mAdapter = new ArrayAdapter<String>(getActivity(), R.layout.list_item,
-				items);
+		controller = new MyLocalClaimListController();
+		mAdapter = new ClaimListAdapter(getActivity(), R.layout.single_claim,
+				controller.getClaims());
 		mListView.setAdapter(mAdapter);
 		// mListView.setPullLoadEnable(false);
 		// mListView.setPullRefreshEnable(false);
@@ -72,12 +87,6 @@ public class FragmentMoments extends Fragment implements IXListViewListener {
 
 	public void onStart() {
 		super.onStart();
-	}
-
-	private void geneItems() {
-		for (int i = 0; i != 20; ++i) {
-			items.add("refresh cnt " + (++start));
-		}
 	}
 
 	private void onLoad() {
@@ -92,13 +101,9 @@ public class FragmentMoments extends Fragment implements IXListViewListener {
 			@Override
 			public void run() {
 				start = refreshCnt;
-				items.clear();
-				geneItems();
+				SearchThread search = new SearchThread();
+				search.start();
 				// mAdapter.notifyDataSetChanged();
-				mAdapter = new ArrayAdapter<String>(getActivity(),
-						R.layout.list_item, items);
-				mListView.setAdapter(mAdapter);
-				onLoad();
 			}
 		}, 500);
 	}
@@ -108,11 +113,20 @@ public class FragmentMoments extends Fragment implements IXListViewListener {
 		mHandler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				geneItems();
-				mAdapter.notifyDataSetChanged();
-				onLoad();
+				SearchThread search = new SearchThread();
+				search.start();
 			}
 		}, 500);
 	}
+	class SearchThread extends Thread {
+		public SearchThread() {
+		}
 
+		public void run() {
+			controller.clear();
+			controller.addall(onlineManager.searchClaimList(null, "approved", null));
+			controller.sortClaimNewFirst();
+			getActivity().runOnUiThread(doFinish);
+		}
+	}
 }

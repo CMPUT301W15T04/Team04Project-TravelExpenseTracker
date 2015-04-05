@@ -36,9 +36,6 @@ import android.widget.AdapterView.OnItemLongClickListener;
  */
 
 public class MyClaimActivity extends Activity {
-
-	// private ArrayList<String> claims = new ArrayList<String>();
-
 	public static int mode;
 	private ActionBar actionBar;
 	private Menu claimMenu;
@@ -64,29 +61,29 @@ public class MyClaimActivity extends Activity {
 		actionBar = getActionBar();
 		controller = new MyLocalClaimListController();
 		if (user.getName().equals("approval")) {
-			Thread search = new SearchClaimThread("submitted", null);
+			Thread search = new SearchClaimThread(null ,"submitted", null);
 			search.start();
 		} else {
 			if (mode == 0) {
 				actionBar.setTitle("Progresing Claims");
 				progressing = true;
-				Thread search = new SearchClaimThread("Progress", null);
+				Thread search = new SearchClaimThread(user.getName(), "Progress", null);
 				search.start();
 			} else if (mode == 1) {
 				actionBar.setTitle("Submitted Claims");
 				progressing = false;
-				Thread search = new SearchClaimThread("submitted", null);
+				Thread search = new SearchClaimThread(user.getName(), "submitted", null);
 				search.start();
 			} else if (mode == 2) {
 				actionBar.setTitle("Approved Claims");
-				Thread search = new SearchClaimThread("approved", null);
+				Thread search = new SearchClaimThread(user.getName(), "approved", null);
 				search.start();
 				progressing = false;
 			} else if (mode == 4) {
 				actionBar.setTitle("Search Results");
 				Bundle bundle = getIntent().getExtras();
 				tag = bundle.getString("tag");
-				Thread search = new SearchClaimThread(null, tag);
+				Thread search = new SearchClaimThread(user.getName(), null, tag);
 				search.start();
 				progressing = false;
 			} else {
@@ -248,16 +245,19 @@ public class MyClaimActivity extends Activity {
 	}
 
 	class SearchClaimThread extends Thread {
+		private String userName;
 		private String status;
 		private String tag;
-		public SearchClaimThread(String status, String tag) {
+		
+		public SearchClaimThread(String userName, String status, String tag) {
 			this.status = status;
 			this.tag = tag;
+			this.userName = userName;
 		}
 
 		public void run() {
 			controller.clear();
-			controller.addall(onlineManager.searchClaimList(user.getName(), status, tag));
+			controller.addall(onlineManager.searchClaimList(userName, status, tag));
 			if (user.getName().equals("approval")) {
 				controller.sortClaimOldFirst();
 			} else {
