@@ -53,11 +53,11 @@ import android.widget.AdapterView.OnItemSelectedListener;
  * <OL>
  * <LI>In this part, you need to fill out the information shown on the scream.
  * <UL>
- * <LI>The Item name (String)
- * <LI> The Date of adding the item (DatePicker)<br>
- * <LI>Select a category of the item from Spinner<br>
- * <LI>Select the unit of currency from the Spinner<br>
- * <LI>And enter a digital amount of an item
+ * <LI>Enter the name of an item(String).
+ * <LI>Select the date of adding the item (DatePicker).
+ * <LI>Select category of an item form the corresponding spinner.
+ * <LI>Select the unit of the currency from the corresponding spinner.
+ * <LI>Enter the price of the expense item in decimal numbers.
  * </UL> 
  * </OL>
  * 
@@ -110,7 +110,7 @@ public class FragmentEditItem1 extends Fragment {
 	};
 	
 	/**
-	 * This is the onCreateView of initial the view
+	 * <b>This is the onCreateView of initial the view</b>
 	 * 
 	 * @author Weijie Sun
 	 * @version 1.1
@@ -127,8 +127,8 @@ public class FragmentEditItem1 extends Fragment {
 	}
 
 	/**
-	 * This is the onActivityCreated of create Item or Edit item set the
-	 * original information in the View
+	 * <b>This is the onActivityCreated of create Item or Edit item set the
+	 * original information in the View</b>
 	 * 
 	 * @author Weijie Sun
 	 * @version 1.1
@@ -164,7 +164,7 @@ public class FragmentEditItem1 extends Fragment {
 
 	}
 	/**
-	* This class is get a claim thread by the claimName(string)
+	* <b>This class is get a claim thread by the claimName(string)</b>
 	* @param claimName This is a string of the name of a claim 
 	* @exception IllegalStateException On input error.
 	* @see IllegalStateException

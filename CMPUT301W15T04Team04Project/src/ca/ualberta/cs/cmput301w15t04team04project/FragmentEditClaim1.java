@@ -35,16 +35,23 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView.FindListener;
-
 import android.widget.DatePicker;
-
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 /**
- * This is the fragment part 1 for adding/editing a claim.
+ * <b>This is the fragment part 1 for adding/editing an item.</b><br>
+ * <OL>
+ * <LI>In this part, you need to fill out the information shown on the scream.
+ * <UL>
+ * <LI>Enter the claim name (String).
+ * <LI>Select the start date of the claim (DatePicker).
+ * <LI>Select the end date of the claim (DatePicker).
+ * <LI>Enter the description of the claim (String).
+ * </UL> 
+ * </OL>
  * 
  * @author Ji Yang
  * @author Yang Zhang
@@ -94,17 +101,20 @@ public class FragmentEditClaim1 extends Fragment {
 				false);
 	}
 
-	@Override
 	/**
-	 * The following fix Weijie's problem
+	 * Called when the fragment's activity has been created and this fragment's view hierarchy instantiated.<br>
+	 * It can be used to do final initialization once these pieces are in place, such as retrieving views or restoring state.<br>
+	 * It is also useful for fragments that use setRetainInstance(boolean) to retain their instance, 
+	 * as this callback tells the fragment when it is fully associated with the new activity instance.<br>
+	 * This is called after onCreateView(LayoutInflater, ViewGroup, Bundle) and before onViewStateRestored(Bundle).
 	 * 
+	 * @param savedInstanceState	If the fragment is being re-created from a previous saved state, this is the state.
 	 * @author Chenrui
 	 * @since 2015-03-15
-	 * 
-	 *        Improve Chenrui's code
 	 * @author Yufei
 	 * @since 2015-03-15
 	 */
+	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		Bundle bundle = getActivity().getIntent().getExtras();
@@ -129,6 +139,14 @@ public class FragmentEditClaim1 extends Fragment {
 
 	}
 	
+	/**
+	* <b>This class is get a claim thread by the claimName(string)</b>
+	* @param cName This is a string of the name of a claim 
+	* @exception IOException On input error.
+	* @see IOException
+	* @exception IllegalStateException On input error.
+	* @see IllegalStateException
+	*/
 	class GetThread extends Thread {
 		private String cName;
 
