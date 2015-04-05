@@ -42,7 +42,7 @@ public class Claim {
 	protected String claimName;
 	protected String status;
 	protected String description;
-	protected String Comment;
+	protected ArrayList<String> Comments;
 	protected Date startDate;
 	protected Date endDate;
 	protected ArrayList<Destination> destination = new ArrayList<Destination>();
@@ -71,7 +71,7 @@ public class Claim {
 		status = "In Progress";
 		startDate = new Date(System.currentTimeMillis()); // only for test.
 															// 2015-03-14
-															// Chenrui
+		Comments = new ArrayList<String>();													// Chenrui
 
 	}
 	
@@ -190,8 +190,8 @@ public class Claim {
 	 * @param Comment
 	 *            the Comment of this claim
 	 */
-	public String getComment() {
-		return Comment;
+	public ArrayList<String> getComment() {
+		return Comments;
 	}
 
 	/**
@@ -200,8 +200,8 @@ public class Claim {
 	 * @param Comment
 	 *            the Comment of this claim
 	 */
-	public void setComment(String comment) {
-		Comment = comment;
+	public void setComment(ArrayList<String> comments) {
+		this.Comments = comments;
 	}
 
 	/**

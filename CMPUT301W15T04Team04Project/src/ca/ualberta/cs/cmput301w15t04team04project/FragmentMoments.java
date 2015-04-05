@@ -70,11 +70,12 @@ public class FragmentMoments extends Fragment implements IXListViewListener {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		SearchThread search = new SearchThread();
-		search.start();
+		
 		mListView = (XListView) getView().findViewById(R.id.xListView);
 		mListView.setPullLoadEnable(true);
 		controller = new MyLocalClaimListController();
+		SearchThread search = new SearchThread();
+		search.start();
 		mAdapter = new ClaimListAdapter(getActivity(), R.layout.single_claim,
 				controller.getClaims());
 		mListView.setAdapter(mAdapter);

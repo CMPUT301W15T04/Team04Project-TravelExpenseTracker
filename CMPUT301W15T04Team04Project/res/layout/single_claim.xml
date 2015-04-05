@@ -45,20 +45,21 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="0dp"
                     android:layout_marginRight="10dp"
+                    android:layout_weight="3.43"
                     android:text=" 07,"
                     android:textSize="16sp" />
-
             </LinearLayout>
 
             <TextView
                 android:id="@+id/singleClaimStartYearTextView"
-                android:layout_width="match_parent"
+                android:layout_width="66dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:gravity="right"
                 android:text="2015"
                 android:textSize="12sp"
                 android:textStyle="bold" />
+
 "
 
         </LinearLayout>
@@ -71,20 +72,11 @@
             android:paddingLeft="0dp" >
 
             <TextView
-                android:id="@+id/singleClaimDistinationTextView"
+                android:id="@+id/singleClaimClaimNametextView"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Destination:"
-                android:textColor="@color/grey"
-                android:textSize="8sp" />
+                android:layout_height="match_parent"
+                android:text="ClaimName" />
 
-            <TextView
-                android:id="@+id/singleClaimDistinationDisplayTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Edmonton\nBanff"
-                android:textColorHighlight="@color/red"
-                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -141,5 +133,26 @@
         android:layout_alignParentRight="true"
         android:text="In Progress"
         android:textColor="@color/grey" />
+
+    <TextView
+        android:id="@+id/singleClaimDistinationDisplayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout3"
+        android:layout_toLeftOf="@+id/claimState"
+        android:text="Edmonton\nBanff"
+        android:textColorHighlight="@color/red"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/singleClaimDistinationTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/singleClaimDistinationDisplayTextView"
+        android:layout_alignBottom="@+id/singleClaimDistinationDisplayTextView"
+        android:layout_toLeftOf="@+id/singleClaimDistinationDisplayTextView"
+        android:text="Destination:"
+        android:textColor="@color/grey"
+        android:textSize="8sp" />
 
 </RelativeLayout>

@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/showDestinationsAListView"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/showDestinationsAListView"
         android:ems="10"
         android:hint="Add Some Comments"

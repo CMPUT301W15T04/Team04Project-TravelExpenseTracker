@@ -33,6 +33,7 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -81,7 +82,9 @@ public class OneClaimActivity extends Activity {
 	private User user;
 	private ListView itemlistview;
 	private Menu itemMenu;
-
+	private TextView addComment;
+	private Button addCommentButton;
+	
 	/**
 	 * This method will be called when the user finishes asking a question to
 	 * stop the the current thread.
@@ -113,6 +116,7 @@ public class OneClaimActivity extends Activity {
 			isClaimant = true;
 		}
 		setContentView(R.layout.activity_one_claim);
+		addComment =  (TextView) findViewById(R.id.addCommentsEditText);
 		approverView = (TextView) findViewById(R.id.testApproverTextView);
 		claimantView = (TextView) findViewById(R.id.testClaimantTextView);
 		Bundle extras = getIntent().getExtras();
@@ -174,6 +178,7 @@ public class OneClaimActivity extends Activity {
 				adb.show();
 				return true;
 			}
+			
 
 		}
 
@@ -226,6 +231,21 @@ public class OneClaimActivity extends Activity {
 		return itemMenu.findItem(R.id.action_new_item);
 	}
 
+	public void showCommentList(View view){
+		AlertDialog.Builder adb = new AlertDialog.Builder(OneClaimActivity.this);
+
+		LayoutInflater factory = LayoutInflater.from(OneClaimActivity.this);
+		View claimInfoCDialogView = factory.inflate(
+				R.layout.activity_show_comment, null);
+		adb.setView(claimInfoCDialogView);
+		ListView commentsListView = (ListView) claimInfoCDialogView.findViewById(R.id.showCommentslistView);
+		ArrayAdapter<String> commentsAdapter = new ArrayAdapter<String>(this, 
+				android.R.layout.simple_list_item_1, controller.getClaim().getComment());
+		commentsListView.setAdapter(commentsAdapter);
+		adb.setCancelable(true);
+		adb.show();
+	}
+	
 	/**
 	 * @param view
 	 */
@@ -248,7 +268,9 @@ public class OneClaimActivity extends Activity {
 				.findViewById(R.id.showClaimTagsAListView);
 		destinations = (ListView) claimInfoCDialogView
 				.findViewById(R.id.showDestinationsAListView);
-
+		addComment = (TextView) claimInfoCDialogView
+				.findViewById(R.id.addCommentsEditText);
+		
 		claimName.setText(controller.getClaim().getClaim());
 		Date date = controller.getClaim().getStartDate();
 		DateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
@@ -374,6 +396,11 @@ public class OneClaimActivity extends Activity {
 				public void onClick(DialogInterface dialog, int which) {
 					Toast.makeText(OneClaimActivity.this, "Clicked On Approve",
 							Toast.LENGTH_SHORT).show();
+
+					if (addComment.getText().toString().isEmpty() == false){
+						String commentString = addComment.getText().toString(); 
+						controller.addComment(commentString);
+						}
 					iC = new InternetChecker(thisActivity);
 					if (iC.isNetworkAvailable()) {
 						controller.approveClaim();
@@ -552,6 +579,7 @@ public class OneClaimActivity extends Activity {
 
 			// button.setImageBitmap(bitmap);
 
+			
 		}
 
 		adb.setNeutralButton("Add Comment", new OnClickListener() {
@@ -570,12 +598,24 @@ public class OneClaimActivity extends Activity {
 		adb.show();
 	}
 
+	public void addCommentAction(View view){
+		
+		//addComment = (TextView) findViewById(R.id.oneClaimAddCommentEditText);
+		
+		String commentString = addComment.getText().toString(); 
+		
+		controller.addComment(commentString);
+		//controller.getClaim().getComment().add(commentString);
+	}
+	
 	/**
 	 * 
 	 */
 	public void checkUserType() {
 		if (isClaimant) {
 			approverView.setVisibility(View.GONE);
+/*			addComment.setVisibility(View.GONE);
+			addCommentButton.setVisibility(View.GONE);*/
 		} else {
 			claimantView.setVisibility(View.GONE);
 		}

@@ -67,6 +67,7 @@ public class ClaimListAdapter extends ArrayAdapter<Claim> {
 		}
 		
 		claimList.get(position);
+		holder.claimName=(TextView) convertView.findViewById(R.id.singleClaimClaimNametextView);
 		holder.startMonth = (TextView) convertView
 				.findViewById(R.id.singleClaimStartMonthTextView);
 		holder.startDate = (TextView) convertView
@@ -87,7 +88,7 @@ public class ClaimListAdapter extends ArrayAdapter<Claim> {
 		if (claim != null) {
 			// claim = new Claim("Testing");
 		}
-
+		holder.claimName.setText(claim.getClaim());
 		holder.startYear.setText("" + (claim.getStartDate().getYear() + 1900));
 		holder.startMonth
 				.setText(new DateFormatSymbols().getShortMonths()[claim
@@ -110,6 +111,7 @@ public class ClaimListAdapter extends ArrayAdapter<Claim> {
 	 *
 	 */
 	class ViewHolder {
+		TextView claimName;
 		TextView startYear;
 		TextView startMonth;
 		TextView startDate;

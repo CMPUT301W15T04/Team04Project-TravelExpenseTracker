@@ -64,7 +64,7 @@ public class ClaimEditController extends MyLocalClaimListController {
 	}
 
 	public Claim setClaim(String cName, String cDescription, String cTag,
-			Date sDate, Date eDate, ArrayList<Destination> destination, String user, ArrayList<Item> items) {
+			Date sDate, Date eDate, ArrayList<Destination> destination, String user, ArrayList<Item> items, ArrayList<String> comments) {
 		claim.setClaim(cName);
 		claim.setDescription(cDescription);
 		claim.setTag(tagSplit(cTag));
@@ -73,6 +73,7 @@ public class ClaimEditController extends MyLocalClaimListController {
 		claim.setDestination(destination);
 		claim.setClaimiant(user);
 		claim.setItems(items);
+		claim.setComment(comments);
 		return claim;
 	}
 

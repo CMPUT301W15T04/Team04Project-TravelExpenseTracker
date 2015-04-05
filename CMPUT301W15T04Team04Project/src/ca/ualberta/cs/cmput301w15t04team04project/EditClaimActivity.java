@@ -74,6 +74,7 @@ public class EditClaimActivity extends FragmentActivity {
 	private ClaimEditController controller;
 	private User user;
 	public static ArrayList<Item> items;
+	public static ArrayList<String> comments;
 	protected static int addEditStatus = 0; // 0 add 1 edit
 	protected static String ClaimName;
 	protected Activity thisActivity = this;
@@ -205,8 +206,9 @@ public class EditClaimActivity extends FragmentActivity {
 
 		if (addEditStatus == 0) {
 			ArrayList<Item> cItem = new ArrayList<Item>();
-			Claim claim = controller.setClaim(cName, cDescription, cTag, sDate,
-					eDate, destinationList, user.getName(), cItem);
+			ArrayList<String> cComments = new ArrayList<String>();
+ 			Claim claim = controller.setClaim(cName, cDescription, cTag, sDate,
+					eDate, destinationList, user.getName(), cItem,cComments);
 			Thread add = new AddThread(claim);
 			add.start();
 		}
@@ -214,7 +216,7 @@ public class EditClaimActivity extends FragmentActivity {
 		else {
 			
 			Claim claim = controller.setClaim(cName, cDescription, cTag, sDate,
-					eDate, destinationList, user.getName(), items);
+					eDate, destinationList, user.getName(), items, comments);
 			Thread update = new UpdateThread(claim);
 			update.start();
 		}

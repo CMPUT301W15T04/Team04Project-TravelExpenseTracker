@@ -71,6 +71,7 @@ public class FragmentEditClaim1 extends Fragment {
 		@SuppressWarnings("deprecation")
 		public void run() {
 			EditClaimActivity.items = controller1.getClaim().getItems();
+			EditClaimActivity.comments = controller1.getClaim().getComment();
 			claimName.setText(controller1.getClaim().getClaim());
 			day = controller1.getClaim().getStartDate().getDate();
 			month = controller1.getClaim().getStartDate().getMonth();

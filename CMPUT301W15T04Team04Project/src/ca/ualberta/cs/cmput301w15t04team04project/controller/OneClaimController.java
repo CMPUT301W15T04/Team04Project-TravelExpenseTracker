@@ -182,4 +182,11 @@ public class OneClaimController {
 		
 	}
 
+	public void addComment(String commentString) {
+		// TODO Auto-generated method stub
+		ArrayList<String> comments = claim.getComment();
+		comments.add(commentString);
+		claim.setComment(comments);
+	}
+
 }

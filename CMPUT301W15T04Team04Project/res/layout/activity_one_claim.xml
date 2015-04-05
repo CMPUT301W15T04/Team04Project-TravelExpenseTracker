@@ -83,4 +83,13 @@
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/singleItemDescriptionTextView" />
 
+    <Button
+        android:id="@+id/oneClaimShowCommentButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/singleItemDescriptionTextView"
+        android:layout_alignParentRight="true"
+        android:onClick="showCommentList"
+        android:text="show comment" />
+
 </RelativeLayout>
