@@ -79,6 +79,11 @@ public class MyClaimActivity extends Activity {
 				Thread search = new SearchClaimThread(user.getName(), "approved", null);
 				search.start();
 				progressing = false;
+			} else if (mode == 3) {
+				actionBar.setTitle("Returned Claims");
+				Thread search = new SearchClaimThread(user.getName(), "returned", null);
+				search.start();
+				progressing = false;
 			} else if (mode == 4) {
 				actionBar.setTitle("Search Results");
 				Bundle bundle = getIntent().getExtras();
@@ -86,10 +91,7 @@ public class MyClaimActivity extends Activity {
 				Thread search = new SearchClaimThread(user.getName(), null, tag);
 				search.start();
 				progressing = false;
-			} else {
-				actionBar.setTitle("Saved Claims");
-				progressing = false;
-			}
+			} 
 		}
 		listView = (ListView) findViewById(R.id.myClaimsListView);
 		claimListAdapter = new ClaimListAdapter(thisActivity,

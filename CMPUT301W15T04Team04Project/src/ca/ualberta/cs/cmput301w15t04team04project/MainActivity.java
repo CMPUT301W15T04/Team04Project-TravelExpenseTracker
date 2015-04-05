@@ -269,9 +269,8 @@ public class MainActivity extends FragmentActivity {
 	 */
 	public void showSaved(View view) {
 		MyClaimActivity.mode = 3;
-		Toast.makeText(MainActivity.this,
-				"This part will be done in project 5", Toast.LENGTH_SHORT)
-				.show();
+		Intent intent = new Intent(MainActivity.this, MyClaimActivity.class);
+		startActivity(intent);
 		/**
 		 * We will finish this part in project 5
 		 * 
