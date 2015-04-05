@@ -26,8 +26,25 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 /**
- * This is the activity for showing the detail of a claim. This activity is the
- * version for claimant
+ * <b>This is the activity showing the details of a claim for claimants.</B>
+ * <OL>
+ * <LI type = "square">
+ * The detail includes:
+ * <UL>
+ * <li>Claim Name
+ * <li>Start Date of a Claim
+ * <li>End Date of a Claim
+ * <li>Status of a Claim
+ * <li>Tag(s) of a Claim
+ * <li>Destination(s) of a Claim
+ * </OL>
+ * <ol>
+ * <li type = "square">There also have 2 button on the dialog
+ * <ul>
+ * <li>Cancel: back to the oneClaimActivity
+ * <li>Submit: submit the current claim.
+ * </ul> 
+ * </ol>
  * 
  * @author Yufei Zhang
  * @author Weijie Sun
@@ -40,34 +57,45 @@ public class ClaimDetailActivity extends Activity {
 	private boolean isClaimant = OneClaimActivity.isClaimant;
 
 	/**
-	 * This function create the dialog approver see the activity_claim_detail_a 
-	 * claimiant see the activity_claim_detail
+	 * <ul>
+	 * <li>This function create the dialog approver.<br>
+	 * <ul>
+	 * <li>If the user is a claimant, the layout for the claimant will be chosen.<br>
+	 * <li>Otherwise, the layout for the approver will be chosen. <br>
+	 * </ul></ul>
 	 * 
+	 * Called to do initial creation of a fragment.<br>
+	 * This is called after onAttach(Activity) and before onCreateView(LayoutInflater, ViewGroup, Bundle).<br>
+	 * Note that this can be called while the fragment's activity is still in the process of being created.<br>
+	 * As such, you can not rely on things like the activity's content view hierarchy being initialized at this point.<br>
+	 * If you want to do work once the activity itself is created, see onActivityCreated(Bundle).<br>
+	 * 
+	 * @param savedInstanceState	If the fragment is being re-created from a previous saved state, this is the state.
 	 * @author Yufei Zhang
 	 * @version 1.0
 	 * @since 2015-03-12
 	 */
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		if (isClaimant) {
-			setContentView(R.layout.activity_claim_detail_a);
+			setContentView(R.layout.activity_claim_detail);
 		} else {
 			setContentView(R.layout.activity_claim_detail_a);
 		}
 	}
 
+	
 	/**
 	 * This boolean function is to activate the option menu.
+	 * Initialize the contents of the Activity's standard options menu.<br>
+	 * You should place your menu items in to menu. For this method to be called, you must have first called setHasOptionsMenu(boolean).<br>
+	 * See Activity.onCreateOptionsMenu for more information.
 	 * 
-	 * @author Yufei Zhang
-	 * @author Weijie Sun
-	 * @version 2.0
-	 * @since 2015-04-05
-	 */
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 * @param menu	The options menu in which you place your items.
+	 * @see setHasOptionsMenu(boolean)
+	 * @see onPrepareOptionsMenu(Menu)<br>
+	 * @see onOptionsItemSelected(MenuItem)
 	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -77,15 +105,14 @@ public class ClaimDetailActivity extends Activity {
 	}
 
 	/**
-	 * This boolean function is the default setting
+	 * This hook is called whenever an item in your options menu is selected.<br>
+	 * The default implementation simply returns false to have the normal processing happen (calling the item's Runnable or sending a message to its Handler as appropriate).<br>
+	 * You can use this method for any items for which you would like to do processing without those other facilities.<br>
+	 * Derived classes should call through to the base class for it to perform the default menu handling.
 	 * 
-	 * @author Yufei Zhang
-	 * @author Weijie Sun
-	 * @version 2.0
-	 * @since 2015-04-05
-	 */
-	
-	/* (non-Javadoc)
+	 * @param item	The menu item that was selected.
+	 * @return boolean Return false to allow normal menu processing to proceed, true to consume it here.
+	 * @see onCreateOptionsMenu(Menu)
 	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
 	 */
 	@Override
