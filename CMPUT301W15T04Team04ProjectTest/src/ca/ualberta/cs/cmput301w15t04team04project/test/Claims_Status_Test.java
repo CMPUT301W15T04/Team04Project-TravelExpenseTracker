@@ -52,12 +52,6 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 public class Claims_Status_Test extends
 		ActivityInstrumentationTestCase2<OneClaimActivity> {
 	
-	 Activity activity;
-	ClaimList claimList;
-	MyLocalClaimListController controller = new MyLocalClaimListController(claimList);
-	/**
-	 * 
-	 */
 	public Claims_Status_Test() {
 		super(OneClaimActivity.class);
 	}
@@ -67,16 +61,7 @@ public class Claims_Status_Test extends
 	 */
 	protected void setUp() throws Exception {
 		super.setUp();
-		// add a claim to test on
-		Claim claim = new Claim("Test");
-		claim.setStartDate(new Date());
-		Item item = new Item("Item1");
-		claim.addItem(item);
-		controller.addClaim(claim);
-		Intent intent = new Intent();
-		intent.putExtra("MyClaimid", 0);
-		setActivityIntent(intent);
-		activity = getActivity();
+
 	}
 
 	/*
@@ -86,38 +71,7 @@ public class Claims_Status_Test extends
 	 * 
 	 */
 	public void testSubmitApprover() {
-		ActivityMonitor monitor =  getInstrumentation().addMonitor(OneClaimActivity.class.getName(), null, false);
-		OneClaimActivity myActivity = (OneClaimActivity) monitor.waitForActivity();
-		final Button button = (Button) activity
-				.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.testClaimantTextView);
-		activity.runOnUiThread(new Runnable() {
-			@Override
-			public void run() {
-				// click button and open next activity.
-				button.performClick();
-			}
-		});
-		
-  
-
-		// access the alert dialog using the getDialog() method created in the activity
-		AlertDialog dialog = myActivity.getDialog();
-		if (dialog.isShowing()) {
-	        try {
-	            performClick(dialog.getButton(DialogInterface.BUTTON_POSITIVE));
-	        } catch (Throwable e) {
-	            e.printStackTrace();
-	        }
-	    }
-		// access the button
-		myActivity.finish();
-		getInstrumentation().removeMonitor(monitor);
-		
-		
-		assertFalse("A claim with submitted status?",
-				controller.getClaims().get(0).getStatus().equals("submitted"));
-		
-		
+		Claim claim = new Claim()
 	}
 	private void performClick(final Button button) throws Throwable {
 	    runTestOnUiThread(new Runnable() {
