@@ -97,6 +97,12 @@ public class OneClaimActivity extends Activity {
 		}
 	};
 
+	/**
+	 * This method will be called when the user finishes asking a question to
+	 * stop the the current thread.
+	 */
+
+	
 	private Runnable doFinishLoad = new Runnable() {
 		public void run() {
 			claimAmount.setText(controller.getClaim().currencySummary());
@@ -106,6 +112,15 @@ public class OneClaimActivity extends Activity {
 		}
 	};
 
+
+	/**
+	 * onCreate method Once the activity is created, this method will give each
+	 * view an object to help other methods set data or listeners.
+	 * 
+	 * @param savedInstanceState
+	 *            the saved instance state bundle
+	 */
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -196,6 +211,13 @@ public class OneClaimActivity extends Activity {
 
 	}
 
+	/**
+	 * initial the menu on the top right corner of the screen
+	 * 
+	 * @param menu
+	 *            The menu.
+	 * @return true if the menu is acted.
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -205,7 +227,11 @@ public class OneClaimActivity extends Activity {
 	}
 
 	/**
+	 * initial the menu on the top right corner of the screen
+	 * 
 	 * @param item
+	 *            The menu item.
+	 * @return true if the menu is acted.
 	 */
 	public void goToSearch(MenuItem item) {
 		Intent intent = new Intent(OneClaimActivity.this, SearchActivity.class);
@@ -213,7 +239,10 @@ public class OneClaimActivity extends Activity {
 	}
 
 	/**
+	 * initial the menu on the top right corner of the screen
+	 * 
 	 * @param item
+	 *            The menu item.
 	 */
 	public void goToEditItem(MenuItem item) {
 		Intent intent = new Intent(OneClaimActivity.this,
@@ -225,12 +254,21 @@ public class OneClaimActivity extends Activity {
 		finish();
 	}
 
+	/**
+	 * @return true the menuitem
+	 */
 	// get the menuItem for testing
 	public MenuItem getItemMenuItem() {
 
 		return itemMenu.findItem(R.id.action_new_item);
 	}
 
+	/**
+	 * Will be called when user clicked add Location button, it will pop a
+	 * dialog and let user choose the method of location	 * 
+	 * @param view
+	 *           View passed to the activity to check which button was pressed.
+	 */
 	public void showCommentList(View view){
 		AlertDialog.Builder adb = new AlertDialog.Builder(OneClaimActivity.this);
 
@@ -247,7 +285,10 @@ public class OneClaimActivity extends Activity {
 	}
 	
 	/**
+	 * Will be called when user clicked add Location button, it will pop a
+	 * dialog and let user choose the method of location	 * 
 	 * @param view
+	 *           View passed to the activity to check which button was pressed.
 	 */
 	public void showClaimDetailC(View view) {
 		AlertDialog.Builder adb = new AlertDialog.Builder(OneClaimActivity.this);
@@ -465,8 +506,11 @@ public class OneClaimActivity extends Activity {
 	 */
 
 	/**
+	 * Will be called when user clicked add Location button, it will pop a
+	 * dialog and let user choose the method of location	 * 
 	 * @param view
-	 * @param id
+	 *           View passed to the activity to check which button was pressed.
+	 * @param id the the int value which should be the item index in the claim
 	 */
 	public void showItemDetailC(View view, int id) {
 		AlertDialog.Builder adb = new AlertDialog.Builder(OneClaimActivity.this);
@@ -535,8 +579,11 @@ public class OneClaimActivity extends Activity {
 	}
 
 	/**
+	 * Will be called when user clicked add Location button, it will pop a
+	 * dialog and let user choose the method of location	 * 
 	 * @param view
-	 * @param id
+	 *           View passed to the activity to check which button was pressed.
+	 * @param id the the int value which should be the item index in the claim
 	 */
 	public void showItemDetailA(View view, int id) {
 		AlertDialog.Builder adb = new AlertDialog.Builder(OneClaimActivity.this);
@@ -597,7 +644,12 @@ public class OneClaimActivity extends Activity {
 		adb.setCancelable(true);
 		adb.show();
 	}
-
+	/**
+	 * Will be called when user clicked add Location button, it will pop a
+	 * dialog and let user choose the method of location	 * 
+	 * @param view
+	 *           View passed to the activity to check which button was pressed.
+	 */
 	public void addCommentAction(View view){
 		
 		//addComment = (TextView) findViewById(R.id.oneClaimAddCommentEditText);
@@ -609,7 +661,7 @@ public class OneClaimActivity extends Activity {
 	}
 	
 	/**
-	 * 
+	 * this method is choose which view should be hide
 	 */
 	public void checkUserType() {
 		if (isClaimant) {
@@ -621,7 +673,14 @@ public class OneClaimActivity extends Activity {
 		}
 
 	}
-
+	/**
+	* This class is edit claim thread to run
+	* @param claim This is the claim which should be add in the CLManager 
+	* @exception IOException On input error.
+	* @see IOException
+	* @exception IllegalStateException On input error.
+	* @see IllegalStateException
+	*/
 	class UpdateThread extends Thread {
 		private Claim claim;
 
@@ -643,7 +702,14 @@ public class OneClaimActivity extends Activity {
 			runOnUiThread(doFinishUpdate);
 		}
 	}
-
+	/**
+	* This class is get claim by the cliam name thread to run
+	* @param claim This is the claim which should be add in the CLManager 
+	* @exception IOException On input error.
+	* @see IOException
+	* @exception IllegalStateException On input error.
+	* @see IllegalStateException
+	*/
 	class getClaimThread extends Thread {
 		private String claimName;
 

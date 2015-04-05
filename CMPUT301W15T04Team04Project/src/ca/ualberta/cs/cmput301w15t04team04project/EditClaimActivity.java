@@ -61,6 +61,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 /**
  * This is the activity for adding/editing a claim.
  * 
+ * 
  * @author Ji Yang
  * @author Yang Zhang
  * @version 1.0
@@ -235,6 +236,15 @@ public class EditClaimActivity extends FragmentActivity {
 		}
 
 	}
+	/**
+	* This class is add claim thread to run
+	* @param claim This is the claim which should be add in the CLManager 
+	* @exception IOException On input error.
+	* @see IOException
+	* @exception IllegalStateException On input error.
+	* @see IllegalStateException
+	*/
+	
 	class AddThread extends Thread {
 		private Claim claim;
 
@@ -256,6 +266,15 @@ public class EditClaimActivity extends FragmentActivity {
 			runOnUiThread(doFinish);
 		}
 	}
+	
+	/**
+	* This class is edit claim thread to run
+	* @param claim This is the claim which should be add in the CLManager 
+	* @exception IOException On input error.
+	* @see IOException
+	* @exception IllegalStateException On input error.
+	* @see IllegalStateException
+	*/
 	class UpdateThread extends Thread {
 		private Claim claim;
 

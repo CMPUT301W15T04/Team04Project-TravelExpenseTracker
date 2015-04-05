@@ -49,6 +49,14 @@ public class SearchActivity extends Activity {
 	private ArrayList<String> contectTags = new ArrayList<String> ();
 	private searchController controller = new searchController();
 	
+	/**
+	 * This boolean function is to create searchActivity and the view
+	 * 
+	 * @author Yufei Zhang
+	 * @author Weijie Sun
+	 * @version 2.0
+	 * @since 2015-04-05
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -65,6 +73,15 @@ public class SearchActivity extends Activity {
 		spinner.setAdapter(adapter);
 	}
 	
+	/**
+	 * This boolean function is to search the Activity change the mode of the my Claim Activity to 4
+	 * In order to find the Claims which meet the requirement
+	 * 
+	 * @author Yufei Zhang
+	 * @author Weijie Sun
+	 * @version 2.0
+	 * @since 2015-04-05
+	 */
 	public void search(){
 		MyClaimActivity.mode = 4;
 		

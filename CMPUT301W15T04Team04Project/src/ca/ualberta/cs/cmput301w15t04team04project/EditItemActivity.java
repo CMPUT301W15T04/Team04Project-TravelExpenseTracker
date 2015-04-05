@@ -307,22 +307,22 @@ public class EditItemActivity extends FragmentActivity {
 	}
 	
 
-	/**
+/*	*//**
 	 * active the camera button
 	 * 
 	 * @author Yufei Zhang
 	 * @version 1.0
 	 * @since 2015-03-02
-	 */
+	 *//*
 	public void addReciept(View view) {
-		/**
+		*//**
 		 * we need to add code here doing the following things 1. Add a new
 		 * reciept and show it on this imageView
-		 **/
+		 **//*
 		Toast.makeText(EditItemActivity.this,
 				"Add a Reciept\nWe will finish it\nin project 5.",
 				Toast.LENGTH_SHORT).show();
-	}
+	}*/
 	
 	public void setReceiptBitmap(Bitmap bitmap , int receiptFlag) {
 		// TODO Auto-generated method stub

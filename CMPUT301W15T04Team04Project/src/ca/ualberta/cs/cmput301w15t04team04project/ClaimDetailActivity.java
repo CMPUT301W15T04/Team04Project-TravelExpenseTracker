@@ -30,18 +30,29 @@ import android.view.MenuItem;
  * version for claimant
  * 
  * @author Yufei Zhang
- * @version 1.0
- * @since 2015-03-12
+ * @author Weijie Sun
+ * @param isClaimant boolean value o judge the user see this acivity is claimiant or approve
+ * @version 2.0
+ * @since 2015-04-05
  */
 
 public class ClaimDetailActivity extends Activity {
 	private boolean isClaimant = OneClaimActivity.isClaimant;
 
+	/**
+	 * This function create the dialog approver see the activity_claim_detail_a 
+	 * claimiant see the activity_claim_detail
+	 * 
+	 * @author Yufei Zhang
+	 * @version 1.0
+	 * @since 2015-03-12
+	 */
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		if (isClaimant) {
-			setContentView(R.layout.activity_claim_detail);
+			setContentView(R.layout.activity_claim_detail_a);
 		} else {
 			setContentView(R.layout.activity_claim_detail_a);
 		}
@@ -51,8 +62,12 @@ public class ClaimDetailActivity extends Activity {
 	 * This boolean function is to activate the option menu.
 	 * 
 	 * @author Yufei Zhang
-	 * @version 1.0
-	 * @since 2015-03-12
+	 * @author Weijie Sun
+	 * @version 2.0
+	 * @since 2015-04-05
+	 */
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
 	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -61,6 +76,18 @@ public class ClaimDetailActivity extends Activity {
 		return true;
 	}
 
+	/**
+	 * This boolean function is the default setting
+	 * 
+	 * @author Yufei Zhang
+	 * @author Weijie Sun
+	 * @version 2.0
+	 * @since 2015-04-05
+	 */
+	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
+	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will

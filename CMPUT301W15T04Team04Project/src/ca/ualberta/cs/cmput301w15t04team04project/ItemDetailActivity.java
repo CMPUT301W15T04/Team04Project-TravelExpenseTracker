@@ -35,9 +35,19 @@ import android.widget.ImageView;
  */
 public class ItemDetailActivity extends Activity {
 
+	/**
+	 * @param isClaimant boolean value o judge the user see this acivity is claimiant or approve
+	 */
 	private boolean isClaimant = OneClaimActivity.isClaimant;
 	
-	
+	/**
+	 * This function create the dialog approver see the activity_item_detail_a
+	 * claimiant see the activity_item_detail
+	 * 
+	 * @author Yufei Zhang
+	 * @version 1.0
+	 * @since 2015-03-12
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -51,7 +61,14 @@ public class ItemDetailActivity extends Activity {
 		
 		
 	}
-
+	/**
+	 * This boolean function is to activate the option menu.
+	 * 
+	 * @author Yufei Zhang
+	 * @author Weijie Sun
+	 * @version 2.0
+	 * @since 2015-04-05
+	 */
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreasteOptionsMenu(android.view.Menu)
 	 */
@@ -62,6 +79,14 @@ public class ItemDetailActivity extends Activity {
 		return true;
 	}
 
+	/**
+	 * This boolean function is the default setting
+	 * 
+	 * @author Yufei Zhang
+	 * @author Weijie Sun
+	 * @version 2.0
+	 * @since 2015-04-05
+	 */
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
 	 */

@@ -73,6 +73,14 @@ public class MainActivity extends FragmentActivity {
 	//resurce from "https://github.com/joshua2ua/CurrentLocation" March 28
 	public static final String MOCK_PROVIDER = "mockLocationProvider";
 
+	
+	/**
+	 * onCreate method Once the activity is created, this method will give each
+	 * view an object to help other methods set data or listeners.
+	 * 
+	 * @param savedInstanceState
+	 *            the saved instance state bundle
+	 */
 	/* (non-Javadoc)
 	 * @see android.support.v4.app.FragmentActivity#onCreate(android.os.Bundle)
 	 */
@@ -160,6 +168,13 @@ public class MainActivity extends FragmentActivity {
 		});
 	}
 
+	/**
+	 * initial the menu on the top right corner of the screen
+	 * 
+	 * @param menu
+	 *            The menu.
+	 * @return true if the menu is acted.
+	 */
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
 	 */
@@ -279,6 +294,7 @@ public class MainActivity extends FragmentActivity {
 		 */
 	}
 	
+	
 	private final LocationListener listener = new LocationListener() {
 		public void onLocationChanged (Location location) {
 			TextView tv = (TextView) findViewById(R.id.gpsHomeLocationTextView);
@@ -308,7 +324,13 @@ public class MainActivity extends FragmentActivity {
 		}
 	};
 	
-	
+	/**
+	 * Will be called when user clicked add Location button, it will pop a
+	 * dialog and let user choose the method of location which go to the osmMainAcitivity
+	 * 
+	 * @param view
+	 *            View passed to the activity to check which button was pressed.
+	 */
 	public void goToMapAction(View v){
 		Intent intent = new Intent(MainActivity.this, osmMainActivity.class);
 		startActivity(intent);
