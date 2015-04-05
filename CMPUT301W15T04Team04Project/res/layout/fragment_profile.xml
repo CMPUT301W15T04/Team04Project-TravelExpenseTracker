@@ -56,8 +56,8 @@
         android:clickable="true"
         android:drawableLeft="@drawable/outbox"
         android:gravity="center_vertical|center_horizontal"
-        android:onClick="showSaved"
-        android:text="Outbox Claims"
+        android:onClick="showReturn"
+        android:text="Retruned Claims"
         android:textSize="32dp" />
 
     <TextView
