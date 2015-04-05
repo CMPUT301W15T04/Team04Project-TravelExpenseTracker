@@ -50,7 +50,7 @@ public class US01_01_01 extends ActivityInstrumentationTestCase2<EditClaimActivi
         
         
         assertEquals("Start Date is equall",startDate,date1);
-        assertEquals("End Date is equall",endDate,date1);
+        assertEquals("End Date is equall",endDate,date2);
 	
 	}
 }
