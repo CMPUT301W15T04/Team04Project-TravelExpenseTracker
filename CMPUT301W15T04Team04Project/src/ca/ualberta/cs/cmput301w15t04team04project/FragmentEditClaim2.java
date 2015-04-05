@@ -20,7 +20,9 @@
  */
 package ca.ualberta.cs.cmput301w15t04team04project;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
@@ -43,7 +45,18 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 /**
- * This is the fragment part 2 for adding/editing a claim.
+ * <b>This is the fragment part 2 for adding/editing a claim.</b><br>
+ * <OL>
+ * <LI>In this part, you need to fill out the information shown on the scream.
+ * <UL>
+ * <LI>Enter the tag(s) of a claim (String).<br>
+ * If you want to add several tags, you need to split several tag by comma.<br>
+ * For example (tag1, tag2) will add tag1 and tag2 to the claim.
+ * <LI>Enter the destination of the claim by click "Add"
+ * The first row is using for adding the name of the destination.
+ * The second row is using for describe the reason why you went there.
+ * </UL> 
+ * </OL>
  * 
  * @author Ji Yang
  * @author Yang Zhang
@@ -93,9 +106,14 @@ public class FragmentEditClaim2 extends Fragment {
 	}
 
 	/**
-	 * onActivityCreated is Edit Claim or Add Claim
+	 * <b>onActivityCreated is Edit Claim or Add Claim</b><br>
+	 * Called when the fragment's activity has been created and this fragment's view hierarchy instantiated.<br>
+	 * It can be used to do final initialization once these pieces are in place, such as retrieving views or restoring state.<br>
+	 * It is also useful for fragments that use setRetainInstance(boolean) to retain their instance, 
+	 * as this callback tells the fragment when it is fully associated with the new activity instance.<br>
+	 * This is called after onCreateView(LayoutInflater, ViewGroup, Bundle) and before onViewStateRestored(Bundle).
 	 * 
-	 * The following fix Weijie's problem
+	 * @param savedInstanceState	If the fragment is being re-created from a previous saved state, this is the state.
 	 * 
 	 * @author Chenrui
 	 * @since 2015-03-15
@@ -139,7 +157,14 @@ public class FragmentEditClaim2 extends Fragment {
 			// EditClaimActivity.myClaimId = this.myClaimId;
 		}
 	}
-
+	/**
+	 * <b>This class is using for adding the destination once user click the "Add" button.</b>
+	 * The destination name and the reason will be shown as destination(reason) below the
+	 * title "Destination & Reason"
+	 * 
+	 * @author yufei
+	 *
+	 */
 	class ButtonListener implements View.OnClickListener {
 		@Override
 		public void onClick(View view) {
@@ -160,6 +185,14 @@ public class FragmentEditClaim2 extends Fragment {
 		}
 	}
 
+	/**
+	* <b>This class is get a claim thread by the cName(string)</b>
+	* @param cName This is a string of the name of a claim 
+	* @exception IOException On input error.
+	* @see IOException
+	* @exception IllegalStateException On input error.
+	* @see IllegalStateException
+	*/
 	class GetThread2 extends Thread {
 		private String cName;
 

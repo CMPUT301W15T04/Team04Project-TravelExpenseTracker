@@ -42,7 +42,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 /**
- * <b>This is the fragment part 1 for adding/editing an item.</b><br>
+ * <b>This is the fragment part 1 for adding/editing a claim.</b><br>
  * <OL>
  * <LI>In this part, you need to fill out the information shown on the scream.
  * <UL>
@@ -140,7 +140,7 @@ public class FragmentEditClaim1 extends Fragment {
 	}
 	
 	/**
-	* <b>This class is get a claim thread by the claimName(string)</b>
+	* <b>This class is get a claim thread by the cName(string)</b>
 	* @param cName This is a string of the name of a claim 
 	* @exception IOException On input error.
 	* @see IOException
