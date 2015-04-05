@@ -34,6 +34,7 @@ import android.widget.AdapterView;
 
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -70,6 +71,7 @@ public class OneClaimActivity extends Activity {
 	private ListView tags;
 	private ListView destinations;
 	private ImageView receiptImageView;
+	private CheckBox completeCheckBox;
 	private OneClaimController controller;
 	static boolean isClaimant;
 	private OneClaimActivity thisActivity = this;
@@ -84,6 +86,7 @@ public class OneClaimActivity extends Activity {
 	private Menu itemMenu;
 	private TextView addComment;
 	private Button addCommentButton;
+	private int isCompleteId;
 	
 	/**
 	 * This method will be called when the user finishes asking a question to
@@ -311,6 +314,7 @@ public class OneClaimActivity extends Activity {
 				.findViewById(R.id.showDestinationsAListView);
 		addComment = (TextView) claimInfoCDialogView
 				.findViewById(R.id.addCommentsEditText);
+
 		
 		claimName.setText(controller.getClaim().getClaim());
 		Date date = controller.getClaim().getStartDate();
@@ -528,7 +532,8 @@ public class OneClaimActivity extends Activity {
 				.findViewById(R.id.currentDescripTextView);
 		receiptImageView = (ImageView) itemInfoCDialogView
 				.findViewById(R.id.currentRecieptImageView);
-
+		completeCheckBox = (CheckBox) itemInfoCDialogView
+				.findViewById(R.id.completeCheckBox);
 		descript.setText(controller.getClaim().getItems().get(id).getItemName());
 
 		// amount.setText(claim.getItems().get(id).getCurrency().getType()+String.valueOf(claim.getItems().get(id).getCurrency().getAmount()));
@@ -551,6 +556,9 @@ public class OneClaimActivity extends Activity {
 				.getItemCategory());
 		descript.setText(controller.getClaim().getItems().get(id)
 				.getItemDescription());
+		completeCheckBox.setChecked(controller.getClaim().getItems().get(id).getisComplete());
+		isCompleteId = id;
+		
 		if (controller.getClaim().getItems().get(id).getReceipt() != null) {
 
 			Bitmap bitmap = controller.getClaim().getItems().get(id)
@@ -570,7 +578,16 @@ public class OneClaimActivity extends Activity {
 		 * Intent(OneClaimActivity.this, EditItemActivity.class);
 		 * startActivity(intent); } });
 		 */
+		adb.setNeutralButton("OK", new OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				Toast.makeText(OneClaimActivity.this, "Clicked On Approve",
+						Toast.LENGTH_SHORT).show();
 
+				Boolean check = completeCheckBox.isChecked();
+				controller.getClaim().getItems().get(isCompleteId).setComplete(check);
+			}
+		});
+		
 		adb.setCancelable(true);
 		adb.show();
 	}
