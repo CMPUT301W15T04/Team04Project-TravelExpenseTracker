@@ -46,7 +46,8 @@ public class SignInController {
 
 	/**
 	 * signIn is use to react when signIn button be clicked
-	 * 
+	 * get the claimant name in EditText 
+	 * the save it in local
 	 * @param context the view that pass in
 	 * @param userName the EditText that user inputed at
 	 * @since 2015-03-12

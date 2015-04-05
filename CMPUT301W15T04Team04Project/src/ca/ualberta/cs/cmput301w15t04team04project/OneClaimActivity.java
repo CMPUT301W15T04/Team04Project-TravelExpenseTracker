@@ -405,9 +405,6 @@ public class OneClaimActivity extends Activity {
 
 			adb.setNegativeButton("Cancel", new OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
-					Toast.makeText(OneClaimActivity.this, "Clicked On Confirm",
-							Toast.LENGTH_SHORT).show();
-					controller.confirmClaim();
 					/**
 					 * You need to add code here to do the confirm stuff Once
 					 * the claimant click this, the claim is updated

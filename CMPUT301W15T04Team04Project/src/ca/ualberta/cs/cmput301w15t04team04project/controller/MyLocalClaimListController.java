@@ -50,12 +50,7 @@ public class MyLocalClaimListController {
 	private static ClaimList claimList;
 
 	/**
-	 * MyLocalClaimListController is initialed with a claimList
-	 * 
-	 * @author Youdong Ma
-	 * @param claimList
-	 * @version 1.1
-	 * @since 2015-03-12
+	 * get claimList
 	 */
 	public ClaimList getClaimList(){
 		if (claimList == null) {
@@ -64,49 +59,17 @@ public class MyLocalClaimListController {
 		return claimList;
 	}
 	
+	/**
+	 * add all claims to the cliamList
+	 * @param arrayList
+	 */
+	
 	public void addall(ArrayList<Claim> arrayList){
 		getClaimList().getClaimArrayList().addAll(arrayList);
 	}
 	
 	public void clear(){
 		getClaimList().getClaimArrayList().clear();
-	}
-
-	/**
-	 * getClaimsByIndex is get the claims by the given status
-	 * 
-	 * @param indexList
-	 * @author Youdong Ma
-	 * @return claims
-	 * @version 1.0
-	 * @since 2015-03-12
-	 */
-
-	@SuppressWarnings("null")
-	public ArrayList<Claim> getClaimsByIndex(ArrayList<Integer> indexList) {
-		ArrayList<Claim> claims = new ArrayList<Claim>();
-		for (int i = 0; i < indexList.size(); i++) {
-			claims.add(getClaims().get(indexList.get(i)));
-		}
-		return claims;
-	}
-
-	/**
-	 * getClaimList is get the claim list in the Manager
-	 * 
-	 * @param indexList
-	 * @author Youdong Ma
-	 * @version 1.0
-	 * @since 2015-03-12
-	 */
-	public ArrayList<Integer> getIndexList(String string) {
-		ArrayList<Integer> indexList = new ArrayList<Integer>();
-		for (int i = 0; i < getClaims().size(); i++) {
-			if (getClaims().get(i).getStatus().equals(string)) {
-				indexList.add(i);
-			}
-		}
-		return indexList;
 	}
 
 	/**
@@ -127,9 +90,11 @@ public class MyLocalClaimListController {
 	 */
 	public void deleteClaim(int index) {
 		getClaims().remove(index);
-		//getClaimList().notifyListeners();
 	}
 	
+	/**
+	 * sort Claim by start date newest first
+	 */
 	public void sortClaimNewFirst(){
 		for (int i = 0; i < (getClaims().size() - 1); i++) {
 			for (int j = i; j < (getClaimList().size() - 1 - i); j++) {
@@ -146,7 +111,9 @@ public class MyLocalClaimListController {
 			}
 		}
 	}
-
+	/**
+	 * sort Claim by start date oldest first
+	 */
 	public void sortClaimOldFirst(){
 		for (int i = 0; i < (getClaims().size() - 1); i++) {
 			for (int j = i; j < (getClaimList().size() - 1 - i); j++) {

@@ -282,7 +282,7 @@ public class MainActivity extends FragmentActivity {
 	/**
 	 * @param view
 	 */
-	public void showSaved(View view) {
+	public void showReturn(View view) {
 		MyClaimActivity.mode = 3;
 		Intent intent = new Intent(MainActivity.this, MyClaimActivity.class);
 		startActivity(intent);
@@ -335,4 +335,10 @@ public class MainActivity extends FragmentActivity {
 		Intent intent = new Intent(MainActivity.this, osmMainActivity.class);
 		startActivity(intent);
 	}
+	
+	public void goToSearch(MenuItem item) {
+		Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+		startActivity(intent);
+	}
+	
 }
