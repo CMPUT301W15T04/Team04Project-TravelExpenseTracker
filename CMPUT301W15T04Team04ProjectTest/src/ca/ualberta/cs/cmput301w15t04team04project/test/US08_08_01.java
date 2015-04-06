@@ -40,7 +40,7 @@ public class US08_08_01 extends ActivityInstrumentationTestCase2<MyClaimActivity
 		controller = new ClaimEditController();
 		
 	}
-	
+/*	
 	public void testPreConditions(){
         assertNotNull(thisActivity);
         claim.setClaimiant("testClaimiant");
@@ -93,5 +93,5 @@ public class US08_08_01 extends ActivityInstrumentationTestCase2<MyClaimActivity
 		
 	    //where to find the Approver button id
 	    
-	}
+	}*/
 }

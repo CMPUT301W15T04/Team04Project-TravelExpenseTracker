@@ -1,7 +1,7 @@
 package ca.ualberta.cs.cmput301w15t04team04project.test;
 
-import java.sql.Date;
 import java.util.Calendar;
+import java.util.Date;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.View;
@@ -10,6 +10,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.FragmentProfile;
 import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.OneClaimActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ClaimListAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ItemListAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
@@ -30,6 +31,8 @@ public class US08_04_01 extends ActivityInstrumentationTestCase2<OneClaimActivit
 	private User approver;
 	private ItemListAdapter itemListAdapter;
 	private MyLocalClaimListManager manager;
+	private User claimiant;
+
 	
 	public US08_04_01() {
 		super(OneClaimActivity.class);
@@ -40,29 +43,29 @@ public class US08_04_01 extends ActivityInstrumentationTestCase2<OneClaimActivit
 	protected void setUp() throws Exception
 	{
 		super.setUp();
-		thisActivity = (OneClaimActivity) getActivity();
-		manager = new MyLocalClaimListManager();
-		claim = manager.loadClaimList(getActivity()).getClaimArrayList().get(0);
+		claimiant = new User("testclaimiant");
+		
 		controller = new ClaimEditController();
+		claim = new Claim("AClaim");
+		claim.setStatus("submitted");
+		claim.setClaimiant("testclaimiant");
+		controller.setClaimObj(claim);
+		item = new Item("AItem");
+		claim.addItem(item);
+		calender.set(2005, 1, 12);
+		date = calender.getTime();
+		item.setItemDate(date);
+		String description = "testdescription";
+		item.setItemDescription(description);
+		approver = new User("approver");
+		SignInManager.saveInFile(getActivity(), claimiant);
+		thisActivity = (OneClaimActivity) getActivity();
+		//manager = new MyLocalClaimListManager();
+		//claim = manager.loadClaimList(getActivity()).getClaimArrayList().get(0);
 	}
+
 	
-	public void testPreConditions(){
-        assertNotNull(thisActivity);
-        
-        claim.setStatus("Submitted");
-        controller.setClaimObj(claim);
-        item = new Item("AItem");
-        claim.addItem(item);
-        calender.set(2005, 1,
-				12);
-        date = (Date) calender.getTime();
-        item.setItemDate(date);
-        String description = "testdescription";
-        item.setItemDescription(description);
-        approver = new User("approver");
-	}
-	
-	protected void AllItemDetailofSubmittedClaim(){
+	public void AllItemDetailofSubmittedClaimTest(){
 		itemListAdapter = new ItemListAdapter(getActivity(), 0, claim.getItems());
 
 		ListView itemListView = (ListView) getActivity().findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.OneCaimItemListView); //listView

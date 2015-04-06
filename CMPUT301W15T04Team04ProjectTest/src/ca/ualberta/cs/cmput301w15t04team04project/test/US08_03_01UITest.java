@@ -9,9 +9,11 @@ import android.widget.ListView;
 import ca.ualberta.cs.cmput301w15t04team04project.FragmentMoments;
 import ca.ualberta.cs.cmput301w15t04team04project.FragmentProfile;
 import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
+import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import junit.framework.TestCase;
 //resource from http://blog.denevell.org/android-testing-fragments.html
 public class US08_03_01UITest extends ActivityInstrumentationTestCase2<MainActivity> {
@@ -24,8 +26,8 @@ public class US08_03_01UITest extends ActivityInstrumentationTestCase2<MainActiv
 	private Claim Aclaim;
 	private Claim Bclaim;
 	private Claim Cclaim;
-
-	
+	private User claimiant;
+	private SignInManager manager;
 	
 	public US08_03_01UITest() {
 		super(MainActivity.class);
@@ -33,32 +35,40 @@ public class US08_03_01UITest extends ActivityInstrumentationTestCase2<MainActiv
 	}
 
 	@Override
-	protected void setUp() throws Exception
-	{
+	protected void setUp() throws Exception {
 		super.setUp();
+		claimiant = new User("testclaimiant");
+
+		SignInManager.saveInFile(getActivity(), claimiant);
+
 		thisActivity = (MainActivity) getActivity();
 		momentfragment = (FragmentMoments) thisActivity.fragments.get(1);
-		
+		Claim Aclaim = new Claim("Aclaim");
+		Aclaim.setStatus("Submitted");
+		Aclaim.setClaimiant("testclaimiant");
+		Claim Bclaim = new Claim("Bclaim");
+		Bclaim.setStatus("Submitted");
+		Aclaim.setClaimiant("testclaimiant");
+
+		Claim Cclaim = new Claim("Cclaim");
+		Cclaim.setStatus("Proceed");
+		Aclaim.setClaimiant("testclaimiant");
+
+		ArrayList<Claim> claims = new ArrayList<Claim>();
+
+		claims.add(Aclaim);
+		claims.add(Bclaim);
+		claims.add(Cclaim);
+
+		controller.addall(claims);
 	}
-	
-	public void testPreConditions() {
+
+/*	public void testPreConditions() {
         assertNotNull(thisActivity);
         assertNotNull(momentfragment);
-        Claim Aclaim = new Claim("Aclaim");
-        Aclaim.setStatus("Submitted");
-        Claim Bclaim = new Claim("Bclaim");
-        Bclaim.setStatus("Submitted");
-        Claim Cclaim = new Claim("Cclaim");
-        Cclaim.setStatus("Proceed");
-
-        ArrayList<Claim> claims = new ArrayList<Claim>();
-        
-        claims.add(Aclaim);
-        claims.add(Bclaim);
-        claims.add(Cclaim);
-
-        controller.addall(claims);
-    }
+        //claimiant = new User("testclaimiant");
+ 
+    }*/
 	
 	protected void AllClaimDetailsUItest(){
 		ListView listView = (ListView) thisActivity.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.myClaimsListView); //listView

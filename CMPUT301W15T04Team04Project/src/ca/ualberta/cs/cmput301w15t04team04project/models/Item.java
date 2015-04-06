@@ -21,6 +21,7 @@
 
 package ca.ualberta.cs.cmput301w15t04team04project.models;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.Date;
 
@@ -84,11 +85,28 @@ public class Item {
 		return result;
 	}
 	
-	public void setReceipBitmap(Bitmap bitmap){
+	public void setReceipBitmap(Bitmap oldbitmap){
+		Bitmap bitmap = compressImage(oldbitmap);
+				
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();  
-		bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object   
+		bitmap.compress(Bitmap.CompressFormat.JPEG, 40, baos); //bm is the bitmap object  
+	    
 		byte[] b = baos.toByteArray(); 
-		receipt = Base64.encodeToString(b, Base64.DEFAULT);
+		this.receipt = Base64.encodeToString(b, Base64.DEFAULT);
+	}
+	private Bitmap compressImage(Bitmap image) {
+
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+		int options = 100;
+		while ( baos.toByteArray().length / 1024>60) {	
+			baos.reset();
+			image.compress(Bitmap.CompressFormat.JPEG, options, baos);
+			options -= 10;
+		}
+		ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());
+		Bitmap bitmap = BitmapFactory.decodeStream(isBm, null, null);
+		return bitmap;
 	}
 	/* At some point in the code there's going to be that GSON stuff. You just need to tell GSON how to
 	 * handle a Drawable properly.

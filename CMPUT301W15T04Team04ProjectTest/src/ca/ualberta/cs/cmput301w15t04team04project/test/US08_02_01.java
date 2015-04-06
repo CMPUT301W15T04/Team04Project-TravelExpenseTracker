@@ -25,10 +25,13 @@ import java.util.Date;
 import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.MyClaimActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.OneClaimActivity;
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ClaimListAdapter;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
+import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.View;
 import android.webkit.WebView.FindListener;
@@ -43,7 +46,9 @@ import android.widget.ListView;
 public class US08_02_01 extends ActivityInstrumentationTestCase2<MyClaimActivity>{
 	
 	private ClaimListAdapter claimAdapter; 
-
+	private MyClaimActivity thisActivity;
+	private User claimiant;
+	
 	/**
 	* The Approver_02_Test method is extend the super class MainActivity
 	*
@@ -57,6 +62,18 @@ public class US08_02_01 extends ActivityInstrumentationTestCase2<MyClaimActivity
 	}
 
 	
+	@Override
+	protected void setUp() throws Exception
+	{
+		super.setUp();
+		claimiant = new User("testclaimiant");
+
+		SignInManager.saveInFile(getActivity(), claimiant);
+		thisActivity = (MyClaimActivity) getActivity();
+		//manager = new MyLocalClaimListManager();
+		//claim = manager.loadClaimList(getActivity()).getClaimArrayList().get(0);
+	}
+
 	/**
 	* The sortedClaimListTest method tests if the listview equals and show by ordered
 	*
@@ -65,6 +82,8 @@ public class US08_02_01 extends ActivityInstrumentationTestCase2<MyClaimActivity
 	* @since   2015-03-08
 	*/
 	protected void sortedClaimListTest() {
+		SignInManager.saveInFile(getActivity(), claimiant);
+		thisActivity = (MyClaimActivity) getActivity();
 		ClaimList testClaimList = new ClaimList();
 		Claim AClaim = new Claim("A");
 		Claim BClaim = new Claim("B");

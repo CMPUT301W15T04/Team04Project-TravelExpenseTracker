@@ -25,11 +25,11 @@ public class US06_01_01 extends ActivityInstrumentationTestCase2<EditItemActivit
 	protected void setUp() throws Exception
 	{
 		super.setUp();
-		thisActivity = (EditItemActivity) getActivity();
+		//thisActivity = (EditItemActivity) getActivity();
 		controller = new ItemEditController();
 	}
 
-	protected void test(){
+	public void test(){
 		Bitmap bitmap = Bitmap.createBitmap(256,256,Bitmap.Config.ARGB_4444);
 		Item item = new Item("test");
 		item.setReceipBitmap(bitmap);
@@ -39,9 +39,9 @@ public class US06_01_01 extends ActivityInstrumentationTestCase2<EditItemActivit
 		
 	}
 	
-	protected void Uitest(){
+	public void Uitest(){
 		
-		assertNotNull(thisActivity);
+		//assertNotNull(thisActivity);
 		
 		
 		

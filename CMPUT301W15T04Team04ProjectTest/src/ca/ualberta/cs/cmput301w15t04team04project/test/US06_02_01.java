@@ -26,11 +26,11 @@ public class US06_02_01 extends ActivityInstrumentationTestCase2<OneClaimActivit
 	protected void setUp() throws Exception
 	{
 		super.setUp();
-		thisActivity = (OneClaimActivity) getActivity();
+		//thisActivity = (OneClaimActivity) getActivity();
 		controller = new ItemEditController();
 	}
 
-	protected void test(){
+	public void test(){
 		Bitmap bitmap = Bitmap.createBitmap(256,256,Bitmap.Config.ARGB_4444);
 		Item item = new Item("test");
 		item.setReceipBitmap(bitmap);
@@ -40,9 +40,9 @@ public class US06_02_01 extends ActivityInstrumentationTestCase2<OneClaimActivit
 		
 	}
 	
-	protected void Uitest(){
+	public void Uitest(){
 		
-		assertNotNull(thisActivity);
+		//assertNotNull(thisActivity);
 		
 		AlertDialog.Builder adb = new AlertDialog.Builder(thisActivity);
 

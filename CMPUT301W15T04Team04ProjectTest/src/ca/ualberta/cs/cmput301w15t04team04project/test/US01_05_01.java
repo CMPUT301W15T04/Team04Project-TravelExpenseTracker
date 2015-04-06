@@ -32,22 +32,26 @@ public class US01_05_01 extends ActivityInstrumentationTestCase2<MyClaimActivity
 	protected void setUp() throws Exception
 	{
 		super.setUp();
-		thisActivity = (MyClaimActivity) getActivity();
+		//thisActivity = (MyClaimActivity) getActivity();
 		controller = new ClaimEditController();
 	}
 	
 	public void test(){
 		
-		assertNotNull(thisActivity);
+		//assertNotNull(thisActivity);
         
         claimiant = new User("testclaimiant");
         Claim testClaim = new Claim("test");
 
-        controller.setClaimObj(testClaim);
+        
+        controller.getClaimList().getClaimArrayList().add(testClaim);
+        
+        //controller.setClaimObj(testClaim);
 		
-		controller.deleteClaim(0);
+		controller.getClaimList().getClaimArrayList().remove(0);
+
+		assertEquals("claim list is empty", controller.getClaimList().size(), 0);
 		
-		assertFalse("deleted", controller1.getClaims().get(0).equals(testClaim));
 /*		ActivityMonitor activityMonitor = getInstrumentation().addMonitor(MyClaimActivity.class.getName(), null, false);
 		
 		ListView listView = (ListView) thisActivity.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.myClaimsListView); //listView

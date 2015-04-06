@@ -41,7 +41,7 @@ public class US08_07_01 extends ActivityInstrumentationTestCase2<MyClaimActivity
 		
 	}
 	
-	public void testPreConditions(){
+/*	public void testPreConditions(){
         assertNotNull(thisActivity);
         
         claim.setStatus("Submitted");
@@ -78,5 +78,5 @@ public class US08_07_01 extends ActivityInstrumentationTestCase2<MyClaimActivity
 		
 	    //where to find the Return button id
 	    
-	}
+	}*/
 }
