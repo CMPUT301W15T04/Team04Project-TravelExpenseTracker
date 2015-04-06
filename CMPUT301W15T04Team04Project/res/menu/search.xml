@@ -1,8 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="ca.ualberta.cs.cmput301w15t04team04project.SearchActivity" >
-
-    <item android:id="@+id/text_search" android:title="SearchKey" android:showAsAction="ifRoom" android:actionLayout="@layout/search_bar" />
     
         
 

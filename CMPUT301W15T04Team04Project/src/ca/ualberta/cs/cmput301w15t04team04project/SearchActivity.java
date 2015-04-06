@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 /**
@@ -33,9 +34,8 @@ public class SearchActivity extends Activity {
 			"A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20",
 			"A21" };*/
 	private User user;
-	private ArrayList<String> contectTags = new ArrayList<String> ();
 	private searchController controller = new searchController();
-	
+	private EditText tags;
 	/**
 	 * Called to do initial creation of a fragment.<br>
 	 * This is called after onAttach(Activity) and before onCreateView(LayoutInflater, ViewGroup, Bundle).<br>
@@ -54,16 +54,9 @@ public class SearchActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
-
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setIcon(R.drawable.ic_action_search);
-		Spinner spinner = (Spinner) findViewById(R.id.constactTagsSpinner);
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-				getBaseContext(),
-				android.R.layout.simple_spinner_dropdown_item, contectTags);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinner.setAdapter(adapter);
 	}
 	
 	/**
@@ -75,42 +68,16 @@ public class SearchActivity extends Activity {
 	 * @version 2.0
 	 * @since 2015-04-05
 	 */
-	public void search(){
+	public void search(View view){
+		tags = (EditText) findViewById(R.id.enterTags);
+		String tag = tags.getText().toString();
 		MyClaimActivity.mode = 4;
-		
 		Intent intent = new Intent(SearchActivity.this,
 				MyClaimActivity.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		intent.putExtra("tag", "");
+		intent.putExtra("tag", tag);
 		startActivity(intent);
 		finish();
 	}
-	/**
-	 * This hook is called whenever an item in your options menu is selected.<br>
-	 * The default implementation simply returns false to have the normal processing happen (calling the item's Runnable or sending a message to its Handler as appropriate).<br>
-	 * You can use this method for any items for which you would like to do processing without those other facilities.<br>
-	 * Derived classes should call through to the base class for it to perform the default menu handling.
-	 * 
-	 * @param item	The menu item that was selected.
-	 * @return boolean Return false to allow normal menu processing to proceed, true to consume it here.
-	 * @see onCreateOptionsMenu(Menu)
-	 * 
-	 * @author Yufei Zhang
-	 * @version 1.0
-	 * @since 2015-03-12
-	 */
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.search, menu);
-
-		return super.onCreateOptionsMenu(menu);
-		// return true;
-	}
-
-	protected void cancle(View view) {
-		finish();
-	}
-
 }
