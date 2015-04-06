@@ -47,8 +47,57 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 /**
- * The MyClaim Activity is the profile my claims. which is write without
- * Internet environment .
+ * <b>The MyClaim Activity is the profile my claims.</b>
+ * <ol>
+ * <li type = "square">This activity is gives user 7 different button to choose.
+ * <ul>
+ * 
+ * <li>Progressing Claims
+ * <ul>
+ * 	<li>This type of claims are saved in local.
+ * 	<li>This kind of claims can be modified only by claimants.
+ * </ul>
+ * 
+ * <li>Submit Claims
+ * <ul>
+ * <li>This type of claims are saved online
+ * <li>This kind of claims can be seen by both approvers and claimants.
+ * <li>Claimant can only change the status from submit to progress.
+ * <li>Approver can only add comments and approve the submitted claims.
+ * </ul>
+ * 
+ * <li>Approved Claims
+ * <ul>
+ * <li>This kind of claims are saved online
+ * <li>This type of claims cannot be modified by anybody
+ * <li>This kind of claims can only be seen by claimants
+ * <li>This kind of claims will be send back to the claimant once they are approved
+ * </ul>
+ *
+ * <li>Returned Claims
+ * <ul>
+ * <li>The Returned Claims are modified by approvers online
+ * <li>This kind of claims will be send back to the claimant so that the claimant can modify them offline
+ * </ul>
+ * 
+ * <li>Button (GPS)
+ * <ul>
+ * <li>Click on this button will lead the user to the GPS page
+ * </ul>
+ * 
+ * <li>LOU OUT
+ * <ul>
+ * <li>This button is on the action bar
+ * <li>User can click it to log out the system
+ * </ul>
+ * 
+ * <li>Search
+ * <ul>
+ * <li>Click on this button on the action bar allows user go the search page
+ * </ul>
+ * </ul>
+ * </ol>
+ * 
  * @author youdong
  * @author Weijie Sun
  * @version 1.0
@@ -58,7 +107,6 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
  * @version 1.1
  * @since 2015-03-15
  */
-
 public class MainActivity extends FragmentActivity {
 	private ActionBar actionBar;
 	private User user;
@@ -75,11 +123,13 @@ public class MainActivity extends FragmentActivity {
 
 	
 	/**
-	 * onCreate method Once the activity is created, this method will give each
-	 * view an object to help other methods set data or listeners.
+	 * Called to do initial creation of a fragment.<br>
+	 * This is called after onAttach(Activity) and before onCreateView(LayoutInflater, ViewGroup, Bundle).<br>
+	 * Note that this can be called while the fragment's activity is still in the process of being created.<br>
+	 * As such, you can not rely on things like the activity's content view hierarchy being initialized at this point.<br>
+	 * If you want to do work once the activity itself is created, see onActivityCreated(Bundle).<br>
 	 * 
-	 * @param savedInstanceState
-	 *            the saved instance state bundle
+	 * @param savedInstanceState	If the fragment is being re-created from a previous saved state, this is the state.
 	 */
 	/* (non-Javadoc)
 	 * @see android.support.v4.app.FragmentActivity#onCreate(android.os.Bundle)
@@ -107,7 +157,7 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	/**
-	 * set initialisePaging
+	 * Set initialisePaging
 	 * 
 	 * @author Youdon Ma
 	 * @author Yufei Zhang
@@ -131,7 +181,7 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	/**
-	 * setFragmentIndicator
+	 * Set FragmentIndicator
 	 * 
 	 * @author Youdon Ma
 	 * @version 1.0
@@ -169,11 +219,14 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	/**
-	 * initial the menu on the top right corner of the screen
+	 * This hook is called whenever an item in your options menu is selected.<br>
+	 * The default implementation simply returns false to have the normal processing happen (calling the item's Runnable or sending a message to its Handler as appropriate).<br>
+	 * You can use this method for any items for which you would like to do processing without those other facilities.<br>
+	 * Derived classes should call through to the base class for it to perform the default menu handling.
 	 * 
-	 * @param menu
-	 *            The menu.
-	 * @return true if the menu is acted.
+	 * @param item	The menu item that was selected.
+	 * @return boolean Return false to allow normal menu processing to proceed, true to consume it here.
+	 * @see onCreateOptionsMenu(Menu)
 	 */
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
@@ -184,18 +237,20 @@ public class MainActivity extends FragmentActivity {
 		return true;
 	}
 
+
 	/**
-	 * Modify the following code
-	 *
+	 * <b>This function is  for user to log out the system</b>
+	 * <br>
+	 * Once this button is clicked, the system will jump to the login page and users should login again.
+	 * The data of the user will be saved except the user name; hence the system will not do the automatically login function after logout.
+	 * 
+	 * @param item
 	 * @author Chenrui Lei
 	 * @version 1.0
 	 * @since 2015-03-11
 	 * @author Yufei Zhang
 	 * @version 1.1
 	 * @since 2015-03-13
-	 */
-	/**
-	 * @param item
 	 */
 	public void logOut(MenuItem item) {
 		// call controller to logout
@@ -208,12 +263,14 @@ public class MainActivity extends FragmentActivity {
 		// stop current view
 		finish();
 	}
+	
+	
 	public void addClaim(View v){
 		Intent intent = new Intent(MainActivity.this, EditClaimActivity.class);
 		startActivity(intent);
 	}
 	/**
-	 * Modify the following code
+	 * Once the user click "Progressing Claims", system will call this function to jump to the page for progressing claims.
 	 *
 	 * @author Chenrui Lei
 	 * @version 1.0
@@ -232,7 +289,7 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	/**
-	 * Modify the following code
+	 * Once the user click "Submitted Claims", system will call this function to jump to the page for submitted claims.
 	 *
 	 * @author Chenrui Lei
 	 * @version 1.0
@@ -251,7 +308,7 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	/**
-	 * Modify the following code
+	 * Once the user click "Approved Claims", system will jump to the page for approved claims.
 	 *
 	 * @author Chenrui Lei
 	 * @version 1.0
@@ -270,7 +327,7 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	/**
-	 * Modify the following code
+	 *Once the user click "returned Claims", system will jump to the page for returned claims.
 	 *
 	 * @author Chenrui Lei
 	 * @version 1.0
@@ -328,14 +385,17 @@ public class MainActivity extends FragmentActivity {
 	 * Will be called when user clicked add Location button, it will pop a
 	 * dialog and let user choose the method of location which go to the osmMainAcitivity
 	 * 
-	 * @param view
-	 *            View passed to the activity to check which button was pressed.
+	 * @param v View passed to the activity to check which button was pressed.
 	 */
 	public void goToMapAction(View v){
 		Intent intent = new Intent(MainActivity.this, osmMainActivity.class);
 		startActivity(intent);
 	}
 	
+	/**
+	 * 
+	 * @param item 
+	 */
 	public void goToSearch(MenuItem item) {
 		Intent intent = new Intent(MainActivity.this, SearchActivity.class);
 		startActivity(intent);

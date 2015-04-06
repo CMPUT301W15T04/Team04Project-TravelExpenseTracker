@@ -98,6 +98,14 @@ public class FragmentEditClaim2 extends Fragment {
 		}
 	};
 
+	/**
+	 * Version of onCreateView(String, Context, AttributeSet) that also supplies 
+	 * the parent that the view created view will be placed in.
+	 * 
+	 * @param inflater
+	 * @param container
+	 * @param savedInstanceState
+	 */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -156,11 +164,11 @@ public class FragmentEditClaim2 extends Fragment {
 	}
 	/**
 	 * <b>This class is using for adding the destination once user click the "Add" button.</b>
+	 * <br>
 	 * The destination name and the reason will be shown as destination(reason) below the
 	 * title "Destination & Reason"
 	 * 
-	 * @author yufei
-	 *
+	 * @author Yufei Zhang
 	 */
 	class ButtonListener implements View.OnClickListener {
 		@Override
