@@ -118,7 +118,6 @@ public final class R {
         public static final int completeCheckBox=0x7f0a002e;
         public static final int confirmClaim=0x7f0a0091;
         public static final int confirmItem=0x7f0a0092;
-        public static final int constactTagsSpinner=0x7f0a003e;
         public static final int contectTagsTextView=0x7f0a003d;
         public static final int currencyUnitsSpinner=0x7f0a0059;
         public static final int currentClaimEDATextView=0x7f0a0015;
@@ -147,6 +146,7 @@ public final class R {
         public static final int editItemBottomMenu=0x7f0a001f;
         public static final int editItemNext=0x7f0a0021;
         public static final int editItemPrevious=0x7f0a0020;
+        public static final int enterTags=0x7f0a003f;
         public static final int fragmentEditItem2DiscriptionEditText=0x7f0a005d;
         public static final int fromDatePicker=0x7f0a0046;
         public static final int fromDateTextView=0x7f0a0045;
@@ -181,7 +181,7 @@ public final class R {
         public static final int relativeLayout2=0x7f0a007e;
         public static final int savedClaimsTextView=0x7f0a0066;
         public static final int searchBarEditText=0x7f0a006d;
-        public static final int searchButton=0x7f0a003f;
+        public static final int searchButton=0x7f0a003e;
         public static final int setHomeLocationButton=0x7f0a0052;
         public static final int showClaimDetailTextView=0x7f0a000c;
         public static final int showClaimEDATextView=0x7f0a000d;
@@ -229,7 +229,6 @@ public final class R {
         public static final int tagEditText=0x7f0a004d;
         public static final int testApproverTextView=0x7f0a0037;
         public static final int testClaimantTextView=0x7f0a0036;
-        public static final int text_search=0x7f0a0098;
         public static final int tiemDateTextView=0x7f0a0055;
         public static final int toDatePicker=0x7f0a0049;
         public static final int toDateTextView=0x7f0a0048;

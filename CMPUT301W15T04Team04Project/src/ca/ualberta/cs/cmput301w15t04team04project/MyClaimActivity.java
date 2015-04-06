@@ -103,9 +103,10 @@ public class MyClaimActivity extends Activity {
 				search.start();
 				progressing = false;
 			} else if (mode == 4) {
-				actionBar.setTitle("Search Results");
+				
 				Bundle bundle = getIntent().getExtras();
 				tag = bundle.getString("tag");
+				actionBar.setTitle("Search Results:" + tag);
 				Thread search = new SearchClaimThread(user.getName(), null, tag);
 				search.start();
 				progressing = false;
