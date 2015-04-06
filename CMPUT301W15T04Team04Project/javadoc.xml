@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project default="javadoc">
     <target name="javadoc">
-        <javadoc access="package" author="true" classpath="libs/gson-2.3.1-javadoc.jar:libs/slf4j-android-1.6.1-RC1.jar:libs/gson-2.3.1.jar:libs/annotations.jar:libs/osmdroid-android-4.3.jar:libs/android-support-v4.jar" destdir="doc" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="ca.ualberta.cs.cmput301w15t04team04project.XListView,ca.ualberta.cs.cmput301w15t04team04project.controller,ca.ualberta.cs.cmput301w15t04team04project.network,ca.ualberta.cs.cmput301w15t04team04project,ca.ualberta.cs.cmput301w15t04team04project.CLmanager,ca.ualberta.cs.cmput301w15t04team04project.network.data,ca.ualberta.cs.cmput301w15t04team04project.models,ca.ualberta.cs.cmput301w15t04team04project.adapter" source="1.6" sourcepath="src:gen" splitindex="true" use="true" version="true">
+        <javadoc access="public" author="true" classpath="libs/gson-2.3.1-javadoc.jar:libs/slf4j-android-1.6.1-RC1.jar:libs/gson-2.3.1.jar:libs/annotations.jar:libs/osmdroid-android-4.3.jar:libs/android-support-v4.jar" destdir="doc" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" source="1.6" sourcefiles="src/ca/ualberta/cs/cmput301w15t04team04project/ClaimDetailActivity.java" sourcepath="src:gen" splitindex="true" use="true" version="true">
             <link href="http://developer.android.com/reference/"/>
         </javadoc>
     </target>
