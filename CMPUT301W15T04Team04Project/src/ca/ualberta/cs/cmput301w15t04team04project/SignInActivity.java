@@ -35,7 +35,16 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 /**
- * SignInActivity is a page that provide a way for user to sign in
+ * <b>SignInActivity is a page that provide a way for user to sign in</b>
+ * <ol>
+ * <li>User should firstly enter his or her user name
+ * <li>User should secondly enter his or her password
+ * <li>User should click on sign in to login the system
+ * <ul>
+ * <li>system will call the signIn function to check the status (new user or not).
+ * <li>system will save the user's data
+ * </ul>
+ * </ol>
  * 
  * @author CHENRUI
  * @author Yufei Zhang
@@ -48,9 +57,13 @@ public class SignInActivity extends Activity {
 	private SignInController signInConroller = new SignInController();
 
 	/**
-	 * We update the sign in page. Hiding the title Bar and prepare for adding a
-	 * picture
+	 * Called to do initial creation of a fragment.<br>
+	 * This is called after onAttach(Activity) and before onCreateView(LayoutInflater, ViewGroup, Bundle).<br>
+	 * Note that this can be called while the fragment's activity is still in the process of being created.<br>
+	 * As such, you can not rely on things like the activity's content view hierarchy being initialized at this point.<br>
+	 * If you want to do work once the activity itself is created, see onActivityCreated(Bundle).<br>
 	 * 
+	 * @param savedInstanceState	If the fragment is being re-created from a previous saved state, this is the state.
 	 * @author Chenrui Lei
 	 * @author Yufei Zhang
 	 * @since 2015-03-13

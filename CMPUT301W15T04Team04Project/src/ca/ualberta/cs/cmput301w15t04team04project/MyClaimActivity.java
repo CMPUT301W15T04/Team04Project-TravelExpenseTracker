@@ -24,8 +24,15 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 
 /**
- * The MyClaim Activity is the profile my claims. which is write without
- * Internet environment .
+ * <ol>
+ * <li type = "square"><b>The function of MyClaimActivity (class):</b> 
+ * <ol>
+ * <li>Creating the MyClaimActivity
+ * <li>Loading the data of the user
+ * <li>Loading the data of ClaimList form Manager according to the status of a user (Claimant or Approver)
+ * <li>Giving different mode a corresponding view
+ * </ol>
+ * </ol>
  * 
  * @author youdong
  * @author Weijie Sun
@@ -56,13 +63,13 @@ public class MyClaimActivity extends Activity {
 	};
 
 	/**
-	 * This method is to create the MyClaimActivity and get the ClaimList from
-	 * Manager by different requirement onCreate method Once the activity is
-	 * created, this method will give each view an object to help other methods
-	 * set data or listeners.
+	 * Called to do initial creation of a fragment.<br>
+	 * This is called after onAttach(Activity) and before onCreateView(LayoutInflater, ViewGroup, Bundle).<br>
+	 * Note that this can be called while the fragment's activity is still in the process of being created.<br>
+	 * As such, you can not rely on things like the activity's content view hierarchy being initialized at this point.<br>
+	 * If you want to do work once the activity itself is created, see onActivityCreated(Bundle).<br>
 	 * 
-	 * @param savedInstanceState
-	 *            the saved instance state bundle
+	 * @param savedInstanceState	If the fragment is being re-created from a previous saved state, this is the state.
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -225,8 +232,16 @@ public class MyClaimActivity extends Activity {
 	}
 
 	/**
-	 * The MyClaimActivity relates to "My Claim" in "profile" of MainActivity.
-	 * But it needs some button on the title bar to add claim
+	 * This boolean function is to activate the option menu.
+	 * Initialize the contents of the Activity's standard options menu.<br>
+	 * You should place your menu items in to menu.<br>
+	 * For this method to be called, you must have first called setHasOptionsMenu(boolean).<br>
+	 * See Activity.onCreateOptionsMenu for more information.
+	 * 
+	 * @param menu	The options menu in which you place your items.
+	 * @see setHasOptionsMenu(boolean)
+	 * @see onPrepareOptionsMenu(Menu)<br>
+	 * @see onOptionsItemSelected(MenuItem)
 	 * 
 	 * @author Yufei Zhang
 	 * @version 1.0
@@ -241,7 +256,13 @@ public class MyClaimActivity extends Activity {
 		return true;
 	}
 
-
+	/**
+	 * This void function is to lead user to the page that can add or edit a claim.<br>
+	 * It will use the menu item you created in the menu.<br>
+	 * For this method to be called, you must called the onCreatOptionMenu(boolean)<br>
+	 * 
+	 * @param item The item in the option menu, which is show as a "+" on the screen leading user to adding a new claim.
+	 */
 	public void goToEditClaim(MenuItem item) {
 		Intent intent = new Intent(MyClaimActivity.this,
 				EditClaimActivity.class);
@@ -249,6 +270,12 @@ public class MyClaimActivity extends Activity {
 		finish();
 	}
 
+	/**
+	 * This function is only using for testing.
+	 * This function is to get the id for the menu item.
+	 * 
+	 * @return claimMenu The menu item for adding a claim.
+	 */
 	// get the menuItem for testing
 	public MenuItem getMyClaimMenuItem() {
 		return claimMenu.findItem(R.id.action_new_claim);
