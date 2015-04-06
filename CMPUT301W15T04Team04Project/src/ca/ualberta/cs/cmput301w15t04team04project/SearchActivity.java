@@ -3,27 +3,16 @@ package ca.ualberta.cs.cmput301w15t04team04project;
 import java.util.ArrayList;
 
 import ca.ualberta.cs.cmput301w15t04team04project.controller.searchController;
-import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 
 import android.app.ActionBar;
-import android.app.ActionBar.OnNavigationListener;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v4.view.MenuItemCompat.OnActionExpandListener;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.SearchView;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import android.widget.Toast;
 
 /**
  * The mission of SearchActivity are: 1. The users can be both claimants and
@@ -40,7 +29,7 @@ public class SearchActivity extends Activity {
 
 	/**
 	 * The following String[] is using for store the contact Tags.
-	 * **/
+	 */
 /*	String[] contectTags = new String[] { "Tag", "Friend", "Classmate", "A1",
 			"A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11",
 			"A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20",
