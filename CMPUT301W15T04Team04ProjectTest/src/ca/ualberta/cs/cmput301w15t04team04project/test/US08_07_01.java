@@ -38,7 +38,6 @@ public class US08_07_01 extends ActivityInstrumentationTestCase2<MyClaimActivity
 		thisActivity = (MyClaimActivity) getActivity();
 		manager = new MyLocalClaimListManager();
 		claim = manager.loadClaimList(getActivity()).getClaimArrayList().get(0);
-		controller = new ClaimEditController(manager.loadClaimList(getActivity()));
 		
 	}
 	
@@ -46,7 +45,7 @@ public class US08_07_01 extends ActivityInstrumentationTestCase2<MyClaimActivity
         assertNotNull(thisActivity);
         
         claim.setStatus("Submitted");
-        controller.appendClaim(claim);
+        controller.setClaimObj(claim);
         item = new Item("AItem");
         claim.addItem(item);
         approver = new User("approver");

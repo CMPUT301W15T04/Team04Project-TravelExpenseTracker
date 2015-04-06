@@ -61,7 +61,7 @@ public class US01_02_01 extends ActivityInstrumentationTestCase2<EditClaimActivi
         endDate = testClaim.getEndDate();
         
         assertEquals("Start Date is equall",startDate,date1);
-        assertEquals("End Date is equall",endDate,date1);
+        assertEquals("End Date is equall",endDate,date2);
 	
         Destination destinationA = testClaim.getDestination().get(0);
         Destination destinationB = testClaim.getDestination().get(1);

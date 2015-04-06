@@ -58,7 +58,7 @@ public class US08_06_01 extends ActivityInstrumentationTestCase2<MyClaimActivity
         assertNotNull(thisActivity);
         claim.setClaimiant("testClaimiant");
         claim.setStatus("Submitted");
-        controller.addClaim();
+        controller.setClaimObj(claim);
         item = new Item("AItem");
         approver = new User("approver");
         ArrayList<Item> items = new ArrayList<Item>();

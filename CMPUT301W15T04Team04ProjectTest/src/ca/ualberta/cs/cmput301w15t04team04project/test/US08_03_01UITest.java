@@ -1,5 +1,7 @@
 package ca.ualberta.cs.cmput301w15t04team04project.test;
 
+import java.util.ArrayList;
+
 import android.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
 import android.test.ActivityInstrumentationTestCase2;
@@ -49,10 +51,13 @@ public class US08_03_01UITest extends ActivityInstrumentationTestCase2<MainActiv
         Claim Cclaim = new Claim("Cclaim");
         Cclaim.setStatus("Proceed");
 
+        ArrayList<Claim> claims = new ArrayList<Claim>();
         
-        controller.appendClaim(Aclaim);
-        controller.appendClaim(Bclaim);
-        controller.appendClaim(Cclaim);
+        claims.add(Aclaim);
+        claims.add(Bclaim);
+        claims.add(Cclaim);
+
+        controller.addall(claims);
     }
 	
 	protected void AllClaimDetailsUItest(){
