@@ -59,11 +59,23 @@ import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 /**
- * This is the activity for adding/editing a claim.
- * 
+ * <b>This is the activity for adding or editing a claim.</B>
+ * <OL>
+ * <LI type = "square">
+ * Mainly there are 6 functions:
+ * <UL>
+ * <li>doFinish
+ * <li>onCreate
+ * <li>initialisePaging
+ * <li>setFragmentIndicator
+ * <li>onCreateOptionMenu
+ * <li>confirmClaim
+ * </ul>
  * 
  * @author Ji Yang
  * @author Yang Zhang
+ * @author Yufei Zhang
+ * @author Weijie Sun
  * @version 1.0
  * @since 2015-03-10
  */
@@ -87,13 +99,12 @@ public class EditClaimActivity extends FragmentActivity {
 		}
 	};
 	/**
-	 * Initializing the activity. Call the initialisePaging() function to allow
-	 * the pager
-	 * 
-	 * 
-	 * @author Ji Yang
-	 * @version 1.0
-	 * @since 2015-03-10
+	 * Initializing the activity and call the initialisePaging() function to allow the pager<br>
+	 * Called to do initial creation of a fragment.<br>
+	 * This is called after onAttach(Activity) and before onCreateView(LayoutInflater, ViewGroup, Bundle).<br>
+	 * Note that this can be called while the fragment's activity is still in the process of being created.<br>
+	 * As such, you can not rely on things like the activity's content view hierarchy being initialized at this point.<br>
+	 * If you want to do work once the activity itself is created, see onActivityCreated(Bundle).<br>
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -158,6 +169,17 @@ public class EditClaimActivity extends FragmentActivity {
 		});
 	}
 
+	/**
+	 * This boolean function is to activate the option menu.
+	 * Initialize the contents of the Activity's standard options menu.<br>
+	 * You should place your menu items in to menu. For this method to be called, you must have first called setHasOptionsMenu(boolean).<br>
+	 * See Activity.onCreateOptionsMenu for more information.
+	 * 
+	 * @param menu	The options menu in which you place your items.
+	 * @see setHasOptionsMenu(boolean)
+	 * @see onPrepareOptionsMenu(Menu)<br>
+	 * @see onOptionsItemSelected(MenuItem)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -166,11 +188,19 @@ public class EditClaimActivity extends FragmentActivity {
 	}
 
 	/**
-	 * This intent can finish since no necessary to keep it running the
-	 * following code has been modified
+	 * This function controls the MenuItem and shown as a "√" on the scream.<br>
+	 * <ol>The MenuItem has the following functions:
+	 * <ul>
+	 * <li>The function will find all needed views by their id.
+	 * <li>The function will test the user chooses either adding or editing.
+	 * <li>If user chooses to add a claim, the class "AddThread" will be called
+	 * <li>Else if user chooses to edit a claim, the class "updateThread will be called 
+	 * </ul>
+	 * </ol>
 	 * 
 	 * @author Chenrui Lei
 	 * @author Ji Yang
+	 * @author Yufei Zhang
 	 * @version 1.1
 	 * @since 2015-03-12
 	 * @version 1.2
@@ -251,7 +281,6 @@ public class EditClaimActivity extends FragmentActivity {
 		public AddThread(Claim claim) {
 			this.claim = claim;
 		}
-
 		@Override
 		public void run() {
 			try {

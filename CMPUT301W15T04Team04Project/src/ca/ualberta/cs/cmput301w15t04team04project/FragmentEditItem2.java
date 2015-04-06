@@ -107,7 +107,8 @@ public class FragmentEditItem2 extends Fragment {
 		}
 	};
 	/**
-	 * <b>This is the onCreateView of initial the view</b>
+	 * Version of onCreateView(String, Context, AttributeSet) that also supplies 
+	 * the parent that the view created view will be placed in.
 	 * 
 	 * @param inflater
 	 * @param container
@@ -120,9 +121,6 @@ public class FragmentEditItem2 extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-
-		// return inflater.inflate(R.layout.fragment_edit_item_2, container,
-		// false);
 		View view = inflater.inflate(R.layout.fragment_edit_item_2, container,
 				false);
 		thisview = view;
@@ -140,12 +138,17 @@ public class FragmentEditItem2 extends Fragment {
 	}
 
 	/**
-	 * This is the onActivityCreated of create Item or Edit item set the
-	 * original information in the View
+	 * Called when the fragment's activity has been created and this fragment's view hierarchy instantiated.<br>
+	 * It can be used to do final initialization once these pieces are in place, such as retrieving views or restoring state.<br>
+	 * It is also useful for fragments that use setRetainInstance(boolean) to retain their instance, 
+	 * as this callback tells the fragment when it is fully associated with the new activity instance.<br>
+	 * This is called after onCreateView(LayoutInflater, ViewGroup, Bundle) and before onViewStateRestored(Bundle).
 	 * 
+	 * @param savedInstanceState	If the fragment is being re-created from a previous saved state, this is the state.
 	 * @author Weijie Sun
 	 * @version 1.1
 	 * @since 2015-03-15
+	 * @author Yufei Zhang
 	 */
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
@@ -255,8 +258,7 @@ public class FragmentEditItem2 extends Fragment {
 	// March 24 2015
 	public String getPath(Uri uri) {
 		String[] projection = { MediaStore.Images.Media.DATA };
-		Cursor cursor = getActivity().managedQuery(uri, projection, null, null,
-				null);
+		Cursor cursor = getActivity().managedQuery(uri, projection, null, null, null);
 		int column_index = cursor
 				.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
 		cursor.moveToFirst();

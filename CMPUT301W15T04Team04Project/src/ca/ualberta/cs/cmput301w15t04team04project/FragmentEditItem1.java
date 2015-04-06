@@ -110,11 +110,14 @@ public class FragmentEditItem1 extends Fragment {
 	};
 	
 	/**
-	 * <b>This is the onCreateView of initial the view</b>
+	 * Version of onCreateView(String, Context, AttributeSet) that also supplies 
+	 * the parent that the view created view will be placed in.
 	 * 
-	 * @author Weijie Sun
-	 * @version 1.1
-	 * @since 2015-03-15
+	 * @param parent	The parent that the created view will be placed in; note that this may be null.
+	 * @param name	Tag name to be inflated.
+	 * @param context	The context the view is being created in.
+	 * @param attrs	Inflation attributes as specified in XML file.
+	 * @return View Newly created view. Return null for the default behavior.
 	 */
 	// private ArrayAdapter<String> categoryAdapter ;
 	@Override
@@ -127,10 +130,16 @@ public class FragmentEditItem1 extends Fragment {
 	}
 
 	/**
-	 * <b>This is the onActivityCreated of create Item or Edit item set the
-	 * original information in the View</b>
+	 * Called when the fragment's activity has been created and this fragment's view hierarchy instantiated.<br>
+	 * It can be used to do final initialization once these pieces are in place, such as retrieving views or restoring state.<br>
+	 * It is also useful for fragments that use setRetainInstance(boolean) to retain their instance, 
+	 * as this callback tells the fragment when it is fully associated with the new activity instance.<br>
+	 * This is called after onCreateView(LayoutInflater, ViewGroup, Bundle) and before onViewStateRestored(Bundle).
+	 * 
+	 * @param savedInstanceState	If the fragment is being re-created from a previous saved state, this is the state.
 	 * 
 	 * @author Weijie Sun
+	 * @author Yufei Zhang
 	 * @version 1.1
 	 * @since 2015-03-15
 	 */
@@ -158,7 +167,6 @@ public class FragmentEditItem1 extends Fragment {
 			get.start();
 			// set item name
 			
-
 			
 		}
 

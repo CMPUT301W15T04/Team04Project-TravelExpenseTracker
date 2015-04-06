@@ -53,10 +53,24 @@ import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 /**
- * This is the activity for adding/editing an item.
+ * <b>This is the activity for adding or editing an item.</B>
+ * <OL>
+ * <LI type = "square">
+ * Mainly there are 7 functions:
+ * <UL>
+ * <li>doFinishEdit
+ * <li>onCreate
+ * <li>initialisePaging
+ * <li>setFragmentIndicator
+ * <li>onCreateOptionMenu
+ * <li>confirm
+ * <li>setFragmentIndicator
+ * </ul>
  * 
  * @author Ji Yang
  * @author Yang Zhang
+ * @author Yufei Zhang
+ * @author Weijie Sun
  * @version 1.0
  * @since 2015-03-10
  */
@@ -85,9 +99,13 @@ public class EditItemActivity extends FragmentActivity {
 	};
 	
 	/**
-	 * Initializing the activity. Call the initialisePaging() function to allow
-	 * the pager
+	 * Called to do initial creation of a fragment.<br>
+	 * This is called after onAttach(Activity) and before onCreateView(LayoutInflater, ViewGroup, Bundle).<br>
+	 * Note that this can be called while the fragment's activity is still in the process of being created.<br>
+	 * As such, you can not rely on things like the activity's content view hierarchy being initialized at this point.<br>
+	 * If you want to do work once the activity itself is created, see onActivityCreated(Bundle).<br>
 	 * 
+	 * @param savedInstanceState	If the fragment is being re-created from a previous saved state, this is the state.
 	 * @author Weijie Sun
 	 * @version 1.1
 	 * @since 2015-03-13
@@ -166,11 +184,14 @@ public class EditItemActivity extends FragmentActivity {
 	}
 
 	/**
-	 * active the Menu
+	 * This boolean function is to activate the option menu.
+	 * Initialize the contents of the Activity's standard options menu.<br>
+	 * You should place your menu items in to menu. For this method to be called, you must have first called setHasOptionsMenu(boolean).<br>
+	 * See Activity.onCreateOptionsMenu for more information.
 	 * 
-	 * @author Yufei Zhang
-	 * @version 1.0
-	 * @since 2015-03-03
+	 * @param menu	The options menu in which you place your items.
+	 * @see setHasOptionsMenu(boolean)
+	 * @see onPrepareOptionsMenu(Menu)<br>
 	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -180,8 +201,16 @@ public class EditItemActivity extends FragmentActivity {
 	}
 
 	/**
-	 * active the cofirm button
-	 * 
+	 * <ol>
+	 * <li type = "square">The item of the option menu will call this function to confirm the change.
+	 * <li type = "square">The confirm button is in the action bar looks like "√" and do the following thins:
+	 * <ul>
+	 * <li>It will find the needed views by their id
+	 * <li>It will test the user chose to either edit or add an Item
+	 * <li>It will save the change that a user made
+	 * </ul>
+	 * </ol>
+	 * @param item The option item which belongs to the option menu.
 	 * @author Yufei Zhang
 	 * @version 1.0
 	 * @since 2015-03-02
@@ -307,22 +336,14 @@ public class EditItemActivity extends FragmentActivity {
 	}
 	
 
-/*	*//**
-	 * active the camera button
+	/**
+	 * Active the camera button.<br>
+	 * The classes it contains is similar to the EditClaimActivity. 
 	 * 
 	 * @author Yufei Zhang
 	 * @version 1.0
 	 * @since 2015-03-02
-	 *//*
-	public void addReciept(View view) {
-		*//**
-		 * we need to add code here doing the following things 1. Add a new
-		 * reciept and show it on this imageView
-		 **//*
-		Toast.makeText(EditItemActivity.this,
-				"Add a Reciept\nWe will finish it\nin project 5.",
-				Toast.LENGTH_SHORT).show();
-	}*/
+	 */
 	
 	public void setReceiptBitmap(Bitmap bitmap , int receiptFlag) {
 		// TODO Auto-generated method stub

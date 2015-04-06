@@ -114,14 +114,11 @@ public class FragmentEditClaim2 extends Fragment {
 	 * This is called after onCreateView(LayoutInflater, ViewGroup, Bundle) and before onViewStateRestored(Bundle).
 	 * 
 	 * @param savedInstanceState	If the fragment is being re-created from a previous saved state, this is the state.
-	 * 
 	 * @author Chenrui
 	 * @since 2015-03-15
-	 * 
-	 *        Improve Chenrui's code
 	 * @author Yufei
 	 * @since 2015-03-15
-	 **/
+	 */
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);

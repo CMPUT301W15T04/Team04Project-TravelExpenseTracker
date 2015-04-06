@@ -93,7 +93,14 @@ public class FragmentEditClaim1 extends Fragment {
 
 	};
 	
-	
+	/**
+	 * Version of onCreateView(String, Context, AttributeSet) that also supplies 
+	 * the parent that the view created view will be placed in.
+	 * 
+	 * @param inflater
+	 * @param container
+	 * @param savedInstanceState
+	 */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

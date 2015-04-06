@@ -52,7 +52,6 @@ import android.view.MenuItem;
  * @version 2.0
  * @since 2015-04-05
  */
-
 public class ClaimDetailActivity extends Activity {
 	private boolean isClaimant = OneClaimActivity.isClaimant;
 
