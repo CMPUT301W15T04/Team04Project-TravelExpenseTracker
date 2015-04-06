@@ -42,7 +42,6 @@ public class US08_05_01 extends ActivityInstrumentationTestCase2<OneClaimActivit
 		thisActivity = (OneClaimActivity) getActivity();
 		manager = new MyLocalClaimListManager();
 		claim = manager.loadClaimList(getActivity()).getClaimArrayList().get(0);
-		controller = new ClaimEditController(manager.loadClaimList(getActivity()));
 		
 	}
 	//resource from "http://www.higherpass.com/Android/Tutorials/Working-With-Images-In-Android/3/" March 30
@@ -50,7 +49,7 @@ public class US08_05_01 extends ActivityInstrumentationTestCase2<OneClaimActivit
         assertNotNull(thisActivity);
         
         claim.setStatus("Submitted");
-        controller.appendClaim(claim);
+        controller.setClaimObj(claim);
         item = new Item("AItem");
         claim.addItem(item);
         approver = new User("approver");

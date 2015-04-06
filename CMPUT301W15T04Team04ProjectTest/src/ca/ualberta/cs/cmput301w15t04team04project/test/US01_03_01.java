@@ -41,8 +41,8 @@ public class US01_03_01 extends ActivityInstrumentationTestCase2<OneClaimActivit
 		controller1 = new OneClaimController();
 	}
 	
-	public void test(){
-assertNotNull(thisActivity);
+/*	public void test(){
+		assertNotNull(thisActivity);
         
         claimiant = new User("testclaimiant");
         Claim testClaim = new Claim("test");
@@ -99,10 +99,10 @@ assertNotNull(thisActivity);
 	    
 	    TextView claimName = (TextView) claimInfoCDialogView
 				.findViewById(R.id.currentClaimNameATextView);
-/*	    TextView startDate = (TextView) claimInfoCDialogView
+	    TextView startDate = (TextView) claimInfoCDialogView
 				.findViewById(R.id.currentClaimSDATextView);
 	    TextView endDate = (TextView) claimInfoCDialogView
-				.findViewById(R.id.currentClaimEDATextView);*/
+				.findViewById(R.id.currentClaimEDATextView);
 	    TextView state = (TextView) claimInfoCDialogView
 				.findViewById(R.id.currentClaimStatusATextView);
 	    
@@ -110,5 +110,5 @@ assertNotNull(thisActivity);
 	    assertEquals("status is equal", state.getText().toString(),"Progress");
 		
 	}
-	
+	*/
 }

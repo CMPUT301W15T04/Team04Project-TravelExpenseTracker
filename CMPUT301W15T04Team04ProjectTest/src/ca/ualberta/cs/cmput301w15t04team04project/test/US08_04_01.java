@@ -43,14 +43,14 @@ public class US08_04_01 extends ActivityInstrumentationTestCase2<OneClaimActivit
 		thisActivity = (OneClaimActivity) getActivity();
 		manager = new MyLocalClaimListManager();
 		claim = manager.loadClaimList(getActivity()).getClaimArrayList().get(0);
-		controller = new ClaimEditController(manager.loadClaimList(getActivity()));
+		controller = new ClaimEditController();
 	}
 	
 	public void testPreConditions(){
         assertNotNull(thisActivity);
         
         claim.setStatus("Submitted");
-        controller.appendClaim(claim);
+        controller.setClaimObj(claim);
         item = new Item("AItem");
         claim.addItem(item);
         calender.set(2005, 1,
