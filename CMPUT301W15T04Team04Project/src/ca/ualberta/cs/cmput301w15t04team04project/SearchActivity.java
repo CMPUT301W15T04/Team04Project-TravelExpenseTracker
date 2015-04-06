@@ -15,9 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 /**
- * The mission of SearchActivity are: 1. The users can be both claimants and
- * approvers. 2. Users can search a claim by tag. 3. Users can search a claim by
- * some keywords.
+ * <b>This class is to help users to search their claims by tags</b> 
  * 
  * @author Yufei Zhang
  * @version 1.0
@@ -39,7 +37,13 @@ public class SearchActivity extends Activity {
 	private searchController controller = new searchController();
 	
 	/**
-	 * This boolean function is to create searchActivity and the view
+	 * Called to do initial creation of a fragment.<br>
+	 * This is called after onAttach(Activity) and before onCreateView(LayoutInflater, ViewGroup, Bundle).<br>
+	 * Note that this can be called while the fragment's activity is still in the process of being created.<br>
+	 * As such, you can not rely on things like the activity's content view hierarchy being initialized at this point.<br>
+	 * If you want to do work once the activity itself is created, see onActivityCreated(Bundle).<br>
+	 * 
+	 * @param savedInstanceState	If the fragment is being re-created from a previous saved state, this is the state.
 	 * 
 	 * @author Yufei Zhang
 	 * @author Weijie Sun
@@ -83,7 +87,14 @@ public class SearchActivity extends Activity {
 		finish();
 	}
 	/**
-	 * This boolean function is to activate the option menu.
+	 * This hook is called whenever an item in your options menu is selected.<br>
+	 * The default implementation simply returns false to have the normal processing happen (calling the item's Runnable or sending a message to its Handler as appropriate).<br>
+	 * You can use this method for any items for which you would like to do processing without those other facilities.<br>
+	 * Derived classes should call through to the base class for it to perform the default menu handling.
+	 * 
+	 * @param item	The menu item that was selected.
+	 * @return boolean Return false to allow normal menu processing to proceed, true to consume it here.
+	 * @see onCreateOptionsMenu(Menu)
 	 * 
 	 * @author Yufei Zhang
 	 * @version 1.0
@@ -98,7 +109,7 @@ public class SearchActivity extends Activity {
 		// return true;
 	}
 
-	public void cancle(View view) {
+	protected void cancle(View view) {
 		finish();
 	}
 
