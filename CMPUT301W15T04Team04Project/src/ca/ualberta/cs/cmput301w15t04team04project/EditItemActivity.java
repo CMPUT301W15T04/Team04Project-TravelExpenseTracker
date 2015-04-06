@@ -203,7 +203,7 @@ public class EditItemActivity extends FragmentActivity {
 	/**
 	 * <ol>
 	 * <li type = "square">The item of the option menu will call this function to confirm the change.
-	 * <li type = "square">The confirm button is in the action bar looks like "√" and do the following thins:
+	
 	 * <ul>
 	 * <li>It will find the needed views by their id
 	 * <li>It will test the user chose to either edit or add an Item

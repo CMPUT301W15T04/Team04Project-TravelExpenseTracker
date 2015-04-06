@@ -188,7 +188,7 @@ public class EditClaimActivity extends FragmentActivity {
 	}
 
 	/**
-	 * This function controls the MenuItem and shown as a "√" on the scream.<br>
+	 * This function controls the MenuItem and shown as a  on the scream.<br>
 	 * <ol>The MenuItem has the following functions:
 	 * <ul>
 	 * <li>The function will find all needed views by their id.
