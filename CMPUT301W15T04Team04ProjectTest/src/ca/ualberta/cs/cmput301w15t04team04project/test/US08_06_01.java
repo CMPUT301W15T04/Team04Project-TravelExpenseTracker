@@ -21,6 +21,7 @@ import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.location.Location;
 import android.test.ActivityInstrumentationTestCase2;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,7 +58,7 @@ public class US08_06_01 extends ActivityInstrumentationTestCase2<MyClaimActivity
 		thisActivity = (MyClaimActivity) getActivity();
 	}
 
-/*	public void testPreConditions(){
+	protected void testPreConditions(){
         approver = new User("approval");
 		SignInManager.saveInFile(getActivity(), approver);
 		thisActivity = (MyClaimActivity) getActivity();
@@ -75,14 +76,15 @@ public class US08_06_01 extends ActivityInstrumentationTestCase2<MyClaimActivity
         date1.setYear(1999);
         Date date2 = new Date();
         date2.setYear(2000);  
-        controller.setClaim("test", "", "", date1, date2, null, "testClaimiant", items, comments);
+        Location location = null;
+        controller.setClaim("test", "", "", date1, date2, null, "testClaimiant", items, comments,location);
         claim.setStatus("Approved");
         
         assertTrue("comments are equal", claim.getComment().equals(comments));
         assertTrue("status are approved", claim.getStatus().equals("Approved"));
-	}*/
+	}
 	
-	/*public void test(){
+	protected void test(){
         approver = new User("approval");
 		SignInManager.saveInFile(thisActivity, approver);
 		User testuser = SignInManager.loadFromFile(thisActivity);
@@ -147,7 +149,7 @@ public class US08_06_01 extends ActivityInstrumentationTestCase2<MyClaimActivity
 	    
 		assertEquals("States are equal", "Submitted", claim.getStatus());
 		
-	}*/
+	}
 	
 
 

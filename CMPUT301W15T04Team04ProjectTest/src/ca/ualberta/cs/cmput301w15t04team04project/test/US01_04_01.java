@@ -3,6 +3,7 @@ package ca.ualberta.cs.cmput301w15t04team04project.test;
 import java.util.ArrayList;
 import java.util.Date;
 
+import android.location.Location;
 import android.test.ActivityInstrumentationTestCase2;
 import ca.ualberta.cs.cmput301w15t04team04project.EditClaimActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
@@ -53,8 +54,10 @@ public class US01_04_01 extends ActivityInstrumentationTestCase2<EditClaimActivi
         destinations.add(destination2);
         
         ArrayList<String> comments = new ArrayList<String>();
-
-        controller.setClaim("test", "", "", date1, date2, destinations, "testclaimiant", items,comments);
+        Location location = null;
+        
+        
+        controller.setClaim("test", "", "", date1, date2, destinations, "testclaimiant", items,comments,location);
 
         Date startDate = new Date();
         startDate = testClaim.getStartDate();
@@ -93,8 +96,11 @@ public class US01_04_01 extends ActivityInstrumentationTestCase2<EditClaimActivi
         destinations.add(destination2);
         
         ArrayList<String> comments = new ArrayList<String>();
+        Location location = null;
+        
+        
 
-        controller.setClaim("test", "", "", date1, date2, destinations, "testclaimiant", items,comments);
+        controller.setClaim("test", "", "", date1, date2, destinations, "testclaimiant", items,comments,location);
 
         Date startDate = new Date();
         startDate = testClaim.getStartDate();

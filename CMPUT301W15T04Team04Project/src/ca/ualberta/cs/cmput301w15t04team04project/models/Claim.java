@@ -72,8 +72,9 @@ public class Claim {
 
 
 	public void setClLocation(Location clLocation) {
+		if (clLocation != null){
 		this.claimLocation = clLocation.getLatitude()+""+clLocation.getLongitude();
-		this.clLocation = clLocation;
+		this.clLocation = clLocation;}
 	}
 
 

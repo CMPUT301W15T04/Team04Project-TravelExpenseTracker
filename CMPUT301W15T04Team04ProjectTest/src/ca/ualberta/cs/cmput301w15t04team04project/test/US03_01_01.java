@@ -16,6 +16,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Address;
+import android.location.Location;
 import android.test.ActivityInstrumentationTestCase2;
 
 public class US03_01_01 extends ActivityInstrumentationTestCase2<EditClaimActivity> {
@@ -58,8 +59,9 @@ public class US03_01_01 extends ActivityInstrumentationTestCase2<EditClaimActivi
         destinations.add(destination1);
         
         ArrayList<String> comments = new ArrayList<String>();
-
-        controller.setClaim("test", "", testTags, date1, date2, destinations, "testclaimiant", items,comments);
+        Location location = null;
+        
+        controller.setClaim("test", "", testTags, date1, date2, destinations, "testclaimiant", items,comments,location);
 
         String outPutTag1 = testClaim.getTag().get(0);
         String outPutTag2 = testClaim.getTag().get(1);

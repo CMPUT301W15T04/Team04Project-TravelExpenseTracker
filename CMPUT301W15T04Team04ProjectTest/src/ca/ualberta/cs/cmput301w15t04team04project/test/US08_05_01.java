@@ -61,7 +61,7 @@ public class US08_05_01 extends ActivityInstrumentationTestCase2<OneClaimActivit
         item.setReceipBitmap(bMap);*/
 	}
 	
-        /*	public void test(){
+  	protected void test(){
 			approver = new User("approval");
 		SignInManager.saveInFile(thisActivity, approver);
 			
@@ -89,11 +89,11 @@ public class US08_05_01 extends ActivityInstrumentationTestCase2<OneClaimActivit
 	    ImageView receiptImage = (ImageView) thisActivity.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.currentRecieptImageView);
 	    Bitmap getBitmap = ((BitmapDrawable)receiptImage.getDrawable()).getBitmap();
 
-		Bitmap getBitmap = Bitmap.createBitmap(256,256,Bitmap.Config.ARGB_4444);
+		Bitmap thisBitmap = Bitmap.createBitmap(256,256,Bitmap.Config.ARGB_4444);
 
 		
 		
 	    assertEquals("receipt is equal", getBitmap, item.getReceipBitmap());
 	    
-	}*/
+	}
 }

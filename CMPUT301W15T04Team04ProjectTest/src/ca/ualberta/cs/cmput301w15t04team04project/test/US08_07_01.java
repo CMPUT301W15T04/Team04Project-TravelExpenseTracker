@@ -41,7 +41,7 @@ public class US08_07_01 extends ActivityInstrumentationTestCase2<MyClaimActivity
 		
 	}
 	
-/*	public void testPreConditions(){
+	protected void testPreConditions(){
         assertNotNull(thisActivity);
         
         claim.setStatus("Submitted");
@@ -52,7 +52,7 @@ public class US08_07_01 extends ActivityInstrumentationTestCase2<MyClaimActivity
        
 	}
 	
-	public void test(){
+	protected void test(){
 		//set activity user is approver?
 		
 		ListView listView = (ListView) thisActivity.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.myClaimsListView); //listView
@@ -78,5 +78,5 @@ public class US08_07_01 extends ActivityInstrumentationTestCase2<MyClaimActivity
 		
 	    //where to find the Return button id
 	    
-	}*/
+	}
 }
