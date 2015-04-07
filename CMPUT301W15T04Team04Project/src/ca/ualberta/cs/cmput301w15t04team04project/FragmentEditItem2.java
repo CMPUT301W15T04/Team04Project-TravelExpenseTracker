@@ -214,7 +214,6 @@ public class FragmentEditItem2 extends Fragment {
 				Bitmap bitmap = BitmapFactory
 						.decodeFile(imageFileUri.getPath());
 				
-				Toast.makeText(getActivity(), ""+bitmap.getByteCount(), Toast.LENGTH_LONG).show();
 
 				myActivity.setReceiptBitmap(bitmap, 1);
 
