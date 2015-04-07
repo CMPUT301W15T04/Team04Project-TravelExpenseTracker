@@ -62,7 +62,7 @@ public class US03_03_01 extends ActivityInstrumentationTestCase2<EditClaimActivi
         
         ArrayList<String> comments = new ArrayList<String>();
 
-        controller.setClaim("tag1&2", "", testTags, date1, date2, destinations, "testclaimiant", items,comments);
+        controller.setClaim("tag1&2", "", testTags, date1, date2, destinations, "testclaimiant", items,comments, null);
         //controller.setClaim("tag1Only", "", "tag1", date1, date2, destinations, "testclaimiant", items,comments);
 
         
