@@ -15,20 +15,37 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical"
+            android:paddingLeft="0dp" >
 
             <TextView
-                android:id="@+id/singleClaimFromTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="0dp"
-                android:text="From:"
-                android:textColor="@color/grey"
-                android:textSize="8sp" />
+                android:id="@+id/singleClaimClaimNametextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="ClaimName" 
+                android:textSize="20sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.29"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical" >
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/singleClaimFromTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
+                    android:text="From:"
+                    android:textColor="@color/grey"
+                    android:textSize="8sp" />
 
                 <TextView
                     android:id="@+id/singleClaimStartMonthTextView"
@@ -44,61 +61,31 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="0dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginRight="2dp"
                     android:layout_weight="3.43"
                     android:text=" 07,"
                     android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/singleClaimStartYearTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="0dp"
+                    android:gravity="right"
+                    android:paddingLeft="0dp"
+                    android:text="2015"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/singleClaimStartYearTextView"
-                android:layout_width="66dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:gravity="right"
-                android:text="2015"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-"
-
         </LinearLayout>
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/claimState"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginLeft="5dp"
-            android:paddingLeft="0dp" >
-
-            <TextView
-                android:id="@+id/singleClaimClaimNametextView"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="ClaimName" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" 
-            android:gravity="right">
-
-            <TextView
-                android:id="@+id/TotalAmount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Total Amount:"
-                android:textColor="@color/grey"
-                android:textSize="8sp" />
-
-            <TextView
-                android:id="@+id/totalAmountDisplay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="$ CAD 80.0" />
-        </LinearLayout>
+            android:text="In Progress"
+            android:textColor="@color/grey" />
     </LinearLayout>
 
     <LinearLayout
@@ -126,32 +113,49 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/claimState"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/linearLayout1"
-        android:layout_alignParentRight="true"
-        android:text="In Progress"
-        android:textColor="@color/grey" />
-
-    <TextView
         android:id="@+id/singleClaimDistinationDisplayTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout3"
-        android:layout_toLeftOf="@+id/claimState"
+        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/singleClaimDistinationTextView"
+        android:layout_centerHorizontal="true"
         android:text="Edmonton\nBanff"
         android:textColorHighlight="@color/red"
-        android:textSize="18sp" />
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@+id/linearLayout1"
+        android:layout_toRightOf="@+id/singleClaimDistinationDisplayTextView"
+        android:gravity="right"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/TotalAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Amount:"
+            android:textColor="@color/grey"
+            android:textSize="8sp" />
+
+        <TextView
+            android:id="@+id/totalAmountDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$ CAD 80.0" 
+            android:textSize="10sp"/>
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/singleClaimDistinationTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/singleClaimDistinationDisplayTextView"
-        android:layout_alignBottom="@+id/singleClaimDistinationDisplayTextView"
+        android:layout_below="@+id/linearLayout3"
         android:layout_toLeftOf="@+id/singleClaimDistinationDisplayTextView"
         android:text="Destination:"
+        android:layout_marginLeft="10dp"
         android:textColor="@color/grey"
         android:textSize="8sp" />
 
