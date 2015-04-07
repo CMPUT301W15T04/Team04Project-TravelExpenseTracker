@@ -365,12 +365,12 @@ public class MainActivity extends FragmentActivity {
 				double lng = location.getLongitude();
 				Date date = new Date(location.getTime());
 				
-				tv.setText("Latitude: " + lat
+/*				tv.setText("Latitude: " + lat
 						+ "\nLongitude: " + lng
-						+ "\n at time: " + date.toString());
+						+ "\n at time: " + date.toString());*/
 			} else {
-				tv.setText("Cannot get the location");
-			}
+/*				tv.setText("Cannot get the location");
+*/			}
 		}
 		
 		public void onProviderDisabled (String provider) {

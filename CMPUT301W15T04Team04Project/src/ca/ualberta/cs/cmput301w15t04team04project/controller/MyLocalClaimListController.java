@@ -90,7 +90,7 @@ public class MyLocalClaimListController {
 	 */
 	public void sortClaimNewFirst(){
 		for (int i = 0; i < (getClaims().size() - 1); i++) {
-			for (int j = i; j < (getClaimList().size() - 1 - i); j++) {
+			for (int j = i; j < (getClaims().size() - 1 ); j++) {
 				if (getClaims().get(j).getStartDate().getTime()  > getClaims().get(j+1).getStartDate().getTime()) {
 					Claim bigger = getClaims().get(j);
 					getClaims().remove(bigger);
