@@ -78,7 +78,7 @@ public class EditClaimActivity extends FragmentActivity {
 	private PagerAdapter mpageAdapter;
 	private ViewPager pager;
 	private ClaimEditController controller;
-	private User user;
+	public static User user;
 	public static ArrayList<Item> items;
 	public static ArrayList<String> comments;
 	protected static int addEditStatus = 0; // 0 add 1 edit

@@ -34,7 +34,8 @@ package ca.ualberta.cs.cmput301w15t04team04project.models;
 public class Destination {
 	protected String dName;
 	protected String dReason;
-
+	
+	
 	public Destination(String dName) {
 		this.dName = dName;
 	}
@@ -62,7 +63,7 @@ public class Destination {
 
 	@Override
 	public String toString() {
-		return dName+"("+dReason+")";
+		return dName+""+dReason;
 	} 
 
 }

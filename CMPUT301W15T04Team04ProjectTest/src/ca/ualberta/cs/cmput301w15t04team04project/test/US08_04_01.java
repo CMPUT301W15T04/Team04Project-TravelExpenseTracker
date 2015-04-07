@@ -65,7 +65,7 @@ public class US08_04_01 extends ActivityInstrumentationTestCase2<OneClaimActivit
 	}
 
 	
-	public void testAllItemDetailofSubmittedClaimTest(){
+	protected void testAllItemDetailofSubmittedClaimTest(){
 		itemListAdapter = new ItemListAdapter(getActivity(), 0, claim.getItems());
 
 		ListView itemListView = (ListView) getActivity().findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.OneCaimItemListView); //listView

@@ -25,6 +25,11 @@ import java.util.ArrayList;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Destination;
+import ca.ualberta.cs.cmput301w15t04team04project.models.User;
+import android.content.Context;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -159,6 +164,15 @@ public class FragmentEditClaim2 extends Fragment {
 					R.id.destinationEditText)).getText().toString();
 			String reason = ((EditText) getActivity().findViewById(
 					R.id.reasonEditText)).getText().toString();
+			
+			LocationManager lm = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+			Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+			lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, listener);
+			User user = EditClaimActivity.user;
+			Location homeLocation = MainActivity.homeLocation;
+			String distance = controller2.getDistance(homeLocation, location);
+			reason = " (Reason: "+reason+") \n Distance from home: " +distance;
 			destinationList.add(new Destination(destination,reason));
 			EditClaimActivity.destinationList = destinationList;
 			DestinationListAdapter.notifyDataSetChanged();
@@ -171,6 +185,33 @@ public class FragmentEditClaim2 extends Fragment {
 		}
 	}
 
+	public void getClaimLocation(View view){
+		
+		LocationManager lm = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+		Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+		lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, listener);
+		
+	}
+	
+	private final LocationListener listener = new LocationListener() {
+		public void onLocationChanged (Location location) {
+
+		}
+		
+		public void onProviderDisabled (String provider) {
+			
+		}
+		
+		public  void onProviderEnabled (String provider) {
+			
+		}
+		
+		public void onStatusChanged (String provider, int status, Bundle extras) {
+			
+		}
+	};
+	
 	/**
 	* <b>This class is get a claim thread by the cName(string)</b>
 	* @param cName This is a string of the name of a claim 

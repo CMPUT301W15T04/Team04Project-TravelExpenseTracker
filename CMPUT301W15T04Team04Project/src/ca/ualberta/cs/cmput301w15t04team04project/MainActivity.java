@@ -115,7 +115,7 @@ public class MainActivity extends FragmentActivity {
 	private RadioGroup bottom_Rg;
 	private PagerAdapter mpageAdapter;
 	private ViewPager pager;
-	private Location homeLocation;
+	public static Location homeLocation;
 	
 	// private int num = -1;
 	private MainController controller = new MainController();
@@ -405,7 +405,7 @@ public class MainActivity extends FragmentActivity {
 			public void onClick(DialogInterface dialog, int which) {
 				LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 				Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-				 
+				homeLocation = location;
 				user.setHomelocation(location);
 			}
 		});

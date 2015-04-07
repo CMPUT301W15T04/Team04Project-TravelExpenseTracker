@@ -54,10 +54,18 @@ public class ClaimEditController extends MyLocalClaimListController {
 	 * @return the distance of the (homeLocation and claimLocation)
 	 */
 	
-	public String getDistance(Location homeLocation, Location claimLocation){
-		double square = (homeLocation.getLatitude()-claimLocation.getLatitude())*(homeLocation.getLatitude()-claimLocation.getLatitude());
-		double result = Math.sqrt(square);
-		return ""+result;
+	public String getDistance(Location homeLocation, Location claimLocation) {
+		if (homeLocation != null && claimLocation != null) {
+			double square = (homeLocation.getLatitude() - claimLocation
+					.getLatitude())
+					* (homeLocation.getLatitude() - claimLocation.getLatitude())+(homeLocation.getLongitude() - claimLocation
+							.getLongitude())
+							* (homeLocation.getLongitude() - claimLocation.getLongitude());
+			double result = Math.sqrt(square);
+			return "" + result;
+		} else {
+			return "|";
+		}
 	}
 	
 	
