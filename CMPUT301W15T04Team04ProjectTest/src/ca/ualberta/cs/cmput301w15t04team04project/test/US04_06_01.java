@@ -1,16 +1,11 @@
 package ca.ualberta.cs.cmput301w15t04team04project.test;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
-
-import android.location.Location;
 import android.test.ActivityInstrumentationTestCase2;
 import ca.ualberta.cs.cmput301w15t04team04project.EditItemActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ItemEditController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Currency;
-import ca.ualberta.cs.cmput301w15t04team04project.models.Destination;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 
 public class US04_06_01 extends ActivityInstrumentationTestCase2<EditItemActivity> {
