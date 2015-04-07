@@ -16,7 +16,7 @@ public class US07_02_01 extends ActivityInstrumentationTestCase2<OneClaimActivit
 	public void testSubmitWarning() {
 		Claim claim = new Claim("testClaim");
 		controll = new OneClaimController(claim);
-		assertEquals(false, controll.checkComplete());
+		assertEquals("it is not complete",false, controll.checkComplete());
 	}
 }
 
