@@ -25,6 +25,7 @@ import java.util.Date;
 import java.util.jar.Attributes.Name;
 
 import android.hardware.Camera.Size;
+import android.location.Location;
 
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
@@ -54,6 +55,20 @@ public class ClaimEditController extends MyLocalClaimListController {
 	}
 	/**
 	 * setClaim 
+	 * @param homeLocation
+	 * @param claimLocation
+	 * @return the distance of the (homeLocation and claimLocation)
+	 */
+	
+	public String getDistance(Location homeLocation, Location claimLocation){
+		double square = (homeLocation.getLatitude()-claimLocation.getLatitude())*(homeLocation.getLatitude()-claimLocation.getLatitude());
+		double result = Math.sqrt(square);
+		return ""+result;
+	}
+	
+	
+	/**
+	 * setClaim 
 	 * @param cName
 	 * @param cDescription
 	 * @param cTag
@@ -66,7 +81,8 @@ public class ClaimEditController extends MyLocalClaimListController {
 	 * @return
 	 */
 	public Claim setClaim(String cName, String cDescription, String cTag,
-			Date sDate, Date eDate, ArrayList<Destination> destination, String user, ArrayList<Item> items, ArrayList<String> comments) {
+			Date sDate, Date eDate, ArrayList<Destination> destination, 
+			String user, ArrayList<Item> items, ArrayList<String> comments, Location location) {
 		claim.setClaim(cName);
 		claim.setDescription(cDescription);
 		claim.setTag(tagSplit(cTag));
@@ -76,6 +92,7 @@ public class ClaimEditController extends MyLocalClaimListController {
 		claim.setClaimiant(user);
 		claim.setItems(items);
 		claim.setComment(comments);
+		claim.setClLocation(location);
 		return claim;
 	}
 

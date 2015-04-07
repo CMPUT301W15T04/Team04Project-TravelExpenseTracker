@@ -9,6 +9,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Destination;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
+import android.location.Location;
 import android.test.ActivityInstrumentationTestCase2;
 
 public class US01_02_01 extends ActivityInstrumentationTestCase2<EditClaimActivity> {
@@ -52,8 +53,10 @@ public class US01_02_01 extends ActivityInstrumentationTestCase2<EditClaimActivi
         destination2.setdReason("test2");
         destinations.add(destination2);
         ArrayList<String> comments = new ArrayList<String>();
+        Location location = null;
 
-        controller.setClaim("test", "", "", date1, date2, destinations, "testclaimiant", items,comments);
+
+        controller.setClaim("test", "", "", date1, date2, destinations, "testclaimiant", items,comments,location);
 
         Date startDate = new Date();
         startDate = testClaim.getStartDate();
