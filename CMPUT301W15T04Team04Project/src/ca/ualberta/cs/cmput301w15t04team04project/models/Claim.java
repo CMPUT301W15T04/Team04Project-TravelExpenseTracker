@@ -53,7 +53,7 @@ public class Claim {
 
 	protected String Approver;
 	protected String Claimiant;
-	protected ArrayList<Currency> totalCurrency ;
+	protected ArrayList<Currency> totalCurrency;
 	protected String claimLocation;
 	protected Location clLocation;
 
@@ -61,21 +61,17 @@ public class Claim {
 		return claimLocation;
 	}
 
-
-
 	public Location getClLocation() {
 		return clLocation;
 	}
 
-
-
 	public void setClLocation(Location clLocation) {
-		if (clLocation != null){
-		this.claimLocation = clLocation.getLatitude()+""+clLocation.getLongitude();
-		this.clLocation = clLocation;}
+		if (clLocation != null) {
+			this.claimLocation = clLocation.getLatitude() + ""
+					+ clLocation.getLongitude();
+			this.clLocation = clLocation;
+		}
 	}
-
-
 
 	/**
 	 * The constructor of the class
@@ -91,36 +87,34 @@ public class Claim {
 		tags = new ArrayList<String>();
 		status = "In Progress";
 		startDate = new Date(System.currentTimeMillis()); // only for test.
-		description = "";									// 2015-03-14
-		Comments = new ArrayList<String>();													// Chenrui
+		description = ""; // 2015-03-14
+		Comments = new ArrayList<String>(); // Chenrui
 
 	}
-	
+
 	public void setDestination(ArrayList<Destination> destination) {
 		this.destination = destination;
 	}
+
 	/*
-	/**
-	 * Returns the string representation of the destination list. The
+	 * /** Returns the string representation of the destination list. The
 	 * presentation has a specific format. Elements are separated by '\n' (new
 	 * line).
 	 * 
 	 * @return the string representation of this.destination.
 	 * 
 	 * @author Chenrui Lei
+	 * 
 	 * @since 2015-03-14
 	 */
 	public String DestinationListToString() {
 		String out = "";
-/*		if (destination.size() != 0) {
-			out += destination.get(0).toString();
-
-			for (int i = 1; i < destination.size(); i++) {
-				out += "\n" + destination.get(i).toString();
-			}
-		} else {
-			out = "N/A";
-		}*/
+		/*
+		 * if (destination.size() != 0) { out += destination.get(0).toString();
+		 * 
+		 * for (int i = 1; i < destination.size(); i++) { out += "\n" +
+		 * destination.get(i).toString(); } } else { out = "N/A"; }
+		 */
 		return out;
 	}
 
@@ -229,7 +223,6 @@ public class Claim {
 	public void setApproverName(String approver) {
 		this.Approver = approver;
 	}
-
 
 	/**
 	 * get a collection of items which are contained in this claim by convert
@@ -416,24 +409,33 @@ public class Claim {
 
 	/**
 	 * Calculate the total currency and covert it to string
+	 * 
 	 * @return String
 	 */
-	
-	public String currencySummary(){
+
+	public String currencySummary() {
 		ArrayList<Currency> currencyList = new ArrayList<Currency>();
-		for (int i = 0; i < getItems().size(); i++){
-			for (int j = 0; j < currencyList.size(); j++){
-				if (getItems().get(i).getItemCurrency().getType().equals(currencyList.get(j).getType())){
+		for (int i = 0; i < getItems().size(); i++) {
+			int load = 0;
+			for (int j = 0; j < currencyList.size(); j++) {
+				if (getItems().get(i).getItemCurrency().getType()
+						.equals(currencyList.get(j).getType())) {
 					int c = currencyList.get(j).getAmount();
-					currencyList.get(j).setAmount(c + getItems().get(i).getItemCurrency().getAmount());
+					currencyList.get(j).setAmount(c+ getItems().get(i).getItemCurrency().getAmount());
+					load = 1;
 					break;
 				}
 			}
-			currencyList.add(getItems().get(i).getItemCurrency());
+			if (load == 0) {
+				int m = getItems().get(i).getItemCurrency().getAmount();
+				String type = getItems().get(i).getItemCurrency().getType();
+				Currency money = new Currency(type, m);
+				currencyList.add(money);
+			}
 		}
 		String summary = "";
-		for (int j = 0; j < currencyList.size(); j++){
-			summary += currencyList.get(j).getType() + currencyList.get(j).getAmount()+"\n";
+		for (int j = 0; j < currencyList.size(); j++) {
+			summary += currencyList.get(j).toString() + "\n";
 		}
 		return summary;
 	}
