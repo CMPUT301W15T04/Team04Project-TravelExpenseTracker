@@ -38,9 +38,14 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.Destination;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.app.Activity;
+import android.content.Context;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioGroup;
@@ -80,6 +85,8 @@ public class EditClaimActivity extends FragmentActivity {
 	protected static String ClaimName;
 	protected Activity thisActivity = this;
 	protected static ArrayList<Destination> destinationList = new ArrayList<Destination>();
+	protected Location claimLocation;
+	
 	
 	private Runnable doFinish = new Runnable() {
 		public void run() {
@@ -104,6 +111,35 @@ public class EditClaimActivity extends FragmentActivity {
 
 	}
 
+	
+	
+	public void getClaimLocation(View view){
+		
+		LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+		lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, listener);
+		claimLocation = location;
+		
+	}
+	
+	private final LocationListener listener = new LocationListener() {
+		public void onLocationChanged (Location location) {
+
+		}
+		
+		public void onProviderDisabled (String provider) {
+			
+		}
+		
+		public  void onProviderEnabled (String provider) {
+			
+		}
+		
+		public void onStatusChanged (String provider, int status, Bundle extras) {
+			
+		}
+	};
 	/*
 	 * public static void changeFragmentTextView(String s) { Fragment frag =
 	 * getFragmentManager().findFragmentById(R.id.yourFragment); ((TextView)
@@ -227,7 +263,7 @@ public class EditClaimActivity extends FragmentActivity {
 			ArrayList<Item> cItem = new ArrayList<Item>();
 			ArrayList<String> cComments = new ArrayList<String>();
  			Claim claim = controller.setClaim(cName, cDescription, cTag, sDate,
-					eDate, destinationList, user.getName(), cItem,cComments);
+					eDate, destinationList, user.getName(), cItem,cComments,claimLocation);
 			Thread add = new AddThread(claim);
 			add.start();
 			try {
@@ -241,7 +277,7 @@ public class EditClaimActivity extends FragmentActivity {
 		else {
 			
 			Claim claim = controller.setClaim(cName, cDescription, cTag, sDate,
-					eDate, destinationList, user.getName(), items, comments);
+					eDate, destinationList, user.getName(), items, comments,claimLocation);
 			Thread update = new UpdateThread(claim);
 			update.start();
 			

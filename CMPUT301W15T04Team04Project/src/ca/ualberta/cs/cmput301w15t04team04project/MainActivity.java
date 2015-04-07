@@ -30,8 +30,11 @@ import ca.ualberta.cs.cmput301w15t04team04project.adapter.PagerAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.MainController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -113,7 +116,8 @@ public class MainActivity extends FragmentActivity {
 	private RadioGroup bottom_Rg;
 	private PagerAdapter mpageAdapter;
 	private ViewPager pager;
-
+	private Location homeLocation;
+	
 	// private int num = -1;
 	private MainController controller = new MainController();
 	public List<Fragment> fragments;
@@ -145,7 +149,9 @@ public class MainActivity extends FragmentActivity {
 
 		LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-		/*if (location != null){
+
+/*		if (location != null){
+			user.setHomelocation(location);
 			TextView tv = (TextView) findViewById(R.id.gpsHomeLocationTextView);
 			tv.setText("Lat: " + location.getLatitude()
 			+ "\nLong: " + location.getLongitude());
@@ -388,8 +394,34 @@ public class MainActivity extends FragmentActivity {
 	 * @param v View passed to the activity to check which button was pressed.
 	 */
 	public void goToMapAction(View v){
-		Intent intent = new Intent(MainActivity.this, osmMainActivity.class);
-		startActivity(intent);
+		AlertDialog.Builder adb = new AlertDialog.Builder(MainActivity.this);
+		if (user.getHomelocation()!=null){
+			adb.setMessage("Current Home Location is "+user.getHomelocation().getLatitude()+user.getHomelocation().getLongitude()+"\nChoose the HomeLocation Way");
+
+		}
+		else{
+		adb.setMessage("Choose the HomeLocation Way");
+		}
+		adb.setNegativeButton("GPS", new OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+				Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+				 
+				user.setHomelocation(location);
+			}
+		});
+		
+		adb.setPositiveButton("Map", new OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				Intent intent = new Intent(MainActivity.this, osmMainActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		adb.setCancelable(true);
+		adb.show();
+
+
 	}
 	
 	/**

@@ -21,6 +21,8 @@
 
 package ca.ualberta.cs.cmput301w15t04team04project.models;
 
+import android.location.Location;
+
 /**
  * The User model is just a rough User's information simply store set and get
  * all of the User
@@ -35,7 +37,8 @@ package ca.ualberta.cs.cmput301w15t04team04project.models;
 public class User {
 	protected boolean loginStatus = false;
 	protected String name = null;
-
+	protected Location homelocation = null;
+	
 	/*
 	 * Constructor of User
 	 */
@@ -44,6 +47,16 @@ public class User {
 	}
 
 	
+	public Location getHomelocation() {
+		return homelocation;
+	}
+
+
+	public void setHomelocation(Location homelocation) {
+		this.homelocation = homelocation;
+	}
+
+
 	public boolean getLoginStatus() {
 		return loginStatus;
 	}

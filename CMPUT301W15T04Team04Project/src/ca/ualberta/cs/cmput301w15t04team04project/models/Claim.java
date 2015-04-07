@@ -25,6 +25,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+import android.location.Location;
+
 /**
  * The Claim model is just a rough Claim's information simply store set and get
  * all of the Claim
@@ -52,8 +54,29 @@ public class Claim {
 	protected String Approver;
 	protected String Claimiant;
 	protected ArrayList<Currency> totalCurrency ;
-
+	protected String claimLocation;
+	protected Location clLocation;
+	
 	protected transient ArrayList<Listener> listeners = null;
+
+	public String getClaimLocation() {
+		return claimLocation;
+	}
+
+
+
+	public Location getClLocation() {
+		return clLocation;
+	}
+
+
+
+	public void setClLocation(Location clLocation) {
+		this.claimLocation = clLocation.getLatitude()+""+clLocation.getLongitude();
+		this.clLocation = clLocation;
+	}
+
+
 
 	/**
 	 * The constructor of the class
