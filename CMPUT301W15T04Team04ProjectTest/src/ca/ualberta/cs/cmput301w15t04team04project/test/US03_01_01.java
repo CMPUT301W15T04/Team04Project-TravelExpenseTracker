@@ -1,21 +1,13 @@
 package ca.ualberta.cs.cmput301w15t04team04project.test;
 
-import junit.framework.TestCase;
-
 import java.util.ArrayList;
 import java.util.Date;
-
 import ca.ualberta.cs.cmput301w15t04team04project.EditClaimActivity;
-import ca.ualberta.cs.cmput301w15t04team04project.OneClaimActivity;
-import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Destination;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.location.Address;
 import android.test.ActivityInstrumentationTestCase2;
 
 public class US03_01_01 extends ActivityInstrumentationTestCase2<EditClaimActivity> {
@@ -61,6 +53,9 @@ public class US03_01_01 extends ActivityInstrumentationTestCase2<EditClaimActivi
 
         controller.setClaim("test", "", testTags, date1, date2, destinations, "testclaimiant", items,comments);
 
+		//Thread search = new SearchClaimThread(user.getName(), null, tag);
+		//search.start();
+        
         String outPutTag1 = testClaim.getTag().get(0);
         String outPutTag2 = testClaim.getTag().get(1);
         
