@@ -79,8 +79,5 @@ public class US04_02_01 extends ActivityInstrumentationTestCase2<EditItemActivit
 		else {
 			assertEquals("itemA's item category is add", null, claim.getItems().get(0).getItemCategory());
 		}
-		
-
-
 	}
 }
