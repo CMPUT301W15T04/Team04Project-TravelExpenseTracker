@@ -1,8 +1,11 @@
 package ca.ualberta.cs.cmput301w15t04team04project.test;
 
 import java.util.Date;
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 7b647a2a9265f459727e1aa504cee3bfe8fd58ad
 import android.test.ActivityInstrumentationTestCase2;
 import ca.ualberta.cs.cmput301w15t04team04project.EditItemActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ItemEditController;
@@ -46,11 +49,8 @@ public class US04_01_01 extends ActivityInstrumentationTestCase2<EditItemActivit
 		
 		controller.addItem(itemA);
 		
-		
 		Item itemB = new Item("testAItem2");
 
-
-		
 		itemB.setItemDate(Bdate);
 		itemB.setItemCategory("Cate2");
 		
