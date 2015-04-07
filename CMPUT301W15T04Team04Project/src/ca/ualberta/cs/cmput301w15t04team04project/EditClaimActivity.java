@@ -111,7 +111,8 @@ public class EditClaimActivity extends FragmentActivity {
 
 	}
 
-	
+	/**
+	 */
 	
 	public void getClaimLocation(View view){
 		
