@@ -109,12 +109,17 @@ public class Claim {
 	 */
 	public String DestinationListToString() {
 		String out = "";
-		/*
-		 * if (destination.size() != 0) { out += destination.get(0).toString();
-		 * 
-		 * for (int i = 1; i < destination.size(); i++) { out += "\n" +
-		 * destination.get(i).toString(); } } else { out = "N/A"; }
-		 */
+
+		if (destination.size() != 0) {
+			out += destination.get(0).getdName().toString();
+
+			for (int i = 1; i < destination.size(); i++) {
+				out += "\n" + destination.get(i).getdName().toString();
+			}
+		} else {
+			out = "N/A";
+		}
+
 		return out;
 	}
 
