@@ -70,7 +70,7 @@ public class US08_03_01UITest extends ActivityInstrumentationTestCase2<MainActiv
  
     }*/
 	
-	protected void AllClaimDetailsUItest(){
+	protected void testAllClaimDetailsUItest(){
 		ListView listView = (ListView) thisActivity.findViewById(ca.ualberta.cs.cmput301w15t04team04project.R.id.myClaimsListView); //listView
 
 		assertEquals("index 0 equals", listView.getChildAt(0).equals(Aclaim));
