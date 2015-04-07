@@ -94,6 +94,8 @@ public class Item {
 		byte[] b = baos.toByteArray(); 
 		this.receipt = Base64.encodeToString(b, Base64.DEFAULT);
 	}
+	
+	//http://www.eoenadroid.com/thread-555153-1-1.html
 	private Bitmap compressImage(Bitmap image) {
 
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
