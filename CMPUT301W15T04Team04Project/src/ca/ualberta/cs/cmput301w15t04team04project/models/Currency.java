@@ -53,5 +53,8 @@ public class Currency {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
-
+	
+	public String toString(){
+		return type + amount;
+	}
 }

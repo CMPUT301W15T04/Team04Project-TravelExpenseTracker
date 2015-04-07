@@ -149,41 +149,6 @@ public class Claim {
 	}
 
 	/**
-<<<<<<< HEAD
-=======
-	 * Returns the string representation of the totalCurrency list. The
-	 * presentation has a specific format. Elements are separated by '\n' (new
-	 * line).
-	 * 
-	 * @return the string representation of this.totalCurrency.
-	 * 
-	 * @author Chenrui Lei
-	 * @since 2015-03-14
-	 */
-	public String TotalCurrencyListToString() {
-		String out = "";
-/*		if (totalCurrency.size() != 0) {
-			out += totalCurrency.get(0).toString();
-
-			for (int i = 1; i < totalCurrency.size(); i++) {
-				out += "\n" + totalCurrency.get(i).toString();
-			}
-		} else {
-			out = "N/A";
-		}*/
-		return out;
-	}
-
-	public ArrayList<Currency> getTotalCurrency() {
-		return this.totalCurrency;
-	}
-
-	public void setTotalCurrency(ArrayList<Currency> totalCurrency) {
-		this.totalCurrency = totalCurrency;
-	}
-
-	/**
->>>>>>> ce8114d26388fc9dec9fc17c358159d50dde398a
 	 * add new destination of this claim
 	 * 
 	 * @param newdestination

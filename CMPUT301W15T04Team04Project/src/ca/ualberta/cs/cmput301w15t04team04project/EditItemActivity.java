@@ -25,17 +25,12 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Vector;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
-import ca.ualberta.cs.cmput301w15t04team04project.OneClaimActivity.UpdateThread;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.PagerAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ItemEditController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Currency;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
-import ca.ualberta.cs.cmput301w15t04team04project.network.InternetChecker;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.DialogInterface.OnClickListener;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -43,7 +38,6 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -350,6 +344,12 @@ public class EditItemActivity extends FragmentActivity {
 		this.bitmap = bitmap;
 		this.receiptFlag = receiptFlag;
 	}
+	/**
+	 * open a thread to update a claim
+	 * @author youdong
+	 * @version 1.0
+	 * @since 2015-03-02
+	 */
 	class UpdateThread extends Thread {
 		private Claim claim;
 
@@ -372,6 +372,14 @@ public class EditItemActivity extends FragmentActivity {
 			runOnUiThread(doFinishEdit);
 		}
 	}
+	
+	/**
+	 * open a thread to get a claim from server
+	 * @author youdong
+	 * @version 1.0
+	 * @since 2015-03-02
+	 */
+	
 	class GetClaimThread extends Thread {
 		private String claimName;
 

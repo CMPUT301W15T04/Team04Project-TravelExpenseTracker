@@ -139,7 +139,7 @@ public class FragmentEditClaim1 extends Fragment {
 	}
 	
 	/**
-	* <b>This class is get a claim thread by the cName(string)</b>
+	* <b>This class is open a get claim thread</b>
 	* @param cName This is a string of the name of a claim 
 	* @exception IOException On input error.
 	* @see IOException

@@ -20,33 +20,19 @@
  */
 package ca.ualberta.cs.cmput301w15t04team04project;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
-import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ItemEditController;
-import ca.ualberta.cs.cmput301w15t04team04project.controller.OneClaimController;
-import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import android.os.Bundle;
-import android.app.Activity;
 import android.content.res.Resources;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.AdapterView.OnItemSelectedListener;
 
 /**
  * <b>This is the fragment part 1 for adding/editing an item.</b><br>
@@ -76,7 +62,6 @@ public class FragmentEditItem1 extends Fragment {
 	private TextView amount;
 	private Spinner category;
 	private int myItemId;
-	private int myClaimId;
 	private Resources res;
 	private ItemEditController controller;
 	private CLmanager onlineManager = new CLmanager();

@@ -99,9 +99,8 @@ public final class R {
         public static final int TotalAmount=0x7f0a0075;
         public static final int action_logout=0x7f0a0094;
         public static final int action_new_claim=0x7f0a0095;
-        public static final int action_new_item=0x7f0a0097;
+        public static final int action_new_item=0x7f0a0096;
         public static final int action_search=0x7f0a0093;
-        public static final int action_searchOC=0x7f0a0096;
         public static final int action_settings=0x7f0a0090;
         public static final int addClaimButton=0x7f0a0068;
         public static final int addCommentItemEditText=0x7f0a002f;

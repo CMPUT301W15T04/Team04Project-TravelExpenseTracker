@@ -22,25 +22,17 @@ package ca.ualberta.cs.cmput301w15t04team04project;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
-import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
-import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
-import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Destination;
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -73,7 +65,6 @@ public class FragmentEditClaim2 extends Fragment {
 	private EditText tags;
 	private String tag = "";
 	// private ArrayList<Destination> destinations;
-	private EditText destinations;
 	private ListView DestinationListView;
 	protected ClaimEditController controller2;
 	private ArrayList<Destination> destinationList = new ArrayList<Destination>();
@@ -150,16 +141,6 @@ public class FragmentEditClaim2 extends Fragment {
 			ClaimName = bundle.getString("MyClaimName");
 			GetThread2 getClaim2 = new GetThread2(ClaimName);
 			getClaim2.start();
-			// get the views
-
-			// get the size of two ListViews
-
-			// set content of view to dispaly
-			
-
-			// descript.setText(currentClaim.getDescription());
-
-			// EditClaimActivity.myClaimId = this.myClaimId;
 		}
 	}
 	/**

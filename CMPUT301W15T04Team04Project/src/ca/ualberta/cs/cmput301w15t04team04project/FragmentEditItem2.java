@@ -20,13 +20,9 @@
  */
 package ca.ualberta.cs.cmput301w15t04team04project;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
-import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ItemEditController;
-import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 import android.net.Uri;
 import android.os.Bundle;
@@ -39,14 +35,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.util.Base64;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -75,9 +67,6 @@ public class FragmentEditItem2 extends Fragment {
 	private View thisview;
 	private Uri imageFileUri;
 	private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
-	private String stringUri = null;
-	private String imagepath = null;
-	private String encodedImage = null;
 	private ItemEditController controller;
 	private CLmanager onlineManager = new CLmanager();
 	private EditItemActivity myActivity;
@@ -218,15 +207,8 @@ public class FragmentEditItem2 extends Fragment {
 	 */
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
-			if (resultCode == -1) { // requestCode == 1 &&
+			if (resultCode == -1) {
 
-				// stringUri = imageFileUri.getPath();
-				//Toast.makeText(getActivity(), "1", Toast.LENGTH_LONG).show();
-				// currentItem.setReceipt(stringUri);
-				// imageFileUri = data.getData();
-				// imagepath = getPath(imageFileUri);
-
-				
 				Drawable drawable = Drawable.createFromPath(imageFileUri
 						.getPath());
 				Bitmap bitmap = BitmapFactory
@@ -240,7 +222,6 @@ public class FragmentEditItem2 extends Fragment {
 						.findViewById(R.id.addRecieptImageButton);
 				button.setImageBitmap(Bitmap.createScaledBitmap(bitmap, 256,
 						256, false));
-				// button.setImageBitmap(bitmap);
 				
 			}
 		}

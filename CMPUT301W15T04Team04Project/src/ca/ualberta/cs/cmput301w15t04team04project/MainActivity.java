@@ -44,7 +44,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -425,7 +424,7 @@ public class MainActivity extends FragmentActivity {
 	}
 	
 	/**
-	 * 
+	 * jump to search activity
 	 * @param item 
 	 */
 	public void goToSearch(MenuItem item) {

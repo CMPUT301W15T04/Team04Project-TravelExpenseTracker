@@ -250,16 +250,6 @@ public class EditClaimActivity extends FragmentActivity {
 		eDate.setDate(toDatePicker.getDayOfMonth());
 		eDate.setMonth(toDatePicker.getMonth());
 		eDate.setYear(toDatePicker.getYear() - 1900);
-
-		/*
-		 * Calendar calendar = Calendar.getInstance();
-		 * calendar.set(toDatePicker.getYear(), toDatePicker.getMonth(),
-		 * toDatePicker.getDayOfMonth()); Calendar calendarfrom =
-		 * Calendar.getInstance(); calendarfrom.set(fromDatePicker.getYear(),
-		 * fromDatePicker.getMonth(), fromDatePicker.getDayOfMonth());
-		 */
-		// System.out.println(tag==null);
-
 		if (addEditStatus == 0) {
 			ArrayList<Item> cItem = new ArrayList<Item>();
 			ArrayList<String> cComments = new ArrayList<String>();
@@ -292,7 +282,7 @@ public class EditClaimActivity extends FragmentActivity {
 
 	}
 	/**
-	* This class is add claim thread to run
+	* Open a add claim thread
 	* @param claim This is the claim which should be add in the CLManager 
 	* @exception IOException On input error.
 	* @see IOException
@@ -322,7 +312,7 @@ public class EditClaimActivity extends FragmentActivity {
 	}
 	
 	/**
-	* This class is edit claim thread to run
+	* Open a update claim thread
 	* @param claim This is the claim which should be add in the CLManager 
 	* @exception IOException On input error.
 	* @see IOException

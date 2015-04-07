@@ -28,11 +28,8 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 /**
  * <b>SignInActivity is a page that provide a way for user to sign in</b>

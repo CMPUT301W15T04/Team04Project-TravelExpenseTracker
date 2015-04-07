@@ -48,7 +48,6 @@ public class Item {
 	protected String itemDescription;
 	protected Currency itemCurrency;
 	protected Date itemDate;
-	// private ImageView receipt;
 	protected boolean isComplete = false;
 	protected String receipt;
 	
@@ -179,16 +178,6 @@ public class Item {
 		return null;
 	}
 
-	
-	/*
-	 * public ImageView getReceipt() {
-	 * 
-	 * return receipt; }
-	 * 
-	 * public void setReceipt(ImageView receipt) {
-	 * 
-	 * this.receipt = receipt; }
-	 */
 	public boolean getisComplete() {
 
 		return isComplete;

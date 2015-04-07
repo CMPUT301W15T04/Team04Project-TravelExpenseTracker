@@ -116,20 +116,6 @@ public class MyClaimActivity extends Activity {
 		claimListAdapter = new ClaimListAdapter(thisActivity,
 				R.layout.single_claim, controller.getClaims());
 		listView.setAdapter(claimListAdapter);
-		/*
-		 * controller.getClaimList().addListener(new Listener() {
-		 * 
-		 * @Override public void update() { // TODO Auto-generated method stub
-		 * claims.clear(); Collection<Claim> claims2 = null; if (mode == 0) {
-		 * indeies = controller.getIndexList("In Progress"); claims2 =
-		 * controller.getClaimsByIndex(indeies); } else if (mode == 1) { indeies
-		 * = controller.getIndexList("submitted"); claims2 =
-		 * controller.getClaimsByIndex(indeies); } else if (mode == 2) { indeies
-		 * = controller.getIndexList("approved"); claims2 =
-		 * controller.getClaimsByIndex(indeies); } else { progressing = false; }
-		 * claims.addAll(claims2); claimListAdapter.notifyDataSetChanged(); }
-		 * });
-		 */
 		if (user.getName().equals("approval") || (mode == 1) || (mode == 2)) {
 		} else {
 			listView.setOnItemLongClickListener(new OnItemLongClickListener() {
@@ -189,6 +175,9 @@ public class MyClaimActivity extends Activity {
 
 			);
 		}
+		
+		
+		
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> adapterView, View view,

@@ -24,10 +24,8 @@ import java.util.Date;
 
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
-import android.content.Context;
 import android.location.Location;
 import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -74,51 +72,6 @@ public class FragmentProfile extends Fragment {
 		outBox = (TextView) getView().findViewById(R.id.savedClaimsTextView);
 		addClaim = (Button) getView().findViewById(R.id.addClaimButton);
 		check();
-		
-		/*LocationManager lm = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-		Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-		if (location != null){
-			TextView tv = (TextView) getView().findViewById(R.id.gpsHomeLocationTextView);
-			tv.setText("Lat: " + location.getLatitude()
-			+ "\nLong: " + location.getLongitude());
-		}
-		lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, listener);*/
-		
-		/**
-		 * settingOption =
-		 * (RadioGroup)getView().findViewById(R.id.settingGroup);
-		 * settingOption.setOnCheckedChangeListener(new
-		 * OnCheckedChangeListener() { public void onCheckedChanged(RadioGroup
-		 * group, int checkedId) { switch (checkedId) { case R.id.MyClaims:
-		 * //controller.GoToMyClaim(FragmentProfile); Intent intent1 = new
-		 * Intent(getActivity(), MyClaimActivity.class); startActivity(intent1);
-		 * break;
-		 * 
-		 * case R.id.waitingList: Intent intent2 = new Intent(getActivity(),
-		 * MyClaimActivity.class); startActivity(intent2); break;
-		 * 
-		 * case R.id.logOut:
-		 **/
-
-		/**
-		 * Modify the following code
-		 *
-		 * @author Chenrui Lei
-		 * @version 1.0
-		 * @since 2015-03-11
-		 */
-		/**
-		 * signInController.logOut(getActivity());
-		 * 
-		 * // go back to signIn page Intent intent3 = new Intent(getActivity(),
-		 * SignInActivity.class); startActivity(intent3);
-		 * 
-		 * // stop current view getActivity().finish(); break;
-		 * 
-		 * default: break; }
-		 * 
-		 * } });
-		 */
 	}
 
 /*	private final LocationListener listener = new LocationListener() {
@@ -149,7 +102,9 @@ public class FragmentProfile extends Fragment {
 			
 		}
 	};*/
-	
+	/**
+	 * check if user is a approval, if yes the some view should be invisible.
+	 */
 	private void check() {
 		if (user.getName().equals("approval")){
 			progress.setVisibility(View.GONE);
