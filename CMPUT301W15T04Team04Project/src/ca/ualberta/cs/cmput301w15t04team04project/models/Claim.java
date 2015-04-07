@@ -94,7 +94,7 @@ public class Claim {
 		tags = new ArrayList<String>();
 		status = "In Progress";
 		startDate = new Date(System.currentTimeMillis()); // only for test.
-															// 2015-03-14
+		description = "";									// 2015-03-14
 		Comments = new ArrayList<String>();													// Chenrui
 
 	}

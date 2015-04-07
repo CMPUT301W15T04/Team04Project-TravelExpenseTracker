@@ -7,7 +7,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 
 
 public class US07_03_01 extends ActivityInstrumentationTestCase2<OneClaimActivity> {
-	OneClaimController controller;
+	private OneClaimController controller;
 	
 	public US07_03_01() {
 		super(OneClaimActivity.class);

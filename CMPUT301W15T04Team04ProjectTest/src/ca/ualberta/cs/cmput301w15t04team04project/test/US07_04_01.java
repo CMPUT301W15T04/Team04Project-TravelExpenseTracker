@@ -13,7 +13,7 @@ public class US07_04_01 extends ActivityInstrumentationTestCase2<OneClaimActivit
 		super(OneClaimActivity.class);
 	}
 	
-	public void ClaimStatusApproved() {
+	public void testStatusApproved() {
 		Claim claim = new Claim("testClaim");
 		controll = new OneClaimController(claim);
 		assertEquals("In Progress", controll.getClaim().getStatus());
