@@ -54,6 +54,7 @@ public class XListViewHeader extends LinearLayout {
 	/**
 	 * @param context
 	 */
+	@SuppressWarnings("deprecation")
 	private void initView(Context context) {
 		
 		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(

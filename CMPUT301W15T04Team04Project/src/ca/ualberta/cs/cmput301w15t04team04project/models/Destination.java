@@ -21,8 +21,6 @@
 
 package ca.ualberta.cs.cmput301w15t04team04project.models;
 
-import java.util.ArrayList;
-
 /**
  * The Destination model is a rough Destination's information simply store set
  * and get all of the Destination
@@ -36,7 +34,6 @@ import java.util.ArrayList;
 public class Destination {
 	protected String dName;
 	protected String dReason;
-	protected transient ArrayList<Listener> listeners = null;
 
 	public Destination(String dName) {
 		this.dName = dName;

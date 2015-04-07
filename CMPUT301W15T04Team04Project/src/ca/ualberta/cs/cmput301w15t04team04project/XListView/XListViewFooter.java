@@ -9,10 +9,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-/**
- * @author youdong
- *
- */
 public class XListViewFooter extends LinearLayout {
 	public final static int STATE_NORMAL = 0;
 	public final static int STATE_READY = 1;
@@ -118,9 +114,6 @@ public class XListViewFooter extends LinearLayout {
 	/**
 	 * show footer
 	 */
-	/**
-	 * 
-	 */
 	public void show() {
 		LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) mContentView
 				.getLayoutParams();
@@ -128,6 +121,7 @@ public class XListViewFooter extends LinearLayout {
 		mContentView.setLayoutParams(lp);
 	}
 
+	@SuppressWarnings("deprecation")
 	private void initView(Context context) {
 		mContext = context;
 		LinearLayout moreView = (LinearLayout) LayoutInflater.from(mContext)

@@ -16,7 +16,6 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Destination;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
-import ca.ualberta.cs.cmput301w15t04team04project.models.Listener;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import ca.ualberta.cs.cmput301w15t04team04project.network.InternetChecker;
 import android.app.Activity;

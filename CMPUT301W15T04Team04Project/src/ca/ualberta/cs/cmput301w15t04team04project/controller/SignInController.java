@@ -25,7 +25,6 @@ import android.content.Intent;
 import android.widget.EditText;
 import android.widget.Toast;
 import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
-import ca.ualberta.cs.cmput301w15t04team04project.SignInActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 

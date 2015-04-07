@@ -4,12 +4,22 @@ public class SimpleSearchCommand {
 	private String user;
 	private String status;
 	private String tag;
-
+	/**
+	 * Initial the search command parameter
+	 * @param user
+	 * @param status
+	 * @param tag
+	 */
 	public SimpleSearchCommand(String user, String status, String tag) {
 		this.user = user;
 		this.status = status;
 		this.tag = tag;
 	}
+	
+	/**
+	 * Covert this to a elastic search command
+	 * @return
+	 */
 	
 	public String getJsonCommand() {
 		StringBuffer command = new StringBuffer("{\"query\" : {\"bool\" : {\"must\" :[");

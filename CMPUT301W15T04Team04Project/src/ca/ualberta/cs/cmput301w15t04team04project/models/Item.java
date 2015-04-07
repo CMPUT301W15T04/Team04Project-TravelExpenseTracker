@@ -27,9 +27,7 @@ import java.util.Date;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.util.Base64;
-import android.widget.ImageView;
 
 /**
  * The Item model is just a rough Item's information simply store set and get
@@ -195,7 +193,10 @@ public class Item {
 
 		return isComplete;
 	}
-
+	
+	/*
+	 * If return true, then this claim can't be submitted
+	 */
 	public void changeIsComplete() {
 		if (this.isComplete == false) {
 			this.isComplete = true;

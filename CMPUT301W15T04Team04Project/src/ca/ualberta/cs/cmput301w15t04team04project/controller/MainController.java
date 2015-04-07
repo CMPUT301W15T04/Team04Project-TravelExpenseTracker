@@ -31,14 +31,6 @@ import android.content.Context;
  * @since 2015-03-12
  */
 public class MainController {
-
-	/**
-	 * Constructor
-	 */
-	public MainController() {
-		
-	}
-
 	/**
 	 * logOut is use to react when logOut button be clicked
 	 * Delete the user name saved in local

@@ -38,7 +38,6 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 public class ClaimList {
 
 	protected ArrayList<Claim> claims = null;
-	protected transient ArrayList<Listener> listeners = null;
 
 	/**
 	 * The constructor of the class
@@ -47,50 +46,8 @@ public class ClaimList {
 	 */
 	public ClaimList() {
 		claims = new ArrayList<Claim>();
-		listeners = new ArrayList<Listener>();
 	}
 
-	private ArrayList<Listener> getListeners() {
-		if (listeners == null) {
-			listeners = new ArrayList<Listener>();
-		}
-		return listeners;
-	}
-
-	// http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fswt%2Fwidgets%2FWidget.html
-	/**
-	 * 
-	 * Adds the listener to the collection of listeners who will be notified
-	 * when an event of the given type occurs.
-	 * 
-	 * @param l
-	 *            the new listener
-	 */
-	public void addListener(Listener l) {
-		getListeners().add(l);
-	}
-
-	// http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fswt%2Fwidgets%2FWidget.html
-	/**
-	 * Removes the listener from the collection of listeners who will be
-	 * notified when an event of the given type occurs.
-	 * 
-	 * @param l
-	 *            the removed listener .
-	 */
-	public void removeListener(Listener l) {
-		getListeners().remove(l);
-	}
-
-	// http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fswt%2Fwidgets%2FWidget.html
-	/**
-	 * Notifies all of the receiver's listeners for events.
-	 */
-	public void notifyListeners() {
-		for (Listener listener : getListeners()) {
-			listener.update();
-		}
-	}
 
 	/**
 	 * get a claim list in ArrayList date type

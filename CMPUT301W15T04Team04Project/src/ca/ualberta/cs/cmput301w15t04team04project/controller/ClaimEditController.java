@@ -22,16 +22,10 @@ package ca.ualberta.cs.cmput301w15t04team04project.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.jar.Attributes.Name;
-
-import android.hardware.Camera.Size;
 import android.location.Location;
-
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
-import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Destination;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
-import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 
 /**
  * This controller can control add or edit claim in ClaimEditActivity

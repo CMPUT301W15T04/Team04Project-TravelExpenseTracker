@@ -1,19 +1,11 @@
 package ca.ualberta.cs.cmput301w15t04team04project;
 
-import java.util.ArrayList;
-
-import ca.ualberta.cs.cmput301w15t04team04project.controller.searchController;
-import ca.ualberta.cs.cmput301w15t04team04project.models.User;
-
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
 
 /**
  * <b>This class is to help users to search their claims by tags</b> 
@@ -23,18 +15,6 @@ import android.widget.Spinner;
  * @since 2015-03-12
  */
 public class SearchActivity extends Activity {
-
-	// An array of strings to populate drop down list */
-
-	/**
-	 * The following String[] is using for store the contact Tags.
-	 */
-/*	String[] contectTags = new String[] { "Tag", "Friend", "Classmate", "A1",
-			"A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11",
-			"A12", "A13", "A14", "A15", "A16", "A17", "A18", "A19", "A20",
-			"A21" };*/
-	private User user;
-	private searchController controller = new searchController();
 	private EditText tags;
 	/**
 	 * Called to do initial creation of a fragment.<br>

@@ -21,9 +21,7 @@
 package ca.ualberta.cs.cmput301w15t04team04project.controller;
 
 import java.util.ArrayList;
-
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
-import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
 
 /**
@@ -79,8 +77,6 @@ public class OneClaimController {
 	 */
 	public void deleteItem(int index) {
 		getItem().remove(index);
-		getClaim().notifyListener();
-
 	}
 
 	/**

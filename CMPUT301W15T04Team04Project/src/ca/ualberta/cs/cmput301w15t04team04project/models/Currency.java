@@ -38,11 +38,6 @@ public class Currency {
 		this.setAmount(d);
 	}
 
-	public Currency(String type) {
-		this.setType(type);
-		this.setAmount(0);
-	}
-
 	public String getType() {
 		return this.type;
 	}
@@ -59,12 +54,4 @@ public class Currency {
 		this.amount = amount;
 	}
 
-	@Override
-	public String toString() {
-		return this.type + this.amount;
-	}
-
-	public boolean isSameType(Currency currency) {
-		return this.type.equals(currency.getType());
-	}
 }

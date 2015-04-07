@@ -34,12 +34,8 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.entity.StringEntity;
-
 import android.util.Log;
-import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
-import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
-import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.network.data.Hits;
 import ca.ualberta.cs.cmput301w15t04team04project.network.data.SearchHit;
 import ca.ualberta.cs.cmput301w15t04team04project.network.data.SearchResponse;
@@ -85,6 +81,7 @@ public class CLmanager {
 			e.printStackTrace();
 		}
 		addRequest.setEntity(stringEntity);
+		@SuppressWarnings("unused")
 		HttpResponse addResponse = null;
 		try {
 			addResponse = httpClient.execute(addRequest);
@@ -102,6 +99,7 @@ public class CLmanager {
 	public void deleteClaim(String claimName) {
 		HttpDelete deleteRequest = new HttpDelete(RESOURCE_URL + claimName);
 		deleteRequest.setHeader("Accept", "application/json");
+		@SuppressWarnings("unused")
 		HttpResponse deleteResponse = null;
 		try {
 			deleteResponse = httpClient.execute(deleteRequest);
@@ -130,6 +128,7 @@ public class CLmanager {
 		}
 		updateRequest.setHeader("Accept", "application/json");
 		updateRequest.setEntity(stringEntity);
+		@SuppressWarnings("unused")
 		HttpResponse postResponse = null;
 		try {
 			postResponse = httpClient.execute(updateRequest);
@@ -166,34 +165,6 @@ public class CLmanager {
 		}
 		return null;
 	}
-
-/*	public SearchResponse<Claim> searchClaimList() {
-		ClaimList claimList = new ClaimList();
-		ClaimEditController controller = new ClaimEditController(claimList);
-		SearchResponse<Claim> esResponse = null;
-		try {
-			HttpPost searchRequest = new HttpPost(SEARCH_URL);
-			HttpClient httpClient = new DefaultHttpClient();
-			HttpResponse response = httpClient.execute(searchRequest);
-			esResponse = parseSearchResponse(response);
-			Hits<Claim> hits = esResponse.getHits();
-
-			if (hits != null) {
-				if (hits.getHits() != null) {
-					for (SearchHit<Claim> sesr : hits.getHits()) {
-						controller.appendClaim((sesr.getSource()));
-					}
-				}
-			}
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} catch (ClientProtocolException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return esResponse;
-	}*/
 
 	public ArrayList<Claim> searchClaimList(String userName ,String searchString, String tags) {
 		ArrayList<Claim> claims = new ArrayList<Claim>();
@@ -238,21 +209,6 @@ public class CLmanager {
 		return searchRequest;
 	}
 
-	
-	/**
-	 * @author youdong
-	 * @param listID
-	 * @param string
-	 * @return
-	 */
-	public ClaimList getClaimList(ArrayList<Long> listID, String string) {
-		ClaimList claimList = new ClaimList();
-		for (long Id : listID) {
-			// claimList.addClaim(getClaim(Id, string));
-		}
-		return claimList;
-	}
-
 	/**
 	 * @author youdong
 	 * @param response
@@ -282,11 +238,6 @@ public class CLmanager {
 		while ((line = br.readLine()) != null) {
 			result.append(line);
 		}
-
 		return result.toString();
 	}
-	// private SearchHit<Claim> parseClaimHit(HttpResponse response) {
-	// TODO Auto-generated method stub
-	// return null;
-	// }
 }

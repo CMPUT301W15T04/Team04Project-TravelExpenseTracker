@@ -24,14 +24,9 @@ package ca.ualberta.cs.cmput301w15t04team04project.adapter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import ca.ualberta.cs.cmput301w15t04team04project.R;
-import ca.ualberta.cs.cmput301w15t04team04project.adapter.ClaimListAdapter.ViewHolder;
-import ca.ualberta.cs.cmput301w15t04team04project.controller.searchController;
-import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
@@ -40,7 +35,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class ItemListAdapter extends ArrayAdapter<Item> {
 	private ArrayList<Item> itemList = null;
@@ -76,6 +70,7 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
 	 * 
 	 * @return The View
 	 */
+	@SuppressLint("SimpleDateFormat")
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		if (convertView == null) {

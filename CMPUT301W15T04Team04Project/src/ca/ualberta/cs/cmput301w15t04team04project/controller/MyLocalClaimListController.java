@@ -21,19 +21,8 @@
 package ca.ualberta.cs.cmput301w15t04team04project.controller;
 
 import java.util.ArrayList;
-
-import android.content.Context;
-import android.content.Intent;
-import android.widget.Toast;
-import ca.ualberta.cs.cmput301w15t04team04project.EditClaimActivity;
-import ca.ualberta.cs.cmput301w15t04team04project.MainActivity;
-import ca.ualberta.cs.cmput301w15t04team04project.OneClaimActivity;
-import ca.ualberta.cs.cmput301w15t04team04project.SearchActivity;
-import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
-import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
-import ca.ualberta.cs.cmput301w15t04team04project.models.Listener;
 
 /**
  * The MyLocalClaimList Controller is a controller of the MyClaimActivity simply
@@ -60,7 +49,7 @@ public class MyLocalClaimListController {
 	}
 	
 	/**
-	 * add all claims to the cliamList
+	 * add all claims in the arrayList to the cliamList
 	 * @param arrayList
 	 */
 	

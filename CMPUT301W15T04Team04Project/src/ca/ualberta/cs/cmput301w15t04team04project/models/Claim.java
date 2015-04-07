@@ -50,14 +50,12 @@ public class Claim {
 	protected ArrayList<Destination> destination = new ArrayList<Destination>();
 	protected ArrayList<Item> items;
 	protected ArrayList<String> tags;
-	protected transient ArrayList<Listener> itemListener;
+
 	protected String Approver;
 	protected String Claimiant;
 	protected ArrayList<Currency> totalCurrency ;
 	protected String claimLocation;
 	protected Location clLocation;
-	
-	protected transient ArrayList<Listener> listeners = null;
 
 	public String getClaimLocation() {
 		return claimLocation;
@@ -89,7 +87,6 @@ public class Claim {
 
 		this.claimName = claimName;
 		items = new ArrayList<Item>();
-		itemListener = new ArrayList<Listener>();
 		destination = new ArrayList<Destination>();
 		tags = new ArrayList<String>();
 		status = "In Progress";
@@ -268,17 +265,6 @@ public class Claim {
 		this.Approver = approver;
 	}
 
-	/**
-	 * get an arraylist of listeners to do the notification things
-	 * 
-	 * @return itemListener
-	 */
-	private ArrayList<Listener> getListeners() {
-		if (itemListener == null) {
-			itemListener = new ArrayList<Listener>();
-		}
-		return itemListener;
-	}
 
 	/**
 	 * get a collection of items which are contained in this claim by convert
@@ -299,7 +285,6 @@ public class Claim {
 	 */
 	public void addItem(Item aItem) {
 		items.add(0, aItem);
-		notifyListener();
 	}
 
 	/**
@@ -311,43 +296,6 @@ public class Claim {
 	 */
 	public void removeItem(Item oldItem) {
 		items.remove(oldItem);
-		notifyListener();
-	}
-
-	// http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fswt%2Fwidgets%2FWidget.html
-	/**
-	 * Notifies all of the receiver's listeners for events.
-	 */
-	public void notifyListener() {
-		for (Listener listener : getListeners()) {
-			listener.update();
-		}
-	}
-
-	// http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fswt%2Fwidgets%2FWidget.html
-	/**
-	 * 
-	 * Adds the listener to the collection of listeners who will be notified
-	 * when an event of the given type occurs.
-	 * 
-	 * @param l
-	 *            the new listener
-	 */
-
-	public void addListener(Listener l) {
-		getListeners().add(l);
-	}
-
-	// http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fapi%2Forg%2Feclipse%2Fswt%2Fwidgets%2FWidget.html
-	/**
-	 * Removes the listener from the collection of listeners who will be
-	 * notified when an event of the given type occurs.
-	 * 
-	 * @param l
-	 *            the removed listener .
-	 */
-	public void removeListener(Listener l) {
-		getListeners().remove(l);
 	}
 
 	/**
@@ -376,10 +324,6 @@ public class Claim {
 	 */
 	public void setClaim(String claimName) {
 		this.claimName = claimName;
-	}
-
-	public String toString() {
-		return getClaim();
 	}
 
 	/**
@@ -505,11 +449,16 @@ public class Claim {
 		return destination;
 	}
 
+	/**
+	 * Calculate the total currency and covert it to string
+	 * @return String
+	 */
+	
 	public String currencySummary(){
 		ArrayList<Currency> currencyList = new ArrayList<Currency>();
 		for (int i = 0; i < getItems().size(); i++){
 			for (int j = 0; j < currencyList.size(); j++){
-				if (getItems().get(i).getItemCurrency().getType() == currencyList.get(j).getType()){
+				if (getItems().get(i).getItemCurrency().getType().equals(currencyList.get(j).getType())){
 					int c = currencyList.get(j).getAmount();
 					currencyList.get(j).setAmount(c + getItems().get(i).getItemCurrency().getAmount());
 					break;

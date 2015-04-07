@@ -1,11 +1,6 @@
 package ca.ualberta.cs.cmput301w15t04team04project.test;
 
 import java.util.Date;
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 7b647a2a9265f459727e1aa504cee3bfe8fd58ad
 import android.test.ActivityInstrumentationTestCase2;
 import ca.ualberta.cs.cmput301w15t04team04project.EditItemActivity;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ItemEditController;
