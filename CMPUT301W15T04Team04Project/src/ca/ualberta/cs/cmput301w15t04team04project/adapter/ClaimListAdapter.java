@@ -71,6 +71,7 @@ public class ClaimListAdapter extends ArrayAdapter<Claim> {
 	 * 
 	 * @return The View
 	 */
+	@SuppressWarnings("deprecation")
 	/* (non-Javadoc)
 	 * @see android.widget.ArrayAdapter#getView(int, android.view.View, android.view.ViewGroup)
 	 */

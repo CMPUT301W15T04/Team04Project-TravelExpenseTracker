@@ -64,6 +64,7 @@ public class CLmanager {
 	}
 
 	/**
+	 * upload a claim to server
 	 * @author youdong
 	 * @param claim
 	 * @param string
@@ -93,6 +94,7 @@ public class CLmanager {
 	}
 
 	/**
+	 * remover a claim from the server by a given claimName
 	 * @author youdong
 	 * @param claimId
 	 */
@@ -111,6 +113,7 @@ public class CLmanager {
 	}
 
 	/**
+	 * update a claim
 	 * @author youdong
 	 * @param claim
 	 * @throws IllegalStateException
@@ -140,6 +143,7 @@ public class CLmanager {
 	}
 
 	/**
+	 * get a claim from server by given string
 	 * @author youdong
 	 * @param string
 	 * @return
@@ -165,7 +169,13 @@ public class CLmanager {
 		}
 		return null;
 	}
-
+	/**
+	 * return a claimList (search result)
+	 * @author youdong
+	 * @param userName searchString tags
+	 * @return
+	 */
+	
 	public ArrayList<Claim> searchClaimList(String userName ,String searchString, String tags) {
 		ArrayList<Claim> claims = new ArrayList<Claim>();
 		try {
@@ -192,6 +202,14 @@ public class CLmanager {
 		return claims;
 	}
 	
+	/**
+	 * Creates a search request by these parameters
+	 * @param userName
+	 * @param searchString
+	 * @param tags
+	 * @return
+	 * @throws UnsupportedEncodingException
+	 */
 	private HttpPost createSearchRequest(String userName ,String searchString, String tags) throws UnsupportedEncodingException {
 		// TODO Auto-generated method stub
 		HttpPost searchRequest = new HttpPost(SEARCH_URL);
@@ -210,6 +228,7 @@ public class CLmanager {
 	}
 
 	/**
+	 * use gson to convert a HttpResponse to a SearchResponse
 	 * @author youdong
 	 * @param response
 	 * @return
