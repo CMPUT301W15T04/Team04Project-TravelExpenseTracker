@@ -606,7 +606,7 @@ public class OneClaimActivity extends Activity {
 		@Override
 		public void run() {
 			try {
-				onlineManager.updateClaim(claim);
+				onlineManager.updateClaim(claim,  getApplicationContext(), user.getName());
 			} catch (IllegalStateException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -639,7 +639,7 @@ public class OneClaimActivity extends Activity {
 
 		public void run() {
 			controller = new OneClaimController(
-					onlineManager.getClaim(claimName));
+					onlineManager.getClaim(claimName, getApplicationContext(), user.getName()));
 			runOnUiThread(doFinishLoad);
 		}
 	}

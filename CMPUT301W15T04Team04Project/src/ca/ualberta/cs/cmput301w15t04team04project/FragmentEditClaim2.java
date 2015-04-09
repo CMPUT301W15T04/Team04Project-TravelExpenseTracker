@@ -23,6 +23,7 @@ package ca.ualberta.cs.cmput301w15t04team04project;
 import java.io.IOException;
 import java.util.ArrayList;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Destination;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
@@ -75,7 +76,7 @@ public class FragmentEditClaim2 extends Fragment {
 	private ArrayList<Destination> destinationList = new ArrayList<Destination>();
 	private CLmanager onlineManager2;
 	private ArrayAdapter<Destination> DestinationListAdapter;
-
+	private User user;
 	private Runnable doFinish2 = new Runnable() {
 		public void run() {
 			int tagsSize = controller2.getClaim().getTag().size();
@@ -126,6 +127,7 @@ public class FragmentEditClaim2 extends Fragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		user = SignInManager.loadFromFile(getActivity());
 		onlineManager2 = new CLmanager();
 		Bundle bundle = getActivity().getIntent().getExtras();
 		DestinationListView = (ListView) getActivity().findViewById(
@@ -230,7 +232,7 @@ public class FragmentEditClaim2 extends Fragment {
 		@Override
 		public void run() {
 			try {
-				controller2.setClaimObj(onlineManager2.getClaim(cName));
+				controller2.setClaimObj(onlineManager2.getClaim(cName, getActivity(), user.getName()));
 			} catch (IllegalStateException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

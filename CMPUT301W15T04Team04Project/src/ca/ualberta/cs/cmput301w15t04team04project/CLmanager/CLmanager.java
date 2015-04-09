@@ -34,16 +34,22 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.entity.StringEntity;
+
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
+import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
+import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.network.data.Hits;
 import ca.ualberta.cs.cmput301w15t04team04project.network.data.SearchHit;
 import ca.ualberta.cs.cmput301w15t04team04project.network.data.SearchResponse;
 import ca.ualberta.cs.cmput301w15t04team04project.network.data.SimpleSearchCommand;
-
+import ca.ualberta.cs.cmput301w15t04team04project.network.InternetChecker;
 import java.lang.reflect.Type;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 
 /**
  * @author youdong
@@ -55,24 +61,32 @@ public class CLmanager {
 	private static Gson gson;
 	private static HttpClient httpClient = new DefaultHttpClient();
 	private static final String TAG = "ClaimSearch";
+	private MyLocalClaimListController controller;
+	private InternetChecker checker;
 
 	/**
 	 * 
 	 */
 	public CLmanager() {
 		gson = new Gson();
+		controller = new MyLocalClaimListController();
 	}
 
 	/**
-	 * upload a claim to server
+	 * upload a claim to server and also make change in local
+	 * 
 	 * @author youdong
 	 * @param claim
 	 * @param string
 	 * @throws IllegalStateException
 	 * @throws IOException
 	 */
-	public void insertClaim(Claim claim) throws IllegalStateException,
-			IOException {
+	public void insertClaim(Claim claim, Context context, String name)
+			throws IllegalStateException, IOException {
+		ClaimList claimList = MyLocalClaimListManager.loadClaimList(context,
+				name);
+		claimList.getClaimArrayList().add(claim);
+		MyLocalClaimListManager.saveClaimList(context, claimList, name);
 		HttpPost addRequest = new HttpPost(RESOURCE_URL + claim.getClaim());
 		StringEntity stringEntity = null;
 		try {
@@ -91,14 +105,51 @@ public class CLmanager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
 
+	}
+/**
+ * upload a claim to server
+ * @param claim
+ * @param context
+ * @param name
+ * @throws IllegalStateException
+ * @throws IOException
+ */
+	public void offlineInsertClaim(Claim claim, Context context, String name)
+			throws IllegalStateException, IOException {
+		HttpPost addRequest = new HttpPost(RESOURCE_URL + claim.getClaim());
+		StringEntity stringEntity = null;
+		try {
+			stringEntity = new StringEntity(gson.toJson(claim));
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		addRequest.setEntity(stringEntity);
+		@SuppressWarnings("unused")
+		HttpResponse addResponse = null;
+		try {
+			addResponse = httpClient.execute(addRequest);
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
 	/**
 	 * remover a claim from the server by a given claimName
+	 * 
 	 * @author youdong
 	 * @param claimId
 	 */
-	public void deleteClaim(String claimName) {
+	public void deleteClaim(String claimName, Context context, String name) {
+		ClaimList claimList = MyLocalClaimListManager.loadClaimList(context,
+				name);
+		controller = new MyLocalClaimListController(claimList);
+		controller.delete(claimName);
+		MyLocalClaimListManager.saveClaimList(context,
+				controller.getClaimList(), name);
 		HttpDelete deleteRequest = new HttpDelete(RESOURCE_URL + claimName);
 		deleteRequest.setHeader("Accept", "application/json");
 		@SuppressWarnings("unused")
@@ -114,13 +165,20 @@ public class CLmanager {
 
 	/**
 	 * update a claim
+	 * 
 	 * @author youdong
 	 * @param claim
 	 * @throws IllegalStateException
 	 * @throws IOException
 	 */
-	public void updateClaim(Claim claim) throws IllegalStateException,
-			IOException {
+	public void updateClaim(Claim claim, Context context, String name)
+			throws IllegalStateException, IOException {
+		ClaimList claimList = MyLocalClaimListManager.loadClaimList(context,
+				name);
+		controller = new MyLocalClaimListController(claimList);
+		controller.update(claim);
+		MyLocalClaimListManager.saveClaimList(context,
+				controller.getClaimList(), name);
 		HttpPost updateRequest = new HttpPost(RESOURCE_URL + claim.getClaim());
 		StringEntity stringEntity = null;
 		try {
@@ -144,76 +202,104 @@ public class CLmanager {
 
 	/**
 	 * get a claim from server by given string
+	 * 
 	 * @author youdong
 	 * @param string
 	 * @return
 	 */
-	public Claim getClaim(String string) {
+	public Claim getClaim(String string, Context context, String name) {
+		checker = new InternetChecker(context);
+		if (checker.isNetworkAvailable() == false) {
+			ClaimList claimList = MyLocalClaimListManager.loadClaimList(
+					context, name);
+			controller = new MyLocalClaimListController(claimList);
+			Claim claim = controller.getClaim(string);
+			return claim;
+		} else {
 
-		HttpGet getRequest = new HttpGet(RESOURCE_URL + string);
-		HttpResponse getResponse;
-		try {
-			getResponse = httpClient.execute(getRequest);
-			String json = getEntityContent(getResponse);
-			// We have to tell GSON what type we expect
-			Type searchHitType = new TypeToken<SearchHit<Claim>>() {
-			}.getType();
-			// Now we expect to get a Recipe response
-			SearchHit<Claim> esResponse = gson.fromJson(json, searchHitType);
-			// We get the recipe from it!
-			return esResponse.getSource();
-		} catch (ClientProtocolException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
+			HttpGet getRequest = new HttpGet(RESOURCE_URL + string);
+			HttpResponse getResponse;
+			try {
+				getResponse = httpClient.execute(getRequest);
+				String json = getEntityContent(getResponse);
+				// We have to tell GSON what type we expect
+				Type searchHitType = new TypeToken<SearchHit<Claim>>() {
+				}.getType();
+				// Now we expect to get a Recipe response
+				SearchHit<Claim> esResponse = gson
+						.fromJson(json, searchHitType);
+				// We get the recipe from it!
+				return esResponse.getSource();
+			} catch (ClientProtocolException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return null;
 		}
-		return null;
 	}
+
 	/**
 	 * return a claimList (search result)
+	 * 
 	 * @author youdong
-	 * @param userName searchString tags
+	 * @param userName
+	 *            searchString tags
 	 * @return
 	 */
-	
-	public ArrayList<Claim> searchClaimList(String userName ,String searchString, String tags) {
-		ArrayList<Claim> claims = new ArrayList<Claim>();
-		try {
-			HttpPost searchRequest = createSearchRequest(userName, searchString, tags);
-			HttpClient httpClient = new DefaultHttpClient();
-			HttpResponse response = httpClient.execute(searchRequest);
-			SearchResponse<Claim> esResponse = parseSearchResponse(response);
-			Hits<Claim> hits = esResponse.getHits();
 
-			if (hits != null) {
-				if (hits.getHits() != null) {
-					for (SearchHit<Claim> sesr : hits.getHits()) {
-						claims.add((sesr.getSource()));
+	public ArrayList<Claim> searchClaimList(String userName,
+			String searchString, String tags, Context context, String name) {
+		ArrayList<Claim> claims = new ArrayList<Claim>();
+		checker = new InternetChecker(context);
+		if (checker.isNetworkAvailable() == false) {
+			ClaimList claimList = MyLocalClaimListManager.loadClaimList(
+					context, name);
+			controller = new MyLocalClaimListController(claimList);
+			claims.addAll(controller.getClaimsByStatus(searchString));
+			return claims;
+		} else {
+			try {
+				HttpPost searchRequest = createSearchRequest(userName,
+						searchString, tags);
+				HttpClient httpClient = new DefaultHttpClient();
+				HttpResponse response = httpClient.execute(searchRequest);
+				SearchResponse<Claim> esResponse = parseSearchResponse(response);
+				Hits<Claim> hits = esResponse.getHits();
+
+				if (hits != null) {
+					if (hits.getHits() != null) {
+						for (SearchHit<Claim> sesr : hits.getHits()) {
+							claims.add((sesr.getSource()));
+						}
 					}
 				}
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			} catch (ClientProtocolException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} catch (ClientProtocolException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+			return claims;
 		}
-		return claims;
 	}
-	
+
 	/**
 	 * Creates a search request by these parameters
+	 * 
 	 * @param userName
 	 * @param searchString
 	 * @param tags
 	 * @return
 	 * @throws UnsupportedEncodingException
 	 */
-	private HttpPost createSearchRequest(String userName ,String searchString, String tags) throws UnsupportedEncodingException {
+	private HttpPost createSearchRequest(String userName, String searchString,
+			String tags) throws UnsupportedEncodingException {
 		// TODO Auto-generated method stub
 		HttpPost searchRequest = new HttpPost(SEARCH_URL);
-		SimpleSearchCommand command = new SimpleSearchCommand(userName, searchString, tags);
+		SimpleSearchCommand command = new SimpleSearchCommand(userName,
+				searchString, tags);
 
 		String query = command.getJsonCommand();
 		Log.i(TAG, "Json command: " + query);
@@ -229,6 +315,7 @@ public class CLmanager {
 
 	/**
 	 * use gson to convert a HttpResponse to a SearchResponse
+	 * 
 	 * @author youdong
 	 * @param response
 	 * @return

@@ -20,7 +20,11 @@
  */
 package ca.ualberta.cs.cmput301w15t04team04project.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import android.content.Context;
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 
@@ -36,8 +40,14 @@ import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
  * 
  */
 public class MyLocalClaimListController {
-	private static ClaimList claimList;
-
+	private ClaimList claimList;
+	public MyLocalClaimListController(){
+		
+	}
+	
+	public MyLocalClaimListController(ClaimList claimList){
+		this.claimList = claimList;
+	}
 	/**
 	 * get the list of claims if the list does not exist, create a new one
 	 */
@@ -120,6 +130,86 @@ public class MyLocalClaimListController {
 					getClaims().add(bigger);
 				}
 				
+			}
+		}
+	}
+	/**
+	 * Update a claim by finding the original one remove it and adding the new one
+	 * @param claim
+	 */
+	public void update(Claim claim) {
+		// TODO Auto-generated method stub
+		for  (int i = 0; i < getClaims().size(); i++) {
+			if (getClaims().get(i).getClaim().equals(claim.getClaim())){
+				getClaims().remove(i);
+				getClaims().add(claim);
+				break;
+			}
+		}
+	}
+    /**
+     * delete a claim by a given claim name.
+     * @param claimName
+     */
+
+		
+	public void delete(String claimName) {
+		for  (int i = 0; i < getClaims().size(); i++) {
+			if (getClaims().get(i).getClaim().equals(claimName)){
+				getClaims().remove(i);
+				break;
+			}
+		}
+	}
+
+	public Claim getClaim(String claimName) {
+		for  (int i = 0; i < getClaims().size(); i++) {
+			if (getClaims().get(i).getClaim().equals(claimName)){
+				return getClaims().get(i);
+			}
+		}
+		return null;
+	}
+
+	public ArrayList<Claim> getClaimsByStatus(String searchString) {
+		ArrayList<Claim> claims = new ArrayList<Claim>();
+		for  (int i = 0; i < getClaims().size(); i++) {
+			if (getClaims().get(i).getStatus().equals(searchString)){
+				claims.add(getClaims().get(i));
+			}
+		}
+		return claims;
+	}
+
+	/**
+	 * upload online editing
+	 */
+	public void upload(Context context) {
+		for  (int i = 0; i < getClaims().size(); i++) {
+			if (getClaims().get(i).getStatus().equals("In Progress")||getClaims().get(i).getStatus().equals("returned")){
+				AddThread add = new AddThread(getClaims().get(i), context);
+				add.start();
+			}
+		}
+	}
+	class AddThread extends Thread {
+		private Claim claim;
+		private Context context;
+		public AddThread(Claim claim, Context context) {
+			this.claim = claim;
+			this.context = context;
+		}
+		@Override
+		public void run() {
+			try {
+				CLmanager manager = new CLmanager();
+				manager.offlineInsertClaim(claim, context, claim.getClaimiant());
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 	}

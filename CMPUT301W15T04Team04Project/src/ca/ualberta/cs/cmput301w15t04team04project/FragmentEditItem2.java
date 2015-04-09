@@ -22,8 +22,10 @@ package ca.ualberta.cs.cmput301w15t04team04project;
 
 import java.io.File;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ItemEditController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
+import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -70,6 +72,7 @@ public class FragmentEditItem2 extends Fragment {
 	private ItemEditController controller;
 	private CLmanager onlineManager = new CLmanager();
 	private EditItemActivity myActivity;
+	private User user;
 	private Runnable finishLoad =  new Runnable() {
 		public void run() {
 			Item currentItem = controller.getClaim().getPosition(myItemId);
@@ -142,6 +145,7 @@ public class FragmentEditItem2 extends Fragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		user = SignInManager.loadFromFile(getActivity());
 		Bundle bundle = getActivity().getIntent().getExtras();
 		if (bundle.size() == 1) {
 			EditItemActivity.addEditItemStatus = 0;
@@ -258,7 +262,7 @@ public class FragmentEditItem2 extends Fragment {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			controller = new ItemEditController(onlineManager.getClaim(claimName));
+			controller = new ItemEditController(onlineManager.getClaim(claimName, getActivity(), user.getName()));
 			getActivity().runOnUiThread(finishLoad);
 		}
 		

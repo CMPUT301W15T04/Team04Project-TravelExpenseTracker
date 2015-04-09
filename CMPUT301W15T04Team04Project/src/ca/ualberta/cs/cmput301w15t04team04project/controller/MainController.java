@@ -20,7 +20,6 @@
  */
 package ca.ualberta.cs.cmput301w15t04team04project.controller;
 
-import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.content.Context;
@@ -44,6 +43,5 @@ public class MainController {
 		// store the user info
 		SignInManager.saveInFile(context, user);
 		// clean the local storage
-		MyLocalClaimListManager.saveClaimList(context, null);
 	}
 }

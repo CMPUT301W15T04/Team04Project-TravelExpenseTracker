@@ -25,9 +25,11 @@ package ca.ualberta.cs.cmput301w15t04team04project;
 import java.io.IOException;
 
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.MyLocalClaimListManager;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ClaimListAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController;
+import ca.ualberta.cs.cmput301w15t04team04project.models.ClaimList;
 import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.app.ActionBar;
 import android.app.Activity;
@@ -107,7 +109,7 @@ public class MyClaimActivity extends Activity {
 			if (mode == 0) {
 				actionBar.setTitle("Progresing Claims");
 				progressing = true;
-				Thread search = new SearchClaimThread(user.getName(), "Progress", null);
+				Thread search = new SearchClaimThread(user.getName(), "In Progress", null);
 				search.start();
 			} else if (mode == 1) {
 				actionBar.setTitle("Submitted Claims");
@@ -313,7 +315,8 @@ public class MyClaimActivity extends Activity {
 
 		public void run() {
 			controller.clear();
-			controller.addall(onlineManager.searchClaimList(userName, status, tag));
+			controller.addall(onlineManager.searchClaimList(userName, status, tag, thisActivity, user.getName()));
+			//controller.addall(MyLocalClaimListManager.loadClaimList(thisActivity, userName).getClaimArrayList());
 			if (user.getName().equals("approval")) {
 				controller.sortClaimOldFirst();
 			} else {
@@ -340,8 +343,8 @@ public class MyClaimActivity extends Activity {
 		}
 
 		public void run() {
-			onlineManager.deleteClaim(claimName);
 			controller.deleteClaim(pos);
+			onlineManager.deleteClaim(claimName, getApplicationContext(), user.getName());
 			runOnUiThread(doFinish);
 		}
 	}

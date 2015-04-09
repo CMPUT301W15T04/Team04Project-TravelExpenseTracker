@@ -25,11 +25,13 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Vector;
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.PagerAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ItemEditController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Currency;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Item;
+import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -80,7 +82,7 @@ public class EditItemActivity extends FragmentActivity {
 	private int receiptFlag = 0;
 	private CLmanager onlineManager = new CLmanager();
 	private Bundle bundle;
-	
+	private User user;
 	private Runnable doFinishEdit = new Runnable() {
 		public void run() {
 			//finish();
@@ -119,9 +121,10 @@ public class EditItemActivity extends FragmentActivity {
 		Toast.makeText(this, claimName, Toast.LENGTH_LONG)
 		.show();
 		controller = new ItemEditController();
+		receiptFlag = 0;
+		user = SignInManager.loadFromFile(this);
 		GetClaimThread get = new GetClaimThread(claimName);
 		get.start();
-		receiptFlag = 0;
 	}
 
 	/**
@@ -361,7 +364,7 @@ public class EditItemActivity extends FragmentActivity {
 		public void run() {
 			
 			try {
-				onlineManager.updateClaim(claim);
+				onlineManager.updateClaim(claim , getApplicationContext(), user.getName());
 			} catch (IllegalStateException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -389,7 +392,7 @@ public class EditItemActivity extends FragmentActivity {
 
 		public void run() {
 			controller = new ItemEditController(
-					onlineManager.getClaim(claimName));
+					onlineManager.getClaim(claimName, getApplicationContext(), user.getName()));
 			runOnUiThread(FinishLoad);
 		}
 	}

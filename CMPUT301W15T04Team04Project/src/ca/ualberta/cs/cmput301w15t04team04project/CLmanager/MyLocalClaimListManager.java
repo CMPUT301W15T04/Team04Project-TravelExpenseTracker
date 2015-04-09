@@ -39,7 +39,7 @@ import android.content.Context;
  * 
  */
 public class MyLocalClaimListManager {
-	protected static String FILENAME = "LocalClaimList";
+	protected static String FILENAME;
 
 	/**
 	 * 
@@ -54,10 +54,10 @@ public class MyLocalClaimListManager {
 	 * @param context
 	 * @param claimList
 	 */
-	public static void saveClaimList(Context context, ClaimList claimList) {
+	public static void saveClaimList(Context context, ClaimList claimList, String name) {
 		Gson gson = new Gson();
 		try {
-			FileOutputStream fos = context.openFileOutput(FILENAME, 0);
+			FileOutputStream fos = context.openFileOutput(name, 0);
 			OutputStreamWriter osw = new OutputStreamWriter(fos);
 			gson.toJson(claimList, osw);
 			osw.flush();
@@ -76,11 +76,11 @@ public class MyLocalClaimListManager {
 	 * @param context
 	 * @return
 	 */
-	public static ClaimList loadClaimList(Context context) {
+	public static ClaimList loadClaimList(Context context, String name) {
 		ClaimList claimList = new ClaimList();
 		Gson gson = new Gson();
 		try {
-			FileInputStream fis = context.openFileInput(FILENAME);
+			FileInputStream fis = context.openFileInput(name);
 			Type listType = new TypeToken<ClaimList>() {
 			}.getType();
 			InputStreamReader isr = new InputStreamReader(fis);

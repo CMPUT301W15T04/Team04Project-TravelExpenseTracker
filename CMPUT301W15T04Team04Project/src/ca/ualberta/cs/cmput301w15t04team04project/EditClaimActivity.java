@@ -299,7 +299,7 @@ public class EditClaimActivity extends FragmentActivity {
 		@Override
 		public void run() {
 			try {
-				onlineManager.insertClaim(claim);
+				onlineManager.insertClaim(claim, getApplicationContext(), user.getName());
 			} catch (IllegalStateException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -329,8 +329,7 @@ public class EditClaimActivity extends FragmentActivity {
 		@Override
 		public void run() {
 			try {
-				
-				onlineManager.updateClaim(claim);
+				onlineManager.updateClaim(claim,  getApplicationContext(), user.getName());
 			} catch (IllegalStateException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -23,7 +23,9 @@ package ca.ualberta.cs.cmput301w15t04team04project;
 import java.io.IOException;
 
 import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.CLmanager;
+import ca.ualberta.cs.cmput301w15t04team04project.CLmanager.SignInManager;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.ClaimEditController;
+import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -65,10 +67,11 @@ public class FragmentEditClaim1 extends Fragment {
 	private String ClaimName;
 	private CLmanager onlineManager;
 	private ClaimEditController controller1;
-	
+	private User user;
 	private Runnable doFinish = new Runnable() {
 		@SuppressWarnings("deprecation")
 		public void run() {
+			
 			EditClaimActivity.items = controller1.getClaim().getItems();
 			EditClaimActivity.comments = controller1.getClaim().getComment();
 			claimName.setText(controller1.getClaim().getClaim());
@@ -116,6 +119,7 @@ public class FragmentEditClaim1 extends Fragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		user = SignInManager.loadFromFile(getActivity());
 		Bundle bundle = getActivity().getIntent().getExtras();
 		onlineManager = new CLmanager();
 		if (bundle == null) {
@@ -158,7 +162,7 @@ public class FragmentEditClaim1 extends Fragment {
 			try {
 				Thread.sleep(500);
 				controller1 = new ClaimEditController();
-				controller1.setClaimObj(onlineManager.getClaim(cName));
+				controller1.setClaimObj(onlineManager.getClaim(cName, getActivity(), user.getName()));
 			} catch (IllegalStateException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

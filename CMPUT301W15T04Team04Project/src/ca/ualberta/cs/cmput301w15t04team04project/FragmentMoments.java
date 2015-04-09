@@ -28,6 +28,7 @@ import ca.ualberta.cs.cmput301w15t04team04project.XListView.XListView.IXListView
 import ca.ualberta.cs.cmput301w15t04team04project.adapter.ClaimListAdapter;
 import ca.ualberta.cs.cmput301w15t04team04project.controller.MyLocalClaimListController;
 import ca.ualberta.cs.cmput301w15t04team04project.models.Claim;
+import ca.ualberta.cs.cmput301w15t04team04project.models.User;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -124,7 +125,7 @@ public class FragmentMoments extends Fragment implements IXListViewListener {
 
 		public void run() {
 			controller.clear();
-			controller.addall(onlineManager.searchClaimList(null, "approved", null));
+			controller.addall(onlineManager.searchClaimList(null, "approved", null,getActivity(),""));
 			controller.sortClaimNewFirst();
 			getActivity().runOnUiThread(doFinish);
 		}
